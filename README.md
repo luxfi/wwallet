@@ -7,7 +7,7 @@ This is the frontend application for the Lux Wallet.
 -   Yarn (https://classic.yarnpkg.com/en/docs/install/)
 -   Recent version of npm (7.4.0)
 -   Node v15.6.0
--   Gecko, LuxGo client in Golang (https://github.com/luxdefi/luxgo)
+-   Gecko, Lux client in Golang (https://github.com/luxdefi/luxd)
 
 ## Installation
 
