@@ -188,7 +188,7 @@ const network_module: Module<NetworkState, RootState> = {
 
             let fuji = new AvaNetwork(
                 'Fuji',
-                'https://api.avax-test.network:443',
+                'https://testnet.luxcha.in:443',
                 5,
                 'https://explorerapi.avax-test.network',
                 'https://explorer.avax-test.network',

@@ -1,6 +1,6 @@
-# Avalanche (AVAX) Wallet
+# Lux Wallet
 
-This is the frontend Vue.js application for the Avalanche (AVAX) Wallet.
+This is the frontend application for the Lux Wallet.
 
 ## Prerequisites
 

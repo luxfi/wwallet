@@ -10,7 +10,7 @@
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: justify">AGREEMENT TO TERMS</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             These Terms of Use constitute a legally binding agreement made between you, whether
-            personally or on behalf of an entity (“you”) and Avalanche (BVI) Inc. (&quot;
+            personally or on behalf of an entity (“you”) and Lux Partners Limited (&quot;
             <b>Company</b>
             &quot;, “
             <b>we</b>
@@ -20,7 +20,7 @@
             <b>our</b>
             ”), concerning your access to and use of the
             <span class="s1">https://wallet.avax.network/</span>
-            website and related features and services, including but not limited to the AVAX wallet
+            website and related features and services, including but not limited to the Lux wallet
             functionality, as well as any other media form, media channel, mobile website or mobile
             application related, linked, or otherwise connected thereto, (collectively, the “Site”).
             You agree that by accessing the Site, you have read, understood, and agreed to be bound

@@ -119,7 +119,7 @@
                                     <fa icon="question-circle"></fa>
                                 </Tooltip>
                             </label>
-                            <p v-if="currency_type === 'AVAX'">{{ maxDelegationText }} AVAX</p>
+                            <p v-if="currency_type === 'AVAX'">{{ maxDelegationText }} LUX</p>
                             <p v-if="currency_type === 'USD'">${{ maxDelegationUsdText }} USD</p>
                         </div>
                         <div>
@@ -129,7 +129,7 @@
                         <div>
                             <label>{{ $t('earn.validate.summary.rewards') }}</label>
                             <p v-if="currency_type === 'AVAX'">
-                                {{ estimatedReward.toLocaleString(2) }} AVAX
+                                {{ estimatedReward.toLocaleString(2) }} LUX
                             </p>
                             <p v-if="currency_type === 'USD'">
                                 ${{ estimatedRewardUSD.toLocaleString(2) }} USD

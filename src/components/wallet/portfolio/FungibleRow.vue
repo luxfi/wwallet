@@ -5,8 +5,8 @@
             <p v-else>?</p>
         </div>
         <p class="name_col not_mobile">
-            {{ name }} ({{ symbol }})
-            <span v-if="!isAvaxToken">ANT</span>
+            <span v-if="isAvaxToken">Lux (LUX)</span>
+            <span v-if="!isAvaxToken">{{ name }} ({{ symbol }}</span>
         </p>
         <p class="name_col mobile_only">{{ symbol }}</p>
         <router-link :to="sendLink" class="send_col" v-if="isBalance">
@@ -100,7 +100,7 @@ export default class FungibleRow extends Vue {
     get name(): string {
         let name = this.asset.name
         // TODO: Remove this hack after network change
-        if (name === 'AVA') return 'AVAX'
+        if (name === 'AVA') return 'LUX'
         return name
     }
 
@@ -108,7 +108,7 @@ export default class FungibleRow extends Vue {
         let sym = this.asset.symbol
 
         // TODO: Remove this hack after network change
-        if (sym === 'AVA') return 'AVAX'
+        if (sym === 'AVA') return 'LUX'
         return sym
     }
 

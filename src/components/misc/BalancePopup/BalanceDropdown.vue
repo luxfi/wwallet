@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown hover_border" :active="isPopup">
         <button @click="showPopup" :disabled="disabled">
-            {{ symbol }}
+            LUX
             <!--            <fa icon="caret-down" style="float: right"></fa>-->
         </button>
         <!--        <BalancePopup-->

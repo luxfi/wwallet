@@ -109,7 +109,7 @@
                     <div>
                         <label>{{ $t('earn.delegate.summary.reward') }}</label>
                         <p v-if="currency_type === 'AVAX'">
-                            {{ estimatedReward.toLocaleString(2) }} AVAX
+                            {{ estimatedReward.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
                             ${{ estimatedRewardUSD.toLocaleString(2) }} USD
@@ -118,7 +118,7 @@
                     <div>
                         <label>{{ $t('earn.delegate.summary.fee') }}</label>
                         <p v-if="currency_type === 'AVAX'">
-                            {{ totalFeeBig.toLocaleString(2) }} AVAX
+                            {{ totalFeeBig.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
                             ${{ totalFeeUsdBig.toLocaleString(2) }} USD

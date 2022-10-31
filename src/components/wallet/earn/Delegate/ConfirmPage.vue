@@ -6,7 +6,7 @@
         <!--        </div>-->
         <div>
             <label>{{ $t('earn.delegate.confirmation.amount') }}</label>
-            <p>{{ amtText }} AVAX</p>
+            <p>{{ amtText }} LUX</p>
         </div>
         <div>
             <label>{{ $t('earn.delegate.confirmation.start') }}</label>

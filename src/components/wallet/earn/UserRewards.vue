@@ -2,7 +2,7 @@
     <div v-if="totLength > 0" class="user_rewards">
         <div>
             <label>{{ $t('earn.rewards.total') }}</label>
-            <p class="amt">{{ totalRewardBig.toLocaleString(9) }} AVAX</p>
+            <p class="amt">{{ totalRewardBig.toLocaleString(9) }} LUX</p>
         </div>
         <div v-if="validators.length > 0">
             <h3>{{ $t('earn.rewards.validation') }}</h3>

@@ -447,7 +447,7 @@ html[data-theme='day'] {
 
     --primary-color: #4c2e56;
     --primary-color-light: #867e89;
-    --secondary-color: #e84970;
+    --secondary-color: #4646E5;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #f00;
@@ -462,13 +462,13 @@ html[data-theme='day'] {
 }
 
 html[data-theme='night'] {
-    --bg: #242729;
-    --bg-1: 36, 39, 41;
-    --bg-light: #2e3234;
-    --bg-light-1: 46, 50, 52;
+    --bg: #000;
+    --bg-1: #222;
+    --bg-light: #1d1d1d;
+    --bg-light-1: #333;
     --primary-color: #e5e5e5;
     --primary-color-light: #6e7479;
-    --secondary-color: #e84970;
+    --secondary-color: #4646E5;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #e84970;

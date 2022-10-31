@@ -16,16 +16,16 @@
 
                         <p>
                             Export Fee
-                            <span>{{ exportFee.toLocaleString() }} AVAX</span>
+                            <span>{{ exportFee.toLocaleString() }} LUX</span>
                         </p>
                         <p>
                             Import Fee
-                            <span>{{ importFee.toLocaleString() }} AVAX</span>
+                            <span>{{ importFee.toLocaleString() }} LUX</span>
                         </p>
                         <p>
                             <b>
                                 Total
-                                <span>{{ fee.toLocaleString() }} AVAX</span>
+                                <span>{{ fee.toLocaleString() }} LUX</span>
                             </b>
                         </p>
                     </div>

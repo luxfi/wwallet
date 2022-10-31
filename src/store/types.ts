@@ -24,7 +24,7 @@ export interface RootState {
 export interface ILedgerAppConfig {
     version: string
     commit: string
-    name: 'Avalanche'
+    name: 'Lux'
 }
 
 export interface priceDict {

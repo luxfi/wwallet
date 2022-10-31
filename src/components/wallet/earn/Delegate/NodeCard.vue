@@ -26,11 +26,11 @@
         <!--        </div>-->
         <div>
             <label>Active Stake</label>
-            <p>{{ totalStakeBig.toLocaleString(0) }} AVAX</p>
+            <p>{{ totalStakeBig.toLocaleString(0) }} LUX</p>
         </div>
         <div>
             <label>Available Stake</label>
-            <p>{{ remainingStakeBig.toLocaleString(0) }} AVAX</p>
+            <p>{{ remainingStakeBig.toLocaleString(0) }} LUX</p>
         </div>
         <!--        <div class="dates"></div>-->
         <div class="date_row">

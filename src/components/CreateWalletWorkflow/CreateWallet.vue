@@ -6,14 +6,6 @@
                     <transition name="fade" mode="out-in">
                         <!-- PHASE 1 -->
                         <div v-if="!keyPhrase" class="stage_1">
-                            <div class="img_container">
-                                <img
-                                    v-if="$root.theme === 'day'"
-                                    src="@/assets/diamond-secondary.png"
-                                    alt
-                                />
-                                <img v-else src="@/assets/diamond-secondary-night.svg" alt />
-                            </div>
                             <h1>{{ $t('create.generate') }}</h1>
                             <router-link to="/access" class="link">
                                 {{ $t('create.but_have') }}
@@ -217,6 +209,7 @@ export default class CreateWallet extends Vue {
     justify-content: space-between;
     background-color: var(--bg-light);
     padding: main.$container-padding;
+    border-radius: 6px;
     text-align: center;
     /*min-width: 1000px;*/
 

@@ -2,11 +2,11 @@
     <div class="import_row" :export="isExport">
         <template v-if="isExport">
             <p>Export ({{ chainAlias }})</p>
-            <p class="amt">{{ isExport ? '-' : '' }}{{ amtText }} AVAX</p>
+            <p class="amt">{{ isExport ? '-' : '' }}{{ amtText }} LUX</p>
         </template>
         <template v-else>
             <p>Import ({{ chainAlias }})</p>
-            <p class="amt">{{ amtText }} AVAX</p>
+            <p class="amt">{{ amtText }} LUX</p>
         </template>
     </div>
 </template>

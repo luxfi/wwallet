@@ -16,7 +16,7 @@
                 </p>
             </div>
             <div class="data_row reward_row">
-                <p>AVAX Price at reward date</p>
+                <p>LUX Price at reward date</p>
                 <p v-if="rewardDateAvaxPrice">{{ rewardDateAvaxPrice.toFixed(2) }} USD</p>
                 <p v-else>Unknown</p>
             </div>
@@ -28,7 +28,7 @@
             <div class="data_row">
                 <p v-if="!isDelegatorReward">{{ $t('transactions.reward_amount') }}</p>
                 <p v-else>{{ $t('transactions.fee_amount') }}</p>
-                <p class="amt">{{ rewardAmtText.toLocaleString() }} AVAX</p>
+                <p class="amt">{{ rewardAmtText.toLocaleString() }} LUX</p>
             </div>
         </template>
         <template v-else-if="!isRewarded && !!rewardTime">
@@ -72,14 +72,14 @@
                 </div>
                 <div class="data_row reward_row">
                     <p>{{ $t('transactions.reward_pending') }}</p>
-                    <p class="amt">{{ rewardText }} AVAX</p>
+                    <p class="amt">{{ rewardText }} LUX</p>
                 </div>
             </template>
         </div>
 
         <div class="data_row" v-if="!isDelegatorReward">
             <p>{{ actionText }}</p>
-            <p class="amt">{{ amtText }} AVAX</p>
+            <p class="amt">{{ amtText }} LUX</p>
         </div>
     </div>
 </template>

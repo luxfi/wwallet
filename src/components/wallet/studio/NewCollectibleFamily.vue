@@ -37,7 +37,7 @@
                     />
                 </div>
                 <div>
-                    <p>{{ $t('studio.family.fee') }}: {{ txFee.toLocaleString() }} AVAX</p>
+                    <p>{{ $t('studio.family.fee') }}: {{ txFee.toLocaleString() }} LUX</p>
                 </div>
                 <p v-if="error" class="err">{{ error }}</p>
                 <v-btn :loading="isLoading" type="submit" class="button_secondary" small>
