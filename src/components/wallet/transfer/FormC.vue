@@ -228,7 +228,7 @@ export default class FormC extends Vue {
     }
 
     get symbol(): string {
-        if (this.formToken === 'native') return 'LUXX'
+        if (this.formToken === 'native') return 'LUX'
         return this.formToken.data.symbol
     }
 
@@ -304,7 +304,7 @@ export default class FormC extends Vue {
 
         if (!this.isCollectible) {
             if (this.formToken === 'native') {
-                // For LUXX Transfers
+                // For LUX Transfers
                 let gasLimit = await TxHelper.estimateLuxxGas(
                     this.wallet.getEvmAddress(),
                     this.formAddress,

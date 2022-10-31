@@ -120,7 +120,7 @@ class WalletHelper {
             rewardAddress = wallet.getPlatformRewardAddress()
         }
 
-        // For change address use first luxilable on the platform chain
+        // For change address use first available on the platform chain
         let changeAddress = wallet.getFirstLuxilableAddressPlatform()
 
         let stakeReturnAddr = wallet.getCurrentAddressPlatform()
@@ -173,7 +173,7 @@ class WalletHelper {
 
         let stakeReturnAddr = wallet.getPlatformRewardAddress()
 
-        // For change address use first luxilable on the platform chain
+        // For change address use first available on the platform chain
         let changeAddress = wallet.getFirstLuxilableAddressPlatform()
 
         // Convert dates to unix time

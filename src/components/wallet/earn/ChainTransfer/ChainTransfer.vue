@@ -207,7 +207,7 @@ export default class ChainTransfer extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.platformBalance.luxilable
+        return this.platformBalance.available
     }
 
     get avmUnlocked(): BN {
@@ -271,7 +271,7 @@ export default class ChainTransfer extends Vue {
     }
 
     /**
-     * Returns the import fee in nLUXX
+     * Returns the import fee in nLUX
      */
     get importFeeBN(): BN {
         return Utils.bigToBN(this.importFee, 9)
@@ -286,7 +286,7 @@ export default class ChainTransfer extends Vue {
     }
 
     /**
-     * The maximum amount that can be transferred in nLUXX
+     * The maximum amount that can be transferred in nLUX
      */
     get maxAmt(): BN {
         let max = this.balanceBN.sub(this.feeBN)

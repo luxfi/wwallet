@@ -7,7 +7,7 @@ import {
     UTXO,
 } from 'luxdefi/dist/apis/avm'
 
-import { Defaults, getPreferredHRP, ONELUXX, PayloadBase, PayloadTypes } from 'luxdefi/dist/utils'
+import { Defaults, getPreferredHRP, ONELUX, PayloadBase, PayloadTypes } from 'luxdefi/dist/utils'
 import Big from 'big.js'
 
 import { Buffer, BN } from 'luxdefi'
@@ -42,9 +42,9 @@ function calculateStakingReward(amount: BN, duration: number, currentSupply: BN)
     let maxStakingDuration: BN = defPlatformVals.maxStakingDuration
     let remainingSupply = maxSupply.sub(currentSupply)
 
-    let amtBig = Big(amount.div(ONELUXX).toString())
-    let currentSupplyBig = Big(currentSupply.div(ONELUXX).toString())
-    let remainingSupplyBig = Big(remainingSupply.div(ONELUXX).toString())
+    let amtBig = Big(amount.div(ONELUX).toString())
+    let currentSupplyBig = Big(currentSupply.div(ONELUX).toString())
+    let remainingSupplyBig = Big(remainingSupply.div(ONELUX).toString())
     let portionOfExistingSupplyBig = amtBig.div(currentSupplyBig)
 
     let portionOfStakingDuration = duration / maxStakingDuration.toNumber()

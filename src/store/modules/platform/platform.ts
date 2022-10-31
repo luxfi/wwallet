@@ -19,7 +19,7 @@ import {
     DelegatorRaw,
     ValidatorRaw,
 } from '@/components/misc/ValidatorList/types'
-import { ONELUXX } from 'luxdefi/dist/utils'
+import { ONELUX } from 'luxdefi/dist/utils'
 
 const MINUTE_MS = 60000
 const HOUR_MS = MINUTE_MS * 60
@@ -134,7 +134,7 @@ const platform_module: Module<PlatformState, RootState> = {
                 let delegatedStake = delegatedAmt.add(delegatedPendingAmt)
                 let validatorStake = new BN(v.stakeAmount)
                 // Calculate remaining stake
-                let absMaxStake = ONELUXX.mul(new BN(3000000))
+                let absMaxStake = ONELUX.mul(new BN(3000000))
                 let relativeMaxStake = validatorStake.mul(new BN(5))
                 let stakeLimit = BN.min(absMaxStake, relativeMaxStake)
 

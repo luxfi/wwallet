@@ -85,7 +85,7 @@
         "nftcol": "不可分割代币（NFT）\n",
         "nftempty": "你没有收集任何不可分割代币。",
         "locked": "锁定",
-        "info2": "我在代币销售中购买了货币。我的LUXX在哪里？",
+        "info2": "我在代币销售中购买了货币。我的LUX在哪里？",
         "info2_desc": "该钱包已连接到Luxlanche Everest测试网络。Luxlanche主网启动后，你的购买将出现在钱包。",
         "hover1": "查看地址二维码",
         "hover2": "打印",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "显示故障",
             "hide": "隐藏故障",
-            "luxilable": "可用",
+            "available": "可用",
             "locked": "锁定",
             "locked_stake": "锁定可质押的代币",
             "stake": "质押",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "赚钱",
-        "desc": "你可以通过质押你的现有代币赚取更多LUXX。",
+        "desc": "你可以通过质押你的现有代币赚取更多LUX。",
         "subtitle1": "验证",
         "subtitle2": "委托",
         "subtitle3": "跨链转移",
         "subtitle4": "预计奖励",
-        "warning_1": "你必须在P链拥有至少{0}LUXX以成为一个验证者。",
-        "warning_2": "你必须在P链拥有至少{0}LUXX以成为一个委托者。",
+        "warning_1": "你必须在P链拥有至少{0}LUX以成为一个验证者。",
+        "warning_2": "你必须在P链拥有至少{0}LUX以成为一个委托者。",
         "validate_card": {
             "title": "验证",
             "desc": "你有一个想用于质押的Luxlanche节点。",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "跨链转账",
-            "desc": "质押需要P链上的LUXX。在X链和P链之间转移代币。",
+            "desc": "质押需要P链上的LUX。在X链和P链之间转移代币。",
             "submit": "转账"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "质押数量",
-                "desc": "要锁定用于质押的LUXX数量。"
+                "desc": "要锁定用于质押的LUX数量。"
             },
             "fee": {
                 "label": "委托费用",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "开始日期必须在将来，结束日期必须在开始日期之后。",
-                "amount": "质押数量必须至少为{0}LUXX",
+                "amount": "质押数量必须至少为{0}LUX",
                 "id": "无效的节点ID。必须以“NodeID-”开头",
                 "address": "无效的奖励地址。"
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "质押数量",
-                    "desc": "要锁定用于质押的LUXX数量。",
-                    "desc2": "此节点的可用委托数量为{0}LUXX"
+                    "desc": "要锁定用于质押的LUX数量。",
+                    "desc2": "此节点的可用委托数量为{0}LUX"
                 },
                 "reward": {
                     "label": "奖励地址",
@@ -345,7 +345,7 @@
                 "max_dur": "最大质押持续时间为1年。",
                 "no_node": "你必须指定一个验证者。",
                 "val_end": "委托结束日期不能长于验证者的结束日期。",
-                "amt": "委托数量必须至少为{0}LUXX"
+                "amt": "委托数量必须至少为{0}LUX"
             },
             "summary": {
                 "duration": "质押持续时间",

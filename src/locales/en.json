@@ -114,7 +114,7 @@
         "balance": {
             "show": "Show Breakdown",
             "hide": "Hide Breakdown",
-            "luxilable": "Luxilable",
+            "available": "Luxilable",
             "locked": "Locked",
             "locked_stake": "Locked Stakeable",
             "stake": "Staking",
@@ -418,7 +418,7 @@
         },
         "shared": {
             "utxo_select": {
-                "luxilable": "Luxilable Balance (P)",
+                "available": "Luxilable Balance (P)",
                 "all": "All",
                 "custom": "Custom",
                 "select": "Select UTXOs",
@@ -534,7 +534,7 @@
                 "amount": {
                     "label": "Stake Amount",
                     "desc": "The amount of LUX to lock for staking.",
-                    "desc2": "The luxilable delegation amount for this node is {0} LUX"
+                    "desc2": "The available delegation amount for this node is {0} LUX"
                 },
                 "reward": {
                     "label": "Reward Address",
@@ -699,7 +699,7 @@
             "desc": "Select the source of your funds to use in this transaction.",
             "col1": "Unlock Date",
             "col2": "Amount",
-            "luxilable": "Luxilable Balance",
+            "available": "Luxilable Balance",
             "submit": "Select"
         },
         "ledger": {

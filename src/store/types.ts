@@ -18,7 +18,7 @@ export interface RootState {
     address: String | null
     volatileWallets: WalletType[] // will be forgotten when tab is closed
     warnUpdateKeyfile: boolean
-    prices: priceDict // USD value of 1 LUXX
+    prices: priceDict // USD value of 1 LUX
 }
 
 export interface ILedgerAppConfig {
@@ -46,7 +46,7 @@ export interface ITxNftDict {
 
 export interface IWalletBalanceDict {
     [assetId: string]: {
-        luxilable: BN
+        available: BN
         locked: BN
         multisig: BN
     }

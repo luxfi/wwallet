@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "Du har ikke samlet nogen ikke-ombyttelige poletter.",
         "locked": "Låst",
-        "info2": "Jeg købte mønter i Token Salg. Hvor er min LUXX?",
+        "info2": "Jeg købte mønter i Token Salg. Hvor er min LUX?",
         "info2_desc": "Denne tegnebog er tilsluttet Luxlanche Everest testnetværket. Dit køb vises i tegnebogen efter Luxlanche Mainnet-lanceringen.",
         "hover1": "Se adresse for QR-kode",
         "hover2": "Print",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Vis opdeling",
             "hide": "Skjul opdeling",
-            "luxilable": "Ledig",
+            "available": "Ledig",
             "locked": "Låst",
             "locked_stake": "Lukittu Stakeable",
             "stake": "Indsats",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Tjen",
-        "desc": "Du kan tjene mere LUXX ved at indsætte dine eksisterende poletter.",
+        "desc": "Du kan tjene mere LUX ved at indsætte dine eksisterende poletter.",
         "subtitle1": "Bekræft",
         "subtitle2": "Deleger",
         "subtitle3": "Cross Chain overførsel",
         "subtitle4": "Anslåede belønninger",
-        "warning_1": "Du skal have mindst {0} LUXX i P-kæden for at blive bekræftet.",
-        "warning_2": "Du skal have mindst {0} LUXX i P-kæden for at blive delegeret.",
+        "warning_1": "Du skal have mindst {0} LUX i P-kæden for at blive bekræftet.",
+        "warning_2": "Du skal have mindst {0} LUX i P-kæden for at blive delegeret.",
         "validate_card": {
             "title": "Bekræft",
             "desc": "Du har en Luxlanche-knude, som du vil satse på.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Cross Chain overførsel",
-            "desc": "Indsatser kræver LUXX på P-kæden. Overfør poletter mellem X og P.",
+            "desc": "Indsatser kræver LUX på P-kæden. Overfør poletter mellem X og P.",
             "submit": "Overfør"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Indsatsbeløb",
-                "desc": "Mængden af LUXX, der skal låses til indsats."
+                "desc": "Mængden af LUX, der skal låses til indsats."
             },
             "fee": {
                 "label": "Delegationsgebyr",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Startdatoen skal være i fremtiden, og slutdatoen skal være efter startdatoen.",
-                "amount": "Indsatsbeløbet skal være mindst {0} LUXX",
+                "amount": "Indsatsbeløbet skal være mindst {0} LUX",
                 "id": "Ugyldigt knude-id. Skal starte med \"KnudeID-\"",
                 "address": "Ugyldig belønningsadresse."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Indsatsbeløb",
-                    "desc": "Mængden af LUXX, der skal låses til indsats.",
-                    "desc2": "Det tilgængelige delegeringsbeløb for denne knude er {0} LUXX"
+                    "desc": "Mængden af LUX, der skal låses til indsats.",
+                    "desc2": "Det tilgængelige delegeringsbeløb for denne knude er {0} LUX"
                 },
                 "reward": {
                     "label": "Belønningsadresse",
@@ -345,7 +345,7 @@
                 "max_dur": "Maks. indsatsvarighed er 1 år.",
                 "no_node": "Du skal angive en validator.",
                 "val_end": "Delegationens slutdato kan ikke være længere end validatorens slutdato.",
-                "amt": "Delegationsbeløbet skal være mindst {0} LUXX."
+                "amt": "Delegationsbeløbet skal være mindst {0} LUX."
             },
             "summary": {
                 "duration": "Indsatsvarighed",

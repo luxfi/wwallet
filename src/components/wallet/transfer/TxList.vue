@@ -55,7 +55,7 @@ export default class TxList extends Vue {
         this.reset()
     }
 
-    updateUnluxilable(): void {
+    updateUnavailable(): void {
         let res: LuxAsset[][] = []
         let allDisabled = []
 
@@ -92,14 +92,14 @@ export default class TxList extends Vue {
         this.tx_list[index].asset = asset
         this.tx_list[index].amount = amt
 
-        this.updateUnluxilable()
+        this.updateUnavailable()
 
         this.$emit('change', this.tx_list)
     }
 
     removeTx(index: number): void {
         this.tx_list.splice(index, 1)
-        this.updateUnluxilable()
+        this.updateUnavailable()
         this.$emit('change', this.tx_list)
     }
 
@@ -155,7 +155,7 @@ export default class TxList extends Vue {
 
     @Watch('assets_list')
     onAssetListChange() {
-        this.updateUnluxilable()
+        this.updateUnavailable()
     }
 
     get assets_list(): LuxAsset[] {

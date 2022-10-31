@@ -78,14 +78,14 @@
         "error_word": "Deine eingegebene Mnemonic Phrase, stimmt mit der aktuellen Phrase nicht überein."
     },
     "top": {
-        "title1": "Hergeleitete LUXX Wallet Adresse",
+        "title1": "Hergeleitete LUX Wallet Adresse",
         "title2": "Guthaben",
         "title3": "Subnetz",
         "title4": "Netzwerk",
         "nftcol": "NFTs",
         "nftempty": "Du hast noch keine \"non-fungible\" Tokens (NFTs) gesammelt.",
         "locked": "Gesperrt",
-        "info2": "Ich habe beim Token Sale, Coins gekauft. Wo sind meine LUXX?",
+        "info2": "Ich habe beim Token Sale, Coins gekauft. Wo sind meine LUX?",
         "info2_desc": "Diese Wallet ist mit dem Luxlanche Everest Testnetzwerk verbunden. Dein Kauf erscheint nach dem Start von Luxlanche Mainnet in der Wallet.",
         "hover1": "Adresse als QR Code anzeigen",
         "hover2": "Drucken",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "Übersicht anzeigen",
             "hide": "Übersicht ausblenden",
-            "luxilable": "Verfügbar",
+            "available": "Verfügbar",
             "locked": "Gesperrt",
             "locked_stake": "Gesperrt Staking",
             "stake": "Staking",
             "collectibles": "Kollektion"
         },
         "address": {
-            "derived": "Abgeleitete LUXX Wallet-Adresse",
+            "derived": "Abgeleitete LUX Wallet-Adresse",
             "desc": "Dies ist Ihre Adresse, um Gelder zu erhalten. Ihre Adresse wird sich nach jeder Einzahlung ändern."
         }
     },
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Einnehmen",
-        "desc": "Das Staking deiner vorhandenen Tokens vermehrt deine LUXX.",
+        "desc": "Das Staking deiner vorhandenen Tokens vermehrt deine LUX.",
         "subtitle1": "Validieren",
         "subtitle2": "Delegieren",
         "subtitle3": "\"Cross Chain\" Transfer",
         "subtitle4": "Geschätzte Prämien",
-        "warning_1": "Du musst mindestens {0} LUXX auf der P-Chain haben, um ein Validator zu werden.",
-        "warning_2": "Du musst mindestens {0} LUXX auf der P-Chain haben, um ein Delegator zu werden.",
+        "warning_1": "Du musst mindestens {0} LUX auf der P-Chain haben, um ein Validator zu werden.",
+        "warning_2": "Du musst mindestens {0} LUX auf der P-Chain haben, um ein Delegator zu werden.",
         "validate_card": {
             "title": "Validieren",
             "desc": "Du hast einen Luxlanche Knoten, mit dem Du staken möchtest.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "\"Cross Chain\" Transfer",
-            "desc": "Staking erfordert LUXX auf der P-Chain. Transferiere deine Tokens zwischen X und P.",
+            "desc": "Staking erfordert LUX auf der P-Chain. Transferiere deine Tokens zwischen X und P.",
             "submit": "Transfer"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Staking Betrag",
-                "desc": "Der LUXX Betrag der fürs Staking gesperrt ist."
+                "desc": "Der LUX Betrag der fürs Staking gesperrt ist."
             },
             "fee": {
                 "label": "Delegationsgebühr",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Das Startdatum muss in der Zukunft liegen und das Enddatum muss nach dem Startdatum liegen.",
-                "amount": "Der Staking Betrag muss mindestens {0} LUXX betragen",
+                "amount": "Der Staking Betrag muss mindestens {0} LUX betragen",
                 "id": "Ungültige Node ID. Muss mit \"NodeID-\" beginnen",
                 "address": "Ungültige Prämienadresse."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Einsatzbetrag",
-                    "desc": "Der LUXX Betrag der fürs Staking gesperrt ist.",
-                    "desc2": "Der verfügbare Delegationsbetrag für diese Node beträgt {0} LUXX"
+                    "desc": "Der LUX Betrag der fürs Staking gesperrt ist.",
+                    "desc2": "Der verfügbare Delegationsbetrag für diese Node beträgt {0} LUX"
                 },
                 "reward": {
                     "label": "Prämienadresse",
@@ -345,7 +345,7 @@
                 "max_dur": "Maximum Stakingzeitraum beträgt 1 Jahr.",
                 "no_node": "Du musst einen Validator angeben.",
                 "val_end": "Das Enddatum der Delegation darf nicht länger als das Enddatum des Validators sein.",
-                "amt": "Der Betrag der Delegation muss mindestens {0} LUXX betragen."
+                "amt": "Der Betrag der Delegation muss mindestens {0} LUX betragen."
             },
             "summary": {
                 "duration": "Stakingzeitraum",

@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "No tienes ningún token no fungible.",
         "locked": "Bloqueado",
-        "info2": "Yo compré monedas en la Venta de Tokens. ¿Donde estan mis LUXX?",
+        "info2": "Yo compré monedas en la Venta de Tokens. ¿Donde estan mis LUX?",
         "info2_desc": "Esta Wallet está conectada a la red de pruebas Everest de Luxlanche. Su compra aparecerá en su wallet después del lanzamiento de la red principal.",
         "hover1": "Ver Dirección con Código QR",
         "hover2": "Imprimir",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Mostrar desglose",
             "hide": "Ocultar desglose",
-            "luxilable": "Disponible",
+            "available": "Disponible",
             "locked": "Bloqueado",
             "locked_stake": "Bloqueado Steakeable",
             "stake": "Participación",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Ganar",
-        "desc": "Puedes ganar más LUXX bloqueando tus tokens existentes.",
+        "desc": "Puedes ganar más LUX bloqueando tus tokens existentes.",
         "subtitle1": "Validar",
         "subtitle2": "Delegar",
         "subtitle3": "Transferencia entre cadenas",
         "subtitle4": "Recompensas estimadas",
-        "warning_1": "Debes tener al menos {0} LUXX en la cadena P para convertirte en un validador.",
-        "warning_2": "Debes tener al menos {0} LUXX en la cadena P para poder delegar.",
+        "warning_1": "Debes tener al menos {0} LUX en la cadena P para convertirte en un validador.",
+        "warning_2": "Debes tener al menos {0} LUX en la cadena P para poder delegar.",
         "validate_card": {
             "title": "Validar",
             "desc": "Tienes un nodo Luxlanche con el que quieres participar con toknes.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transferencia entre cadenas",
-            "desc": "Para participar, se necesitan LUXX en la cadena P- Transferir tokens entre X y P.",
+            "desc": "Para participar, se necesitan LUX en la cadena P- Transferir tokens entre X y P.",
             "submit": "Transferir"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Monto del Stake",
-                "desc": "El monto de LUXX para bloquear en el staking."
+                "desc": "El monto de LUX para bloquear en el staking."
             },
             "fee": {
                 "label": "Comisión por delegación",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "La fecha de inicio debe estar en el futuro y la fecha de finalización debe ser posterior a la fecha de inicio.",
-                "amount": "El monto del stake debe ser de al menos {0} LUXX",
+                "amount": "El monto del stake debe ser de al menos {0} LUX",
                 "id": "ID de nodo no válido. Debe comenzar con \"NodeID-\"",
                 "address": "Dirección de recompensa no válida."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Monto del Stake",
-                    "desc": "El monto de LUXX para bloquear en stake.",
-                    "desc2": "El monto de delegación disponible para este nodo es de {0} LUXX"
+                    "desc": "El monto de LUX para bloquear en stake.",
+                    "desc2": "El monto de delegación disponible para este nodo es de {0} LUX"
                 },
                 "reward": {
                     "label": "Dirección de la recompensa",
@@ -345,7 +345,7 @@
                 "max_dur": "La duración máxima para apuesta es de 1 año.",
                 "no_node": "Debes especificar un validador.",
                 "val_end": "La fecha de finalización de la delegación no puede ser más mayor que la fecha de finalización del validador.",
-                "amt": "El monto de la delegación debe ser de al menos {0} LUXX."
+                "amt": "El monto de la delegación debe ser de al menos {0} LUX."
             },
             "summary": {
                 "duration": "Duración de la apuesta",

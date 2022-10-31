@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "Vous n'avez pas encore collecté de jeton non fongible.",
         "locked": "Verrouillés",
-        "info2": "J'ai acheté des jetons à la vente publique. Où sont mes LUXX ?",
+        "info2": "J'ai acheté des jetons à la vente publique. Où sont mes LUX ?",
         "info2_desc": "Ce portefeuille est connecté au réseau de test Luxlanche Everest. Votre achat apparaîtra dans le portefeuille lorsque le Mainnet Luxlanche sera lancé.",
         "hover1": "Voir le QR Code",
         "hover2": "Imprimer",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Afficher la répartition",
             "hide": "Cacher la répartition",
-            "luxilable": "Disponible",
+            "available": "Disponible",
             "locked": "Verrouillé",
             "locked_stake": "Enjeu verrouillable",
             "stake": "Enjeu",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Gagner",
-        "desc": "Vous pouvez gagner plus d'LUXX en mettant en jeu vos jetons existants.",
+        "desc": "Vous pouvez gagner plus d'LUX en mettant en jeu vos jetons existants.",
         "subtitle1": "Valider",
         "subtitle2": "Déléguer",
         "subtitle3": "Transfert entre chaînes",
         "subtitle4": "Récompenses estimées",
-        "warning_1": "Vous devez avoir au moins {0} LUXX sur la P-Chain pour devenir un validateur.",
-        "warning_2": "Vous devez avoir au moins {0} LUXX sur la P-Chain pour devenir un délégateur.",
+        "warning_1": "Vous devez avoir au moins {0} LUX sur la P-Chain pour devenir un validateur.",
+        "warning_2": "Vous devez avoir au moins {0} LUX sur la P-Chain pour devenir un délégateur.",
         "validate_card": {
             "title": "Valider",
             "desc": "Vous avez un nœud Luxlanche avec lequel vous souhaitez faire un enjeu.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transfert entre chaînes",
-            "desc": "La mise en jeu nécessite de l'LUXX sur la P-Chain. Transférer des jetons entre X et P.",
+            "desc": "La mise en jeu nécessite de l'LUX sur la P-Chain. Transférer des jetons entre X et P.",
             "submit": "Transfert"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Montant de l'enjeu",
-                "desc": "Le montant d'LUXX à bloquer pour la mise en jeu."
+                "desc": "Le montant d'LUX à bloquer pour la mise en jeu."
             },
             "fee": {
                 "label": "Frais de délégation",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "La date de début doit se situer dans le futur et la date de fin doit être postérieure à la date de début.",
-                "amount": "Le montant de l'enjeu doit être au moins de {0} LUXX",
+                "amount": "Le montant de l'enjeu doit être au moins de {0} LUX",
                 "id": "l'ID du nœud est invalide. Il doit commencer par « NodeID- »",
                 "address": "Adresse de récompense non valable."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Montant de l'enjeu",
-                    "desc": "Le montant d'LUXX à bloquer pour la mise en jeu.",
-                    "desc2": "Le montant de la délégation disponible pour ce nœud est de {0} LUXX"
+                    "desc": "Le montant d'LUX à bloquer pour la mise en jeu.",
+                    "desc2": "Le montant de la délégation disponible pour ce nœud est de {0} LUX"
                 },
                 "reward": {
                     "label": "Adresse de récompense",
@@ -345,7 +345,7 @@
                 "max_dur": "La durée maximale de la mise d'enjeu est 1 an.",
                 "no_node": "Vous devez préciser un validateur.",
                 "val_end": "La date de fin de la délégation ne peut être supérieure à la date de fin du validateur.",
-                "amt": "Le montant de la délégation doit être d'au moins {0} LUXX."
+                "amt": "Le montant de la délégation doit être d'au moins {0} LUX."
             },
             "summary": {
                 "duration": "Durée de la mise en jeu",
@@ -388,7 +388,7 @@
         "loading": "Chargement de l'historique de transaction..",
         "warn_loading": "Cette liste peut être incomplète et hors d'usage.",
         "error_api": "API de l'explorateur non trouvée",
-        "error_api_desc": "Vous devez fournir une API de l'explorateur LUXX pour ce réseau afin de voir l'historique de transaction."
+        "error_api_desc": "Vous devez fournir une API de l'explorateur LUX pour ce réseau afin de voir l'historique de transaction."
     },
     "modal": {
         "qr": {

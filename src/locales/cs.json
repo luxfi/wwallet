@@ -85,7 +85,7 @@
         "nftcol": "NFT",
         "nftempty": "Neshromáždili jste žádné nepostradatelné žetony.",
         "locked": "Zamčené",
-        "info2": "Koupil jsem mince v Token Sale. Kde jsou moje LUXX?",
+        "info2": "Koupil jsem mince v Token Sale. Kde jsou moje LUX?",
         "info2_desc": "Tato peněženka je připojena k testovací síti Luxlanche Everest. Váš nákup se v peněžence objeví po spuštění Luxlanche Mainnet.",
         "hover1": "Zobrazit QR kód adresy",
         "hover2": "Vytisknout",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Zobrazit rozpis",
             "hide": "Skrýt rozpis",
-            "luxilable": "Dostupné",
+            "available": "Dostupné",
             "locked": "Zablokované",
             "locked_stake": "Zablokované vsaditelné",
             "stake": "Vsazování",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Vydělávat",
-        "desc": "Vsazováním svých stávajících tokenů můžete vydělat více LUXX.",
+        "desc": "Vsazováním svých stávajících tokenů můžete vydělat více LUX.",
         "subtitle1": "Validovat",
         "subtitle2": "Delegovat",
         "subtitle3": "Křížový řetězový převod",
         "subtitle4": "Odhadované odměny",
-        "warning_1": "Abyste se stali validátorem, musíte mít alespoň {0} LUXX na řetězci P.",
-        "warning_2": "Abyste se stali delegátorem, musíte mít alespoň {0} LUXX na řetězci P.",
+        "warning_1": "Abyste se stali validátorem, musíte mít alespoň {0} LUX na řetězci P.",
+        "warning_2": "Abyste se stali delegátorem, musíte mít alespoň {0} LUX na řetězci P.",
         "validate_card": {
             "title": "Validovat",
             "desc": "Máte uzel Luxlanche, s kterým chcete vsazovat.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Křížový řetězový převod",
-            "desc": "Vsazování vyžaduje LUXX na řetězci P. Převeďte tokeny mezi X a P.",
+            "desc": "Vsazování vyžaduje LUX na řetězci P. Převeďte tokeny mezi X a P.",
             "submit": "Převod"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Částka sázky",
-                "desc": "Množství LUXX k zablokování na vsazení."
+                "desc": "Množství LUX k zablokování na vsazení."
             },
             "fee": {
                 "label": "Delegační poplatek",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Datum začátku musí být v budoucnu a datum konce musí být pozdější než datum začátku.",
-                "amount": "Částka vsázky musí být alespoň {0} LUXX",
+                "amount": "Částka vsázky musí být alespoň {0} LUX",
                 "id": "Neplatné ID uzlu. Musí začínat na „NodeID-“",
                 "address": "Neplatná adresa pro odměny."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Částka sázky",
-                    "desc": "Množství LUXX k zablokování na vsazování.",
-                    "desc2": "Dostupná delegační částka pro tento uzel je {0} LUXX"
+                    "desc": "Množství LUX k zablokování na vsazování.",
+                    "desc2": "Dostupná delegační částka pro tento uzel je {0} LUX"
                 },
                 "reward": {
                     "label": "Adresa pro odměny",
@@ -345,7 +345,7 @@
                 "max_dur": "Maximální doba trvání vsazení je 1 rok.",
                 "no_node": "Musíte zadat validátora.",
                 "val_end": "Delegační datum konce nesmí být delší než datum konce validátora.",
-                "amt": "Delegační částka musí být alespoň {0} LUXX."
+                "amt": "Delegační částka musí být alespoň {0} LUX."
             },
             "summary": {
                 "duration": "Doba trvání vsazení",

@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "U hebt geen onvervangbare tokens verzameld.",
         "locked": "Vergrendeld",
-        "info2": "Ik heb munten in de Token verkoop gekocht. Waar zijn mijn LUXX?",
+        "info2": "Ik heb munten in de Token verkoop gekocht. Waar zijn mijn LUX?",
         "info2_desc": "Deze portemonnee is verbonden met het testnetwerk van Luxlanche Everest. Uw aankoop zal in de portemonnee verschijnen nadat het hoofdnet van Luxlanche werd gestart.",
         "hover1": "Adres QR-code bekijken",
         "hover2": "Afdrukken",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Uitsplitsing tonen",
             "hide": "Uitsplitsing verbergen",
-            "luxilable": "Beschikbaar",
+            "available": "Beschikbaar",
             "locked": "Vergrendeld",
             "locked_stake": "Vergrendelde inzet",
             "stake": "Inzetten",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Verdienen",
-        "desc": "U kunt meer LUXX verdienen door uw bestaande tokens in te zetten.",
+        "desc": "U kunt meer LUX verdienen door uw bestaande tokens in te zetten.",
         "subtitle1": "Valideren",
         "subtitle2": "Delegeren",
         "subtitle3": "Cross-keten overboeking",
         "subtitle4": "Geschatte beloningen",
-        "warning_1": "U moet ten minste {0} LUXX-punten op de P-keten hebben om een validator te worden.",
-        "warning_2": "U moet ten minste {0} LUXX-punten op de P-keten hebben om een delegatielid te worden.",
+        "warning_1": "U moet ten minste {0} LUX-punten op de P-keten hebben om een validator te worden.",
+        "warning_2": "U moet ten minste {0} LUX-punten op de P-keten hebben om een delegatielid te worden.",
         "validate_card": {
             "title": "Valideren",
             "desc": "U hebt een Luxlanche-nodus die u wilt inzetten.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Cross-keten overboeking",
-            "desc": "Voor het inzetten is LUXX op de P-keten nodig. Boek tokens over tussen X en P.",
+            "desc": "Voor het inzetten is LUX op de P-keten nodig. Boek tokens over tussen X en P.",
             "submit": "Overboeken"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Bedrag inzet",
-                "desc": "De hoeveelheid LUXX te vergrendelen om in te zetten."
+                "desc": "De hoeveelheid LUX te vergrendelen om in te zetten."
             },
             "fee": {
                 "label": "Delegatiekosten",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "De startdatum moet in de toekomst liggen en de enddatum moet later zijn dan de startdatum.",
-                "amount": "Het bedrag van de inzet moet minstens {0} LUXX zijn.",
+                "amount": "Het bedrag van de inzet moet minstens {0} LUX zijn.",
                 "id": "Ongeldige Nodus ID. Moet beginnen met \"NodeID-\".",
                 "address": "Ongeldig adres beloning."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Bedrag inzet",
-                    "desc": "De hoeveelheid LUXX te vergrendelen om in te zetten.",
-                    "desc2": "Het beschikbare delegatiebedrag voor deze nodus is {0} LUXX."
+                    "desc": "De hoeveelheid LUX te vergrendelen om in te zetten.",
+                    "desc2": "Het beschikbare delegatiebedrag voor deze nodus is {0} LUX."
                 },
                 "reward": {
                     "label": "Adres beloning",
@@ -345,7 +345,7 @@
                 "max_dur": "De maximum inzet is 1 jaar.",
                 "no_node": "U moet een validator opgeven.",
                 "val_end": "De einddatum van de delegatie kan niet later zijn dan de einddatum van de validator.",
-                "amt": "Het bedrag van de delegatie moet minstens {0} LUXX zijn."
+                "amt": "Het bedrag van de delegatie moet minstens {0} LUX zijn."
             },
             "summary": {
                 "duration": "Tijdsduur inzet",

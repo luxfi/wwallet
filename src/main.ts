@@ -45,7 +45,7 @@ const app = new Vue({
 
 // @ts-ignore
 if (window.Cypress) {
-    // only luxilable during E2E tests
+    // only available during E2E tests
     // @ts-ignore
     window.app = app
 }

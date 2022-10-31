@@ -124,9 +124,9 @@ const network_module: Module<NetworkState, RootState> = {
             cChain.refreshBlockchainID(chainIdC)
             cChain.setBlockchainAlias('C')
 
-            avm.getLUXXAssetID(true)
-            pChain.getLUXXAssetID(true)
-            cChain.getLUXXAssetID(true)
+            avm.getLUXAssetID(true)
+            pChain.getLUXAssetID(true)
+            cChain.getLUXAssetID(true)
 
             state.selectedNetwork = net
             dispatch('saveSelectedNetwork')

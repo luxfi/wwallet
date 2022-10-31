@@ -491,7 +491,7 @@ class LedgerWallet extends HdWalletCore implements LuxWalletCore {
 
                 messages.push({
                     title: 'Output',
-                    value: `${addr} - ${amt.toString()} LUXX`,
+                    value: `${addr} - ${amt.toString()} LUX`,
                 })
             }
         } else {
@@ -510,7 +510,7 @@ class LedgerWallet extends HdWalletCore implements LuxWalletCore {
                         if (!changePath || changeAddr !== addr)
                             messages.push({
                                 title: 'Output',
-                                value: `${addr} - ${amt.toString()} LUXX`,
+                                value: `${addr} - ${amt.toString()} LUX`,
                             })
                     })
             }
@@ -559,7 +559,7 @@ class LedgerWallet extends HdWalletCore implements LuxWalletCore {
             messages.push({ title: 'NodeID', value: nodeID })
             messages.push({ title: 'Start Time', value: startTime })
             messages.push({ title: 'End Time', value: endTime })
-            messages.push({ title: 'Total Stake', value: `${stakeAmt} LUXX` })
+            messages.push({ title: 'Total Stake', value: `${stakeAmt} LUX` })
             messages.push({
                 title: 'Stake',
                 value: `${stakeAmt} to ${this.platformHelper.getCurrentAddress()}`,
@@ -596,7 +596,7 @@ class LedgerWallet extends HdWalletCore implements LuxWalletCore {
             (txType === EVMConstants.EXPORTTX && chainId === 'C') ||
             (txType === EVMConstants.IMPORTTX && chainId === 'C')
         ) {
-            messages.push({ title: 'Fee', value: `${0.001} LUXX` })
+            messages.push({ title: 'Fee', value: `${0.001} LUX` })
         }
 
         return messages
@@ -649,7 +649,7 @@ class LedgerWallet extends HdWalletCore implements LuxWalletCore {
 
             let feeMsg: ILedgerBlockMessage = {
                 title: 'Fee',
-                value: feeNano.toLocaleString() + ' nLUXX',
+                value: feeNano.toLocaleString() + ' nLUX',
             }
 
             msgs = [callMsg, ...paramMsgs, feeMsg]

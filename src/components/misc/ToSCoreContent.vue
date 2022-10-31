@@ -30,7 +30,7 @@
             that you have read and agree to be bound by all of these Terms and the
             <u>
                 <a
-                    href="https://assets.website-files.com/602e8e4411398ca20cfcafd3/60ec9607c853cd466383f1ad_Important%20Notice%20-%20luxlabs.org.pdf"
+                    href="https://lux.network/legal.pdf"
                     rel="nofollow"
                     target="_blank"
                 >
@@ -63,7 +63,7 @@
             </li>
             <li style="margin: 24px 0">
                 <p class="s4" style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
-                    Third Party Services: Third Party Services are made luxilable through the App
+                    Third Party Services: Third Party Services are made available through the App
                     and provided directly by third parties. If you choose to access Third Party
                     Services, including without limitation MoonPay and ParaSwap, you will be
                     interacting directly with such services and will be subject to their terms,
@@ -87,7 +87,7 @@
         </ol>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             Supplemental terms and conditions or documents relating to the App or the Services that
-            may be posted on the luxlabs.org website (the “Site”) from time to time are hereby
+            may be posted on the wallet.lux.network website (the “Site”) from time to time are hereby
             expressly incorporated herein by reference. We reserve the right, in our sole
             discretion, to make changes or modifications to these Terms at any time and for any
             reason. We will alert you about any changes by updating the date above and you waive any
@@ -113,7 +113,7 @@
             If you breach any of the Terms, your authorization to use the App and the Services will
             automatically terminate, and any Content downloaded or printed from the App, whether
             authorized or unauthorized, must be immediately destroyed. Company reserves the right to
-            pursue any additional remedies luxilable in law or equity.
+            pursue any additional remedies available in law or equity.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             Please refer to our
@@ -174,7 +174,7 @@
             Third Party Services, please note that you will be interacting directly with such
             services and dapps and will be subject to their terms, policies and fees. Please review
             the terms, policies and fees of any third party with which you are interacting,
-            including MoonPay (luxilable
+            including MoonPay (available
             <u>
                 <a
                     href="https://www.moonpay.com/legal/terms_of_use_usa"
@@ -236,7 +236,7 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may not download, access or use the App for any purpose other than that for which we
-            make the App luxilable. As a user of the App and the Services, you agree not to:
+            make the App available. As a user of the App and the Services, you agree not to:
         </p>
         <ol>
             <li style="margin: 24px 0">
@@ -446,7 +446,7 @@
             inaccuracies, or omissions at any time without prior notice.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            We cannot guarantee the App will be luxilable at all times. We may experience hardware,
+            We cannot guarantee the App will be available at all times. We may experience hardware,
             software, or other problems or need to perform maintenance related to the App, resulting
             in interruptions, delays, or errors. We reserve the right to change, revise, update,
             suspend, discontinue, or otherwise modify the App at any time or for any reason without
@@ -546,7 +546,7 @@
             which a party may be held liable. The arbitrator may award declaratory or injunctive
             relief only in favor of the claimant and only to the extent necessary to provide relief
             warranted by the claimant’s individual claim. The JAMS Rules and instructions for how to
-            initiate an arbitration are luxilable from JAMS at
+            initiate an arbitration are available from JAMS at
             <u><a href="http://www.jamsadr.com" rel="nofollow">http://www.jamsadr.com</a></u>
             .
         </p>

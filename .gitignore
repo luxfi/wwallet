@@ -2,8 +2,8 @@
 node_modules
 /dist
 
-# Manually importing AVAJS
-avajs
+# Manually importing luxjs
+luxjs
 
 # local env files
 .env

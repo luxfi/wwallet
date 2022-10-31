@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "U het geen tekens wat nie aanpasbaar is nie versamel.",
         "locked": "Gesluit",
-        "info2": "Ek het muntstukke in die Teken Uitverkoping gekoop. Waar is my LUXX?",
+        "info2": "Ek het muntstukke in die Teken Uitverkoping gekoop. Waar is my LUX?",
         "info2_desc": "Hierdie beursie is aan die Luxlanche Everest-toetsnetwerk gekoppel. U aankoop sal in die beursie verskyn na die bekendstelling van Luxlanche Mainnet.",
         "hover1": "Bekyk Adres-QR-kode",
         "hover2": "Druk",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Toon uiteensetting",
             "hide": "Versteek Uiteensetting",
-            "luxilable": "Beskikbaar",
+            "available": "Beskikbaar",
             "locked": "Gesluit",
             "locked_stake": "Belegbaar Gesluit",
             "stake": "Insetting",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Verdien",
-        "desc": "U kan meer LUXX verdien deur u bestaande tekens in te sit.",
+        "desc": "U kan meer LUX verdien deur u bestaande tekens in te sit.",
         "subtitle1": "Valideer",
         "subtitle2": "Delegeer",
         "subtitle3": "Kruiskettingoordrag",
         "subtitle4": "Geskatte belonings",
-        "warning_1": "U moet ten minste {0} LUXX aan die P-ketting hê om 'n valideerder te word.",
-        "warning_2": "U moet ten minste {0} LUXX aan die P-ketting hê om 'n afgevaardigde te word.",
+        "warning_1": "U moet ten minste {0} LUX aan die P-ketting hê om 'n valideerder te word.",
+        "warning_2": "U moet ten minste {0} LUX aan die P-ketting hê om 'n afgevaardigde te word.",
         "validate_card": {
             "title": "Valideer",
             "desc": "U het 'n Luxlanche-nodus waarmee u wil 'n insetting maak.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Kruiskettingoordrag",
-            "desc": "Om ' insetting te maak moet LUXX in die P-ketting wees. Dra tekens oor tussen X en P.",
+            "desc": "Om ' insetting te maak moet LUX in die P-ketting wees. Dra tekens oor tussen X en P.",
             "submit": "Oordrag"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Beleggingsbedrag",
-                "desc": "Die hoeveelheid LUXX wat gesluit moet word om in te sit."
+                "desc": "Die hoeveelheid LUX wat gesluit moet word om in te sit."
             },
             "fee": {
                 "label": "Delegasie fooi",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Begindatum moet in die toekoms wees en einddatum moet na begindatum wees.",
-                "amount": "Insettingsbedrag moet tenminste {0} LUXX wees",
+                "amount": "Insettingsbedrag moet tenminste {0} LUX wees",
                 "id": "Ongeldige Nodus-ID. Moet begin met \"NodeID-\"",
                 "address": "Ongeldige beloningsadresadres."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Insettingsbedrag",
-                    "desc": "Die hoeveelheid LUXX wat gesluit moet word om in te sit.",
-                    "desc2": "Die beskikbare delegasiebedrag vir hierdie nodus is {0} LUXX"
+                    "desc": "Die hoeveelheid LUX wat gesluit moet word om in te sit.",
+                    "desc2": "Die beskikbare delegasiebedrag vir hierdie nodus is {0} LUX"
                 },
                 "reward": {
                     "label": "Beloningsadres",
@@ -345,7 +345,7 @@
                 "max_dur": "Maksimum insettingsduur is 2 weke.",
                 "no_node": "U moet 'n valideerder spesifiseer.",
                 "val_end": "Die einddatum van die delegasie kan nie langer as die valideerder se einddatum wees nie.",
-                "amt": "Delegasiebedrag moet tenminste {0} LUXX wees."
+                "amt": "Delegasiebedrag moet tenminste {0} LUX wees."
             },
             "summary": {
                 "duration": "Insettingstydperk",

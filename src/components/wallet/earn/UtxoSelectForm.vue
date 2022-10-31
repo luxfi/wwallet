@@ -9,9 +9,9 @@
             <v-chip value="custom" small>{{ $t('earn.shared.utxo_select.custom') }}</v-chip>
         </v-chip-group>
 
-        <div class="luxilable">
+        <div class="available">
             <div>
-                <label>{{ $t('earn.shared.utxo_select.luxilable') }}</label>
+                <label>{{ $t('earn.shared.utxo_select.available') }}</label>
                 <p>
                     <span>{{ selectedBalanceText }} LUX</span>
                 </p>
@@ -121,7 +121,7 @@ export default class UtxoSelectForm extends Vue {
 }
 </script>
 <style scoped lang="scss">
-.luxilable {
+.available {
     max-width: 100%;
     padding: 6px 14px;
     background-color: var(--bg-light);

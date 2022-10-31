@@ -94,7 +94,7 @@ export interface CsvRowStakingData {
     nodeID: string
 }
 
-// CSV LUXX Transaction Row
+// CSV LUX Transaction Row
 export interface CsvRowLuxxTransferData {
     txId: string
     date: Date

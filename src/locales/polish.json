@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "Nie masz żadnych zamienne tokenów.",
         "locked": "Zablokowane",
-        "info2": "Kupiłem monety podczas wyprzedaży. Gdzie są moje tokeny LUXX?",
+        "info2": "Kupiłem monety podczas wyprzedaży. Gdzie są moje tokeny LUX?",
         "info2_desc": "Ten portfel jest połączony z testową Luxlanche Everest siecią. Twój zakup pojawi się w portfelu po uruchomieniu Luxlanche Mainnet.",
         "hover1": "Wyświetl QR kod adresu",
         "hover2": "Wydrukować",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Pokaż podział",
             "hide": "Pokaż podział",
-            "luxilable": "Dostępny",
+            "available": "Dostępny",
             "locked": "Zablokowane",
             "locked_stake": "Zablokowany Stakeable",
             "stake": "Staking",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Zarabiaj",
-        "desc": "Możesz zarobić więcej LUXX, stawiając swoje istniejące tokeny.",
+        "desc": "Możesz zarobić więcej LUX, stawiając swoje istniejące tokeny.",
         "subtitle1": "Ratyfikuj",
         "subtitle2": "Delegat",
         "subtitle3": "Transfer krzyżowy",
         "subtitle4": "Szacowane nagrody",
-        "warning_1": "Aby zostać walidatorem, musisz mieć co najmniej {0} LUXX w łańcuchu P.",
-        "warning_2": "Aby zostać delegatem, musisz mieć co najmniej {0} LUXX w łańcuchu P.",
+        "warning_1": "Aby zostać walidatorem, musisz mieć co najmniej {0} LUX w łańcuchu P.",
+        "warning_2": "Aby zostać delegatem, musisz mieć co najmniej {0} LUX w łańcuchu P.",
         "validate_card": {
             "title": "Waliduj",
             "desc": "Masz węzeł Luxlanche, z którym chcesz postawić.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transfer krzyżowy",
-            "desc": "Staking wymaga LUXX w łańcuchu P. Przenieś tokeny między X i P.",
+            "desc": "Staking wymaga LUX w łańcuchu P. Przenieś tokeny między X i P.",
             "submit": "Transfer"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Kwota stake",
-                "desc": "Kwota LUXX do zablokowania do obstawienia."
+                "desc": "Kwota LUX do zablokowania do obstawienia."
             },
             "fee": {
                 "label": "Opłata delegacyjna",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Data rozpoczęcia musi przypadać w przyszłości, a data zakończenia musi być późniejsza niż data rozpoczęcia.",
-                "amount": "Kwota stawki musi wynosić co najmniej {0} LUXX",
+                "amount": "Kwota stawki musi wynosić co najmniej {0} LUX",
                 "id": "Nieprawidłowy identyfikator węzła. Musi zaczynać się od „NodeID-”",
                 "address": "Nieprawidłowy adres nagrody."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Kwota stake",
-                    "desc": "Kwota LUXX do zablokowania do obstawienia.",
-                    "desc2": "Dostępna kwota delegowania dla tego węzła to {0} LUXX"
+                    "desc": "Kwota LUX do zablokowania do obstawienia.",
+                    "desc2": "Dostępna kwota delegowania dla tego węzła to {0} LUX"
                 },
                 "reward": {
                     "label": "Adres nagrody",
@@ -345,7 +345,7 @@
                 "max_dur": "Maksymalny okres obstawiania to 1 rok.",
                 "no_node": "Musisz określić walidator.",
                 "val_end": "Data zakończenia delegacji nie może być dłuższa niż data zakończenia walidatora.",
-                "amt": "Kwota delegacji musi wynosić co najmniej {0} LUXX."
+                "amt": "Kwota delegacji musi wynosić co najmniej {0} LUX."
             },
             "summary": {
                 "duration": "Czas trwania obstawiania",

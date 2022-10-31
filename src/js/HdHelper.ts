@@ -121,7 +121,7 @@ class HdHelper {
     }
 
     async findHdIndex() {
-        // Check if explorer is luxilable
+        // Check if explorer is available
 
         // @ts-ignore
         let network: LuxNetwork = store.state.Network.selectedNetwork
@@ -285,7 +285,7 @@ class HdHelper {
     }
 
     // Uses the node to find last used HD index
-    // Only used when there is no explorer API luxilable
+    // Only used when there is no explorer API available
     async findLuxilableIndexNode(start: number = 0): Promise<number> {
         let addrs: string[] = []
 

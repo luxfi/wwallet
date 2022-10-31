@@ -119,7 +119,7 @@
                                     <fa icon="question-circle"></fa>
                                 </Tooltip>
                             </label>
-                            <p v-if="currency_type === 'LUXX'">{{ maxDelegationText }} LUX</p>
+                            <p v-if="currency_type === 'LUX'">{{ maxDelegationText }} LUX</p>
                             <p v-if="currency_type === 'USD'">${{ maxDelegationUsdText }} USD</p>
                         </div>
                         <div>
@@ -128,7 +128,7 @@
                         </div>
                         <div>
                             <label>{{ $t('earn.validate.summary.rewards') }}</label>
-                            <p v-if="currency_type === 'LUXX'">
+                            <p v-if="currency_type === 'LUX'">
                                 {{ estimatedReward.toLocaleString(2) }} LUX
                             </p>
                             <p v-if="currency_type === 'USD'">
@@ -231,7 +231,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import ConfirmPage from '@/components/wallet/earn/Validate/ConfirmPage.vue'
 import moment from 'moment'
 import { bnToBig, calculateStakingReward } from '@/helpers/helper'
-import { ONELUXX } from 'luxdefi/dist/utils'
+import { ONELUX } from 'luxdefi/dist/utils'
 import Tooltip from '@/components/misc/Tooltip.vue'
 import CurrencySelect from '@/components/misc/CurrencySelect/CurrencySelect.vue'
 import Spinner from '@/components/misc/Spinner.vue'
@@ -289,7 +289,7 @@ export default class AddValidator extends Vue {
 
     isSuccess = false
 
-    currency_type = 'LUXX'
+    currency_type = 'LUX'
 
     mounted() {
         this.rewardSelect('local')
@@ -356,7 +356,7 @@ export default class AddValidator extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.$store.getters['Assets/walletPlatformBalance'].luxilable
+        return this.$store.getters['Assets/walletPlatformBalance'].available
     }
 
     get platformLockedStakeable(): BN {

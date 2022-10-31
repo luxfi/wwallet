@@ -189,7 +189,7 @@ export default class CurrencyInputDropdown extends Vue {
 
         let luxId = this.luxAsset.id
 
-        // Max amount is BALANCE - FEE for LUXX
+        // Max amount is BALANCE - FEE for LUX
         if (assetId === luxId) {
             let fee = avm.getTxFee()
             // console.log(fee);

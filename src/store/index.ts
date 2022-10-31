@@ -281,7 +281,7 @@ export default new Vuex.Store({
 
                 let utcDate = new Date()
                 let dateString = utcDate.toISOString().replace(' ', '_')
-                let filename = `LUXX_${dateString}.json`
+                let filename = `LUX_${dateString}.json`
 
                 var blob = new Blob([text], {
                     type: 'application/json',

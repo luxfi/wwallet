@@ -85,7 +85,7 @@
         "nftcol": "NFT-uri",
         "nftempty": "Nu ați adunat niciun token nefungibil.",
         "locked": "Blocat",
-        "info2": "Am cumpărat monede în Token Sale. Unde sunt LUXX-ul meu?",
+        "info2": "Am cumpărat monede în Token Sale. Unde sunt LUX-ul meu?",
         "info2_desc": "Acest wallet este conectat la rețeaua de testare Luxlanche Everest. Achiziția dvs. va apărea în portofel după lansarea Luxlanche Mainnet.",
         "hover1": "Vizualizați codul QR al adresei",
         "hover2": "Imprimare",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Afișează Defalcarea",
             "hide": "Ascunde Defalcarea",
-            "luxilable": "Disponibil",
+            "available": "Disponibil",
             "locked": "Blocat",
             "locked_stake": "Participări Blocate",
             "stake": "Capital",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Câștigă",
-        "desc": "Poți câștiga mai multe LUXX mizând jetoanele tale existente.",
+        "desc": "Poți câștiga mai multe LUX mizând jetoanele tale existente.",
         "subtitle1": "Validează",
         "subtitle2": "Deleagă",
         "subtitle3": "Transfer Încrucișat",
         "subtitle4": "Recompense Estimate",
-        "warning_1": "Trebuie să ai cel puțin {0} LUXX în lanțul P pentru a deveni un validator.",
-        "warning_2": "Trebuie să ai cel puțin {0} LUXX în lanțul P pentru a deveni un delegatar.",
+        "warning_1": "Trebuie să ai cel puțin {0} LUX în lanțul P pentru a deveni un validator.",
+        "warning_2": "Trebuie să ai cel puțin {0} LUX în lanțul P pentru a deveni un delegatar.",
         "validate_card": {
             "title": "Validează",
             "desc": "Ai un nod Luxlanche cu care dorești să mizezi.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transfer Încrucișat",
-            "desc": "Miza necesită LUXX în lanțul P. Transferă jetoane între X și P.",
+            "desc": "Miza necesită LUX în lanțul P. Transferă jetoane între X și P.",
             "submit": "Transferă"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Suma Mizată",
-                "desc": "Suma LUXX blocată pentru miză."
+                "desc": "Suma LUX blocată pentru miză."
             },
             "fee": {
                 "label": "Comision de Delegare",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Data de Început trebuie să fie în viitor, iar data de sfârșit trebuie să fie după data de început.",
-                "amount": "Suma mizată trebuie să fie de cel puțin {0} LUXX",
+                "amount": "Suma mizată trebuie să fie de cel puțin {0} LUX",
                 "id": "ID Nod invalid. Trebuie să înceapă cu „IDNod-”",
                 "address": "Adresă de recompensă invalidă."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Suma Mizei",
-                    "desc": "Suma LUXX blocată pentru miză.",
-                    "desc2": "Suma delegării disponibilă pentru acest nod este de {0} LUXX"
+                    "desc": "Suma LUX blocată pentru miză.",
+                    "desc2": "Suma delegării disponibilă pentru acest nod este de {0} LUX"
                 },
                 "reward": {
                     "label": "Adresa Recompensei",
@@ -345,7 +345,7 @@
                 "max_dur": "Durata maximă a mizei este de 1 an.",
                 "no_node": "Trebuie să menționezi un validator.",
                 "val_end": "Data de sfârșit a delegării nu poate fi mai mare decât data de sfârșit a validatorului.",
-                "amt": "Suma delegării trebuie să fie de cel puțin {0} LUXX."
+                "amt": "Suma delegării trebuie să fie de cel puțin {0} LUX."
             },
             "summary": {
                 "duration": "Durata Mizei",

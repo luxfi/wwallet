@@ -138,7 +138,7 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may not access or use the Site for any purpose other than that for which we make the
-            Site luxilable. The Site may not be used in connection with any commercial endeavors
+            Site available. The Site may not be used in connection with any commercial endeavors
             except those that are specifically endorsed or approved by us.
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
@@ -353,7 +353,7 @@
             information or other material (collectively, &quot;Contributions&quot;). Contributions
             may be viewable by other users of the Site and through third-party websites. As such,
             any Contributions you transmit may be treated in accordance with the Site Privacy
-            Policy. When you create or make luxilable any Contributions, you thereby represent and
+            Policy. When you create or make available any Contributions, you thereby represent and
             warrant that:
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
@@ -662,7 +662,7 @@
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            We cannot guarantee the Site will be luxilable at all times. We may experience hardware,
+            We cannot guarantee the Site will be available at all times. We may experience hardware,
             software, or other problems or need to perform maintenance related to the Site,
             resulting in interruptions, delays, or errors. We reserve the right to change, revise,
             update, suspend, discontinue, or otherwise modify the Site at any time or for any reason
@@ -763,7 +763,7 @@
             below as to the types and amounts of damages for which a Party may be held liable. The
             arbitrator may award declaratory or injunctive relief only in favor of the claimant and
             only to the extent necessary to provide relief warranted by the claimant’s individual
-            claim. The JAMS Rules and instructions for how to initiate an arbitration are luxilable
+            claim. The JAMS Rules and instructions for how to initiate an arbitration are available
             from JAMS at
             <a href="http://www.jamsadr.com/" class="a" target="_blank">http://www.jamsadr.com</a>
             or 1-800-352-5267.

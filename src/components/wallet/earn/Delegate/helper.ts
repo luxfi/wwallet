@@ -1,7 +1,7 @@
 import { ValidatorListFilter } from '@/components/wallet/earn/Delegate/types'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import { DAY_MS } from '@/constants'
-import { ONELUXX } from 'luxdefi/dist/utils'
+import { ONELUX } from 'luxdefi/dist/utils'
 import { BN } from 'luxdefi'
 
 function filterValidatorList(
@@ -14,7 +14,7 @@ function filterValidatorList(
     let minDurationMs = filter.minDuration * DAY_MS
     let res = list.filter((val: ValidatorListItem) => {
         // Filter by remaining stake amount
-        let minSpace = ONELUXX.mul(new BN(filter.luxilableSpace))
+        let minSpace = ONELUX.mul(new BN(filter.availableSpace))
         if (val.remainingStake.lt(minSpace)) {
             return false
         }

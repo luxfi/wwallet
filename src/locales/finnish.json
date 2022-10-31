@@ -85,7 +85,7 @@
         "nftcol": "NFT:t",
         "nftempty": "Et ole kerännyt yhtään ei-korvattluxa rahaketta.",
         "locked": "Lukittu",
-        "info2": "Ostin kolikoita Token Sale -sivustolta. Missä LUXXINI on?",
+        "info2": "Ostin kolikoita Token Sale -sivustolta. Missä LUXINI on?",
         "info2_desc": "Tämä lompakko on kytketty Luxlanche Everest -testiverkkoon. Ostoksesi näkyvät lompakossa Luxlanche Mainnetin käynnistämisen jälkeen.",
         "hover1": "Näytä Osoitteen QR-koodi",
         "hover2": "Tulosta",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Näytä Erittely",
             "hide": "Piilota Erittely",
-            "luxilable": "Saatavilla",
+            "available": "Saatavilla",
             "locked": "Lukittu",
             "locked_stake": "Lukittu Panostettlux",
             "stake": "Panostaminen",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Ansaitse",
-        "desc": "Voit tienata enemmän LUXXIA panostamalla olemassa olevat rahakkeet.",
+        "desc": "Voit tienata enemmän LUXIA panostamalla olemassa olevat rahakkeet.",
         "subtitle1": "Vahvista",
         "subtitle2": "Delegoi",
         "subtitle3": "Cross Chain-Siirto",
         "subtitle4": "Arvioidut Palkkiot",
-        "warning_1": "Sinulla on oltlux vähintään {0} LUXXIA P-ketjussa, jotta voit tulla vahvistajaksi.",
-        "warning_2": "Sinulla on oltlux vähintään {0} LUXXIA P-ketjussa, jotta voit tulla delegoijaksi.",
+        "warning_1": "Sinulla on oltlux vähintään {0} LUXIA P-ketjussa, jotta voit tulla vahvistajaksi.",
+        "warning_2": "Sinulla on oltlux vähintään {0} LUXIA P-ketjussa, jotta voit tulla delegoijaksi.",
         "validate_card": {
             "title": "Vahvista",
             "desc": "Sinulla on Luxlanche-node, johon haluat panostaa.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Cross Chain-Siirto",
-            "desc": "Panostaminen vaatii LUXXIN P-ketjussa. Siirrä rahakkeita X:n ja P:n välillä.",
+            "desc": "Panostaminen vaatii LUXIN P-ketjussa. Siirrä rahakkeita X:n ja P:n välillä.",
             "submit": "Siirrä"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Panossumma",
-                "desc": "Lukittluxn LUXXIN määrä panostamista varten."
+                "desc": "Lukittluxn LUXIN määrä panostamista varten."
             },
             "fee": {
                 "label": "Delegointimaksu",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Aloituspäivän on oltlux tulevaisuudessa ja lopetuspäivän on oltlux alkamispäivän jälkeen.",
-                "amount": "Panoksen määrän on oltlux vähintään {0} LUXXIA",
+                "amount": "Panoksen määrän on oltlux vähintään {0} LUXIA",
                 "id": "Väär Node ID. Tämän tulee alkaa \"NodeID-\"",
                 "address": "Väärä palkkio-osoite."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Panossumma",
-                    "desc": "Lukittluxn LUXXIN määrä panostamista varten.",
-                    "desc2": "Tämän noodin käytettävissä oleva delegointimäärä on {0} LUXXIA"
+                    "desc": "Lukittluxn LUXIN määrä panostamista varten.",
+                    "desc2": "Tämän noodin käytettävissä oleva delegointimäärä on {0} LUXIA"
                 },
                 "reward": {
                     "label": "Palkkion Osoite",
@@ -345,7 +345,7 @@
                 "max_dur": "Suurin panostuksen kesto on 1 vuosi.",
                 "no_node": "Sinun on määritettävä vahvistaja.",
                 "val_end": "Delegaation lopetuspäivä ei voi olla pidempi kuin vahvistajan lopetuspäivä.",
-                "amt": "Valtuutuksen määrän on oltlux vähintään {0} LUXXIA."
+                "amt": "Valtuutuksen määrän on oltlux vähintään {0} LUXIA."
             },
             "summary": {
                 "duration": "Panoksen Kesto",

@@ -85,7 +85,7 @@
         "nftcol": "不可分割代幣（NFT）",
         "nftempty": "你沒有收集任何不可分割代幣。",
         "locked": "鎖定",
-        "info2": "我在代幣銷售中購買了貨幣。我的LUXX在哪裏？",
+        "info2": "我在代幣銷售中購買了貨幣。我的LUX在哪裏？",
         "info2_desc": "該錢包已連接到Luxlanche Everest測試網路。Luxlanche主網啟動後，你的購買將出現在錢包。",
         "hover1": "查看地址二維碼",
         "hover2": "列印",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "顯示故障",
             "hide": "隱藏故障",
-            "luxilable": "可用",
+            "available": "可用",
             "locked": "鎖定",
             "locked_stake": "鎖定可質押",
             "stake": "質押",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "賺錢",
-        "desc": "你可以通過質押你的現有代幣賺取更多LUXX。",
+        "desc": "你可以通過質押你的現有代幣賺取更多LUX。",
         "subtitle1": "驗證",
         "subtitle2": "委託",
         "subtitle3": "跨鏈轉移",
         "subtitle4": "預計獎勵",
-        "warning_1": "你必須在P鏈擁有至少{0}LUXX以成為一個驗證者。",
-        "warning_2": "你必須在P鏈擁有至少{0}LUXX以成為一個委託者。",
+        "warning_1": "你必須在P鏈擁有至少{0}LUX以成為一個驗證者。",
+        "warning_2": "你必須在P鏈擁有至少{0}LUX以成為一個委託者。",
         "validate_card": {
             "title": "驗證",
             "desc": "你有一個想用於質押的Luxlanche節點。",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "跨鏈轉移",
-            "desc": "質押需要P鏈上的LUXX。在X和P之間轉移代幣。",
+            "desc": "質押需要P鏈上的LUX。在X和P之間轉移代幣。",
             "submit": "轉移"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "質押數量",
-                "desc": "要鎖定用於質押的LUXX數量。"
+                "desc": "要鎖定用於質押的LUX數量。"
             },
             "fee": {
                 "label": "委託費用",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "開始日期必須在將來，結束日期必須在開始日期之後。",
-                "amount": "質押數量必須至少為{0}LUXX",
+                "amount": "質押數量必須至少為{0}LUX",
                 "id": "無效的節點ID。必須以“NodeID-”開頭",
                 "address": "無效的獎勵地址。"
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "質押數量",
-                    "desc": "要鎖定用於質押的LUXX數量。",
-                    "desc2": "此節點的可用委託數量為{0}LUXX"
+                    "desc": "要鎖定用於質押的LUX數量。",
+                    "desc2": "此節點的可用委託數量為{0}LUX"
                 },
                 "reward": {
                     "label": "獎勵地址",
@@ -345,7 +345,7 @@
                 "max_dur": "最大質押持續時間為1年。",
                 "no_node": "你必須指定一個驗證者。",
                 "val_end": "委託結束日期不能長於驗證者的結束日期。",
-                "amt": "委託數量必須至少為{0}LUXX"
+                "amt": "委託數量必須至少為{0}LUX"
             },
             "summary": {
                 "duration": "質押持續時間",

@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "Bạn chưa thu thập bất kỳ mã thông báo không thể thay thế nào.",
         "locked": "Đã khóa",
-        "info2": "Tôi đã mua LUXX trong đợt bán mã thông báo. LUXX của tôi ở đâu?",
+        "info2": "Tôi đã mua LUX trong đợt bán mã thông báo. LUX của tôi ở đâu?",
         "info2_desc": "Ví này được kết nối với mạng thử nghiệm Luxlanche Everest. Các giao dịch mua sẽ xuất hiện trong ví của bạn sau khi mạng chính Luxlanche khởi chạy.",
         "hover1": "Xem địa chỉ Mã QR",
         "hover2": "In",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Hiện Điểm xuyên phá",
             "hide": "Ẩn Điểm xuyên phá",
-            "luxilable": "Có sẵn",
+            "available": "Có sẵn",
             "locked": "Đã khóa",
             "locked_stake": "Stackable đã khóa",
             "stake": "Staking",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Kiếm tiền",
-        "desc": "Bạn có thể kiếm thêm LUXX bằng cách stake số token hiện có của mình.",
+        "desc": "Bạn có thể kiếm thêm LUX bằng cách stake số token hiện có của mình.",
         "subtitle1": "Trình xác thực",
         "subtitle2": "Ủy quyền",
         "subtitle3": "Chuyển đổi giữa các Chain",
         "subtitle4": "Phần thưởng dự kiến",
-        "warning_1": "Bạn phải sở hữu tối thiểu {0} LUXX trên P-Chain để trở thành trình xác thực.",
-        "warning_2": "Bạn phải sở hữu tối thiểu {0} LUXX trên P-Chain để có thể ủy quyền.",
+        "warning_1": "Bạn phải sở hữu tối thiểu {0} LUX trên P-Chain để trở thành trình xác thực.",
+        "warning_2": "Bạn phải sở hữu tối thiểu {0} LUX trên P-Chain để có thể ủy quyền.",
         "validate_card": {
             "title": "Trình xác thực",
             "desc": "Bạn sở hữu một nút Luxlanche mà bạn muốn stake.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Chuyển đổi Chain",
-            "desc": "Staking yêu cầu có LUXX trên P-Chain. Hãy chuyển token từ X sang P.",
+            "desc": "Staking yêu cầu có LUX trên P-Chain. Hãy chuyển token từ X sang P.",
             "submit": "Chuyển đổi"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Số tiền stake",
-                "desc": "Số lượng LUXX sẽ khóa để stake."
+                "desc": "Số lượng LUX sẽ khóa để stake."
             },
             "fee": {
                 "label": "Phí Ủy quyền",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Ngày bắt đầu phải ở trong tương lai và ngày kết thúc phải sau ngày bắt đầu.",
-                "amount": "Số tiền staking tối thiểu phải là {0} LUXX",
+                "amount": "Số tiền staking tối thiểu phải là {0} LUX",
                 "id": "ID Nút không hợp lệ. Phải bắt đầu bằng “NodeID-”",
                 "address": "Địa chỉ nhận thưởng không hợp lệ."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Số tiền stake",
-                    "desc": "Số lượng LUXX sẽ khóa để stake.",
-                    "desc2": "Số tiền có thể ủy quyền cho nút này là {0} LUXX"
+                    "desc": "Số lượng LUX sẽ khóa để stake.",
+                    "desc2": "Số tiền có thể ủy quyền cho nút này là {0} LUX"
                 },
                 "reward": {
                     "label": "Địa chỉ nhận thưởng",
@@ -345,7 +345,7 @@
                 "max_dur": "Thời gian staking tối đa là 1 năm.",
                 "no_node": "Bạn phải xác định một trình xác thực.",
                 "val_end": "Ngày kết thúc ủy quyền không thể xa hơn ngày kết thúc của trình xác thực.",
-                "amt": "Số tiền ủy quyền tối thiểu phải là {0} LUXX."
+                "amt": "Số tiền ủy quyền tối thiểu phải là {0} LUX."
             },
             "summary": {
                 "duration": "Thời gian Staking",
@@ -388,7 +388,7 @@
         "loading": "Đang tải lịch sử giao dịch ..",
         "warn_loading": "Danh sách này có thể không đầy đủ và không theo thứ tự.",
         "error_api": "Không tìm thấy API Explorer",
-        "error_api_desc": "Bạn phải cung cấp một API LUXX Explorer cho mạng này để xem lịch sử giao dịch."
+        "error_api_desc": "Bạn phải cung cấp một API LUX Explorer cho mạng này để xem lịch sử giao dịch."
     },
     "modal": {
         "qr": {

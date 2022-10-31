@@ -372,7 +372,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
         // What is the LUX coin in the network
         async updateLuxAsset({ state, commit }) {
-            let res = await avm.getAssetDescription('LUXX')
+            let res = await avm.getAssetDescription('LUX')
             let id = bintools.cb58Encode(res.assetID)
             state.LUX_ASSET_ID = id
             let asset = new LuxAsset(id, res.name, res.symbol, res.denomination)
@@ -415,7 +415,7 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: ZERO,
-                            luxilable: ZERO.clone(),
+                            available: ZERO.clone(),
                             multisig: amount.clone(),
                         }
                     } else {
@@ -426,12 +426,12 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: ZERO,
-                            luxilable: amount.clone(),
+                            available: amount.clone(),
                             multisig: ZERO.clone(),
                         }
                     } else {
-                        let amt = dict[assetId].luxilable
-                        dict[assetId].luxilable = amt.add(amount)
+                        let amt = dict[assetId].available
+                        dict[assetId].available = amt.add(amount)
                     }
                 }
                 // If locked
@@ -439,7 +439,7 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: amount.clone(),
-                            luxilable: ZERO,
+                            available: ZERO,
                             multisig: ZERO,
                         }
                     } else {
@@ -530,16 +530,16 @@ const assets_module: Module<AssetsState, RootState> = {
                 } else {
                     asset = assetsDict[assetId]
                     asset.resetBalance()
-                    asset.addBalance(balanceAmt.luxilable)
+                    asset.addBalance(balanceAmt.available)
                     asset.addBalanceLocked(balanceAmt.locked)
                     asset.addBalanceMultisig(balanceAmt.multisig)
                 }
 
-                // Add extras for LUXX token
+                // Add extras for LUX token
                 // @ts-ignore
                 if (asset.id === state.LUX_ASSET_ID) {
                     asset.addExtra(getters.walletStakingBalance)
-                    asset.addExtra(getters.walletPlatformBalance.luxilable)
+                    asset.addExtra(getters.walletPlatformBalance.available)
                     asset.addExtra(getters.walletPlatformBalance.locked)
                     asset.addExtra(getters.walletPlatformBalance.lockedStakeable)
                     asset.addExtra(getters.walletPlatformBalance.multisig)
@@ -579,7 +579,7 @@ const assets_module: Module<AssetsState, RootState> = {
         },
 
         /**
-         * Calculates balances (luxilable, locked, lockedStakeable, multisig) from the active wallet's UTXO set.
+         * Calculates balances (available, locked, lockedStakeable, multisig) from the active wallet's UTXO set.
          * @param state
          * @param getters
          * @param rootState
@@ -589,14 +589,14 @@ const assets_module: Module<AssetsState, RootState> = {
             getters,
             rootState
         ): {
-            luxilable: BN
+            available: BN
             locked: BN
             lockedStakeable: BN
             multisig: BN
         } {
             let wallet = rootState.activeWallet
             const balances = {
-                luxilable: new BN(0),
+                available: new BN(0),
                 locked: new BN(0),
                 lockedStakeable: new BN(0),
                 multisig: new BN(0),
@@ -608,7 +608,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
             let now = UnixNow()
 
-            // The only type of asset is LUXX on the P chain
+            // The only type of asset is LUX on the P chain
 
             let utxos = utxoSet.getAllUTXOs()
             for (var n = 0; n < utxos.length; n++) {
@@ -634,7 +634,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
                 // If normal unlocked utxo (includes stakeable lock that is in the past)
                 if (locktime.lte(now)) {
-                    balances.luxilable.iadd((utxoOut as AmountOutput).getAmount())
+                    balances.available.iadd((utxoOut as AmountOutput).getAmount())
                 }
                 // If locked utxo
                 else if (!isStakeableLock) {

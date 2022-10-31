@@ -108,7 +108,7 @@
                     </div>
                     <div>
                         <label>{{ $t('earn.delegate.summary.reward') }}</label>
-                        <p v-if="currency_type === 'LUXX'">
+                        <p v-if="currency_type === 'LUX'">
                             {{ estimatedReward.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
@@ -117,7 +117,7 @@
                     </div>
                     <div>
                         <label>{{ $t('earn.delegate.summary.fee') }}</label>
-                        <p v-if="currency_type === 'LUXX'">
+                        <p v-if="currency_type === 'LUX'">
                             {{ totalFeeBig.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
@@ -213,7 +213,7 @@ import { AmountOutput, PlatformVMConstants, UTXO, UTXOSet } from 'luxdefi/dist/a
 import { lux, avm, bintools, infoApi, pChain } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { bnToBig, calculateStakingReward } from '@/helpers/helper'
-import { Defaults, ONELUXX } from 'luxdefi/dist/utils'
+import { Defaults, ONELUX } from 'luxdefi/dist/utils'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import NodeSelection from '@/components/wallet/earn/Delegate/NodeSelection.vue'
 import CurrencySelect from '@/components/misc/CurrencySelect/CurrencySelect.vue'
@@ -267,7 +267,7 @@ export default class AddDelegator extends Vue {
     formEnd: Date = new Date()
     formRewardAddr = ''
 
-    currency_type = 'LUXX'
+    currency_type = 'LUX'
 
     mounted() {
         this.rewardSelect('local')

@@ -1,6 +1,6 @@
 <template>
     <div class="currency_select">
-        <button @click="setType('LUXX')" :active="currency === 'LUXX'">LUXX</button>
+        <button @click="setType('LUX')" :active="currency === 'LUX'">LUX</button>
         <button @click="setType('USD')" :active="currency === 'USD'">USD</button>
     </div>
 </template>

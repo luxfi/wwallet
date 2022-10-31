@@ -85,7 +85,7 @@
         "nftcol": "NFT",
         "nftempty": "Du har ikke samlet noen omsettelige polletter.",
         "locked": "Låst",
-        "info2": "Jeg kjøpte mynter på polettsalg. Hvor er min LUXX?",
+        "info2": "Jeg kjøpte mynter på polettsalg. Hvor er min LUX?",
         "info2_desc": "Denne lommeboken er koblet til Luxlanche Everest-testnettverket. Kjøpet ditt vises i lommeboken etter lansering av Luxlanche Mainnet.",
         "hover1": "Vis QR-adressekode",
         "hover2": "Skriv ut",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Vis fordeling",
             "hide": "Skjul fordeling",
-            "luxilable": "Tilgjengelig",
+            "available": "Tilgjengelig",
             "locked": "Låst",
             "locked_stake": "Låste satsbare",
             "stake": "Satser",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Tjen",
-        "desc": "Du kan tjene mer LUXX ved å satse dine eksisterende polletter.",
+        "desc": "Du kan tjene mer LUX ved å satse dine eksisterende polletter.",
         "subtitle1": "Valider",
         "subtitle2": "Deleger",
         "subtitle3": "Krysskjedeoverføring",
         "subtitle4": "Estimerte belønninger",
-        "warning_1": "Du må ha minst {0} LUXX på P-kjedet for å bli en validator.",
-        "warning_2": "Du må ha minst {0} LUXX på P-kjedet for å bli en delegator.",
+        "warning_1": "Du må ha minst {0} LUX på P-kjedet for å bli en validator.",
+        "warning_2": "Du må ha minst {0} LUX på P-kjedet for å bli en delegator.",
         "validate_card": {
             "title": "Valider",
             "desc": "Du har en Luxlanche-node som du vil satse med.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Krysskjedeoverføring",
-            "desc": "Satsing krever LUXX på P-kjedet. Overfør polletter mellom X og P.",
+            "desc": "Satsing krever LUX på P-kjedet. Overfør polletter mellom X og P.",
             "submit": "Overfør"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Sats beløp",
-                "desc": "Mengden LUXX som låses for satsing."
+                "desc": "Mengden LUX som låses for satsing."
             },
             "fee": {
                 "label": "Delegeringsavgift",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Startdatoen må være i fremtiden og sluttdatoen må være etter startdatoen.",
-                "amount": "Innsatsbeløpet må være minst {0} LUXX",
+                "amount": "Innsatsbeløpet må være minst {0} LUX",
                 "id": "Ugyldig nodenr. Må starte med \"NodeID-”",
                 "address": "Ugyldig belønningsadresse."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Sats beløp",
-                    "desc": "Mengden LUXX som låses for satsing.",
-                    "desc2": "Det tilgjengelige delegeringsbeløpet for denne noden er is {0} LUXX"
+                    "desc": "Mengden LUX som låses for satsing.",
+                    "desc2": "Det tilgjengelige delegeringsbeløpet for denne noden er is {0} LUX"
                 },
                 "reward": {
                     "label": "Belønningsadresse",
@@ -345,7 +345,7 @@
                 "max_dur": "Maksimal innsatsperiode er 1 år.",
                 "no_node": "Du må spesifisere en validator.",
                 "val_end": "Delegeringens sluttdato kan ikke være lenger enn validatorens sluttdato.",
-                "amt": "Delegeringsbeløpet må være minst {0} LUXX."
+                "amt": "Delegeringsbeløpet må være minst {0} LUX."
             },
             "summary": {
                 "duration": "Innsatsvarighet",

@@ -67,7 +67,7 @@ export default {
         //     return this.balanceItem.id;
         // },
         // max(){
-        //     return this.balanceItem.data.luxilableBalance;
+        //     return this.balanceItem.data.availableBalance;
         // },
         canMax() {
             return this.maxVal != null

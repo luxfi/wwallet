@@ -160,7 +160,7 @@ export default class EVMInputDropdown extends Vue {
         return this.token.balanceBig
     }
 
-    // The luxilable balance of the selected asset
+    // The available balance of the selected asset
     get balanceBN(): BN {
         if (this.token === 'native') {
             return this.luxBalanceBN

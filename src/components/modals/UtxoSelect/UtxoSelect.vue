@@ -28,7 +28,7 @@
                 </table>
             </div>
             <div class="tot">
-                <label>{{ $t('modal.utxo_select.luxilable') }}</label>
+                <label>{{ $t('modal.utxo_select.available') }}</label>
                 <p>{{ selectedBalanceText }} LUX</p>
             </div>
             <v-btn class="button_secondary" block depressed small @click="close">

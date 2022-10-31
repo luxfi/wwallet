@@ -12,7 +12,7 @@
                             step="1"
                             inputmode="numeric"
                             @input="onInputChange"
-                            v-model="luxilableSpace"
+                            v-model="availableSpace"
                         />
                         <p>LUX</p>
                     </div>
@@ -112,7 +112,7 @@ export default class FilterSettings extends Vue {
     minDuration = 14
     maxFee = 10
     minUptime = 90
-    luxilableSpace = 25
+    availableSpace = 25
     activeFilter: null | ValidatorListFilter = null
     count = 0
     timeout: NodeJS.Timeout | null = null
@@ -162,7 +162,7 @@ export default class FilterSettings extends Vue {
             minDuration: this.minDuration,
             maxFee: this.maxFee,
             minUptime: this.minUptime,
-            luxilableSpace: this.luxilableSpace,
+            availableSpace: this.availableSpace,
         }
     }
 

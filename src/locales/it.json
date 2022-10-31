@@ -85,7 +85,7 @@
         "nftcol": "NFT",
         "nftempty": "Non hai ancora collezionato alcun token non fungibile.",
         "locked": "Bloccato",
-        "info2": "Ho comprato delle monete durante la vendita pubblica. Dove sono i miei LUXX?",
+        "info2": "Ho comprato delle monete durante la vendita pubblica. Dove sono i miei LUX?",
         "info2_desc": "Questo wallet è connesso alla rete di test Everest di Luxlanche. Il tuo acquisto apparirà nel wallet dopo il lancio della mainnet di Luxlanche.",
         "hover1": "Vedi il codice QR dell'indirizzo",
         "hover2": "Stampa",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Mostra ripartizione",
             "hide": "Nascondi ripartizione",
-            "luxilable": "Disponibile",
+            "available": "Disponibile",
             "locked": "Bloccato",
             "locked_stake": "Bloccato per lo staking",
             "stake": "Staking",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Guadagna",
-        "desc": "Puoi guadagnare più LUXX utilizzando i tuoi token esistenti nello staking.",
+        "desc": "Puoi guadagnare più LUX utilizzando i tuoi token esistenti nello staking.",
         "subtitle1": "Validare",
         "subtitle2": "Delega",
         "subtitle3": "Trasferimento tra chain",
         "subtitle4": "Ricompense stimate",
-        "warning_1": "Devi avere almeno {0} LUXX sulla P-Chain per diventare un validatore.",
-        "warning_2": "Devi avere almeno {0} LUXX sulla P-chain per delegare.",
+        "warning_1": "Devi avere almeno {0} LUX sulla P-Chain per diventare un validatore.",
+        "warning_2": "Devi avere almeno {0} LUX sulla P-chain per delegare.",
         "validate_card": {
             "title": "Validare",
             "desc": "Hai un nodo Luxlanche con cui vuoi fare staking.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Trasferimento tra chain",
-            "desc": "Per lo staking è necessario avere LUXX sulla P-chain. Trasferisci token tra X e P.",
+            "desc": "Per lo staking è necessario avere LUX sulla P-chain. Trasferisci token tra X e P.",
             "submit": "Trasferimento"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Importo dello staking",
-                "desc": "La quantità di LUXX da bloccare per lo staking."
+                "desc": "La quantità di LUX da bloccare per lo staking."
             },
             "fee": {
                 "label": "Commissione di delega",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "La data di inizio deve essere futura e la data di fine deve essere successiva alla data di inizio.",
-                "amount": "L'importo dello staking deve essere almeno {0} LUXX",
+                "amount": "L'importo dello staking deve essere almeno {0} LUX",
                 "id": "ID nodo non valido. Deve iniziare con \"NodeID-\"",
                 "address": "Indirizzo per le ricompense non valido."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Importo dello staking",
-                    "desc": "La quantità di LUXX da bloccare per lo staking.",
-                    "desc2": "L'importo della delega disponibile per questo nodo è {0} LUXX"
+                    "desc": "La quantità di LUX da bloccare per lo staking.",
+                    "desc2": "L'importo della delega disponibile per questo nodo è {0} LUX"
                 },
                 "reward": {
                     "label": "Indirizzo per le ricompense",
@@ -345,7 +345,7 @@
                 "max_dur": "La durata massima dello staking è di 1 anno.",
                 "no_node": "Devi specificare un validatore.",
                 "val_end": "La data finale della delega non può superare la data finale del validatore.",
-                "amt": "L'importo della delega deve essere almeno {0} LUXX."
+                "amt": "L'importo della delega deve essere almeno {0} LUX."
             },
             "summary": {
                 "duration": "Durata dello staking",

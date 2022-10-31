@@ -85,7 +85,7 @@
         "nftcol": "Tokens Não Fungíveis",
         "nftempty": "Você não coletou qualquer token não fungível.",
         "locked": "Bloqueado",
-        "info2": "Eu comprei moedas na Venda de Tokens. Onde está meu LUXX?",
+        "info2": "Eu comprei moedas na Venda de Tokens. Onde está meu LUX?",
         "info2_desc": "Esta wallet está conectada à rede de teste Luxlanche Everest. Sua compra aparecerá na wallet após o lançamento da Mainnet do Luxlanche.",
         "hover1": "Ver o endereço do código QR",
         "hover2": "Imprimir",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Mostrar o detalhamento",
             "hide": "Ocultar o detalhamento",
-            "luxilable": "Disponível",
+            "available": "Disponível",
             "locked": "Bloqueado",
             "locked_stake": "Apostável Bloqueado",
             "stake": "Aposta",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Ganhar",
-        "desc": "Você pode ganhar mais LUXX apostando seus tokens existentes.",
+        "desc": "Você pode ganhar mais LUX apostando seus tokens existentes.",
         "subtitle1": "Validar",
         "subtitle2": "Delegar",
         "subtitle3": "Transferência de Cadeia Cruzada",
         "subtitle4": "Recompensas Estimadas",
-        "warning_1": "Você deve ter, pelo menos, {0} LUXX na 'P chain' para se tornar um validador.",
-        "warning_2": "Você deve ter, pelo menos, {0} LUXX na 'P chain' para se tornar um delegado.",
+        "warning_1": "Você deve ter, pelo menos, {0} LUX na 'P chain' para se tornar um validador.",
+        "warning_2": "Você deve ter, pelo menos, {0} LUX na 'P chain' para se tornar um delegado.",
         "validate_card": {
             "title": "Validar",
             "desc": "Você tem um nó Luxlanche com o qual você deseja apostar.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transferência de Cadeia Cruzada",
-            "desc": "Apostar requer LUXX na 'P chain'. Transfira tokens entre X e P.",
+            "desc": "Apostar requer LUX na 'P chain'. Transfira tokens entre X e P.",
             "submit": "Transferência"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Valor de Aposta",
-                "desc": "O valor de LUXX que será bloqueado para aposta."
+                "desc": "O valor de LUX que será bloqueado para aposta."
             },
             "fee": {
                 "label": "Taxa de Delegação",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "A data de início deve estar no futuro e a data de término deve ser posterior ao início.",
-                "amount": "O valor da aposta deve ser pelo menos {0} LUXX",
+                "amount": "O valor da aposta deve ser pelo menos {0} LUX",
                 "id": "O ID do nó é inválido. Isso deve começar com \"NodeID-\"",
                 "address": "O endereço de recompensa é inválido."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Valor de Aposta",
-                    "desc": "O valor de LUXX que será bloqueado para aposta.",
-                    "desc2": "O valor de delegação disponível para este nó é {0} LUXX"
+                    "desc": "O valor de LUX que será bloqueado para aposta.",
+                    "desc2": "O valor de delegação disponível para este nó é {0} LUX"
                 },
                 "reward": {
                     "label": "Endereço da Recompensa",
@@ -345,7 +345,7 @@
                 "max_dur": "A duração máxima de aposta é 1 ano.",
                 "no_node": "Você deve especificar um validador.",
                 "val_end": "A data de término da delegação não pode ser maior que a data de término do validador.",
-                "amt": "O valor da delegação deve ser pelo menos {0} LUXX."
+                "amt": "O valor da delegação deve ser pelo menos {0} LUX."
             },
             "summary": {
                 "duration": "Duração da Aposta",

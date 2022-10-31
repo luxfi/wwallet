@@ -50,7 +50,7 @@
             <div class="alt_info">
                 <div class="alt_non_breakdown" v-if="!isBreakdown">
                     <div>
-                        <label>{{ $t('top.balance.luxilable') }}</label>
+                        <label>{{ $t('top.balance.available') }}</label>
                         <p>{{ unlockedText }} LUX</p>
                     </div>
                     <div v-if="hasLocked">
@@ -68,11 +68,11 @@
                 </div>
                 <div class="alt_breakdown" v-else>
                     <div>
-                        <label>{{ $t('top.balance.luxilable') }} (X)</label>
+                        <label>{{ $t('top.balance.available') }} (X)</label>
                         <p>{{ avmUnlocked | cleanLuxxBN }} LUX</p>
-                        <label>{{ $t('top.balance.luxilable') }} (P)</label>
+                        <label>{{ $t('top.balance.available') }} (P)</label>
                         <p>{{ platformUnlocked | cleanLuxxBN }} LUX</p>
-                        <label>{{ $t('top.balance.luxilable') }} (C)</label>
+                        <label>{{ $t('top.balance.available') }} (C)</label>
                         <p>{{ evmUnlocked | cleanLuxxBN }} LUX</p>
                     </div>
                     <div v-if="hasLocked">
@@ -110,7 +110,7 @@ import Tooltip from '@/components/misc/Tooltip.vue'
 
 import Big from 'big.js'
 import { BN } from 'luxdefi/dist'
-import { ONELUXX } from 'luxdefi/dist/utils'
+import { ONELUX } from 'luxdefi/dist/utils'
 import { bnToBig } from '@/helpers/helper'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -125,7 +125,7 @@ import UtxosBreakdownModal from '@/components/modals/UtxosBreakdown/UtxosBreakdo
     },
     filters: {
         cleanLuxxBN(val: BN) {
-            let big = Big(val.toString()).div(Big(ONELUXX.toString()))
+            let big = Big(val.toString()).div(Big(ONELUX.toString()))
             return big.toLocaleString()
         },
     },
@@ -233,7 +233,7 @@ export default class BalanceCard extends Vue {
         return ''
     }
 
-    // Locked balance is the sum of locked LUXX tokens on X and P chain
+    // Locked balance is the sum of locked LUX tokens on X and P chain
     get balanceTextLocked(): string {
         if (this.isUpdateBalance) return '--'
 
@@ -275,7 +275,7 @@ export default class BalanceCard extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.platformBalance.luxilable
+        return this.platformBalance.available
     }
 
     get platformMultisig(): BN {

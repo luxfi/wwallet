@@ -1,1 +1,1 @@
-export type CurrencyType = 'USD' | 'LUXX'
+export type CurrencyType = 'USD' | 'LUX'

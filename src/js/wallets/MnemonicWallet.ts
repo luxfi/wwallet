@@ -198,7 +198,7 @@ export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet
         )
     }
 
-    // Delegates LUXX to the given node ID
+    // Delegates LUX to the given node ID
     async delegate(
         nodeID: string,
         amt: BN,

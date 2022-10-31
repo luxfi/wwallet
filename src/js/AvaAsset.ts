@@ -10,7 +10,7 @@ class LuxAsset {
     amount: BN
     amountLocked: BN
     amountMultisig: BN
-    // LUXX P chain, Wallet Staking
+    // LUX P chain, Wallet Staking
     amountExtra: BN
     private readonly pow: Big
     constructor(id: string, name: string, symbol: string, denomination: number) {

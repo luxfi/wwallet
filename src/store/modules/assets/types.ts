@@ -1,6 +1,6 @@
 import { UTXO, UTXOSet } from 'luxdefi/dist/apis/avm'
 
-import LuxAsset from '@/js/LuxAsset'
+import LuxAsset from 'luxdefi/js/LuxAsset'
 import { BN } from 'luxdefi'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletBalanceDict } from '@/store/types'

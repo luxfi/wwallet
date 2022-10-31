@@ -85,7 +85,7 @@
         "nftcol": "NFTs",
         "nftempty": "No has recollit cap token no fungible.",
         "locked": "Tancat",
-        "info2": "Vaig comprar monedes durant la venta de tokens. On es troben els meus LUXX?",
+        "info2": "Vaig comprar monedes durant la venta de tokens. On es troben els meus LUX?",
         "info2_desc": "Aquesta cartera es troba connectada a la xarxa de proves d'Luxlanche Everest. La teva compra apareixerà a la cartera després del llançament de la xarxa principal d'Luxlanche.",
         "hover1": "Veure el codi QR de l'adreça",
         "hover2": "Imprimir",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Mostra el desglossament",
             "hide": "Amaga el desglossament",
-            "luxilable": "Disponible",
+            "available": "Disponible",
             "locked": "Tancat",
             "locked_stake": "Participacions tancades",
             "stake": "Participant",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Guanya",
-        "desc": "Podeu guanyar més LUXX recopilant fitxes existents.",
+        "desc": "Podeu guanyar més LUX recopilant fitxes existents.",
         "subtitle1": "Validar",
         "subtitle2": "Delegar",
         "subtitle3": "Transferència mixta en cadena",
         "subtitle4": "Premis estimats",
-        "warning_1": "Heu de disposar de com a mínim {0} LUXX a la cadena P per tornar-vos validador.",
-        "warning_2": "Heu de disposar de com a mínim {0} LUXX a la cadena P per tornar-vos delegat.",
+        "warning_1": "Heu de disposar de com a mínim {0} LUX a la cadena P per tornar-vos validador.",
+        "warning_2": "Heu de disposar de com a mínim {0} LUX a la cadena P per tornar-vos delegat.",
         "validate_card": {
             "title": "Validar",
             "desc": "Disposeu d'un node Luxlanche amb el qual voleu partipar.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Transferència mixta en cadena",
-            "desc": "La participació requereix LUXX a la cadena P. Transferir les fitxes entre X i P.",
+            "desc": "La participació requereix LUX a la cadena P. Transferir les fitxes entre X i P.",
             "submit": "Transferir"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Import de participació",
-                "desc": "L'import d'LUXX per tancar la participació."
+                "desc": "L'import d'LUX per tancar la participació."
             },
             "fee": {
                 "label": "Taxa de Delegació",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "La data d'inici ha de ser al futur proper i la data de finalització ha de ser posterior a la data d'inici.",
-                "amount": "L'import de participació ha de ser de com a mínim {0} LUXX",
+                "amount": "L'import de participació ha de ser de com a mínim {0} LUX",
                 "id": "ID de node invàlid. Ha de començar per \"NodeId-\"",
                 "address": "Adreça de recompensa invàlida."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Import de participació",
-                    "desc": "L'import d'LUXX per tancar la participació.",
-                    "desc2": "La quantitat de delegació disponible per aquest node és {0} LUXX"
+                    "desc": "L'import d'LUX per tancar la participació.",
+                    "desc2": "La quantitat de delegació disponible per aquest node és {0} LUX"
                 },
                 "reward": {
                     "label": "Adreça de recompensa",
@@ -345,7 +345,7 @@
                 "max_dur": "La durada màxima de la participació és d'1 any.",
                 "no_node": "Heu d'especificar un validador.",
                 "val_end": "La data de finalització de la delegació no pot ser més llarga que la data de finalització del validador.",
-                "amt": "L'import de participació ha de ser de com a mínim {0} LUXX."
+                "amt": "L'import de participació ha de ser de com a mínim {0} LUX."
             },
             "summary": {
                 "duration": "Durada de la participació",

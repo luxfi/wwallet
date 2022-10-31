@@ -21,7 +21,7 @@ module.exports = {
         },
     },
     pwa: {
-        name: 'LUXX Wallet',
+        name: 'LUX Wallet',
         manifestOptions: {
             start_url: '/',
         },

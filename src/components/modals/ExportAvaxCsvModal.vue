@@ -1,7 +1,7 @@
 <template>
-    <modal ref="modal" title="Export LUXX Transfers" class="modal_main">
+    <modal ref="modal" title="Export LUX Transfers" class="modal_main">
         <div class="csv_modal_body">
-            <p>Only X chain LUXX transactions will be exported.</p>
+            <p>Only X chain LUX transactions will be exported.</p>
             <p class="err" v-if="error">{{ error }}</p>
             <v-btn
                 class="button_secondary"
@@ -141,7 +141,7 @@ export default class ExportLuxxCsvModal extends Vue {
         }
 
         let csvRows = rows.map((row) => luxTransferDataToCsvRow(row))
-        let headers = ['Tx ID', 'Date', 'Memo', 'From', 'To', 'Sent/Received', 'Amount (LUXX)']
+        let headers = ['Tx ID', 'Date', 'Memo', 'From', 'To', 'Sent/Received', 'Amount (LUX)']
         let allRows = [headers, ...csvRows]
 
         let csvContent = createCSVContent(allRows)

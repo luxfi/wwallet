@@ -8,7 +8,7 @@
         "desc": "Luxlanche Cüzdan, dijital varlıklarınızı saklamaya yönelik basit, güvenli, gözetimsiz bir cüzdandır.",
         "access": {
             "title": "Tekrar Hoşgeldiniz!",
-            "desc": "Mevcut LUXX cüzdanınızı buradan açabilirsiniz.",
+            "desc": "Mevcut LUX cüzdanınızı buradan açabilirsiniz.",
             "submit": "Cüzdanı Aç"
         },
         "create": {
@@ -96,8 +96,8 @@
         "nftcol": "NFT'ler",
         "nftempty": "Hiç NFT sahibi değilsiniz.",
         "locked": "Kilitli",
-        "info2": "Token satışından LUXX aldım. Almış olduğum LUXX'lar nerede?",
-        "info2_desc": "Bu cüzdan Luxlanche Everest test ağına bağlandı. Satın almış olduğunuz LUXX'lar Luxlanche Ana Ağı hayata geçince cüzdanınızda görünebilir olacak.",
+        "info2": "Token satışından LUX aldım. Almış olduğum LUX'lar nerede?",
+        "info2_desc": "Bu cüzdan Luxlanche Everest test ağına bağlandı. Satın almış olduğunuz LUX'lar Luxlanche Ana Ağı hayata geçince cüzdanınızda görünebilir olacak.",
         "hover1": "Adresin QR Kodunu Görüntüle",
         "hover2": "Yazdır",
         "hover3": "Kopyala",
@@ -105,7 +105,7 @@
         "balance": {
             "show": "Dağılımı Göster",
             "hide": "Dağılımı Gizle",
-            "luxilable": "Uygun",
+            "available": "Uygun",
             "locked": "Kilitli",
             "locked_stake": "Kilitli Stake Edilebilirler",
             "stake": "Staking",
@@ -119,7 +119,7 @@
     "transfer": {
         "title": "Gönder",
         "no_cash": "İşlem yapabilmek için cüzdanınızda varlığa sahip olmalısınız.",
-        "faucet": "LUXX musluğunu kontrol ettiniz mi?",
+        "faucet": "LUX musluğunu kontrol ettiniz mi?",
         "to": "Gönderilecek Cüzdan Adresi",
         "fees": "Gönderim Ücreti",
         "fee_tx": "İşlem Masrafı",
@@ -190,13 +190,13 @@
     },
     "earn": {
         "title": "Kazan",
-        "desc": "Var olan coinleriniz stake yaparak daha fazla LUXX kazanabilirsiniz.",
+        "desc": "Var olan coinleriniz stake yaparak daha fazla LUX kazanabilirsiniz.",
         "subtitle1": "Doğrula",
         "subtitle2": "Devret",
         "subtitle3": "Çapraz Zincir Transferi",
         "subtitle4": "Tahmini Ödüller",
-        "warning_1": "Doğrulayıcı olabilmeniz için P zincirinde en az {0} LUXX'ınızın olması gerekir.",
-        "warning_2": "Devredici olabilmeniz için P zincirinde en az {0} LUXX'ınızın olması gerekir.",
+        "warning_1": "Doğrulayıcı olabilmeniz için P zincirinde en az {0} LUX'ınızın olması gerekir.",
+        "warning_2": "Devredici olabilmeniz için P zincirinde en az {0} LUX'ınızın olması gerekir.",
         "validate_card": {
             "title": "Doğrula",
             "desc": "Stake yapmak istediğiniz bir Luxlanche düğümünüz var.",
@@ -209,7 +209,7 @@
         },
         "transfer_card": {
             "title": "Çapraz Zincir Transferi",
-            "desc": "Staking, P zincirinde LUXX gerektirir. X ve P arasında coin transferi yap.",
+            "desc": "Staking, P zincirinde LUX gerektirir. X ve P arasında coin transferi yap.",
             "submit": "Transfer"
         },
         "rewards_card": {
@@ -260,7 +260,7 @@
             },
             "amount": {
                 "label": "Stake Miktarı",
-                "desc": "Stake için kilitlenecek LUXX miktarı."
+                "desc": "Stake için kilitlenecek LUX miktarı."
             },
             "fee": {
                 "label": "Devretme Masrafı",
@@ -301,7 +301,7 @@
             "errs": {
                 "duration_warn": "UYARI: Delegatörleri kabul etmek için validasyon sürenizin en az 14 günü olmalıdır.",
                 "date": "Başlangıç tarihi gelecekte olmalıdır ve bitiş tarihi de başlangıç tarihinden sonra olmalıdır.",
-                "amount": "Stake miktarı en az {0} LUXX olmalıdır",
+                "amount": "Stake miktarı en az {0} LUX olmalıdır",
                 "id": "Geçersiz Düğüm Kimliği.",
                 "fee": "Delegasyon ücretiniz en az {0} Luxx olmalıdır",
                 "address": "Geçersiz adres. Ödül adresi geçerli bir P zinciri adresi olmalıdır."
@@ -352,8 +352,8 @@
                 },
                 "amount": {
                     "label": "Stake Miktarı",
-                    "desc": "Stake için kilitlenecek LUXX miktarı.",
-                    "desc2": "Bu düğüme yönelik uygun devretme miktarı {0} LUXX'tır"
+                    "desc": "Stake için kilitlenecek LUX miktarı.",
+                    "desc2": "Bu düğüme yönelik uygun devretme miktarı {0} LUX'tır"
                 },
                 "reward": {
                     "label": "Ödül Adresi",
@@ -378,7 +378,7 @@
                 "max_dur": "Maksimum stake süresi 1 yıldır.",
                 "no_node": "Bir doğrulayıcı belirtmelisiniz.",
                 "val_end": "Devretme bitiş tarihi, doğrulayıcının bitiş tarihinden daha uzun olamaz.",
-                "amt": "Devretme miktarı en az {0} LUXX olmalıdır."
+                "amt": "Devretme miktarı en az {0} LUX olmalıdır."
             },
             "summary": {
                 "duration": "Stake Süresi",

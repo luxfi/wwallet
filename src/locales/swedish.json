@@ -85,7 +85,7 @@
         "nftcol": "NFT:s",
         "nftempty": "Du har inte samlat in några icke fungibla tokens.",
         "locked": "Låst",
-        "info2": "Jag köpte mynt i Tokenförsäljningen. Var är mina LUXX?",
+        "info2": "Jag köpte mynt i Tokenförsäljningen. Var är mina LUX?",
         "info2_desc": "Denna plånbok är ansluten till Luxlanche Everest testnätverk. Ditt köp kommer att visas i plånboken efter lanseringen av Luxlanche Mainnet.",
         "hover1": "Visa Adress QR-kod",
         "hover2": "Skriv ut",
@@ -94,7 +94,7 @@
         "balance": {
             "show": "Visa Uppdelning",
             "hide": "Göm Uppdelning",
-            "luxilable": "Tillgänglig",
+            "available": "Tillgänglig",
             "locked": "Låst",
             "locked_stake": "Låst Satsningsbar",
             "stake": "Satsning",
@@ -172,13 +172,13 @@
     },
     "earn": {
         "title": "Tjäna",
-        "desc": "Du kan tjäna mer LUXX genom att placera dina befintliga tokens.",
+        "desc": "Du kan tjäna mer LUX genom att placera dina befintliga tokens.",
         "subtitle1": "Validera",
         "subtitle2": "Delegera",
         "subtitle3": "Cross Chain Överförelser",
         "subtitle4": "Beräknade belöningar",
-        "warning_1": "Du måste ha minst {0} LUXX i P-kedjan för att bli validerare.",
-        "warning_2": "Du måste ha minst {0} LUXX i P-kedjan för att bli delegator.",
+        "warning_1": "Du måste ha minst {0} LUX i P-kedjan för att bli validerare.",
+        "warning_2": "Du måste ha minst {0} LUX i P-kedjan för att bli delegator.",
         "validate_card": {
             "title": "Validera",
             "desc": "Du har en Luxlanche-nod som du vill placera med.",
@@ -191,7 +191,7 @@
         },
         "transfer_card": {
             "title": "Cross Chain Överföring",
-            "desc": "Satsa kräver LUXX i P-kedjan. Överför tokens mellan X och P.",
+            "desc": "Satsa kräver LUX i P-kedjan. Överför tokens mellan X och P.",
             "submit": "Överföring"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Satsningsbelopp",
-                "desc": "Mängden LUXX att låsa för satsning."
+                "desc": "Mängden LUX att låsa för satsning."
             },
             "fee": {
                 "label": "Delegeringsavgift",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Startdatum måste vara i framtiden och slutdatum måste vara efter startdatum.",
-                "amount": "Insatsbeloppet måste vara minst {0} LUXX",
+                "amount": "Insatsbeloppet måste vara minst {0} LUX",
                 "id": "Ogiltig Node ID. den måste börja med \"NodeID-\"",
                 "address": "Ogiltig belöningsadress."
             }
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Satsningsbelopp",
-                    "desc": "Antalet LUXX att låsas för satsning.",
-                    "desc2": "Det tillgängliga delegerade beloppet för denna node är {0} LUXX"
+                    "desc": "Antalet LUX att låsas för satsning.",
+                    "desc2": "Det tillgängliga delegerade beloppet för denna node är {0} LUX"
                 },
                 "reward": {
                     "label": "Belöningsadress",
@@ -345,7 +345,7 @@
                 "max_dur": "Högsta satsningstid är 1 år.",
                 "no_node": "Du måste ange en validerare.",
                 "val_end": "Delegationens slutdatum kan inte vara längre än validerings slutdatum.",
-                "amt": "Delegationsbeloppet måste vara minst {0} LUXX."
+                "amt": "Delegationsbeloppet måste vara minst {0} LUX."
             },
             "summary": {
                 "duration": "Satsningstid",
