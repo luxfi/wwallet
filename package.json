@@ -1,7 +1,7 @@
 {
-    "name": "wallet",
+    "name": "@luxdefi/wallet",
     "private": true,
-    "version": "0.1.4",
+    "version": "0.1.0",
     "engines": {
         "node": "15.x"
     },
@@ -18,8 +18,8 @@
         "test": "jest --verbose ./tests"
     },
     "dependencies": {
-        "@avalabs/avalanche-wallet-sdk": "0.11.1-beta.3",
-        "@avalabs/vue_components": "0.10.0",
+        "@luxdefi/luxdefi-wallet-sdk": "0.11.1-beta.3",
+        "@luxdefi/vue_components": "0.10.0",
         "@ethereumjs/common": "2.0.0",
         "@ethereumjs/tx": "3.0.0",
         "@fortawesome/fontawesome-svg-core": "1.2.26",
@@ -31,7 +31,7 @@
         "@ledgerhq/hw-transport-u2f": "5.22.0",
         "@ledgerhq/hw-transport-webhid": "^5.51.1",
         "@ledgerhq/hw-transport-webusb": "5.22.0",
-        "@obsidiansystems/hw-app-avalanche": "0.2.2",
+        "@obsidiansystems/hw-app-luxdefi": "0.2.2",
         "@openzeppelin/contracts": "^4.4.2",
         "@types/big.js": "4.0.5",
         "@types/create-hash": "1.2.2",
@@ -44,7 +44,7 @@
         "@types/vue-datetime": "1.0.0",
         "@zxing/library": "0.15.2",
         "abi-decoder": "2.4.0",
-        "avalanche": "3.10.1",
+        "luxdefi": "3.10.1",
         "axios": "0.21.2",
         "big.js": "5.2.2",
         "bip32": "2.0.5",

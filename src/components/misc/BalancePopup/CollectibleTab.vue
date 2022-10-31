@@ -19,7 +19,7 @@ import 'reflect-metadata'
 import { Vue, Prop, Component } from 'vue-property-decorator'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
 import { NftFamilyDict } from '@/store/modules/assets/types'
-import { UTXO } from 'avalanche/dist/apis/avm'
+import { UTXO } from 'luxdefi/dist/apis/avm'
 
 import CollectibleFamily from '@/components/misc/BalancePopup/CollectibleFamily.vue'
 @Component({

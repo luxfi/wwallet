@@ -25,7 +25,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Ref, Model } from 'vue-property-decorator'
 
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import AvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
 
 @Component({
@@ -37,11 +37,11 @@ import AvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
 export default class BalanceDropdown extends Vue {
     isPopup: boolean = false
 
-    @Prop({ default: () => [] }) disabled_assets!: AvaAsset[]
+    @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
     @Prop({ default: false }) disabled!: boolean
-    @Model('change', { type: AvaAsset }) readonly asset!: AvaAsset
+    @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
 
-    get assetArray(): AvaAsset[] {
+    get assetArray(): LuxAsset[] {
         // return this.$store.getters.walletAssetsArray
         return this.$store.getters['Assets/walletAssetsArray']
     }
@@ -78,7 +78,7 @@ export default class BalanceDropdown extends Vue {
         // this.isPopup = false
     }
 
-    onselect(asset: AvaAsset) {
+    onselect(asset: LuxAsset) {
         // this.selected = asset;
         // this.balancePopup.isActive = false
         // this.isPopup = false

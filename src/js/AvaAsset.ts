@@ -1,8 +1,8 @@
-// Manages BigNumber and Ava conversion and arithmetic
-import { BN } from 'avalanche'
+// Manages BigNumber and Lux conversion and arithmetic
+import { BN } from 'luxdefi'
 import Big from 'big.js'
 
-class AvaAsset {
+class LuxAsset {
     id: string
     name: string
     symbol: string
@@ -10,7 +10,7 @@ class AvaAsset {
     amount: BN
     amountLocked: BN
     amountMultisig: BN
-    // AVAX P chain, Wallet Staking
+    // LUXX P chain, Wallet Staking
     amountExtra: BN
     private readonly pow: Big
     constructor(id: string, name: string, symbol: string, denomination: number) {
@@ -78,4 +78,4 @@ class AvaAsset {
     }
 }
 
-export default AvaAsset
+export default LuxAsset

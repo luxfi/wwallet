@@ -18,7 +18,7 @@
                 type="submit"
                 :loading="isLoading"
                 :disabled="!canSubmit"
-                class="addKeyBut button_primary ava_button"
+                class="addKeyBut button_primary lux_button"
                 depressed
                 block
             >

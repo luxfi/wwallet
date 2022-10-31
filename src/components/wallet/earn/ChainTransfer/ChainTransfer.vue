@@ -119,10 +119,10 @@
 import 'reflect-metadata'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Dropdown from '@/components/misc/Dropdown.vue'
-import AvaxInput from '@/components/misc/AvaxInput.vue'
-import AvaAsset from '@/js/AvaAsset'
-import { BN } from 'avalanche'
-import { avm, cChain, pChain } from '@/AVA'
+import LuxxInput from '@/components/misc/LuxxInput.vue'
+import LuxAsset from '@/js/LuxAsset'
+import { BN } from 'luxdefi'
+import { avm, cChain, pChain } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Spinner from '@/components/misc/Spinner.vue'
 import ChainCard from '@/components/wallet/earn/ChainTransfer/ChainCard.vue'
@@ -140,7 +140,7 @@ import {
     GasHelper,
     Utils,
     Big,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxdefi/luxdefi-wallet-sdk'
 
 const IMPORT_DELAY = 5000 // in ms
 const BALANCE_DELAY = 2000 // in ms
@@ -150,7 +150,7 @@ const BALANCE_DELAY = 2000 // in ms
     components: {
         Spinner,
         Dropdown,
-        AvaxInput,
+        LuxxInput,
         ChainCard,
         ChainSwapForm,
         TxStateCard,
@@ -197,9 +197,9 @@ export default class ChainTransfer extends Vue {
         this.updateBaseFee()
     }
 
-    get ava_asset(): AvaAsset | null {
-        let ava = this.$store.getters['Assets/AssetAVA']
-        return ava
+    get lux_asset(): LuxAsset | null {
+        let lux = this.$store.getters['Assets/AssetLUX']
+        return lux
     }
 
     get platformBalance() {
@@ -207,17 +207,17 @@ export default class ChainTransfer extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.platformBalance.available
+        return this.platformBalance.luxilable
     }
 
     get avmUnlocked(): BN {
-        if (!this.ava_asset) return new BN(0)
-        return this.ava_asset.amount
+        if (!this.lux_asset) return new BN(0)
+        return this.lux_asset.amount
     }
 
     get evmUnlocked(): BN {
         let balRaw = this.wallet.ethBalance
-        return Utils.avaxCtoX(balRaw)
+        return Utils.luxCtoX(balRaw)
     }
 
     get balanceBN(): BN {
@@ -235,7 +235,7 @@ export default class ChainTransfer extends Vue {
     }
 
     get formAmtText() {
-        return Utils.bnToAvaxX(this.formAmt)
+        return Utils.bnToLuxxX(this.formAmt)
     }
 
     get fee(): Big {
@@ -248,9 +248,9 @@ export default class ChainTransfer extends Vue {
 
     getFee(chain: ChainIdType, isExport: boolean): Big {
         if (chain === 'X') {
-            return Utils.bnToBigAvaxX(avm.getTxFee())
+            return Utils.bnToBigLuxxX(avm.getTxFee())
         } else if (chain === 'P') {
-            return Utils.bnToBigAvaxX(pChain.getTxFee())
+            return Utils.bnToBigLuxxX(pChain.getTxFee())
         } else {
             const fee = isExport
                 ? GasHelper.estimateExportGasFeeFromMockTx(
@@ -262,7 +262,7 @@ export default class ChainTransfer extends Vue {
                 : GasHelper.estimateImportGasFeeFromMockTx(1, 1)
 
             const totFeeWei = this.baseFee.mul(new BN(fee))
-            return Utils.bnToBigAvaxC(totFeeWei)
+            return Utils.bnToBigLuxxC(totFeeWei)
         }
     }
 
@@ -271,7 +271,7 @@ export default class ChainTransfer extends Vue {
     }
 
     /**
-     * Returns the import fee in nAVAX
+     * Returns the import fee in nLUXX
      */
     get importFeeBN(): BN {
         return Utils.bigToBN(this.importFee, 9)
@@ -286,7 +286,7 @@ export default class ChainTransfer extends Vue {
     }
 
     /**
-     * The maximum amount that can be transferred in nAVAX
+     * The maximum amount that can be transferred in nLUXX
      */
     get maxAmt(): BN {
         let max = this.balanceBN.sub(this.feeBN)

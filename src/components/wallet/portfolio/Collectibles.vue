@@ -32,7 +32,7 @@ import CollectibleFamilyRow from '@/components/wallet/portfolio/CollectibleFamil
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
-import { AvaNftFamily } from '@/js/AvaNftFamily'
+import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import AddERC721TokenModal from '@/components/modals/AddERC721TokenModal.vue'
 import ERC721Token from '@/js/ERC721Token'
@@ -78,7 +78,7 @@ export default class Collectibles extends Vue {
     }
 
     get nftFamsArray() {
-        let fams: AvaNftFamily[] = this.$store.state.Assets.nftFams
+        let fams: LuxNftFamily[] = this.$store.state.Assets.nftFams
 
         // If search query
         if (this.search) {

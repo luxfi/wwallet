@@ -15,7 +15,7 @@
                 ></v-text-field>
                 <p class="err">{{ error }}</p>
                 <v-btn
-                    class="ava_button button_primary"
+                    class="lux_button button_primary"
                     @click="access"
                     :loading="isLoading"
                     :disabled="!canSubmit"
@@ -33,8 +33,8 @@ import { Vue, Component } from 'vue-property-decorator'
 import { ImportKeyfileInput } from '@/store/types'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { privateToAddress } from 'ethereumjs-util'
-import { bintools } from '@/AVA'
-import { Buffer } from 'avalanche'
+import { bintools } from 'luxdefi'
+import { Buffer } from 'luxdefi'
 
 @Component
 export default class PrivateKey extends Vue {
@@ -77,7 +77,7 @@ export default class PrivateKey extends Vue {
 .pass {
     background-color: var(--bg) !important;
 }
-.ava_button {
+.lux_button {
     width: 100%;
     margin-bottom: 22px;
 }

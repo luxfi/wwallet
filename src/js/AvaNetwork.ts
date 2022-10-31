@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let network_id: number = 0
 
-class AvaNetwork {
+class LuxNetwork {
     name: string
     id: number
     protocol: string
@@ -117,4 +117,4 @@ class AvaNetwork {
     }
 }
 
-export { AvaNetwork }
+export { LuxNetwork }

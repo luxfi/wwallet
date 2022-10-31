@@ -1,4 +1,4 @@
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 export interface TransactionValueDict {
     [address: string]: number
 }

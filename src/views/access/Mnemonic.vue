@@ -8,7 +8,7 @@
             <div class="button_container">
                 <p class="err" v-if="err">{{ err }}</p>
                 <v-btn
-                    class="ava_button but_primary button_primary access"
+                    class="lux_button but_primary button_primary access"
                     @click="access"
                     depressed
                     :loading="isLoading"

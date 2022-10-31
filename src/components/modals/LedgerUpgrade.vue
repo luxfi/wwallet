@@ -20,7 +20,7 @@
                     instructions can be found
                     <a
                         target="_blank"
-                        href="https://docs.avax.network/build/tutorials/platform/setup-your-ledger-nano-s-with-avalanche"
+                        href="https://docs.lux.network/build/tutorials/platform/setup-your-ledger-nano-s-with-luxdefi"
                     >
                         here
                     </a>

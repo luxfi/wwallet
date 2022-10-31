@@ -1,6 +1,6 @@
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { BN, Buffer } from 'avalanche'
+import { BN, Buffer } from 'luxdefi'
 import {
     AssetAmountDestination,
     BaseTx,
@@ -13,13 +13,13 @@ import {
     UTXOSet,
     UTXOSet as AVMUTXOSet,
     AVMConstants,
-} from 'avalanche/dist/apis/avm'
+} from 'luxdefi/dist/apis/avm'
 
-import { PayloadBase } from 'avalanche/dist/utils'
-import { OutputOwners } from 'avalanche/dist/common'
-import { PlatformVMConstants } from 'avalanche/dist/apis/platformvm'
+import { PayloadBase } from 'luxdefi/dist/utils'
+import { OutputOwners } from 'luxdefi/dist/common'
+import { PlatformVMConstants } from 'luxdefi/dist/apis/platformvm'
 
-import { UnsignedTx as EVMUnsignedTx, EVMConstants } from 'avalanche/dist/apis/evm'
+import { UnsignedTx as EVMUnsignedTx, EVMConstants } from 'luxdefi/dist/apis/evm'
 
 import { web3 } from '@/evm'
 import ERC721Token from '@/js/ERC721Token'
@@ -46,8 +46,8 @@ export async function buildUnsignedTransaction(
 
     // TODO: use internal asset ID
     // This does not update on network change, causing issues
-    const AVAX_ID_BUF = await avm.getAVAXAssetID()
-    const AVAX_ID_STR = AVAX_ID_BUF.toString('hex')
+    const LUXX_ID_BUF = await avm.getLUXXAssetID()
+    const LUXX_ID_STR = LUXX_ID_BUF.toString('hex')
     const TO_BUF = bintools.stringToAddress(addr)
 
     const aad: AssetAmountDestination = new AssetAmountDestination([TO_BUF], fromAddrs, [
@@ -67,7 +67,7 @@ export async function buildUnsignedTransaction(
             let assetId = bintools.cb58Decode(tx.asset.id)
             let amt: BN = tx.amount
 
-            if (assetId.toString('hex') === AVAX_ID_STR) {
+            if (assetId.toString('hex') === LUXX_ID_STR) {
                 aad.addAssetAmount(assetId, amt, avm.getTxFee())
                 isFeeAdded = true
             } else {
@@ -79,7 +79,7 @@ export async function buildUnsignedTransaction(
     // If fee isn't added, add it
     if (!isFeeAdded) {
         if (avm.getTxFee().gt(ZERO)) {
-            aad.addAssetAmount(AVAX_ID_BUF, ZERO, avm.getTxFee())
+            aad.addAssetAmount(LUXX_ID_BUF, ZERO, avm.getTxFee())
         }
     }
 
@@ -102,7 +102,7 @@ export async function buildUnsignedTransaction(
 
     // If transferring an NFT, build the transaction on top of an NFT tx
     let unsignedTx: AVMUnsignedTx
-    let networkId: number = ava.getNetworkID()
+    let networkId: number = lux.getNetworkID()
     let chainId: Buffer = bintools.cb58Decode(avm.getBlockchainID())
 
     if (nftUtxos.length > 0) {
@@ -137,7 +137,7 @@ export async function buildUnsignedTransaction(
         let outsNft = rawTx.getOuts()
         let insNft = rawTx.getIns()
 
-        // TODO: This is a hackish way of doing this, need methods in avalanche.js
+        // TODO: This is a hackish way of doing this, need methods in luxdefi.js
         //@ts-ignore
         rawTx.outs = outsNft.concat(outs)
         //@ts-ignore

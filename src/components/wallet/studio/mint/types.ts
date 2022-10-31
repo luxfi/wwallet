@@ -1,4 +1,4 @@
-import { UTXO } from 'avalanche/dist/apis/avm'
+import { UTXO } from 'luxdefi/dist/apis/avm'
 
 export interface UrlFormType {
     url: string
@@ -14,7 +14,7 @@ export interface JsonFormType {
 
 export interface GenericFormType {
     data: {
-        avalanche: IGenericNft
+        luxdefi: IGenericNft
     }
 }
 

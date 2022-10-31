@@ -1,10 +1,10 @@
-import { AvaNetwork } from '@/js/AvaNetwork'
-import { BN } from 'avalanche'
+import { LuxNetwork } from '@/js/LuxNetwork'
+import { BN } from 'luxdefi'
 
 export interface NetworkState {
-    networks: AvaNetwork[]
-    networksCustom: AvaNetwork[]
-    selectedNetwork: null | AvaNetwork
+    networks: LuxNetwork[]
+    networksCustom: LuxNetwork[]
+    selectedNetwork: null | LuxNetwork
     // isConnected: boolean
     status: NetworkStatus
 

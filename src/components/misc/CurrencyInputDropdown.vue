@@ -15,7 +15,7 @@
                         :placeholder="placeholder"
                         :disabled="disabled"
                     ></big-num-input>
-                    <p class="usd_val" :active="isAvax">${{ amountUSD.toLocaleString(2) }}</p>
+                    <p class="usd_val" :active="isLuxx">${{ amountUSD.toLocaleString(2) }}</p>
                 </div>
             </div>
             <BalanceDropdown
@@ -36,19 +36,19 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator'
 
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 // import Big from 'big.js';
 import Dropdown from '@/components/misc/Dropdown.vue'
 // import BigNumInput from "@/components/misc/BigNumInput";
 
 // @ts-ignore
-import { BigNumInput } from '@avalabs/vue_components'
-import AvaAsset from '@/js/AvaAsset'
+import { BigNumInput } from '@luxdefi/vue_components'
+import LuxAsset from '@/js/LuxAsset'
 import { ICurrencyInputDropdownValue } from '@/components/wallet/transfer/types'
 import { IWalletAssetsDict, IWalletBalanceDict, priceDict } from '@/store/types'
 
 import BalanceDropdown from '@/components/misc/BalancePopup/BalanceDropdown.vue'
-import { avm } from '@/AVA'
+import { avm } from 'luxdefi'
 import Big from 'big.js'
 import { bnToBig } from '@/helpers/helper'
 interface IDropdownValue {
@@ -67,9 +67,9 @@ interface IDropdownValue {
 })
 export default class CurrencyInputDropdown extends Vue {
     amount: BN = new BN(0)
-    asset_now: AvaAsset = this.walletAssetsArray[0]
+    asset_now: LuxAsset = this.walletAssetsArray[0]
 
-    @Prop({ default: () => [] }) disabled_assets!: AvaAsset[]
+    @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
     @Prop({ default: '' }) initial!: string
     @Prop({ default: false }) disabled!: boolean
 
@@ -88,7 +88,7 @@ export default class CurrencyInputDropdown extends Vue {
     }
 
     @Watch('asset_now')
-    drop_change(val: AvaAsset) {
+    drop_change(val: LuxAsset) {
         this.asset_now = val
         this.$refs.bigIn.clear()
         // this.amount_in(new BN(0))
@@ -142,8 +142,8 @@ export default class CurrencyInputDropdown extends Vue {
         }
     }
 
-    get isAvax(): boolean {
-        if (this.asset_now.id === this.avaxAsset?.id) return true
+    get isLuxx(): boolean {
+        if (this.asset_now.id === this.luxAsset?.id) return true
         return false
     }
 
@@ -166,7 +166,7 @@ export default class CurrencyInputDropdown extends Vue {
         return this.asset_now.denomination
     }
 
-    get walletAssetsArray(): AvaAsset[] {
+    get walletAssetsArray(): LuxAsset[] {
         // return this.$store.getters.walletAssetsArray
         return this.$store.getters['Assets/walletAssetsArray']
     }
@@ -176,21 +176,21 @@ export default class CurrencyInputDropdown extends Vue {
         return this.$store.getters['Assets/walletAssetsDict']
     }
 
-    get avaxAsset(): AvaAsset | null {
-        return this.$store.getters['Assets/AssetAVA']
+    get luxAsset(): LuxAsset | null {
+        return this.$store.getters['Assets/AssetLUX']
     }
 
     get max_amount(): null | BN {
         if (!this.asset_now) return null
-        if (!this.avaxAsset) return null
+        if (!this.luxAsset) return null
 
         let assetId = this.asset_now.id
         let balance = this.walletAssetsDict[assetId]
 
-        let avaxId = this.avaxAsset.id
+        let luxId = this.luxAsset.id
 
-        // Max amount is BALANCE - FEE for AVAX
-        if (assetId === avaxId) {
+        // Max amount is BALANCE - FEE for LUXX
+        if (assetId === luxId) {
             let fee = avm.getTxFee()
             // console.log(fee);
             if (fee.gte(balance.amount)) {

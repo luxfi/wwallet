@@ -85,7 +85,7 @@ export default class GenericForm extends Vue {
 
             msg = {
                 data: {
-                    avalanche: data,
+                    luxdefi: data,
                 },
             }
         }

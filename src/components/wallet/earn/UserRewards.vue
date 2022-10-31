@@ -30,7 +30,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { AvaWalletCore } from '../../../js/wallets/types'
+import { LuxWalletCore } from '../../../js/wallets/types'
 import {
     DelegatorPendingRaw,
     DelegatorRaw,
@@ -40,7 +40,7 @@ import {
 import UserRewardRow from '@/components/wallet/earn/UserRewardRow.vue'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 
 @Component({
     components: {
@@ -49,7 +49,7 @@ import { BN } from 'avalanche'
 })
 export default class UserRewards extends Vue {
     get userAddresses() {
-        let wallet: AvaWalletCore = this.$store.state.activeWallet
+        let wallet: LuxWalletCore = this.$store.state.activeWallet
         if (!wallet) return []
 
         return wallet.getAllAddressesP()

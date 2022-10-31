@@ -5,15 +5,15 @@
     "address": "アドレス",
     "add_pk": "プライベートキーの追加",
     "home": {
-        "desc": "AvalancheウォレットはAvalancheのアセットを保存するシンプルで安全な非保管型ウォレットです",
+        "desc": "LuxlancheウォレットはLuxlancheのアセットを保存するシンプルで安全な非保管型ウォレットです",
         "access": {
             "title": "おかえりなさい！",
-            "desc": "こちらで既存Avalancheウォレットに”アクセス”できます",
+            "desc": "こちらで既存Luxlancheウォレットに”アクセス”できます",
             "submit": "ウォレットにアクセス"
         },
         "create": {
-            "title": "Avalancheウォレットは初めてですか？",
-            "desc": "新規ウォレットを”作成”するとAvalancheアセットの送受信が可能になります",
+            "title": "Luxlancheウォレットは初めてですか？",
+            "desc": "新規ウォレットを”作成”するとLuxlancheアセットの送受信が可能になります",
             "submit": "新規ウォレットの作成"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "新しいキーフレーズを生成してAvalancheウォレットを設定します",
+        "generate": "新しいキーフレーズを生成してLuxlancheウォレットを設定します",
         "but_have": "ウォレットをお持ちですか？",
         "submit": "キーフレーズの生成",
         "cancel": "キャンセル",
         "mnemonic_title": "こちらがあなたのキーフレーズです",
-        "mnemonic_desc": "これら24個の単語を順番通りに入力してAvalancheウォレットを回復します",
+        "mnemonic_desc": "これら24個の単語を順番通りに入力してLuxlancheウォレットを回復します",
         "attention": "注意！",
-        "warning": "キーフレーズを安全な場所に保管してください：このキーフレーズがあれば誰でもあなたのAvalancheウォレットにアクセスできます：失くしたキーフレーズを回復する方法はありません",
+        "warning": "キーフレーズを安全な場所に保管してください：このキーフレーズがあれば誰でもあなたのLuxlancheウォレットにアクセスできます：失くしたキーフレーズを回復する方法はありません",
         "confirm": "安全な場所に自分のキーフレーズを書き留めました",
         "regenerate": "再生成",
         "success_title": "おめでとう！",
-        "success_desc": "Avalancheウォレットにアクセスできるようになりました",
+        "success_desc": "Luxlancheウォレットにアクセスできるようになりました",
         "success_submit": "ウォレットにアクセス",
         "verify": "確認",
         "verifytitle": "ニーモニックの確認",
@@ -78,15 +78,15 @@
         "error_word": "入力したニーモニックフレーズが正しいフレーズと一致しません"
     },
     "top": {
-        "title1": "Derived Avalancheウォレットアドレス",
+        "title1": "Derived Luxlancheウォレットアドレス",
         "title2": "残高",
         "title3": "サブネット",
         "title4": "ネットワーク",
         "nftcol": "NFTs",
         "nftempty": "NFTを保有していません",
         "locked": "ロック済",
-        "info2": "トークンセールで購入した場合、私のAVAXはどこにありますか？",
-        "info2_desc": "このウォレットはAvalancheエベレストテストネットワークに接続されています：購入トークンは、Avalancheメインネットローンチ後にウォレットに表示されます",
+        "info2": "トークンセールで購入した場合、私のLUXXはどこにありますか？",
+        "info2_desc": "このウォレットはLuxlancheエベレストテストネットワークに接続されています：購入トークンは、Luxlancheメインネットローンチ後にウォレットに表示されます",
         "hover1": "アドレスQRコードを見る",
         "hover2": "印刷",
         "hover3": "コピー",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "内訳を表示",
             "hide": "内訳を隠す",
-            "available": "利用可能額",
+            "luxilable": "利用可能額",
             "locked": "ロック済",
             "locked_stake": "ロック済ステーク",
             "stake": "ステーキング",
             "collectibles": "コレクション"
         },
         "address": {
-            "derived": "Derived Avalancheウォレットアドレス",
+            "derived": "Derived Luxlancheウォレットアドレス",
             "desc": "こちらは資金のを受け取りに必要なアドレスで入金のたびにアドレスが変わります"
         }
     },
@@ -172,26 +172,26 @@
     },
     "earn": {
         "title": "獲得する",
-        "desc": "トークンをステーキング出資することでより多くのAVAXを獲得できます",
+        "desc": "トークンをステーキング出資することでより多くのLUXXを獲得できます",
         "subtitle1": "バリデート",
         "subtitle2": "デリゲート",
         "subtitle3": "クロスチェーン転送",
         "subtitle4": "推定リワード",
-        "warning_1": "バリデーターになるにはPチェーン上に最小 {0} AVAXが必要です",
-        "warning_2": "デリゲーターになるにはPチェーン上に最小 {0} AVAX必要です",
+        "warning_1": "バリデーターになるにはPチェーン上に最小 {0} LUXXが必要です",
+        "warning_2": "デリゲーターになるにはPチェーン上に最小 {0} LUXX必要です",
         "validate_card": {
             "title": "バリデート",
-            "desc": "ステーク先にするAvalancheノードを選択する必要があります",
+            "desc": "ステーク先にするLuxlancheノードを選択する必要があります",
             "submit": "バリデーターを追加"
         },
         "delegate_card": {
             "title": "デリゲート",
-            "desc": "あなたがAvalancheノードを保有していない場合は別のノードにステークしなければなりません",
+            "desc": "あなたがLuxlancheノードを保有していない場合は別のノードにステークしなければなりません",
             "submit": "デリゲーターを追加"
         },
         "transfer_card": {
             "title": "クロスチェーン転送",
-            "desc": "ステーキングにはPチェーン上にAVAXが必要です：X - P間でトークンを転送する",
+            "desc": "ステーキングにはPチェーン上にLUXXが必要です：X - P間でトークンを転送する",
             "submit": "転送"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "ステーク額",
-                "desc": "ステーキングによるロックAVAX額"
+                "desc": "ステーキングによるロックLUXX額"
             },
             "fee": {
                 "label": "デリゲーション手数料",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "開始日は未来の日付、終了日は開始日より後の日付である必要があります",
-                "amount": "最小ステーク額は {0} AVAXです",
+                "amount": "最小ステーク額は {0} LUXXです",
                 "id": "ノードIDが無効です \"NodeID-\"で始まるIDを設定してください",
                 "address": "リワードアドレスが無効です"
             }
@@ -292,8 +292,8 @@
                 "search": "ノードIDを検索",
                 "id": "ノードID",
                 "val_stake": "バリデータ―ステーク",
-                "aval_stake": "利用可能額",
-                "aval_stake_tip": "バリデータへのデリゲート可能額",
+                "luxl_stake": "利用可能額",
+                "luxl_stake_tip": "バリデータへのデリゲート可能額",
                 "users_tip": "デリゲーター数",
                 "end": "終了時間",
                 "up": "稼働時間",
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "ステーク額",
-                    "desc": "ステーキングによるロックAVAX額",
-                    "desc2": "このノードへのデリゲーション額は {0} AVAXです"
+                    "desc": "ステーキングによるロックLUXX額",
+                    "desc2": "このノードへのデリゲーション額は {0} LUXXです"
                 },
                 "reward": {
                     "label": "リワードアドレス",
@@ -345,7 +345,7 @@
                 "max_dur": "最長ステーキング期間は1年間です",
                 "no_node": "バリデーターを指定してください",
                 "val_end": "デリゲーション終了日はバリデーター終了日より長くすることはできません",
-                "amt": "最小デリゲーション額は {0} AVAXです"
+                "amt": "最小デリゲーション額は {0} LUXXです"
             },
             "summary": {
                 "duration": "ステーキング継続期間",
@@ -388,7 +388,7 @@
         "loading": "取引履歴をロード中…",
         "warn_loading": "このリストは不完全なものであり正しくない可能性があります",
         "error_api": "エクスプローラーAPIが見つかりません",
-        "error_api_desc": "トランザクション履歴を表示するには、このネットワーク用AVA Explorer APIを提供する必要があります"
+        "error_api_desc": "トランザクション履歴を表示するには、このネットワーク用LUX Explorer APIを提供する必要があります"
     },
     "modal": {
         "qr": {

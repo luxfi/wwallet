@@ -17,7 +17,7 @@
             </div>
             <div class="data_row reward_row">
                 <p>LUX Price at reward date</p>
-                <p v-if="rewardDateAvaxPrice">{{ rewardDateAvaxPrice.toFixed(2) }} USD</p>
+                <p v-if="rewardDateLuxxPrice">{{ rewardDateLuxxPrice.toFixed(2) }} USD</p>
                 <p v-else>Unknown</p>
             </div>
             <div class="data_row reward_row">
@@ -86,9 +86,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ITransactionData } from '@/store/modules/history/types'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import { bnToBig } from '@/helpers/helper'
-import { UnixNow } from 'avalanche/dist/utils'
+import { UnixNow } from 'luxdefi/dist/utils'
 import { ValidatorRaw } from '@/components/misc/ValidatorList/types'
 import { WalletType } from '@/js/wallets/types'
 import { getPriceAtUnixTime } from '@/helpers/price_helper'
@@ -186,7 +186,7 @@ export default class StakingTx extends Vue {
         return bnToBig(this.rewardAmt, 9)
     }
 
-    get rewardDateAvaxPrice(): number | undefined {
+    get rewardDateLuxxPrice(): number | undefined {
         if (!this.endDate) return undefined
         let unixTime = this.endDate.getTime()
         let price = getPriceAtUnixTime(unixTime)
@@ -194,8 +194,8 @@ export default class StakingTx extends Vue {
     }
 
     get totalRewardUSD(): Big | undefined {
-        if (!this.rewardDateAvaxPrice) return undefined
-        return this.rewardAmtBig.times(this.rewardDateAvaxPrice)
+        if (!this.rewardDateLuxxPrice) return undefined
+        return this.rewardAmtBig.times(this.rewardDateLuxxPrice)
     }
 
     get rewardAmtText() {

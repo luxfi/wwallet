@@ -5,15 +5,15 @@
     "address": "Adresse",
     "add_pk": "Legg til privat nøkkel",
     "home": {
-        "desc": "Avalanche Wallet er en enkel, sikker, forvaringsfri lommebok for lagring av Avalanche-aktiva.",
+        "desc": "Luxlanche Wallet er en enkel, sikker, forvaringsfri lommebok for lagring av Luxlanche-aktiva.",
         "access": {
             "title": "Velkommen tilbake!",
-            "desc": "‘Få tilgang’ til din eksisterende Avalanche-lommebok her.",
+            "desc": "‘Få tilgang’ til din eksisterende Luxlanche-lommebok her.",
             "submit": "Få tilgang til lommebok"
         },
         "create": {
-            "title": "Ny hos Avalanche Wallet?",
-            "desc": "‘Lag’ en ny lommebok for å sende, motta og bytte Avalanche-aktiva.",
+            "title": "Ny hos Luxlanche Wallet?",
+            "desc": "‘Lag’ en ny lommebok for å sende, motta og bytte Luxlanche-aktiva.",
             "submit": "Lag ny lommebok"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Administrer",
             "send": "Send",
             "earn": "Tjen",
-            "advanced": "Avansert"
+            "advanced": "Luxnsert"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Generer en ny nøkkelfrase for å sette opp din Avalanche Wallet.",
+        "generate": "Generer en ny nøkkelfrase for å sette opp din Luxlanche Wallet.",
         "but_have": "Har du allerede en lommebok?",
         "submit": "Generer nøkkelfrase",
         "cancel": "Avbryt",
         "mnemonic_title": "Dette er nøkkelfrasen din.",
-        "mnemonic_desc": "Bruk disse 24 ordene i rekkefølge for å tilbakestille din Avalanche Wallet",
+        "mnemonic_desc": "Bruk disse 24 ordene i rekkefølge for å tilbakestille din Luxlanche Wallet",
         "attention": "Se her!",
-        "warning": "Lagre denne nøkkelfrasen på et trygt sted. Alle som har denne nøkkelfrasen, har tilgang til din Avalanche Wallet. Det finnes ingen metode for å tilbakestille tapte nøkkelfraser.",
+        "warning": "Lagre denne nøkkelfrasen på et trygt sted. Alle som har denne nøkkelfrasen, har tilgang til din Luxlanche Wallet. Det finnes ingen metode for å tilbakestille tapte nøkkelfraser.",
         "confirm": "Jeg skrev ned nøkkelfrasen min på et sikkert sted.",
         "regenerate": "Regenerer",
         "success_title": "Gratulerer!",
-        "success_desc": "Tiden er inne for å gå inn på din Avalanche Wallet.",
+        "success_desc": "Tiden er inne for å gå inn på din Luxlanche Wallet.",
         "success_submit": "Få tilgang til lommebok",
         "verify": "Bekreft",
         "verifytitle": "Verifiser Mnemonic",
@@ -78,15 +78,15 @@
         "error_word": "Mnemonic-frasen du oppga for ord samsvarer ikke med den faktiske frasen."
     },
     "top": {
-        "title1": "Avledet Avalanche Wallet-adresse",
+        "title1": "Avledet Luxlanche Wallet-adresse",
         "title2": "Saldo",
         "title3": "Undernett",
         "title4": "Nettverk",
         "nftcol": "NFT",
         "nftempty": "Du har ikke samlet noen omsettelige polletter.",
         "locked": "Låst",
-        "info2": "Jeg kjøpte mynter på polettsalg. Hvor er min AVAX?",
-        "info2_desc": "Denne lommeboken er koblet til Avalanche Everest-testnettverket. Kjøpet ditt vises i lommeboken etter lansering av Avalanche Mainnet.",
+        "info2": "Jeg kjøpte mynter på polettsalg. Hvor er min LUXX?",
+        "info2_desc": "Denne lommeboken er koblet til Luxlanche Everest-testnettverket. Kjøpet ditt vises i lommeboken etter lansering av Luxlanche Mainnet.",
         "hover1": "Vis QR-adressekode",
         "hover2": "Skriv ut",
         "hover3": "Kopier",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "Vis fordeling",
             "hide": "Skjul fordeling",
-            "available": "Tilgjengelig",
+            "luxilable": "Tilgjengelig",
             "locked": "Låst",
             "locked_stake": "Låste satsbare",
             "stake": "Satser",
             "collectibles": "Samleobjekter"
         },
         "address": {
-            "derived": "Avledet Avalanche Wallet-adresse",
+            "derived": "Avledet Luxlanche Wallet-adresse",
             "desc": "Dette er din adresse for mottak av penger. Adressen din endres etter hvert innskudd."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Til adresse",
         "fees": "Avgifter",
         "fee_tx": "Transaksjonsavgift",
-        "advanced": "Avansert",
+        "advanced": "Luxnsert",
         "adv_change": "Endre adresse",
         "send": "Send transaksjon",
         "summary": "Transaksjonssummering",
@@ -172,26 +172,26 @@
     },
     "earn": {
         "title": "Tjen",
-        "desc": "Du kan tjene mer AVAX ved å satse dine eksisterende polletter.",
+        "desc": "Du kan tjene mer LUXX ved å satse dine eksisterende polletter.",
         "subtitle1": "Valider",
         "subtitle2": "Deleger",
         "subtitle3": "Krysskjedeoverføring",
         "subtitle4": "Estimerte belønninger",
-        "warning_1": "Du må ha minst {0} AVAX på P-kjedet for å bli en validator.",
-        "warning_2": "Du må ha minst {0} AVAX på P-kjedet for å bli en delegator.",
+        "warning_1": "Du må ha minst {0} LUXX på P-kjedet for å bli en validator.",
+        "warning_2": "Du må ha minst {0} LUXX på P-kjedet for å bli en delegator.",
         "validate_card": {
             "title": "Valider",
-            "desc": "Du har en Avalanche-node som du vil satse med.",
+            "desc": "Du har en Luxlanche-node som du vil satse med.",
             "submit": "Legg til validator"
         },
         "delegate_card": {
             "title": "Deleger",
-            "desc": "Du eier ikke en Avalanche-node, men du vil satse ved å bruke en annen node.",
+            "desc": "Du eier ikke en Luxlanche-node, men du vil satse ved å bruke en annen node.",
             "submit": "Legg til delegator"
         },
         "transfer_card": {
             "title": "Krysskjedeoverføring",
-            "desc": "Satsing krever AVAX på P-kjedet. Overfør polletter mellom X og P.",
+            "desc": "Satsing krever LUXX på P-kjedet. Overfør polletter mellom X og P.",
             "submit": "Overfør"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Sats beløp",
-                "desc": "Mengden AVAX som låses for satsing."
+                "desc": "Mengden LUXX som låses for satsing."
             },
             "fee": {
                 "label": "Delegeringsavgift",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Startdatoen må være i fremtiden og sluttdatoen må være etter startdatoen.",
-                "amount": "Innsatsbeløpet må være minst {0} AVAX",
+                "amount": "Innsatsbeløpet må være minst {0} LUXX",
                 "id": "Ugyldig nodenr. Må starte med \"NodeID-”",
                 "address": "Ugyldig belønningsadresse."
             }
@@ -292,8 +292,8 @@
                 "search": "Søk node-ID",
                 "id": "Node-ID",
                 "val_stake": "Validatorinnsats",
-                "aval_stake": "Tilgjengelig",
-                "aval_stake_tip": "Hvor mye mer kan delegeres til denne validatoren.",
+                "luxl_stake": "Tilgjengelig",
+                "luxl_stake_tip": "Hvor mye mer kan delegeres til denne validatoren.",
                 "users_tip": "Antall delegatorer",
                 "end": "Sluttid",
                 "up": "Oppetid",
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Sats beløp",
-                    "desc": "Mengden AVAX som låses for satsing.",
-                    "desc2": "Det tilgjengelige delegeringsbeløpet for denne noden er is {0} AVAX"
+                    "desc": "Mengden LUXX som låses for satsing.",
+                    "desc2": "Det tilgjengelige delegeringsbeløpet for denne noden er is {0} LUXX"
                 },
                 "reward": {
                     "label": "Belønningsadresse",
@@ -345,7 +345,7 @@
                 "max_dur": "Maksimal innsatsperiode er 1 år.",
                 "no_node": "Du må spesifisere en validator.",
                 "val_end": "Delegeringens sluttdato kan ikke være lenger enn validatorens sluttdato.",
-                "amt": "Delegeringsbeløpet må være minst {0} AVAX."
+                "amt": "Delegeringsbeløpet må være minst {0} LUXX."
             },
             "summary": {
                 "duration": "Innsatsvarighet",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Avansert",
+        "title": "Luxnsert",
         "import": {
             "title": "Kjedeimport",
             "desc": "Dersom du har penger som sitter fast i en feilet kjedeoverføring, kan du fullføre importen her.",
@@ -388,7 +388,7 @@
         "loading": "Laster inn transaksjonshistorikk ...",
         "warn_loading": "Denne listen kan være ufullstendige og ute av bruk.",
         "error_api": "Explorer API ikke funnet",
-        "error_api_desc": "Du må oppgi en AVA Explorer API for dette nettverket for å vise transaksjonshistorikken."
+        "error_api_desc": "Du må oppgi en LUX Explorer API for dette nettverket for å vise transaksjonshistorikken."
     },
     "modal": {
         "qr": {

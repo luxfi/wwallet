@@ -42,8 +42,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 //@ts-ignore
-import { BigNumInput } from '@avalabs/vue_components'
-import { BN } from 'avalanche'
+import { BigNumInput } from '@luxdefi/vue_components'
+import { BN } from 'luxdefi'
 import EVMAssetDropdown from '@/components/misc/EVMInputDropdown/EVMAssetDropdown.vue'
 import Erc20Token from '@/js/Erc20Token'
 import Big from 'big.js'
@@ -143,27 +143,27 @@ export default class EVMInputDropdown extends Vue {
         this.$refs.bigIn.maxout()
     }
 
-    get avaxBalanceBN(): BN {
+    get luxBalanceBN(): BN {
         let w: WalletType | null = this.$store.state.activeWallet
         if (!w) return new BN(0)
         return w.ethBalance
     }
 
-    get avaxBalance(): Big {
-        return bnToBig(this.avaxBalanceBN, 18)
+    get luxBalance(): Big {
+        return bnToBig(this.luxBalanceBN, 18)
     }
 
     get balance(): Big {
         if (this.token === 'native') {
-            return this.avaxBalance
+            return this.luxBalance
         }
         return this.token.balanceBig
     }
 
-    // The available balance of the selected asset
+    // The luxilable balance of the selected asset
     get balanceBN(): BN {
         if (this.token === 'native') {
-            return this.avaxBalanceBN
+            return this.luxBalanceBN
         }
         return this.token.balanceBN
     }

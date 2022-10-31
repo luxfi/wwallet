@@ -1,12 +1,12 @@
 <template>
     <div class="asset">
-        <div class="icon" :avax="isAvaxToken">
+        <div class="icon" :lux="isLuxxToken">
             <img v-if="iconUrl" :src="iconUrl" />
             <p v-else>?</p>
         </div>
         <p class="name_col not_mobile">
-            <span v-if="isAvaxToken">Lux (LUX)</span>
-            <span v-if="!isAvaxToken">{{ name }} ({{ symbol }}</span>
+            <span v-if="isLuxxToken">Lux (LUX)</span>
+            <span v-if="!isLuxxToken">{{ name }} ({{ symbol }}</span>
         </p>
         <p class="name_col mobile_only">{{ symbol }}</p>
         <router-link :to="sendLink" class="send_col" v-if="isBalance">
@@ -19,7 +19,7 @@
                 {{ amtBig.toLocaleString() }}
             </span>
             <br />
-            <span class="fiat" v-if="isAvaxToken">
+            <span class="fiat" v-if="isLuxxToken">
                 {{ totalUSD.toLocaleString(2) }}
                 &nbsp;USD
             </span>
@@ -31,9 +31,9 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import AvaAsset from '../../../js/AvaAsset'
+import LuxAsset from '../../../js/LuxAsset'
 import Hexagon from '@/components/misc/Hexagon.vue'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import { bnToBig } from '../../../helpers/helper'
 import { priceDict } from '../../../store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -46,13 +46,13 @@ import Big from 'big.js'
     },
 })
 export default class FungibleRow extends Vue {
-    @Prop() asset!: AvaAsset
+    @Prop() asset!: LuxAsset
 
     get iconUrl(): string | null {
         if (!this.asset) return null
 
-        if (this.isAvaxToken) {
-            return '/img/avax_icon_circle.png'
+        if (this.isLuxxToken) {
+            return '/img/lux_icon_circle.png'
         }
 
         return null
@@ -67,7 +67,7 @@ export default class FungibleRow extends Vue {
     }
 
     get totalUSD(): Big {
-        if (!this.isAvaxToken) return Big(0)
+        if (!this.isLuxxToken) return Big(0)
         let usdPrice = this.priceDict.usd
         let bigAmt = bnToBig(this.amount, this.asset.denomination)
         let usdBig = bigAmt.times(usdPrice)
@@ -83,14 +83,14 @@ export default class FungibleRow extends Vue {
         return `/wallet/transfer?asset=${this.asset.id}&chain=X`
     }
 
-    get avaxToken(): AvaAsset {
-        return this.$store.getters['Assets/AssetAVA']
+    get luxToken(): LuxAsset {
+        return this.$store.getters['Assets/AssetLUX']
     }
 
-    get isAvaxToken(): boolean {
+    get isLuxxToken(): boolean {
         if (!this.asset) return false
 
-        if (this.avaxToken.id === this.asset.id) {
+        if (this.luxToken.id === this.asset.id) {
             return true
         } else {
             return false
@@ -100,7 +100,7 @@ export default class FungibleRow extends Vue {
     get name(): string {
         let name = this.asset.name
         // TODO: Remove this hack after network change
-        if (name === 'AVA') return 'LUX'
+        if (name === 'LUX') return 'LUX'
         return name
     }
 
@@ -108,23 +108,23 @@ export default class FungibleRow extends Vue {
         let sym = this.asset.symbol
 
         // TODO: Remove this hack after network change
-        if (sym === 'AVA') return 'LUX'
+        if (sym === 'LUX') return 'LUX'
         return sym
     }
 
     get amount() {
         let amt = this.asset.getTotalAmount()
-        return amt.add(this.evmAvaxBalance)
+        return amt.add(this.evmLuxxBalance)
     }
 
     get amtBig() {
         return bnToBig(this.amount, this.asset.denomination)
     }
 
-    get evmAvaxBalance(): BN {
+    get evmLuxxBalance(): BN {
         let wallet: WalletType | null = this.$store.state.activeWallet
 
-        if (!this.isAvaxToken || !wallet) {
+        if (!this.isLuxxToken || !wallet) {
             return new BN(0)
         }
         // Convert to 9 decimal places

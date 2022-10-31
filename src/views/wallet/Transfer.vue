@@ -59,7 +59,7 @@
                             <span>{{ txFee.toLocaleString(9) }} LUX</span>
                         </p>
                         <p>
-                            {{ $t('transfer.total_avax') }}
+                            {{ $t('transfer.total_lux') }}
                             <span>{{ totalUSD.toLocaleString(2) }} USD</span>
                         </p>
                     </div>
@@ -141,12 +141,12 @@ import Big from 'big.js'
 import NftList from '@/components/wallet/transfer/NftList.vue'
 
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
-import { ava, avm, isValidAddress } from '../../AVA'
+import { QrInput } from '@luxdefi/vue_components'
+import { lux, avm, isValidAddress } from '../../LUX'
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { UTXO } from 'avalanche/dist/apis/avm'
-import { Buffer, BN } from 'avalanche'
+import { UTXO } from 'luxdefi/dist/apis/avm'
+import { Buffer, BN } from 'luxdefi'
 import TxSummary from '@/components/wallet/transfer/TxSummary.vue'
 import { priceDict, IssueBatchTxInput } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -156,7 +156,7 @@ import FormC from '@/components/wallet/transfer/FormC.vue'
 import { ChainIdType } from '@/constants'
 
 import ChainInput from '@/components/wallet/transfer/ChainInput.vue'
-import AvaAsset from '../../js/AvaAsset'
+import LuxAsset from '../../js/LuxAsset'
 import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
 @Component({
     components: {
@@ -258,7 +258,7 @@ export default class Transfer extends Vue {
         }
 
         // Make sure to address matches the bech32 network hrp
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
         if (!addr.includes(hrp)) {
             err.push('Not a valid address for this network.')
         }
@@ -419,20 +419,20 @@ export default class Transfer extends Vue {
 
         return res
     }
-    get avaxTxSize() {
+    get luxTxSize() {
         let res = new BN(0)
         for (var i = 0; i < this.orders.length; i++) {
             let order = this.orders[i]
             if (!order.asset) continue
-            if (order.amount && order.asset.id === this.avaxAsset.id) {
+            if (order.amount && order.asset.id === this.luxAsset.id) {
                 res = res.add(this.orders[i].amount)
             }
         }
 
         return res
     }
-    get avaxAsset(): AvaAsset {
-        return this.$store.getters['Assets/AssetAVA']
+    get luxAsset(): LuxAsset {
+        return this.$store.getters['Assets/AssetLUX']
     }
 
     get wallet(): WalletType {
@@ -445,7 +445,7 @@ export default class Transfer extends Vue {
     }
 
     get totalUSD(): Big {
-        let totalAsset = this.avaxTxSize.add(avm.getTxFee())
+        let totalAsset = this.luxTxSize.add(avm.getTxFee())
         let bigAmt = bnToBig(totalAsset, 9)
         let usdPrice = this.priceDict.usd
         let usdBig = bigAmt.times(usdPrice)

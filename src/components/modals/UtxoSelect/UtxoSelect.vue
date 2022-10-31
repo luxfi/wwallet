@@ -28,7 +28,7 @@
                 </table>
             </div>
             <div class="tot">
-                <label>{{ $t('modal.utxo_select.available') }}</label>
+                <label>{{ $t('modal.utxo_select.luxilable') }}</label>
                 <p>{{ selectedBalanceText }} LUX</p>
             </div>
             <v-btn class="button_secondary" block depressed small @click="close">
@@ -49,11 +49,11 @@ import {
     StakeableLockOut,
     UTXO,
     UTXOSet,
-} from 'avalanche/dist/apis/platformvm'
+} from 'luxdefi/dist/apis/platformvm'
 
 import UtxoRow from '@/components/modals/UtxoSelect/UtxoRow.vue'
-import { BN } from 'avalanche'
-import { UnixNow } from 'avalanche/dist/utils'
+import { BN } from 'luxdefi'
+import { UnixNow } from 'luxdefi/dist/utils'
 import { bnToBig } from '@/helpers/helper'
 
 @Component({

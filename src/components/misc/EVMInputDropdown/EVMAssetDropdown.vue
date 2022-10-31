@@ -34,7 +34,7 @@ export default class EVMAssetDropdown extends Vue {
     }
 
     get symbol() {
-        if (this.selected === 'native') return 'AVAX'
+        if (this.selected === 'native') return 'LUXX'
         else return this.selected.data.symbol
     }
 
@@ -42,7 +42,7 @@ export default class EVMAssetDropdown extends Vue {
         this.$refs.select_modal.open()
     }
 
-    get avaxBalance(): Big {
+    get luxBalance(): Big {
         let w: WalletType | null = this.$store.state.activeWallet
         if (!w) return Big(0)
         let balBN = w.ethBalance

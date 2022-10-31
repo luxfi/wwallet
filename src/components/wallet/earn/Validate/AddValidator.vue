@@ -25,7 +25,7 @@
                             <p class="desc">
                                 {{ $t('earn.validate.amount.desc') }}
                             </p>
-                            <AvaxInput v-model="stakeAmt" :max="maxAmt" class="amt_in"></AvaxInput>
+                            <LuxxInput v-model="stakeAmt" :max="maxAmt" class="amt_in"></LuxxInput>
                         </div>
                         <div style="margin: 30px 0">
                             <h4>{{ $t('earn.validate.fee.label') }}</h4>
@@ -119,7 +119,7 @@
                                     <fa icon="question-circle"></fa>
                                 </Tooltip>
                             </label>
-                            <p v-if="currency_type === 'AVAX'">{{ maxDelegationText }} LUX</p>
+                            <p v-if="currency_type === 'LUXX'">{{ maxDelegationText }} LUX</p>
                             <p v-if="currency_type === 'USD'">${{ maxDelegationUsdText }} USD</p>
                         </div>
                         <div>
@@ -128,7 +128,7 @@
                         </div>
                         <div>
                             <label>{{ $t('earn.validate.summary.rewards') }}</label>
-                            <p v-if="currency_type === 'AVAX'">
+                            <p v-if="currency_type === 'LUXX'">
                                 {{ estimatedReward.toLocaleString(2) }} LUX
                             </p>
                             <p v-if="currency_type === 'USD'">
@@ -221,24 +221,24 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 //@ts-ignore
-import AvaxInput from '@/components/misc/AvaxInput.vue'
-import { BN } from 'avalanche'
+import LuxxInput from '@/components/misc/LuxxInput.vue'
+import { BN } from 'luxdefi'
 import Big from 'big.js'
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
-import { bintools, pChain } from '@/AVA'
+import { QrInput } from '@luxdefi/vue_components'
+import { bintools, pChain } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import ConfirmPage from '@/components/wallet/earn/Validate/ConfirmPage.vue'
 import moment from 'moment'
 import { bnToBig, calculateStakingReward } from '@/helpers/helper'
-import { ONEAVAX } from 'avalanche/dist/utils'
+import { ONELUXX } from 'luxdefi/dist/utils'
 import Tooltip from '@/components/misc/Tooltip.vue'
 import CurrencySelect from '@/components/misc/CurrencySelect/CurrencySelect.vue'
 import Spinner from '@/components/misc/Spinner.vue'
 import DateForm from '@/components/wallet/earn/DateForm.vue'
 import UtxoSelectForm from '@/components/wallet/earn/UtxoSelectForm.vue'
 import Expandable from '@/components/misc/Expandable.vue'
-import { AmountOutput, UTXO } from 'avalanche/dist/apis/platformvm'
+import { AmountOutput, UTXO } from 'luxdefi/dist/apis/platformvm'
 import { WalletType } from '@/js/wallets/types'
 
 const MIN_MS = 60000
@@ -252,7 +252,7 @@ const MAX_STAKE_DURATION = DAY_MS * 365
     name: 'add_validator',
     components: {
         Tooltip,
-        AvaxInput,
+        LuxxInput,
         QrInput,
         ConfirmPage,
         CurrencySelect,
@@ -289,7 +289,7 @@ export default class AddValidator extends Vue {
 
     isSuccess = false
 
-    currency_type = 'AVAX'
+    currency_type = 'LUXX'
 
     mounted() {
         this.rewardSelect('local')
@@ -356,7 +356,7 @@ export default class AddValidator extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.$store.getters['Assets/walletPlatformBalance'].available
+        return this.$store.getters['Assets/walletPlatformBalance'].luxilable
     }
 
     get platformLockedStakeable(): BN {
@@ -422,11 +422,11 @@ export default class AddValidator extends Vue {
 
     get maxDelegationUsdText() {
         let big = bnToBig(this.maxDelegationAmt, 9)
-        let res = big.times(this.avaxPrice)
+        let res = big.times(this.luxPrice)
         return res.toLocaleString(2)
     }
 
-    get avaxPrice(): Big {
+    get luxPrice(): Big {
         return Big(this.$store.state.prices.usd)
     }
 
@@ -443,7 +443,7 @@ export default class AddValidator extends Vue {
     }
 
     get estimatedRewardUSD() {
-        return this.estimatedReward.times(this.avaxPrice)
+        return this.estimatedReward.times(this.luxPrice)
     }
 
     updateFormData() {

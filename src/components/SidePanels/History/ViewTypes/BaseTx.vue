@@ -80,11 +80,11 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ITransactionData, UTXO } from '@/store/modules/history/types'
 import { TransactionValueDict } from '@/components/SidePanels/types'
-import { PayloadBase, PayloadTypes } from 'avalanche/dist/utils'
-import { BN, Buffer } from 'avalanche'
+import { PayloadBase, PayloadTypes } from 'luxdefi/dist/utils'
+import { BN, Buffer } from 'luxdefi'
 import { WalletType } from '@/js/wallets/types'
 
-import { avm, pChain } from '@/AVA'
+import { avm, pChain } from 'luxdefi'
 
 import TxHistoryValue from '@/components/SidePanels/TxHistoryValue.vue'
 import TxHistoryValueFunctional from '@/components/SidePanels/History/TxHistoryValueFunctional.vue'
@@ -187,7 +187,7 @@ export default class BaseTx extends Vue {
             case 'add_delegator':
                 return !isInput && utxo.stake
             case 'operation':
-                // if no payload it is avax
+                // if no payload it is lux
                 // check if it is from wallet
                 if (!utxo.payload && !isIncludes) return false
                 return true

@@ -1,11 +1,11 @@
 import Big from 'big.js'
 
-import { Buffer, BN } from 'avalanche'
-import AvaAsset from '@/js/AvaAsset'
+import { Buffer, BN } from 'luxdefi'
+import LuxAsset from '@/js/LuxAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { AllKeyFileTypes, AllKeyFileDecryptedTypes } from '@/js/IKeystore'
-import { UTXO } from 'avalanche/dist/apis/avm'
+import { UTXO } from 'luxdefi/dist/apis/avm'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { UTXO as TxUTXO } from './modules/history/types'
@@ -18,7 +18,7 @@ export interface RootState {
     address: String | null
     volatileWallets: WalletType[] // will be forgotten when tab is closed
     warnUpdateKeyfile: boolean
-    prices: priceDict // USD value of 1 AVAX
+    prices: priceDict // USD value of 1 LUXX
 }
 
 export interface ILedgerAppConfig {
@@ -46,7 +46,7 @@ export interface ITxNftDict {
 
 export interface IWalletBalanceDict {
     [assetId: string]: {
-        available: BN
+        luxilable: BN
         locked: BN
         multisig: BN
     }
@@ -58,7 +58,7 @@ export interface IWalletBalanceItem {
 }
 
 export interface IWalletAssetsDict {
-    [assetId: string]: AvaAsset
+    [assetId: string]: LuxAsset
 }
 
 export interface IWalletNftMintDict {
@@ -89,7 +89,7 @@ export interface BatchTxOrder {
 }
 
 export interface IssueTxInput {
-    asset: AvaAsset
+    asset: LuxAsset
     assetId: string
     amount: BN
     toAddress: string

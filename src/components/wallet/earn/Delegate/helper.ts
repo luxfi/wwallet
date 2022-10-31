@@ -1,8 +1,8 @@
 import { ValidatorListFilter } from '@/components/wallet/earn/Delegate/types'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import { DAY_MS } from '@/constants'
-import { ONEAVAX } from 'avalanche/dist/utils'
-import { BN } from 'avalanche'
+import { ONELUXX } from 'luxdefi/dist/utils'
+import { BN } from 'luxdefi'
 
 function filterValidatorList(
     list: ValidatorListItem[],
@@ -14,7 +14,7 @@ function filterValidatorList(
     let minDurationMs = filter.minDuration * DAY_MS
     let res = list.filter((val: ValidatorListItem) => {
         // Filter by remaining stake amount
-        let minSpace = ONEAVAX.mul(new BN(filter.availableSpace))
+        let minSpace = ONELUXX.mul(new BN(filter.luxilableSpace))
         if (val.remainingStake.lt(minSpace)) {
             return false
         }

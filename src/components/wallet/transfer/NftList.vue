@@ -32,11 +32,11 @@ import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import { NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import NftListItem from '@/components/wallet/transfer/NftListItem.vue'
 import { IGroupDict, IGroupQuantity } from '@/components/wallet/studio/mint/types'
-import { bintools } from '@/AVA'
+import { bintools } from 'luxdefi'
 import AvmNftSelectModal from '@/components/modals/AvmNftSelectModal.vue'
 
 @Component({

@@ -1,14 +1,14 @@
 import Sockette from 'sockette'
 import { WalletType } from '@/js/wallets/types'
 import store from '@/store'
-import { AvaNetwork } from '@/js/AvaNetwork'
-import { PubSub } from 'avalanche'
+import { LuxNetwork } from '@/js/LuxNetwork'
+import { PubSub } from 'luxdefi'
 
 const FILTER_ADDRESS_SIZE = 1000
 
 export let socketX: Sockette
 
-export function connectSocketX(network: AvaNetwork) {
+export function connectSocketX(network: LuxNetwork) {
     if (socketX) {
         socketX.close()
     }

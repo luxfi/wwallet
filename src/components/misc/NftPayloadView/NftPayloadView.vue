@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { PayloadBase } from 'avalanche/dist/utils'
+import { PayloadBase } from 'luxdefi/dist/utils'
 
 import UrlPayloadView from '@/components/misc/NftPayloadView/views/UrlPayloadView.vue'
 import UtfPayloadView from '@/components/misc/NftPayloadView/views/UtfPayloadView.vue'

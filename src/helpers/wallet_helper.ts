@@ -1,12 +1,12 @@
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
 import {
     UTXOSet as PlatformUTXOSet,
     UTXO as PlatformUTXO,
-} from 'avalanche/dist/apis/platformvm/utxos'
-import { UTXO as AVMUTXO } from 'avalanche/dist/apis/avm/utxos'
+} from 'luxdefi/dist/apis/platformvm/utxos'
+import { UTXO as AVMUTXO } from 'luxdefi/dist/apis/avm/utxos'
 import { WalletType } from '@/js/wallets/types'
 
-import { BN, Buffer } from 'avalanche'
+import { BN, Buffer } from 'luxdefi'
 import {
     buildCreateNftFamilyTx,
     buildEvmTransferErc20Tx,
@@ -14,7 +14,7 @@ import {
     buildEvmTransferNativeTx,
     buildMintNftTx,
 } from '@/js/TxHelper'
-import { PayloadBase } from 'avalanche/dist/utils'
+import { PayloadBase } from 'luxdefi/dist/utils'
 import { ITransaction } from '@/components/wallet/transfer/types'
 
 import { web3 } from '@/evm'
@@ -120,8 +120,8 @@ class WalletHelper {
             rewardAddress = wallet.getPlatformRewardAddress()
         }
 
-        // For change address use first available on the platform chain
-        let changeAddress = wallet.getFirstAvailableAddressPlatform()
+        // For change address use first luxilable on the platform chain
+        let changeAddress = wallet.getFirstLuxilableAddressPlatform()
 
         let stakeReturnAddr = wallet.getCurrentAddressPlatform()
 
@@ -173,8 +173,8 @@ class WalletHelper {
 
         let stakeReturnAddr = wallet.getPlatformRewardAddress()
 
-        // For change address use first available on the platform chain
-        let changeAddress = wallet.getFirstAvailableAddressPlatform()
+        // For change address use first luxilable on the platform chain
+        let changeAddress = wallet.getFirstLuxilableAddressPlatform()
 
         // Convert dates to unix time
         let startTime = new BN(Math.round(start.getTime() / 1000))

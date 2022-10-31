@@ -1,43 +1,43 @@
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { digestMessage } from '@/helpers/helper'
 import { WalletNameType } from '@/js/wallets/types'
 
-import { Buffer as BufferAvalanche, BN } from 'avalanche'
+import { Buffer as BufferLuxlanche, BN } from 'luxdefi'
 import {
     KeyPair as AVMKeyPair,
     KeyChain as AVMKeyChain,
     UTXOSet as AVMUTXOSet,
     UTXO,
     UnsignedTx,
-} from 'avalanche/dist/apis/avm'
+} from 'luxdefi/dist/apis/avm'
 import {
     KeyPair as PlatformKeyPair,
     KeyChain as PlatformKeyChain,
     UTXOSet as PlatformUTXOSet,
     UTXOSet,
-} from 'avalanche/dist/apis/platformvm'
-import { KeyChain, KeyChain as EVMKeyChain, UTXOSet as EVMUTXOSet } from 'avalanche/dist/apis/evm'
-import { PayloadBase } from 'avalanche/dist/utils'
+} from 'luxdefi/dist/apis/platformvm'
+import { KeyChain, KeyChain as EVMKeyChain, UTXOSet as EVMUTXOSet } from 'luxdefi/dist/apis/evm'
+import { PayloadBase } from 'luxdefi/dist/utils'
 import { buildUnsignedTransaction } from '../TxHelper'
-import { AvaWalletCore, UnsafeWallet } from './types'
-import { UTXO as PlatformUTXO } from 'avalanche/dist/apis/platformvm/utxos'
+import { LuxWalletCore, UnsafeWallet } from './types'
+import { UTXO as PlatformUTXO } from 'luxdefi/dist/apis/platformvm/utxos'
 import { privateToAddress } from 'ethereumjs-util'
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'avalanche/dist/apis/avm/tx'
+import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxdefi/dist/apis/avm/tx'
 import {
     Tx as PlatformTx,
     UnsignedTx as PlatformUnsignedTx,
-} from 'avalanche/dist/apis/platformvm/tx'
-import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx'
+} from 'luxdefi/dist/apis/platformvm/tx'
+import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'luxdefi/dist/apis/evm/tx'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletCore } from '@/js/wallets/WalletCore'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
-import { UTXO as AVMUTXO } from 'avalanche/dist/apis/avm/utxos'
+import { UTXO as AVMUTXO } from 'luxdefi/dist/apis/avm/utxos'
 import { Transaction } from '@ethereumjs/tx'
-import { ExportChainsC, ExportChainsP, ExportChainsX } from '@avalabs/avalanche-wallet-sdk'
+import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxdefi/luxdefi-wallet-sdk'
 
-class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet {
+class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet {
     keyChain: AVMKeyChain
     keyPair: AVMKeyPair
 
@@ -68,7 +68,7 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
         this.chainId = avm.getBlockchainAlias() || avm.getBlockchainID()
         this.chainIdP = pChain.getBlockchainAlias() || pChain.getBlockchainID()
 
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
 
         this.keyChain = new AVMKeyChain(hrp, this.chainId)
         this.keyPair = this.keyChain.importKey(pk)
@@ -87,9 +87,9 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
         this.ethAddress = privateToAddress(pkBuffNative).toString('hex')
         this.ethBalance = new BN(0)
 
-        let cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferAvalanche.from(pkBuf))
+        let cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferLuxlanche.from(pkBuf))
         this.ethKeyBech = cPrivKey
-        let cKeyChain = new KeyChain(ava.getHRP(), 'C')
+        let cKeyChain = new KeyChain(lux.getHRP(), 'C')
         this.ethKeyChain = cKeyChain
 
         let cKeypair = cKeyChain.importKey(cPrivKey)
@@ -198,7 +198,7 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
     async buildUnsignedTransaction(
         orders: (ITransaction | UTXO)[],
         addr: string,
-        memo?: BufferAvalanche
+        memo?: BufferLuxlanche
     ) {
         const changeAddress = this.getChangeAddressAvm()
         const derivedAddresses = this.getDerivedAddresses()
@@ -217,17 +217,17 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
     async issueBatchTx(
         orders: (ITransaction | AVMUTXO)[],
         addr: string,
-        memo: BufferAvalanche | undefined
+        memo: BufferLuxlanche | undefined
     ): Promise<string> {
         return await WalletHelper.issueBatchTx(this, orders, addr, memo)
     }
 
-    getFirstAvailableAddressPlatform(): string {
+    getFirstLuxilableAddressPlatform(): string {
         return this.getCurrentAddressPlatform()
     }
 
     onnetworkchange(): void {
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
 
         this.keyChain = new AVMKeyChain(hrp, this.chainId)
         this.utxoset = new AVMUTXOSet()
@@ -238,7 +238,7 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
         this.platformKeyPair = this.platformKeyChain.importKey(this.key)
 
         // Update EVM values
-        this.ethKeyChain = new EVMKeyChain(ava.getHRP(), 'C')
+        this.ethKeyChain = new EVMKeyChain(lux.getHRP(), 'C')
         let cKeypair = this.ethKeyChain.importKey(this.ethKeyBech)
         this.ethAddressBech = cKeypair.getAddressString()
         this.ethBalance = new BN(0)
@@ -273,7 +273,7 @@ class SingletonWallet extends WalletCore implements AvaWalletCore, UnsafeWallet 
         let digest = digestMessage(msgStr)
 
         let digestHex = digest.toString('hex')
-        let digestBuff = BufferAvalanche.from(digestHex, 'hex')
+        let digestBuff = BufferLuxlanche.from(digestHex, 'hex')
         let signed = this.keyPair.sign(digestBuff)
 
         return bintools.cb58Encode(signed)

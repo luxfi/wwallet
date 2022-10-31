@@ -41,7 +41,7 @@
                     <p class="balance_usd" style="background-color: transparent">
                         <b>1 LUX</b>
                         =
-                        <b>${{ avaxPriceText }}</b>
+                        <b>${{ luxPriceText }}</b>
                         USD
                     </p>
                 </div>
@@ -50,7 +50,7 @@
             <div class="alt_info">
                 <div class="alt_non_breakdown" v-if="!isBreakdown">
                     <div>
-                        <label>{{ $t('top.balance.available') }}</label>
+                        <label>{{ $t('top.balance.luxilable') }}</label>
                         <p>{{ unlockedText }} LUX</p>
                     </div>
                     <div v-if="hasLocked">
@@ -68,26 +68,26 @@
                 </div>
                 <div class="alt_breakdown" v-else>
                     <div>
-                        <label>{{ $t('top.balance.available') }} (X)</label>
-                        <p>{{ avmUnlocked | cleanAvaxBN }} LUX</p>
-                        <label>{{ $t('top.balance.available') }} (P)</label>
-                        <p>{{ platformUnlocked | cleanAvaxBN }} LUX</p>
-                        <label>{{ $t('top.balance.available') }} (C)</label>
-                        <p>{{ evmUnlocked | cleanAvaxBN }} LUX</p>
+                        <label>{{ $t('top.balance.luxilable') }} (X)</label>
+                        <p>{{ avmUnlocked | cleanLuxxBN }} LUX</p>
+                        <label>{{ $t('top.balance.luxilable') }} (P)</label>
+                        <p>{{ platformUnlocked | cleanLuxxBN }} LUX</p>
+                        <label>{{ $t('top.balance.luxilable') }} (C)</label>
+                        <p>{{ evmUnlocked | cleanLuxxBN }} LUX</p>
                     </div>
                     <div v-if="hasLocked">
                         <label>{{ $t('top.balance.locked') }} (X)</label>
-                        <p>{{ avmLocked | cleanAvaxBN }} LUX</p>
+                        <p>{{ avmLocked | cleanLuxxBN }} LUX</p>
                         <label>{{ $t('top.balance.locked') }} (P)</label>
-                        <p>{{ platformLocked | cleanAvaxBN }} LUX</p>
+                        <p>{{ platformLocked | cleanLuxxBN }} LUX</p>
                         <label>{{ $t('top.balance.locked_stake') }} (P)</label>
-                        <p>{{ platformLockedStakeable | cleanAvaxBN }} LUX</p>
+                        <p>{{ platformLockedStakeable | cleanLuxxBN }} LUX</p>
                     </div>
                     <div v-if="hasMultisig">
                         <label>Multisig (X)</label>
-                        <p>{{ avmMultisig | cleanAvaxBN }} LUX</p>
+                        <p>{{ avmMultisig | cleanLuxxBN }} LUX</p>
                         <label>Multisig (P)</label>
-                        <p>{{ platformMultisig | cleanAvaxBN }} LUX</p>
+                        <p>{{ platformMultisig | cleanLuxxBN }} LUX</p>
                     </div>
                     <div>
                         <label>{{ $t('top.balance.stake') }}</label>
@@ -102,15 +102,15 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Spinner from '@/components/misc/Spinner.vue'
 import NftCol from './NftCol.vue'
 import Tooltip from '@/components/misc/Tooltip.vue'
 
 import Big from 'big.js'
-import { BN } from 'avalanche/dist'
-import { ONEAVAX } from 'avalanche/dist/utils'
+import { BN } from 'luxdefi/dist'
+import { ONELUXX } from 'luxdefi/dist/utils'
 import { bnToBig } from '@/helpers/helper'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -124,8 +124,8 @@ import UtxosBreakdownModal from '@/components/modals/UtxosBreakdown/UtxosBreakdo
         Tooltip,
     },
     filters: {
-        cleanAvaxBN(val: BN) {
-            let big = Big(val.toString()).div(Big(ONEAVAX.toString()))
+        cleanLuxxBN(val: BN) {
+            let big = Big(val.toString()).div(Big(ONELUXX.toString()))
             return big.toLocaleString()
         },
     },
@@ -145,9 +145,9 @@ export default class BalanceCard extends Vue {
     showUTXOsModal() {
         this.$refs.utxos_modal.open()
     }
-    get ava_asset(): AvaAsset | null {
-        let ava = this.$store.getters['Assets/AssetAVA']
-        return ava
+    get lux_asset(): LuxAsset | null {
+        let lux = this.$store.getters['Assets/AssetLUX']
+        return lux
     }
 
     toggleBreakdown() {
@@ -155,13 +155,13 @@ export default class BalanceCard extends Vue {
     }
 
     get avmUnlocked(): BN {
-        if (!this.ava_asset) return new BN(0)
-        return this.ava_asset.amount
+        if (!this.lux_asset) return new BN(0)
+        return this.lux_asset.amount
     }
 
     get avmLocked(): BN {
-        if (!this.ava_asset) return new BN(0)
-        return this.ava_asset.amountLocked
+        if (!this.lux_asset) return new BN(0)
+        return this.lux_asset.amountLocked
     }
 
     get evmUnlocked(): BN {
@@ -172,24 +172,24 @@ export default class BalanceCard extends Vue {
     }
 
     get totalBalance(): BN {
-        if (!this.ava_asset) return new BN(0)
+        if (!this.lux_asset) return new BN(0)
 
-        let tot = this.ava_asset.getTotalAmount()
+        let tot = this.lux_asset.getTotalAmount()
         // add EVM balance
         tot = tot.add(this.evmUnlocked)
         return tot
     }
 
     get totalBalanceBig(): Big {
-        if (this.ava_asset) {
-            let denom = this.ava_asset.denomination
+        if (this.lux_asset) {
+            let denom = this.lux_asset.denomination
             let bigTot = bnToBig(this.totalBalance, denom)
             return bigTot
         }
         return Big(0)
     }
 
-    get avaxPriceText() {
+    get luxPriceText() {
         return this.priceDict.usd
     }
 
@@ -205,8 +205,8 @@ export default class BalanceCard extends Vue {
     }
     // should be unlocked (X+P), locked (X+P) and staked and lockedStakeable
     get balanceText(): string {
-        if (this.ava_asset !== null) {
-            let denom = this.ava_asset.denomination
+        if (this.lux_asset !== null) {
+            let denom = this.lux_asset.denomination
             return this.totalBalanceBig.toLocaleString(denom)
         } else {
             return '?'
@@ -233,16 +233,16 @@ export default class BalanceCard extends Vue {
         return ''
     }
 
-    // Locked balance is the sum of locked AVAX tokens on X and P chain
+    // Locked balance is the sum of locked LUXX tokens on X and P chain
     get balanceTextLocked(): string {
         if (this.isUpdateBalance) return '--'
 
-        if (this.ava_asset !== null) {
-            let denom = this.ava_asset.denomination
+        if (this.lux_asset !== null) {
+            let denom = this.lux_asset.denomination
             let tot = this.platformLocked.add(this.platformLockedStakeable)
             // let otherLockedAmt = this.platformLocked.add(this.platformLockedStakeable)
             let pLocked = Big(tot.toString()).div(Math.pow(10, denom))
-            let amt = this.ava_asset.getAmount(true)
+            let amt = this.lux_asset.getAmount(true)
             amt = amt.add(pLocked)
 
             return amt.toLocaleString(denom)
@@ -254,8 +254,8 @@ export default class BalanceCard extends Vue {
     get balanceTextMultisig() {
         if (this.isUpdateBalance) return '--'
 
-        if (this.ava_asset !== null) {
-            let denom = this.ava_asset.denomination
+        if (this.lux_asset !== null) {
+            let denom = this.lux_asset.denomination
             return bnToBig(this.avmMultisig.add(this.platformMultisig), denom).toLocaleString()
         } else {
             return '--'
@@ -263,8 +263,8 @@ export default class BalanceCard extends Vue {
     }
 
     get avmMultisig(): BN {
-        if (this.ava_asset !== null) {
-            return this.ava_asset.amountMultisig
+        if (this.lux_asset !== null) {
+            return this.lux_asset.amountMultisig
         } else {
             return new BN(0)
         }
@@ -275,7 +275,7 @@ export default class BalanceCard extends Vue {
     }
 
     get platformUnlocked(): BN {
-        return this.platformBalance.available
+        return this.platformBalance.luxilable
     }
 
     get platformMultisig(): BN {
@@ -293,11 +293,11 @@ export default class BalanceCard extends Vue {
     get unlockedText() {
         if (this.isUpdateBalance) return '--'
 
-        if (this.ava_asset) {
-            let xUnlocked = this.ava_asset.amount
+        if (this.lux_asset) {
+            let xUnlocked = this.lux_asset.amount
             let pUnlocked = this.platformUnlocked
 
-            let denom = this.ava_asset.denomination
+            let denom = this.lux_asset.denomination
 
             let tot = xUnlocked.add(pUnlocked).add(this.evmUnlocked)
 
@@ -310,10 +310,10 @@ export default class BalanceCard extends Vue {
     }
 
     get pBalanceText() {
-        if (!this.ava_asset) return '--'
+        if (!this.lux_asset) return '--'
         if (this.isUpdateBalance) return '--'
 
-        let denom = this.ava_asset.denomination
+        let denom = this.lux_asset.denomination
         let bal = this.platformUnlocked
         let bigBal = Big(bal.toString())
         bigBal = bigBal.div(Math.pow(10, denom))

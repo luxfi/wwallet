@@ -24,7 +24,7 @@ import {
     KeyFileV6,
     KeystoreFileKeyType,
 } from './IKeystore'
-import { avm, bintools } from '@/AVA'
+import { avm, bintools } from 'luxdefi'
 import { Buffer } from 'buffer/'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Crypto from '@/js/Crypto'
@@ -32,7 +32,7 @@ import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { AccessWalletMultipleInput } from '@/store/types'
 import { keyToKeypair } from '@/helpers/helper'
 import * as bip39 from 'bip39'
-import { Buffer as AjsBuffer } from 'avalanche'
+import { Buffer as AjsBuffer } from 'luxdefi'
 
 const cryptoHelpers = new Crypto()
 

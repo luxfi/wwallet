@@ -4,7 +4,7 @@ import { getAddressHistory } from '@/explorer_api'
 import moment from 'moment'
 
 import { HistoryState, ITransactionData } from '@/store/modules/history/types'
-import { avm, pChain } from '@/AVA'
+import { avm, pChain } from 'luxdefi'
 import { filterDuplicateTransactions } from '@/helpers/history_helper'
 
 const history_module: Module<HistoryState, RootState> = {

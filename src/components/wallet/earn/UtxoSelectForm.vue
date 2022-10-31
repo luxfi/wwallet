@@ -9,9 +9,9 @@
             <v-chip value="custom" small>{{ $t('earn.shared.utxo_select.custom') }}</v-chip>
         </v-chip-group>
 
-        <div class="available">
+        <div class="luxilable">
             <div>
-                <label>{{ $t('earn.shared.utxo_select.available') }}</label>
+                <label>{{ $t('earn.shared.utxo_select.luxilable') }}</label>
                 <p>
                     <span>{{ selectedBalanceText }} LUX</span>
                 </p>
@@ -29,13 +29,13 @@
 <script lang="ts">
 import { Vue, Component, Model, Watch } from 'vue-property-decorator'
 import UtxoSelectModal from '@/components/modals/UtxoSelect/UtxoSelect.vue'
-import { AmountOutput, UTXO, UTXOSet } from 'avalanche/dist/apis/platformvm'
+import { AmountOutput, UTXO, UTXOSet } from 'luxdefi/dist/apis/platformvm'
 import { WalletType } from '@/js/wallets/types'
 
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import { bnToBig } from '@/helpers/helper'
-import { UnixNow } from 'avalanche/dist/utils'
+import { UnixNow } from 'luxdefi/dist/utils'
 @Component({
     components: {
         UtxoSelectModal,
@@ -121,7 +121,7 @@ export default class UtxoSelectForm extends Vue {
 }
 </script>
 <style scoped lang="scss">
-.available {
+.luxilable {
     max-width: 100%;
     padding: 6px 14px;
     background-color: var(--bg-light);

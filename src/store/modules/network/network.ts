@@ -2,15 +2,15 @@ import { Module } from 'vuex'
 import { RootState } from '@/store/types'
 import { NetworkState } from '@/store/modules/network/types'
 
-import { ava, avm, bintools, cChain, infoApi, pChain } from '@/AVA'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { lux, avm, bintools, cChain, infoApi, pChain } from 'luxdefi'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { explorer_api } from '@/explorer_api'
-import { BN } from 'avalanche'
-import { getPreferredHRP } from 'avalanche/dist/utils'
+import { BN } from 'luxdefi'
+import { getPreferredHRP } from 'luxdefi/dist/utils'
 import router from '@/router'
 import { web3 } from '@/evm'
 import { setSocketNetwork } from '../../../providers'
-import { Network } from '@avalabs/avalanche-wallet-sdk'
+import { Network } from '@luxdefi/luxdefi-wallet-sdk'
 const network_module: Module<NetworkState, RootState> = {
     namespaced: true,
     state: {
@@ -21,7 +21,7 @@ const network_module: Module<NetworkState, RootState> = {
         txFee: new BN(0),
     },
     mutations: {
-        addNetwork(state, net: AvaNetwork) {
+        addNetwork(state, net: LuxNetwork) {
             state.networks.push(net)
         },
     },
@@ -31,7 +31,7 @@ const network_module: Module<NetworkState, RootState> = {
         },
     },
     actions: {
-        addCustomNetwork({ state, dispatch }, net: AvaNetwork) {
+        addCustomNetwork({ state, dispatch }, net: LuxNetwork) {
             // Check if network alerady exists
             let networks = state.networksCustom
             // Do not add if there is a network already with the same url
@@ -45,7 +45,7 @@ const network_module: Module<NetworkState, RootState> = {
             dispatch('save')
         },
 
-        async removeCustomNetwork({ state, dispatch }, net: AvaNetwork) {
+        async removeCustomNetwork({ state, dispatch }, net: LuxNetwork) {
             let index = state.networksCustom.indexOf(net)
             state.networksCustom.splice(index, 1)
             await dispatch('save')
@@ -58,8 +58,8 @@ const network_module: Module<NetworkState, RootState> = {
             let data = localStorage.getItem('network_selected')
             if (!data) return false
             try {
-                // let net: AvaNetwork = JSON.parse(data);
-                let nets: AvaNetwork[] = getters.allNetworks
+                // let net: LuxNetwork = JSON.parse(data);
+                let nets: LuxNetwork[] = getters.allNetworks
 
                 for (var i = 0; i < nets.length; i++) {
                     let net = nets[i]
@@ -84,10 +84,10 @@ const network_module: Module<NetworkState, RootState> = {
             let data = localStorage.getItem('networks')
 
             if (data) {
-                let networks: AvaNetwork[] = JSON.parse(data)
+                let networks: LuxNetwork[] = JSON.parse(data)
 
                 networks.forEach((n) => {
-                    let newCustom = new AvaNetwork(
+                    let newCustom = new LuxNetwork(
                         n.name,
                         n.url,
                         //@ts-ignore
@@ -100,14 +100,14 @@ const network_module: Module<NetworkState, RootState> = {
                 })
             }
         },
-        async setNetwork({ state, dispatch, commit, rootState }, net: AvaNetwork) {
+        async setNetwork({ state, dispatch, commit, rootState }, net: LuxNetwork) {
             state.status = 'connecting'
 
             // Chose if the network should use credentials
             await net.updateCredentials()
-            ava.setRequestConfig('withCredentials', net.withCredentials)
-            ava.setAddress(net.ip, net.port, net.protocol)
-            ava.setNetworkID(net.networkId)
+            lux.setRequestConfig('withCredentials', net.withCredentials)
+            lux.setAddress(net.ip, net.port, net.protocol)
+            lux.setNetworkID(net.networkId)
 
             // Reset transaction history
             commit('History/clear', null, { root: true })
@@ -124,9 +124,9 @@ const network_module: Module<NetworkState, RootState> = {
             cChain.refreshBlockchainID(chainIdC)
             cChain.setBlockchainAlias('C')
 
-            avm.getAVAXAssetID(true)
-            pChain.getAVAXAssetID(true)
-            cChain.getAVAXAssetID(true)
+            avm.getLUXXAssetID(true)
+            pChain.getLUXXAssetID(true)
+            cChain.getLUXXAssetID(true)
 
             state.selectedNetwork = net
             dispatch('saveSelectedNetwork')
@@ -142,7 +142,7 @@ const network_module: Module<NetworkState, RootState> = {
             setSocketNetwork(net)
 
             commit('Assets/removeAllAssets', null, { root: true })
-            await dispatch('Assets/updateAvaAsset', null, { root: true })
+            await dispatch('Assets/updateLuxAsset', null, { root: true })
 
             // If authenticated
             if (rootState.isAuth) {
@@ -177,21 +177,21 @@ const network_module: Module<NetworkState, RootState> = {
         },
 
         async init({ state, commit, dispatch }) {
-            let mainnet = new AvaNetwork(
+            let mainnet = new LuxNetwork(
                 'Mainnet',
-                'https://api.avax.network:443',
+                'https://api.lux.network:443',
                 1,
-                'https://explorerapi.avax.network',
-                'https://explorer.avax.network',
+                'https://explorerapi.lux.network',
+                'https://explorer.lux.network',
                 true
             )
 
-            let fuji = new AvaNetwork(
+            let fuji = new LuxNetwork(
                 'Fuji',
                 'https://testnet.luxcha.in:443',
                 5,
-                'https://explorerapi.avax-test.network',
-                'https://explorer.avax-test.network',
+                'https://explorerapi.lux-test.network',
+                'https://explorer.lux-test.network',
                 true
             )
 

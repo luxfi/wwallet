@@ -18,14 +18,14 @@
                 <button
                     v-if="hasVolatile"
                     @click="saveKeys"
-                    class="ava_button"
+                    class="lux_button"
                     style="color: var(--warning)"
                 >
                     <fa icon="exclamation-triangle"></fa>
                     Save Keys
                 </button>
-                <button @click="changePassword" class="ava_button">Change Password</button>
-                <button @click="deleteAccount" class="ava_button">Delete Account</button>
+                <button @click="changePassword" class="lux_button">Change Password</button>
+                <button @click="deleteAccount" class="lux_button">Delete Account</button>
             </div>
             <template v-else>
                 <component v-if="subComponent" :is="subComponent"></component>

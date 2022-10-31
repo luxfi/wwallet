@@ -2,21 +2,21 @@ import {
     KeyChain as AVMKeyChain,
     KeyPair as AVMKeyPair,
     UTXOSet as AVMUTXOSet,
-} from 'avalanche/dist/apis/avm'
+} from 'luxdefi/dist/apis/avm'
 
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm'
-import { getPreferredHRP } from 'avalanche/dist/utils'
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm'
+import { getPreferredHRP } from 'luxdefi/dist/utils'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
 import HDKey from 'hdkey'
-import { Buffer } from 'avalanche'
+import { Buffer } from 'luxdefi'
 import {
     KeyChain as PlatformVMKeyChain,
     KeyPair as PlatformVMKeyPair,
-} from 'avalanche/dist/apis/platformvm'
+} from 'luxdefi/dist/apis/platformvm'
 import store from '@/store'
 
 import { getAddressChains } from '@/explorer_api'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { ChainAlias } from './wallets/types'
 import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
 import { updateFilterAddresses } from '../providers'
@@ -56,7 +56,7 @@ class HdHelper {
         this.isInit = false
 
         this.chainId = chainId
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
         if (chainId === 'X') {
             this.keyChain = new AVMKeyChain(hrp, chainId)
             this.utxoSet = new AVMUTXOSet()
@@ -83,7 +83,7 @@ class HdHelper {
     async onNetworkChange() {
         this.clearCache()
         this.isInit = false
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
         if (this.chainId === 'X') {
             this.keyChain = new AVMKeyChain(hrp, this.chainId)
             this.utxoSet = new AVMUTXOSet()
@@ -121,16 +121,16 @@ class HdHelper {
     }
 
     async findHdIndex() {
-        // Check if explorer is available
+        // Check if explorer is luxilable
 
         // @ts-ignore
-        let network: AvaNetwork = store.state.Network.selectedNetwork
+        let network: LuxNetwork = store.state.Network.selectedNetwork
         let explorerUrl = network.explorerUrl
 
         if (explorerUrl) {
-            this.hdIndex = await this.findAvailableIndexExplorer()
+            this.hdIndex = await this.findLuxilableIndexExplorer()
         } else {
-            this.hdIndex = await this.findAvailableIndexNode()
+            this.hdIndex = await this.findLuxilableIndexNode()
         }
 
         if (!this.isPublic) {
@@ -183,7 +183,7 @@ class HdHelper {
 
     // Updates the helper keychain to contain keys upto the HD Index
     updateKeychain(): AVMKeyChain | PlatformVMKeyChain {
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
         let keychain: AVMKeyChain | PlatformVMKeyChain
 
         if (this.chainId === 'X') {
@@ -241,7 +241,7 @@ class HdHelper {
 
     // Scans the address space of this hd path and finds the last used index using the
     // explorer API.
-    async findAvailableIndexExplorer(startIndex = 0): Promise<number> {
+    async findLuxilableIndexExplorer(startIndex = 0): Promise<number> {
         let upTo = 512
 
         let addrs = this.getAllDerivedAddresses(startIndex + upTo, startIndex)
@@ -281,12 +281,12 @@ class HdHelper {
             }
         }
 
-        return await this.findAvailableIndexExplorer(startIndex + (upTo - INDEX_RANGE))
+        return await this.findLuxilableIndexExplorer(startIndex + (upTo - INDEX_RANGE))
     }
 
     // Uses the node to find last used HD index
-    // Only used when there is no explorer API available
-    async findAvailableIndexNode(start: number = 0): Promise<number> {
+    // Only used when there is no explorer API luxilable
+    async findLuxilableIndexNode(start: number = 0): Promise<number> {
         let addrs: string[] = []
 
         // Get keys for indexes start to start+scan_size
@@ -327,10 +327,10 @@ class HdHelper {
                 return targetIndex
             }
         }
-        return await this.findAvailableIndexNode(start + SCAN_RANGE)
+        return await this.findLuxilableIndexNode(start + SCAN_RANGE)
     }
 
-    getFirstAvailableIndex(): number {
+    getFirstLuxilableIndex(): number {
         for (var i = 0; i < this.hdIndex; i++) {
             let addr = this.getAddressForIndex(i)
             let addrBuf = bintools.parseAddress(addr, this.chainId)
@@ -344,8 +344,8 @@ class HdHelper {
     }
 
     // Returns the key of the first index that has no utxos
-    getFirstAvailableAddress(): string {
-        const idx = this.getFirstAvailableIndex()
+    getFirstLuxilableAddress(): string {
+        const idx = this.getFirstLuxilableIndex()
         return this.getAddressForIndex(idx)
     }
 
@@ -417,7 +417,7 @@ class HdHelper {
 
         let pkHex = key.publicKey.toString('hex')
         let pkBuff = Buffer.from(pkHex, 'hex')
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
 
         let chainId = this.chainId
 

@@ -27,11 +27,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
 export default class NetworkRow extends Vue {
-    @Prop() network!: AvaNetwork
+    @Prop() network!: LuxNetwork
 
     get endpoint() {
         let net = this.network

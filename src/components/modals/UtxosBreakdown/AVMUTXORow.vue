@@ -24,17 +24,17 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { AmountOutput, AVMConstants, UTXO as AVMUTXO } from 'avalanche/dist/apis/avm'
+import { AmountOutput, AVMConstants, UTXO as AVMUTXO } from 'luxdefi/dist/apis/avm'
 import {
     PlatformVMConstants,
     StakeableLockOut,
     UTXO as PlatformUTXO,
-} from 'avalanche/dist/apis/platformvm'
-import { ava, bintools } from '@/AVA'
-import AvaAsset from '@/js/AvaAsset'
+} from 'luxdefi/dist/apis/platformvm'
+import { lux, bintools } from 'luxdefi'
+import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
-import { UnixNow } from 'avalanche/dist/utils'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { UnixNow } from 'luxdefi/dist/utils'
+import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
 export default class UTXORow extends Vue {
@@ -52,7 +52,7 @@ export default class UTXORow extends Vue {
     get addresses(): string[] {
         let addrs = this.out.getAddresses()
 
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
         let id = this.isX ? 'X' : 'P'
         let addrsClean = addrs.map((addr) => {
             return bintools.addressToString(hrp, id, addr)
@@ -74,7 +74,7 @@ export default class UTXORow extends Vue {
     }
 
     get explorerLink() {
-        let net: AvaNetwork = this.$store.state.Network.selectedNetwork
+        let net: LuxNetwork = this.$store.state.Network.selectedNetwork
         let explorer = net.explorerSiteUrl
         if (!explorer) return null
         return explorer + '/tx/' + bintools.cb58Encode(this.utxo.getTxID())
@@ -110,7 +110,7 @@ export default class UTXORow extends Vue {
 
         if (this.typeID === 7 || this.typeID === PlatformVMConstants.STAKEABLELOCKOUTID) {
             let out = this.out as AmountOutput
-            let denom = (this.asset as AvaAsset).denomination
+            let denom = (this.asset as LuxAsset).denomination
             let bn = out.getAmount()
             return bnToBig(bn, denom).toLocaleString()
         }

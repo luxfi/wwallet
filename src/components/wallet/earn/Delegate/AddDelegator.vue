@@ -26,12 +26,12 @@
                         <!--                        <p class="desc">-->
                         <!--                            {{ $t('earn.delegate.form.amount.desc2', [remainingAmtText]) }}-->
                         <!--                        </p>-->
-                        <AvaxInput
+                        <LuxxInput
                             v-model="stakeAmt"
                             :max="maxAmt"
                             class="amt_in"
                             :balance="utxosBalanceBig"
-                        ></AvaxInput>
+                        ></LuxxInput>
                     </div>
                     <div class="reward_in" style="margin: 30px 0" :type="rewardDestination">
                         <h4>{{ $t('earn.delegate.form.reward.label') }}</h4>
@@ -108,7 +108,7 @@
                     </div>
                     <div>
                         <label>{{ $t('earn.delegate.summary.reward') }}</label>
-                        <p v-if="currency_type === 'AVAX'">
+                        <p v-if="currency_type === 'LUXX'">
                             {{ estimatedReward.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
@@ -117,7 +117,7 @@
                     </div>
                     <div>
                         <label>{{ $t('earn.delegate.summary.fee') }}</label>
-                        <p v-if="currency_type === 'AVAX'">
+                        <p v-if="currency_type === 'LUXX'">
                             {{ totalFeeBig.toLocaleString(2) }} LUX
                         </p>
                         <p v-if="currency_type === 'USD'">
@@ -198,9 +198,9 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
-import AvaxInput from '@/components/misc/AvaxInput.vue'
+import LuxxInput from '@/components/misc/LuxxInput.vue'
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxdefi/vue_components'
 import ValidatorsList from '@/components/misc/ValidatorList/ValidatorsList.vue'
 import { ValidatorRaw } from '@/components/misc/ValidatorList/types'
 import StakingCalculator from '@/components/wallet/earn/StakingCalculator.vue'
@@ -208,12 +208,12 @@ import ConfirmPage from '@/components/wallet/earn/Delegate/ConfirmPage.vue'
 import Big from 'big.js'
 import moment from 'moment'
 
-import { BN } from 'avalanche'
-import { AmountOutput, PlatformVMConstants, UTXO, UTXOSet } from 'avalanche/dist/apis/platformvm'
-import { ava, avm, bintools, infoApi, pChain } from '@/AVA'
+import { BN } from 'luxdefi'
+import { AmountOutput, PlatformVMConstants, UTXO, UTXOSet } from 'luxdefi/dist/apis/platformvm'
+import { lux, avm, bintools, infoApi, pChain } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { bnToBig, calculateStakingReward } from '@/helpers/helper'
-import { Defaults, ONEAVAX } from 'avalanche/dist/utils'
+import { Defaults, ONELUXX } from 'luxdefi/dist/utils'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import NodeSelection from '@/components/wallet/earn/Delegate/NodeSelection.vue'
 import CurrencySelect from '@/components/misc/CurrencySelect/CurrencySelect.vue'
@@ -237,7 +237,7 @@ const DAY_MS = HOUR_MS * 24
         Spinner,
         CurrencySelect,
         NodeSelection,
-        AvaxInput,
+        LuxxInput,
         ValidatorsList,
         StakingCalculator,
         QrInput,
@@ -267,7 +267,7 @@ export default class AddDelegator extends Vue {
     formEnd: Date = new Date()
     formRewardAddr = ''
 
-    currency_type = 'AVAX'
+    currency_type = 'LUXX'
 
     mounted() {
         this.rewardSelect('local')
@@ -385,10 +385,10 @@ export default class AddDelegator extends Vue {
     }
 
     get estimatedRewardUSD() {
-        return this.estimatedReward.times(this.avaxPrice)
+        return this.estimatedReward.times(this.luxPrice)
     }
 
-    get avaxPrice(): Big {
+    get luxPrice(): Big {
         return Big(this.$store.state.prices.usd)
     }
 
@@ -538,7 +538,7 @@ export default class AddDelegator extends Vue {
     }
 
     get totalFeeUsdBig() {
-        return this.totalFeeBig.times(this.avaxPrice)
+        return this.totalFeeBig.times(this.luxPrice)
     }
 
     get txFee(): BN {
@@ -587,13 +587,13 @@ export default class AddDelegator extends Vue {
     get maxAmt(): BN {
         let zero = new BN(0)
 
-        let totAvailable = this.utxosBalance
+        let totLuxilable = this.utxosBalance
 
-        if (zero.gt(totAvailable)) return zero
+        if (zero.gt(totLuxilable)) return zero
 
-        if (totAvailable.gt(this.remainingAmt)) return this.remainingAmt
+        if (totLuxilable.gt(this.remainingAmt)) return this.remainingAmt
 
-        return totAvailable
+        return totLuxilable
     }
 
     // Go Back to earn

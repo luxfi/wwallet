@@ -57,7 +57,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import axios from 'axios'
 import punycode from 'punycode'
 
@@ -186,7 +186,7 @@ export default class CustomPage extends Vue {
             return
         }
 
-        let net = new AvaNetwork(
+        let net = new LuxNetwork(
             this.name,
             this.url,
             validNetId,

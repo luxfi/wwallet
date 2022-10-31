@@ -45,7 +45,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import FungibleRow from '@/components/wallet/portfolio/FungibleRow.vue'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import Erc20Token from '@/js/Erc20Token'
 import ERC20Row from '@/components/wallet/portfolio/ERC20Row.vue'
 import AddERC20TokenModal from '@/components/modals/AddERC20TokenModal.vue'
@@ -82,9 +82,9 @@ export default class Fungibles extends Vue {
         this.$refs.tokenlist_modal.open()
     }
 
-    get walletBalancesSorted(): AvaAsset[] {
-        // let balance: AvaAsset[] = this.$store.getters['walletAssetsArray']
-        let balance: AvaAsset[] = this.$store.getters['Assets/walletAssetsArray']
+    get walletBalancesSorted(): LuxAsset[] {
+        // let balance: LuxAsset[] = this.$store.getters['walletAssetsArray']
+        let balance: LuxAsset[] = this.$store.getters['Assets/walletAssetsArray']
 
         // Sort by balance, then name
         balance.sort((a, b) => {
@@ -95,10 +95,10 @@ export default class Fungibles extends Vue {
             let idA = a.id
             let idB = b.id
 
-            // AVA always on top
-            if (idA === this.avaxToken.id) {
+            // LUX always on top
+            if (idA === this.luxToken.id) {
                 return -1
-            } else if (idB === this.avaxToken.id) {
+            } else if (idB === this.luxToken.id) {
                 return 1
             }
 
@@ -119,8 +119,8 @@ export default class Fungibles extends Vue {
         return balance
     }
 
-    get avaxToken(): AvaAsset {
-        return this.$store.getters['Assets/AssetAVA']
+    get luxToken(): LuxAsset {
+        return this.$store.getters['Assets/AssetLUX']
     }
 
     get erc20Balances(): Erc20Token[] {
@@ -132,7 +132,7 @@ export default class Fungibles extends Vue {
         return filt
     }
 
-    get walletBalances(): AvaAsset[] {
+    get walletBalances(): LuxAsset[] {
         let balance = this.walletBalancesSorted
 
         if (this.search) {

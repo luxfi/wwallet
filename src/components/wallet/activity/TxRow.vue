@@ -40,13 +40,13 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ITransactionData, ITransactionDataProcessed } from '@/store/modules/history/types'
 import { AssetsDict, NftFamilyDict } from '@/store/modules/assets/types'
 import { bnToBig } from '@/helpers/helper'
-import { BN, Buffer } from 'avalanche'
+import { BN, Buffer } from 'luxdefi'
 
 import StakingTx from '@/components/SidePanels/History/ViewTypes/StakingTx.vue'
 import BaseTx from '@/components/SidePanels/History/ViewTypes/BaseTx.vue'
 import ImportExport from '@/components/SidePanels/History/ViewTypes/ImportExport.vue'
 import moment from 'moment'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import getMemoFromByteString from '@/services/history/utils'
 
 @Component({
@@ -61,7 +61,7 @@ export default class TxRow extends Vue {
     @Prop() source!: ITransactionDataProcessed
 
     get explorerUrl(): string | null {
-        let network: AvaNetwork = this.$store.state.Network.selectedNetwork
+        let network: LuxNetwork = this.$store.state.Network.selectedNetwork
         if (network.explorerSiteUrl) {
             return `${network.explorerSiteUrl}/tx/${this.source.id}`
         }

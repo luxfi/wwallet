@@ -20,11 +20,11 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { AvaNftFamily } from '@/js/AvaNftFamily'
+import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletNftDict } from '@/store/types'
-import { NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
-import { Buffer } from 'avalanche'
-import { PayloadBase, PayloadTypes } from 'avalanche/dist/utils'
+import { NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
+import { Buffer } from 'luxdefi'
+import { PayloadBase, PayloadTypes } from 'luxdefi/dist/utils'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 
@@ -36,7 +36,7 @@ let payloadtypes = PayloadTypes.getInstance()
     },
 })
 export default class CollectibleFamily extends Vue {
-    @Prop() family!: AvaNftFamily
+    @Prop() family!: LuxNftFamily
     @Prop({ default: [] }) disabledIds!: string[]
 
     get nftFamilies() {

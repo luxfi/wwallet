@@ -1,7 +1,7 @@
-import { UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm/utxos'
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm/utxos'
-import { avm, cChain, pChain } from '@/AVA'
-import { BN } from 'avalanche'
+import { UTXOSet as AVMUTXOSet } from 'luxdefi/dist/apis/avm/utxos'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm/utxos'
+import { avm, cChain, pChain } from 'luxdefi'
+import { BN } from 'luxdefi'
 
 export async function getStakeForAddresses(addrs: string[]): Promise<BN> {
     if (addrs.length <= 256) {

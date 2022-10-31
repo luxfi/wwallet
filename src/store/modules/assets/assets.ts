@@ -13,25 +13,25 @@ import {
     IWalletNftMintDict,
     RootState,
 } from '@/store/types'
-import { ava, avm, bintools, cChain } from '@/AVA'
+import { lux, avm, bintools, cChain } from 'luxdefi'
 import Vue from 'vue'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { WalletType } from '@/js/wallets/types'
-import { AvaNftFamily } from '@/js/AvaNftFamily'
+import { LuxNftFamily } from '@/js/LuxNftFamily'
 import {
     AmountOutput,
     UTXOSet as AVMUTXOSet,
     UTXO as AVMUTXO,
     UTXO,
     NFTMintOutput,
-} from 'avalanche/dist/apis/avm'
-import { UnixNow } from 'avalanche/dist/utils'
-import { BN } from 'avalanche'
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm/utxos'
-import { PlatformVMConstants, StakeableLockOut } from 'avalanche/dist/apis/platformvm'
+} from 'luxdefi/dist/apis/avm'
+import { UnixNow } from 'luxdefi/dist/utils'
+import { BN } from 'luxdefi'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm/utxos'
+import { PlatformVMConstants, StakeableLockOut } from 'luxdefi/dist/apis/platformvm'
 import axios from 'axios'
 import Erc20Token from '@/js/Erc20Token'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { web3 } from '@/evm'
 // import ERC721Token from '@/js/ERC721Token'
 
@@ -52,7 +52,7 @@ const assets_module: Module<AssetsState, RootState> = {
         ERC721: ERC721Module,
     },
     state: {
-        AVA_ASSET_ID: null,
+        LUX_ASSET_ID: null,
         // isUpdateBalance: false,
         assets: [],
         assetsDict: {}, // holds meta data of assets
@@ -70,14 +70,14 @@ const assets_module: Module<AssetsState, RootState> = {
         nftWhitelist: [],
     },
     mutations: {
-        addAsset(state, asset: AvaAsset) {
+        addAsset(state, asset: LuxAsset) {
             if (state.assetsDict[asset.id]) {
                 return
             }
             state.assets.push(asset)
             Vue.set(state.assetsDict, asset.id, asset)
         },
-        addNftFamily(state, family: AvaNftFamily) {
+        addNftFamily(state, family: LuxNftFamily) {
             if (state.nftFamsDict[family.id]) {
                 return
             }
@@ -92,7 +92,7 @@ const assets_module: Module<AssetsState, RootState> = {
             state.nftUTXOs = []
             state.nftMintUTXOs = []
             state.balanceDict = {}
-            state.AVA_ASSET_ID = null
+            state.LUX_ASSET_ID = null
         },
         saveCustomErc20Tokens(state) {
             let tokens: Erc20Token[] = state.erc20TokensCustom
@@ -120,7 +120,7 @@ const assets_module: Module<AssetsState, RootState> = {
         },
     },
     actions: {
-        async onNetworkChange({ state }, network: AvaNetwork) {
+        async onNetworkChange({ state }, network: LuxNetwork) {
             let id = await web3.eth.getChainId()
             state.evmChainId = id
         },
@@ -370,12 +370,12 @@ const assets_module: Module<AssetsState, RootState> = {
             })
         },
 
-        // What is the AVA coin in the network
-        async updateAvaAsset({ state, commit }) {
-            let res = await avm.getAssetDescription('AVAX')
+        // What is the LUX coin in the network
+        async updateLuxAsset({ state, commit }) {
+            let res = await avm.getAssetDescription('LUXX')
             let id = bintools.cb58Encode(res.assetID)
-            state.AVA_ASSET_ID = id
-            let asset = new AvaAsset(id, res.name, res.symbol, res.denomination)
+            state.LUX_ASSET_ID = id
+            let asset = new LuxAsset(id, res.name, res.symbol, res.denomination)
             commit('addAsset', asset)
         },
 
@@ -415,7 +415,7 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: ZERO,
-                            available: ZERO.clone(),
+                            luxilable: ZERO.clone(),
                             multisig: amount.clone(),
                         }
                     } else {
@@ -426,12 +426,12 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: ZERO,
-                            available: amount.clone(),
+                            luxilable: amount.clone(),
                             multisig: ZERO.clone(),
                         }
                     } else {
-                        let amt = dict[assetId].available
-                        dict[assetId].available = amt.add(amount)
+                        let amt = dict[assetId].luxilable
+                        dict[assetId].luxilable = amt.add(amount)
                     }
                 }
                 // If locked
@@ -439,7 +439,7 @@ const assets_module: Module<AssetsState, RootState> = {
                     if (!dict[assetId]) {
                         dict[assetId] = {
                             locked: amount.clone(),
-                            available: ZERO,
+                            luxilable: ZERO,
                             multisig: ZERO,
                         }
                     } else {
@@ -455,16 +455,16 @@ const assets_module: Module<AssetsState, RootState> = {
         // Adds an unknown asset id to the assets dictionary
         async addUnknownAsset({ state, commit }, assetId: string) {
             // get info about the asset
-            let desc = await ava.XChain().getAssetDescription(assetId)
-            let newAsset = new AvaAsset(assetId, desc.name, desc.symbol, desc.denomination)
+            let desc = await lux.XChain().getAssetDescription(assetId)
+            let newAsset = new LuxAsset(assetId, desc.name, desc.symbol, desc.denomination)
 
             await commit('addAsset', newAsset)
             return desc
         },
 
         async addUnknownNftFamily({ state, commit }, assetId: string) {
-            let desc = await ava.XChain().getAssetDescription(assetId)
-            let newFam = new AvaNftFamily(assetId, desc.name, desc.symbol)
+            let desc = await lux.XChain().getAssetDescription(assetId)
+            let newFam = new LuxNftFamily(assetId, desc.name, desc.symbol)
 
             await commit('addNftFamily', newFam)
             return desc
@@ -523,23 +523,23 @@ const assets_module: Module<AssetsState, RootState> = {
             for (var assetId in assetsDict) {
                 let balanceAmt = balanceDict[assetId]
 
-                let asset: AvaAsset
+                let asset: LuxAsset
                 if (!balanceAmt) {
                     asset = assetsDict[assetId]
                     asset.resetBalance()
                 } else {
                     asset = assetsDict[assetId]
                     asset.resetBalance()
-                    asset.addBalance(balanceAmt.available)
+                    asset.addBalance(balanceAmt.luxilable)
                     asset.addBalanceLocked(balanceAmt.locked)
                     asset.addBalanceMultisig(balanceAmt.multisig)
                 }
 
-                // Add extras for AVAX token
+                // Add extras for LUXX token
                 // @ts-ignore
-                if (asset.id === state.AVA_ASSET_ID) {
+                if (asset.id === state.LUX_ASSET_ID) {
                     asset.addExtra(getters.walletStakingBalance)
-                    asset.addExtra(getters.walletPlatformBalance.available)
+                    asset.addExtra(getters.walletPlatformBalance.luxilable)
                     asset.addExtra(getters.walletPlatformBalance.locked)
                     asset.addExtra(getters.walletPlatformBalance.lockedStakeable)
                     asset.addExtra(getters.walletPlatformBalance.multisig)
@@ -550,9 +550,9 @@ const assets_module: Module<AssetsState, RootState> = {
             return res
         },
 
-        walletAssetsArray(state, getters): AvaAsset[] {
+        walletAssetsArray(state, getters): LuxAsset[] {
             let assetsDict: IWalletAssetsDict = getters.walletAssetsDict
-            let res: AvaAsset[] = []
+            let res: LuxAsset[] = []
 
             for (var id in assetsDict) {
                 let asset = assetsDict[id]
@@ -567,7 +567,7 @@ const assets_module: Module<AssetsState, RootState> = {
             return wallet.utxoset
         },
 
-        nftFamilies(state): AvaNftFamily[] {
+        nftFamilies(state): LuxNftFamily[] {
             return state.nftFams
         },
 
@@ -579,7 +579,7 @@ const assets_module: Module<AssetsState, RootState> = {
         },
 
         /**
-         * Calculates balances (available, locked, lockedStakeable, multisig) from the active wallet's UTXO set.
+         * Calculates balances (luxilable, locked, lockedStakeable, multisig) from the active wallet's UTXO set.
          * @param state
          * @param getters
          * @param rootState
@@ -589,14 +589,14 @@ const assets_module: Module<AssetsState, RootState> = {
             getters,
             rootState
         ): {
-            available: BN
+            luxilable: BN
             locked: BN
             lockedStakeable: BN
             multisig: BN
         } {
             let wallet = rootState.activeWallet
             const balances = {
-                available: new BN(0),
+                luxilable: new BN(0),
                 locked: new BN(0),
                 lockedStakeable: new BN(0),
                 multisig: new BN(0),
@@ -608,7 +608,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
             let now = UnixNow()
 
-            // The only type of asset is AVAX on the P chain
+            // The only type of asset is LUXX on the P chain
 
             let utxos = utxoSet.getAllUTXOs()
             for (var n = 0; n < utxos.length; n++) {
@@ -634,7 +634,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
                 // If normal unlocked utxo (includes stakeable lock that is in the past)
                 if (locktime.lte(now)) {
-                    balances.available.iadd((utxoOut as AmountOutput).getAmount())
+                    balances.luxilable.iadd((utxoOut as AmountOutput).getAmount())
                 }
                 // If locked utxo
                 else if (!isStakeableLock) {
@@ -690,12 +690,12 @@ const assets_module: Module<AssetsState, RootState> = {
                 return asset.id
             })
         },
-        AssetAVA(state, getters, rootState, rootGetters): AvaAsset | null {
+        AssetLUX(state, getters, rootState, rootGetters): LuxAsset | null {
             let walletBalanceDict = getters.walletAssetsDict
-            let AVA_ASSET_ID = state.AVA_ASSET_ID
-            if (AVA_ASSET_ID) {
-                if (walletBalanceDict[AVA_ASSET_ID]) {
-                    return walletBalanceDict[AVA_ASSET_ID]
+            let LUX_ASSET_ID = state.LUX_ASSET_ID
+            if (LUX_ASSET_ID) {
+                if (walletBalanceDict[LUX_ASSET_ID]) {
+                    return walletBalanceDict[LUX_ASSET_ID]
                 }
             }
             return null

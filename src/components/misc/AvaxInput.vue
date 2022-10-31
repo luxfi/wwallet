@@ -1,5 +1,5 @@
 <template>
-    <div class="avax_input">
+    <div class="lux_input">
         <div class="col1 hover_border">
             <button class="max_but" @click="maxOut" v-if="max">MAX</button>
             <BigNumInput
@@ -12,7 +12,7 @@
                 @change="amount_in"
             ></BigNumInput>
         </div>
-        <p class="ticker">AVAX</p>
+        <p class="ticker">LUXX</p>
         <div v-if="balance" class="balance">
             <div>
                 <p>
@@ -31,10 +31,10 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, Model } from 'vue-property-decorator'
-import { Utils, Big } from '@avalabs/avalanche-wallet-sdk'
+import { Utils, Big } from '@luxdefi/luxdefi-wallet-sdk'
 //@ts-ignore
-import { BigNumInput } from '@avalabs/vue_components'
-import { BN } from 'avalanche'
+import { BigNumInput } from '@luxdefi/vue_components'
+import { BN } from 'luxdefi'
 import { priceDict } from '../../store/types'
 
 @Component({
@@ -42,7 +42,7 @@ import { priceDict } from '../../store/types'
         BigNumInput,
     },
 })
-export default class AvaxInput extends Vue {
+export default class LuxxInput extends Vue {
     @Model('change', { type: Object }) readonly amount!: BN
 
     @Prop({
@@ -78,7 +78,7 @@ export default class AvaxInput extends Vue {
 <style scoped lang="scss">
 @use '../../main';
 
-.avax_input {
+.lux_input {
     display: grid;
     grid-template-columns: 1fr max-content;
     grid-gap: 0px 10px;

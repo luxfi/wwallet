@@ -1,7 +1,7 @@
 <template>
     <div class="activity_page">
         <ExportCsvModal ref="csv_modal"></ExportCsvModal>
-        <ExportAvaxCsvModal ref="avax_csv_modal"></ExportAvaxCsvModal>
+        <ExportLuxxCsvModal ref="lux_csv_modal"></ExportLuxxCsvModal>
         <div class="explorer_warning" v-if="!hasExplorer">
             <div class="warning_body">
                 <h1>{{ $t('activity.no_explorer.title') }}</h1>
@@ -24,7 +24,7 @@
                         </v-btn>
                         <v-btn
                             x-small
-                            @click="openAvaxCsvModal"
+                            @click="openLuxxCsvModal"
                             class="button_secondary"
                             depressed
                             :disabled="!showList"
@@ -99,9 +99,9 @@ type ModeKeyType = 'all' | 'transfer' | 'swap' | 'stake'
 
 //@ts-ignore
 import VirtualList from 'vue-virtual-scroll-list'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import ExportCsvModal from '@/components/modals/ExportCsvModal.vue'
-import ExportAvaxCsvModal from '@/components/modals/ExportAvaxCsvModal.vue'
+import ExportLuxxCsvModal from '@/components/modals/ExportLuxxCsvModal.vue'
 
 const PAGE_LIMIT = 100
 
@@ -111,7 +111,7 @@ const MONTH_MIN = 8
 @Component({
     name: 'activity',
     components: {
-        ExportAvaxCsvModal,
+        ExportLuxxCsvModal,
         ExportCsvModal,
         Spinner,
         TxRow,
@@ -139,15 +139,15 @@ export default class Activity extends Vue {
 
     $refs!: {
         csv_modal: ExportCsvModal
-        avax_csv_modal: ExportAvaxCsvModal
+        lux_csv_modal: ExportLuxxCsvModal
     }
 
     openCsvModal() {
         this.$refs.csv_modal.open()
     }
 
-    openAvaxCsvModal() {
-        this.$refs.avax_csv_modal.open()
+    openLuxxCsvModal() {
+        this.$refs.lux_csv_modal.open()
     }
 
     get showList(): boolean {
@@ -177,7 +177,7 @@ export default class Activity extends Vue {
     }
 
     get hasExplorer() {
-        let network: AvaNetwork | null = this.$store.state.Network.selectedNetwork
+        let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
         if (!network?.explorerUrl) {
             return false
         }

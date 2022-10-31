@@ -23,11 +23,11 @@ import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 // @ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
 // @ts-ignore
-import AppAvax from '@obsidiansystems/hw-app-avalanche'
+import AppLuxx from '@obsidiansystems/hw-app-luxdefi'
 import Spinner from '@/components/misc/Spinner.vue'
 import LedgerBlock from '@/components/modals/LedgerBlock.vue'
 import { LedgerWallet, MIN_EVM_SUPPORT_V } from '@/js/wallets/LedgerWallet'
-import { AVA_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
+import { LUX_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 import { ILedgerAppConfig } from '@/store/types'
 import { LEDGER_EXCHANGE_TIMEOUT } from '@/store/modules/ledger/types'
 import ImageDayNight from '@/components/misc/ImageDayNight.vue'
@@ -71,7 +71,7 @@ export default class LedgerButton extends Vue {
             let transport = await this.getTransport()
             transport.setExchangeTimeout(LEDGER_EXCHANGE_TIMEOUT)
 
-            let app = new AppAvax(transport, 'w0w')
+            let app = new AppLuxx(transport, 'w0w')
             let eth = new Eth(transport, 'w0w')
 
             // Wait for app config
@@ -97,7 +97,7 @@ export default class LedgerButton extends Vue {
             let messages = [
                 {
                     title: 'Derivation Path',
-                    value: AVA_ACCOUNT_PATH,
+                    value: LUX_ACCOUNT_PATH,
                 },
                 {
                     title: 'Derivation Path',
@@ -126,9 +126,9 @@ export default class LedgerButton extends Vue {
         }
     }
 
-    async waitForConfig(app: AppAvax) {
+    async waitForConfig(app: AppLuxx) {
         // Config is found immediately if the device is connected and the app is open.
-        // If no config was found that means user has not opened the Avalanche app.
+        // If no config was found that means user has not opened the Luxlanche app.
         setTimeout(() => {
             if (this.config) return
             this.$store.commit('Ledger/setIsUpgradeRequired', true)

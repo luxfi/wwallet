@@ -15,7 +15,7 @@
                 </div>
             </div>
             <p class="err">{{ err }}</p>
-            <button class="but_primary ava_button button_primary" @click="verify">Verify</button>
+            <button class="but_primary lux_button button_primary" @click="verify">Verify</button>
         </div>
     </modal>
 </template>

@@ -12,8 +12,8 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import { UTXOSet } from 'avalanche/dist/apis/platformvm'
-import { UnixNow } from 'avalanche/dist/utils'
+import { UTXOSet } from 'luxdefi/dist/apis/platformvm'
+import { UnixNow } from 'luxdefi/dist/utils'
 type Selection = 'all' | 'unlocked' | 'locked'
 @Component
 export default class UTXOSelect extends Vue {

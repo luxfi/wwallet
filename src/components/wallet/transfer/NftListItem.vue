@@ -18,11 +18,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import { NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { getPayloadFromUTXO } from '@/helpers/helper'
-import { bintools } from '@/AVA'
-import { AvaNftFamily } from '@/js/AvaNftFamily'
+import { bintools } from 'luxdefi'
+import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IGroupQuantity } from '@/components/wallet/studio/mint/types'
 
 @Component({

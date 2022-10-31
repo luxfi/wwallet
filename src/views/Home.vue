@@ -15,7 +15,7 @@
                                     <router-link
                                         data-cy="access"
                                         to="/access"
-                                        class="ava_button button_primary submit_but"
+                                        class="lux_button button_primary submit_but"
                                     >
                                         {{ $t('home.access.submit') }}
                                     </router-link>
@@ -30,7 +30,7 @@
                                     <router-link
                                         data-cy="create"
                                         to="/create"
-                                        class="ava_button button_secondary submit_but"
+                                        class="lux_button button_secondary submit_but"
                                     >
                                         {{ $t('home.create.submit') }}
                                     </router-link>

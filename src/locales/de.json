@@ -5,15 +5,15 @@
     "address": "Adresse",
     "add_pk": "Privaten Schlüssel hinzufügen",
     "home": {
-        "desc": "Avalanche Wallet ist eine einfache, sichere, \"ohne Aufsicht\" Wallet zur Aufbewahrung von Avalanche Vermögenswerten.",
+        "desc": "Luxlanche Wallet ist eine einfache, sichere, \"ohne Aufsicht\" Wallet zur Aufbewahrung von Luxlanche Vermögenswerten.",
         "access": {
             "title": "Willkommen zurück!",
-            "desc": "Hier auf dein bestehendes Avalanche Wallet zugreifen.",
+            "desc": "Hier auf dein bestehendes Luxlanche Wallet zugreifen.",
             "submit": "Auf Wallet zugreifen"
         },
         "create": {
-            "title": "Neu bei Avalanche Wallet?",
-            "desc": "Erstelle eine neue Wallet zum Senden, Empfangen und Tauschen von Avalanche Vermögenswerten.",
+            "title": "Neu bei Luxlanche Wallet?",
+            "desc": "Erstelle eine neue Wallet zum Senden, Empfangen und Tauschen von Luxlanche Vermögenswerten.",
             "submit": "Neue Wallet erstellen"
         }
     },
@@ -63,13 +63,13 @@
         "submit": "Schlüsselphrase erstellen",
         "cancel": "Abbrechen",
         "mnemonic_title": "Dies ist Ihr Schlüsselsatz.",
-        "mnemonic_desc": "Verwende diese 24 Wörter in der Reihenfolge, um deine Avalanche Wallet wiederzuherstellen",
+        "mnemonic_desc": "Verwende diese 24 Wörter in der Reihenfolge, um deine Luxlanche Wallet wiederzuherstellen",
         "attention": "Achtung!",
-        "warning": "Speichere diese Schlüsselphrase an einem sicheren Ort. Jeder mit dieser Schlüsselphrase kann auf deine Avalanche Wallet zugreifen. Es gibt keine Möglichkeit, verlorene Schlüsselphrasen wiederherzustellen.",
+        "warning": "Speichere diese Schlüsselphrase an einem sicheren Ort. Jeder mit dieser Schlüsselphrase kann auf deine Luxlanche Wallet zugreifen. Es gibt keine Möglichkeit, verlorene Schlüsselphrasen wiederherzustellen.",
         "confirm": "Ich habe meine Schlüsselphrase an einem sicheren Ort notiert.",
         "regenerate": "Wiederherstellen",
         "success_title": "Herzlichen Glückwunsch!",
-        "success_desc": "Es ist an der Zeit, deine Avalanche Wallet zu öffnen.",
+        "success_desc": "Es ist an der Zeit, deine Luxlanche Wallet zu öffnen.",
         "success_submit": "Auf Wallet zugreifen",
         "verify": "Verifizieren",
         "verifytitle": "Verifiziere Mnemonic",
@@ -78,15 +78,15 @@
         "error_word": "Deine eingegebene Mnemonic Phrase, stimmt mit der aktuellen Phrase nicht überein."
     },
     "top": {
-        "title1": "Hergeleitete AVAX Wallet Adresse",
+        "title1": "Hergeleitete LUXX Wallet Adresse",
         "title2": "Guthaben",
         "title3": "Subnetz",
         "title4": "Netzwerk",
         "nftcol": "NFTs",
         "nftempty": "Du hast noch keine \"non-fungible\" Tokens (NFTs) gesammelt.",
         "locked": "Gesperrt",
-        "info2": "Ich habe beim Token Sale, Coins gekauft. Wo sind meine AVAX?",
-        "info2_desc": "Diese Wallet ist mit dem Avalanche Everest Testnetzwerk verbunden. Dein Kauf erscheint nach dem Start von Avalanche Mainnet in der Wallet.",
+        "info2": "Ich habe beim Token Sale, Coins gekauft. Wo sind meine LUXX?",
+        "info2_desc": "Diese Wallet ist mit dem Luxlanche Everest Testnetzwerk verbunden. Dein Kauf erscheint nach dem Start von Luxlanche Mainnet in der Wallet.",
         "hover1": "Adresse als QR Code anzeigen",
         "hover2": "Drucken",
         "hover3": "Kopieren",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "Übersicht anzeigen",
             "hide": "Übersicht ausblenden",
-            "available": "Verfügbar",
+            "luxilable": "Verfügbar",
             "locked": "Gesperrt",
             "locked_stake": "Gesperrt Staking",
             "stake": "Staking",
             "collectibles": "Kollektion"
         },
         "address": {
-            "derived": "Abgeleitete AVAX Wallet-Adresse",
+            "derived": "Abgeleitete LUXX Wallet-Adresse",
             "desc": "Dies ist Ihre Adresse, um Gelder zu erhalten. Ihre Adresse wird sich nach jeder Einzahlung ändern."
         }
     },
@@ -172,26 +172,26 @@
     },
     "earn": {
         "title": "Einnehmen",
-        "desc": "Das Staking deiner vorhandenen Tokens vermehrt deine AVAX.",
+        "desc": "Das Staking deiner vorhandenen Tokens vermehrt deine LUXX.",
         "subtitle1": "Validieren",
         "subtitle2": "Delegieren",
         "subtitle3": "\"Cross Chain\" Transfer",
         "subtitle4": "Geschätzte Prämien",
-        "warning_1": "Du musst mindestens {0} AVAX auf der P-Chain haben, um ein Validator zu werden.",
-        "warning_2": "Du musst mindestens {0} AVAX auf der P-Chain haben, um ein Delegator zu werden.",
+        "warning_1": "Du musst mindestens {0} LUXX auf der P-Chain haben, um ein Validator zu werden.",
+        "warning_2": "Du musst mindestens {0} LUXX auf der P-Chain haben, um ein Delegator zu werden.",
         "validate_card": {
             "title": "Validieren",
-            "desc": "Du hast einen Avalanche Knoten, mit dem Du staken möchtest.",
+            "desc": "Du hast einen Luxlanche Knoten, mit dem Du staken möchtest.",
             "submit": "Validator hinzufügen"
         },
         "delegate_card": {
             "title": "Delegieren",
-            "desc": "Du hast keine Avalanche Node, aber Du möchtest mit einer anderen Node staken.",
+            "desc": "Du hast keine Luxlanche Node, aber Du möchtest mit einer anderen Node staken.",
             "submit": "Delegierer hinzufügen"
         },
         "transfer_card": {
             "title": "\"Cross Chain\" Transfer",
-            "desc": "Staking erfordert AVAX auf der P-Chain. Transferiere deine Tokens zwischen X und P.",
+            "desc": "Staking erfordert LUXX auf der P-Chain. Transferiere deine Tokens zwischen X und P.",
             "submit": "Transfer"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Staking Betrag",
-                "desc": "Der AVAX Betrag der fürs Staking gesperrt ist."
+                "desc": "Der LUXX Betrag der fürs Staking gesperrt ist."
             },
             "fee": {
                 "label": "Delegationsgebühr",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Das Startdatum muss in der Zukunft liegen und das Enddatum muss nach dem Startdatum liegen.",
-                "amount": "Der Staking Betrag muss mindestens {0} AVAX betragen",
+                "amount": "Der Staking Betrag muss mindestens {0} LUXX betragen",
                 "id": "Ungültige Node ID. Muss mit \"NodeID-\" beginnen",
                 "address": "Ungültige Prämienadresse."
             }
@@ -292,8 +292,8 @@
                 "search": "Node ID suchen",
                 "id": "Node ID",
                 "val_stake": "Validator Stake",
-                "aval_stake": "Verfügbar",
-                "aval_stake_tip": "Wie viel noch an diesen Validator delegiert werden kann.",
+                "luxl_stake": "Verfügbar",
+                "luxl_stake_tip": "Wie viel noch an diesen Validator delegiert werden kann.",
                 "users_tip": "Anzahl der Delegierenden",
                 "end": "Endzeit",
                 "up": "Betriebszeit",
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Einsatzbetrag",
-                    "desc": "Der AVAX Betrag der fürs Staking gesperrt ist.",
-                    "desc2": "Der verfügbare Delegationsbetrag für diese Node beträgt {0} AVAX"
+                    "desc": "Der LUXX Betrag der fürs Staking gesperrt ist.",
+                    "desc2": "Der verfügbare Delegationsbetrag für diese Node beträgt {0} LUXX"
                 },
                 "reward": {
                     "label": "Prämienadresse",
@@ -345,7 +345,7 @@
                 "max_dur": "Maximum Stakingzeitraum beträgt 1 Jahr.",
                 "no_node": "Du musst einen Validator angeben.",
                 "val_end": "Das Enddatum der Delegation darf nicht länger als das Enddatum des Validators sein.",
-                "amt": "Der Betrag der Delegation muss mindestens {0} AVAX betragen."
+                "amt": "Der Betrag der Delegation muss mindestens {0} LUXX betragen."
             },
             "summary": {
                 "duration": "Stakingzeitraum",
@@ -388,7 +388,7 @@
         "loading": "Lade vergangene Transaktionen ...",
         "warn_loading": "Diese Liste ist möglicherweise unvollständig und nicht mehr aktuell.",
         "error_api": "Explorer API nicht gefunden",
-        "error_api_desc": "Du musst eine AVA Explorer API für dieses Netzwerk zur Verfügung stellen, um den Transaktionsverlauf einzusehen."
+        "error_api_desc": "Du musst eine LUX Explorer API für dieses Netzwerk zur Verfügung stellen, um den Transaktionsverlauf einzusehen."
     },
     "modal": {
         "qr": {

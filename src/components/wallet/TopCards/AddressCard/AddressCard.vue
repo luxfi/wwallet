@@ -56,19 +56,19 @@ import CopyText from '@/components/misc/CopyText.vue'
 import QRModal from '@/components/modals/QRModal.vue'
 import PaperWallet from '@/components/modals/PaperWallet/PaperWallet.vue'
 import QRCode from 'qrcode'
-import { KeyPair as AVMKeyPair } from 'avalanche/dist/apis/avm'
+import { KeyPair as AVMKeyPair } from 'luxdefi/dist/apis/avm'
 import { WalletType, WalletNameType } from '@/js/wallets/types'
 
 import MnemonicWallet, {
-    AVA_ACCOUNT_PATH,
+    LUX_ACCOUNT_PATH,
     LEDGER_ETH_ACCOUNT_PATH,
 } from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 
 import ChainSelect from '@/components/wallet/TopCards/AddressCard/ChainSelect.vue'
 import { ChainIdType } from '@/constants'
-import { ava } from '@/AVA'
-import { getPreferredHRP } from 'avalanche/dist/utils'
+import { lux } from 'luxdefi'
+import { getPreferredHRP } from 'luxdefi/dist/utils'
 @Component({
     components: {
         CopyText,
@@ -238,13 +238,13 @@ export default class AddressCard extends Vue {
     async verifyLedgerAddress() {
         const wallet = this.activeWallet as LedgerWallet
 
-        let networkId = ava.getNetworkID()
+        let networkId = lux.getNetworkID()
         let hrp = getPreferredHRP(networkId)
 
         switch (this.chainNow) {
             case 'X':
             case 'P':
-                wallet.app.getWalletAddress(`${AVA_ACCOUNT_PATH}/0/${this.activeIdx}`, hrp)
+                wallet.app.getWalletAddress(`${LUX_ACCOUNT_PATH}/0/${this.activeIdx}`, hrp)
                 break
             case 'C':
                 wallet.ethApp.getAddress(`${LEDGER_ETH_ACCOUNT_PATH}`)

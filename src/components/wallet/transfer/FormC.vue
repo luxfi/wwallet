@@ -125,15 +125,15 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import AvaxInput from '@/components/misc/AvaxInput.vue'
+import LuxxInput from '@/components/misc/LuxxInput.vue'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
-import { GasHelper, TxHelper, Utils } from '@avalabs/avalanche-wallet-sdk'
+import { GasHelper, TxHelper, Utils } from '@luxdefi/luxdefi-wallet-sdk'
 
 // @ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxdefi/vue_components'
 import Big from 'big.js'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import { bnToBig } from '@/helpers/helper'
 import { web3 } from '@/evm'
 import EVMInputDropdown from '@/components/misc/EVMInputDropdown/EVMInputDropdown.vue'
@@ -144,7 +144,7 @@ import { WalletHelper } from '@/helpers/wallet_helper'
 @Component({
     components: {
         EVMInputDropdown,
-        AvaxInput,
+        LuxxInput,
         QrInput,
     },
 })
@@ -190,7 +190,7 @@ export default class FormC extends Vue {
     }
 
     get gasPriceNumber() {
-        return Utils.bnToBigAvaxX(this.gasPrice).toFixed(0)
+        return Utils.bnToBigLuxxX(this.gasPrice).toFixed(0)
     }
 
     async updateGasPrice() {
@@ -228,7 +228,7 @@ export default class FormC extends Vue {
     }
 
     get symbol(): string {
-        if (this.formToken === 'native') return 'AVAX'
+        if (this.formToken === 'native') return 'LUXX'
         return this.formToken.data.symbol
     }
 
@@ -284,11 +284,11 @@ export default class FormC extends Vue {
     }
 
     get maxFeeUSD() {
-        return Utils.bnToBigAvaxC(this.maxFee).times(this.priceDict.usd)
+        return Utils.bnToBigLuxxC(this.maxFee).times(this.priceDict.usd)
     }
 
     get maxFeeText(): string {
-        return Utils.bnToAvaxC(this.maxFee)
+        return Utils.bnToLuxxC(this.maxFee)
     }
 
     // balance - (gas * price)
@@ -304,8 +304,8 @@ export default class FormC extends Vue {
 
         if (!this.isCollectible) {
             if (this.formToken === 'native') {
-                // For AVAX Transfers
-                let gasLimit = await TxHelper.estimateAvaxGas(
+                // For LUXX Transfers
+                let gasLimit = await TxHelper.estimateLuxxGas(
                     this.wallet.getEvmAddress(),
                     this.formAddress,
                     this.formAmount,

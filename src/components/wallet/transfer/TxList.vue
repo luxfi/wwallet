@@ -33,9 +33,9 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 const uuidv1 = require('uuid/v1')
 
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import CurrencyInputDropdown from '@/components/misc/CurrencyInputDropdown.vue'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { AssetsDict } from '@/store/modules/assets/types'
 import { ICurrencyInputDropdownValue, ITransaction } from '@/components/wallet/transfer/types'
 
@@ -46,8 +46,8 @@ import { ICurrencyInputDropdownValue, ITransaction } from '@/components/wallet/t
 })
 export default class TxList extends Vue {
     tx_list: ITransaction[] = []
-    disabledAssets: AvaAsset[][] = []
-    next_initial: AvaAsset | null = null
+    disabledAssets: LuxAsset[][] = []
+    next_initial: LuxAsset | null = null
 
     @Prop({ default: false }) disabled!: boolean
 
@@ -55,12 +55,12 @@ export default class TxList extends Vue {
         this.reset()
     }
 
-    updateUnavailable(): void {
-        let res: AvaAsset[][] = []
+    updateUnluxilable(): void {
+        let res: LuxAsset[][] = []
         let allDisabled = []
 
         for (var i = 0; i < this.tx_list.length; i++) {
-            let localDisabled: AvaAsset[] = []
+            let localDisabled: LuxAsset[] = []
 
             allDisabled.push(this.tx_list[i].asset)
             for (var n = 0; n < this.tx_list.length; n++) {
@@ -92,14 +92,14 @@ export default class TxList extends Vue {
         this.tx_list[index].asset = asset
         this.tx_list[index].amount = amt
 
-        this.updateUnavailable()
+        this.updateUnluxilable()
 
         this.$emit('change', this.tx_list)
     }
 
     removeTx(index: number): void {
         this.tx_list.splice(index, 1)
-        this.updateUnavailable()
+        this.updateUnluxilable()
         this.$emit('change', this.tx_list)
     }
 
@@ -155,10 +155,10 @@ export default class TxList extends Vue {
 
     @Watch('assets_list')
     onAssetListChange() {
-        this.updateUnavailable()
+        this.updateUnluxilable()
     }
 
-    get assets_list(): AvaAsset[] {
+    get assets_list(): LuxAsset[] {
         // return this.$store.getters.walletAssetsArray
         return this.$store.getters['Assets/walletAssetsArray']
     }

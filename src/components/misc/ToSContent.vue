@@ -19,7 +19,7 @@
             ”, or “
             <b>our</b>
             ”), concerning your access to and use of the
-            <span class="s1">https://wallet.avax.network/</span>
+            <span class="s1">https://wallet.lux.network/</span>
             website and related features and services, including but not limited to the Lux wallet
             functionality, as well as any other media form, media channel, mobile website or mobile
             application related, linked, or otherwise connected thereto, (collectively, the “Site”).
@@ -138,7 +138,7 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may not access or use the Site for any purpose other than that for which we make the
-            Site available. The Site may not be used in connection with any commercial endeavors
+            Site luxilable. The Site may not be used in connection with any commercial endeavors
             except those that are specifically endorsed or approved by us.
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
@@ -292,7 +292,7 @@
             <li>
                 <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
                     Copy or adapt the Site’s software, including but not limited to Flash, PHP,
-                    HTML, JavaScript, or other code.
+                    HTML, JluxScript, or other code.
                 </p>
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
             </li>
@@ -353,7 +353,7 @@
             information or other material (collectively, &quot;Contributions&quot;). Contributions
             may be viewable by other users of the Site and through third-party websites. As such,
             any Contributions you transmit may be treated in accordance with the Site Privacy
-            Policy. When you create or make available any Contributions, you thereby represent and
+            Policy. When you create or make luxilable any Contributions, you thereby represent and
             warrant that:
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
@@ -527,7 +527,7 @@
             these Terms of Use; (2) take appropriate legal action against anyone who, in our sole
             discretion, violates the law or these Terms of Use, including without limitation,
             reporting such user to law enforcement authorities; (3) in our sole discretion and
-            without limitation, refuse, restrict access to, limit the availability of, or disable
+            without limitation, refuse, restrict access to, limit the luxilability of, or disable
             (to the extent technologically feasible) any of your Contributions or any portion
             thereof; (4) in our sole discretion and without limitation, notice, or liability, to
             remove from the Site or otherwise disable all files and content that are excessive in
@@ -607,10 +607,10 @@
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
             We care about data privacy and security. Please review our Privacy Policy:
-            <a href="http://www.avalabs.org/privacy-policy" class="s7" target="_blank">
-                https://www.avalabs.org/privacy-policy
+            <a href="http://lux.network/privacy-policy" class="s7" target="_blank">
+                https://lux.network/privacy-policy
             </a>
-            <a href="http://www.avalabs.org/privacy-policy" class="a" target="_blank">.</a>
+            <a href="http://lux.network/privacy-policy" class="a" target="_blank">.</a>
             By using the Site, you agree to be bound by our Privacy Policy, which is incorporated
             into these Terms of Use. Please be advised the Site is hosted in the United States. If
             you access the Site from any other region of the world with laws or other requirements
@@ -655,14 +655,14 @@
             or for any reason at our sole discretion without notice. However, we have no obligation
             to update any information on our Site. We also reserve the right to modify or
             discontinue all or part of the Site without notice at any time. We make no
-            representation as to the availability, functionality and quality of the Site, including
+            representation as to the luxilability, functionality and quality of the Site, including
             any features, hardware, or communications, We will not be liable to you or any third
             party for any modification, price change, suspension, or discontinuance of any or all of
             the Site.
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            We cannot guarantee the Site will be available at all times. We may experience hardware,
+            We cannot guarantee the Site will be luxilable at all times. We may experience hardware,
             software, or other problems or need to perform maintenance related to the Site,
             resulting in interruptions, delays, or errors. We reserve the right to change, revise,
             update, suspend, discontinue, or otherwise modify the Site at any time or for any reason
@@ -733,7 +733,7 @@
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may opt out of the binding arbitration described in this section by sending us
             written notice of your desire to do so by email at
-            <a href="mailto:support@avax.network" class="a" target="_blank">support@avax.network</a>
+            <a href="mailto:support@lux.network" class="a" target="_blank">support@lux.network</a>
             (such notice, an “Arbitration Opt-out Notice”) within thirty (30) days following the
             date you first agree to these Terms of Use, or within thirty (30) days of the date we
             modify this Dispute Resolution section as indicated in the “Last updated” date above or
@@ -763,7 +763,7 @@
             below as to the types and amounts of damages for which a Party may be held liable. The
             arbitrator may award declaratory or injunctive relief only in favor of the claimant and
             only to the extent necessary to provide relief warranted by the claimant’s individual
-            claim. The JAMS Rules and instructions for how to initiate an arbitration are available
+            claim. The JAMS Rules and instructions for how to initiate an arbitration are luxilable
             from JAMS at
             <a href="http://www.jamsadr.com/" class="a" target="_blank">http://www.jamsadr.com</a>
             or 1-800-352-5267.
@@ -839,14 +839,14 @@
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: left">CORRECTIONS</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             There may be information on the Site that contains typographical errors, inaccuracies,
-            or omissions, including descriptions, pricing, availability, and various other
+            or omissions, including descriptions, pricing, luxilability, and various other
             information. We reserve the right to correct any errors, inaccuracies, or omissions and
             to change or update the information on the Site at any time, without prior notice.
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: left">DISCLAIMER</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE
+            THE SITE IS PROVIDED ON AN AS-IS AND AS-LUXILABLE BASIS. YOU AGREE THAT YOUR USE OF THE
             SITE AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW,
             WE AND OUR OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, SUB-CONTRACTORS, AGENTS AND
             AFFILIATES DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND
@@ -863,7 +863,7 @@
             THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SITE BY ANY THIRD PARTY, AND/OR (6)
             ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY
             KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE
-            MADE AVAILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME
+            MADE LUXILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME
             RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH
             THE SITE, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY
             BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE
@@ -893,7 +893,7 @@
             FAILURE, ERROR, OR BREAKDOWN IN USE OF THE SITE
             <span class="s8">,</span>
             <span class="s9"></span>
-            FROM ANY FAULT, OR ERROR MADE BY US, OR FROM YOUR RELIANCE ON CONTENT AVAILABLE ON THE
+            FROM ANY FAULT, OR ERROR MADE BY US, OR FROM YOUR RELIANCE ON CONTENT LUXILABLE ON THE
             SITE, OR FROM ANY COMMUNICATION THROUGH THE SITE, OR WITH OTHER USERS ON THE SITE, OR
             FROM ANY DENIAL OR CANCELATION OF YOUR USER ACCOUNT, OR FROM RETENTION, DELETION,
             DISCLOSURE AND ANY OTHER USE OR LOSS OF YOUR CONTENT ON THE SITE. EVEN IF WE HAVE BEEN
@@ -993,7 +993,7 @@
             regarding use of the Site, please contact us at:
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
-        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Avalanche (BVI) Inc.</p>
+        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Luxlanche (BVI) Inc.</p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">
             Floor 4, Banco Popular Building
             <br />
@@ -1001,7 +1001,7 @@
             <br />
             British Virgin Islands
             <br />
-            <a href="mailto:support@avax.network" target="_blank">support@avax.network</a>
+            <a href="mailto:support@lux.network" target="_blank">support@lux.network</a>
         </p>
     </div>
 </template>

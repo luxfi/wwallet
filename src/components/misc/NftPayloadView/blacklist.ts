@@ -1,4 +1,4 @@
-export const URLBLacklist = [`avax-reward.su`]
+export const URLBLacklist = [`lux-reward.su`]
 
 /***
  * Checks if the given URL partially matches anything in the blacklist.

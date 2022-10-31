@@ -126,13 +126,13 @@ export default class ExportCsvModal extends Vue {
 
             let nodeID = tx.validatorNodeID
 
-            let avaxPrice = getPriceAtUnixTime(rewardMoment.unix() * 1000)
+            let luxPrice = getPriceAtUnixTime(rewardMoment.unix() * 1000)
 
             let myOuts = getOwnedOutputs(tx.outputs, myAddresses)
             let rewardOuts = getRewardOuts(myOuts)
             let rewardAmt = getOutputTotals(rewardOuts)
             let rewardAmtBig = bnToBig(rewardAmt, 9)
-            let rewardAmtUsd = avaxPrice ? rewardAmtBig.mul(avaxPrice) : undefined
+            let rewardAmtUsd = luxPrice ? rewardAmtBig.mul(luxPrice) : undefined
 
             // Did this wallet receive any rewards?
             let isRewardOwner = rewardOuts.length > 0
@@ -165,9 +165,9 @@ export default class ExportCsvModal extends Vue {
                     stakeDuration: durationMoment,
                     stakeAmount: bnToBig(stakeAmount, 9),
                     rewardDate: rewardMoment,
-                    rewardAmtAvax: rewardAmtBig,
+                    rewardAmtLuxx: rewardAmtBig,
                     rewardAmtUsd: rewardAmtUsd,
-                    avaxPrice: avaxPrice,
+                    luxPrice: luxPrice,
                     nodeID: nodeID,
                     isRewardOwner: isRewardOwner,
                     isInputOwner: isInputOwner,
@@ -183,9 +183,9 @@ export default class ExportCsvModal extends Vue {
                     stakeDuration: durationMoment,
                     stakeAmount: bnToBig(stakeAmount, 9),
                     rewardDate: rewardMoment,
-                    rewardAmtAvax: rewardAmtBig,
+                    rewardAmtLuxx: rewardAmtBig,
                     rewardAmtUsd: rewardAmtUsd,
-                    avaxPrice: avaxPrice,
+                    luxPrice: luxPrice,
                     nodeID: nodeID,
                     isRewardOwner: isRewardOwner,
                     isInputOwner: isInputOwner,
@@ -201,8 +201,8 @@ export default class ExportCsvModal extends Vue {
             'Stake Start Date',
             'Stake Duration',
             'Reward Date',
-            'AVAX Price at Reward Date',
-            'Reward Received (AVAX)',
+            'LUXX Price at Reward Date',
+            'Reward Received (LUXX)',
             'Reward Received (USD)',
         ]
 

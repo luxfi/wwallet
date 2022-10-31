@@ -56,7 +56,7 @@ export default {
         this.$store.commit('Accounts/loadAccounts')
         this.$store.dispatch('Assets/initErc20List')
         this.$store.dispatch('Assets/ERC721/init')
-        this.$store.dispatch('updateAvaxPrice')
+        this.$store.dispatch('updateLuxxPrice')
 
         if (this.$store.state.Accounts.accounts.length > 0) {
             this.$router.push('/access')

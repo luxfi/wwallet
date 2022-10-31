@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@avalabs/avalanche-wallet-sdk@0.11.1-beta.3":
+"@luxdefi/luxdefi-wallet-sdk@0.11.1-beta.3":
   version "0.11.1-beta.3"
-  resolved "https://registry.yarnpkg.com/@avalabs/avalanche-wallet-sdk/-/avalanche-wallet-sdk-0.11.1-beta.3.tgz#f7fa143c9e71f1023b5f3eb8da3423855644ec20"
+  resolved "https://registry.yarnpkg.com/@luxdefi/luxdefi-wallet-sdk/-/luxdefi-wallet-sdk-0.11.1-beta.3.tgz#f7fa143c9e71f1023b5f3eb8da3423855644ec20"
   integrity sha512-0PUsTQyWLw+aNFH87L6IduCK0jm4qEWgbCcAbYjQjwKYV/JR1ATlT+sdwVSFwFD7vNseARfQ8M6iBq1cG/6/vA==
   dependencies:
     "@ethereumjs/common" "2.6.0"
     "@ethereumjs/tx" "3.4.0"
     "@ledgerhq/hw-app-eth" "6.12.2"
-    "@obsidiansystems/hw-app-avalanche" "0.2.2"
+    "@obsidiansystems/hw-app-luxdefi" "0.2.2"
     "@openzeppelin/contracts" "4.4.1"
     big.js "^6.1.1"
     bip32 "^2.0.6"
@@ -27,9 +27,9 @@
     web3-eth-contract "1.6.0"
     xss "^1.0.10"
 
-"@avalabs/vue_components@0.10.0":
+"@luxdefi/vue_components@0.10.0":
   version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@avalabs/vue_components/-/vue_components-0.10.0.tgz#6dcab2079db824711410898b3afafdbc6d1d5bd4"
+  resolved "https://registry.yarnpkg.com/@luxdefi/vue_components/-/vue_components-0.10.0.tgz#6dcab2079db824711410898b3afafdbc6d1d5bd4"
   integrity sha512-hQ+Th/5Ra4RWrRIWhIl2dYu+F38u8h1DHCqkfLNIGHRhIBHuQwKadIHh0iE6W1/GEau8dKl1O6QImNw5ZdI32A==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.27"
@@ -2710,9 +2710,9 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@obsidiansystems/hw-app-avalanche@0.2.2":
+"@obsidiansystems/hw-app-luxdefi@0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@obsidiansystems/hw-app-avalanche/-/hw-app-avalanche-0.2.2.tgz#a90843ac454b478d056f61467454c6c959a5ee07"
+  resolved "https://registry.yarnpkg.com/@obsidiansystems/hw-app-luxdefi/-/hw-app-luxdefi-0.2.2.tgz#a90843ac454b478d056f61467454c6c959a5ee07"
   integrity sha512-8hvNA+WKw32ua6FNZzyDBy/zahNXokZ2rvPIiPp8isXHIP/3hJKuiRm5Atuja29WExSxd0QW95rDReBT80amiw==
   dependencies:
     "@ledgerhq/hw-transport" "^5.9.0"
@@ -4340,16 +4340,16 @@ autoprefixer@^9.8.6:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-available-typed-arrays@^1.0.2:
+luxilable-typed-arrays@^1.0.2:
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.2.tgz#6b098ca9d8039079ee3f77f7b783c4480ba513f5"
+  resolved "https://registry.yarnpkg.com/luxilable-typed-arrays/-/luxilable-typed-arrays-1.0.2.tgz#6b098ca9d8039079ee3f77f7b783c4480ba513f5"
   integrity sha512-XWX3OX8Onv97LMk/ftVyBibpGwY5a8SmuxZPzeOxqmuEqUCOM9ZE+uIaD1VNJ5QnvU2UQusvmKbuM1FR8QWGfQ==
   dependencies:
     array-filter "^1.0.0"
 
-avalanche@3.10.1:
+luxdefi@3.10.1:
   version "3.10.1"
-  resolved "https://registry.yarnpkg.com/avalanche/-/avalanche-3.10.1.tgz#68a628abd4fb12fde52447731a662b1be3c1864e"
+  resolved "https://registry.yarnpkg.com/luxdefi/-/luxdefi-3.10.1.tgz#68a628abd4fb12fde52447731a662b1be3c1864e"
   integrity sha512-A+cd8Bm7F2XvUZ1yM1JESw7sN4TcOtrby0cF+baLv6KCMUT7mGm0wv/UAmlo5ElHY2dwDXHPa9OyOUAKl/wliA==
   dependencies:
     assert "2.0.0"
@@ -5972,7 +5972,7 @@ copy-webpack-plugin@^5.1.1:
     normalize-path "^3.0.0"
     p-limit "^2.2.1"
     schema-utils "^1.0.0"
-    serialize-javascript "^4.0.0"
+    serialize-jluxscript "^4.0.0"
     webpack-log "^2.0.0"
 
 core-js-compat@^3.6.5, core-js-compat@^3.8.0:
@@ -9935,7 +9935,7 @@ is-typed-array@^1.1.3:
   resolved "https://registry.yarnpkg.com/is-typed-array/-/is-typed-array-1.1.4.tgz#1f66f34a283a3c94a4335434661ca53fff801120"
   integrity sha512-ILaRgn4zaSrVNXNGtON6iFNotXW3hAPF3+0fB1usg2jFlWqo5fEDdmJkz0zBfoi7Dgskr8Khi2xZ8cXqZEfXNA==
   dependencies:
-    available-typed-arrays "^1.0.2"
+    luxilable-typed-arrays "^1.0.2"
     call-bind "^1.0.0"
     es-abstract "^1.18.0-next.1"
     foreach "^2.0.5"
@@ -10078,9 +10078,9 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-javascript-stringify@^2.0.1:
+jluxscript-stringify@^2.0.1:
   version "2.1.0"
-  resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-2.1.0.tgz#27c76539be14d8bd128219a2d731b09337904e79"
+  resolved "https://registry.yarnpkg.com/jluxscript-stringify/-/jluxscript-stringify-2.1.0.tgz#27c76539be14d8bd128219a2d731b09337904e79"
   integrity sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==
 
 jdenticon@2.2.0:
@@ -10261,7 +10261,7 @@ jest-jasmine2@^26.6.3:
 jest-leak-detector@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-leak-detector/-/jest-leak-detector-26.6.2.tgz#7717cf118b92238f2eba65054c8a0c9c653a91af"
-  integrity sha512-i4xlXpsVSMeKvg2cEKdfhh0H39qlJlP5Ex1yQxwF9ubahboQYMgTtz5oML35AVA3B4Eu+YsmwaiKVev9KCvLxg==
+  integrity sha512-i4xlXpsVSMeKvg2cEKdfhh0H39qlJlP5Ex1yQxwF9ubahboQYMgTtz5oML35LUX3B4Eu+YsmwaiKVev9KCvLxg==
   dependencies:
     jest-get-type "^26.3.0"
     pretty-format "^26.6.2"
@@ -14171,9 +14171,9 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
-serialize-javascript@^4.0.0:
+serialize-jluxscript@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-4.0.0.tgz#b525e1238489a5ecfc42afacc3fe99e666f4b1aa"
+  resolved "https://registry.yarnpkg.com/serialize-jluxscript/-/serialize-jluxscript-4.0.0.tgz#b525e1238489a5ecfc42afacc3fe99e666f4b1aa"
   integrity sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==
   dependencies:
     randombytes "^2.1.0"
@@ -15033,7 +15033,7 @@ terser-webpack-plugin@^1.4.3, terser-webpack-plugin@^1.4.4:
     find-cache-dir "^2.1.0"
     is-wsl "^1.1.0"
     schema-utils "^1.0.0"
-    serialize-javascript "^4.0.0"
+    serialize-jluxscript "^4.0.0"
     source-map "^0.6.1"
     terser "^4.1.2"
     webpack-sources "^1.4.0"
@@ -15608,7 +15608,7 @@ universal-user-agent@^6.0.0:
 universalify@^0.1.0, universalify@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
-  integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
+  integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCLux5P/d/GBOYaACQ1w+0azUkg==
 
 universalify@^2.0.0:
   version "2.0.0"
@@ -16659,7 +16659,7 @@ webpack-chain@^6.4.0:
   integrity sha512-7doO/SRtLu8q5WM0s7vPKPWX580qhi0/yBHkOxNkv50f6qB76Zy9o2wRTrrPULqYTvQlVHuvbA8v+G5ayuUDsA==
   dependencies:
     deepmerge "^1.5.2"
-    javascript-stringify "^2.0.1"
+    jluxscript-stringify "^2.0.1"
 
 webpack-dev-middleware@^3.7.2:
   version "3.7.3"
@@ -16873,7 +16873,7 @@ which-typed-array@^1.1.2:
   resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.4.tgz#8fcb7d3ee5adf2d771066fba7cf37e32fe8711ff"
   integrity sha512-49E0SpUe90cjpoc7BOJwyPHRqSAd12c10Qm2amdEZrJPCY2NDxaW01zHITrem+rnETY3dwrbH3UUrUwagfCYDA==
   dependencies:
-    available-typed-arrays "^1.0.2"
+    luxilable-typed-arrays "^1.0.2"
     call-bind "^1.0.0"
     es-abstract "^1.18.0-next.1"
     foreach "^2.0.5"

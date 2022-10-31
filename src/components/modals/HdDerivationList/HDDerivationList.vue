@@ -39,15 +39,15 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
-import { KeyPair as AVMKeyPair, UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm'
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm'
-import { ava, bintools } from '@/AVA'
+import { KeyPair as AVMKeyPair, UTXOSet as AVMUTXOSet } from 'luxdefi/dist/apis/avm'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm'
+import { lux, bintools } from 'luxdefi'
 import Big from 'big.js'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { DerivationListBalanceDict } from '@/components/modals/HdDerivationList/types'
 import { LedgerWallet } from '../../../js/wallets/LedgerWallet'
 import { bnToBig } from '@/helpers/helper'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import HdChainTable from '@/components/modals/HdDerivationList/HdChainTable.vue'
 
 @Component({
@@ -95,7 +95,7 @@ export default class HDDerivationList extends Vue {
         set: AVMUTXOSet | PlatformUTXOSet,
         addrs: string[]
     ): DerivationListBalanceDict[] {
-        let assets: AvaAsset[] = this.$store.state.Assets.assets
+        let assets: LuxAsset[] = this.$store.state.Assets.assets
 
         let denoms: number[] = assets.map((asset) => {
             return asset.denomination

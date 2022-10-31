@@ -12,13 +12,13 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             These Terms of Use (these “Terms”) constitute a legally binding agreement made between
-            you, whether personally or on behalf of an entity (“you”) and Ava Labs, Inc. (together
+            you, whether personally or on behalf of an entity (“you”) and Lux Partners Limited. (together
             with its subsidiaries and affiliates, “Company”, “we”, “us”, or “our”) governing your
             download, access to and/or use of the Core Browser Extension, the Core Mobile
             Application and the Core Website and related websites, applications and features
             (collectively, the “App”). The App enables users to self-custody digital assets,
             directly access and interact with blockchains, decentralized applications (“dapps”) and
-            the Avalanche Bridge on a peer-to-peer basis, directly interact with other third party
+            the Luxlanche Bridge on a peer-to-peer basis, directly interact with other third party
             services and access other functionality that may be developed from time to time
             (collectively, the “Services”). The Services include, without limitation, services
             provided by third parties and dapps (collectively, “Third Party Services”).
@@ -30,7 +30,7 @@
             that you have read and agree to be bound by all of these Terms and the
             <u>
                 <a
-                    href="https://assets.website-files.com/602e8e4411398ca20cfcafd3/60ec9607c853cd466383f1ad_Important%20Notice%20-%20avalabs.org.pdf"
+                    href="https://assets.website-files.com/602e8e4411398ca20cfcafd3/60ec9607c853cd466383f1ad_Important%20Notice%20-%20luxlabs.org.pdf"
                     rel="nofollow"
                     target="_blank"
                 >
@@ -63,7 +63,7 @@
             </li>
             <li style="margin: 24px 0">
                 <p class="s4" style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
-                    Third Party Services: Third Party Services are made available through the App
+                    Third Party Services: Third Party Services are made luxilable through the App
                     and provided directly by third parties. If you choose to access Third Party
                     Services, including without limitation MoonPay and ParaSwap, you will be
                     interacting directly with such services and will be subject to their terms,
@@ -87,7 +87,7 @@
         </ol>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             Supplemental terms and conditions or documents relating to the App or the Services that
-            may be posted on the avalabs.org website (the “Site”) from time to time are hereby
+            may be posted on the luxlabs.org website (the “Site”) from time to time are hereby
             expressly incorporated herein by reference. We reserve the right, in our sole
             discretion, to make changes or modifications to these Terms at any time and for any
             reason. We will alert you about any changes by updating the date above and you waive any
@@ -113,12 +113,12 @@
             If you breach any of the Terms, your authorization to use the App and the Services will
             automatically terminate, and any Content downloaded or printed from the App, whether
             authorized or unauthorized, must be immediately destroyed. Company reserves the right to
-            pursue any additional remedies available in law or equity.
+            pursue any additional remedies luxilable in law or equity.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             Please refer to our
             <u>
-                <a href="https://www.avalabs.org/privacy-policy" rel="nofollow" target="_blank">
+                <a href="https://lux.network/privacy-policy" rel="nofollow" target="_blank">
                     Privacy Policy
                 </a>
             </u>
@@ -174,7 +174,7 @@
             Third Party Services, please note that you will be interacting directly with such
             services and dapps and will be subject to their terms, policies and fees. Please review
             the terms, policies and fees of any third party with which you are interacting,
-            including MoonPay (available
+            including MoonPay (luxilable
             <u>
                 <a
                     href="https://www.moonpay.com/legal/terms_of_use_usa"
@@ -203,7 +203,7 @@
             or services. In addition, we offer no guarantees and assume no responsibility or
             liability of any type arising from or in connection with Third Party Services,
             including, without limitation, any loss or theft of funds or any liability resulting
-            from the availability (or lack thereof) of Third Party Services, or any content located
+            from the luxilability (or lack thereof) of Third Party Services, or any content located
             on or through Third Party Services, and any incompatibility between Third Party Services
             and the Services. You agree that you will not hold Company responsible or liable with
             respect to the Third Party Services or seek to do so.
@@ -236,7 +236,7 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may not download, access or use the App for any purpose other than that for which we
-            make the App available. As a user of the App and the Services, you agree not to:
+            make the App luxilable. As a user of the App and the Services, you agree not to:
         </p>
         <ol>
             <li style="margin: 24px 0">
@@ -407,7 +407,7 @@
             these Terms; (2) take appropriate legal action against anyone who, in our sole
             discretion, violates the law or these Terms, including without limitation, reporting
             such user to law enforcement authorities; (3) in our sole discretion and without
-            limitation, refuse, restrict access to, or limit the availability of the App, to the
+            limitation, refuse, restrict access to, or limit the luxilability of the App, to the
             extent feasible; and (4) otherwise manage the App in a manner designed to protect our
             rights and property and to facilitate the proper functioning of the App.
         </p>
@@ -434,7 +434,7 @@
             for any reason at our sole discretion without notice. However, we have no obligation to
             update any information on the App. We also reserve the right to modify or discontinue
             all or part of the App or the Services without notice at any time. We make no
-            representation as to the availability, functionality and quality of the App, including
+            representation as to the luxilability, functionality and quality of the App, including
             any features, hardware, or communications, We will not be liable to you or any third
             party for any modification, price change, suspension, or discontinuance of any or all of
             the App.
@@ -442,11 +442,11 @@
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             There may be information on the App that contains typographical errors, inaccuracies, or
             omissions, including, without limitation, descriptions, schedules, pricing,
-            availability, and various other information. We reserve the right to correct any errors,
+            luxilability, and various other information. We reserve the right to correct any errors,
             inaccuracies, or omissions at any time without prior notice.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            We cannot guarantee the App will be available at all times. We may experience hardware,
+            We cannot guarantee the App will be luxilable at all times. We may experience hardware,
             software, or other problems or need to perform maintenance related to the App, resulting
             in interruptions, delays, or errors. We reserve the right to change, revise, update,
             suspend, discontinue, or otherwise modify the App at any time or for any reason without
@@ -516,7 +516,7 @@
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             You may opt out of the binding arbitration described in this section by sending us
             written notice of your desire to do so by email at
-            <u><a href="mailto:legal@avalabs.org" rel="nofollow">legal@avalabs.org</a></u>
+            <u><a href="mailto:legal@luxdefi.org" rel="nofollow">legal@luxdefi.org</a></u>
             (such notice, an “Arbitration Opt-out Notice”) within 30 days following the date you
             first agree to these Terms. The Arbitration Opt-out Notice must include your full name
             and address and clearly indicate your intent to opt out of binding arbitration. If you
@@ -546,7 +546,7 @@
             which a party may be held liable. The arbitrator may award declaratory or injunctive
             relief only in favor of the claimant and only to the extent necessary to provide relief
             warranted by the claimant’s individual claim. The JAMS Rules and instructions for how to
-            initiate an arbitration are available from JAMS at
+            initiate an arbitration are luxilable from JAMS at
             <u><a href="http://www.jamsadr.com" rel="nofollow">http://www.jamsadr.com</a></u>
             .
         </p>
@@ -611,7 +611,7 @@
             <strong>RISKS RELATING TO DIGITAL ASSETS</strong>
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            THE APP, THE SERVICES AND THIRD PARTY SERVICES ARE DEVELOPED WITH AND MADE AVAILABLE ON
+            THE APP, THE SERVICES AND THIRD PARTY SERVICES ARE DEVELOPED WITH AND MADE LUXILABLE ON
             BLOCKCHAIN TECHNOLOGY. AS THIS IS AN EMERGING TECHNOLOGY, THEY ARE SUBJECT TO ADDITIONAL
             RISKS. BY USING THE APP, THE SERVICES OR THIRD PARTY SERVICES YOU EXPLICITLY ACKNOWLEDGE
             AND ACCEPT SUCH ADDITIONAL RISKS.
@@ -661,7 +661,7 @@
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             THE APP, THE SERVICES AND THE THIRD PARTY SERVICES ARE PROVIDED ON AN “AS-IS” AND
-            “AS-AVAILABLE” BASIS. YOU AGREE THAT YOUR USE OF THE APP, THE SERVICES AND THE THIRD
+            “AS-LUXILABLE” BASIS. YOU AGREE THAT YOUR USE OF THE APP, THE SERVICES AND THE THIRD
             PARTY SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE AND
             THE FOUNDATION (AS DEFINED BELOW) AND OUR RESPECTIVE OFFICERS, DIRECTORS, SHAREHOLDERS,
             EMPLOYEES, SUB-CONTRACTORS, AGENTS AND AFFILIATES DISCLAIM ALL WARRANTIES, EXPRESS OR
@@ -680,7 +680,7 @@
             THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE APP BY ANY THIRD PARTY, AND/OR (6)
             ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY
             KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE
-            MADE AVAILABLE VIA THE APP.
+            MADE LUXILABLE VIA THE APP.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             NEITHER WE NOR THE FOUNDATION WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR
@@ -710,7 +710,7 @@
             DAMAGES, IN ANY OTHER FORM, ARISING FROM, OR IN CONNECTION WITH, YOUR USE OF THE APP,
             THE INABILITY TO USE THE APP, THE APP FEATURES, MARKETING OF THE APP OR THE APP
             FEATURES, OR ANY FORM OF FAILURE, ERROR, OR BREAKDOWN IN USE OF THE APP, FROM ANY FAULT,
-            OR ERROR MADE BY US OR THE FOUNDATION, OR FROM YOUR RELIANCE ON CONTENT AVAILABLE ON THE
+            OR ERROR MADE BY US OR THE FOUNDATION, OR FROM YOUR RELIANCE ON CONTENT LUXILABLE ON THE
             APP, OR FROM ANY COMMUNICATION THROUGH THE APP, OR WITH OTHER USERS ON THE APP, OR FROM
             ANY TERMINATION OF SERVICE, EVEN IF WE OR THE FOUNDATION HAVE BEEN ADVISED OF THE
             POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN,
@@ -725,7 +725,7 @@
             <strong>INDEMNIFICATION</strong>
         </h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            You agree to defend, release, indemnify, and hold us and Avalanche Foundation Limited,
+            You agree to defend, release, indemnify, and hold us and Luxlanche Foundation Limited,
             its subsidiaries and affiliates (collectively, the “Foundation”), including all of our
             and the Foundation’s respective officers, directors, agents, partners, employees,
             contractors, successors and assigns harmless from and against any loss, damage,
@@ -821,7 +821,7 @@
             regarding use of the App, please contact us at:
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            Ava Labs, Inc.
+            Lux Partners Limited.
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             1177 Avenue of the Americas
@@ -833,7 +833,7 @@
             New York, NY 10036
         </p>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            support@avalabs.org
+            support@luxdefi.org
         </p>
     </div>
 </template>

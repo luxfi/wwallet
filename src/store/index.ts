@@ -24,7 +24,7 @@ Vue.use(Vuex)
 
 import router from '@/router'
 
-import { avm, bintools } from '@/AVA'
+import { avm, bintools } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 
 import {
@@ -35,10 +35,10 @@ import {
 } from '@/js/Keystore'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
-import { Buffer } from 'avalanche'
+import { Buffer } from 'luxdefi'
 import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
-import { getAvaxPriceUSD } from '@/helpers/price_helper'
+import { getLuxxPriceUSD } from '@/helpers/price_helper'
 
 export default new Vuex.Store({
     modules: {
@@ -138,7 +138,7 @@ export default new Vuex.Store({
         async onAccess(store) {
             store.state.isAuth = true
 
-            store.dispatch('Assets/updateAvaAsset')
+            store.dispatch('Assets/updateLuxAsset')
             store.dispatch('Platform/update')
             router.push('/wallet')
             store.dispatch('Assets/updateUTXOs')
@@ -259,7 +259,7 @@ export default new Vuex.Store({
         async activateWallet({ state, dispatch, commit }, wallet: MnemonicWallet | LedgerWallet) {
             state.activeWallet = wallet
 
-            dispatch('Assets/updateAvaAsset')
+            dispatch('Assets/updateLuxAsset')
             commit('updateActiveAddress')
             dispatch('History/updateTransactionHistory')
             updateFilterAddresses()
@@ -281,7 +281,7 @@ export default new Vuex.Store({
 
                 let utcDate = new Date()
                 let dateString = utcDate.toISOString().replace(' ', '_')
-                let filename = `AVAX_${dateString}.json`
+                let filename = `LUXX_${dateString}.json`
 
                 var blob = new Blob([text], {
                     type: 'application/json',
@@ -353,8 +353,8 @@ export default new Vuex.Store({
             }
         },
 
-        async updateAvaxPrice(store) {
-            let usd = await getAvaxPriceUSD()
+        async updateLuxxPrice(store) {
+            let usd = await getLuxxPriceUSD()
             store.state.prices = {
                 usd,
             }

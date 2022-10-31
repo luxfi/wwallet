@@ -33,7 +33,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import Spinner from '@/components/misc/Spinner.vue'
 import TxHistoryRow from '@/components/SidePanels/TxHistoryRow.vue'
 import { ITransactionData } from '@/store/modules/history/types'
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { ITransaction } from '@/components/wallet/transfer/types'
 
 @Component({
@@ -44,7 +44,7 @@ import { ITransaction } from '@/components/wallet/transfer/types'
 })
 export default class TransactionHistoryPanel extends Vue {
     get isExplorer(): boolean {
-        let network: AvaNetwork | null = this.$store.state.Network.selectedNetwork
+        let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
         if (!network) return false
         if (network.explorerUrl) {
             return true
@@ -87,7 +87,7 @@ export default class TransactionHistoryPanel extends Vue {
 
     get explorerUrl(): string {
         let addr = this.$store.state.address.split('-')[1]
-        return `https://explorer.avax.network/address/${addr}`
+        return `https://explorer.lux.network/address/${addr}`
     }
 }
 </script>

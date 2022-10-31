@@ -1,9 +1,9 @@
 /*
 The base wallet class used for common functionality
 */
-import { BN } from 'avalanche'
-import { UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm'
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm'
+import { BN } from 'luxdefi'
+import { UTXOSet as AVMUTXOSet } from 'luxdefi/dist/apis/avm'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm'
 import {
     ExportChainsC,
     ExportChainsP,
@@ -12,15 +12,15 @@ import {
     UtxoHelper,
     TxHelper,
     GasHelper,
-} from '@avalabs/avalanche-wallet-sdk'
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
-import { UTXOSet as EVMUTXOSet } from 'avalanche/dist/apis/evm/utxos'
-import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx'
+} from '@luxdefi/luxdefi-wallet-sdk'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
+import { UTXOSet as EVMUTXOSet } from 'luxdefi/dist/apis/evm/utxos'
+import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'luxdefi/dist/apis/evm/tx'
 import {
     Tx as PlatformTx,
     UnsignedTx as PlatformUnsignedTx,
-} from 'avalanche/dist/apis/platformvm/tx'
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'avalanche/dist/apis/avm/tx'
+} from 'luxdefi/dist/apis/platformvm/tx'
+import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxdefi/dist/apis/avm/tx'
 import { AvmImportChainType, WalletType } from '@/js/wallets/types'
 var uniqid = require('uniqid')
 
@@ -90,7 +90,7 @@ abstract class WalletCore {
     /**
      *
      * @param sourceChain
-     * @param fee Fee to use in nAVAX
+     * @param fee Fee to use in nLUXX
      * @param utxoSet
      */
     async importToCChain(sourceChain: ExportChainsC, fee: BN, utxoSet?: EVMUTXOSet) {
@@ -98,7 +98,7 @@ abstract class WalletCore {
             utxoSet = await this.evmGetAtomicUTXOs(sourceChain)
         }
 
-        // TODO: Only use AVAX utxos
+        // TODO: Only use LUXX utxos
         // TODO?: If the import fee for a utxo is greater than the value of the utxo, ignore it
 
         if (utxoSet.getAllUTXOs().length === 0) {
@@ -185,9 +185,9 @@ abstract class WalletCore {
 
     /**
      *
-     * @param amt The amount to receive on the destination chain, in nAVAX.
+     * @param amt The amount to receive on the destination chain, in nLUXX.
      * @param destinationChain `X` or `P`
-     * @param fee Fee to use in the export transaction, given in nAVAX.
+     * @param fee Fee to use in the export transaction, given in nLUXX.
      */
     async exportFromCChain(amt: BN, destinationChain: ExportChainsC, exportFee: BN) {
         // Add import fee
@@ -262,7 +262,7 @@ abstract class WalletCore {
         // Owner addresses, the addresses we exported to
         let pToAddr = this.getCurrentAddressPlatform()
 
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
         let utxoAddrs = utxoSet
             .getAddresses()
             .map((addr) => bintools.addressToString(hrp, 'P', addr))
@@ -294,7 +294,7 @@ abstract class WalletCore {
 
         let xToAddr = this.getCurrentAddressAvm()
 
-        let hrp = ava.getHRP()
+        let hrp = lux.getHRP()
         let utxoAddrs = utxoSet
             .getAddresses()
             .map((addr) => bintools.addressToString(hrp, 'X', addr))

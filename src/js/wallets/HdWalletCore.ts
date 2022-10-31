@@ -1,13 +1,13 @@
 import { ChainAlias } from '@/js/wallets/types'
-import { UTXO } from 'avalanche/dist/apis/avm'
+import { UTXO } from 'luxdefi/dist/apis/avm'
 
-import { BN, Buffer } from 'avalanche'
+import { BN, Buffer } from 'luxdefi'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { ava, avm, bintools, pChain } from '@/AVA'
-import { UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm/utxos'
+import { lux, avm, bintools, pChain } from 'luxdefi'
+import { UTXOSet as AVMUTXOSet } from 'luxdefi/dist/apis/avm/utxos'
 import HDKey from 'hdkey'
 import { HdHelper } from '@/js/HdHelper'
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm/utxos'
+import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm/utxos'
 import { buildCreateNftFamilyTx, buildMintNftTx, buildUnsignedTransaction } from '../TxHelper'
 import { WalletCore } from '@/js/wallets/WalletCore'
 import { updateFilterAddresses } from '../../providers'
@@ -46,7 +46,7 @@ abstract class HdWalletCore extends WalletCore {
 
     getEvmAddressBech(): string {
         return bintools.addressToString(
-            ava.getHRP(),
+            lux.getHRP(),
             'C',
             // @ts-ignore
             this.ethHdNode.pubKeyHash
@@ -62,8 +62,8 @@ abstract class HdWalletCore extends WalletCore {
         this.utxoset = joined
     }
 
-    getFirstAvailableAddressPlatform(): string {
-        return this.platformHelper.getFirstAvailableAddress()
+    getFirstLuxilableAddressPlatform(): string {
+        return this.platformHelper.getFirstLuxilableAddress()
     }
 
     updateFetchState() {

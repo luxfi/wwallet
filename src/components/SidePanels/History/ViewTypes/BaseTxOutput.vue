@@ -14,16 +14,16 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BaseTxAssetSummary } from '@/helpers/history_helper'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 
 @Component
 export default class BaseTxOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: BaseTxAssetSummary
 
-    get assetDetail(): AvaAsset {
+    get assetDetail(): LuxAsset {
         return (
             this.$store.state.Assets.assetsDict[this.assetID] ||
             this.$store.state.Assets.nftFamsDict[this.assetID]

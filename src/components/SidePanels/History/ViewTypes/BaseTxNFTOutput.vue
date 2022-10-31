@@ -15,9 +15,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BaseTxAssetSummary, BaseTxNFTSummary } from '@/helpers/history_helper'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
-import { BN } from 'avalanche'
+import { BN } from 'luxdefi'
 import { UTXO } from '@/store/modules/history/types'
 import TxHistoryNftFamilyGroup from '@/components/SidePanels/TxHistoryNftFamilyGroup.vue'
 
@@ -32,7 +32,7 @@ export default class BaseTxNFTOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: UTXO[]
 
-    get assetDetail(): AvaAsset {
+    get assetDetail(): LuxAsset {
         return this.$store.state.Assets.nftFamsDict[this.assetID]
     }
 

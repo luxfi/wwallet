@@ -13,8 +13,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ITransactionData } from '@/store/modules/history/types'
-import { avm, pChain } from '@/AVA'
-import { BN } from 'avalanche'
+import { avm, pChain } from 'luxdefi'
+import { BN } from 'luxdefi'
 import { bnToBig } from '@/helpers/helper'
 
 @Component

@@ -1,16 +1,16 @@
-import { ava } from '@/AVA'
+import { lux } from 'luxdefi'
 
 import {
     KeyChain as AVMKeyChain,
     KeyPair as AVMKeyPair,
     NFTTransferOutput,
     UTXO,
-} from 'avalanche/dist/apis/avm'
+} from 'luxdefi/dist/apis/avm'
 
-import { Defaults, getPreferredHRP, ONEAVAX, PayloadBase, PayloadTypes } from 'avalanche/dist/utils'
+import { Defaults, getPreferredHRP, ONELUXX, PayloadBase, PayloadTypes } from 'luxdefi/dist/utils'
 import Big from 'big.js'
 
-import { Buffer, BN } from 'avalanche'
+import { Buffer, BN } from 'luxdefi'
 import createHash from 'create-hash'
 
 function bnToBig(val: BN, denomination = 0): Big {
@@ -18,13 +18,13 @@ function bnToBig(val: BN, denomination = 0): Big {
 }
 
 function keyToKeypair(key: string, chainID: string = 'X'): AVMKeyPair {
-    let hrp = getPreferredHRP(ava.getNetworkID())
+    let hrp = getPreferredHRP(lux.getNetworkID())
     let keychain = new AVMKeyChain(hrp, chainID)
     return keychain.importKey(key)
 }
 
 function calculateStakingReward(amount: BN, duration: number, currentSupply: BN): BN {
-    let networkID = ava.getNetworkID()
+    let networkID = lux.getNetworkID()
 
     //@ts-ignore
     let defValues = Defaults.network[networkID]
@@ -42,9 +42,9 @@ function calculateStakingReward(amount: BN, duration: number, currentSupply: BN)
     let maxStakingDuration: BN = defPlatformVals.maxStakingDuration
     let remainingSupply = maxSupply.sub(currentSupply)
 
-    let amtBig = Big(amount.div(ONEAVAX).toString())
-    let currentSupplyBig = Big(currentSupply.div(ONEAVAX).toString())
-    let remainingSupplyBig = Big(remainingSupply.div(ONEAVAX).toString())
+    let amtBig = Big(amount.div(ONELUXX).toString())
+    let currentSupplyBig = Big(currentSupply.div(ONELUXX).toString())
+    let remainingSupplyBig = Big(remainingSupply.div(ONELUXX).toString())
     let portionOfExistingSupplyBig = amtBig.div(currentSupplyBig)
 
     let portionOfStakingDuration = duration / maxStakingDuration.toNumber()
@@ -63,7 +63,7 @@ function digestMessage(msgStr: string) {
     let mBuf = Buffer.from(msgStr, 'utf8')
     let msgSize = Buffer.alloc(4)
     msgSize.writeUInt32BE(mBuf.length, 0)
-    let msgBuf = Buffer.from(`\x1AAvalanche Signed Message:\n${msgSize}${msgStr}`, 'utf8')
+    let msgBuf = Buffer.from(`\x1ALuxlanche Signed Message:\n${msgSize}${msgStr}`, 'utf8')
     return createHash('sha256').update(msgBuf).digest()
 }
 

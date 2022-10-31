@@ -32,7 +32,7 @@ import { Vue, Component, Watch, Prop } from 'vue-property-decorator'
 
 import Modal from '../Modal.vue'
 
-import { KeyPair as AVMKeyPair } from 'avalanche/dist/apis/avm'
+import { KeyPair as AVMKeyPair } from 'luxdefi/dist/apis/avm'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 
 import QRCode from 'qrcode'

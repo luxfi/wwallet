@@ -12,7 +12,7 @@
                             </router-link>
                             <div class="options">
                                 <button
-                                    class="ava_button but_generate button_secondary"
+                                    class="lux_button but_generate button_secondary"
                                     @click="createKey"
                                 >
                                     {{ $t('create.submit') }}
@@ -77,7 +77,7 @@
                                             @complete="complete"
                                         ></VerifyMnemonic2>
                                         <button
-                                            class="but_primary ava_button button_secondary"
+                                            class="but_primary lux_button button_secondary"
                                             @click="verifyMnemonic"
                                             :disabled="!canVerify"
                                         >
@@ -91,7 +91,7 @@
                                                 <Spinner v-if="isLoad" class="spinner"></Spinner>
                                                 <div v-else>
                                                     <button
-                                                        class="button_primary ava_button access generate"
+                                                        class="button_primary lux_button access generate"
                                                         @click="access"
                                                         :disabled="!canSubmit"
                                                     >

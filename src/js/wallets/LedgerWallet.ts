@@ -1,6 +1,6 @@
 // import AppBtc from "@ledgerhq/hw-app-btc";
 //@ts-ignore
-import AppAvax from '@obsidiansystems/hw-app-avalanche'
+import AppLuxx from '@obsidiansystems/hw-app-luxdefi'
 //@ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
 
@@ -8,16 +8,16 @@ import EthereumjsCommon from '@ethereumjs/common'
 import { Transaction } from '@ethereumjs/tx'
 
 import moment from 'moment'
-import { Buffer, BN } from 'avalanche'
+import { Buffer, BN } from 'luxdefi'
 import HDKey from 'hdkey'
-import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
 const bippath = require('bip32-path')
 import createHash from 'create-hash'
 import store from '@/store'
 import { importPublic, publicToAddress, bnToRlp, rlp } from 'ethereumjs-util'
 
-import { UTXO as AVMUTXO, UTXO, UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm/utxos'
-import { AvaWalletCore } from '@/js/wallets/types'
+import { UTXO as AVMUTXO, UTXO, UTXOSet as AVMUTXOSet } from 'luxdefi/dist/apis/avm/utxos'
+import { LuxWalletCore } from '@/js/wallets/types'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import {
     AVMConstants,
@@ -27,7 +27,7 @@ import {
     Tx as AVMTx,
     UnsignedTx as AVMUnsignedTx,
     ImportTx as AVMImportTx,
-} from 'avalanche/dist/apis/avm'
+} from 'luxdefi/dist/apis/avm'
 
 import {
     ImportTx as PlatformImportTx,
@@ -39,7 +39,7 @@ import {
     SelectCredentialClass as PlatformSelectCredentialClass,
     AddDelegatorTx,
     AddValidatorTx,
-} from 'avalanche/dist/apis/platformvm'
+} from 'luxdefi/dist/apis/platformvm'
 
 import {
     UnsignedTx as EVMUnsignedTx,
@@ -49,27 +49,27 @@ import {
     EVMConstants,
     EVMInput,
     SelectCredentialClass as EVMSelectCredentialClass,
-} from 'avalanche/dist/apis/evm'
+} from 'luxdefi/dist/apis/evm'
 
-import { Credential, SigIdx, Signature, UTXOResponse, Address } from 'avalanche/dist/common'
-import { getPreferredHRP, PayloadBase } from 'avalanche/dist/utils'
+import { Credential, SigIdx, Signature, UTXOResponse, Address } from 'luxdefi/dist/common'
+import { getPreferredHRP, PayloadBase } from 'luxdefi/dist/utils'
 import { HdWalletCore } from '@/js/wallets/HdWalletCore'
 import { ILedgerAppConfig } from '@/store/types'
 import { WalletNameType } from '@/js/wallets/types'
 import { bnToBig, digestMessage } from '@/helpers/helper'
 import { abiDecoder, web3 } from '@/evm'
-import { AVA_ACCOUNT_PATH, ETH_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from './MnemonicWallet'
+import { LUX_ACCOUNT_PATH, ETH_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from './MnemonicWallet'
 import { ChainIdType } from '@/constants'
 import { ParseableAvmTxEnum, ParseablePlatformEnum, ParseableEvmTxEnum } from '../TxHelper'
 import { ILedgerBlockMessage } from '../../store/modules/ledger/types'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
-import { Utils, NetworkHelper, Network } from '@avalabs/avalanche-wallet-sdk'
+import { Utils, NetworkHelper, Network } from '@luxdefi/luxdefi-wallet-sdk'
 
 export const MIN_EVM_SUPPORT_V = '0.5.3'
 
-class LedgerWallet extends HdWalletCore implements AvaWalletCore {
-    app: AppAvax
+class LedgerWallet extends HdWalletCore implements LuxWalletCore {
+    app: AppLuxx
     ethApp: Eth
     type: WalletNameType
 
@@ -78,7 +78,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
     config: ILedgerAppConfig
     ethHdNode: HDKey
 
-    constructor(app: AppAvax, hdkey: HDKey, config: ILedgerAppConfig, hdEth: HDKey, ethApp: Eth) {
+    constructor(app: AppLuxx, hdkey: HDKey, config: ILedgerAppConfig, hdEth: HDKey, ethApp: Eth) {
         super(hdkey, hdEth)
         this.app = app
         this.ethApp = ethApp
@@ -97,8 +97,8 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
         }
     }
 
-    static async fromApp(app: AppAvax, eth: Eth, config: ILedgerAppConfig) {
-        let res = await app.getWalletExtendedPublicKey(AVA_ACCOUNT_PATH)
+    static async fromApp(app: AppLuxx, eth: Eth, config: ILedgerAppConfig) {
+        let res = await app.getWalletExtendedPublicKey(LUX_ACCOUNT_PATH)
 
         let hd = new HDKey()
         hd.publicKey = res.public_key
@@ -119,7 +119,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
     getTransactionPaths<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
-    ): { paths: string[]; isAvaxOnly: boolean } {
+    ): { paths: string[]; isLuxxOnly: boolean } {
         // TODO: This is a nasty fix. Remove when AJS is updated.
         unsignedTx.toBuffer()
         let tx = unsignedTx.getTransaction()
@@ -143,10 +143,10 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             items = ((tx as AVMImportTx) || PlatformImportTx).getImportInputs()
         }
 
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
         let paths: string[] = []
 
-        let isAvaxOnly = true
+        let isLuxxOnly = true
 
         // Collect derivation paths for source addresses
         for (let i = 0; i < items.length; i++) {
@@ -154,8 +154,8 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
 
             let assetId = bintools.cb58Encode(item.getAssetID())
             // @ts-ignore
-            if (assetId !== store.state.Assets.AVA_ASSET_ID) {
-                isAvaxOnly = false
+            if (assetId !== store.state.Assets.LUX_ASSET_ID) {
+                isLuxxOnly = false
             }
 
             let sigidxs: SigIdx[] = item.getInput().getSigIdxs()
@@ -189,7 +189,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             }
         }
 
-        return { paths, isAvaxOnly }
+        return { paths, isLuxxOnly }
     }
 
     pathsToUniqueBipPaths(paths: string[]) {
@@ -231,10 +231,10 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             txType === PlatformVMConstants.ADDVALIDATORTX ||
             txType === PlatformVMConstants.ADDDELEGATORTX
         ) {
-            changeIdx = this.platformHelper.getFirstAvailableIndex()
+            changeIdx = this.platformHelper.getFirstLuxilableIndex()
         }
 
-        return bippath.fromString(`${AVA_ACCOUNT_PATH}/${chainChangePath}/${changeIdx}`)
+        return bippath.fromString(`${LUX_ACCOUNT_PATH}/${chainChangePath}/${changeIdx}`)
     }
 
     getCredentials<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
@@ -359,7 +359,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             let bip32Paths = this.pathsToUniqueBipPaths(paths)
 
             // Sign the msg with ledger
-            const accountPathSource = chainId === 'C' ? ETH_ACCOUNT_PATH : AVA_ACCOUNT_PATH
+            const accountPathSource = chainId === 'C' ? ETH_ACCOUNT_PATH : LUX_ACCOUNT_PATH
             const accountPath = bippath.fromString(`${accountPathSource}`)
             let sigMap = await this.app.signHash(accountPath, bip32Paths, msg)
             store.commit('Ledger/closeModal')
@@ -412,7 +412,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
         const accountPath =
             chainId === 'C'
                 ? bippath.fromString(`${ETH_ACCOUNT_PATH}`)
-                : bippath.fromString(`${AVA_ACCOUNT_PATH}`)
+                : bippath.fromString(`${LUX_ACCOUNT_PATH}`)
         let txbuff = unsignedTx.toBuffer()
         let changePath = this.getChangeBipPath(unsignedTx, chainId)
         let messages = this.getTransactionMessages<UnsignedTx>(unsignedTx, chainId, changePath)
@@ -461,7 +461,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
         changePath: null | { toPathArray: () => number[] }
     ): ILedgerBlockMessage[] {
         let messages: ILedgerBlockMessage[] = []
-        let hrp = getPreferredHRP(ava.getNetworkID())
+        let hrp = getPreferredHRP(lux.getNetworkID())
         let tx = unsignedTx.getTransaction()
         let txType = tx.getTxType()
 
@@ -491,7 +491,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
 
                 messages.push({
                     title: 'Output',
-                    value: `${addr} - ${amt.toString()} AVAX`,
+                    value: `${addr} - ${amt.toString()} LUXX`,
                 })
             }
         } else {
@@ -510,7 +510,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
                         if (!changePath || changeAddr !== addr)
                             messages.push({
                                 title: 'Output',
-                                value: `${addr} - ${amt.toString()} AVAX`,
+                                value: `${addr} - ${amt.toString()} LUXX`,
                             })
                     })
             }
@@ -548,7 +548,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             const stakeAmt = bnToBig(tx.getStakeAmount(), 9)
 
             const rewardOwners = tx.getRewardOwners()
-            let hrp = ava.getHRP()
+            let hrp = lux.getHRP()
             const rewardAddrs = rewardOwners
                 .getOutput()
                 .getAddresses()
@@ -559,7 +559,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             messages.push({ title: 'NodeID', value: nodeID })
             messages.push({ title: 'Start Time', value: startTime })
             messages.push({ title: 'End Time', value: endTime })
-            messages.push({ title: 'Total Stake', value: `${stakeAmt} AVAX` })
+            messages.push({ title: 'Total Stake', value: `${stakeAmt} LUXX` })
             messages.push({
                 title: 'Stake',
                 value: `${stakeAmt} to ${this.platformHelper.getCurrentAddress()}`,
@@ -596,7 +596,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
             (txType === EVMConstants.EXPORTTX && chainId === 'C') ||
             (txType === EVMConstants.IMPORTTX && chainId === 'C')
         ) {
-            messages.push({ title: 'Fee', value: `${0.001} AVAX` })
+            messages.push({ title: 'Fee', value: `${0.001} LUXX` })
         }
 
         return messages
@@ -649,7 +649,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
 
             let feeMsg: ILedgerBlockMessage = {
                 title: 'Fee',
-                value: feeNano.toLocaleString() + ' nAVAX',
+                value: feeNano.toLocaleString() + ' nLUXX',
             }
 
             msgs = [callMsg, ...paramMsgs, feeMsg]
@@ -665,11 +665,11 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
         let chainId: ChainIdType = 'X'
 
         let parseableTxs = ParseableAvmTxEnum
-        let { paths, isAvaxOnly } = this.getTransactionPaths<AVMUnsignedTx>(unsignedTx, chainId)
+        let { paths, isLuxxOnly } = this.getTransactionPaths<AVMUnsignedTx>(unsignedTx, chainId)
 
         // If ledger doesnt support parsing, sign hash
         let canLedgerParse = this.config.version >= '0.3.1'
-        let isParsableType = txType in parseableTxs && isAvaxOnly
+        let isParsableType = txType in parseableTxs && isLuxxOnly
 
         let signedTx
         if (canLedgerParse && isParsableType) {
@@ -696,13 +696,13 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
         let chainId: ChainIdType = 'P'
         let parseableTxs = ParseablePlatformEnum
 
-        let { paths, isAvaxOnly } = this.getTransactionPaths<PlatformUnsignedTx>(
+        let { paths, isLuxxOnly } = this.getTransactionPaths<PlatformUnsignedTx>(
             unsignedTx,
             chainId
         )
         // If ledger doesnt support parsing, sign hash
         let canLedgerParse = this.config.version >= '0.3.1'
-        let isParsableType = txType in parseableTxs && isAvaxOnly
+        let isParsableType = txType in parseableTxs && isLuxxOnly
 
         // TODO: Remove after ledger is fixed
         // If UTXOS contain lockedStakeable funds always use sign hash
@@ -963,7 +963,7 @@ class LedgerWallet extends HdWalletCore implements AvaWalletCore {
     async signHashByExternalIndex(index: number, hash: Buffer) {
         let pathStr = `0/${index}`
         const addressPath = bippath.fromString(pathStr, false)
-        const accountPath = bippath.fromString(`${AVA_ACCOUNT_PATH}`)
+        const accountPath = bippath.fromString(`${LUX_ACCOUNT_PATH}`)
 
         store.commit('Ledger/openModal', {
             title: `Sign Hash`,

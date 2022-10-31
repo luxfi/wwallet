@@ -1,10 +1,10 @@
 import {
-    CsvRowAvaxTransferData,
+    CsvRowLuxxTransferData,
     CsvRowStakingData,
     ITransactionData,
     UTXO,
 } from '@/store/modules/history/types'
-import { BN, Buffer } from 'avalanche'
+import { BN, Buffer } from 'luxdefi'
 import moment from 'moment'
 
 export function isArraysOverlap(arr1: any[], arr2: any[]): boolean {
@@ -92,8 +92,8 @@ export function durationToString(dur: moment.Duration): string {
 
 const NOT_REWARD_OWNER_MSG = 'Not The Reward Owner'
 export function stakingDataToCsvRow(rowData: CsvRowStakingData): string[] {
-    let rewardAmtAvax = rowData.isRewardOwner
-        ? rowData.rewardAmtAvax.toString()
+    let rewardAmtLuxx = rowData.isRewardOwner
+        ? rowData.rewardAmtLuxx.toString()
         : NOT_REWARD_OWNER_MSG
 
     let rewardAmtUSD = rowData.isRewardOwner
@@ -108,13 +108,13 @@ export function stakingDataToCsvRow(rowData: CsvRowStakingData): string[] {
         rowData.stakeDate.format('MM/DD/YYYY'),
         durationToString(rowData.stakeDuration),
         rowData.rewardDate.format('MM/DD/YYYY'),
-        rowData.avaxPrice?.toFixed(2) || '-',
-        rewardAmtAvax,
+        rowData.luxPrice?.toFixed(2) || '-',
+        rewardAmtLuxx,
         rewardAmtUSD,
     ]
 }
 
-export function avaxTransferDataToCsvRow(rowData: CsvRowAvaxTransferData): string[] {
+export function luxTransferDataToCsvRow(rowData: CsvRowLuxxTransferData): string[] {
     let memo = rowData.memo ? `"${rowData.memo}"` : '-'
 
     let froms = rowData.from ? `"${rowData.from?.join('\n')}"` : '-'

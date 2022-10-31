@@ -5,15 +5,15 @@
     "address": "Adres",
     "add_pk": "Privé code toevoegen",
     "home": {
-        "desc": "Avalanche Wallet is een eenvoudige en veilige portomonnee zonder bewaarneming voor het opbergen van activa van Avalanche.",
+        "desc": "Luxlanche Wallet is een eenvoudige en veilige portomonnee zonder bewaarneming voor het opbergen van activa van Luxlanche.",
         "access": {
             "title": "Welkom terug!",
-            "desc": "\"Open\" hier uw bestaande Avalanche-portemonnee.",
+            "desc": "\"Open\" hier uw bestaande Luxlanche-portemonnee.",
             "submit": "Portemonnee openen"
         },
         "create": {
-            "title": "Nieuw bij Avalance Wallet?",
-            "desc": "\"Creëer\" een nieuwe portemonnee om activa van Avalance te verzenden, te ontvangen en te verwisselen.",
+            "title": "Nieuw bij Luxlance Wallet?",
+            "desc": "\"Creëer\" een nieuwe portemonnee om activa van Luxlance te verzenden, te ontvangen en te verwisselen.",
             "submit": "Nieuwe portemonnee creëren"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Beheren",
             "send": "Verzenden",
             "earn": "Verdienen",
-            "advanced": "Geavanceerd"
+            "advanced": "Geluxnceerd"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Genereer een nieuwe sleutelzin om uw Avalanche Wallet in te stellen.",
+        "generate": "Genereer een nieuwe sleutelzin om uw Luxlanche Wallet in te stellen.",
         "but_have": "Heeft u al een portemonnee?",
         "submit": "Genereer een sleutelzin",
         "cancel": "Annuleren",
         "mnemonic_title": "Dit is uw sleutelzin.",
-        "mnemonic_desc": "Gebruik deze 24 woorden op volgorde om uw Avalanche Wallet te herstellen.",
+        "mnemonic_desc": "Gebruik deze 24 woorden op volgorde om uw Luxlanche Wallet te herstellen.",
         "attention": "Attentie!",
-        "warning": "Berg deze sleutelzin op een veilige locatie op. Iedereen met deze sleutelzin heeft toegang tot uw Avalanche Wallet. Het is niet mogelijk verloren geraakte sleutelzinnen te herstellen.",
+        "warning": "Berg deze sleutelzin op een veilige locatie op. Iedereen met deze sleutelzin heeft toegang tot uw Luxlanche Wallet. Het is niet mogelijk verloren geraakte sleutelzinnen te herstellen.",
         "confirm": "Ik heb mijn sleutelzin op een veilige locatie opgeschreven.",
         "regenerate": "Opnieuw genereren",
         "success_title": "Gefeliciteerd!",
-        "success_desc": "Het is tijd om uw Avalanche Wallet te openen.",
+        "success_desc": "Het is tijd om uw Luxlanche Wallet te openen.",
         "success_submit": "Portemonnee openen",
         "verify": "Verifiëren",
         "verifytitle": "Geheugensteun verifiëren",
@@ -78,15 +78,15 @@
         "error_word": "De door u ingevoerde mnemonische zin komt niet overeen met de daadwerkelijke zin."
     },
     "top": {
-        "title1": "Afgeleid adres Avalanche-portemonne",
+        "title1": "Afgeleid adres Luxlanche-portemonne",
         "title2": "Saldo",
         "title3": "Subnet",
         "title4": "Netwerk",
         "nftcol": "NFTs",
         "nftempty": "U hebt geen onvervangbare tokens verzameld.",
         "locked": "Vergrendeld",
-        "info2": "Ik heb munten in de Token verkoop gekocht. Waar zijn mijn AVAX?",
-        "info2_desc": "Deze portemonnee is verbonden met het testnetwerk van Avalanche Everest. Uw aankoop zal in de portemonnee verschijnen nadat het hoofdnet van Avalanche werd gestart.",
+        "info2": "Ik heb munten in de Token verkoop gekocht. Waar zijn mijn LUXX?",
+        "info2_desc": "Deze portemonnee is verbonden met het testnetwerk van Luxlanche Everest. Uw aankoop zal in de portemonnee verschijnen nadat het hoofdnet van Luxlanche werd gestart.",
         "hover1": "Adres QR-code bekijken",
         "hover2": "Afdrukken",
         "hover3": "Kopiëren",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "Uitsplitsing tonen",
             "hide": "Uitsplitsing verbergen",
-            "available": "Beschikbaar",
+            "luxilable": "Beschikbaar",
             "locked": "Vergrendeld",
             "locked_stake": "Vergrendelde inzet",
             "stake": "Inzetten",
             "collectibles": "Inningen"
         },
         "address": {
-            "derived": "Afgeleid adres Avalanche-portemonne",
+            "derived": "Afgeleid adres Luxlanche-portemonne",
             "desc": "Dit is het adres waar u fondsen ontvangt. U adres zal na elke storting worden gewijzigd."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Naar adres",
         "fees": "Tarieven",
         "fee_tx": "Transactiekosten",
-        "advanced": "Geavanceerd",
+        "advanced": "Geluxnceerd",
         "adv_change": "Adres wijzigen",
         "send": "Transactie verzenden",
         "summary": "Samenvatting transactie",
@@ -172,26 +172,26 @@
     },
     "earn": {
         "title": "Verdienen",
-        "desc": "U kunt meer AVAX verdienen door uw bestaande tokens in te zetten.",
+        "desc": "U kunt meer LUXX verdienen door uw bestaande tokens in te zetten.",
         "subtitle1": "Valideren",
         "subtitle2": "Delegeren",
         "subtitle3": "Cross-keten overboeking",
         "subtitle4": "Geschatte beloningen",
-        "warning_1": "U moet ten minste {0} AVAX-punten op de P-keten hebben om een validator te worden.",
-        "warning_2": "U moet ten minste {0} AVAX-punten op de P-keten hebben om een delegatielid te worden.",
+        "warning_1": "U moet ten minste {0} LUXX-punten op de P-keten hebben om een validator te worden.",
+        "warning_2": "U moet ten minste {0} LUXX-punten op de P-keten hebben om een delegatielid te worden.",
         "validate_card": {
             "title": "Valideren",
-            "desc": "U hebt een Avalanche-nodus die u wilt inzetten.",
+            "desc": "U hebt een Luxlanche-nodus die u wilt inzetten.",
             "submit": "Validator toevoegen"
         },
         "delegate_card": {
             "title": "Delegeren",
-            "desc": "U hebt geen Avalanche-nodus, maar u wilt inzetten met een andere nodus.",
+            "desc": "U hebt geen Luxlanche-nodus, maar u wilt inzetten met een andere nodus.",
             "submit": "Delegatielid toevoegen"
         },
         "transfer_card": {
             "title": "Cross-keten overboeking",
-            "desc": "Voor het inzetten is AVAX op de P-keten nodig. Boek tokens over tussen X en P.",
+            "desc": "Voor het inzetten is LUXX op de P-keten nodig. Boek tokens over tussen X en P.",
             "submit": "Overboeken"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Bedrag inzet",
-                "desc": "De hoeveelheid AVAX te vergrendelen om in te zetten."
+                "desc": "De hoeveelheid LUXX te vergrendelen om in te zetten."
             },
             "fee": {
                 "label": "Delegatiekosten",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "De startdatum moet in de toekomst liggen en de enddatum moet later zijn dan de startdatum.",
-                "amount": "Het bedrag van de inzet moet minstens {0} AVAX zijn.",
+                "amount": "Het bedrag van de inzet moet minstens {0} LUXX zijn.",
                 "id": "Ongeldige Nodus ID. Moet beginnen met \"NodeID-\".",
                 "address": "Ongeldig adres beloning."
             }
@@ -292,8 +292,8 @@
                 "search": "Nodus ID zoeken",
                 "id": "Nodus ID",
                 "val_stake": "Inzet validator",
-                "aval_stake": "Beschikbaar",
-                "aval_stake_tip": "Hoeveel meer kan er naar deze valdiator worden gedelegeerd?",
+                "luxl_stake": "Beschikbaar",
+                "luxl_stake_tip": "Hoeveel meer kan er naar deze valdiator worden gedelegeerd?",
                 "users_tip": "Aantal delegatieleden",
                 "end": "Eindtijd",
                 "up": "Bedrijfstijd",
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Bedrag inzet",
-                    "desc": "De hoeveelheid AVAX te vergrendelen om in te zetten.",
-                    "desc2": "Het beschikbare delegatiebedrag voor deze nodus is {0} AVAX."
+                    "desc": "De hoeveelheid LUXX te vergrendelen om in te zetten.",
+                    "desc2": "Het beschikbare delegatiebedrag voor deze nodus is {0} LUXX."
                 },
                 "reward": {
                     "label": "Adres beloning",
@@ -345,7 +345,7 @@
                 "max_dur": "De maximum inzet is 1 jaar.",
                 "no_node": "U moet een validator opgeven.",
                 "val_end": "De einddatum van de delegatie kan niet later zijn dan de einddatum van de validator.",
-                "amt": "Het bedrag van de delegatie moet minstens {0} AVAX zijn."
+                "amt": "Het bedrag van de delegatie moet minstens {0} LUXX zijn."
             },
             "summary": {
                 "duration": "Tijdsduur inzet",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Geavanceerd",
+        "title": "Geluxnceerd",
         "import": {
             "title": "Keten importeren",
             "desc": "Als u fondsen vast heb zitten in een mislukte overboeking van een keten, dan kunt u het importeren ervan hier voltooien.",
@@ -388,7 +388,7 @@
         "loading": "De transactiegeschiedenis wordt geladen...",
         "warn_loading": "Deze lijst is misschien onvolledig en niet op volgorde.",
         "error_api": "Explorer API niet gevonden.",
-        "error_api_desc": "U moet een AVA Explorer API opgeven voor dit netwerk om de transactiegeschiedenis te kunnen bekijken."
+        "error_api_desc": "U moet een LUX Explorer API opgeven voor dit netwerk om de transactiegeschiedenis te kunnen bekijken."
     },
     "modal": {
         "qr": {

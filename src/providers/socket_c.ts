@@ -1,11 +1,11 @@
-import { AvaNetwork } from '@/js/AvaNetwork'
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { ethers } from 'ethers'
 import store from '@/store'
 import { WalletType } from '@/js/wallets/types'
 
 const SOCKET_RECONNECT_TIMEOUT = 1000
 
-export function connectSocketC(network: AvaNetwork) {
+export function connectSocketC(network: LuxNetwork) {
     try {
         let wsUrl = network.getWsUrlC()
         let wsProvider = new ethers.providers.WebSocketProvider(wsUrl)

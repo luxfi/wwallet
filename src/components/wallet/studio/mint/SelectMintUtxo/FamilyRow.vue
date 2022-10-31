@@ -23,16 +23,16 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { AvaNftFamily } from '../../../../../js/AvaNftFamily'
+import { LuxNftFamily } from '../../../../../js/LuxNftFamily'
 import { IWalletNftMintDict } from '@/store/types'
-import { NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import NftFamilyCardsPreview from '@/components/misc/NftFamilyCardsPreview.vue'
 @Component({
     components: { NftFamilyCardsPreview, NftPayloadView },
 })
 export default class FamilyRow extends Vue {
-    @Prop() family!: AvaNftFamily
+    @Prop() family!: LuxNftFamily
 
     maxReviewItems = 14
 

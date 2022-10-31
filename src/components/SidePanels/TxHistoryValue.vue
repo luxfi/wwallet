@@ -16,7 +16,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Big from 'big.js'
-import AvaAsset from '@/js/AvaAsset'
+import LuxAsset from '@/js/LuxAsset'
 import { TransactionType } from '@/store/modules/history/types'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 
@@ -100,9 +100,9 @@ export default class TxHistoryValue extends Vue {
         return asset.symbol
     }
 
-    get ava_asset(): AvaAsset | null {
-        let ava = this.$store.getters['Assets/AssetAVA']
-        return ava
+    get lux_asset(): LuxAsset | null {
+        let lux = this.$store.getters['Assets/AssetLUX']
+        return lux
     }
 
     created() {

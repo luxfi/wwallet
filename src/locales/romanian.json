@@ -5,15 +5,15 @@
     "address": "Adresă",
     "add_pk": "Adaugă Private Key",
     "home": {
-        "desc": "Portofelul Avalanche este un portofel simplu, sigur, protector pentru depozitarea activelor Avalanche.",
+        "desc": "Portofelul Luxlanche este un portofel simplu, sigur, protector pentru depozitarea activelor Luxlanche.",
         "access": {
             "title": "Bun venit înapoi!",
-            "desc": "„Accesează” aici portofelul tău Avalanche existent.",
+            "desc": "„Accesează” aici portofelul tău Luxlanche existent.",
             "submit": "Accesează Wallet"
         },
         "create": {
-            "title": "Nou la Avalanche Wallet?",
-            "desc": "„Creează” un nou portofel pentru a trimite, primi și schimba activele Avalanche.",
+            "title": "Nou la Luxlanche Wallet?",
+            "desc": "„Creează” un nou portofel pentru a trimite, primi și schimba activele Luxlanche.",
             "submit": "Creați un wallet nou"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Administra",
             "send": "Expedia",
             "earn": "Câștigă",
-            "advanced": "Avansat"
+            "advanced": "Luxnsat"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Generează o nouă frază cheie pentru configurarea Portofelului tău Avalanche.",
+        "generate": "Generează o nouă frază cheie pentru configurarea Portofelului tău Luxlanche.",
         "but_have": "Aveți deja un wallet?",
         "submit": "Generați o frază cheie",
         "cancel": "Anulare",
         "mnemonic_title": "Aceasta este fraza ta cheie.",
-        "mnemonic_desc": "Utilizează aceste 24 de cuvinte în ordine continuă pentru a-ți recupera Portofelul Avalanche",
+        "mnemonic_desc": "Utilizează aceste 24 de cuvinte în ordine continuă pentru a-ți recupera Portofelul Luxlanche",
         "attention": "Atenție!",
-        "warning": "Stochează această frază cheie într-un loc sigur. Cu această cheie oricine poate accesa Portofelul tău Avalanche. Nu există nicio cale de recuperare a frazelor cheie pierdute.",
+        "warning": "Stochează această frază cheie într-un loc sigur. Cu această cheie oricine poate accesa Portofelul tău Luxlanche. Nu există nicio cale de recuperare a frazelor cheie pierdute.",
         "confirm": "Mi-am notat fraza mea cheie într-un loc sigur.",
         "regenerate": "Regenerează",
         "success_title": "Felicitări!",
-        "success_desc": "Este timpul să accesezi Portofelul tău Avalanche.",
+        "success_desc": "Este timpul să accesezi Portofelul tău Luxlanche.",
         "success_submit": "Accesează Wallet",
         "verify": "Verifica",
         "verifytitle": "Verificați Mnemonic",
@@ -78,15 +78,15 @@
         "error_word": "Expresia Mnemonică pe care ați introdus-o pentru cuvânt nu se potrivește cu expresia reală."
     },
     "top": {
-        "title1": "Adresă portofel Avalanche derivată",
+        "title1": "Adresă portofel Luxlanche derivată",
         "title2": "Sold",
         "title3": "Subrețea",
         "title4": "Rețea",
         "nftcol": "NFT-uri",
         "nftempty": "Nu ați adunat niciun token nefungibil.",
         "locked": "Blocat",
-        "info2": "Am cumpărat monede în Token Sale. Unde sunt AVAX-ul meu?",
-        "info2_desc": "Acest wallet este conectat la rețeaua de testare Avalanche Everest. Achiziția dvs. va apărea în portofel după lansarea Avalanche Mainnet.",
+        "info2": "Am cumpărat monede în Token Sale. Unde sunt LUXX-ul meu?",
+        "info2_desc": "Acest wallet este conectat la rețeaua de testare Luxlanche Everest. Achiziția dvs. va apărea în portofel după lansarea Luxlanche Mainnet.",
         "hover1": "Vizualizați codul QR al adresei",
         "hover2": "Imprimare",
         "hover3": "Copie",
@@ -94,14 +94,14 @@
         "balance": {
             "show": "Afișează Defalcarea",
             "hide": "Ascunde Defalcarea",
-            "available": "Disponibil",
+            "luxilable": "Disponibil",
             "locked": "Blocat",
             "locked_stake": "Participări Blocate",
             "stake": "Capital",
             "collectibles": "Sume de încasat"
         },
         "address": {
-            "derived": "Adresa Portofelului Avalanche derivată",
+            "derived": "Adresa Portofelului Luxlanche derivată",
             "desc": "Această este adresa ta de primire fonduri. Adresa ta se va modifica după fiecare depunere."
         }
     },
@@ -112,7 +112,7 @@
         "to": "La Adresa",
         "fees": "Comisioane",
         "fee_tx": "Comisionul Tranzacției",
-        "advanced": "Avansat",
+        "advanced": "Luxnsat",
         "adv_change": "Schimbă Adresa",
         "send": "Trimite Tranzacția",
         "summary": "Rezumatul Tranzacției",
@@ -172,26 +172,26 @@
     },
     "earn": {
         "title": "Câștigă",
-        "desc": "Poți câștiga mai multe AVAX mizând jetoanele tale existente.",
+        "desc": "Poți câștiga mai multe LUXX mizând jetoanele tale existente.",
         "subtitle1": "Validează",
         "subtitle2": "Deleagă",
         "subtitle3": "Transfer Încrucișat",
         "subtitle4": "Recompense Estimate",
-        "warning_1": "Trebuie să ai cel puțin {0} AVAX în lanțul P pentru a deveni un validator.",
-        "warning_2": "Trebuie să ai cel puțin {0} AVAX în lanțul P pentru a deveni un delegatar.",
+        "warning_1": "Trebuie să ai cel puțin {0} LUXX în lanțul P pentru a deveni un validator.",
+        "warning_2": "Trebuie să ai cel puțin {0} LUXX în lanțul P pentru a deveni un delegatar.",
         "validate_card": {
             "title": "Validează",
-            "desc": "Ai un nod Avalanche cu care dorești să mizezi.",
+            "desc": "Ai un nod Luxlanche cu care dorești să mizezi.",
             "submit": "Adaugă Validatorul"
         },
         "delegate_card": {
             "title": "Deleagă",
-            "desc": "Nu deții un nod Avalanche, dar vrei să mizezi utilizând alt nod.",
+            "desc": "Nu deții un nod Luxlanche, dar vrei să mizezi utilizând alt nod.",
             "submit": "Adaugă Delegatarul"
         },
         "transfer_card": {
             "title": "Transfer Încrucișat",
-            "desc": "Miza necesită AVAX în lanțul P. Transferă jetoane între X și P.",
+            "desc": "Miza necesită LUXX în lanțul P. Transferă jetoane între X și P.",
             "submit": "Transferă"
         },
         "rewards_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Suma Mizată",
-                "desc": "Suma AVAX blocată pentru miză."
+                "desc": "Suma LUXX blocată pentru miză."
             },
             "fee": {
                 "label": "Comision de Delegare",
@@ -281,7 +281,7 @@
             },
             "errs": {
                 "date": "Data de Început trebuie să fie în viitor, iar data de sfârșit trebuie să fie după data de început.",
-                "amount": "Suma mizată trebuie să fie de cel puțin {0} AVAX",
+                "amount": "Suma mizată trebuie să fie de cel puțin {0} LUXX",
                 "id": "ID Nod invalid. Trebuie să înceapă cu „IDNod-”",
                 "address": "Adresă de recompensă invalidă."
             }
@@ -292,8 +292,8 @@
                 "search": "Caută ID Nod",
                 "id": "ID Nod",
                 "val_stake": "Validator de Miză",
-                "aval_stake": "Disponibil",
-                "aval_stake_tip": "Cât de mult se mai poate delega acestui validator.",
+                "luxl_stake": "Disponibil",
+                "luxl_stake_tip": "Cât de mult se mai poate delega acestui validator.",
                 "users_tip": "Numărul Delegatarilor",
                 "end": "Ora de Sfârșit",
                 "up": "Timp de funcționare",
@@ -319,8 +319,8 @@
                 },
                 "amount": {
                     "label": "Suma Mizei",
-                    "desc": "Suma AVAX blocată pentru miză.",
-                    "desc2": "Suma delegării disponibilă pentru acest nod este de {0} AVAX"
+                    "desc": "Suma LUXX blocată pentru miză.",
+                    "desc2": "Suma delegării disponibilă pentru acest nod este de {0} LUXX"
                 },
                 "reward": {
                     "label": "Adresa Recompensei",
@@ -345,7 +345,7 @@
                 "max_dur": "Durata maximă a mizei este de 1 an.",
                 "no_node": "Trebuie să menționezi un validator.",
                 "val_end": "Data de sfârșit a delegării nu poate fi mai mare decât data de sfârșit a validatorului.",
-                "amt": "Suma delegării trebuie să fie de cel puțin {0} AVAX."
+                "amt": "Suma delegării trebuie să fie de cel puțin {0} LUXX."
             },
             "summary": {
                 "duration": "Durata Mizei",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Avansat",
+        "title": "Luxnsat",
         "import": {
             "title": "Importă Lanțul",
             "desc": "Dacă ai fonduri blocate într-un transfer eșuat în lanț, poți termina importarea lor aici.",
@@ -388,7 +388,7 @@
         "loading": "Se încarcă istoricul tranzacției..",
         "warn_loading": "Această listă poate fi incompletă și dezordonată.",
         "error_api": "API Explorer Nu A Fost Găsit",
-        "error_api_desc": "Trebuie să furnizezi un AVA API Explorer pentru ca această rețea să vizualizeze istoricul tranzacției."
+        "error_api_desc": "Trebuie să furnizezi un LUX API Explorer pentru ca această rețea să vizualizeze istoricul tranzacției."
     },
     "modal": {
         "qr": {
