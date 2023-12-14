@@ -40,7 +40,7 @@ var isoLangs = {
         nativeName: 'অসমীয়া',
     },
     av: {
-        name: 'Luxric',
+        name: 'Avaric',
         nativeName: 'авар мацӀ, магӀарул мацӀ',
     },
     ae: {
@@ -217,7 +217,7 @@ var isoLangs = {
     },
     gn: {
         name: 'Guaraní',
-        nativeName: 'Luxñeẽ',
+        nativeName: 'Avañeẽ',
     },
     gu: {
         name: 'Gujarati',
@@ -296,7 +296,7 @@ var isoLangs = {
         nativeName: '日本語',
     },
     jv: {
-        name: 'Jluxnese',
+        name: 'Javanese',
         nativeName: 'basa Jawa',
     },
     kl: {
@@ -436,7 +436,7 @@ var isoLangs = {
         nativeName: 'Ekakairũ Naoero',
     },
     nv: {
-        name: 'Nluxjo, Nluxho',
+        name: 'Navajo, Navaho',
         nativeName: 'Diné bizaad, Dinékʼehǰí',
     },
     nb: {

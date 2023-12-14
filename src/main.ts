@@ -9,17 +9,21 @@ import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
 import { BootstrapVue } from 'bootstrap-vue'
+import vuetify from './plugins/vuetify'
+// @ts-ignore
+import i18n from './plugins/i18n.js'
+// @ts-ignore
+import posthogPlugin from './plugins/posthog.js'
+
+// Install Posthog
+Vue.use(posthogPlugin)
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 
 Vue.use(VueMeta)
 
 Vue.component('datetime', Datetime)
-
-import vuetify from './plugins/vuetify'
-
-// @ts-ignore
-import i18n from './plugins/i18n.js'
 
 Vue.config.productionTip = false
 
@@ -33,7 +37,7 @@ const app = new Vue({
         // Reveal app version
         console.log(`App Version: ${process.env.VUE_APP_VERSION}`)
         // Hide loader once vue is initialized
-        let loader = document.getElementById('app_loading')
+        const loader = document.getElementById('app_loading')
         if (loader) {
             loader.style.display = 'none'
         }
@@ -60,11 +64,11 @@ declare module 'big.js' {
 }
 
 Big.prototype.toLocaleString = function (toFixed: number = 9) {
-    let value = this
+    const value = this
 
-    let fixedStr = this.toFixed(toFixed)
-    let split = fixedStr.split('.')
-    let wholeStr = parseInt(split[0]).toLocaleString('en-US')
+    const fixedStr = this.toFixed(toFixed)
+    const split = fixedStr.split('.')
+    const wholeStr = parseInt(split[0]).toLocaleString('en-US')
 
     if (split.length === 1) {
         return wholeStr
@@ -78,7 +82,7 @@ Big.prototype.toLocaleString = function (toFixed: number = 9) {
             lastChar = remainderStr.charAt(remainderStr.length - 1)
         }
 
-        let trimmed = remainderStr.substring(0, toFixed)
+        const trimmed = remainderStr.substring(0, toFixed)
         if (!trimmed) return wholeStr
         return `${wholeStr}.${trimmed}`
     }

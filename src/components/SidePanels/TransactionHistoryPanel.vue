@@ -12,17 +12,13 @@
         <div class="empty" v-else-if="isEmpty && !isUpdating">
             <p>{{ $t('transactions.notx') }}</p>
         </div>
-        <!--        <div v-else-if="isUpdating">-->
-        <!--            <p class="empty">{{ $t('transactions.loading') }}</p>-->
-        <!--        </div>-->
         <div class="list no_scroll_bar" v-else>
             <tx-history-row
                 v-for="tx in transactions"
-                :key="tx.id"
+                :key="tx.txHash"
                 :transaction="tx"
                 class="tx_row"
             ></tx-history-row>
-            <p class="warn">{{ $t('transactions.warn_loading') }}</p>
         </div>
     </div>
 </template>
@@ -32,9 +28,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import TxHistoryRow from '@/components/SidePanels/TxHistoryRow.vue'
-import { ITransactionData } from '@/store/modules/history/types'
-import { LuxNetwork } from '@/js/LuxNetwork'
-import { ITransaction } from '@/components/wallet/transfer/types'
+import { AvaNetwork } from '@/js/AvaNetwork'
+import { TransactionType } from '@/js/Glacier/models'
 
 @Component({
     components: {
@@ -44,7 +39,7 @@ import { ITransaction } from '@/components/wallet/transfer/types'
 })
 export default class TransactionHistoryPanel extends Vue {
     get isExplorer(): boolean {
-        let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
+        let network: AvaNetwork | null = this.$store.state.Network.selectedNetwork
         if (!network) return false
         if (network.explorerUrl) {
             return true
@@ -61,21 +56,8 @@ export default class TransactionHistoryPanel extends Vue {
     get isUpdating(): boolean {
         return this.$store.state.History.isUpdating
     }
-    get transactions(): ITransactionData[] {
-        let res: ITransactionData[] = this.$store.state.History.transactions
-
-        if (!res) return []
-
-        let seenId: string[] = []
-        let r: ITransactionData[] = res.filter((tx) => {
-            if (seenId.includes(tx.id)) {
-                return false
-            }
-            seenId.push(tx.id)
-            return true
-        })
-        // A simple filter to ignore duplicate transactions (can happen if you send to self)
-        return r
+    get transactions(): TransactionType[] {
+        return this.$store.state.History.recentTransactions
     }
 
     get isActivityPage() {

@@ -30,6 +30,7 @@ import {
     faTrash,
     faUpload,
     faCreditCard,
+    faEllipsisH,
     faArrowRight,
     faArrowLeft,
     faTint,
@@ -60,6 +61,7 @@ import {
     faVideo,
     faUnlink,
     faFileCsv,
+    faGlasses,
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBtc, faGoogle } from '@fortawesome/free-brands-svg-icons'
@@ -77,6 +79,7 @@ library.add(
     faExchangeAlt,
     faDna,
     faCamera,
+    faEllipsisH,
     faDownload,
     faCheckCircle,
     faCheckSquare,
@@ -123,7 +126,8 @@ library.add(
     faShare,
     faVideo,
     faUnlink,
-    faFileCsv
+    faFileCsv,
+    faGlasses
 )
 
 Vue.component('fa', FontAwesomeIcon)

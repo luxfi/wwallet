@@ -1,5 +1,5 @@
 import { ChainIdType } from '@/constants'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 
 export enum TxState {
     failed = -1,

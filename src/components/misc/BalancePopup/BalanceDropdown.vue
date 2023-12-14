@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown hover_border" :active="isPopup">
         <button @click="showPopup" :disabled="disabled">
-            LUX
+            {{ symbol }}
             <!--            <fa icon="caret-down" style="float: right"></fa>-->
         </button>
         <!--        <BalancePopup-->
@@ -25,7 +25,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Ref, Model } from 'vue-property-decorator'
 
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import AvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
 
 @Component({
@@ -37,11 +37,11 @@ import AvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
 export default class BalanceDropdown extends Vue {
     isPopup: boolean = false
 
-    @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
+    @Prop({ default: () => [] }) disabled_assets!: AvaAsset[]
     @Prop({ default: false }) disabled!: boolean
-    @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
+    @Model('change', { type: AvaAsset }) readonly asset!: AvaAsset
 
-    get assetArray(): LuxAsset[] {
+    get assetArray(): AvaAsset[] {
         // return this.$store.getters.walletAssetsArray
         return this.$store.getters['Assets/walletAssetsArray']
     }
@@ -78,7 +78,7 @@ export default class BalanceDropdown extends Vue {
         // this.isPopup = false
     }
 
-    onselect(asset: LuxAsset) {
+    onselect(asset: AvaAsset) {
         // this.selected = asset;
         // this.balancePopup.isActive = false
         // this.isPopup = false

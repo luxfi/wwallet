@@ -141,12 +141,12 @@ import Big from 'big.js'
 import NftList from '@/components/wallet/transfer/NftList.vue'
 
 //@ts-ignore
-import { QrInput } from '@luxdefi/vue_components'
-import { lux, avm, isValidAddress } from '../../LUX'
+import { QrInput } from '@avalabs/vue_components'
+import { ava, avm, isValidAddress } from '../../AVA'
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { UTXO } from 'luxdefi/dist/apis/avm'
-import { Buffer, BN } from 'luxdefi'
+import { UTXO } from 'avalanche/dist/apis/avm'
+import { Buffer, BN } from 'avalanche'
 import TxSummary from '@/components/wallet/transfer/TxSummary.vue'
 import { priceDict, IssueBatchTxInput } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -156,7 +156,7 @@ import FormC from '@/components/wallet/transfer/FormC.vue'
 import { ChainIdType } from '@/constants'
 
 import ChainInput from '@/components/wallet/transfer/ChainInput.vue'
-import LuxAsset from '../../js/LuxAsset'
+import AvaAsset from '../../js/AvaAsset'
 import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
 @Component({
     components: {
@@ -258,7 +258,7 @@ export default class Transfer extends Vue {
         }
 
         // Make sure to address matches the bech32 network hrp
-        let hrp = lux.getHRP()
+        let hrp = ava.getHRP()
         if (!addr.includes(hrp)) {
             err.push('Not a valid address for this network.')
         }
@@ -431,8 +431,8 @@ export default class Transfer extends Vue {
 
         return res
     }
-    get luxAsset(): LuxAsset {
-        return this.$store.getters['Assets/AssetLUX']
+    get luxAsset(): AvaAsset {
+        return this.$store.getters['Assets/AssetAVA']
     }
 
     get wallet(): WalletType {

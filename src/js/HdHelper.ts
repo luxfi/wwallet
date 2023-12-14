@@ -2,24 +2,24 @@ import {
     KeyChain as AVMKeyChain,
     KeyPair as AVMKeyPair,
     UTXOSet as AVMUTXOSet,
-} from 'luxdefi/dist/apis/avm'
+} from 'avalanche/dist/apis/avm'
 
-import { UTXOSet as PlatformUTXOSet } from 'luxdefi/dist/apis/platformvm'
-import { getPreferredHRP } from 'luxdefi/dist/utils'
-import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
+import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm'
+import { getPreferredHRP } from 'avalanche/dist/utils'
+import { ava, avm, bintools, pChain } from '@/AVA'
 import HDKey from 'hdkey'
-import { Buffer } from 'luxdefi'
+import { Buffer } from 'avalanche'
 import {
     KeyChain as PlatformVMKeyChain,
     KeyPair as PlatformVMKeyPair,
-} from 'luxdefi/dist/apis/platformvm'
+} from 'avalanche/dist/apis/platformvm'
 import store from '@/store'
 
-import { getAddressChains } from '@/explorer_api'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import { ChainAlias } from './wallets/types'
 import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
 import { updateFilterAddresses } from '../providers'
+import { listChainsForAddresses } from '@/js/Glacier/listChainsForAddresses'
 
 const INDEX_RANGE: number = 20 // a gap of at least 20 indexes is needed to claim an index unused
 
@@ -56,7 +56,7 @@ class HdHelper {
         this.isInit = false
 
         this.chainId = chainId
-        let hrp = getPreferredHRP(lux.getNetworkID())
+        const hrp = getPreferredHRP(ava.getNetworkID())
         if (chainId === 'X') {
             this.keyChain = new AVMKeyChain(hrp, chainId)
             this.utxoSet = new AVMUTXOSet()
@@ -83,7 +83,7 @@ class HdHelper {
     async onNetworkChange() {
         this.clearCache()
         this.isInit = false
-        let hrp = getPreferredHRP(lux.getNetworkID())
+        const hrp = getPreferredHRP(ava.getNetworkID())
         if (this.chainId === 'X') {
             this.keyChain = new AVMKeyChain(hrp, this.chainId)
             this.utxoSet = new AVMUTXOSet()
@@ -98,16 +98,16 @@ class HdHelper {
     // Increments the hd index by one and adds the key
     // returns the new keypair
     incrementIndex(): number {
-        let newIndex: number = this.hdIndex + 1
+        const newIndex: number = this.hdIndex + 1
 
         if (!this.isPublic) {
             if (this.chainId === 'X') {
-                let keychain = this.keyChain as AVMKeyChain
-                let newKey = this.getKeyForIndex(newIndex) as AVMKeyPair
+                const keychain = this.keyChain as AVMKeyChain
+                const newKey = this.getKeyForIndex(newIndex) as AVMKeyPair
                 keychain.addKey(newKey)
             } else {
-                let keychain = this.keyChain as PlatformVMKeyChain
-                let newKey = this.getKeyForIndex(newIndex) as PlatformVMKeyPair
+                const keychain = this.keyChain as PlatformVMKeyChain
+                const newKey = this.getKeyForIndex(newIndex) as PlatformVMKeyPair
                 keychain.addKey(newKey)
             }
         }
@@ -124,13 +124,13 @@ class HdHelper {
         // Check if explorer is available
 
         // @ts-ignore
-        let network: LuxNetwork = store.state.Network.selectedNetwork
-        let explorerUrl = network.explorerUrl
+        const network: AvaNetwork = store.state.Network.selectedNetwork
+        const explorerUrl = network.explorerUrl
 
         if (explorerUrl) {
-            this.hdIndex = await this.findLuxilableIndexExplorer()
+            this.hdIndex = await this.findAvailableIndexExplorer()
         } else {
-            this.hdIndex = await this.findLuxilableIndexNode()
+            this.hdIndex = await this.findAvailableIndexNode()
         }
 
         if (!this.isPublic) {
@@ -148,7 +148,7 @@ class HdHelper {
             console.error('HD Index not found yet.')
         }
 
-        let addrs: string[] = this.getAllDerivedAddresses()
+        const addrs: string[] = this.getAllDerivedAddresses()
         let result: AVMUTXOSet | PlatformUTXOSet
 
         if (this.chainId === 'X') {
@@ -159,9 +159,9 @@ class HdHelper {
         this.utxoSet = result // we can use local copy of utxos as cache for some functions
 
         // If the hd index is full, increment
-        let currentAddr = this.getCurrentAddress()
-        let currentAddrBuf = bintools.parseAddress(currentAddr, this.chainId)
-        let currentUtxos = result.getUTXOIDs([currentAddrBuf])
+        const currentAddr = this.getCurrentAddress()
+        const currentAddrBuf = bintools.parseAddress(currentAddr, this.chainId)
+        const currentUtxos = result.getUTXOIDs([currentAddrBuf])
 
         if (currentUtxos.length > 0) {
             this.incrementIndex()
@@ -172,7 +172,7 @@ class HdHelper {
 
     // Returns more addresses than the current index
     getExtendedAddresses() {
-        let hdIndex = this.hdIndex
+        const hdIndex = this.hdIndex
         return this.getAllDerivedAddresses(hdIndex + INDEX_RANGE)
     }
 
@@ -183,7 +183,7 @@ class HdHelper {
 
     // Updates the helper keychain to contain keys upto the HD Index
     updateKeychain(): AVMKeyChain | PlatformVMKeyChain {
-        let hrp = getPreferredHRP(lux.getNetworkID())
+        const hrp = getPreferredHRP(ava.getNetworkID())
         let keychain: AVMKeyChain | PlatformVMKeyChain
 
         if (this.chainId === 'X') {
@@ -212,13 +212,13 @@ class HdHelper {
 
     // Returns all key pairs up to hd index
     getAllDerivedKeys(upTo = this.hdIndex): AVMKeyPair[] | PlatformVMKeyPair[] {
-        let set: AVMKeyPair[] | PlatformVMKeyPair[] = []
-        for (var i = 0; i <= upTo; i++) {
+        const set: AVMKeyPair[] | PlatformVMKeyPair[] = []
+        for (let i = 0; i <= upTo; i++) {
             if (this.chainId === 'X') {
-                let key = this.getKeyForIndex(i) as AVMKeyPair
+                const key = this.getKeyForIndex(i) as AVMKeyPair
                 ;(set as AVMKeyPair[]).push(key)
             } else {
-                let key = this.getKeyForIndex(i) as PlatformVMKeyPair
+                const key = this.getKeyForIndex(i) as PlatformVMKeyPair
                 ;(set as PlatformVMKeyPair[]).push(key)
             }
         }
@@ -226,9 +226,9 @@ class HdHelper {
     }
 
     getAllDerivedAddresses(upTo = this.hdIndex, start = 0): string[] {
-        let res = []
-        for (var i = start; i <= upTo; i++) {
-            let addr = this.getAddressForIndex(i)
+        const res = []
+        for (let i = start; i <= upTo; i++) {
+            const addr = this.getAddressForIndex(i)
             res.push(addr)
         }
         return res
@@ -241,33 +241,26 @@ class HdHelper {
 
     // Scans the address space of this hd path and finds the last used index using the
     // explorer API.
-    async findLuxilableIndexExplorer(startIndex = 0): Promise<number> {
-        let upTo = 512
+    async findAvailableIndexExplorer(startIndex = 0): Promise<number> {
+        // The number of addresses to process and request from the explorer at a time
+        const upTo = 512
 
-        let addrs = this.getAllDerivedAddresses(startIndex + upTo, startIndex)
-        let addrChains = await getAddressChains(addrs)
+        const addrs = this.getAllDerivedAddresses(startIndex + upTo, startIndex)
+        const addrChainsGlacier = await listChainsForAddresses(addrs)
+        const seenAddrs = addrChainsGlacier.map((addrData) => addrData.address)
 
-        let chainID
-        if (this.chainId === 'X') {
-            chainID = avm.getBlockchainID()
-        } else {
-            chainID = pChain.getBlockchainID()
-        }
-
-        for (var i = 0; i < addrs.length - INDEX_RANGE; i++) {
+        for (let i = 0; i < addrs.length - INDEX_RANGE; i++) {
             let gapSize: number = 0
 
-            for (var n = 0; n < INDEX_RANGE; n++) {
-                let scanIndex = i + n
-                let scanAddr = addrs[scanIndex]
+            for (let n = 0; n < INDEX_RANGE; n++) {
+                const scanIndex = i + n
+                const scanAddr = addrs[scanIndex]
 
-                let rawAddr = scanAddr.split('-')[1]
-                let chains: string[] = addrChains[rawAddr]
-                if (!chains) {
-                    // If doesnt exist on any chain
-                    gapSize++
-                } else if (!chains.includes(chainID)) {
-                    // If doesnt exist on this chain
+                const rawAddr = scanAddr.split('-')[1]
+
+                const isSeen = seenAddrs.includes(rawAddr)
+                if (!isSeen) {
+                    // If doesn't exist on any chain
                     gapSize++
                 } else {
                     i = i + n
@@ -281,17 +274,17 @@ class HdHelper {
             }
         }
 
-        return await this.findLuxilableIndexExplorer(startIndex + (upTo - INDEX_RANGE))
+        return await this.findAvailableIndexExplorer(startIndex + (upTo - INDEX_RANGE))
     }
 
     // Uses the node to find last used HD index
     // Only used when there is no explorer API available
-    async findLuxilableIndexNode(start: number = 0): Promise<number> {
-        let addrs: string[] = []
+    async findAvailableIndexNode(start: number = 0): Promise<number> {
+        const addrs: string[] = []
 
         // Get keys for indexes start to start+scan_size
         for (let i: number = start; i < start + SCAN_SIZE; i++) {
-            let address = this.getAddressForIndex(i)
+            const address = this.getAddressForIndex(i)
             addrs.push(address)
         }
 
@@ -308,10 +301,10 @@ class HdHelper {
             let gapSize: number = 0
             // console.log(`Scan index: ${this.chainId} ${this.changePath}/${i+start}`);
             for (let n: number = 0; n < INDEX_RANGE; n++) {
-                let scanIndex: number = i + n
-                let addr: string = addrs[scanIndex]
-                let addrBuf = bintools.parseAddress(addr, this.chainId)
-                let addrUTXOs: string[] = utxoSet.getUTXOIDs([addrBuf])
+                const scanIndex: number = i + n
+                const addr: string = addrs[scanIndex]
+                const addrBuf = bintools.parseAddress(addr, this.chainId)
+                const addrUTXOs: string[] = utxoSet.getUTXOIDs([addrBuf])
                 if (addrUTXOs.length === 0) {
                     gapSize++
                 } else {
@@ -323,18 +316,18 @@ class HdHelper {
 
             // If we found a gap of 20, we can return the last fullIndex+1
             if (gapSize === INDEX_RANGE) {
-                let targetIndex = start + i
+                const targetIndex = start + i
                 return targetIndex
             }
         }
-        return await this.findLuxilableIndexNode(start + SCAN_RANGE)
+        return await this.findAvailableIndexNode(start + SCAN_RANGE)
     }
 
-    getFirstLuxilableIndex(): number {
-        for (var i = 0; i < this.hdIndex; i++) {
-            let addr = this.getAddressForIndex(i)
-            let addrBuf = bintools.parseAddress(addr, this.chainId)
-            let utxoIds = this.utxoSet.getUTXOIDs([addrBuf])
+    getFirstAvailableIndex(): number {
+        for (let i = 0; i < this.hdIndex; i++) {
+            const addr = this.getAddressForIndex(i)
+            const addrBuf = bintools.parseAddress(addr, this.chainId)
+            const utxoIds = this.utxoSet.getUTXOIDs([addrBuf])
             if (utxoIds.length === 0) {
                 return i
             }
@@ -344,18 +337,18 @@ class HdHelper {
     }
 
     // Returns the key of the first index that has no utxos
-    getFirstLuxilableAddress(): string {
-        const idx = this.getFirstLuxilableIndex()
+    getFirstAvailableAddress(): string {
+        const idx = this.getFirstAvailableIndex()
         return this.getAddressForIndex(idx)
     }
 
     getCurrentKey(): AVMKeyPair | PlatformVMKeyPair {
-        let index: number = this.hdIndex
+        const index: number = this.hdIndex
         return this.getKeyForIndex(index)
     }
 
     getCurrentAddress(): string {
-        let index = this.hdIndex
+        const index = this.hdIndex
         return this.getAddressForIndex(index)
     }
 
@@ -372,7 +365,7 @@ class HdHelper {
 
         if (cacheExternal) return cacheExternal
 
-        let derivationPath: string = `${this.changePath}/${index.toString()}`
+        const derivationPath: string = `${this.changePath}/${index.toString()}`
 
         // Get key from cache, if not generate it
         let key: HDKey
@@ -390,8 +383,8 @@ class HdHelper {
             pkHex = key.publicKey.toString('hex')
         }
 
-        let pkBuf: Buffer = new Buffer(pkHex, 'hex')
-        let keypair = this.keyChain.importKey(pkBuf)
+        const pkBuf: Buffer = new Buffer(pkHex, 'hex')
+        const keypair = this.keyChain.importKey(pkBuf)
 
         // save to cache
         this.keyCache[index] = keypair
@@ -403,7 +396,7 @@ class HdHelper {
             return this.addressCache[index]
         }
 
-        let derivationPath: string = `${this.changePath}/${index.toString()}`
+        const derivationPath: string = `${this.changePath}/${index.toString()}`
         // let key: HDKey = this.masterKey.derive(derivationPath) as HDKey;
 
         // Get key from cache, if not generate it
@@ -415,16 +408,16 @@ class HdHelper {
             this.hdCache[index] = key
         }
 
-        let pkHex = key.publicKey.toString('hex')
-        let pkBuff = Buffer.from(pkHex, 'hex')
-        let hrp = getPreferredHRP(lux.getNetworkID())
+        const pkHex = key.publicKey.toString('hex')
+        const pkBuff = Buffer.from(pkHex, 'hex')
+        const hrp = getPreferredHRP(ava.getNetworkID())
 
-        let chainId = this.chainId
+        const chainId = this.chainId
 
         // No need for PlatformKeypair because addressToString uses chainID to decode
-        let keypair = new AVMKeyPair(hrp, chainId)
-        let addrBuf = keypair.addressFromPublicKey(pkBuff)
-        let addr = bintools.addressToString(hrp, chainId, addrBuf)
+        const keypair = new AVMKeyPair(hrp, chainId)
+        const addrBuf = AVMKeyPair.addressFromPublicKey(pkBuff)
+        const addr = bintools.addressToString(hrp, chainId, addrBuf)
 
         this.addressCache[index] = addr
         return addr
@@ -432,8 +425,8 @@ class HdHelper {
 
     // Given an address find the derived index
     findAddressIndex(addr: string): number | null {
-        let addrs = this.getAllDerivedAddresses()
-        let index = addrs.indexOf(addr)
+        const addrs = this.getAllDerivedAddresses()
+        const index = addrs.indexOf(addr)
 
         if (index < 0) return null
         return index

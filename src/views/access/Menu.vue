@@ -27,6 +27,10 @@
                     ></ImageDayNight>
                 </router-link>
                 <LedgerButton class="menu_option button_primary"></LedgerButton>
+                <router-link to="/access/xpub" class="menu_option button_primary">
+                    XPUB (Readonly)
+                    <span><fa icon="glasses"></fa></span>
+                </router-link>
                 <!--            <TorusGoogle class="option button_primary" text="Google"></TorusGoogle>-->
             </div>
         </div>
@@ -59,8 +63,6 @@ export default class Menu extends Vue {}
 @use '/src/components/Access/menu';
 
 .access_card {
-    //background-color: var(--bg-light) !important;
-    //padding: main.$container-padding;
     margin: 0px auto;
     display: flex;
     flex-direction: column;
@@ -92,9 +94,6 @@ hr {
 .options {
     display: flex;
     flex-direction: column;
-    //display: grid;
-    //grid-template-columns: repeat(4, 1fr);
-    //grid-gap: 30px;
 }
 
 .menu_option {
@@ -113,29 +112,6 @@ hr {
     max-width: 100%;
     margin-top: 1em;
 }
-
-//.option {
-//    position: relative;
-//    transition-duration: 0.1s;
-//    transition-timing-function: ease-in;
-//    border-radius: 6px;
-//    font-family: 'DM Sans', sans-serif;
-//    font-weight: 700 !important;
-//    text-transform: uppercase;
-//    font-size: main.$s-size;
-//    display: flex;
-//    align-items: center;
-//    //justify-content: center;
-//    padding: 12px;
-//    margin: 2px 0;
-//
-//    background-color: var(--bg-light) !important;
-//    color: var(--primary-color) !important;
-//
-//    &:hover {
-//        box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.2);
-//    }
-//}
 
 @include main.mobile-device {
     img {
@@ -156,11 +132,5 @@ hr {
         display: block;
         grid-template-columns: none;
     }
-
-    //.option {
-    //    width: 100%;
-    //    margin: 12px 0px;
-    //    display: block;
-    //}
 }
 </style>

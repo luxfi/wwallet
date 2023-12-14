@@ -5,15 +5,15 @@
     "address": "Cím",
     "add_pk": "Hozzáadás",
     "home": {
-        "desc": "Az Luxlanche Wallet egyszerű, biztonságos, nem letétkezelői pénztárca az Luxlanche eszközök tárolására.",
+        "desc": "Az Lux Wallet egyszerű, biztonságos, nem letétkezelői pénztárca az Lux eszközök tárolására.",
         "access": {
             "title": "Üdv újra!",
-            "desc": "Itt 'férhet hozzá' meglévő Luxlanche pénztárcájához.",
+            "desc": "Itt 'férhet hozzá' meglévő Lux pénztárcájához.",
             "submit": "Wallet hozzáférés"
         },
         "create": {
-            "title": "Új Önnek az Luxlanche Wallet?",
-            "desc": "„Hozzon létre” új pénztárcát az Luxlanche eszközök küldéséhez, fogadásához és cseréjéhez.",
+            "title": "Új Önnek az Lux Wallet?",
+            "desc": "„Hozzon létre” új pénztárcát az Lux eszközök küldéséhez, fogadásához és cseréjéhez.",
             "submit": "Hozzon létre új pénztárcát"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Generáljon új kulcsmondatot Luxlanche pénztárcája használatához.",
+        "generate": "Generáljon új kulcsmondatot Lux pénztárcája használatához.",
         "but_have": "Már van pénztárcája?",
         "submit": "Kulcsmondat létrehozása",
         "cancel": "Megszünteti",
         "mnemonic_title": "Ez a Ön kulcsmondata.",
-        "mnemonic_desc": "Ezt a 24 szót használja az itt megadott sorrendben az Luxlanche Wallet pénztárca\nhelyreállítására/elérésére",
+        "mnemonic_desc": "Ezt a 24 szót használja az itt megadott sorrendben az Lux Wallet pénztárca\nhelyreállítására/elérésére",
         "attention": "Figyelem!",
-        "warning": "Biztonságos helyen tárolja ezt a kulcsmondatot. Ezzel a kulcsmondattal bárki hozzáférhet Luxlanche pénztárcájához. Az elveszített kulcsmondat helyreállítására viszont nincs mód.",
+        "warning": "Biztonságos helyen tárolja ezt a kulcsmondatot. Ezzel a kulcsmondattal bárki hozzáférhet Lux pénztárcájához. Az elveszített kulcsmondat helyreállítására viszont nincs mód.",
         "confirm": "Biztonsági helyre írtam fel a kulcsmondatomat.",
         "regenerate": "Regenerálás",
         "success_title": "Gratulálunk!",
-        "success_desc": "Ideje megtekinteni Luxlanche pénztárcáját.",
+        "success_desc": "Ideje megtekinteni Lux pénztárcáját.",
         "success_submit": "Hozzáférés pénztárcád",
         "verify": "Ellenőrizze",
         "verifytitle": "Ellenőrizze a mnemónikus elemet",
@@ -78,7 +78,7 @@
         "error_word": "A szóra megadott mnemonikus kifejezés nem egyezik a tényleges kifejezéssel."
     },
     "top": {
-        "title1": "Származtatott Luxlanche pénztárca cím",
+        "title1": "Származtatott Lux pénztárca cím",
         "title2": "Egyensúly",
         "title3": "Alhálózat",
         "title4": "Hálózatok",
@@ -86,7 +86,7 @@
         "nftempty": "Még nem gyűjtött össze nem helyettesíthető tokent.",
         "locked": "Zárt",
         "info2": "A Token Sale-ban vásároltam érméket. Hol van az LUX?",
-        "info2_desc": "Ez a pénztárca az Luxlanche Everest teszthálózathoz csatlakozik. Vásárlása az Luxlanche Mainnet elindítása után jelenik meg a pénztárcában.",
+        "info2_desc": "Ez a pénztárca az Lux Everest teszthálózathoz csatlakozik. Vásárlása az Lux Mainnet elindítása után jelenik meg a pénztárcában.",
         "hover1": "Cím QR-kód megtekintése",
         "hover2": "Nyomtatás",
         "hover3": "Másolat",
@@ -101,7 +101,7 @@
             "collectibles": "Gyűjthető tárgyak"
         },
         "address": {
-            "derived": "Származtatott Luxlanche pénztárca cím",
+            "derived": "Származtatott Lux pénztárca cím",
             "desc": "Ez az Ön címe, ahová pénzt kap. Címe minden befizetés után változik."
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "Legalábbt {0} LUX szükséges a P láncon ahhoz, hogy érvényesítő legyen.",
         "validate_card": {
             "title": "Érvényesítés",
-            "desc": "Rendelkezik egy Luxlanche csomópontja amit meg akar játszani.",
+            "desc": "Rendelkezik egy Lux csomópontja amit meg akar játszani.",
             "submit": "Érvényesítő hozzáadása"
         },
         "delegate_card": {
             "title": "Delegálás",
-            "desc": "Nem rendelkezik Luxlanche csomóponttal, de játszani akar egy másik csomópont használatával.",
+            "desc": "Nem rendelkezik Lux csomóponttal, de játszani akar egy másik csomópont használatával.",
             "submit": "Delegáló hozzáadása"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Csomópont azonosító keresése",
                 "id": "Csomópont azonosító",
                 "val_stake": "Érvényesítő tétje",
-                "luxl_stake": "Elérhető",
-                "luxl_stake_tip": "Amennyit még ehhez az érvényesítőhöz lehet delegálni.",
+                "aval_stake": "Elérhető",
+                "aval_stake_tip": "Amennyit még ehhez az érvényesítőhöz lehet delegálni.",
                 "users_tip": "Delegálók száma",
                 "end": "Befejezés ideje",
                 "up": "Rendelkezésre állási idő",
@@ -388,7 +388,7 @@
         "loading": "Tranzakciós előzmények betöltése..",
         "warn_loading": "Lehet, hogy ez a lista hiányos és nem működik.",
         "error_api": "Az Explorer API nem található",
-        "error_api_desc": "A tranzakciós előzmények megtekintéséhez meg kell adnia egy LUX Explorer API-t ehhez a hálózathoz."
+        "error_api_desc": "A tranzakciós előzmények megtekintéséhez meg kell adnia egy AVA Explorer API-t ehhez a hálózathoz."
     },
     "modal": {
         "qr": {

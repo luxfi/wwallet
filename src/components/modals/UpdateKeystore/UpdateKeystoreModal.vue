@@ -10,7 +10,7 @@
                 ref="export"
                 :wallets="allWallets"
             ></ExportWallet>
-            <v-btn v-else class="lux_button button_primary" @click="logout">
+            <v-btn v-else class="ava_button button_primary" @click="logout">
                 {{ $t('modal.keystore.logout') }}
             </v-btn>
         </div>
@@ -78,7 +78,7 @@ export default class MnemonicPhrase extends Vue {
     margin: 30px 0;
 }
 
-.lux_button {
+.ava_button {
     display: block;
     margin: 10px auto !important;
 }

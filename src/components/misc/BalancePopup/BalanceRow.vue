@@ -8,11 +8,11 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 
 @Component
 export default class BalanceRow extends Vue {
-    @Prop() asset!: LuxAsset
+    @Prop() asset!: AvaAsset
 
     get name() {
         let name = this.asset.name

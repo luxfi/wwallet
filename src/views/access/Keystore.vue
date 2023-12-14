@@ -18,7 +18,7 @@
                 <p class="err">{{ error }}</p>
                 <!--                <remember-key class="remember" v-model="rememberPass" v-if="file" @is-valid="isRememberValid"></remember-key>-->
                 <v-btn
-                    class="lux_button button_primary"
+                    class="ava_button button_primary"
                     @click="access"
                     :loading="isLoading"
                     v-if="file"
@@ -134,7 +134,7 @@ export default class Keystore extends Vue {
 .pass {
     background-color: var(--bg) !important;
 }
-.lux_button {
+.ava_button {
     width: 100%;
     margin-bottom: 22px;
 }

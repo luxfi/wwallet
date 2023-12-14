@@ -33,10 +33,10 @@
 <script lang="ts">
 import { Component, Model, Prop, Vue, Watch } from 'vue-property-decorator'
 import Spinner from '@/components/misc/Spinner.vue'
-import { UTXO } from 'luxdefi/dist/apis/platformvm'
+import { UTXO } from 'avalanche/dist/apis/platformvm'
 import { ChainIdType } from '@/constants'
-import { BN } from 'luxdefi'
-import LuxAsset from '@/js/LuxAsset'
+import { BN } from 'avalanche'
+import AvaAsset from '@/js/AvaAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { WalletType } from '@/js/wallets/types'
 

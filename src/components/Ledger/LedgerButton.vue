@@ -1,11 +1,14 @@
 <template>
-    <button class="button_primary" @click="submit">
+    <button class="button_primary" @click="submit" :disabled="disabled">
         <template v-if="!isLoading">
             Ledger
+
+            <span v-if="disabled" class="no_firefox">{{ browserName }} is not supported</span>
             <ImageDayNight
                 day="/img/access_icons/day/ledger.svg"
                 night="/img/access_icons/night/ledger.svg"
                 class="ledger_img"
+                v-else
             ></ImageDayNight>
         </template>
         <Spinner v-else class="spinner"></Spinner>
@@ -14,23 +17,26 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-// @ts-ignore
 import TransportU2F from '@ledgerhq/hw-transport-u2f'
 //@ts-ignore
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
-//@ts-ignore
+// @ts-ignore
 import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 // @ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
-// @ts-ignore
-import AppLuxx from '@obsidiansystems/hw-app-luxdefi'
+import Transport from '@ledgerhq/hw-transport'
+
 import Spinner from '@/components/misc/Spinner.vue'
 import LedgerBlock from '@/components/modals/LedgerBlock.vue'
-import { LedgerWallet, MIN_EVM_SUPPORT_V } from '@/js/wallets/LedgerWallet'
-import { LUX_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
-import { ILedgerAppConfig } from '@/store/types'
+import { LedgerWallet } from '@/js/wallets/LedgerWallet'
+import { AVA_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 import { LEDGER_EXCHANGE_TIMEOUT } from '@/store/modules/ledger/types'
 import ImageDayNight from '@/components/misc/ImageDayNight.vue'
+import { getLedgerProvider } from '@avalabs/avalanche-wallet-sdk'
+import { MIN_LEDGER_V } from '@/js/wallets/constants'
+const { detect } = require('detect-browser')
+
+const UnsupportedBrowsers = ['firefox', 'safari']
 
 @Component({
     components: {
@@ -41,10 +47,24 @@ import ImageDayNight from '@/components/misc/ImageDayNight.vue'
 })
 export default class LedgerButton extends Vue {
     isLoading: boolean = false
-    config?: ILedgerAppConfig = undefined
-
+    version?: string = undefined
     destroyed() {
         this.$store.commit('Ledger/closeModal')
+    }
+
+    get browser() {
+        return detect()
+    }
+
+    // For display
+    get browserName() {
+        return this.browser ? this.browser.name[0].toUpperCase() + this.browser.name.slice(1) : ''
+    }
+
+    get disabled() {
+        // If unsupported return true
+        if (this.browser && UnsupportedBrowsers.includes(this.browser.name)) return true
+        return false
     }
 
     async getTransport() {
@@ -71,33 +91,29 @@ export default class LedgerButton extends Vue {
             let transport = await this.getTransport()
             transport.setExchangeTimeout(LEDGER_EXCHANGE_TIMEOUT)
 
-            let app = new AppLuxx(transport, 'w0w')
-            let eth = new Eth(transport, 'w0w')
-
             // Wait for app config
-            await this.waitForConfig(app)
+            await this.waitForConfig(transport)
 
             // Close the initial prompt modal if exists
             this.$store.commit('Ledger/setIsUpgradeRequired', false)
             this.isLoading = true
 
-            if (!this.config) {
+            if (!this.version) {
                 this.$store.commit('Ledger/setIsUpgradeRequired', true)
                 this.isLoading = false
                 throw new Error('')
             }
 
-            if (this.config.version < MIN_EVM_SUPPORT_V) {
+            if (this.version < MIN_LEDGER_V) {
                 this.$store.commit('Ledger/setIsUpgradeRequired', true)
                 this.isLoading = false
-                return
+                throw new Error('')
             }
 
-            let title = 'Provide Public Keys'
-            let messages = [
+            const messages = [
                 {
                     title: 'Derivation Path',
-                    value: LUX_ACCOUNT_PATH,
+                    value: AVA_ACCOUNT_PATH,
                 },
                 {
                     title: 'Derivation Path',
@@ -106,15 +122,12 @@ export default class LedgerButton extends Vue {
             ]
 
             this.$store.commit('Ledger/openModal', {
-                title,
+                title: 'Getting Public Keys',
                 messages,
+                isPrompt: false,
             })
 
-            let wallet = await LedgerWallet.fromApp(
-                app,
-                eth,
-                (this.config as unknown) as ILedgerAppConfig
-            )
+            let wallet = await LedgerWallet.fromTransport(transport)
             try {
                 await this.loadWallet(wallet)
                 this.onsuccess()
@@ -126,15 +139,20 @@ export default class LedgerButton extends Vue {
         }
     }
 
-    async waitForConfig(app: AppLuxx) {
+    async waitForConfig(t: Transport) {
         // Config is found immediately if the device is connected and the app is open.
-        // If no config was found that means user has not opened the Luxlanche app.
+        // If no config was found that means user has not opened the Lux app.
         setTimeout(() => {
-            if (this.config) return
+            if (this.version) return
             this.$store.commit('Ledger/setIsUpgradeRequired', true)
         }, 1000)
 
-        this.config = await app.getAppConfiguration()
+        try {
+            const prov = await getLedgerProvider(t)
+            this.version = await prov.getVersion(t)
+        } catch (e) {
+            // this.version = await (app as LuxApp).
+        }
     }
 
     async loadWallet(wallet: LedgerWallet) {
@@ -160,11 +178,11 @@ export default class LedgerButton extends Vue {
     onsuccess() {
         this.$store.commit('Ledger/setIsWalletLoading', false)
         this.isLoading = false
-        this.config = undefined
+        this.version = undefined
     }
     onerror(err: any) {
         this.isLoading = false
-        this.config = undefined
+        this.version = undefined
         this.$store.commit('Ledger/closeModal')
         console.error(err)
 
@@ -190,5 +208,10 @@ export default class LedgerButton extends Vue {
 
 .spinner::v-deep p {
     color: inherit;
+}
+
+.no_firefox {
+    font-size: 0.8em;
+    color: var(--primary-color-light);
 }
 </style>

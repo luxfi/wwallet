@@ -1,8 +1,8 @@
-// Manages BigNumber and Lux conversion and arithmetic
-import { BN } from 'luxdefi'
+// Manages BigNumber and Ava conversion and arithmetic
+import { BN } from 'avalanche'
 import Big from 'big.js'
 
-class LuxAsset {
+class AvaAsset {
     id: string
     name: string
     symbol: string
@@ -68,14 +68,14 @@ class LuxAsset {
     }
 
     toStringTotal(): string {
-        let big: Big = Big(this.getTotalAmount().toString(10)).div(this.pow)
+        const big: Big = Big(this.getTotalAmount().toString(10)).div(this.pow)
         return big.toLocaleString(this.denomination)
     }
 
     toString() {
-        let big: Big = Big(this.amount.toString(10)).div(this.pow)
+        const big: Big = Big(this.amount.toString(10)).div(this.pow)
         return big.toLocaleString(this.denomination)
     }
 }
 
-export default LuxAsset
+export default AvaAsset

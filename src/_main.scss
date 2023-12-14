@@ -212,7 +212,7 @@ label {
    global UI
    ========================================== */
 
-.lux_button {
+.ava_button {
     padding: 10px 24px;
     min-width: 140px;
     border-radius: 6px;
@@ -231,7 +231,7 @@ label {
     }
 }
 
-.lux_button_secondary {
+.ava_button_secondary {
     background-color: transparent !important;
     padding: 10px 24px;
     min-width: 140px;
@@ -447,7 +447,7 @@ html[data-theme='day'] {
 
     --primary-color: #4c2e56;
     --primary-color-light: #867e89;
-    --secondary-color: #4646E5;
+    --secondary-color: #e84970;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #f00;
@@ -462,13 +462,13 @@ html[data-theme='day'] {
 }
 
 html[data-theme='night'] {
-    --bg: #000;
-    --bg-1: #222;
-    --bg-light: #1d1d1d;
-    --bg-light-1: #333;
+    --bg: #242729;
+    --bg-1: 36, 39, 41;
+    --bg-light: #2e3234;
+    --bg-light-1: 46, 50, 52;
     --primary-color: #e5e5e5;
     --primary-color-light: #6e7479;
-    --secondary-color: #4646E5;
+    --secondary-color: #e84970;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #e84970;

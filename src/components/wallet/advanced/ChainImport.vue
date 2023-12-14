@@ -43,16 +43,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import { WalletType } from '@/js/wallets/types'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 import {
+    luxCtoX,
     ExportChainsC,
     ExportChainsP,
     ExportChainsX,
     GasHelper,
-    Network,
-    NetworkHelper,
-    Utils,
-} from '@luxdefi/luxdefi-wallet-sdk'
+} from '@avalabs/avalanche-wallet-sdk'
 
 @Component({
     components: { Spinner },
@@ -120,7 +118,7 @@ export default class ChainImport extends Vue {
             const gas = GasHelper.estimateImportGasFeeFromMockTx(numIns, numSigs)
 
             const totFee = baseFee.mul(new BN(gas))
-            let txId = await this.wallet.importToCChain(source, Utils.luxCtoX(totFee))
+            let txId = await this.wallet.importToCChain(source, luxCtoX(totFee))
             this.onSuccess(txId)
         } catch (e) {
             this.onError(e)

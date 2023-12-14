@@ -12,7 +12,7 @@
                 />
                 <p class="err">{{ error }}</p>
                 <v-btn
-                    class="lux_button button_primary"
+                    class="ava_button button_primary"
                     @click="access"
                     :loading="isLoading"
                     :disabled="!canSubmit"
@@ -115,7 +115,7 @@ export default class Account extends Vue {
     text-align: center;
     background-color: var(--bg-light) !important;
 }
-.lux_button {
+.ava_button {
     width: 100%;
     margin-bottom: 22px;
 }

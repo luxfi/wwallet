@@ -33,9 +33,9 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 const uuidv1 = require('uuid/v1')
 
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 import CurrencyInputDropdown from '@/components/misc/CurrencyInputDropdown.vue'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import { AssetsDict } from '@/store/modules/assets/types'
 import { ICurrencyInputDropdownValue, ITransaction } from '@/components/wallet/transfer/types'
 
@@ -46,8 +46,8 @@ import { ICurrencyInputDropdownValue, ITransaction } from '@/components/wallet/t
 })
 export default class TxList extends Vue {
     tx_list: ITransaction[] = []
-    disabledAssets: LuxAsset[][] = []
-    next_initial: LuxAsset | null = null
+    disabledAssets: AvaAsset[][] = []
+    next_initial: AvaAsset | null = null
 
     @Prop({ default: false }) disabled!: boolean
 
@@ -56,11 +56,11 @@ export default class TxList extends Vue {
     }
 
     updateUnavailable(): void {
-        let res: LuxAsset[][] = []
+        let res: AvaAsset[][] = []
         let allDisabled = []
 
         for (var i = 0; i < this.tx_list.length; i++) {
-            let localDisabled: LuxAsset[] = []
+            let localDisabled: AvaAsset[] = []
 
             allDisabled.push(this.tx_list[i].asset)
             for (var n = 0; n < this.tx_list.length; n++) {
@@ -158,7 +158,7 @@ export default class TxList extends Vue {
         this.updateUnavailable()
     }
 
-    get assets_list(): LuxAsset[] {
+    get assets_list(): AvaAsset[] {
         // return this.$store.getters.walletAssetsArray
         return this.$store.getters['Assets/walletAssetsArray']
     }

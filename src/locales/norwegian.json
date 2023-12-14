@@ -5,15 +5,15 @@
     "address": "Adresse",
     "add_pk": "Legg til privat nøkkel",
     "home": {
-        "desc": "Luxlanche Wallet er en enkel, sikker, forvaringsfri lommebok for lagring av Luxlanche-aktiva.",
+        "desc": "Lux Wallet er en enkel, sikker, forvaringsfri lommebok for lagring av Lux-aktiva.",
         "access": {
             "title": "Velkommen tilbake!",
-            "desc": "‘Få tilgang’ til din eksisterende Luxlanche-lommebok her.",
+            "desc": "‘Få tilgang’ til din eksisterende Lux-lommebok her.",
             "submit": "Få tilgang til lommebok"
         },
         "create": {
-            "title": "Ny hos Luxlanche Wallet?",
-            "desc": "‘Lag’ en ny lommebok for å sende, motta og bytte Luxlanche-aktiva.",
+            "title": "Ny hos Lux Wallet?",
+            "desc": "‘Lag’ en ny lommebok for å sende, motta og bytte Lux-aktiva.",
             "submit": "Lag ny lommebok"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Administrer",
             "send": "Send",
             "earn": "Tjen",
-            "advanced": "Luxnsert"
+            "advanced": "Avansert"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Generer en ny nøkkelfrase for å sette opp din Luxlanche Wallet.",
+        "generate": "Generer en ny nøkkelfrase for å sette opp din Lux Wallet.",
         "but_have": "Har du allerede en lommebok?",
         "submit": "Generer nøkkelfrase",
         "cancel": "Avbryt",
         "mnemonic_title": "Dette er nøkkelfrasen din.",
-        "mnemonic_desc": "Bruk disse 24 ordene i rekkefølge for å tilbakestille din Luxlanche Wallet",
+        "mnemonic_desc": "Bruk disse 24 ordene i rekkefølge for å tilbakestille din Lux Wallet",
         "attention": "Se her!",
-        "warning": "Lagre denne nøkkelfrasen på et trygt sted. Alle som har denne nøkkelfrasen, har tilgang til din Luxlanche Wallet. Det finnes ingen metode for å tilbakestille tapte nøkkelfraser.",
+        "warning": "Lagre denne nøkkelfrasen på et trygt sted. Alle som har denne nøkkelfrasen, har tilgang til din Lux Wallet. Det finnes ingen metode for å tilbakestille tapte nøkkelfraser.",
         "confirm": "Jeg skrev ned nøkkelfrasen min på et sikkert sted.",
         "regenerate": "Regenerer",
         "success_title": "Gratulerer!",
-        "success_desc": "Tiden er inne for å gå inn på din Luxlanche Wallet.",
+        "success_desc": "Tiden er inne for å gå inn på din Lux Wallet.",
         "success_submit": "Få tilgang til lommebok",
         "verify": "Bekreft",
         "verifytitle": "Verifiser Mnemonic",
@@ -78,7 +78,7 @@
         "error_word": "Mnemonic-frasen du oppga for ord samsvarer ikke med den faktiske frasen."
     },
     "top": {
-        "title1": "Avledet Luxlanche Wallet-adresse",
+        "title1": "Avledet Lux Wallet-adresse",
         "title2": "Saldo",
         "title3": "Undernett",
         "title4": "Nettverk",
@@ -86,7 +86,7 @@
         "nftempty": "Du har ikke samlet noen omsettelige polletter.",
         "locked": "Låst",
         "info2": "Jeg kjøpte mynter på polettsalg. Hvor er min LUX?",
-        "info2_desc": "Denne lommeboken er koblet til Luxlanche Everest-testnettverket. Kjøpet ditt vises i lommeboken etter lansering av Luxlanche Mainnet.",
+        "info2_desc": "Denne lommeboken er koblet til Lux Everest-testnettverket. Kjøpet ditt vises i lommeboken etter lansering av Lux Mainnet.",
         "hover1": "Vis QR-adressekode",
         "hover2": "Skriv ut",
         "hover3": "Kopier",
@@ -101,7 +101,7 @@
             "collectibles": "Samleobjekter"
         },
         "address": {
-            "derived": "Avledet Luxlanche Wallet-adresse",
+            "derived": "Avledet Lux Wallet-adresse",
             "desc": "Dette er din adresse for mottak av penger. Adressen din endres etter hvert innskudd."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Til adresse",
         "fees": "Avgifter",
         "fee_tx": "Transaksjonsavgift",
-        "advanced": "Luxnsert",
+        "advanced": "Avansert",
         "adv_change": "Endre adresse",
         "send": "Send transaksjon",
         "summary": "Transaksjonssummering",
@@ -181,12 +181,12 @@
         "warning_2": "Du må ha minst {0} LUX på P-kjedet for å bli en delegator.",
         "validate_card": {
             "title": "Valider",
-            "desc": "Du har en Luxlanche-node som du vil satse med.",
+            "desc": "Du har en Lux-node som du vil satse med.",
             "submit": "Legg til validator"
         },
         "delegate_card": {
             "title": "Deleger",
-            "desc": "Du eier ikke en Luxlanche-node, men du vil satse ved å bruke en annen node.",
+            "desc": "Du eier ikke en Lux-node, men du vil satse ved å bruke en annen node.",
             "submit": "Legg til delegator"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Søk node-ID",
                 "id": "Node-ID",
                 "val_stake": "Validatorinnsats",
-                "luxl_stake": "Tilgjengelig",
-                "luxl_stake_tip": "Hvor mye mer kan delegeres til denne validatoren.",
+                "aval_stake": "Tilgjengelig",
+                "aval_stake_tip": "Hvor mye mer kan delegeres til denne validatoren.",
                 "users_tip": "Antall delegatorer",
                 "end": "Sluttid",
                 "up": "Oppetid",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Luxnsert",
+        "title": "Avansert",
         "import": {
             "title": "Kjedeimport",
             "desc": "Dersom du har penger som sitter fast i en feilet kjedeoverføring, kan du fullføre importen her.",
@@ -388,7 +388,7 @@
         "loading": "Laster inn transaksjonshistorikk ...",
         "warn_loading": "Denne listen kan være ufullstendige og ute av bruk.",
         "error_api": "Explorer API ikke funnet",
-        "error_api_desc": "Du må oppgi en LUX Explorer API for dette nettverket for å vise transaksjonshistorikken."
+        "error_api_desc": "Du må oppgi en AVA Explorer API for dette nettverket for å vise transaksjonshistorikken."
     },
     "modal": {
         "qr": {

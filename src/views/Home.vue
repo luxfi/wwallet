@@ -8,6 +8,14 @@
                         <div class="login_wrapper">
                             <div class="login_option">
                                 <header>
+                                    <div class="img_container">
+                                        <img
+                                            v-if="$root.theme === 'day'"
+                                            src="@/assets/diamond-primary.svg"
+                                            alt
+                                        />
+                                        <img v-else src="@/assets/diamond-primary-night.svg" alt />
+                                    </div>
                                     <h2>{{ $t('home.access.title') }}</h2>
                                     <p>{{ $t('home.access.desc') }}</p>
                                 </header>
@@ -15,7 +23,7 @@
                                     <router-link
                                         data-cy="access"
                                         to="/access"
-                                        class="lux_button button_primary submit_but"
+                                        class="ava_button button_primary submit_but"
                                     >
                                         {{ $t('home.access.submit') }}
                                     </router-link>
@@ -23,6 +31,18 @@
                             </div>
                             <div class="login_option">
                                 <header>
+                                    <div class="img_container">
+                                        <img
+                                            v-if="$root.theme === 'day'"
+                                            src="@/assets/diamond-secondary.png"
+                                            alt
+                                        />
+                                        <img
+                                            v-else
+                                            src="@/assets/diamond-secondary-night.svg"
+                                            alt
+                                        />
+                                    </div>
                                     <h2>{{ $t('home.create.title') }}</h2>
                                     <p>{{ $t('home.create.desc') }}</p>
                                 </header>
@@ -30,7 +50,7 @@
                                     <router-link
                                         data-cy="create"
                                         to="/create"
-                                        class="lux_button button_secondary submit_but"
+                                        class="ava_button button_secondary submit_but"
                                     >
                                         {{ $t('home.create.submit') }}
                                     </router-link>
@@ -100,7 +120,6 @@ export default class Home extends Vue {}
                 justify-content: space-between;
                 background-color: var(--bg-light);
                 padding: 60px 90px main.$container-padding main.$container-padding;
-                border-radius: 6px;
 
                 header {
                     margin-bottom: 60px;

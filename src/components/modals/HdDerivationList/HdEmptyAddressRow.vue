@@ -16,9 +16,9 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { WalletType } from '@/js/wallets/types'
 
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
-import { lux } from 'luxdefi'
-import { getPreferredHRP } from 'luxdefi/dist/utils'
-import { LUX_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
+import { ava } from '@/AVA'
+import { getPreferredHRP } from 'avalanche/dist/utils'
+import { AVA_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 
 @Component
 export default class HdEmptyAddressRow extends Vue {
@@ -36,11 +36,8 @@ export default class HdEmptyAddressRow extends Vue {
 
     async verifyLedgerAddress() {
         const wallet = this.wallet as LedgerWallet
-
-        let networkId = lux.getNetworkID()
-        let hrp = getPreferredHRP(networkId)
-
-        wallet.app.getWalletAddress(`${LUX_ACCOUNT_PATH}/${this.path}/${this.index}`, hrp)
+        const isInternal = this.path == 1
+        wallet.verifyAddress(this.index, isInternal)
     }
 }
 </script>

@@ -15,7 +15,7 @@
                 ></v-text-field>
                 <p class="err">{{ error }}</p>
                 <v-btn
-                    class="lux_button button_primary"
+                    class="ava_button button_primary"
                     @click="access"
                     :loading="isLoading"
                     :disabled="!canSubmit"
@@ -33,8 +33,9 @@ import { Vue, Component } from 'vue-property-decorator'
 import { ImportKeyfileInput } from '@/store/types'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { privateToAddress } from 'ethereumjs-util'
-import { bintools } from 'luxdefi'
-import { Buffer } from 'luxdefi'
+import { bintools } from '@/AVA'
+import { Buffer } from 'avalanche'
+import { strip0x } from '@avalabs/avalanche-wallet-sdk'
 
 @Component
 export default class PrivateKey extends Vue {
@@ -46,7 +47,7 @@ export default class PrivateKey extends Vue {
         let parent = this
         this.error = ''
         this.isLoading = true
-        let key = this.privatekey
+        let key = strip0x(this.privatekey)
 
         try {
             let res = await this.$store.dispatch('accessWalletSingleton', key)
@@ -77,7 +78,7 @@ export default class PrivateKey extends Vue {
 .pass {
     background-color: var(--bg) !important;
 }
-.lux_button {
+.ava_button {
     width: 100%;
     margin-bottom: 22px;
 }

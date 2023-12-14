@@ -2,15 +2,16 @@ import { Module } from 'vuex'
 import { RootState } from '@/store/types'
 import { NetworkState } from '@/store/modules/network/types'
 
-import { lux, avm, bintools, cChain, infoApi, pChain } from 'luxdefi'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { ava, avm, bintools, cChain, infoApi, pChain } from '@/AVA'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import { explorer_api } from '@/explorer_api'
-import { BN } from 'luxdefi'
-import { getPreferredHRP } from 'luxdefi/dist/utils'
+import { BN } from 'avalanche'
+import { getPreferredHRP } from 'avalanche/dist/utils'
 import router from '@/router'
 import { web3 } from '@/evm'
 import { setSocketNetwork } from '../../../providers'
-import { Network } from '@luxdefi/luxdefi-wallet-sdk'
+import { getConfigFromUrl, setNetworkAsync } from '@avalabs/avalanche-wallet-sdk'
+import { MainnetConfig, TestnetConfig } from '@/store/modules/network/constants'
 const network_module: Module<NetworkState, RootState> = {
     namespaced: true,
     state: {
@@ -21,7 +22,7 @@ const network_module: Module<NetworkState, RootState> = {
         txFee: new BN(0),
     },
     mutations: {
-        addNetwork(state, net: LuxNetwork) {
+        addNetwork(state, net: AvaNetwork) {
             state.networks.push(net)
         },
     },
@@ -31,12 +32,12 @@ const network_module: Module<NetworkState, RootState> = {
         },
     },
     actions: {
-        addCustomNetwork({ state, dispatch }, net: LuxNetwork) {
+        addCustomNetwork({ state, dispatch }, net: AvaNetwork) {
             // Check if network alerady exists
-            let networks = state.networksCustom
+            const networks = state.networksCustom
             // Do not add if there is a network already with the same url
-            for (var i = 0; i < networks.length; i++) {
-                let url = networks[i].url
+            for (let i = 0; i < networks.length; i++) {
+                const url = networks[i].url
                 if (net.url === url) {
                     return
                 }
@@ -45,24 +46,24 @@ const network_module: Module<NetworkState, RootState> = {
             dispatch('save')
         },
 
-        async removeCustomNetwork({ state, dispatch }, net: LuxNetwork) {
-            let index = state.networksCustom.indexOf(net)
+        async removeCustomNetwork({ state, dispatch }, net: AvaNetwork) {
+            const index = state.networksCustom.indexOf(net)
             state.networksCustom.splice(index, 1)
             await dispatch('save')
         },
         saveSelectedNetwork({ state }) {
-            let data = JSON.stringify(state.selectedNetwork?.url)
+            const data = JSON.stringify(state.selectedNetwork?.url)
             localStorage.setItem('network_selected', data)
         },
         async loadSelectedNetwork({ dispatch, getters }): Promise<boolean> {
-            let data = localStorage.getItem('network_selected')
+            const data = localStorage.getItem('network_selected')
             if (!data) return false
             try {
-                // let net: LuxNetwork = JSON.parse(data);
-                let nets: LuxNetwork[] = getters.allNetworks
+                // let net: AvaNetwork = JSON.parse(data);
+                const nets: AvaNetwork[] = getters.allNetworks
 
-                for (var i = 0; i < nets.length; i++) {
-                    let net = nets[i]
+                for (let i = 0; i < nets.length; i++) {
+                    const net = nets[i]
                     if (JSON.stringify(net.url) === data) {
                         dispatch('setNetwork', net)
                         return true
@@ -76,18 +77,18 @@ const network_module: Module<NetworkState, RootState> = {
 
         // Save custom networks to local storage
         save({ state }) {
-            let data = JSON.stringify(state.networksCustom)
+            const data = JSON.stringify(state.networksCustom)
             localStorage.setItem('networks', data)
         },
         // Load custom networks from local storage
         load({ dispatch }) {
-            let data = localStorage.getItem('networks')
+            const data = localStorage.getItem('networks')
 
             if (data) {
-                let networks: LuxNetwork[] = JSON.parse(data)
+                const networks: AvaNetwork[] = JSON.parse(data)
 
                 networks.forEach((n) => {
-                    let newCustom = new LuxNetwork(
+                    const newCustom = new AvaNetwork(
                         n.name,
                         n.url,
                         //@ts-ignore
@@ -100,22 +101,22 @@ const network_module: Module<NetworkState, RootState> = {
                 })
             }
         },
-        async setNetwork({ state, dispatch, commit, rootState }, net: LuxNetwork) {
+        async setNetwork({ state, dispatch, commit, rootState }, net: AvaNetwork) {
             state.status = 'connecting'
 
             // Chose if the network should use credentials
             await net.updateCredentials()
-            lux.setRequestConfig('withCredentials', net.withCredentials)
-            lux.setAddress(net.ip, net.port, net.protocol)
-            lux.setNetworkID(net.networkId)
+            ava.setRequestConfig('withCredentials', net.withCredentials)
+            ava.setAddress(net.ip, net.port, net.protocol)
+            ava.setNetworkID(net.networkId)
 
             // Reset transaction history
             commit('History/clear', null, { root: true })
 
             // Query the network to get network id
-            let chainIdX = await infoApi.getBlockchainID('X')
-            let chainIdP = await infoApi.getBlockchainID('P')
-            let chainIdC = await infoApi.getBlockchainID('C')
+            const chainIdX = await infoApi.getBlockchainID('X')
+            const chainIdP = await infoApi.getBlockchainID('P')
+            const chainIdC = await infoApi.getBlockchainID('C')
 
             avm.refreshBlockchainID(chainIdX)
             avm.setBlockchainAlias('X')
@@ -135,21 +136,21 @@ const network_module: Module<NetworkState, RootState> = {
             explorer_api.defaults.baseURL = net.explorerUrl
 
             // Set web3 Network Settings
-            let web3Provider = `${net.protocol}://${net.ip}:${net.port}/ext/bc/C/rpc`
+            const web3Provider = `${net.protocol}://${net.ip}:${net.port}/ext/bc/C/rpc`
             web3.setProvider(web3Provider)
 
             // Set socket connections
             setSocketNetwork(net)
 
             commit('Assets/removeAllAssets', null, { root: true })
-            await dispatch('Assets/updateLuxAsset', null, { root: true })
+            await dispatch('Assets/updateAvaAsset', null, { root: true })
 
             // If authenticated
             if (rootState.isAuth) {
                 // Go back to wallet page
                 router.replace('/wallet')
-                for (var i = 0; i < rootState.wallets.length; i++) {
-                    let w = rootState.wallets[i]
+                for (let i = 0; i < rootState.wallets.length; i++) {
+                    const w = rootState.wallets[i]
                     w.onnetworkchange()
                 }
             }
@@ -163,38 +164,24 @@ const network_module: Module<NetworkState, RootState> = {
             dispatch('History/updateTransactionHistory', null, { root: true })
 
             // Set the SDK Network
-            let sdkNetConf = await Network.getConfigFromUrl(net.getFullURL())
-            await Network.setNetworkAsync(sdkNetConf)
+            const sdkNetConf = await getConfigFromUrl(net.getFullURL())
+            await setNetworkAsync({
+                ...sdkNetConf,
+                explorerURL: net.explorerUrl,
+                explorerSiteURL: net.explorerSiteUrl,
+            })
             // state.isConnected = true;
             state.status = 'connected'
             return true
         },
 
         async updateTxFee({ state }) {
-            let txFee = await infoApi.getTxFee()
+            const txFee = await infoApi.getTxFee()
             state.txFee = txFee.txFee
             avm.setTxFee(txFee.txFee)
         },
 
         async init({ state, commit, dispatch }) {
-            let mainnet = new LuxNetwork(
-                'Mainnet',
-                'https://api.lux.network:443',
-                1,
-                'https://explorerapi.lux.network',
-                'https://explorer.lux.network',
-                true
-            )
-
-            let fuji = new LuxNetwork(
-                'Fuji',
-                'https://testnet.luxcha.in:443',
-                5,
-                'https://explorerapi.lux-test.network',
-                'https://explorer.lux-test.network',
-                true
-            )
-
             // Load custom networks if any
             try {
                 await dispatch('load')
@@ -202,11 +189,11 @@ const network_module: Module<NetworkState, RootState> = {
                 console.error(e)
             }
 
-            commit('addNetwork', mainnet)
-            commit('addNetwork', fuji)
+            commit('addNetwork', MainnetConfig)
+            commit('addNetwork', TestnetConfig)
 
             try {
-                let isSet = await dispatch('loadSelectedNetwork')
+                const isSet = await dispatch('loadSelectedNetwork')
                 if (!isSet) {
                     await dispatch('setNetwork', state.networks[0])
                 }

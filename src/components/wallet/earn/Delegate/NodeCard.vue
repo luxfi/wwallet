@@ -13,7 +13,7 @@
                 Please refer to
                 <a :href="vscoutURL" target="_blank">VScout</a>
                 or
-                <a :href="luxscanURL" target="_blank">Luxscan</a>
+                <a :href="avascanURL" target="_blank">Avascan</a>
                 to get more information about a node's uptime.
             </p>
         </div>
@@ -29,7 +29,7 @@
             <p>{{ totalStakeBig.toLocaleString(0) }} LUX</p>
         </div>
         <div>
-            <label>Luxilable Stake</label>
+            <label>Available Stake</label>
             <p>{{ remainingStakeBig.toLocaleString(0) }} LUX</p>
         </div>
         <!--        <div class="dates"></div>-->
@@ -51,7 +51,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import { bnToBig } from '@/helpers/helper'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 
 @Component
 export default class NodeCard extends Vue {
@@ -77,13 +77,13 @@ export default class NodeCard extends Vue {
         return bnToBig(this.node.validatorStake.add(this.node.delegatedStake), 9)
     }
 
-    get luxscanURL() {
-        let activeNet: LuxNetwork = this.$store.state.Network.selectedNetwork
+    get avascanURL() {
+        let activeNet: AvaNetwork = this.$store.state.Network.selectedNetwork
 
         if (activeNet.networkId === 1) {
-            return `https://luxscan.info/staking/validator/${this.node.nodeID}`
+            return `https://avascan.info/staking/validator/${this.node.nodeID}`
         } else {
-            return `https://testnet.luxscan.info/staking/validator/${this.node.nodeID}`
+            return `https://testnet.avascan.info/staking/validator/${this.node.nodeID}`
         }
     }
 

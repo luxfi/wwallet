@@ -5,15 +5,15 @@
     "address": "Adres",
     "add_pk": "Privé code toevoegen",
     "home": {
-        "desc": "Luxlanche Wallet is een eenvoudige en veilige portomonnee zonder bewaarneming voor het opbergen van activa van Luxlanche.",
+        "desc": "Lux Wallet is een eenvoudige en veilige portomonnee zonder bewaarneming voor het opbergen van activa van Lux.",
         "access": {
             "title": "Welkom terug!",
-            "desc": "\"Open\" hier uw bestaande Luxlanche-portemonnee.",
+            "desc": "\"Open\" hier uw bestaande Lux-portemonnee.",
             "submit": "Portemonnee openen"
         },
         "create": {
-            "title": "Nieuw bij Luxlance Wallet?",
-            "desc": "\"Creëer\" een nieuwe portemonnee om activa van Luxlance te verzenden, te ontvangen en te verwisselen.",
+            "title": "Nieuw bij Lux Wallet?",
+            "desc": "\"Creëer\" een nieuwe portemonnee om activa van Lux te verzenden, te ontvangen en te verwisselen.",
             "submit": "Nieuwe portemonnee creëren"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Beheren",
             "send": "Verzenden",
             "earn": "Verdienen",
-            "advanced": "Geluxnceerd"
+            "advanced": "Geavanceerd"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Genereer een nieuwe sleutelzin om uw Luxlanche Wallet in te stellen.",
+        "generate": "Genereer een nieuwe sleutelzin om uw Lux Wallet in te stellen.",
         "but_have": "Heeft u al een portemonnee?",
         "submit": "Genereer een sleutelzin",
         "cancel": "Annuleren",
         "mnemonic_title": "Dit is uw sleutelzin.",
-        "mnemonic_desc": "Gebruik deze 24 woorden op volgorde om uw Luxlanche Wallet te herstellen.",
+        "mnemonic_desc": "Gebruik deze 24 woorden op volgorde om uw Lux Wallet te herstellen.",
         "attention": "Attentie!",
-        "warning": "Berg deze sleutelzin op een veilige locatie op. Iedereen met deze sleutelzin heeft toegang tot uw Luxlanche Wallet. Het is niet mogelijk verloren geraakte sleutelzinnen te herstellen.",
+        "warning": "Berg deze sleutelzin op een veilige locatie op. Iedereen met deze sleutelzin heeft toegang tot uw Lux Wallet. Het is niet mogelijk verloren geraakte sleutelzinnen te herstellen.",
         "confirm": "Ik heb mijn sleutelzin op een veilige locatie opgeschreven.",
         "regenerate": "Opnieuw genereren",
         "success_title": "Gefeliciteerd!",
-        "success_desc": "Het is tijd om uw Luxlanche Wallet te openen.",
+        "success_desc": "Het is tijd om uw Lux Wallet te openen.",
         "success_submit": "Portemonnee openen",
         "verify": "Verifiëren",
         "verifytitle": "Geheugensteun verifiëren",
@@ -78,7 +78,7 @@
         "error_word": "De door u ingevoerde mnemonische zin komt niet overeen met de daadwerkelijke zin."
     },
     "top": {
-        "title1": "Afgeleid adres Luxlanche-portemonne",
+        "title1": "Afgeleid adres Lux-portemonne",
         "title2": "Saldo",
         "title3": "Subnet",
         "title4": "Netwerk",
@@ -86,7 +86,7 @@
         "nftempty": "U hebt geen onvervangbare tokens verzameld.",
         "locked": "Vergrendeld",
         "info2": "Ik heb munten in de Token verkoop gekocht. Waar zijn mijn LUX?",
-        "info2_desc": "Deze portemonnee is verbonden met het testnetwerk van Luxlanche Everest. Uw aankoop zal in de portemonnee verschijnen nadat het hoofdnet van Luxlanche werd gestart.",
+        "info2_desc": "Deze portemonnee is verbonden met het testnetwerk van Lux Everest. Uw aankoop zal in de portemonnee verschijnen nadat het hoofdnet van Lux werd gestart.",
         "hover1": "Adres QR-code bekijken",
         "hover2": "Afdrukken",
         "hover3": "Kopiëren",
@@ -101,7 +101,7 @@
             "collectibles": "Inningen"
         },
         "address": {
-            "derived": "Afgeleid adres Luxlanche-portemonne",
+            "derived": "Afgeleid adres Lux-portemonne",
             "desc": "Dit is het adres waar u fondsen ontvangt. U adres zal na elke storting worden gewijzigd."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Naar adres",
         "fees": "Tarieven",
         "fee_tx": "Transactiekosten",
-        "advanced": "Geluxnceerd",
+        "advanced": "Geavanceerd",
         "adv_change": "Adres wijzigen",
         "send": "Transactie verzenden",
         "summary": "Samenvatting transactie",
@@ -181,12 +181,12 @@
         "warning_2": "U moet ten minste {0} LUX-punten op de P-keten hebben om een delegatielid te worden.",
         "validate_card": {
             "title": "Valideren",
-            "desc": "U hebt een Luxlanche-nodus die u wilt inzetten.",
+            "desc": "U hebt een Lux-nodus die u wilt inzetten.",
             "submit": "Validator toevoegen"
         },
         "delegate_card": {
             "title": "Delegeren",
-            "desc": "U hebt geen Luxlanche-nodus, maar u wilt inzetten met een andere nodus.",
+            "desc": "U hebt geen Lux-nodus, maar u wilt inzetten met een andere nodus.",
             "submit": "Delegatielid toevoegen"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Nodus ID zoeken",
                 "id": "Nodus ID",
                 "val_stake": "Inzet validator",
-                "luxl_stake": "Beschikbaar",
-                "luxl_stake_tip": "Hoeveel meer kan er naar deze valdiator worden gedelegeerd?",
+                "aval_stake": "Beschikbaar",
+                "aval_stake_tip": "Hoeveel meer kan er naar deze valdiator worden gedelegeerd?",
                 "users_tip": "Aantal delegatieleden",
                 "end": "Eindtijd",
                 "up": "Bedrijfstijd",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Geluxnceerd",
+        "title": "Geavanceerd",
         "import": {
             "title": "Keten importeren",
             "desc": "Als u fondsen vast heb zitten in een mislukte overboeking van een keten, dan kunt u het importeren ervan hier voltooien.",
@@ -388,7 +388,7 @@
         "loading": "De transactiegeschiedenis wordt geladen...",
         "warn_loading": "Deze lijst is misschien onvolledig en niet op volgorde.",
         "error_api": "Explorer API niet gevonden.",
-        "error_api_desc": "U moet een LUX Explorer API opgeven voor dit netwerk om de transactiegeschiedenis te kunnen bekijken."
+        "error_api_desc": "U moet een AVA Explorer API opgeven voor dit netwerk om de transactiegeschiedenis te kunnen bekijken."
     },
     "modal": {
         "qr": {

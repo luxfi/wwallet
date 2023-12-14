@@ -5,15 +5,15 @@
     "address": "Địa chỉ",
     "add_pk": "Thêm khóa riêng tư",
     "home": {
-        "desc": "Luxlanche Wallet là một chiếc ví đơn giản, bảo mật, không bị quản lý để lưu trữ các tài sản trên Luxlanche",
+        "desc": "Lux Wallet là một chiếc ví đơn giản, bảo mật, không bị quản lý để lưu trữ các tài sản trên Lux",
         "access": {
             "title": "Chào mừng trở lại!",
-            "desc": "'Truy cập' ví Luxlanche hiện có của bạn tại đây.",
+            "desc": "'Truy cập' ví Lux hiện có của bạn tại đây.",
             "submit": "Truy cập Ví"
         },
         "create": {
-            "title": "Bạn mới làm quen với Ví Luxlanche?",
-            "desc": "Hãy 'Tạo' ví mới để gửi, nhận và hoán đổi tài sản Luxlanche của bạn.",
+            "title": "Bạn mới làm quen với Ví Lux?",
+            "desc": "Hãy 'Tạo' ví mới để gửi, nhận và hoán đổi tài sản Lux của bạn.",
             "submit": "Tạo ví mới"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Tạo cụm từ khóa mới để thiết lập Ví Luxlanche của bạn.",
+        "generate": "Tạo cụm từ khóa mới để thiết lập Ví Lux của bạn.",
         "but_have": "Đã có sẵn ví?",
         "submit": "Tạo cụm từ khóa",
         "cancel": "Huỷ bỏ",
         "mnemonic_title": "Đây là cụm từ khóa của bạn.",
-        "mnemonic_desc": "Hãy dùng 24 từ này theo thứ tự lần lượt để khôi phục Ví Luxlanche của bạn",
+        "mnemonic_desc": "Hãy dùng 24 từ này theo thứ tự lần lượt để khôi phục Ví Lux của bạn",
         "attention": "Chú ý!",
-        "warning": "Hãy lưu cụm từ khóa này ở một vị trí an toàn. Bất kỳ ai có cụm từ khóa này đều có thể truy cập Ví Luxlanche của bạn. Không có cách nào để khôi phục các cụm từ khóa bị mất.",
+        "warning": "Hãy lưu cụm từ khóa này ở một vị trí an toàn. Bất kỳ ai có cụm từ khóa này đều có thể truy cập Ví Lux của bạn. Không có cách nào để khôi phục các cụm từ khóa bị mất.",
         "confirm": "Tôi đã ghi lại cụm từ khóa của mình ở vị trí an toàn.",
         "regenerate": "Tạo lại",
         "success_title": "Xin chúc mừng!",
-        "success_desc": "Đã đến lúc truy cập Ví Luxlanche của bạn.",
+        "success_desc": "Đã đến lúc truy cập Ví Lux của bạn.",
         "success_submit": "Truy cập ví",
         "verify": "Xác nhận",
         "verifytitle": "Xác nhận cụm từ ghi nhớ",
@@ -78,7 +78,7 @@
         "error_word": "Cụm từ ghi nhớ bạn đã nhập không khớp với cụm từ thực tế."
     },
     "top": {
-        "title1": "Nguồn gốc địa chỉ ví Luxlanche",
+        "title1": "Nguồn gốc địa chỉ ví Lux",
         "title2": "Số dư ",
         "title3": "Mạng con",
         "title4": "Mạng",
@@ -86,7 +86,7 @@
         "nftempty": "Bạn chưa thu thập bất kỳ mã thông báo không thể thay thế nào.",
         "locked": "Đã khóa",
         "info2": "Tôi đã mua LUX trong đợt bán mã thông báo. LUX của tôi ở đâu?",
-        "info2_desc": "Ví này được kết nối với mạng thử nghiệm Luxlanche Everest. Các giao dịch mua sẽ xuất hiện trong ví của bạn sau khi mạng chính Luxlanche khởi chạy.",
+        "info2_desc": "Ví này được kết nối với mạng thử nghiệm Lux Everest. Các giao dịch mua sẽ xuất hiện trong ví của bạn sau khi mạng chính Lux khởi chạy.",
         "hover1": "Xem địa chỉ Mã QR",
         "hover2": "In",
         "hover3": "Sao chép",
@@ -101,7 +101,7 @@
             "collectibles": "Bộ sưu tầm"
         },
         "address": {
-            "derived": "Địa chỉ ví Luxlanche phái sinh",
+            "derived": "Địa chỉ ví Lux phái sinh",
             "desc": "Đây là địa chỉ nhận tiền của bạn. Địa chỉ của bạn sẽ thay đổi sau mỗi lần gửi tiền."
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "Bạn phải sở hữu tối thiểu {0} LUX trên P-Chain để có thể ủy quyền.",
         "validate_card": {
             "title": "Trình xác thực",
-            "desc": "Bạn sở hữu một nút Luxlanche mà bạn muốn stake.",
+            "desc": "Bạn sở hữu một nút Lux mà bạn muốn stake.",
             "submit": "Thêm Trình xác thực"
         },
         "delegate_card": {
             "title": "Ủy quyền",
-            "desc": "Bạn không sở hữu nút Luxlanche, nhưng bạn muốn stake bằng nút khác.",
+            "desc": "Bạn không sở hữu nút Lux, nhưng bạn muốn stake bằng nút khác.",
             "submit": "Thêm ủy quyền"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Tìm ID Nút",
                 "id": "ID Nút",
                 "val_stake": "Stake Trình xác thực",
-                "luxl_stake": "Có sẵn",
-                "luxl_stake_tip": "Số tiền còn lại có thể ủy quyền cho trình xác thực này.",
+                "aval_stake": "Có sẵn",
+                "aval_stake_tip": "Số tiền còn lại có thể ủy quyền cho trình xác thực này.",
                 "users_tip": "Số Người ủy quyền",
                 "end": "Thời gian kết thúc",
                 "up": "Thời gian hoạt động",

@@ -5,15 +5,15 @@
     "address": "Adress",
     "add_pk": "Lägg till Privat Nyckel",
     "home": {
-        "desc": "Luxlanche Wallet är en enkel, säker, icke-depåplånbok för lagring av Luxlanche-tillgångar.",
+        "desc": "Lux Wallet är en enkel, säker, icke-depåplånbok för lagring av Lux-tillgångar.",
         "access": {
             "title": "Välkommen tillbaka!",
-            "desc": "'Få tillgång' till din befintliga Luxlanche-plånbok här.",
+            "desc": "'Få tillgång' till din befintliga Lux-plånbok här.",
             "submit": "Få tillgång till Wallet"
         },
         "create": {
-            "title": "Ny i Luxlanche Wallet?",
-            "desc": "\"Skapa\" en ny plånbok för att skicka, ta emot och byta Luxlanche-tillgångar.",
+            "title": "Ny i Lux Wallet?",
+            "desc": "\"Skapa\" en ny plånbok för att skicka, ta emot och byta Lux-tillgångar.",
             "submit": "Skapa ny Wallet"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Hantera",
             "send": "Skicka",
             "earn": "Tjäna",
-            "advanced": "Luxncerad"
+            "advanced": "Avancerad"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Skapa en ny nyckelmening för att ställa in din Luxlanche-plånbok.",
+        "generate": "Skapa en ny nyckelmening för att ställa in din Lux-plånbok.",
         "but_have": "Har du redan en plånbok?",
         "submit": "Skapa Nyckelmening",
         "cancel": "Avbryt",
         "mnemonic_title": "Denna är din nyckelmening.",
-        "mnemonic_desc": "Använd dessa 24 ord i följd för att återställa din Luxlanche-plånbok",
+        "mnemonic_desc": "Använd dessa 24 ord i följd för att återställa din Lux-plånbok",
         "attention": "Observera!",
-        "warning": "Förvara den här nyckelmeningen på en säker plats. Vem som helst med denna nyckelmening kan komma åt din Luxlanche-plånbok. Det finns inget sätt att återställa förlorade nyckelmeningar.",
+        "warning": "Förvara den här nyckelmeningen på en säker plats. Vem som helst med denna nyckelmening kan komma åt din Lux-plånbok. Det finns inget sätt att återställa förlorade nyckelmeningar.",
         "confirm": "Jag skrev min nyckelmening i en säker plats.",
         "regenerate": "Återskapa",
         "success_title": "Grattis!",
-        "success_desc": "Det är dags att komma åt din Luxlanche-plånbok.",
+        "success_desc": "Det är dags att komma åt din Lux-plånbok.",
         "success_submit": "Tillgång till plånbok",
         "verify": "Verifiera",
         "verifytitle": "Verifiera Mnemoteknisk",
@@ -78,7 +78,7 @@
         "error_word": "Den mnemotekniska meningen du matade som ord matchar inte med den nuvarande meningen."
     },
     "top": {
-        "title1": "Härledd Luxlanche-plånbok adress",
+        "title1": "Härledd Lux-plånbok adress",
         "title2": "Balans",
         "title3": "Subnät",
         "title4": "Nätverk",
@@ -86,7 +86,7 @@
         "nftempty": "Du har inte samlat in några icke fungibla tokens.",
         "locked": "Låst",
         "info2": "Jag köpte mynt i Tokenförsäljningen. Var är mina LUX?",
-        "info2_desc": "Denna plånbok är ansluten till Luxlanche Everest testnätverk. Ditt köp kommer att visas i plånboken efter lanseringen av Luxlanche Mainnet.",
+        "info2_desc": "Denna plånbok är ansluten till Lux Everest testnätverk. Ditt köp kommer att visas i plånboken efter lanseringen av Lux Mainnet.",
         "hover1": "Visa Adress QR-kod",
         "hover2": "Skriv ut",
         "hover3": "Kopiera",
@@ -101,7 +101,7 @@
             "collectibles": "Samlingsföremål"
         },
         "address": {
-            "derived": "Härledd Luxlanche-plånbok Adress",
+            "derived": "Härledd Lux-plånbok Adress",
             "desc": "Det här är din adress för att få medel. Din adress kommer att ändras efter varje insättning."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Till Adress",
         "fees": "Avgifter",
         "fee_tx": "Transaktionsavgift",
-        "advanced": "Luxncerad",
+        "advanced": "Avancerad",
         "adv_change": "Byt Adress",
         "send": "Skicka Transaktion",
         "summary": "Transaktionsöversikt",
@@ -181,12 +181,12 @@
         "warning_2": "Du måste ha minst {0} LUX i P-kedjan för att bli delegator.",
         "validate_card": {
             "title": "Validera",
-            "desc": "Du har en Luxlanche-nod som du vill placera med.",
+            "desc": "Du har en Lux-nod som du vill placera med.",
             "submit": "Lägg till Validerare"
         },
         "delegate_card": {
             "title": "Delegera",
-            "desc": "Du äger inte en Luxlanche node, men du vill satsa med en annan node.",
+            "desc": "Du äger inte en Lux node, men du vill satsa med en annan node.",
             "submit": "Lägg till Delegerare"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Sök Node ID",
                 "id": "Node ID",
                 "val_stake": "Validerarinsats",
-                "luxl_stake": "Tillgänglig",
-                "luxl_stake_tip": "Hur mycket mer kan delegeras till denna validerare.",
+                "aval_stake": "Tillgänglig",
+                "aval_stake_tip": "Hur mycket mer kan delegeras till denna validerare.",
                 "users_tip": "Antal Delegerare",
                 "end": "Sluttid",
                 "up": "Upptid",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Luxncerat",
+        "title": "Avancerat",
         "import": {
             "title": "Kedjeimport",
             "desc": "Om du har pengar kvar i en misslyckad kedjeöverföring kan du slutimportera dem här.",
@@ -388,7 +388,7 @@
         "loading": "Laddar transaktionshistorik..",
         "warn_loading": "Listan kan vara ofullständig och ur funktion.",
         "error_api": "Sökar-API hittades inte",
-        "error_api_desc": "Du måste tillhandahålla ett LUX Explorer API för detta nätverk för att se transaktionshistoriken."
+        "error_api_desc": "Du måste tillhandahålla ett AVA Explorer API för detta nätverk för att se transaktionshistoriken."
     },
     "modal": {
         "qr": {

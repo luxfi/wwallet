@@ -19,10 +19,10 @@
 </template>
 <script lang="ts">
 import { Component, Model, Prop, Vue, Watch } from 'vue-property-decorator'
-import { UTXO } from 'luxdefi/dist/apis/platformvm'
+import { UTXO } from 'avalanche/dist/apis/platformvm'
 import { ChainIdType } from '@/constants'
-import { BN } from 'luxdefi'
-import LuxAsset from '@/js/LuxAsset'
+import { BN } from 'avalanche'
+import AvaAsset from '@/js/AvaAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { WalletType } from '@/js/wallets/types'
 
@@ -56,9 +56,9 @@ export default class ChainCard extends Vue {
         return chainNames
     }
 
-    get lux_asset(): LuxAsset | null {
-        let lux = this.$store.getters['Assets/AssetLUX']
-        return lux
+    get ava_asset(): AvaAsset | null {
+        let ava = this.$store.getters['Assets/AssetAVA']
+        return ava
     }
 
     get wallet(): WalletType {
@@ -71,8 +71,8 @@ export default class ChainCard extends Vue {
     }
 
     get avmUnlocked(): BN {
-        if (!this.lux_asset) return new BN(0)
-        return this.lux_asset.amount
+        if (!this.ava_asset) return new BN(0)
+        return this.ava_asset.amount
     }
 
     get evmUnlocked(): BN {

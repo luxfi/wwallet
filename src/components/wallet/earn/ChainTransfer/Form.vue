@@ -33,12 +33,12 @@
         <div v-if="!isConfirm">
             <label>{{ $t('earn.transfer.amount') }}</label>
 
-            <LuxxInput
+            <LuxInput
                 :max="maxAmt"
                 v-model="amt"
                 @change="onAmtChange"
                 :balance="balance"
-            ></LuxxInput>
+            ></LuxInput>
         </div>
         <div class="confirmation_val" v-else>
             <label>{{ $t('earn.transfer.amount') }}</label>
@@ -48,16 +48,13 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import LuxxInput from '@/components/misc/LuxxInput.vue'
-import { BN } from 'luxdefi'
+import LuxInput from '@/components/misc/LuxInput.vue'
+import { BN } from 'avalanche'
 import Big from 'big.js'
 import { bnToBig } from '@/helpers/helper'
 import { ChainIdType } from '@/constants'
-import { avm } from 'luxdefi'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
-import LuxAsset from '@/js/LuxAsset'
 import { ChainSwapFormData } from '@/components/wallet/earn/ChainTransfer/types'
-import { LuxNetwork } from '@/js/LuxNetwork'
 
 const chainTypes: ChainIdType[] = ['X', 'P', 'C']
 const chainNames = {
@@ -68,7 +65,7 @@ const chainNames = {
 
 @Component({
     components: {
-        LuxxInput,
+        LuxInput,
     },
 })
 export default class Form extends Vue {

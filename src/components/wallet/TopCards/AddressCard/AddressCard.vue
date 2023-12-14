@@ -19,6 +19,15 @@
                 </p>
                 <div class="buts">
                     <button
+                        v-if="chainNow === 'C'"
+                        :tooltip="`View the bech32 encoded C-Chain address`"
+                        class="bech32"
+                        @click="toggleBech32"
+                        :active="showBech"
+                    >
+                        Bech32
+                    </button>
+                    <button
                         :tooltip="$t('top.hover1')"
                         @click="viewQRModal"
                         class="qr_but"
@@ -56,19 +65,19 @@ import CopyText from '@/components/misc/CopyText.vue'
 import QRModal from '@/components/modals/QRModal.vue'
 import PaperWallet from '@/components/modals/PaperWallet/PaperWallet.vue'
 import QRCode from 'qrcode'
-import { KeyPair as AVMKeyPair } from 'luxdefi/dist/apis/avm'
+import { KeyPair as AVMKeyPair } from 'avalanche/dist/apis/avm'
 import { WalletType, WalletNameType } from '@/js/wallets/types'
 
 import MnemonicWallet, {
-    LUX_ACCOUNT_PATH,
+    AVA_ACCOUNT_PATH,
     LEDGER_ETH_ACCOUNT_PATH,
 } from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 
 import ChainSelect from '@/components/wallet/TopCards/AddressCard/ChainSelect.vue'
 import { ChainIdType } from '@/constants'
-import { lux } from 'luxdefi'
-import { getPreferredHRP } from 'luxdefi/dist/utils'
+import { ava } from '@/AVA'
+import { getPreferredHRP } from 'avalanche/dist/utils'
 @Component({
     components: {
         CopyText,
@@ -81,7 +90,7 @@ export default class AddressCard extends Vue {
     colorLight: string = '#FFF'
     colorDark: string = '#242729'
     chainNow: ChainIdType = 'X'
-
+    showBech = false // If true C-Chain shows the bech32 Address
     $refs!: {
         qr_modal: QRModal
         print_modal: PaperWallet
@@ -105,6 +114,17 @@ export default class AddressCard extends Vue {
         this.updateQR()
     }
 
+    @Watch('chainNow')
+    onChainChange(val: ChainIdType) {
+        if (val !== 'C') {
+            this.showBech = false
+        }
+    }
+
+    toggleBech32() {
+        this.showBech = !this.showBech
+    }
+
     get addressLabel(): string {
         switch (this.chainNow) {
             default:
@@ -112,7 +132,9 @@ export default class AddressCard extends Vue {
             case 'P':
                 return this.$t('top.address.title_p') as string
             case 'C':
-                return this.$t('top.address.title_c') as string
+                return this.showBech
+                    ? 'Derived C-Chain Address'
+                    : (this.$t('top.address.title_c') as string)
         }
     }
 
@@ -123,7 +145,9 @@ export default class AddressCard extends Vue {
             case 'P':
                 return this.$t('top.address.desc_p') as string
             case 'C':
-                return this.$t('top.address.desc_c') as string
+                return this.showBech
+                    ? 'Used internally when moving funds to or from C-Chain'
+                    : (this.$t('top.address.desc_c') as string)
         }
     }
 
@@ -172,7 +196,16 @@ export default class AddressCard extends Vue {
             return '-'
         }
 
-        return '0x' + wallet.getEvmAddress()
+        return wallet.getEvmChecksumAddress()
+    }
+
+    get addressEVMBech32() {
+        let wallet = this.activeWallet
+        if (!wallet) {
+            return '-'
+        }
+
+        return wallet.getEvmAddressBech()
     }
 
     get activeAddress(): string {
@@ -182,7 +215,7 @@ export default class AddressCard extends Vue {
             case 'P':
                 return this.addressPVM
             case 'C':
-                return this.addressEVM
+                return this.showBech ? this.addressEVMBech32 : this.addressEVM
         }
         return this.address
     }
@@ -238,16 +271,15 @@ export default class AddressCard extends Vue {
     async verifyLedgerAddress() {
         const wallet = this.activeWallet as LedgerWallet
 
-        let networkId = lux.getNetworkID()
-        let hrp = getPreferredHRP(networkId)
+        let networkId = ava.getNetworkID()
 
         switch (this.chainNow) {
             case 'X':
             case 'P':
-                wallet.app.getWalletAddress(`${LUX_ACCOUNT_PATH}/0/${this.activeIdx}`, hrp)
+                wallet.verifyAddress(this.activeIdx, false, this.chainNow)
                 break
             case 'C':
-                wallet.ethApp.getAddress(`${LEDGER_ETH_ACCOUNT_PATH}`)
+                wallet.ethApp.getAddress(`${LEDGER_ETH_ACCOUNT_PATH}`, true)
         }
     }
 
@@ -299,6 +331,16 @@ export default class AddressCard extends Vue {
 }
 .copy_but {
     color: var(--primary-color);
+}
+
+.bech32 {
+    font-size: 0.8em;
+    font-weight: bold;
+    width: auto;
+
+    &[active] {
+        color: var(--secondary-color) !important;
+    }
 }
 
 .col_qr {

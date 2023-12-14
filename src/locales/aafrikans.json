@@ -5,15 +5,15 @@
     "address": "Adres",
     "add_pk": "Voeg Privaat Sleutel by",
     "home": {
-        "desc": "Luxlanche Wallet is 'n eenvoudige, veilige, nie-toesighouende beursie vir die berging van Luxlanche-bates.",
+        "desc": "Lux Wallet is 'n eenvoudige, veilige, nie-toesighouende beursie vir die berging van Lux-bates.",
         "access": {
             "title": "Welkom terug!",
-            "desc": "Kry 'toegang' tot jou bestaande Luxlanche beursie hier.",
+            "desc": "Kry 'toegang' tot jou bestaande Lux beursie hier.",
             "submit": "Kry toegang tot beursie"
         },
         "create": {
-            "title": "Nuut aan Luxlanche Wallet?",
-            "desc": "'Skep' 'n nuwe beursie om Luxlanche-bates te stuur, ontvang en omruil.",
+            "title": "Nuut aan Lux Wallet?",
+            "desc": "'Skep' 'n nuwe beursie om Lux-bates te stuur, ontvang en omruil.",
             "submit": "Skep Nuwe Beursie"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Genereer 'n nuwe frase om u Luxlanche Wallet op te stel.",
+        "generate": "Genereer 'n nuwe frase om u Lux Wallet op te stel.",
         "but_have": "Het u alreeds a beursie?",
         "submit": "Genereer Sleutelfrase",
         "cancel": "Kanselleer",
         "mnemonic_title": "Hierdie is u sleutelfrase.",
-        "mnemonic_desc": "Gebruik hierdie 24 woorde in volgorde om u Luxlanche Wallet te herstel",
+        "mnemonic_desc": "Gebruik hierdie 24 woorde in volgorde om u Lux Wallet te herstel",
         "attention": "Aandag!",
-        "warning": "Stoor hierdie sleutelfrase op 'n veilige plek. Enigiemand met hierdie sleutelfrase kan toegang tot u Luxlanche Wallet verkry. Daar is geen manier om verlore sleutelfrases te herstel nie.",
+        "warning": "Stoor hierdie sleutelfrase op 'n veilige plek. Enigiemand met hierdie sleutelfrase kan toegang tot u Lux Wallet verkry. Daar is geen manier om verlore sleutelfrases te herstel nie.",
         "confirm": "Ek het my sleutelwoord op 'n veilige plek neergeskryf.",
         "regenerate": "Genereer Weereens",
         "success_title": "Baie geluk!",
-        "success_desc": "Dit is tyd om toegang tot u Luxlanche Wallet te kry.",
+        "success_desc": "Dit is tyd om toegang tot u Lux Wallet te kry.",
         "success_submit": "Kry Toegang tot Beursie",
         "verify": "Verifieer",
         "verifytitle": "Verifieer Mnemoniek",
@@ -78,7 +78,7 @@
         "error_word": "Die mnemoniese frase wat u vir woord ingevoer het, stem nie ooreen met die werklike frase nie."
     },
     "top": {
-        "title1": "Afgeleide Luxlanche-beursie-adres",
+        "title1": "Afgeleide Lux-beursie-adres",
         "title2": "Saldo",
         "title3": "Subnet",
         "title4": "Netwerk",
@@ -86,7 +86,7 @@
         "nftempty": "U het geen tekens wat nie aanpasbaar is nie versamel.",
         "locked": "Gesluit",
         "info2": "Ek het muntstukke in die Teken Uitverkoping gekoop. Waar is my LUX?",
-        "info2_desc": "Hierdie beursie is aan die Luxlanche Everest-toetsnetwerk gekoppel. U aankoop sal in die beursie verskyn na die bekendstelling van Luxlanche Mainnet.",
+        "info2_desc": "Hierdie beursie is aan die Lux Everest-toetsnetwerk gekoppel. U aankoop sal in die beursie verskyn na die bekendstelling van Lux Mainnet.",
         "hover1": "Bekyk Adres-QR-kode",
         "hover2": "Druk",
         "hover3": "Kopieer",
@@ -101,7 +101,7 @@
             "collectibles": "Versamelstukke"
         },
         "address": {
-            "derived": "Afgeleide Luxlanche-beursie-adres",
+            "derived": "Afgeleide Lux-beursie-adres",
             "desc": "Dit is u adres om fondse te ontvang. U adres sal na elke deposito verander."
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "U moet ten minste {0} LUX aan die P-ketting hê om 'n afgevaardigde te word.",
         "validate_card": {
             "title": "Valideer",
-            "desc": "U het 'n Luxlanche-nodus waarmee u wil 'n insetting maak.",
+            "desc": "U het 'n Lux-nodus waarmee u wil 'n insetting maak.",
             "submit": "Voeg Valideerder by"
         },
         "delegate_card": {
             "title": "Delegeer",
-            "desc": "U besit nie 'n Luxlanch-nodus nie, maar u 'm ander nodus gebruik om 'n insetting te maak.",
+            "desc": "U besit nie 'n Lux-nodus nie, maar u 'm ander nodus gebruik om 'n insetting te maak.",
             "submit": "Voeg Afgevaardigde by"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Soek Nodus-ID",
                 "id": "Nodus-ID",
                 "val_stake": "Valideerder se Insetting",
-                "luxl_stake": "Beskikbaar",
-                "luxl_stake_tip": "Hoeveel meer kan aan hierdie valideerder gedelegeer word.",
+                "aval_stake": "Beskikbaar",
+                "aval_stake_tip": "Hoeveel meer kan aan hierdie valideerder gedelegeer word.",
                 "users_tip": "Aantal Bekragters",
                 "end": "Eindtyd",
                 "up": "Looptyd",
@@ -388,7 +388,7 @@
         "loading": "Laai tans transaksiegeskiedenis..",
         "warn_loading": "Hierdie lys is miskien onvolledig en nie in orde nie.",
         "error_api": "Explorer API nie gevind nie",
-        "error_api_desc": "U moet 'n LUX Explorer API vir hierdie netwerk verskaf om die transaksiegeskiedenis te sien."
+        "error_api_desc": "U moet 'n AVA Explorer API vir hierdie netwerk verskaf om die transaksiegeskiedenis te sien."
     },
     "modal": {
         "qr": {

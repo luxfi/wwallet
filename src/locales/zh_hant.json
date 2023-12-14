@@ -5,15 +5,15 @@
     "address": "地址",
     "add_pk": "添加私鑰",
     "home": {
-        "desc": "Luxlanche錢包是一個簡單、安全、無托管的錢包，用於存儲Luxlanche資產。",
+        "desc": "Lux錢包是一個簡單、安全、無托管的錢包，用於存儲Lux資產。",
         "access": {
             "title": "歡迎回來！",
-            "desc": "在這裡“訪問”你現有的Luxlanche錢包。",
+            "desc": "在這裡“訪問”你現有的Lux錢包。",
             "submit": "訪問錢包"
         },
         "create": {
-            "title": "第一次接觸Luxlanche錢包。",
-            "desc": "“創建”一個新錢包來發送、接收和交換Luxlanche資產。",
+            "title": "第一次接觸Lux錢包。",
+            "desc": "“創建”一個新錢包來發送、接收和交換Lux資產。",
             "submit": "創建新錢包"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "生成一個新的密鑰短語以設定你的Luxlanche錢包。",
+        "generate": "生成一個新的密鑰短語以設定你的Lux錢包。",
         "but_have": "已有錢包？",
         "submit": "生成密鑰短語",
         "cancel": "取消",
         "mnemonic_title": "這是你的密鑰短語",
-        "mnemonic_desc": "按順序使用這24個單詞來恢復你的Luxlanche錢包",
+        "mnemonic_desc": "按順序使用這24個單詞來恢復你的Lux錢包",
         "attention": "注意！",
-        "warning": "將此密鑰短語存儲在一個安全的位置。任何持有此密鑰短語的人都可以訪問你的Luxlanche錢包。沒有辦法找回丟失的密鑰短語。",
+        "warning": "將此密鑰短語存儲在一個安全的位置。任何持有此密鑰短語的人都可以訪問你的Lux錢包。沒有辦法找回丟失的密鑰短語。",
         "confirm": "我在一個安全的地方寫下了我的密鑰短語。",
         "regenerate": "重新生成",
         "success_title": "恭喜！",
-        "success_desc": "是時候訪問你的Luxlanche錢包了。",
+        "success_desc": "是時候訪問你的Lux錢包了。",
         "success_submit": "訪問錢包",
         "verify": "驗證",
         "verifytitle": "驗證助記詞",
@@ -78,7 +78,7 @@
         "error_word": "你輸入的助記短語與實際的短語不匹配。"
     },
     "top": {
-        "title1": "派生Luxlanche錢包地址",
+        "title1": "派生Lux錢包地址",
         "title2": "餘額",
         "title3": "子網",
         "title4": "網路",
@@ -86,7 +86,7 @@
         "nftempty": "你沒有收集任何不可分割代幣。",
         "locked": "鎖定",
         "info2": "我在代幣銷售中購買了貨幣。我的LUX在哪裏？",
-        "info2_desc": "該錢包已連接到Luxlanche Everest測試網路。Luxlanche主網啟動後，你的購買將出現在錢包。",
+        "info2_desc": "該錢包已連接到Lux Everest測試網路。Lux主網啟動後，你的購買將出現在錢包。",
         "hover1": "查看地址二維碼",
         "hover2": "列印",
         "hover3": "複製",
@@ -101,7 +101,7 @@
             "collectibles": "收藏品"
         },
         "address": {
-            "derived": "派生Luxlanche錢包地址",
+            "derived": "派生Lux錢包地址",
             "desc": "這是你接收資金的地址。每次存款後你的地址都會改變。"
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "你必須在P鏈擁有至少{0}LUX以成為一個委託者。",
         "validate_card": {
             "title": "驗證",
-            "desc": "你有一個想用於質押的Luxlanche節點。",
+            "desc": "你有一個想用於質押的Lux節點。",
             "submit": "添加驗證者"
         },
         "delegate_card": {
             "title": "委託",
-            "desc": "你沒有Luxlanche節點，但你想使用另一個節點進行質押。",
+            "desc": "你沒有Lux節點，但你想使用另一個節點進行質押。",
             "submit": "添加委託者"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "搜尋節點ID",
                 "id": "節點ID",
                 "val_stake": "驗證者質押",
-                "luxl_stake": "可用",
-                "luxl_stake_tip": "還有多少可以委託給這個驗證者。",
+                "aval_stake": "可用",
+                "aval_stake_tip": "還有多少可以委託給這個驗證者。",
                 "users_tip": "委託者數量",
                 "end": "結束時間",
                 "up": "上線時間",
@@ -388,7 +388,7 @@
         "loading": "正在載入交易歷史…",
         "warn_loading": "該列表可能不完整且無序。",
         "error_api": "未找到資源管理器API。",
-        "error_api_desc": "你必須為此網路提供一個LUX資源管理器API來查看交易歷史。"
+        "error_api_desc": "你必須為此網路提供一個AVA資源管理器API來查看交易歷史。"
     },
     "modal": {
         "qr": {

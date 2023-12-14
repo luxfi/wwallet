@@ -6,13 +6,21 @@
                     <transition name="fade" mode="out-in">
                         <!-- PHASE 1 -->
                         <div v-if="!keyPhrase" class="stage_1">
+                            <div class="img_container">
+                                <img
+                                    v-if="$root.theme === 'day'"
+                                    src="@/assets/diamond-secondary.png"
+                                    alt
+                                />
+                                <img v-else src="@/assets/diamond-secondary-night.svg" alt />
+                            </div>
                             <h1>{{ $t('create.generate') }}</h1>
                             <router-link to="/access" class="link">
                                 {{ $t('create.but_have') }}
                             </router-link>
                             <div class="options">
                                 <button
-                                    class="lux_button but_generate button_secondary"
+                                    class="ava_button but_generate button_secondary"
                                     @click="createKey"
                                 >
                                     {{ $t('create.submit') }}
@@ -77,7 +85,7 @@
                                             @complete="complete"
                                         ></VerifyMnemonic2>
                                         <button
-                                            class="but_primary lux_button button_secondary"
+                                            class="but_primary ava_button button_secondary"
                                             @click="verifyMnemonic"
                                             :disabled="!canVerify"
                                         >
@@ -91,7 +99,7 @@
                                                 <Spinner v-if="isLoad" class="spinner"></Spinner>
                                                 <div v-else>
                                                     <button
-                                                        class="button_primary lux_button access generate"
+                                                        class="button_primary ava_button access generate"
                                                         @click="access"
                                                         :disabled="!canSubmit"
                                                     >
@@ -209,7 +217,6 @@ export default class CreateWallet extends Vue {
     justify-content: space-between;
     background-color: var(--bg-light);
     padding: main.$container-padding;
-    border-radius: 6px;
     text-align: center;
     /*min-width: 1000px;*/
 

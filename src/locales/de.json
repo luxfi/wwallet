@@ -5,15 +5,15 @@
     "address": "Adresse",
     "add_pk": "Privaten Schlüssel hinzufügen",
     "home": {
-        "desc": "Luxlanche Wallet ist eine einfache, sichere, \"ohne Aufsicht\" Wallet zur Aufbewahrung von Luxlanche Vermögenswerten.",
+        "desc": "Lux Wallet ist eine einfache, sichere, \"ohne Aufsicht\" Wallet zur Aufbewahrung von Lux Vermögenswerten.",
         "access": {
             "title": "Willkommen zurück!",
-            "desc": "Hier auf dein bestehendes Luxlanche Wallet zugreifen.",
+            "desc": "Hier auf dein bestehendes Lux Wallet zugreifen.",
             "submit": "Auf Wallet zugreifen"
         },
         "create": {
-            "title": "Neu bei Luxlanche Wallet?",
-            "desc": "Erstelle eine neue Wallet zum Senden, Empfangen und Tauschen von Luxlanche Vermögenswerten.",
+            "title": "Neu bei Lux Wallet?",
+            "desc": "Erstelle eine neue Wallet zum Senden, Empfangen und Tauschen von Lux Vermögenswerten.",
             "submit": "Neue Wallet erstellen"
         }
     },
@@ -63,13 +63,13 @@
         "submit": "Schlüsselphrase erstellen",
         "cancel": "Abbrechen",
         "mnemonic_title": "Dies ist Ihr Schlüsselsatz.",
-        "mnemonic_desc": "Verwende diese 24 Wörter in der Reihenfolge, um deine Luxlanche Wallet wiederzuherstellen",
+        "mnemonic_desc": "Verwende diese 24 Wörter in der Reihenfolge, um deine Lux Wallet wiederzuherstellen",
         "attention": "Achtung!",
-        "warning": "Speichere diese Schlüsselphrase an einem sicheren Ort. Jeder mit dieser Schlüsselphrase kann auf deine Luxlanche Wallet zugreifen. Es gibt keine Möglichkeit, verlorene Schlüsselphrasen wiederherzustellen.",
+        "warning": "Speichere diese Schlüsselphrase an einem sicheren Ort. Jeder mit dieser Schlüsselphrase kann auf deine Lux Wallet zugreifen. Es gibt keine Möglichkeit, verlorene Schlüsselphrasen wiederherzustellen.",
         "confirm": "Ich habe meine Schlüsselphrase an einem sicheren Ort notiert.",
         "regenerate": "Wiederherstellen",
         "success_title": "Herzlichen Glückwunsch!",
-        "success_desc": "Es ist an der Zeit, deine Luxlanche Wallet zu öffnen.",
+        "success_desc": "Es ist an der Zeit, deine Lux Wallet zu öffnen.",
         "success_submit": "Auf Wallet zugreifen",
         "verify": "Verifizieren",
         "verifytitle": "Verifiziere Mnemonic",
@@ -86,7 +86,7 @@
         "nftempty": "Du hast noch keine \"non-fungible\" Tokens (NFTs) gesammelt.",
         "locked": "Gesperrt",
         "info2": "Ich habe beim Token Sale, Coins gekauft. Wo sind meine LUX?",
-        "info2_desc": "Diese Wallet ist mit dem Luxlanche Everest Testnetzwerk verbunden. Dein Kauf erscheint nach dem Start von Luxlanche Mainnet in der Wallet.",
+        "info2_desc": "Diese Wallet ist mit dem Lux Everest Testnetzwerk verbunden. Dein Kauf erscheint nach dem Start von Lux Mainnet in der Wallet.",
         "hover1": "Adresse als QR Code anzeigen",
         "hover2": "Drucken",
         "hover3": "Kopieren",
@@ -181,12 +181,12 @@
         "warning_2": "Du musst mindestens {0} LUX auf der P-Chain haben, um ein Delegator zu werden.",
         "validate_card": {
             "title": "Validieren",
-            "desc": "Du hast einen Luxlanche Knoten, mit dem Du staken möchtest.",
+            "desc": "Du hast einen Lux Knoten, mit dem Du staken möchtest.",
             "submit": "Validator hinzufügen"
         },
         "delegate_card": {
             "title": "Delegieren",
-            "desc": "Du hast keine Luxlanche Node, aber Du möchtest mit einer anderen Node staken.",
+            "desc": "Du hast keine Lux Node, aber Du möchtest mit einer anderen Node staken.",
             "submit": "Delegierer hinzufügen"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Node ID suchen",
                 "id": "Node ID",
                 "val_stake": "Validator Stake",
-                "luxl_stake": "Verfügbar",
-                "luxl_stake_tip": "Wie viel noch an diesen Validator delegiert werden kann.",
+                "aval_stake": "Verfügbar",
+                "aval_stake_tip": "Wie viel noch an diesen Validator delegiert werden kann.",
                 "users_tip": "Anzahl der Delegierenden",
                 "end": "Endzeit",
                 "up": "Betriebszeit",
@@ -388,7 +388,7 @@
         "loading": "Lade vergangene Transaktionen ...",
         "warn_loading": "Diese Liste ist möglicherweise unvollständig und nicht mehr aktuell.",
         "error_api": "Explorer API nicht gefunden",
-        "error_api_desc": "Du musst eine LUX Explorer API für dieses Netzwerk zur Verfügung stellen, um den Transaktionsverlauf einzusehen."
+        "error_api_desc": "Du musst eine AVA Explorer API für dieses Netzwerk zur Verfügung stellen, um den Transaktionsverlauf einzusehen."
     },
     "modal": {
         "qr": {

@@ -5,15 +5,15 @@
     "address": "Indirizzo",
     "add_pk": "Aggiungi chiave privata",
     "home": {
-        "desc": "Con il Wallet Luxlanche, non custodito, puoi archiviare asset Luxlanche in modo semplice e sicuro.",
+        "desc": "Con il Wallet Lux, non custodito, puoi archiviare asset Lux in modo semplice e sicuro.",
         "access": {
             "title": "Bentornato!",
-            "desc": "\"Accedi\" al tuo wallet Luxlanche qui.",
+            "desc": "\"Accedi\" al tuo wallet Lux qui.",
             "submit": "Accedi al wallet"
         },
         "create": {
-            "title": "È la prima volta che usi un Wallet Luxlanche?",
-            "desc": "\"Crea\" un nuovo wallet per inviare, ricevere e scambiare asset Luxlanche.",
+            "title": "È la prima volta che usi un Wallet Lux?",
+            "desc": "\"Crea\" un nuovo wallet per inviare, ricevere e scambiare asset Lux.",
             "submit": "Crea un nuovo wallet"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Gestire",
             "send": "Inviare",
             "earn": "Guadagna",
-            "advanced": "Luxnzato"
+            "advanced": "Avanzato"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Genera una nuova frase chiave per configurare il tuo Wallet Luxlanche.",
+        "generate": "Genera una nuova frase chiave per configurare il tuo Wallet Lux.",
         "but_have": "Hai già un wallet?",
         "submit": "Genera la frase chiave",
         "cancel": "Annulla",
         "mnemonic_title": "Questa è la tua frase chiave.",
-        "mnemonic_desc": "Usa queste 24 parole in ordine sequenziale per recuperare il tuo Wallet Luxlanche",
+        "mnemonic_desc": "Usa queste 24 parole in ordine sequenziale per recuperare il tuo Wallet Lux",
         "attention": "Attenzione!",
-        "warning": "Conserva questa frase chiave in un luogo sicuro. Chiunque abbia questa frase chiave può accedere al tuo Wallet Luxlanche. Non esiste un modo per recuperare le frasi chiave perse.",
+        "warning": "Conserva questa frase chiave in un luogo sicuro. Chiunque abbia questa frase chiave può accedere al tuo Wallet Lux. Non esiste un modo per recuperare le frasi chiave perse.",
         "confirm": "Ho scritto la mia frase chiave in un luogo sicuro.",
         "regenerate": "Rigenera",
         "success_title": "Complimenti!",
-        "success_desc": "È ora di accedere al tuo Wallet Luxlanche.",
+        "success_desc": "È ora di accedere al tuo Wallet Lux.",
         "success_submit": "Accedi al wallet",
         "verify": "Verifica",
         "verifytitle": "Verifica la frase mnemonica",
@@ -78,7 +78,7 @@
         "error_word": "La frase mnemonica inserita non coincide con la frase reale."
     },
     "top": {
-        "title1": "Indirizzo del Wallet Luxlanche derivato",
+        "title1": "Indirizzo del Wallet Lux derivato",
         "title2": "Saldo",
         "title3": "Subnet",
         "title4": "Rete",
@@ -86,7 +86,7 @@
         "nftempty": "Non hai ancora collezionato alcun token non fungibile.",
         "locked": "Bloccato",
         "info2": "Ho comprato delle monete durante la vendita pubblica. Dove sono i miei LUX?",
-        "info2_desc": "Questo wallet è connesso alla rete di test Everest di Luxlanche. Il tuo acquisto apparirà nel wallet dopo il lancio della mainnet di Luxlanche.",
+        "info2_desc": "Questo wallet è connesso alla rete di test Everest di Lux. Il tuo acquisto apparirà nel wallet dopo il lancio della mainnet di Lux.",
         "hover1": "Vedi il codice QR dell'indirizzo",
         "hover2": "Stampa",
         "hover3": "Copia",
@@ -101,7 +101,7 @@
             "collectibles": "Collezionabili"
         },
         "address": {
-            "derived": "Indirizzo del Wallet Luxlanche derivato",
+            "derived": "Indirizzo del Wallet Lux derivato",
             "desc": "Questo è il tuo indirizzo per ricevere fondi. Il tuo indirizzo cambierà dopo ogni deposito."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Al seguente indirizzo",
         "fees": "Commissioni",
         "fee_tx": "Commissione di transazione",
-        "advanced": "Luxnzato",
+        "advanced": "Avanzato",
         "adv_change": "Cambia indirizzo",
         "send": "Invia la transazione",
         "summary": "Riepilogo della transazione",
@@ -181,12 +181,12 @@
         "warning_2": "Devi avere almeno {0} LUX sulla P-chain per delegare.",
         "validate_card": {
             "title": "Validare",
-            "desc": "Hai un nodo Luxlanche con cui vuoi fare staking.",
+            "desc": "Hai un nodo Lux con cui vuoi fare staking.",
             "submit": "Aggiungi Validatore"
         },
         "delegate_card": {
             "title": "Delega",
-            "desc": "Non possiedi un nodo Luxlanche, ma vuoi fare staking utilizzando un altro nodo.",
+            "desc": "Non possiedi un nodo Lux, ma vuoi fare staking utilizzando un altro nodo.",
             "submit": "Aggiungi Delegante"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Cerca ID del Nodo",
                 "id": "ID del nodo",
                 "val_stake": "Stake del validatore",
-                "luxl_stake": "Disponibile",
-                "luxl_stake_tip": "Importo massimo che può essere delegato a questo validatore.",
+                "aval_stake": "Disponibile",
+                "aval_stake_tip": "Importo massimo che può essere delegato a questo validatore.",
                 "users_tip": "Numero di deleganti",
                 "end": "Tempo scaduto",
                 "up": "Tempo di attività",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Luxnzato",
+        "title": "Avanzato",
         "import": {
             "title": "Importazione della chain",
             "desc": "Se hai dei fondi bloccati in un trasferimento tra chain fallito, puoi completare l'importazione qui.",
@@ -388,7 +388,7 @@
         "loading": "Caricamento della cronologia delle transazioni..",
         "warn_loading": "Questa lista potrebbe essere incompleta e non ordinata.",
         "error_api": "API dell'explorer non trovate",
-        "error_api_desc": "Devi fornire l'API dell'Explorer Luxlanche per questa rete per vedere la cronologia delle transazioni."
+        "error_api_desc": "Devi fornire l'API dell'Explorer Lux per questa rete per vedere la cronologia delle transazioni."
     },
     "modal": {
         "qr": {

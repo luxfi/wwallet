@@ -74,8 +74,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator'
-import { BN } from 'luxdefi'
-import { pChain } from 'luxdefi'
+import { BN } from 'avalanche'
+import { pChain } from '@/AVA'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
 

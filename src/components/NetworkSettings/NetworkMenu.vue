@@ -80,7 +80,7 @@ import NetworkRow from './NetworkRow.vue'
 import CustomPage from './CustomPage.vue'
 import ListPage from './ListPage.vue'
 import EditPage from '@/components/NetworkSettings/EditPage.vue'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import { NetworkStatus } from '@/store/modules/network/types'
 
 @Component({
@@ -94,7 +94,7 @@ import { NetworkStatus } from '@/store/modules/network/types'
 export default class NetworkMenu extends Vue {
     page: string = 'list'
     isActive: boolean = false
-    editNetwork: LuxNetwork | null = null
+    editNetwork: AvaNetwork | null = null
 
     viewCustom(): void {
         this.page = 'custom'
@@ -109,7 +109,7 @@ export default class NetworkMenu extends Vue {
     toggleMenu(): void {
         this.isActive = !this.isActive
     }
-    addCustomNetwork(data: LuxNetwork): void {
+    addCustomNetwork(data: AvaNetwork): void {
         this.$store.dispatch('Network/addCustomNetwork', data)
         this.page = 'list'
     }
@@ -130,7 +130,7 @@ export default class NetworkMenu extends Vue {
         this.$store.dispatch('Network/save')
     }
 
-    onedit(network: LuxNetwork): void {
+    onedit(network: AvaNetwork): void {
         this.editNetwork = network
         this.page = 'edit'
     }
@@ -138,10 +138,10 @@ export default class NetworkMenu extends Vue {
     get status(): NetworkStatus {
         return this.$store.state.Network.status
     }
-    get activeNetwork(): null | LuxNetwork {
+    get activeNetwork(): null | AvaNetwork {
         return this.$store.state.Network.selectedNetwork
     }
-    get networks(): LuxNetwork[] {
+    get networks(): AvaNetwork[] {
         return this.$store.getters('Network/allNetworks')
         // return this.$store.state.Network.networks;
     }

@@ -1,19 +1,19 @@
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import Big from 'big.js'
-import { BN } from 'luxdefi'
-// import {UTXO} from "luxdefi";
+import { BN } from 'avalanche'
+// import {UTXO} from "avalanche";
 
 // type AssetType = "fungible" | "collectible"
 
 export interface ITransaction {
     uuid: string
-    asset: LuxAsset
+    asset: AvaAsset
     amount: BN
 }
 
 export interface INftTransaction {}
 
 export interface ICurrencyInputDropdownValue {
-    asset: LuxAsset | null
+    asset: AvaAsset | null
     amount: BN
 }

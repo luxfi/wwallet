@@ -45,7 +45,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import FungibleRow from '@/components/wallet/portfolio/FungibleRow.vue'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import Erc20Token from '@/js/Erc20Token'
 import ERC20Row from '@/components/wallet/portfolio/ERC20Row.vue'
 import AddERC20TokenModal from '@/components/modals/AddERC20TokenModal.vue'
@@ -82,9 +82,9 @@ export default class Fungibles extends Vue {
         this.$refs.tokenlist_modal.open()
     }
 
-    get walletBalancesSorted(): LuxAsset[] {
-        // let balance: LuxAsset[] = this.$store.getters['walletAssetsArray']
-        let balance: LuxAsset[] = this.$store.getters['Assets/walletAssetsArray']
+    get walletBalancesSorted(): AvaAsset[] {
+        // let balance: AvaAsset[] = this.$store.getters['walletAssetsArray']
+        let balance: AvaAsset[] = this.$store.getters['Assets/walletAssetsArray']
 
         // Sort by balance, then name
         balance.sort((a, b) => {
@@ -95,7 +95,7 @@ export default class Fungibles extends Vue {
             let idA = a.id
             let idB = b.id
 
-            // LUX always on top
+            // AVA always on top
             if (idA === this.luxToken.id) {
                 return -1
             } else if (idB === this.luxToken.id) {
@@ -119,8 +119,8 @@ export default class Fungibles extends Vue {
         return balance
     }
 
-    get luxToken(): LuxAsset {
-        return this.$store.getters['Assets/AssetLUX']
+    get luxToken(): AvaAsset {
+        return this.$store.getters['Assets/AssetAVA']
     }
 
     get erc20Balances(): Erc20Token[] {
@@ -132,7 +132,7 @@ export default class Fungibles extends Vue {
         return filt
     }
 
-    get walletBalances(): LuxAsset[] {
+    get walletBalances(): AvaAsset[] {
         let balance = this.walletBalancesSorted
 
         if (this.search) {

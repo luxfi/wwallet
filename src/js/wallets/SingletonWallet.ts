@@ -1,43 +1,42 @@
-import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
+import { ava, avm, bintools, cChain, pChain } from '@/AVA'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { digestMessage } from '@/helpers/helper'
 import { WalletNameType } from '@/js/wallets/types'
 
-import { Buffer as BufferLuxlanche, BN } from 'luxdefi'
+import { Buffer as BufferLux, BN } from 'avalanche'
 import {
     KeyPair as AVMKeyPair,
     KeyChain as AVMKeyChain,
     UTXOSet as AVMUTXOSet,
     UTXO,
     UnsignedTx,
-} from 'luxdefi/dist/apis/avm'
+} from 'avalanche/dist/apis/avm'
 import {
     KeyPair as PlatformKeyPair,
     KeyChain as PlatformKeyChain,
     UTXOSet as PlatformUTXOSet,
     UTXOSet,
-} from 'luxdefi/dist/apis/platformvm'
-import { KeyChain, KeyChain as EVMKeyChain, UTXOSet as EVMUTXOSet } from 'luxdefi/dist/apis/evm'
-import { PayloadBase } from 'luxdefi/dist/utils'
+} from 'avalanche/dist/apis/platformvm'
+import { KeyChain, KeyChain as EVMKeyChain, UTXOSet as EVMUTXOSet } from 'avalanche/dist/apis/evm'
+import { PayloadBase } from 'avalanche/dist/utils'
 import { buildUnsignedTransaction } from '../TxHelper'
-import { LuxWalletCore, UnsafeWallet } from './types'
-import { UTXO as PlatformUTXO } from 'luxdefi/dist/apis/platformvm/utxos'
+import { AvaWalletCore, UnsafeWallet } from './types'
+import { UTXO as PlatformUTXO } from 'avalanche/dist/apis/platformvm/utxos'
 import { privateToAddress } from 'ethereumjs-util'
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxdefi/dist/apis/avm/tx'
+import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'avalanche/dist/apis/avm/tx'
 import {
     Tx as PlatformTx,
     UnsignedTx as PlatformUnsignedTx,
-} from 'luxdefi/dist/apis/platformvm/tx'
-import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'luxdefi/dist/apis/evm/tx'
+} from 'avalanche/dist/apis/platformvm/tx'
+import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx'
 import Erc20Token from '@/js/Erc20Token'
-import { WalletCore } from '@/js/wallets/WalletCore'
+import { AbstractWallet } from '@/js/wallets/AbstractWallet'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
-import { UTXO as AVMUTXO } from 'luxdefi/dist/apis/avm/utxos'
+import { UTXO as AVMUTXO } from 'avalanche/dist/apis/avm/utxos'
 import { Transaction } from '@ethereumjs/tx'
-import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxdefi/luxdefi-wallet-sdk'
 
-class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet {
+class SingletonWallet extends AbstractWallet implements AvaWalletCore, UnsafeWallet {
     keyChain: AVMKeyChain
     keyPair: AVMKeyPair
 
@@ -58,7 +57,6 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
     ethKeyChain: EVMKeyChain
     ethAddress: string
     ethAddressBech: string
-    ethBalance: BN
 
     constructor(pk: string) {
         super()
@@ -68,7 +66,7 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
         this.chainId = avm.getBlockchainAlias() || avm.getBlockchainID()
         this.chainIdP = pChain.getBlockchainAlias() || pChain.getBlockchainID()
 
-        let hrp = lux.getHRP()
+        const hrp = ava.getHRP()
 
         this.keyChain = new AVMKeyChain(hrp, this.chainId)
         this.keyPair = this.keyChain.importKey(pk)
@@ -79,20 +77,19 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
         this.stakeAmount = new BN(0)
 
         // Derive EVM key and address
-        let pkBuf = bintools.cb58Decode(pk.split('-')[1])
-        let pkHex = pkBuf.toString('hex')
-        let pkBuffNative = Buffer.from(pkHex, 'hex')
+        const pkBuf = bintools.cb58Decode(pk.split('-')[1])
+        const pkHex = pkBuf.toString('hex')
+        const pkBuffNative = Buffer.from(pkHex, 'hex')
 
         this.ethKey = pkHex
         this.ethAddress = privateToAddress(pkBuffNative).toString('hex')
-        this.ethBalance = new BN(0)
 
-        let cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferLuxlanche.from(pkBuf))
+        const cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferLux.from(pkBuf))
         this.ethKeyBech = cPrivKey
-        let cKeyChain = new KeyChain(lux.getHRP(), 'C')
+        const cKeyChain = new KeyChain(ava.getHRP(), 'C')
         this.ethKeyChain = cKeyChain
 
-        let cKeypair = cKeyChain.importKey(cPrivKey)
+        const cKeypair = cKeyChain.importKey(cPrivKey)
         this.ethAddressBech = cKeypair.getAddressString()
 
         this.type = 'singleton'
@@ -103,16 +100,20 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
         return this.getCurrentAddressAvm()
     }
 
+    getAllExternalAddressesX(): string[] {
+        return [this.getCurrentAddressAvm()]
+    }
+
+    getAllChangeAddressesX(): string[] {
+        return [this.getChangeAddressAvm()]
+    }
+
     getCurrentAddressAvm(): string {
         return this.keyPair.getAddressString()
     }
 
-    getChangeAddressPlatform(): string {
-        return this.getCurrentAddressPlatform()
-    }
-
     getDerivedAddresses(): string[] {
-        let addr = this.getCurrentAddressAvm()
+        const addr = this.getCurrentAddressAvm()
         return [addr]
     }
 
@@ -125,17 +126,13 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
     }
 
     getExtendedPlatformAddresses(): string[] {
-        let addr = this.platformKeyPair.getAddressString()
+        const addr = this.platformKeyPair.getAddressString()
         return [addr]
     }
 
     getHistoryAddresses(): string[] {
-        let addr = this.getCurrentAddressAvm()
+        const addr = this.getCurrentAddressAvm()
         return [addr]
-    }
-
-    getPlatformRewardAddress(): string {
-        return this.getCurrentAddressPlatform()
     }
 
     getCurrentAddressPlatform(): string {
@@ -144,11 +141,6 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
 
     getBaseAddress(): string {
         return this.getCurrentAddressAvm()
-    }
-
-    async getStake(): Promise<BN> {
-        this.stakeAmount = await WalletHelper.getStake(this)
-        return this.stakeAmount
     }
 
     getPlatformUTXOSet(): PlatformUTXOSet {
@@ -163,20 +155,14 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
         return this.ethAddressBech
     }
 
-    async getEthBalance() {
-        let bal = await WalletHelper.getEthBalance(this)
-        this.ethBalance = bal
-        return bal
-    }
-
     async updateUTXOsX(): Promise<AVMUTXOSet> {
-        let result = await avmGetAllUTXOs([this.getCurrentAddressAvm()])
+        const result = await avmGetAllUTXOs([this.getCurrentAddressAvm()])
         this.utxoset = result
         return result
     }
 
     async updateUTXOsP(): Promise<PlatformUTXOSet> {
-        let result = await platformGetAllUTXOs([this.getCurrentAddressPlatform()])
+        const result = await platformGetAllUTXOs([this.getCurrentAddressPlatform()])
         this.platformUtxoset = result
         return result
     }
@@ -198,7 +184,7 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
     async buildUnsignedTransaction(
         orders: (ITransaction | UTXO)[],
         addr: string,
-        memo?: BufferLuxlanche
+        memo?: BufferLux
     ) {
         const changeAddress = this.getChangeAddressAvm()
         const derivedAddresses = this.getDerivedAddresses()
@@ -217,17 +203,13 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
     async issueBatchTx(
         orders: (ITransaction | AVMUTXO)[],
         addr: string,
-        memo: BufferLuxlanche | undefined
+        memo: BufferLux | undefined
     ): Promise<string> {
         return await WalletHelper.issueBatchTx(this, orders, addr, memo)
     }
 
-    getFirstLuxilableAddressPlatform(): string {
-        return this.getCurrentAddressPlatform()
-    }
-
     onnetworkchange(): void {
-        let hrp = lux.getHRP()
+        const hrp = ava.getHRP()
 
         this.keyChain = new AVMKeyChain(hrp, this.chainId)
         this.utxoset = new AVMUTXOSet()
@@ -238,8 +220,8 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
         this.platformKeyPair = this.platformKeyChain.importKey(this.key)
 
         // Update EVM values
-        this.ethKeyChain = new EVMKeyChain(lux.getHRP(), 'C')
-        let cKeypair = this.ethKeyChain.importKey(this.ethKeyBech)
+        this.ethKeyChain = new EVMKeyChain(ava.getHRP(), 'C')
+        const cKeypair = this.ethKeyChain.importKey(this.ethKeyBech)
         this.ethAddressBech = cKeypair.getAddressString()
         this.ethBalance = new BN(0)
 
@@ -247,68 +229,36 @@ class SingletonWallet extends WalletCore implements LuxWalletCore, UnsafeWallet 
     }
 
     async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
-        let keychain = this.keyChain
+        const keychain = this.keyChain
 
         const tx = unsignedTx.sign(keychain)
         return tx
     }
 
     async signP(unsignedTx: PlatformUnsignedTx): Promise<PlatformTx> {
-        let keychain = this.platformKeyChain
+        const keychain = this.platformKeyChain
         const tx = unsignedTx.sign(keychain)
         return tx
     }
 
     async signC(unsignedTx: EVMUnsignedTx): Promise<EvmTx> {
-        let keyChain = this.ethKeyChain
+        const keyChain = this.ethKeyChain
         return unsignedTx.sign(keyChain)
     }
 
     async signEvm(tx: Transaction) {
-        let keyBuff = Buffer.from(this.ethKey, 'hex')
+        const keyBuff = Buffer.from(this.ethKey, 'hex')
         return tx.sign(keyBuff)
     }
 
     async signMessage(msgStr: string): Promise<string> {
-        let digest = digestMessage(msgStr)
+        const digest = digestMessage(msgStr)
 
-        let digestHex = digest.toString('hex')
-        let digestBuff = BufferLuxlanche.from(digestHex, 'hex')
-        let signed = this.keyPair.sign(digestBuff)
+        const digestHex = digest.toString('hex')
+        const digestBuff = BufferLux.from(digestHex, 'hex')
+        const signed = this.keyPair.sign(digestBuff)
 
         return bintools.cb58Encode(signed)
-    }
-
-    async delegate(
-        nodeID: string,
-        amt: BN,
-        start: Date,
-        end: Date,
-        rewardAddress?: string,
-        utxos?: PlatformUTXO[]
-    ): Promise<string> {
-        return await WalletHelper.delegate(this, nodeID, amt, start, end, rewardAddress, utxos)
-    }
-
-    async validate(
-        nodeID: string,
-        amt: BN,
-        start: Date,
-        end: Date,
-        delegationFee: number = 0,
-        rewardAddress?: string,
-        utxos?: PlatformUTXO[]
-    ): Promise<string> {
-        return await WalletHelper.validate(
-            this,
-            nodeID,
-            amt,
-            start,
-            end,
-            delegationFee,
-            rewardAddress,
-            utxos
-        )
     }
 
     async createNftFamily(name: string, symbol: string, groupNum: number) {

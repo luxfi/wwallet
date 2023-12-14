@@ -1,14 +1,14 @@
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import { ethers } from 'ethers'
 import store from '@/store'
 import { WalletType } from '@/js/wallets/types'
 
 const SOCKET_RECONNECT_TIMEOUT = 1000
 
-export function connectSocketC(network: LuxNetwork) {
+export function connectSocketC(network: AvaNetwork) {
     try {
-        let wsUrl = network.getWsUrlC()
-        let wsProvider = new ethers.providers.WebSocketProvider(wsUrl)
+        const wsUrl = network.getWsUrlC()
+        const wsProvider = new ethers.providers.WebSocketProvider(wsUrl)
 
         if (socketEVM) {
             socketEVM._websocket.onclose = () => {}
@@ -21,8 +21,8 @@ export function connectSocketC(network: LuxNetwork) {
         updateEVMSubscriptions()
 
         // Save default function so we can keep calling it
-        let defaultOnOpen = wsProvider._websocket.onopen
-        let defaultOnClose = wsProvider._websocket.onclose
+        const defaultOnOpen = wsProvider._websocket.onopen
+        const defaultOnClose = wsProvider._websocket.onclose
 
         wsProvider._websocket.onopen = (ev: any) => {
             if (defaultOnOpen) defaultOnOpen(ev)
@@ -40,7 +40,7 @@ export function connectSocketC(network: LuxNetwork) {
     }
 }
 
-let evmSubscriptionTimeout: NodeJS.Timeout
+let evmSubscriptionTimeout: ReturnType<typeof setTimeout>
 const SUBSCRIBE_TIMEOUT = 500
 
 export function updateEVMSubscriptions() {
@@ -72,7 +72,7 @@ function blockHeaderCallback() {
 }
 
 function updateWalletBalanceC() {
-    let wallet: null | WalletType = store.state.activeWallet
+    const wallet: null | WalletType = store.state.activeWallet
     if (!wallet) return
     // Refresh the wallet balance
     wallet.getEthBalance()

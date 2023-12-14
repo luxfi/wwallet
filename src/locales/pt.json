@@ -5,15 +5,15 @@
     "address": "Endereço",
     "add_pk": "Adicionar Private Key",
     "home": {
-        "desc": "A Luxlanche Wallet é uma carteira simples, segura e sem custódia para armazenar os ativos do Luxlanche.",
+        "desc": "A Lux Wallet é uma carteira simples, segura e sem custódia para armazenar os ativos do Lux.",
         "access": {
             "title": "Bem Vindo de Volta!",
-            "desc": "'Acesse' sua Luxlanche wallet existente aqui.",
+            "desc": "'Acesse' sua Lux wallet existente aqui.",
             "submit": "Acessar a Wallet"
         },
         "create": {
-            "title": "Você é novo na Luxlanche Wallet?",
-            "desc": "'Criar' uma nova wallet para enviar, receber e trocar os ativos do Luxlanche.",
+            "title": "Você é novo na Lux Wallet?",
+            "desc": "'Criar' uma nova wallet para enviar, receber e trocar os ativos do Lux.",
             "submit": "Criar Nova Wallet"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Gerir",
             "send": "Enviar",
             "earn": "Ganhar",
-            "advanced": "Luxnçado"
+            "advanced": "Avançado"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Gerar uma nova frase-chave para configurar sua Luxlanche Wallet.",
+        "generate": "Gerar uma nova frase-chave para configurar sua Lux Wallet.",
         "but_have": "Já tem uma wallet?",
         "submit": "Gerar Frase-Chave",
         "cancel": "Cancelar",
         "mnemonic_title": "Esta é sua frase-chave.",
-        "mnemonic_desc": "Use estas 24 palavras em ordem sequencial para recuperar sua Luxlanche Wallet",
+        "mnemonic_desc": "Use estas 24 palavras em ordem sequencial para recuperar sua Lux Wallet",
         "attention": "Atenção!",
-        "warning": "Armazene esta frase-chave em um local seguro. Qualquer pessoa com esta frase-chave pode acessar sua Luxlanche Wallet. As frases-chave perdidas não podem ser recuperadas.",
+        "warning": "Armazene esta frase-chave em um local seguro. Qualquer pessoa com esta frase-chave pode acessar sua Lux Wallet. As frases-chave perdidas não podem ser recuperadas.",
         "confirm": "Eu anotei a minha frase-chave em um local seguro.",
         "regenerate": "Recriado",
         "success_title": "Parabéns!",
-        "success_desc": "É hora de acessar sua Luxlanche Wallet.",
+        "success_desc": "É hora de acessar sua Lux Wallet.",
         "success_submit": "Acessar Wallet",
         "verify": "Verificar",
         "verifytitle": "Verificar Mnemônico",
@@ -78,7 +78,7 @@
         "error_word": "A frase mnemônica que você inseriu para a palavra não corresponde à frase real."
     },
     "top": {
-        "title1": "Endereço da Wallet Luxlanche Gerado",
+        "title1": "Endereço da Wallet Lux Gerado",
         "title2": "Saldo",
         "title3": "Sub-rede",
         "title4": "Rede",
@@ -86,7 +86,7 @@
         "nftempty": "Você não coletou qualquer token não fungível.",
         "locked": "Bloqueado",
         "info2": "Eu comprei moedas na Venda de Tokens. Onde está meu LUX?",
-        "info2_desc": "Esta wallet está conectada à rede de teste Luxlanche Everest. Sua compra aparecerá na wallet após o lançamento da Mainnet do Luxlanche.",
+        "info2_desc": "Esta wallet está conectada à rede de teste Lux Everest. Sua compra aparecerá na wallet após o lançamento da Mainnet do Lux.",
         "hover1": "Ver o endereço do código QR",
         "hover2": "Imprimir",
         "hover3": "Copiar",
@@ -101,7 +101,7 @@
             "collectibles": "Colecionáveis"
         },
         "address": {
-            "derived": "Derivado do Endereço da Luxlanche Wallet",
+            "derived": "Derivado do Endereço da Lux Wallet",
             "desc": "Este é o seu endereço para receber fundos. Seu endereço mudará após cada depósito."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Para o Endereço",
         "fees": "Taxas",
         "fee_tx": "Taxa de Transação",
-        "advanced": "Luxnçar",
+        "advanced": "Avançar",
         "adv_change": "Mudar Endereço",
         "send": "Enviar Transação",
         "summary": "Resumo da Transação",
@@ -181,12 +181,12 @@
         "warning_2": "Você deve ter, pelo menos, {0} LUX na 'P chain' para se tornar um delegado.",
         "validate_card": {
             "title": "Validar",
-            "desc": "Você tem um nó Luxlanche com o qual você deseja apostar.",
+            "desc": "Você tem um nó Lux com o qual você deseja apostar.",
             "submit": "Adicionar Validador"
         },
         "delegate_card": {
             "title": "Delegar",
-            "desc": "Você não possui um nó Luxlanche, mas deseja apostar usando outro nó.",
+            "desc": "Você não possui um nó Lux, mas deseja apostar usando outro nó.",
             "submit": "Adicionar Delegado"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Pesquisar o ID do Nó",
                 "id": "ID do Nó",
                 "val_stake": "Aposta do Validador",
-                "luxl_stake": "Disponível",
-                "luxl_stake_tip": "Quanto de valor adicional pode ser delegado a este validador.",
+                "aval_stake": "Disponível",
+                "aval_stake_tip": "Quanto de valor adicional pode ser delegado a este validador.",
                 "users_tip": "Número de Delegados",
                 "end": "Hora de Término",
                 "up": "Tempo de Atividade",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Luxnçado",
+        "title": "Avançado",
         "import": {
             "title": "Importação de Cadeia",
             "desc": "Se você tem alguns fundos presos em uma transferência em cadeia que falhou, você pode terminar de importá-los aqui.",
@@ -388,7 +388,7 @@
         "loading": "Carregando histórico de transações.",
         "warn_loading": "Esta lista pode estar incompleta e fora de ordem.",
         "error_api": "Explorer API Não Encontrada",
-        "error_api_desc": "Você deve fornecer um LUX Explorer API para esta rede visualizar o histórico de transações."
+        "error_api_desc": "Você deve fornecer um AVA Explorer API para esta rede visualizar o histórico de transações."
     },
     "modal": {
         "qr": {

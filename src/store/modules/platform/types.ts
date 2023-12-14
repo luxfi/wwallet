@@ -1,10 +1,9 @@
 import {
     DelegatorPendingRaw,
-    DelegatorRaw,
     ValidatorPendingRaw,
     ValidatorRaw,
 } from '@/components/misc/ValidatorList/types'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 
 export interface PlatformState {
     validators: ValidatorRaw[]
@@ -26,11 +25,6 @@ export interface GetPendingValidatorsResponse {
 
 export interface ValidatorGroup {
     data: ValidatorRaw
-    // delegators: DelegatorRaw[]
-}
-
-export interface ValidatorDelegatorDict {
-    [key: string]: DelegatorRaw[]
 }
 
 export interface ValidatorDelegatorPendingDict {

@@ -1,11 +1,11 @@
 import Big from 'big.js'
 
-import { Buffer, BN } from 'luxdefi'
-import LuxAsset from '@/js/LuxAsset'
+import { Buffer, BN } from 'avalanche'
+import AvaAsset from '@/js/AvaAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { AllKeyFileTypes, AllKeyFileDecryptedTypes } from '@/js/IKeystore'
-import { UTXO } from 'luxdefi/dist/apis/avm'
+import { UTXO } from 'avalanche/dist/apis/avm'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { UTXO as TxUTXO } from './modules/history/types'
@@ -58,7 +58,7 @@ export interface IWalletBalanceItem {
 }
 
 export interface IWalletAssetsDict {
-    [assetId: string]: LuxAsset
+    [assetId: string]: AvaAsset
 }
 
 export interface IWalletNftMintDict {
@@ -89,7 +89,7 @@ export interface BatchTxOrder {
 }
 
 export interface IssueTxInput {
-    asset: LuxAsset
+    asset: AvaAsset
     assetId: string
     amount: BN
     toAddress: string

@@ -106,9 +106,14 @@ export default class ExportCsvModal extends Vue {
     generateCSVData() {
         let myAddresses = this.pAddressesStripped
 
+        // Sort tx by stake end time
+        const txsSorted = this.stakingTxs.sort((a, b) => {
+            return b.validatorEnd - a.validatorEnd
+        })
+
         let rows: CsvRowStakingData[] = []
-        for (var i = 0; i < this.stakingTxs.length; i++) {
-            let tx = this.stakingTxs[i]
+        for (var i = 0; i < txsSorted.length; i++) {
+            let tx = txsSorted[i]
 
             let type = tx.type
             let isRewarded = tx.rewarded
@@ -165,12 +170,13 @@ export default class ExportCsvModal extends Vue {
                     stakeDuration: durationMoment,
                     stakeAmount: bnToBig(stakeAmount, 9),
                     rewardDate: rewardMoment,
-                    rewardAmtLuxx: rewardAmtBig,
+                    rewardAmtLux: rewardAmtBig,
                     rewardAmtUsd: rewardAmtUsd,
                     luxPrice: luxPrice,
                     nodeID: nodeID,
                     isRewardOwner: isRewardOwner,
                     isInputOwner: isInputOwner,
+                    rewardDateUnix: tx.validatorEnd,
                 })
             } else {
                 // Skip if user did not want validation rewards
@@ -183,12 +189,13 @@ export default class ExportCsvModal extends Vue {
                     stakeDuration: durationMoment,
                     stakeAmount: bnToBig(stakeAmount, 9),
                     rewardDate: rewardMoment,
-                    rewardAmtLuxx: rewardAmtBig,
+                    rewardAmtLux: rewardAmtBig,
                     rewardAmtUsd: rewardAmtUsd,
                     luxPrice: luxPrice,
                     nodeID: nodeID,
                     isRewardOwner: isRewardOwner,
                     isInputOwner: isInputOwner,
+                    rewardDateUnix: tx.validatorEnd,
                 })
             }
         }
@@ -201,6 +208,7 @@ export default class ExportCsvModal extends Vue {
             'Stake Start Date',
             'Stake Duration',
             'Reward Date',
+            'Reward Timestamp (UNIX)',
             'LUX Price at Reward Date',
             'Reward Received (LUX)',
             'Reward Received (USD)',

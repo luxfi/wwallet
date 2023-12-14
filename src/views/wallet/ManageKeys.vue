@@ -8,7 +8,7 @@
                         <button
                             v-if="!account"
                             @click="openSaveAccount"
-                            class="save_account lux_button_secondary"
+                            class="save_account ava_button_secondary"
                         >
                             <fa icon="exclamation-triangle"></fa>
                             {{ $t('keys.button1') }}
@@ -16,12 +16,12 @@
                         <button
                             v-if="hasVolatile && account"
                             @click="openAccountSettings"
-                            class="save_account lux_button_secondary"
+                            class="save_account ava_button_secondary"
                         >
                             <fa icon="exclamation-triangle"></fa>
                             {{ $t('keys.button1') }}
                         </button>
-                        <button class="but_primary lux_button_secondary" @click="exportKeys">
+                        <button class="but_primary ava_button_secondary" @click="exportKeys">
                             <fa icon="upload"></fa>
                             {{ $t('keys.button3') }}
                         </button>

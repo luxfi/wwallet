@@ -8,7 +8,7 @@
                 type="submit"
                 :loading="isLoading"
                 :disabled="!canAdd"
-                class="addKeyBut button_primary lux_button"
+                class="addKeyBut button_primary ava_button"
                 depressed
                 block
             >
@@ -21,7 +21,7 @@
 import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
 // @ts-ignore
-import { QrInput } from '@luxdefi/vue_components'
+import { QrInput } from '@avalabs/vue_components'
 import Spinner from '@/components/misc/Spinner.vue'
 
 @Component({

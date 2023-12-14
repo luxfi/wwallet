@@ -5,15 +5,15 @@
     "address": "Adres",
     "add_pk": "Özel Anahtar Ekle",
     "home": {
-        "desc": "Luxlanche Cüzdan, dijital varlıklarınızı saklamaya yönelik basit, güvenli, gözetimsiz bir cüzdandır.",
+        "desc": "Lux Cüzdan, dijital varlıklarınızı saklamaya yönelik basit, güvenli, gözetimsiz bir cüzdandır.",
         "access": {
             "title": "Tekrar Hoşgeldiniz!",
             "desc": "Mevcut LUX cüzdanınızı buradan açabilirsiniz.",
             "submit": "Cüzdanı Aç"
         },
         "create": {
-            "title": "Luxlanche Cüzdan'da yeni misiniz?",
-            "desc": "Luxlanche varlıklarınızı göndermek, almak ve takas etmek için yeni bir cüzdan oluşturun.",
+            "title": "Lux Cüzdan'da yeni misiniz?",
+            "desc": "Lux varlıklarınızı göndermek, almak ve takas etmek için yeni bir cüzdan oluşturun.",
             "submit": "Yeni Cüzdan Oluşturun"
         }
     },
@@ -69,18 +69,18 @@
         }
     },
     "create": {
-        "generate": "Luxlanche Cüzdanınızı kurmak için yeni bir anahtar cümle oluşturun.",
+        "generate": "Lux Cüzdanınızı kurmak için yeni bir anahtar cümle oluşturun.",
         "but_have": "Halihazırda bir cüzdanınız var mı?",
         "submit": "Anımsatıcı Anahtar Cümle Oluştur",
         "cancel": "İptal",
         "mnemonic_title": "Bu sizin anahtar cümleniz.",
-        "mnemonic_desc": "Luxlanche Cüzdanınızı tekrar yaratmak için bu 24 kelimeyi sıralı şekilde kullanın",
+        "mnemonic_desc": "Lux Cüzdanınızı tekrar yaratmak için bu 24 kelimeyi sıralı şekilde kullanın",
         "attention": "Dikkat!",
-        "warning": "Bu anahtar cümleyi güvenli bir yerde saklayın. Bu anahtar cümleye sahip olan herkes Luxlanche Cüzdanınıza erişebilir. Kayıp anahtar cümleleri kurtarmanın hiçbir yolu yok.",
+        "warning": "Bu anahtar cümleyi güvenli bir yerde saklayın. Bu anahtar cümleye sahip olan herkes Lux Cüzdanınıza erişebilir. Kayıp anahtar cümleleri kurtarmanın hiçbir yolu yok.",
         "confirm": "Anahtar cümlemi güvenli bir yere yazdım.",
         "regenerate": "Tekrar Oluştur",
         "success_title": "Tebrikler!",
-        "success_desc": "Luxlanche Cüzdanınıza erişmenin tam zamanı.",
+        "success_desc": "Lux Cüzdanınıza erişmenin tam zamanı.",
         "success_submit": "Cüzdanı Aç",
         "verify": "Doğrula",
         "verifytitle": "Anımsatıcı Kelime Öbeğinizi Doğrulayın",
@@ -89,7 +89,7 @@
         "error_word": "Girmiş olduğunuz anımsatıcı kelimeler gerçek kelime öbeği ile eşleşmedi."
     },
     "top": {
-        "title1": "Türetilmiş Luxlanche Cüzdan Adresi",
+        "title1": "Türetilmiş Lux Cüzdan Adresi",
         "title2": "Bakiye",
         "title3": "Alt Ağ",
         "title4": "Ağ",
@@ -97,7 +97,7 @@
         "nftempty": "Hiç NFT sahibi değilsiniz.",
         "locked": "Kilitli",
         "info2": "Token satışından LUX aldım. Almış olduğum LUX'lar nerede?",
-        "info2_desc": "Bu cüzdan Luxlanche Everest test ağına bağlandı. Satın almış olduğunuz LUX'lar Luxlanche Ana Ağı hayata geçince cüzdanınızda görünebilir olacak.",
+        "info2_desc": "Bu cüzdan Lux Everest test ağına bağlandı. Satın almış olduğunuz LUX'lar Lux Ana Ağı hayata geçince cüzdanınızda görünebilir olacak.",
         "hover1": "Adresin QR Kodunu Görüntüle",
         "hover2": "Yazdır",
         "hover3": "Kopyala",
@@ -112,7 +112,7 @@
             "collectibles": "Koleksiyon"
         },
         "address": {
-            "derived": "Türetilmiş Luxlanche Cüzdan Adresi",
+            "derived": "Türetilmiş Lux Cüzdan Adresi",
             "desc": "Bu ödeme alacağınız adrestir. Adresiniz her para yatırma işleminden sonra değişecektir."
         }
     },
@@ -199,12 +199,12 @@
         "warning_2": "Devredici olabilmeniz için P zincirinde en az {0} LUX'ınızın olması gerekir.",
         "validate_card": {
             "title": "Doğrula",
-            "desc": "Stake yapmak istediğiniz bir Luxlanche düğümünüz var.",
+            "desc": "Stake yapmak istediğiniz bir Lux düğümünüz var.",
             "submit": "Doğrulayıcı Ekle"
         },
         "delegate_card": {
             "title": "Devret",
-            "desc": "Bir Luxlanche düğümüne sahip değilsiniz ancak bir başka düğüm kullanarak stake yapmak istiyorsunuz.",
+            "desc": "Bir Lux düğümüne sahip değilsiniz ancak bir başka düğüm kullanarak stake yapmak istiyorsunuz.",
             "submit": "Devredici Ekle"
         },
         "transfer_card": {
@@ -303,7 +303,7 @@
                 "date": "Başlangıç tarihi gelecekte olmalıdır ve bitiş tarihi de başlangıç tarihinden sonra olmalıdır.",
                 "amount": "Stake miktarı en az {0} LUX olmalıdır",
                 "id": "Geçersiz Düğüm Kimliği.",
-                "fee": "Delegasyon ücretiniz en az {0} Luxx olmalıdır",
+                "fee": "Delegasyon ücretiniz en az {0} Lux olmalıdır",
                 "address": "Geçersiz adres. Ödül adresi geçerli bir P zinciri adresi olmalıdır."
             }
         },
@@ -325,8 +325,8 @@
                 "search": "Arama Düğümü ID",
                 "id": "Düğüm ID",
                 "val_stake": "Doğrulayıcı Stake Miktari",
-                "luxl_stake": "Uygun",
-                "luxl_stake_tip": "Bu doğrulayıcıya devretmeye devam edilebilecek miktar.",
+                "aval_stake": "Uygun",
+                "aval_stake_tip": "Bu doğrulayıcıya devretmeye devam edilebilecek miktar.",
                 "users_tip": "Devredici Sayısı",
                 "end": "Bitiş Zamanı",
                 "up": "Çalışma zamanı",
@@ -422,7 +422,7 @@
         "loading": "İşlem geçmişi yükleniyor..",
         "warn_loading": "Bu liste eksik ve bozuk olabilir.",
         "error_api": "Explorer API Bulunamadı",
-        "error_api_desc": "Bu ağın işlem geçmişini görüntülemek için bir LUX Explorer API sağlamalısınız."
+        "error_api_desc": "Bu ağın işlem geçmişini görüntülemek için bir AVA Explorer API sağlamalısınız."
     },
     "modal": {
         "qr": {

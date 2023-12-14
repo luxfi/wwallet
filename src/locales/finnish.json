@@ -5,15 +5,15 @@
     "address": "Osoite",
     "add_pk": "Lisää Private Key",
     "home": {
-        "desc": "Luxlanche-lompakko on yksinkertainen, turvallinen ja vastuuvapaa lompakko Luxlanche-varojen säilyttämiseen.",
+        "desc": "Lux-lompakko on yksinkertainen, turvallinen ja vastuuvapaa lompakko Lux-varojen säilyttämiseen.",
         "access": {
             "title": "Tervetuloa Takaisin!",
-            "desc": "'Tarkastele' nykyistä Luxlanche-lompakkoasi täällä.",
+            "desc": "'Tarkastele' nykyistä Lux-lompakkoasi täällä.",
             "submit": "Tarkastele Lompakkoa"
         },
         "create": {
-            "title": "Uusi Luxlanche Lompakossa?",
-            "desc": "'Luo' uusi lompakko lähettääksesi, vastaanottaaksesi ja vaihtaaksesi Luxlanche-varojasi.",
+            "title": "Uusi Lux Lompakossa?",
+            "desc": "'Luo' uusi lompakko lähettääksesi, vastaanottaaksesi ja vaihtaaksesi Lux-varojasi.",
             "submit": "Luo Uusi Lompakko"
         }
     },
@@ -30,18 +30,18 @@
     "access": {
         "title": "Kuinka haluat päästä käsiksi lompakkoosi?",
         "create": "Eikö sinulla ole lompakkoa?",
-        "but_mnemonic": "Muistin Luxinlause",
-        "but_keystore": "Luxinvarastotiedosto",
+        "but_mnemonic": "Muistin Avainlause",
+        "but_keystore": "Avainvarastotiedosto",
         "cancel": "Peruuta",
         "json_error": "JSON-tiedoston jäsentäminen epäonnistui.",
-        "keystore_error": "Tätä luxinvarastoversiota ei tueta.",
+        "keystore_error": "Tätä avainvarastoversiota ei tueta.",
         "password_error": "Väärä Salasana.",
         "mnemonic": {
             "title": "Anna MUISTILAUSE",
             "subtitle": "Paina 'VÄLILYÖNTI' jokaisen oikean sanan jälkeen.",
             "submit": "Tarkastele Lompakkoa",
             "cancel": "Peruuta",
-            "error": "Väärä luxinlauseke. Lausekkeen tulee olla 24 sanaa pitkä ja erotettu yhdellä välilyönnillä."
+            "error": "Väärä avainlauseke. Lausekkeen tulee olla 24 sanaa pitkä ja erotettu yhdellä välilyönnillä."
         }
     },
     "wallet": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Luo uusi luxinlauseke Luxlanche-lompakon määrittämiseksi.",
+        "generate": "Luo uusi avainlauseke Lux-lompakon määrittämiseksi.",
         "but_have": "Onko sinulla jo lompakko?",
-        "submit": "Luo Luxinlauseke",
+        "submit": "Luo Avainlauseke",
         "cancel": "Peruuta",
-        "mnemonic_title": "Tämä on luxinlauseesi.",
-        "mnemonic_desc": "Käytä näitä 24 sanaa peräkkäin palauttaaksesi Luxlanche-lompakon",
+        "mnemonic_title": "Tämä on avainlauseesi.",
+        "mnemonic_desc": "Käytä näitä 24 sanaa peräkkäin palauttaaksesi Lux-lompakon",
         "attention": "Huomio!",
-        "warning": "Säilytä tämä luxinlause turvallisessa paikassa. Kuka tahansa salasanan tietävä henkilö voi käyttää Luxlanche-lompakkoasi. Kadonneita luxinlauseita ei ole mahdollista palauttaa.",
-        "confirm": "Kirjoitin luxinsanani turvalliseen paikkaan.",
+        "warning": "Säilytä tämä avainlause turvallisessa paikassa. Kuka tahansa salasanan tietävä henkilö voi käyttää Lux-lompakkoasi. Kadonneita avainlauseita ei ole mahdollista palauttaa.",
+        "confirm": "Kirjoitin avainsanani turvalliseen paikkaan.",
         "regenerate": "Elvytä",
         "success_title": "Onneksi Olkoon!",
-        "success_desc": "On aika käyttää Luxlanche-lompakkoasi.",
+        "success_desc": "On aika käyttää Lux-lompakkoasi.",
         "success_submit": "Tarkastele Lompakkoa",
         "verify": "Vahvista",
         "verifytitle": "Vahvista Muistilauseke",
@@ -78,15 +78,15 @@
         "error_word": "Sanalle kirjoittamasi muistilauseke ei vastaa todellista ilmausta."
     },
     "top": {
-        "title1": "Johdettu Luxlanche-lompakon osoite",
+        "title1": "Johdettu Lux-lompakon osoite",
         "title2": "Saldo",
         "title3": "Aliverkko",
         "title4": "Verkko",
         "nftcol": "NFT:t",
-        "nftempty": "Et ole kerännyt yhtään ei-korvattluxa rahaketta.",
+        "nftempty": "Et ole kerännyt yhtään ei-korvattavaa rahaketta.",
         "locked": "Lukittu",
         "info2": "Ostin kolikoita Token Sale -sivustolta. Missä LUXINI on?",
-        "info2_desc": "Tämä lompakko on kytketty Luxlanche Everest -testiverkkoon. Ostoksesi näkyvät lompakossa Luxlanche Mainnetin käynnistämisen jälkeen.",
+        "info2_desc": "Tämä lompakko on kytketty Lux Everest -testiverkkoon. Ostoksesi näkyvät lompakossa Lux Mainnetin käynnistämisen jälkeen.",
         "hover1": "Näytä Osoitteen QR-koodi",
         "hover2": "Tulosta",
         "hover3": "Kopioi",
@@ -96,18 +96,18 @@
             "hide": "Piilota Erittely",
             "available": "Saatavilla",
             "locked": "Lukittu",
-            "locked_stake": "Lukittu Panostettlux",
+            "locked_stake": "Lukittu Panostettava",
             "stake": "Panostaminen",
             "collectibles": "Keräilyesineet"
         },
         "address": {
-            "derived": "Johdettu Luxlanche-lompakon osoite",
+            "derived": "Johdettu Lux-lompakon osoite",
             "desc": "Tämä on osoitteesi varojen vastaanottamiseksi. Osoitteesi muuttuu jokaisen talletuksen jälkeen."
         }
     },
     "transfer": {
         "title": "Lähetä",
-        "no_cash": "Sinulla on oltlux varoja maksun suorittamiseksi.",
+        "no_cash": "Sinulla on oltava varoja maksun suorittamiseksi.",
         "faucet": "Oletko tarkistanut hanaasi?",
         "to": "Osoitteeseen",
         "fees": "Maksut",
@@ -123,38 +123,38 @@
         "error_msg": "Maksun lähettäminen epäonnistui."
     },
     "keys": {
-        "title": "Luximeni",
-        "button1": "Muista Luximet",
-        "button2": "TUO LUXIMET",
-        "button3": "VIE LUXIMET",
-        "subtitle": "Aktiivinen Luxin",
+        "title": "Avaimeni",
+        "button1": "Muista Avaimet",
+        "button2": "TUO AVAIMET",
+        "button3": "VIE AVAIMET",
+        "subtitle": "Aktiivinen Avain",
         "remember_key_button": "MUISTA",
         "remember_key_desc": "Turvaa lompakko salasanalla ja säilytä turvallisesti tässä selaimessa.",
-        "remember_key_check": "Muista Luximet",
+        "remember_key_check": "Muista Avaimet",
         "remember_key_info": "Voit myöhemmin käyttää lompakkoasi salasanan avulla tässä selaimessa.",
         "export_key_button": "VIE LOMPAKKO",
-        "export_key_title": "Vie Luximet",
-        "export_key_desc": "Anna salasana salataksesi yksityiset luximesi tiedostoon. Voit käyttää tätä tiedostoa ja salasanaasi myöhemmin lompakkosi tarkastelemiseksi.",
-        "export_key_info": "{0} luxinta valittu.",
+        "export_key_title": "Vie Avaimet",
+        "export_key_desc": "Anna salasana salataksesi yksityiset avaimesi tiedostoon. Voit käyttää tätä tiedostoa ja salasanaasi myöhemmin lompakkosi tarkastelemiseksi.",
+        "export_key_info": "{0} avainta valittu.",
         "export_placeholder1": "Salasana",
         "export_placeholder2": "Vahvista Salasana",
-        "empty": "Tällä luximella ei ole saldoa.",
-        "import_key_button": "TUO LUXIN",
-        "import_key_title": "Tuo Luximet",
-        "import_key_desc": "Lisää lisäluximia, joita voit käyttää lompakon kanssa.",
+        "empty": "Tällä avaimella ei ole saldoa.",
+        "import_key_button": "TUO AVAIN",
+        "import_key_title": "Tuo Avaimet",
+        "import_key_desc": "Lisää lisäavaimia, joita voit käyttää lompakon kanssa.",
         "import_key_option1": "MUISTILAUSEKE",
-        "import_key_option2": "LUXINVARASTOTIEDOSTO",
-        "import_key_success_title": "Luxin Lisätty",
-        "import_key_success_msg": "Lompakkoon on lisätty yksityinen luxin ja varat.",
-        "tooltip": "Luxin unohdetaan automaattisesti, kun uudelleenlataat sivun.",
-        "view_key": "Tarkastele Luxinlauseketta",
-        "export_key": "Vie Luxin",
+        "import_key_option2": "AVAINVARASTOTIEDOSTO",
+        "import_key_success_title": "Avain Lisätty",
+        "import_key_success_msg": "Lompakkoon on lisätty yksityinen avain ja varat.",
+        "tooltip": "Avain unohdetaan automaattisesti, kun uudelleenlataat sivun.",
+        "view_key": "Tarkastele Avainlauseketta",
+        "export_key": "Vie Avain",
         "hd_addresses": "HD Osoitteet",
-        "remove_key": "Poista Luxin",
-        "activate_key": "Aktivoi Luxin",
-        "remove_success_title": "Luxin Poistettu",
-        "remove_success_msg": "Yksityinen luxin ja varat on poistettu lompakostasi.",
-        "password_validation": "Salasanan on oltlux ainakin 9 merkkiä pitkä.",
+        "remove_key": "Poista Avain",
+        "activate_key": "Aktivoi Avain",
+        "remove_success_title": "Avain Poistettu",
+        "remove_success_msg": "Yksityinen avain ja varat on poistettu lompakostasi.",
+        "password_validation": "Salasanan on oltava ainakin 9 merkkiä pitkä.",
         "password_validation2": "Salasanat eivät täsmää."
     },
     "portfolio": {
@@ -177,16 +177,16 @@
         "subtitle2": "Delegoi",
         "subtitle3": "Cross Chain-Siirto",
         "subtitle4": "Arvioidut Palkkiot",
-        "warning_1": "Sinulla on oltlux vähintään {0} LUXIA P-ketjussa, jotta voit tulla vahvistajaksi.",
-        "warning_2": "Sinulla on oltlux vähintään {0} LUXIA P-ketjussa, jotta voit tulla delegoijaksi.",
+        "warning_1": "Sinulla on oltava vähintään {0} LUXIA P-ketjussa, jotta voit tulla vahvistajaksi.",
+        "warning_2": "Sinulla on oltava vähintään {0} LUXIA P-ketjussa, jotta voit tulla delegoijaksi.",
         "validate_card": {
             "title": "Vahvista",
-            "desc": "Sinulla on Luxlanche-node, johon haluat panostaa.",
+            "desc": "Sinulla on Lux-node, johon haluat panostaa.",
             "submit": "Lisää Vahvistaja"
         },
         "delegate_card": {
             "title": "Delegoi",
-            "desc": "Et omista Luxlanche-noodia, mutta haluat asettaa panoksen toisella noodilla.",
+            "desc": "Et omista Lux-noodia, mutta haluat asettaa panoksen toisella noodilla.",
             "submit": "Lisää Delegoija"
         },
         "transfer_card": {
@@ -242,7 +242,7 @@
             },
             "amount": {
                 "label": "Panossumma",
-                "desc": "Lukittluxn LUXIN määrä panostamista varten."
+                "desc": "Lukittavan LUXIN määrä panostamista varten."
             },
             "fee": {
                 "label": "Delegointimaksu",
@@ -280,20 +280,20 @@
                 "status": "Tila"
             },
             "errs": {
-                "date": "Aloituspäivän on oltlux tulevaisuudessa ja lopetuspäivän on oltlux alkamispäivän jälkeen.",
-                "amount": "Panoksen määrän on oltlux vähintään {0} LUXIA",
+                "date": "Aloituspäivän on oltava tulevaisuudessa ja lopetuspäivän on oltava alkamispäivän jälkeen.",
+                "amount": "Panoksen määrän on oltava vähintään {0} LUXIA",
                 "id": "Väär Node ID. Tämän tulee alkaa \"NodeID-\"",
                 "address": "Väärä palkkio-osoite."
             }
         },
         "delegate": {
             "list": {
-                "prompt": "Valitse delegoitlux noodi",
+                "prompt": "Valitse delegoitava noodi",
                 "search": "Etsi Node ID",
                 "id": "Node ID",
                 "val_stake": "Vahvistajapanos",
-                "luxl_stake": "Saatavilla",
-                "luxl_stake_tip": "Kuinka paljon enemmän tälle vahvistajalle voidaan delegoida.",
+                "aval_stake": "Saatavilla",
+                "aval_stake_tip": "Kuinka paljon enemmän tälle vahvistajalle voidaan delegoida.",
                 "users_tip": "Delegoijien Lukumäärä",
                 "end": "Päättymisaika",
                 "up": "Käyttöaste",
@@ -319,7 +319,7 @@
                 },
                 "amount": {
                     "label": "Panossumma",
-                    "desc": "Lukittluxn LUXIN määrä panostamista varten.",
+                    "desc": "Lukittavan LUXIN määrä panostamista varten.",
                     "desc2": "Tämän noodin käytettävissä oleva delegointimäärä on {0} LUXIA"
                 },
                 "reward": {
@@ -337,15 +337,15 @@
                 "reward": "Palkkion Osoite"
             },
             "errs": {
-                "start_now": "Aloitusajan on oltlux nykyisen ajan jälkeen.",
-                "start_end": "Aloituspäivän on oltlux tulevaisuudessa ja lopetuspäivän on oltlux alkamispäivän jälkeen.",
-                "invalid_addr": "Virheellinen osoitemuoto. Osoitteesi on aloitettlux kirjaimella \"P-\"",
-                "no_addr": "Sinun on annettlux osoite saadaksesi delegointipalkintoja.",
+                "start_now": "Aloitusajan on oltava nykyisen ajan jälkeen.",
+                "start_end": "Aloituspäivän on oltava tulevaisuudessa ja lopetuspäivän on oltava alkamispäivän jälkeen.",
+                "invalid_addr": "Virheellinen osoitemuoto. Osoitteesi on aloitettava kirjaimella \"P-\"",
+                "no_addr": "Sinun on annettava osoite saadaksesi delegointipalkintoja.",
                 "min_dur": "Pienin panostuksen kesto on 2 viikkoa.",
                 "max_dur": "Suurin panostuksen kesto on 1 vuosi.",
                 "no_node": "Sinun on määritettävä vahvistaja.",
                 "val_end": "Delegaation lopetuspäivä ei voi olla pidempi kuin vahvistajan lopetuspäivä.",
-                "amt": "Valtuutuksen määrän on oltlux vähintään {0} LUXIA."
+                "amt": "Valtuutuksen määrän on oltava vähintään {0} LUXIA."
             },
             "summary": {
                 "duration": "Panoksen Kesto",
@@ -377,10 +377,10 @@
         "button_conf": "KIRJAUDU ULOS",
         "button_cancel": "Peruuta",
         "confirmation": "Haluatko varmasti kirjautua ulos?",
-        "confirmation_message": "Tämä lompakko ja sen luximet unohdetaan."
+        "confirmation_message": "Tämä lompakko ja sen avaimet unohdetaan."
     },
     "keystore": {
-        "title": "Luxinvarastotiedosto",
+        "title": "Avainvarastotiedosto",
         "button": "Valitse Tiedosto"
     },
     "transactions": {
@@ -388,7 +388,7 @@
         "loading": "Ladataan tapahtumahistoria ..",
         "warn_loading": "Tämä luettelo saattaa olla epätäydellinen ja epäkunnossa.",
         "error_api": "Explorer-sovellusliittymää ei löydy",
-        "error_api_desc": "Sinun on annettlux tälle verkolle LUX Explorer -sovellusliittymä, jotta voit tarkastella tapahtumahistoriaa."
+        "error_api_desc": "Sinun on annettava tälle verkolle AVA Explorer -sovellusliittymä, jotta voit tarkastella tapahtumahistoriaa."
     },
     "modal": {
         "qr": {
@@ -401,7 +401,7 @@
         },
         "keystore": {
             "title": "Päivitä Keystore-tiedosto",
-            "desc": "Olemme päivittäneet luximetalletiedoston tekniset tiedot. Lataa uusi luximetalletiedosto ja käytä lompakkoa uudelleen.",
+            "desc": "Olemme päivittäneet avaimetalletiedoston tekniset tiedot. Lataa uusi avaimetalletiedosto ja käytä lompakkoa uudelleen.",
             "logout": "Kirjaudu Ulos & Tarkastele Uudelleen"
         },
         "mainnet": {
@@ -409,7 +409,7 @@
             "desc": "Mainnet-osoitteesi on:"
         },
         "mnemonic": {
-            "title": "Luxinlauseke"
+            "title": "Avainlauseke"
         },
         "activateWallet": {
             "title": "Aktivoi Lompakko",

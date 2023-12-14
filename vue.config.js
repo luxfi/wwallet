@@ -1,6 +1,7 @@
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 
 module.exports = {
+    productionSourceMap: false,
     transpileDependencies: ['vuetify'],
     devServer: {
         /**
@@ -10,7 +11,6 @@ module.exports = {
         https: !process.env.USE_HTTP,
         port: 5000,
     },
-    // publicPath: '',
     configureWebpack: {
         optimization: {
             splitChunks: {
@@ -18,6 +18,9 @@ module.exports = {
                 minSize: 600 * 1000,
                 maxSize: 2000 * 1000,
             },
+        },
+        resolve: {
+            symlinks: false,
         },
     },
     pwa: {

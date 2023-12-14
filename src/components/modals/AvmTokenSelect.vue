@@ -26,7 +26,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import { bnToBig } from '@/helpers/helper'
 
 @Component({
@@ -34,13 +34,13 @@ import { bnToBig } from '@/helpers/helper'
         Modal,
     },
     filters: {
-        bal(asset: LuxAsset) {
+        bal(asset: AvaAsset) {
             return bnToBig(asset.amount, asset.denomination).toLocaleString()
         },
     },
 })
 export default class PrivateKey extends Vue {
-    @Prop() assets!: LuxAsset[]
+    @Prop() assets!: AvaAsset[]
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
 
     open(): void {
@@ -53,7 +53,7 @@ export default class PrivateKey extends Vue {
         modal.close()
     }
 
-    select(asset: LuxAsset) {
+    select(asset: AvaAsset) {
         if (asset.amount.isZero()) return
         if (this.isDisabled(asset)) return
 
@@ -61,7 +61,7 @@ export default class PrivateKey extends Vue {
         this.$emit('select', asset)
     }
 
-    isDisabled(asset: LuxAsset): boolean {
+    isDisabled(asset: AvaAsset): boolean {
         if (this.disabledIds.includes(asset.id)) return true
         return false
     }

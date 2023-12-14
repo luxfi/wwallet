@@ -45,14 +45,14 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { PayloadTypes, PayloadBase } from 'luxdefi/dist/utils'
+import { PayloadTypes, PayloadBase } from 'avalanche/dist/utils'
 
 const payloadtypes = PayloadTypes.getInstance()
 
 import Tooltip from '@/components/misc/Tooltip.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import NFTViewModal from '@/components/modals/NFTViewModal.vue'
-import { UTXO } from 'luxdefi/dist/apis/avm'
+import { UTXO } from 'avalanche/dist/apis/avm'
 @Component({
     components: { NFTViewModal, NftPayloadView, Tooltip },
 })
@@ -99,7 +99,7 @@ export default class NftCard extends Vue {
     get nftTitle() {
         try {
             let json = JSON.parse(this.payloadContent)
-            return json.luxdefi.title
+            return json.avalanche.title
         } catch (err) {
             return ''
         }
@@ -108,7 +108,7 @@ export default class NftCard extends Vue {
     get nftDesc() {
         try {
             let json = JSON.parse(this.payloadContent)
-            return json.luxdefi.desc
+            return json.avalanche.desc
         } catch (err) {
             return ''
         }

@@ -9,13 +9,13 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { pChain } from 'luxdefi'
+import { pChain } from '@/AVA'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
 
 import SelectMintUTXO from '@/components/wallet/studio/mint/SelectMintUtxo/SelectMintUTXO.vue'
 import MintForm from '@/components/wallet/studio/mint/MintForm.vue'
-import { UTXO } from 'luxdefi/dist/apis/avm'
+import { UTXO } from 'avalanche/dist/apis/avm'
 @Component({
     components: {
         SelectMintUTXO,

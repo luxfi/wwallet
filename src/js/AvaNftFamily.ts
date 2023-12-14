@@ -1,4 +1,4 @@
-class LuxNftFamily {
+class AvaNftFamily {
     id: string
     name: string
     symbol: string
@@ -10,4 +10,4 @@ class LuxNftFamily {
     }
 }
 
-export { LuxNftFamily }
+export { AvaNftFamily }

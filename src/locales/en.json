@@ -4,6 +4,12 @@
     "private_key": "Private Key",
     "address": "Address",
     "add_pk": "Add Private Key",
+    "analytics": {
+        "accept": "Accept",
+        "reject": "Reject",
+        "privacy_policy": "Privacy Policy",
+        "cookie_desc": "We use cookies to develop improvements and enhance your experience. To find out more, read our"
+    },
     "home": {
         "desc": "Lux Wallet is a simple, secure, non-custodial wallet for storing Lux assets.",
         "access": {
@@ -106,7 +112,7 @@
         "nftempty": "You have not collected any non fungible tokens.",
         "locked": "Locked",
         "info2": "I bought coins in the Token Sale. Where are my LUX?",
-        "info2_desc": "This wallet is connected to the Lux test network. Your purchase will appear in the wallet after the Lux Mainnet launch.",
+        "info2_desc": "This wallet is connected to the Lux Everest test network. Your purchase will appear in the wallet after the Lux Mainnet launch.",
         "hover1": "View Address QR Code",
         "hover2": "Paper Wallet",
         "hover3": "Copy",
@@ -114,7 +120,7 @@
         "balance": {
             "show": "Show Breakdown",
             "hide": "Hide Breakdown",
-            "available": "Luxilable",
+            "available": "Available",
             "locked": "Locked",
             "locked_stake": "Locked Stakeable",
             "stake": "Staking",
@@ -363,12 +369,12 @@
         "warning_2": "You must have at least {0} LUX on the P chain to become a delegator.",
         "validate_card": {
             "title": "Validate",
-            "desc": "You have an Lux Validator that you want to stake with.",
+            "desc": "You have an Lux node that you want to stake with.",
             "submit": "Add Validator"
         },
         "delegate_card": {
             "title": "Delegate",
-            "desc": "You do not own an Lux Validator, but you want to stake using another node.",
+            "desc": "You do not own an Lux node, but you want to stake using another node.",
             "submit": "Add Delegator"
         },
         "transfer_card": {
@@ -418,7 +424,7 @@
         },
         "shared": {
             "utxo_select": {
-                "available": "Luxilable Balance (P)",
+                "available": "Available Balance (P)",
                 "all": "All",
                 "custom": "Custom",
                 "select": "Select UTXOs",
@@ -492,7 +498,7 @@
             "filter": {
                 "title": "Filter",
                 "title2": "Filter Settings",
-                "label1": "Minimum Luxilable Delegation",
+                "label1": "Minimum Available Delegation",
                 "label2": "Minimum Time Remaining",
                 "label3": "Maximum Fee",
                 "label4": "Minimum Uptime",
@@ -506,8 +512,8 @@
                 "search": "Search Node ID",
                 "id": "Node ID",
                 "val_stake": "Validator Stake",
-                "luxl_stake": "Luxilable",
-                "luxl_stake_tip": "How much more can be delegated to this validator.",
+                "aval_stake": "Available",
+                "aval_stake_tip": "How much more can be delegated to this validator.",
                 "users_tip": "Number of Delegators",
                 "end": "End Time",
                 "up": "Uptime",
@@ -699,7 +705,7 @@
             "desc": "Select the source of your funds to use in this transaction.",
             "col1": "Unlock Date",
             "col2": "Amount",
-            "available": "Luxilable Balance",
+            "available": "Available Balance",
             "submit": "Select"
         },
         "ledger": {

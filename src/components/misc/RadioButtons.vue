@@ -6,6 +6,7 @@
             @click="select(key)"
             :active="selection === key"
             class="hover_border"
+            :disabled="disabled"
         >
             {{ labels[i] }}
         </button>
@@ -18,6 +19,7 @@ import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 export default class RadioButtons extends Vue {
     @Prop() labels!: string[]
     @Prop() keys!: string[]
+    @Prop({ default: false }) disabled!: boolean
 
     @Model('change', { type: String }) readonly selection!: string
 
@@ -55,6 +57,10 @@ button {
         color: var(--bg-wallet);
         //border-color: #285599;
         background-color: var(--primary-color);
+    }
+
+    &[disabled] {
+        opacity: 0.4;
     }
 }
 

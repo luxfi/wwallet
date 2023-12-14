@@ -7,7 +7,7 @@
                     @change="onFormChange"
                     :is-confirm="isConfirm"
                     :balance="balanceBig"
-                    :max-amt="maxAmt"
+                    :max-amt="formMaxAmt"
                 ></ChainSwapForm>
 
                 <div v-if="!isSuccess && !isLoading">
@@ -119,10 +119,10 @@
 import 'reflect-metadata'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Dropdown from '@/components/misc/Dropdown.vue'
-import LuxxInput from '@/components/misc/LuxxInput.vue'
-import LuxAsset from '@/js/LuxAsset'
-import { BN } from 'luxdefi'
-import { avm, cChain, pChain } from 'luxdefi'
+import LuxInput from '@/components/misc/LuxInput.vue'
+import AvaAsset from '@/js/AvaAsset'
+import { BN } from 'avalanche'
+import { avm, cChain, pChain } from '@/AVA'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Spinner from '@/components/misc/Spinner.vue'
 import ChainCard from '@/components/wallet/earn/ChainTransfer/ChainCard.vue'
@@ -138,9 +138,17 @@ import {
     ExportChainsP,
     ExportChainsX,
     GasHelper,
-    Utils,
     Big,
-} from '@luxdefi/luxdefi-wallet-sdk'
+    bnToBig,
+    bnToLuxX,
+    bnToBigLuxX,
+    bnToBigLuxC,
+    bigToBN,
+    luxCtoX,
+    bnToLuxP,
+} from '@avalabs/avalanche-wallet-sdk'
+import { sortUTxoSetP } from '@/helpers/sortUTXOs'
+import { selectMaxUtxoForExportP } from '@/helpers/utxoSelection/selectMaxUtxoForExportP'
 
 const IMPORT_DELAY = 5000 // in ms
 const BALANCE_DELAY = 2000 // in ms
@@ -150,7 +158,7 @@ const BALANCE_DELAY = 2000 // in ms
     components: {
         Spinner,
         Dropdown,
-        LuxxInput,
+        LuxInput,
         ChainCard,
         ChainSwapForm,
         TxStateCard,
@@ -185,6 +193,8 @@ export default class ChainTransfer extends Vue {
     importStatus: string | null = null
     importReason: string | null = null
 
+    txMaxAmount: BN | undefined = undefined
+
     @Watch('sourceChain')
     @Watch('targetChain')
     onChainChange() {
@@ -197,9 +207,9 @@ export default class ChainTransfer extends Vue {
         this.updateBaseFee()
     }
 
-    get lux_asset(): LuxAsset | null {
-        let lux = this.$store.getters['Assets/AssetLUX']
-        return lux
+    get ava_asset(): AvaAsset | null {
+        let ava = this.$store.getters['Assets/AssetAVA']
+        return ava
     }
 
     get platformBalance() {
@@ -211,13 +221,13 @@ export default class ChainTransfer extends Vue {
     }
 
     get avmUnlocked(): BN {
-        if (!this.lux_asset) return new BN(0)
-        return this.lux_asset.amount
+        if (!this.ava_asset) return new BN(0)
+        return this.ava_asset.amount
     }
 
     get evmUnlocked(): BN {
         let balRaw = this.wallet.ethBalance
-        return Utils.luxCtoX(balRaw)
+        return luxCtoX(balRaw)
     }
 
     get balanceBN(): BN {
@@ -231,11 +241,11 @@ export default class ChainTransfer extends Vue {
     }
 
     get balanceBig(): Big {
-        return Utils.bnToBig(this.balanceBN, 9)
+        return bnToBig(this.balanceBN, 9)
     }
 
     get formAmtText() {
-        return Utils.bnToLuxxX(this.formAmt)
+        return bnToLuxX(this.formAmt)
     }
 
     get fee(): Big {
@@ -248,9 +258,9 @@ export default class ChainTransfer extends Vue {
 
     getFee(chain: ChainIdType, isExport: boolean): Big {
         if (chain === 'X') {
-            return Utils.bnToBigLuxxX(avm.getTxFee())
+            return bnToBigLuxX(avm.getTxFee())
         } else if (chain === 'P') {
-            return Utils.bnToBigLuxxX(pChain.getTxFee())
+            return bnToBigLuxX(pChain.getTxFee())
         } else {
             const fee = isExport
                 ? GasHelper.estimateExportGasFeeFromMockTx(
@@ -262,7 +272,7 @@ export default class ChainTransfer extends Vue {
                 : GasHelper.estimateImportGasFeeFromMockTx(1, 1)
 
             const totFeeWei = this.baseFee.mul(new BN(fee))
-            return Utils.bnToBigLuxxC(totFeeWei)
+            return bnToBigLuxC(totFeeWei)
         }
     }
 
@@ -274,7 +284,7 @@ export default class ChainTransfer extends Vue {
      * Returns the import fee in nLUX
      */
     get importFeeBN(): BN {
-        return Utils.bigToBN(this.importFee, 9)
+        return bigToBN(this.importFee, 9)
     }
 
     get exportFee(): Big {
@@ -282,11 +292,11 @@ export default class ChainTransfer extends Vue {
     }
 
     get exportFeeBN(): BN {
-        return Utils.bigToBN(this.exportFee, 9)
+        return bigToBN(this.exportFee, 9)
     }
 
     /**
-     * The maximum amount that can be transferred in nLUX
+     * User's spendable balance minus total fees
      */
     get maxAmt(): BN {
         let max = this.balanceBN.sub(this.feeBN)
@@ -296,6 +306,41 @@ export default class ChainTransfer extends Vue {
         } else {
             return max
         }
+    }
+
+    /**
+     * Maximum amount that fits into a valid transaction (excluding export fee)
+     */
+    get formMaxAmt() {
+        const amt = this.txMaxAmount ? BN.min(this.maxAmt, this.txMaxAmount) : this.maxAmt
+        return BN.max(amt, new BN(0))
+    }
+
+    @Watch('sourceChain')
+    @Watch('targetChain')
+    @Watch('balanceBN')
+    @Watch('feeBN')
+    @Watch('wallet')
+    updateMaxTxSize() {
+        if (this.sourceChain !== 'P' || this.targetChain === 'P') {
+            this.txMaxAmount = undefined
+            return
+        }
+
+        const utxoSet = this.wallet.getPlatformUTXOSet()
+        const sortedSet = sortUTxoSetP(utxoSet, false)
+
+        const pChangeAddr = this.wallet.getCurrentAddressPlatform()
+        const fromAddrs = this.wallet.getAllAddressesP()
+
+        const destinationAddr =
+            this.targetChain === 'C'
+                ? this.wallet.getEvmAddressBech()
+                : this.wallet.getCurrentAddressAvm()
+
+        const res = selectMaxUtxoForExportP(sortedSet.getAllUTXOs())
+        // The maximum form amount is = max possible export amount - export and import fees
+        this.txMaxAmount = res.amount.sub(this.feeBN)
     }
 
     onFormChange(data: ChainSwapFormData) {
@@ -315,7 +360,7 @@ export default class ChainTransfer extends Vue {
     }
 
     get wallet() {
-        let wallet: MnemonicWallet = this.$store.state.activeWallet
+        let wallet: WalletType = this.$store.state.activeWallet
         return wallet
     }
 
@@ -558,7 +603,7 @@ export default class ChainTransfer extends Vue {
             return false
         }
 
-        if (this.amt.gt(this.maxAmt)) {
+        if (this.amt.gt(this.formMaxAmt)) {
             return false
         }
 

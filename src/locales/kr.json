@@ -8,7 +8,7 @@
         "desc": "아발란체 월렛은 아발란체 자산을 관리할 수 있는 간단하고 안전한 비수탁형 월렛입니다.",
         "access": {
             "title": "재방문을 환영합니다!",
-            "desc": "이곳에서 기존 Luxlanche 월렛에 액세스하세요.",
+            "desc": "이곳에서 기존 Lux 월렛에 액세스하세요.",
             "submit": "월렛에 액세스하기"
         },
         "create": {
@@ -78,7 +78,7 @@
         "error_word": "입력하신 니모닉 문구의 단어가 실제 문구와 일치하지 않습니다."
     },
     "top": {
-        "title1": "파생된 Luxlanche 월렛 주소",
+        "title1": "파생된 Lux 월렛 주소",
         "title2": "잔액",
         "title3": "서브넷",
         "title4": "네트워크",
@@ -101,7 +101,7 @@
             "collectibles": "콜렉터블"
         },
         "address": {
-            "derived": "파생된 Luxlanche 월렛 주소",
+            "derived": "파생된 Lux 월렛 주소",
             "desc": "자금을 받을 주소입니다. 주소는 예치 후에 매번 변경됩니다."
         }
     },
@@ -292,8 +292,8 @@
                 "search": "노드 ID 검색",
                 "id": "노드 ID",
                 "val_stake": "검증인 스테이킹",
-                "luxl_stake": "사용 가능",
-                "luxl_stake_tip": "해당 검증인에게 더 위임할 수 있는 액수 ",
+                "aval_stake": "사용 가능",
+                "aval_stake_tip": "해당 검증인에게 더 위임할 수 있는 액수 ",
                 "users_tip": "위임자 수",
                 "end": "종료 시간",
                 "up": "업타임",

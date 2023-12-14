@@ -10,11 +10,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
-import { PayloadBase } from 'luxdefi/dist/utils'
-import { Buffer } from 'luxdefi'
-import { PayloadTypes } from 'luxdefi/dist/utils'
+import { PayloadBase } from 'avalanche/dist/utils'
+import { Buffer } from 'avalanche'
+import { PayloadTypes } from 'avalanche/dist/utils'
 import Tooltip from '@/components/misc/Tooltip.vue'
 import NFTViewModal from '@/components/modals/NFTViewModal.vue'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'

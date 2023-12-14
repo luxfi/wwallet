@@ -131,9 +131,9 @@ import JsonForm from '@/components/wallet/studio/mint/forms/JsonForm.vue'
 import GenericForm from '@/components/wallet/studio/mint/forms/GenericForm.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 
-import { NFTMintOutput, NFTTransferOutput, UTXO } from 'luxdefi/dist/apis/avm'
+import { NFTMintOutput, NFTTransferOutput, UTXO } from 'avalanche/dist/apis/avm'
 import { NftFamilyDict } from '@/store/modules/assets/types'
-import { avm, bintools, pChain } from 'luxdefi'
+import { avm, bintools, pChain } from '@/AVA'
 import {
     GenericFormType,
     JsonFormType,
@@ -141,7 +141,7 @@ import {
     UrlFormType,
     UtfFormType,
 } from '@/components/wallet/studio/mint/types'
-import { PayloadBase, URLPayload, UTF8Payload, JSONPayload } from 'luxdefi/dist/utils'
+import { PayloadBase, URLPayload, UTF8Payload, JSONPayload } from 'avalanche/dist/utils'
 import Big from 'big.js'
 import { bnToBig } from '@/helpers/helper'
 import NftFamilyCardsPreview from '@/components/misc/NftFamilyCardsPreview.vue'
@@ -223,7 +223,7 @@ export default class MintNft extends Vue {
     get nftTitle() {
         try {
             let json = JSON.parse(this.payloadContent || '')
-            return json.luxdefi.title
+            return json.avalanche.title
         } catch (err) {
             return ''
         }
@@ -232,7 +232,7 @@ export default class MintNft extends Vue {
     get nftDesc() {
         try {
             let json = JSON.parse(this.payloadContent || '')
-            return json.luxdefi.desc
+            return json.avalanche.desc
         } catch (err) {
             return ''
         }

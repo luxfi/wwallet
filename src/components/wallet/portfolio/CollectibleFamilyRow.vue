@@ -25,10 +25,10 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { LuxNftFamily } from '@/js/LuxNftFamily'
+import { AvaNftFamily } from '@/js/AvaNftFamily'
 import NFTCard from './NftCard.vue'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
-import { NFTTransferOutput, UTXO, AVMConstants, NFTMintOutput } from 'luxdefi/dist/apis/avm'
+import { NFTTransferOutput, UTXO, AVMConstants, NFTMintOutput } from 'avalanche/dist/apis/avm'
 import { NftGroupDict } from '@/components/wallet/portfolio/types'
 import CollectibleFamilyGroup from '@/components/wallet/portfolio/CollectibleFamilyGroup.vue'
 @Component({
@@ -38,7 +38,7 @@ import CollectibleFamilyGroup from '@/components/wallet/portfolio/CollectibleFam
     },
 })
 export default class CollectibleFamilyRow extends Vue {
-    @Prop() family!: LuxNftFamily
+    @Prop() family!: AvaNftFamily
 
     // get groups() {}
     get nftDict(): IWalletNftDict {

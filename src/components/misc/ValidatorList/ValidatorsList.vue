@@ -16,10 +16,10 @@
                             {{ $t('earn.delegate.list.val_stake') }}
                         </th>
                         <th style="text-align: right">
-                            {{ $t('earn.delegate.list.luxl_stake') }}
+                            {{ $t('earn.delegate.list.aval_stake') }}
                             <Tooltip
                                 style="display: inline-block"
-                                :text="$t('earn.delegate.list.luxl_stake_tip')"
+                                :text="$t('earn.delegate.list.aval_stake_tip')"
                             >
                                 <fa icon="question-circle"></fa>
                             </Tooltip>
@@ -28,15 +28,6 @@
                             <Tooltip text="Number of Delegators"><fa icon="users"></fa></Tooltip>
                         </th>
                         <th>{{ $t('earn.delegate.list.end') }}</th>
-                        <!--                        <th>-->
-                        <!--                            {{ $t('earn.delegate.list.up') }}-->
-                        <!--                            <Tooltip-->
-                        <!--                                style="display: inline-block"-->
-                        <!--                                :text="$t('earn.delegate.list.up_tip')"-->
-                        <!--                            >-->
-                        <!--                                <fa icon="question-circle"></fa>-->
-                        <!--                            </Tooltip>-->
-                        <!--                        </th>-->
                         <th>{{ $t('earn.delegate.list.fee') }}</th>
                         <th></th>
                     </tr>
@@ -60,8 +51,8 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { lux, pChain } from 'luxdefi'
-import { BN } from 'luxdefi'
+import { ava, pChain } from '@/AVA'
+import { BN } from 'avalanche'
 
 import ValidatorRow from '@/components/misc/ValidatorList/ValidatorRow.vue'
 import FilterSettings from '@/components/misc/ValidatorList/FilterSettings.vue'

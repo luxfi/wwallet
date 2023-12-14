@@ -5,15 +5,15 @@
     "address": "Adresa",
     "add_pk": "Přidat soukromý klíč",
     "home": {
-        "desc": "Peněženka Luxlanche je jednoduchá, bezpečná, nehlídaná peněženka na ukládání majetku Luxlanche.",
+        "desc": "Peněženka Lux je jednoduchá, bezpečná, nehlídaná peněženka na ukládání majetku Lux.",
         "access": {
             "title": "Vítej zpátky!",
-            "desc": "Tady můžete získat přístup ke své stávající peněžence Luxlanche.",
+            "desc": "Tady můžete získat přístup ke své stávající peněžence Lux.",
             "submit": "Přístup k peněžence"
         },
         "create": {
-            "title": "Je pro Vás peněženka Luxlanche novinkou?",
-            "desc": "Vytvořte si novou peněženku k odesílání, přijímání a vyměňování majetku Luxlanche.",
+            "title": "Je pro Vás peněženka Lux novinkou?",
+            "desc": "Vytvořte si novou peněženku k odesílání, přijímání a vyměňování majetku Lux.",
             "submit": "Vytvořit novou peněženku"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Vytvořte si novou klíčovou frázi k nakonfigurování Vaší peněženky Luxlanche.",
+        "generate": "Vytvořte si novou klíčovou frázi k nakonfigurování Vaší peněženky Lux.",
         "but_have": "Máte už peněženku?",
         "submit": "Vygenerovat klíčovou frázi",
         "cancel": "Zrušit",
         "mnemonic_title": "Toto je Vaše klíčová fráze.",
-        "mnemonic_desc": "Chcete-li obnovit svou peněženku Luxlanche, použijte těchto 24 slov v postupném pořadí",
+        "mnemonic_desc": "Chcete-li obnovit svou peněženku Lux, použijte těchto 24 slov v postupném pořadí",
         "attention": "Pozor!",
-        "warning": "Tuto klíčovou frázi si uložte na bezpečné místo. Každý, kdo tuto klíčovou frázi bude mít, bude moci získat přístup k Vaší peněžence Luxlanche. Ztracené klíčové fráze nelze nijak získat zpět.",
+        "warning": "Tuto klíčovou frázi si uložte na bezpečné místo. Každý, kdo tuto klíčovou frázi bude mít, bude moci získat přístup k Vaší peněžence Lux. Ztracené klíčové fráze nelze nijak získat zpět.",
         "confirm": "Svou klíčovou frázi jsem si zapsala(a) na bezpečné místo.",
         "regenerate": "Regenerovat",
         "success_title": "Gratulujeme!",
-        "success_desc": "Je čas na přístup k Vaší peněžence Luxlanche.",
+        "success_desc": "Je čas na přístup k Vaší peněžence Lux.",
         "success_submit": "Přístup do peněženky",
         "verify": "Ověřit",
         "verifytitle": "Ověřte mnemotechniku",
@@ -78,7 +78,7 @@
         "error_word": "Mnemotechnická fráze, kterou jste zadali pro slovo, se neshoduje se skutečnou frází."
     },
     "top": {
-        "title1": "Odvozená adresa peněženky Luxlanche",
+        "title1": "Odvozená adresa peněženky Lux",
         "title2": "Zůstatek",
         "title3": "Podsíť",
         "title4": "Síť",
@@ -86,7 +86,7 @@
         "nftempty": "Neshromáždili jste žádné nepostradatelné žetony.",
         "locked": "Zamčené",
         "info2": "Koupil jsem mince v Token Sale. Kde jsou moje LUX?",
-        "info2_desc": "Tato peněženka je připojena k testovací síti Luxlanche Everest. Váš nákup se v peněžence objeví po spuštění Luxlanche Mainnet.",
+        "info2_desc": "Tato peněženka je připojena k testovací síti Lux Everest. Váš nákup se v peněžence objeví po spuštění Lux Mainnet.",
         "hover1": "Zobrazit QR kód adresy",
         "hover2": "Vytisknout",
         "hover3": "Kopírovat",
@@ -101,7 +101,7 @@
             "collectibles": "Sběratelské předměty"
         },
         "address": {
-            "derived": "Odvozená adresa peněženky Luxlanche",
+            "derived": "Odvozená adresa peněženky Lux",
             "desc": "Toto je Vaše adresa pro příjem prostředků. Vaše adresa se po každém vkladu změní."
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "Abyste se stali delegátorem, musíte mít alespoň {0} LUX na řetězci P.",
         "validate_card": {
             "title": "Validovat",
-            "desc": "Máte uzel Luxlanche, s kterým chcete vsazovat.",
+            "desc": "Máte uzel Lux, s kterým chcete vsazovat.",
             "submit": "Přidat validátora"
         },
         "delegate_card": {
             "title": "Delegovat",
-            "desc": "Nevlastníte žádný uzel Luxlanche, ale chcete vsazovat pomocí jiného uzlu.",
+            "desc": "Nevlastníte žádný uzel Lux, ale chcete vsazovat pomocí jiného uzlu.",
             "submit": "Přidat delegátora"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Vyhledat ID uzlu",
                 "id": "ID uzlu",
                 "val_stake": "Vsázka validátora",
-                "luxl_stake": "Dostupné",
-                "luxl_stake_tip": "Kolik dalšího lze delegovat na tohoto validátora.",
+                "aval_stake": "Dostupné",
+                "aval_stake_tip": "Kolik dalšího lze delegovat na tohoto validátora.",
                 "users_tip": "Počet delegátorů",
                 "end": "Čas konce",
                 "up": "Doba chodu",
@@ -388,7 +388,7 @@
         "loading": "Načítání historie transakcí..",
         "warn_loading": "Tento seznam může být neúplný a nefunkční.",
         "error_api": "Průzkumník API nebyl nalezen",
-        "error_api_desc": "Pro zobrazení historie transakcí musíte pro tuto síť poskytnout API LUX Explorer."
+        "error_api_desc": "Pro zobrazení historie transakcí musíte pro tuto síť poskytnout API AVA Explorer."
     },
     "modal": {
         "qr": {

@@ -27,11 +27,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 
 @Component
 export default class NetworkRow extends Vue {
-    @Prop() network!: LuxNetwork
+    @Prop() network!: AvaNetwork
 
     get endpoint() {
         let net = this.network
@@ -194,7 +194,6 @@ img {
     }
     .network_row {
         grid-template-columns: 1fr max-content;
-        /*grid-template-columns: none;*/
     }
 }
 </style>

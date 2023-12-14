@@ -11,7 +11,7 @@
             :disabled="!canSubmit"
             :loading="isLoading"
             @click="access"
-            class="addKeyBut button_primary lux_button"
+            class="addKeyBut button_primary ava_button"
             depressed
             block
         >

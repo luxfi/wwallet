@@ -18,11 +18,11 @@ import {
     PlatformVMConstants,
     AmountOutput,
     StakeableLockOut,
-} from 'luxdefi/dist/apis/platformvm'
+} from 'avalanche/dist/apis/platformvm'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
-import { UnixNow } from 'luxdefi/dist/utils'
-import { BN } from 'luxdefi'
+import { UnixNow } from 'avalanche/dist/utils'
+import { BN } from 'avalanche'
 
 @Component
 export default class UtxoRow extends Vue {

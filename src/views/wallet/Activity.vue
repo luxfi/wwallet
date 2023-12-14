@@ -1,7 +1,6 @@
 <template>
     <div class="activity_page">
-        <ExportCsvModal ref="csv_modal"></ExportCsvModal>
-        <ExportLuxxCsvModal ref="lux_csv_modal"></ExportLuxxCsvModal>
+        <ExportGlacierHistoryModal ref="glacier_csv_modal"></ExportGlacierHistoryModal>
         <div class="explorer_warning" v-if="!hasExplorer">
             <div class="warning_body">
                 <h1>{{ $t('activity.no_explorer.title') }}</h1>
@@ -11,25 +10,21 @@
         <div class="settings">
             <div class="filter_col">
                 <div class="filter_cont">
-                    <label>Export CSV File (BETA)</label>
+                    <label>
+                        Export CSV File (BETA)
+                        <span style="font-size: 0.8em; opacity: 0.8" v-if="isCsvDisabled">
+                            Not Supported For This Network
+                        </span>
+                    </label>
                     <div class="csv_buttons">
                         <v-btn
                             x-small
-                            @click="openCsvModal"
-                            class="button_secondary"
                             depressed
-                            :disabled="!showList"
-                        >
-                            Export Rewards
-                        </v-btn>
-                        <v-btn
-                            x-small
-                            @click="openLuxxCsvModal"
                             class="button_secondary"
-                            depressed
-                            :disabled="!showList"
+                            @click="openGlacierCsvModal"
+                            :disabled="isCsvDisabled"
                         >
-                            Export LUX Transfers
+                            Export History
                         </v-btn>
                     </div>
                 </div>
@@ -38,7 +33,7 @@
                     <RadioButtons :labels="modes" :keys="modeKey" v-model="mode"></RadioButtons>
                 </div>
             </div>
-            <div>
+            <div v-if="showList">
                 <div class="pagination">
                     <p class="date_display">{{ monthNowName }} {{ yearNow }}</p>
                     <div>
@@ -63,7 +58,7 @@
                 <virtual-list
                     v-show="txs.length > 0"
                     :style="{ height: `${listH}px`, overflowY: 'auto' }"
-                    :data-key="'id'"
+                    :data-key="'txHash'"
                     :data-sources="txsProcessed"
                     :data-component="RowComponent"
                     :keeps="20"
@@ -75,33 +70,45 @@
                 </div>
             </div>
             <div v-if="!showList" class="loading">
-                <Spinner class="spinner"></Spinner>
-                <p>{{ $t('activity.loading') }}</p>
+                <template v-if="!isError">
+                    <Spinner class="spinner"></Spinner>
+                    <p>{{ $t('activity.loading') }}</p>
+                </template>
+                <template v-else>
+                    <p>Error Loading Activity History</p>
+                    <v-btn @click="updateHistory" class="button_secondary" small depressed>
+                        Try Again
+                    </v-btn>
+                </template>
             </div>
         </div>
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import {
-    ITransactionData,
-    ITransactionDataProcessed,
+    isTransactionC,
+    isTransactionX,
     TransactionType,
-} from '@/store/modules/history/types'
-import moment from 'moment'
+    TransactionTypeName,
+} from '@/js/Glacier/models'
 
 import TxRow from '@/components/wallet/activity/TxRow.vue'
 import RadioButtons from '@/components/misc/RadioButtons.vue'
 import Spinner from '@/components/misc/Spinner.vue'
+//@ts-ignore
+import VirtualList from 'vue-virtual-scroll-list'
+import { AvaNetwork } from '@/js/AvaNetwork'
+import ExportCsvModal from '@/components/modals/ExportCsvModal.vue'
+import ExportLuxCsvModal from '@/components/modals/ExportLuxCsvModal.vue'
+import { WalletType } from '@/js/wallets/types'
+import { BlockchainId } from '@avalabs/glacier-sdk'
+import ExportGlacierHistoryModal from '@/components/modals/ExportGlacierHistoryModal.vue'
+import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
+import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 
 type FilterModeType = 'all' | 'transfer' | 'export_import' | 'stake'
 type ModeKeyType = 'all' | 'transfer' | 'swap' | 'stake'
-
-//@ts-ignore
-import VirtualList from 'vue-virtual-scroll-list'
-import { LuxNetwork } from '@/js/LuxNetwork'
-import ExportCsvModal from '@/components/modals/ExportCsvModal.vue'
-import ExportLuxxCsvModal from '@/components/modals/ExportLuxxCsvModal.vue'
 
 const PAGE_LIMIT = 100
 
@@ -111,8 +118,9 @@ const MONTH_MIN = 8
 @Component({
     name: 'activity',
     components: {
-        ExportLuxxCsvModal,
+        ExportLuxCsvModal,
         ExportCsvModal,
+        ExportGlacierHistoryModal,
         Spinner,
         TxRow,
         RadioButtons,
@@ -139,19 +147,28 @@ export default class Activity extends Vue {
 
     $refs!: {
         csv_modal: ExportCsvModal
-        lux_csv_modal: ExportLuxxCsvModal
+        lux_csv_modal: ExportLuxCsvModal
+        glacier_csv_modal: ExportGlacierHistoryModal
     }
 
     openCsvModal() {
         this.$refs.csv_modal.open()
     }
 
-    openLuxxCsvModal() {
+    openLuxCsvModal() {
         this.$refs.lux_csv_modal.open()
     }
 
+    openGlacierCsvModal() {
+        this.$refs.glacier_csv_modal.open()
+    }
+
+    get isCsvDisabled() {
+        return !this.hasExplorer || this.isFuji
+    }
+
     get showList(): boolean {
-        if (this.isUpdatingAll || this.isLoading) return false
+        if (this.isUpdatingAll || this.isLoading || this.isError) return false
         return true
     }
 
@@ -176,12 +193,24 @@ export default class Activity extends Vue {
         return this.$t(`activity.months.${this.monthNow}`)
     }
 
+    get activeNetwork(): AvaNetwork | null {
+        return this.$store.state.Network.selectedNetwork
+    }
+
+    get isMainnet() {
+        return this.activeNetwork && isMainnetNetworkID(this.activeNetwork.networkId)
+    }
+
+    get isFuji() {
+        return this.activeNetwork && isTestnetNetworkID(this.activeNetwork.networkId)
+    }
+
+    /**
+     * Returns true if conencted to mainnet or fuji
+     */
     get hasExplorer() {
-        let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
-        if (!network?.explorerUrl) {
-            return false
-        }
-        return true
+        if (!this.activeNetwork) return false
+        return this.isMainnet || this.isFuji
     }
 
     mounted() {
@@ -195,7 +224,11 @@ export default class Activity extends Vue {
     }
     deleted() {}
 
-    updateHistory() {
+    get isError() {
+        return this.$store.state.History.isError
+    }
+
+    async updateHistory() {
         this.$store.dispatch('History/updateAllTransactionHistory')
     }
 
@@ -205,7 +238,7 @@ export default class Activity extends Vue {
 
         for (var i = 0; i < txs.length; i++) {
             let tx = txs[i]
-            let date = new Date(tx.timestamp)
+            let date = new Date(this.getTxTimestamp(tx))
             // let mom = moment(tx.timestamp)
             let month = date.getMonth()
             let year = date.getFullYear()
@@ -219,11 +252,30 @@ export default class Activity extends Vue {
         return res
     }
 
-    get allTxs(): ITransactionData[] {
-        return this.$store.state.History.allTransactions
+    get allTxs(): TransactionType[] {
+        const supportedTypes: TransactionTypeName[] = [
+            'BaseTx',
+            'ImportTx',
+            'ExportTx',
+            'OperationTx',
+            'AddValidatorTx',
+            'AddDelegatorTx',
+            'CreateAssetTx',
+        ]
+        return this.$store.state.History.allTransactions.filter((tx: TransactionType) => {
+            return supportedTypes.includes(tx.txType)
+        })
     }
 
-    get txs(): ITransactionData[] {
+    getTxTimestamp(tx: TransactionType) {
+        if (isTransactionX(tx) || isTransactionC(tx)) {
+            return tx.timestamp * 1000
+        } else {
+            return tx.blockTimestamp * 1000
+        }
+    }
+
+    get txs(): TransactionType[] {
         let txs
         switch (this.mode) {
             case 'transfer':
@@ -241,7 +293,7 @@ export default class Activity extends Vue {
         }
 
         let filtered = txs.filter((tx) => {
-            let date = new Date(tx.timestamp)
+            let date = new Date(this.getTxTimestamp(tx))
 
             if (date.getMonth() === this.monthNow && date.getFullYear() === this.yearNow) {
                 return true
@@ -251,7 +303,7 @@ export default class Activity extends Vue {
         return filtered
     }
 
-    get txsProcessed(): ITransactionDataProcessed[] {
+    get txsProcessed() {
         let txs = this.txs
 
         let res = txs.map((tx, index) => {
@@ -264,8 +316,8 @@ export default class Activity extends Vue {
             } else {
                 let txBefore = txs[index - 1]
 
-                let date = new Date(tx.timestamp)
-                let dateBefore = new Date(txBefore.timestamp)
+                let date = new Date(this.getTxTimestamp(tx))
+                let dateBefore = new Date(this.getTxTimestamp(txBefore))
 
                 if (dateBefore.getMonth() !== date.getMonth()) {
                     showMonth = true
@@ -310,37 +362,25 @@ export default class Activity extends Vue {
         this.setScrollHeight()
     }
 
-    get txsTransfer(): ITransactionData[] {
-        let txs: ITransactionData[] = this.allTxs
-        let transferTypes: TransactionType[] = ['base', 'create_asset', 'operation']
+    get txsTransfer(): TransactionType[] {
+        let transferTypes: TransactionTypeName[] = ['BaseTx', 'CreateAssetTx', 'OperationTx']
 
-        return txs.filter((tx) => {
-            let txType = tx.type
-            if (transferTypes.includes(txType)) return true
-
-            return false
+        return this.allTxs.filter((tx) => {
+            return transferTypes.includes(tx.txType)
         })
     }
 
-    get txsSwap(): ITransactionData[] {
-        let txs: ITransactionData[] = this.allTxs
-        let exportTypes: TransactionType[] = ['import', 'export', 'pvm_import', 'pvm_export']
-
-        return txs.filter((tx) => {
-            let txType = tx.type
-            if (exportTypes.includes(txType)) return true
-            return false
+    get txsSwap(): TransactionType[] {
+        let exportTypes: TransactionTypeName[] = ['ExportTx', 'ImportTx']
+        return this.allTxs.filter((tx) => {
+            return exportTypes.includes(tx.txType)
         })
     }
 
-    get txsStake(): ITransactionData[] {
-        let txs: ITransactionData[] = this.allTxs
-        let stakeTypes: TransactionType[] = ['add_validator', 'add_delegator']
-
-        return txs.filter((tx) => {
-            let txType = tx.type
-            if (stakeTypes.includes(txType)) return true
-            return false
+    get txsStake(): TransactionType[] {
+        let stakeTypes: TransactionTypeName[] = ['AddValidatorTx', 'AddDelegatorTx']
+        return this.allTxs.filter((tx) => {
+            return stakeTypes.includes(tx.txType)
         })
     }
 

@@ -102,7 +102,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import AddValidator from '@/components/wallet/earn/Validate/AddValidator.vue'
 import AddDelegator from '@/components/wallet/earn/Delegate/AddDelegator.vue'
-import { BN } from 'luxdefi/dist'
+import { BN } from 'avalanche/dist'
 import UserRewards from '@/components/wallet/earn/UserRewards.vue'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
@@ -139,17 +139,6 @@ export default class Earn extends Vue {
     cancel() {
         this.pageNow = null
         this.subtitle = ''
-    }
-
-    updateValidators() {
-        this.$store.dispatch('Platform/update')
-    }
-
-    created() {
-        this.updateValidators()
-        this.intervalID = setInterval(() => {
-            this.updateValidators()
-        }, 15000)
     }
 
     deactivated() {

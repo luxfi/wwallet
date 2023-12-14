@@ -25,3 +25,4 @@ yarn-error.log*
 *.sw?
 /cypress/videos
 /cypress/screenshots
+*.sedbak

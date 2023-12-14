@@ -8,10 +8,10 @@
             <div
                 style="display: flex; flex-direction: column; align-items: center; margin-top: 14px"
             >
-                <v-btn class="lux_button button_primary" @click="submit" :loading="isLoading">
+                <v-btn class="ava_button button_primary" @click="submit" :loading="isLoading">
                     {{ $t('logout.button_conf') }}
                 </v-btn>
-                <button class="lux_button_secondary" @click="close">
+                <button class="ava_button_secondary" @click="close">
                     {{ $t('logout.button_cancel') }}
                 </button>
             </div>

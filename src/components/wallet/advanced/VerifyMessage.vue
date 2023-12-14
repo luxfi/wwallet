@@ -32,12 +32,12 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { KeyPair } from 'luxdefi/dist/apis/avm'
-import { lux, bintools } from 'luxdefi'
+import { KeyPair } from 'avalanche/dist/apis/avm'
+import { ava, bintools } from '@/AVA'
 import createHash from 'create-hash'
-import { getPreferredHRP } from 'luxdefi/dist/utils'
-import { avm } from 'luxdefi'
-import { Buffer } from 'luxdefi'
+import { getPreferredHRP } from 'avalanche/dist/utils'
+import { avm } from '@/AVA'
+import { Buffer } from 'avalanche'
 import { digestMessage } from '@/helpers/helper'
 
 @Component
@@ -62,7 +62,7 @@ export default class VerifyMessage extends Vue {
         let digest = digestMessage(this.message)
         let digestBuff = Buffer.from(digest.toString('hex'), 'hex')
 
-        let networkId = lux.getNetworkID()
+        let networkId = ava.getNetworkID()
 
         let hrp = getPreferredHRP(networkId)
         let keypair = new KeyPair(hrp, 'X')
@@ -70,7 +70,7 @@ export default class VerifyMessage extends Vue {
         let signedBuff = bintools.cb58Decode(this.signature)
 
         let pubKey = keypair.recover(digestBuff, signedBuff)
-        let addressBuff = keypair.addressFromPublicKey(pubKey)
+        const addressBuff = KeyPair.addressFromPublicKey(pubKey)
         this.addressX = bintools.addressToString(hrp, 'X', addressBuff)
         this.addressP = bintools.addressToString(hrp, 'P', addressBuff)
     }

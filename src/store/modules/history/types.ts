@@ -1,10 +1,12 @@
 import Big from 'big.js'
 import moment from 'moment'
+import { TransactionType as GlacierTxType } from '@/js/Glacier/models'
 
 export interface HistoryState {
-    transactions: ITransactionData[]
-    allTransactions: ITransactionData[]
+    recentTransactions: GlacierTxType[]
+    allTransactions: GlacierTxType[]
     isUpdating: boolean
+    isError: boolean
     isUpdatingAll: boolean
 }
 
@@ -86,16 +88,17 @@ export interface CsvRowStakingData {
     stakeDuration: moment.Duration
     stakeAmount: Big
     rewardDate: moment.Moment
+    rewardDateUnix: number
     isInputOwner: boolean
     isRewardOwner: boolean
-    rewardAmtLuxx: Big
+    rewardAmtLux: Big
     rewardAmtUsd?: Big
     luxPrice?: number
     nodeID: string
 }
 
 // CSV LUX Transaction Row
-export interface CsvRowLuxxTransferData {
+export interface CsvRowLuxTransferData {
     txId: string
     date: Date
     from?: string[]

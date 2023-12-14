@@ -9,11 +9,11 @@
                     type="submit"
                     :loading="isLoading"
                     depressed
-                    class="lux_button button_primary submit"
+                    class="ava_button button_primary submit"
                 >
                     {{ $t('modal.activateWallet.submit') }}
                 </v-btn>
-                <button @click="cancel" class="cancel_but lux_button_secondary">
+                <button @click="cancel" class="cancel_but ava_button_secondary">
                     {{ $t('modal.activateWallet.cancel') }}
                     <br />
                     {{ $t('modal.activateWallet.cancel2') }}

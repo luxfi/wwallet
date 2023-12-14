@@ -10,7 +10,7 @@
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: justify">AGREEMENT TO TERMS</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             These Terms of Use constitute a legally binding agreement made between you, whether
-            personally or on behalf of an entity (“you”) and Lux Partners Limited (&quot;
+            personally or on behalf of an entity (“you”) and Lux (BVI) Inc. (&quot;
             <b>Company</b>
             &quot;, “
             <b>we</b>
@@ -20,7 +20,7 @@
             <b>our</b>
             ”), concerning your access to and use of the
             <span class="s1">https://wallet.lux.network/</span>
-            website and related features and services, including but not limited to the Lux wallet
+            website and related features and services, including but not limited to the LUX wallet
             functionality, as well as any other media form, media channel, mobile website or mobile
             application related, linked, or otherwise connected thereto, (collectively, the “Site”).
             You agree that by accessing the Site, you have read, understood, and agreed to be bound
@@ -292,7 +292,7 @@
             <li>
                 <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
                     Copy or adapt the Site’s software, including but not limited to Flash, PHP,
-                    HTML, JluxScript, or other code.
+                    HTML, JavaScript, or other code.
                 </p>
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
             </li>
@@ -527,7 +527,7 @@
             these Terms of Use; (2) take appropriate legal action against anyone who, in our sole
             discretion, violates the law or these Terms of Use, including without limitation,
             reporting such user to law enforcement authorities; (3) in our sole discretion and
-            without limitation, refuse, restrict access to, limit the luxilability of, or disable
+            without limitation, refuse, restrict access to, limit the availability of, or disable
             (to the extent technologically feasible) any of your Contributions or any portion
             thereof; (4) in our sole discretion and without limitation, notice, or liability, to
             remove from the Site or otherwise disable all files and content that are excessive in
@@ -607,10 +607,10 @@
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: justify">
             We care about data privacy and security. Please review our Privacy Policy:
-            <a href="http://lux.network/privacy-policy" class="s7" target="_blank">
-                https://lux.network/privacy-policy
+            <a href="http://www.avalabs.org/privacy-policy" class="s7" target="_blank">
+                https://www.avalabs.org/privacy-policy
             </a>
-            <a href="http://lux.network/privacy-policy" class="a" target="_blank">.</a>
+            <a href="http://www.avalabs.org/privacy-policy" class="a" target="_blank">.</a>
             By using the Site, you agree to be bound by our Privacy Policy, which is incorporated
             into these Terms of Use. Please be advised the Site is hosted in the United States. If
             you access the Site from any other region of the world with laws or other requirements
@@ -655,7 +655,7 @@
             or for any reason at our sole discretion without notice. However, we have no obligation
             to update any information on our Site. We also reserve the right to modify or
             discontinue all or part of the Site without notice at any time. We make no
-            representation as to the luxilability, functionality and quality of the Site, including
+            representation as to the availability, functionality and quality of the Site, including
             any features, hardware, or communications, We will not be liable to you or any third
             party for any modification, price change, suspension, or discontinuance of any or all of
             the Site.
@@ -839,14 +839,14 @@
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: left">CORRECTIONS</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             There may be information on the Site that contains typographical errors, inaccuracies,
-            or omissions, including descriptions, pricing, luxilability, and various other
+            or omissions, including descriptions, pricing, availability, and various other
             information. We reserve the right to correct any errors, inaccuracies, or omissions and
             to change or update the information on the Site at any time, without prior notice.
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: left">DISCLAIMER</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            THE SITE IS PROVIDED ON AN AS-IS AND AS-LUXILABLE BASIS. YOU AGREE THAT YOUR USE OF THE
+            THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE
             SITE AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW,
             WE AND OUR OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, SUB-CONTRACTORS, AGENTS AND
             AFFILIATES DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND
@@ -863,7 +863,7 @@
             THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SITE BY ANY THIRD PARTY, AND/OR (6)
             ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY
             KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE
-            MADE LUXILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME
+            MADE AVAILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME
             RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH
             THE SITE, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY
             BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE
@@ -893,7 +893,7 @@
             FAILURE, ERROR, OR BREAKDOWN IN USE OF THE SITE
             <span class="s8">,</span>
             <span class="s9"></span>
-            FROM ANY FAULT, OR ERROR MADE BY US, OR FROM YOUR RELIANCE ON CONTENT LUXILABLE ON THE
+            FROM ANY FAULT, OR ERROR MADE BY US, OR FROM YOUR RELIANCE ON CONTENT AVAILABLE ON THE
             SITE, OR FROM ANY COMMUNICATION THROUGH THE SITE, OR WITH OTHER USERS ON THE SITE, OR
             FROM ANY DENIAL OR CANCELATION OF YOUR USER ACCOUNT, OR FROM RETENTION, DELETION,
             DISCLOSURE AND ANY OTHER USE OR LOSS OF YOUR CONTENT ON THE SITE. EVEN IF WE HAVE BEEN
@@ -993,7 +993,7 @@
             regarding use of the Site, please contact us at:
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
-        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Luxlanche (BVI) Inc.</p>
+        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Lux (BVI) Inc.</p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">
             Floor 4, Banco Popular Building
             <br />

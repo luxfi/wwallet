@@ -1,4 +1,4 @@
-// A simple wrapper thar combines luxdefi.js, bip39 and HDWallet
+// A simple wrapper thar combines avalanche.js, bip39 and HDWallet
 
 import {
     KeyPair as AVMKeyPair,
@@ -12,7 +12,7 @@ import {
     UTXO as AVMUTXO,
     AssetAmountDestination,
     UTXOSet,
-} from 'luxdefi/dist/apis/avm'
+} from 'avalanche/dist/apis/avm'
 
 import { privateToAddress } from 'ethereumjs-util'
 
@@ -21,38 +21,38 @@ import {
     UnsignedTx as PlatformUnsignedTx,
     UTXO as PlatformUTXO,
     Tx as PlatformTx,
-} from 'luxdefi/dist/apis/platformvm'
+} from 'avalanche/dist/apis/platformvm'
 
 import {
     KeyChain as EVMKeyChain,
     UnsignedTx as EVMUnsignedTx,
     Tx as EvmTx,
-} from 'luxdefi/dist/apis/evm'
-import { getPreferredHRP, PayloadBase } from 'luxdefi/dist/utils'
+} from 'avalanche/dist/apis/evm'
+import { getPreferredHRP, PayloadBase } from 'avalanche/dist/utils'
 
 import * as bip39 from 'bip39'
-import { BN, Buffer as BufferLuxlanche } from 'luxdefi'
-import { lux, avm, bintools, cChain, pChain } from 'luxdefi'
-import { AvmExportChainType, AvmImportChainType, ILuxHdWallet } from '@/js/wallets/types'
+import { BN, Buffer as BufferLux } from 'avalanche'
+import { ava, avm, bintools, cChain, pChain } from '@/AVA'
+import { AvmExportChainType, AvmImportChainType, IAvaHdWallet } from '@/js/wallets/types'
 import HDKey from 'hdkey'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { KeyPair as PlatformVMKeyPair } from 'luxdefi/dist/apis/platformvm'
-import { HdWalletCore } from '@/js/wallets/HdWalletCore'
+import { KeyPair as PlatformVMKeyPair } from 'avalanche/dist/apis/platformvm'
+import { AbstractHdWallet } from '@/js/wallets/AbstractHdWallet'
 import { WalletNameType } from '@/js/wallets/types'
 import { digestMessage } from '@/helpers/helper'
-import { KeyChain } from 'luxdefi/dist/apis/evm'
+import { KeyChain } from 'avalanche/dist/apis/evm'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { Transaction } from '@ethereumjs/tx'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
-import { ExportChainsC, ExportChainsP } from '@luxdefi/luxdefi-wallet-sdk'
+import { ExportChainsC, ExportChainsP } from '@avalabs/avalanche-wallet-sdk'
 
 // HD WALLET
 // Accounts are not used and the account index is fixed to 0
 // m / purpose' / coin_type' / account' / change / address_index
 
-const LUX_TOKEN_INDEX: string = '9000'
-export const LUX_ACCOUNT_PATH: string = `m/44'/${LUX_TOKEN_INDEX}'/0'` // Change and index left out
+const AVA_TOKEN_INDEX: string = '9000'
+export const AVA_ACCOUNT_PATH: string = `m/44'/${AVA_TOKEN_INDEX}'/0'` // Change and index left out
 export const ETH_ACCOUNT_PATH: string = `m/44'/60'/0'`
 export const LEDGER_ETH_ACCOUNT_PATH = ETH_ACCOUNT_PATH + '/0/0'
 
@@ -63,7 +63,7 @@ const SCAN_RANGE: number = SCAN_SIZE - INDEX_RANGE // How many items are actuall
 // Possible indexes for each request is
 // SCAN_SIZE - INDEX_RANGE
 
-export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet {
+export default class MnemonicWallet extends AbstractHdWallet implements IAvaHdWallet {
     seed: string
     hdKey: HDKey
     private mnemonic: MnemonicPhrase
@@ -73,40 +73,38 @@ export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet
     ethKeyBech: string
     ethKeyChain: EVMKeyChain
     ethAddress: string
-    ethBalance: BN
 
     // TODO : Move to hd core class
     onnetworkchange() {
         super.onnetworkchange()
 
         // Update EVM values
-        this.ethKeyChain = new EVMKeyChain(lux.getHRP(), 'C')
-        let cKeypair = this.ethKeyChain.importKey(this.ethKeyBech)
+        this.ethKeyChain = new EVMKeyChain(ava.getHRP(), 'C')
+        const cKeypair = this.ethKeyChain.importKey(this.ethKeyBech)
         this.ethBalance = new BN(0)
     }
 
-    // The master key from luxdefi.js
+    // The master key from avalanche.js
     constructor(mnemonic: string) {
-        let seed: globalThis.Buffer = bip39.mnemonicToSeedSync(mnemonic)
-        let masterHdKey: HDKey = HDKey.fromMasterSeed(seed)
-        let accountHdKey = masterHdKey.derive(LUX_ACCOUNT_PATH)
-        let ethAccountKey = masterHdKey.derive(ETH_ACCOUNT_PATH + '/0/0')
+        const seed: globalThis.Buffer = bip39.mnemonicToSeedSync(mnemonic)
+        const masterHdKey: HDKey = HDKey.fromMasterSeed(seed)
+        const accountHdKey = masterHdKey.derive(AVA_ACCOUNT_PATH)
+        const ethAccountKey = masterHdKey.derive(ETH_ACCOUNT_PATH + '/0/0')
 
         super(accountHdKey, ethAccountKey, false)
 
         // Derive EVM key and address
-        let ethPrivateKey = ethAccountKey.privateKey
+        const ethPrivateKey = ethAccountKey.privateKey
         this.ethKey = ethPrivateKey.toString('hex')
         this.ethAddress = privateToAddress(ethPrivateKey).toString('hex')
-        this.ethBalance = new BN(0)
 
-        let cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferLuxlanche.from(ethPrivateKey))
+        const cPrivKey = `PrivateKey-` + bintools.cb58Encode(BufferLux.from(ethPrivateKey))
         this.ethKeyBech = cPrivKey
 
-        let cKeyChain = new KeyChain(lux.getHRP(), 'C')
+        const cKeyChain = new KeyChain(ava.getHRP(), 'C')
         this.ethKeyChain = cKeyChain
 
-        let cKeypair = cKeyChain.importKey(cPrivKey)
+        const cKeypair = cKeyChain.importKey(cPrivKey)
 
         this.type = 'mnemonic'
         this.seed = seed.toString('hex')
@@ -117,12 +115,6 @@ export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet
 
     getEvmAddress(): string {
         return this.ethAddress
-    }
-
-    async getEthBalance() {
-        let bal = await WalletHelper.getEthBalance(this)
-        this.ethBalance = bal
-        return bal
     }
 
     async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number) {
@@ -147,7 +139,7 @@ export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet
         // TODO: Move to shared file
         this.isFetchUtxos = true
         // If we are waiting for helpers to initialize delay the call
-        let isInit =
+        const isInit =
             this.externalHelper.isInit && this.internalHelper.isInit && this.platformHelper.isInit
         if (!isInit) {
             setTimeout(() => {
@@ -177,95 +169,57 @@ export default class MnemonicWallet extends HdWalletCore implements ILuxHdWallet
         return this.mnemonic
     }
 
-    async validate(
-        nodeID: string,
-        amt: BN,
-        start: Date,
-        end: Date,
-        delegationFee: number = 0,
-        rewardAddress?: string,
-        utxos?: PlatformUTXO[]
-    ): Promise<string> {
-        return await WalletHelper.validate(
-            this,
-            nodeID,
-            amt,
-            start,
-            end,
-            delegationFee,
-            rewardAddress,
-            utxos
-        )
-    }
-
-    // Delegates LUX to the given node ID
-    async delegate(
-        nodeID: string,
-        amt: BN,
-        start: Date,
-        end: Date,
-        rewardAddress?: string,
-        utxos?: PlatformUTXO[]
-    ): Promise<string> {
-        return await WalletHelper.delegate(this, nodeID, amt, start, end, rewardAddress, utxos)
-    }
-
-    async getStake(): Promise<BN> {
-        this.stakeAmount = await WalletHelper.getStake(this)
-        return this.stakeAmount
-    }
-
     async issueBatchTx(
         orders: (ITransaction | AVMUTXO)[],
         addr: string,
-        memo: BufferLuxlanche | undefined
+        memo: BufferLux | undefined
     ): Promise<string> {
         return await WalletHelper.issueBatchTx(this, orders, addr, memo)
     }
 
     // returns a keychain that has all the derived private/public keys for X chain
     getKeyChain(): AVMKeyChain {
-        let internal = this.internalHelper.getAllDerivedKeys() as AVMKeyPair[]
-        let external = this.externalHelper.getAllDerivedKeys() as AVMKeyPair[]
+        const internal = this.internalHelper.getAllDerivedKeys() as AVMKeyPair[]
+        const external = this.externalHelper.getAllDerivedKeys() as AVMKeyPair[]
 
-        let allKeys = internal.concat(external)
-        let keychain: AVMKeyChain = new AVMKeyChain(
-            getPreferredHRP(lux.getNetworkID()),
+        const allKeys = internal.concat(external)
+        const keychain: AVMKeyChain = new AVMKeyChain(
+            getPreferredHRP(ava.getNetworkID()),
             this.chainId
         )
 
-        for (var i = 0; i < allKeys.length; i++) {
+        for (let i = 0; i < allKeys.length; i++) {
             keychain.addKey(allKeys[i])
         }
         return keychain
     }
 
     async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
-        let keychain = this.getKeyChain()
+        const keychain = this.getKeyChain()
 
         const tx = unsignedTx.sign(keychain)
         return tx
     }
 
     async signP(unsignedTx: PlatformUnsignedTx): Promise<PlatformTx> {
-        let keychain = this.platformHelper.getKeychain() as PlatformVMKeyChain
+        const keychain = this.platformHelper.getKeychain() as PlatformVMKeyChain
         const tx = unsignedTx.sign(keychain)
         return tx
     }
 
     async signC(unsignedTx: EVMUnsignedTx): Promise<EvmTx> {
-        let keyChain = this.ethKeyChain
+        const keyChain = this.ethKeyChain
         return unsignedTx.sign(keyChain)
     }
 
     async signEvm(tx: Transaction) {
-        let keyBuff = Buffer.from(this.ethKey, 'hex')
+        const keyBuff = Buffer.from(this.ethKey, 'hex')
         return tx.sign(keyBuff)
     }
 
-    async signHashByExternalIndex(index: number, hash: BufferLuxlanche) {
-        let key = this.externalHelper.getKeyForIndex(index) as AVMKeyPair
-        let signed = key.sign(hash)
+    async signHashByExternalIndex(index: number, hash: BufferLux) {
+        const key = this.externalHelper.getKeyForIndex(index) as AVMKeyPair
+        const signed = key.sign(hash)
         return bintools.cb58Encode(signed)
     }
 

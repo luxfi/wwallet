@@ -25,6 +25,7 @@
             :privateKey="privateKeyC"
             ref="modal_priv_key_c"
         ></PrivateKey>
+        <XpubModal :xpub="xpubXP" v-if="isHDWallet" ref="modal_xpub"></XpubModal>
         <div class="rows">
             <div class="header">
                 <template v-if="is_default">
@@ -85,6 +86,7 @@
                             <button v-if="walletType !== 'ledger'" @click="showPrivateKeyCModal">
                                 {{ $t('keys.view_priv_key_c') }}
                             </button>
+                            <button v-if="isHDWallet" @click="showXpub">Show XPUB</button>
                         </div>
                     </div>
                 </div>
@@ -114,10 +116,10 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import { bintools, keyChain } from 'luxdefi'
-import LuxAsset from '@/js/LuxAsset'
+import { bintools, keyChain } from '@/AVA'
+import AvaAsset from '@/js/AvaAsset'
 import { AssetsDict } from '@/store/modules/assets/types'
-import { AmountOutput, KeyPair as AVMKeyPair } from 'luxdefi/dist/apis/avm'
+import { AmountOutput, KeyPair as AVMKeyPair } from 'avalanche/dist/apis/avm'
 import MnemonicPhraseModal from '@/components/modals/MnemonicPhraseModal.vue'
 import HdDerivationListModal from '@/components/modals/HdDerivationList/HdDerivationListModal.vue'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
@@ -129,9 +131,11 @@ import { WalletNameType, WalletType } from '@/js/wallets/types'
 
 import { SingletonWallet } from '../../../js/wallets/SingletonWallet'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
+import XpubModal from '@/components/modals/XpubModal.vue'
+import { AbstractHdWallet } from '@/js/wallets/AbstractHdWallet'
 
 interface IKeyBalanceDict {
-    [key: string]: LuxAsset
+    [key: string]: AvaAsset
 }
 
 @Component({
@@ -141,6 +145,7 @@ interface IKeyBalanceDict {
         Tooltip,
         ExportKeys,
         PrivateKey,
+        XpubModal,
     },
 })
 export default class KeyRow extends Vue {
@@ -152,6 +157,7 @@ export default class KeyRow extends Vue {
         modal: MnemonicPhraseModal
         modal_hd: HdDerivationListModal
         modal_priv_key: PrivateKey
+        modal_xpub: XpubModal
     }
 
     get isVolatile() {
@@ -186,14 +192,14 @@ export default class KeyRow extends Vue {
             let assetIdBuff = utxo.getAssetID()
             let assetId = bintools.cb58Encode(assetIdBuff)
 
-            let assetObj: LuxAsset | undefined = this.assetsDict[assetId]
+            let assetObj: AvaAsset | undefined = this.assetsDict[assetId]
 
             if (!assetObj) {
                 let name = '?'
                 let symbol = '?'
                 let denomination = 0
 
-                let newAsset = new LuxAsset(assetId, name, symbol, denomination)
+                let newAsset = new AvaAsset(assetId, name, symbol, denomination)
                 newAsset.addBalance(amount)
 
                 res[assetId] = newAsset
@@ -206,7 +212,7 @@ export default class KeyRow extends Vue {
                 let symbol = assetObj.symbol
                 let denomination = assetObj.denomination
 
-                let newAsset = new LuxAsset(assetId, name, symbol, denomination)
+                let newAsset = new AvaAsset(assetId, name, symbol, denomination)
                 newAsset.addBalance(amount)
 
                 res[assetId] = newAsset
@@ -243,6 +249,16 @@ export default class KeyRow extends Vue {
         return wallet.ethKey
     }
 
+    /**
+     * Extended public key of m/44'/9000'/0' used for X and P chain addresses
+     */
+    get xpubXP() {
+        if (this.isHDWallet) {
+            return (this.wallet as AbstractHdWallet).getXpubXP()
+        }
+        return null
+    }
+
     remove() {
         this.$emit('remove', this.wallet)
     }
@@ -254,6 +270,10 @@ export default class KeyRow extends Vue {
         let modal = this.$refs.modal
         //@ts-ignore
         modal.open()
+    }
+
+    showXpub() {
+        this.$refs.modal_xpub.open()
     }
 
     showPastAddresses() {

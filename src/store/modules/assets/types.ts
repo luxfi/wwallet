@@ -1,19 +1,19 @@
-import { UTXO, UTXOSet } from 'luxdefi/dist/apis/avm'
+import { UTXO, UTXOSet } from 'avalanche/dist/apis/avm'
 
-import LuxAsset from 'luxdefi/js/LuxAsset'
-import { BN } from 'luxdefi'
-import { LuxNftFamily } from '@/js/LuxNftFamily'
+import AvaAsset from '@/js/AvaAsset'
+import { BN } from 'avalanche'
+import { AvaNftFamily } from '@/js/AvaNftFamily'
 import { IWalletBalanceDict } from '@/store/types'
-import { UTXO as AVMUTXO } from 'luxdefi/dist/apis/avm/utxos'
+import { UTXO as AVMUTXO } from 'avalanche/dist/apis/avm/utxos'
 import Erc20Token from '@/js/Erc20Token'
 import ERC721Token from '@/js/ERC721Token'
 
 export interface AssetsState {
     // isUpdateBalance: boolean
-    assets: LuxAsset[]
+    assets: AvaAsset[]
     assetsDict: AssetsDict
-    LUX_ASSET_ID: string | null
-    nftFams: LuxNftFamily[]
+    AVA_ASSET_ID: string | null
+    nftFams: AvaNftFamily[]
     nftFamsDict: NftFamilyDict
     balanceDict: IWalletBalanceDict
     nftUTXOs: AVMUTXO[]
@@ -38,11 +38,11 @@ export interface AssetDescription {
 }
 
 export interface NftFamilyDict {
-    [id: string]: LuxNftFamily
+    [id: string]: AvaNftFamily
 }
 
 export interface AssetsDict {
-    [key: string]: LuxAsset
+    [key: string]: AvaAsset
 }
 
 export interface AddressUtxoDict {

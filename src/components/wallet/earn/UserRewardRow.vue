@@ -15,7 +15,7 @@
         <div class="data_row stake_info">
             <div>
                 <label>NodeID</label>
-                <p class="reward node_id">{{ staker.nodeID }}</p>
+                <p class="reward node_id">{{ tx.nodeId }}</p>
             </div>
             <div>
                 <label>{{ $t('earn.rewards.row.stake') }}</label>
@@ -31,16 +31,17 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { DelegatorRaw, ValidatorRaw } from '../../misc/ValidatorList/types'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 import Big from 'big.js'
+import { bnToBigLuxP } from '@avalabs/avalanche-wallet-sdk'
+import { PChainTransaction } from '@avalabs/glacier-sdk'
 
 @Component
 export default class UserRewardRow extends Vue {
     now: number = Date.now()
     intervalID: any = null
 
-    @Prop() staker!: ValidatorRaw | DelegatorRaw
+    @Prop() tx!: PChainTransaction
 
     updateNow() {
         this.now = Date.now()
@@ -55,11 +56,11 @@ export default class UserRewardRow extends Vue {
         clearInterval(this.intervalID)
     }
     get startTime() {
-        return parseInt(this.staker.startTime) * 1000
+        return (this.tx.startTimestamp ?? 0) * 1000
     }
 
     get endtime() {
-        return parseInt(this.staker.endTime) * 1000
+        return (this.tx.endTimestamp ?? 0) * 1000
     }
 
     get startDate() {
@@ -71,21 +72,23 @@ export default class UserRewardRow extends Vue {
     }
 
     get rewardAmt(): BN {
-        return new BN(this.staker.potentialReward)
+        return new BN(this.tx.estimatedReward || 0)
     }
 
     get stakingAmt(): BN {
-        return new BN(this.staker.stakeAmount)
+        if (this.tx.amountStaked !== undefined) {
+            return new BN(this.tx.amountStaked[0].amount || 0)
+        }
+        return new BN(0)
     }
 
     get rewardBig(): Big {
         return Big(this.rewardAmt.toString()).div(Math.pow(10, 9))
     }
 
-    get stakeBig(): Big {
-        return Big(this.stakingAmt.toString()).div(Math.pow(10, 9))
+    get stakeBig() {
+        return bnToBigLuxP(this.stakingAmt)
     }
-
     get percFull(): number {
         let range = this.endtime - this.startTime
         let res = (this.now - this.startTime) / range

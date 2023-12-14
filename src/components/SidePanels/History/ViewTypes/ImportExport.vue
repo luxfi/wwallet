@@ -1,116 +1,144 @@
 <template>
-    <div class="import_row" :export="isExport">
-        <template v-if="isExport">
-            <p>Export ({{ chainAlias }})</p>
-            <p class="amt">{{ isExport ? '-' : '' }}{{ amtText }} LUX</p>
-        </template>
-        <template v-else>
-            <p>Import ({{ chainAlias }})</p>
-            <p class="amt">{{ amtText }} LUX</p>
-        </template>
+    <div class="import_row" :export="isExport && !isExportReceiver">
+        <p class="actionTitle">{{ actionTitle }} ({{ chainAlias }})</p>
+        <div class="flex-column">
+            <p v-if="isExportReceiver" class="amt">
+                {{ toLocaleString(outputReceivedBalances, 9) }} LUX
+            </p>
+            <template v-else>
+                <p class="amt" v-for="(bal, key) in balances" :key="key">
+                    {{ isExport ? '-' : '' }}{{ toLocaleString(bal.amount, bal.decimals) }}
+                    {{ bal.symbol }}
+                </p>
+            </template>
+        </div>
     </div>
 </template>
 <script lang="ts">
+import { avm, cChain, pChain } from '@/AVA'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { ITransactionData } from '@/store/modules/history/types'
-import { avm, pChain } from 'luxdefi'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 import { bnToBig } from '@/helpers/helper'
+import {
+    isTransactionP,
+    isTransactionX,
+    TransactionType,
+    XChainTransaction,
+} from '@/js/Glacier/models'
+import { getExportBalances } from '@/components/SidePanels/History/ViewTypes/getExportBalances'
+import { WalletType } from '@/js/wallets/types'
+import { isOwnedUTXO } from '@/js/Glacier/isOwnedUtxo'
+
+function idToAlias(chainId: string | undefined) {
+    if (chainId === pChain.getBlockchainID()) {
+        return 'P'
+    } else if (chainId === avm.getBlockchainID()) {
+        return 'X'
+    } else if (chainId === cChain.getBlockchainID()) {
+        return 'C'
+    }
+    return chainId
+}
 
 @Component
 export default class ImportExport extends Vue {
-    @Prop() transaction!: ITransactionData
+    @Prop() transaction!: TransactionType
+
+    toLocaleString(val: BN, decimals: number) {
+        return bnToBig(val, decimals).toLocaleString()
+    }
+
+    getAssetFromID(id: string) {
+        return this.$store.state.Assets.assetsDict[id]
+    }
 
     get isExport() {
-        return this.transaction.type === 'export' || this.transaction.type === 'pvm_export'
+        return this.transaction.txType === 'ExportTx'
     }
 
-    get fromChainId() {
-        if (!this.transaction.inputs) return '?'
-        return this.transaction.inputs[0].output.chainID
-    }
-
-    get destinationChainId() {
-        let outs = this.transaction.outputs
-
-        for (var i = 0; i < outs.length; i++) {
-            let out = outs[i]
-            let chainId = out.chainID
-            if (chainId !== this.fromChainId) {
-                return chainId
+    get actionTitle() {
+        if (this.isExport) {
+            if (this.isExportReceiver) {
+                return 'Received'
+            } else {
+                return 'Export'
             }
+        } else {
+            return 'Import'
         }
-        return this.fromChainId
     }
 
-    // get chainId() {
-    //     if (!this.isExport) {
-    //         return this.transaction.outputs[0].chainID
-    //     } else {
-    //         return this.transaction.outputs[0].chainID
-    //     }
-    // }
+    /**
+     * Returns the chain id we are exporting/importing to
+     */
+    get destinationChainId() {
+        //TODO: Remove type when PChainTx is ready
+        return (this.transaction as XChainTransaction).destinationChain!
+    }
+
+    get sourceChainId() {
+        //TODO: Remove type when PChainTx is ready
+        return (this.transaction as XChainTransaction).sourceChain
+    }
 
     get chainAlias() {
-        let chainId
-        if (this.isExport) {
-            chainId = this.fromChainId
+        let chainId = this.isExport ? this.sourceChainId : this.destinationChainId
+        return idToAlias(chainId)
+    }
+
+    /**
+     * All X/P addresses used by the wallet
+     */
+    get addresses() {
+        let wallet: WalletType | null = this.$store.state.activeWallet
+        if (!wallet) return []
+        return wallet.getHistoryAddresses()
+    }
+
+    get ownedInputs() {
+        const tx = this.transaction
+        if (isTransactionP(tx)) {
+            return tx.consumedUtxos.filter((utxo) => {
+                return isOwnedUTXO(utxo, this.addresses)
+            })
         } else {
-            chainId = this.destinationChainId
+            return []
         }
-
-        if (chainId === pChain.getBlockchainID()) {
-            return 'P'
-        } else if (chainId === avm.getBlockchainID()) {
-            return 'X'
-        }
-        return chainId
     }
 
-    get amt(): BN {
-        if (this.isExport) {
-            let outs = []
-            let allOuts = this.transaction.outputs
-
-            for (var i = 0; i < allOuts.length; i++) {
-                let out = allOuts[i]
-                let chainId = out.chainID
-
-                if (chainId === this.destinationChainId) {
-                    outs.push(out)
-                }
-            }
-
-            let sumAmt = outs.reduce((acc, val) => {
-                let amt = new BN(val.amount)
-                return acc.add(amt)
-            }, new BN(0))
-            return sumAmt
+    get ownedOutputs() {
+        const tx = this.transaction
+        if (isTransactionP(tx)) {
+            return tx.emittedUtxos.filter((utxo) => {
+                return isOwnedUTXO(utxo, this.addresses)
+            })
         } else {
-            let ins = this.transaction.inputs || []
-            let sumAmt = ins.reduce((acc, val) => {
-                let amt = new BN(val.output.amount)
-                return acc.add(amt)
-            }, new BN(0))
-
-            return sumAmt
+            return []
         }
-        return new BN(0)
     }
 
-    get txFee() {
-        return new BN(this.transaction.txFee)
+    get sourceChainAlias() {
+        return idToAlias(this.sourceChainId)
     }
 
-    get amtText() {
-        let total = this.amt.add(this.txFee)
+    get wallet(): WalletType {
+        return this.$store.state.activeWallet
+    }
 
-        if (!this.isExport) {
-            total = this.amt.sub(this.txFee)
-        }
+    get balances() {
+        return getExportBalances(this.transaction, this.destinationChainId, this.getAssetFromID)
+    }
 
-        let big = bnToBig(total, 9)
-        return big.toLocaleString()
+    // If user received tokens from the export, but didnt consume any of their utxos
+    // Essentially, the P chain sending hack
+    get isExportReceiver() {
+        return this.isExport && this.ownedInputs.length === 0 && this.ownedOutputs.length > 0
+    }
+
+    get outputReceivedBalances() {
+        return this.ownedOutputs.reduce((agg, utxo) => {
+            return agg.add(new BN(utxo.amount))
+        }, new BN(0))
     }
 }
 </script>
@@ -128,10 +156,14 @@ export default class ImportExport extends Vue {
     }
 }
 
+.actionTitle {
+    white-space: nowrap;
+}
+
 .amt {
     text-align: right;
-    white-space: nowrap;
     font-size: 15px;
     color: var(--success);
+    word-break: normal;
 }
 </style>

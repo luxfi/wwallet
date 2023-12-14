@@ -125,15 +125,21 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import LuxxInput from '@/components/misc/LuxxInput.vue'
+import LuxInput from '@/components/misc/LuxInput.vue'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
-import { GasHelper, TxHelper, Utils } from '@luxdefi/luxdefi-wallet-sdk'
+import {
+    GasHelper,
+    TxHelper,
+    bnToBigLuxX,
+    bnToBigLuxC,
+    bnToLuxC,
+} from '@avalabs/avalanche-wallet-sdk'
 
 // @ts-ignore
-import { QrInput } from '@luxdefi/vue_components'
+import { QrInput } from '@avalabs/vue_components'
 import Big from 'big.js'
-import { BN } from 'luxdefi'
+import { BN } from 'avalanche'
 import { bnToBig } from '@/helpers/helper'
 import { web3 } from '@/evm'
 import EVMInputDropdown from '@/components/misc/EVMInputDropdown/EVMInputDropdown.vue'
@@ -144,7 +150,7 @@ import { WalletHelper } from '@/helpers/wallet_helper'
 @Component({
     components: {
         EVMInputDropdown,
-        LuxxInput,
+        LuxInput,
         QrInput,
     },
 })
@@ -154,7 +160,7 @@ export default class FormC extends Vue {
     addressIn = ''
     amountIn = new BN(0)
     gasPrice = new BN(225000000000)
-    gasPriceInterval: NodeJS.Timeout | undefined = undefined
+    gasPriceInterval: ReturnType<typeof setTimeout> | undefined = undefined
     gasLimit = 21000
     err = ''
     isLoading = false
@@ -190,7 +196,7 @@ export default class FormC extends Vue {
     }
 
     get gasPriceNumber() {
-        return Utils.bnToBigLuxxX(this.gasPrice).toFixed(0)
+        return bnToBigLuxX(this.gasPrice).toFixed(0)
     }
 
     async updateGasPrice() {
@@ -284,11 +290,11 @@ export default class FormC extends Vue {
     }
 
     get maxFeeUSD() {
-        return Utils.bnToBigLuxxC(this.maxFee).times(this.priceDict.usd)
+        return bnToBigLuxC(this.maxFee).times(this.priceDict.usd)
     }
 
     get maxFeeText(): string {
-        return Utils.bnToLuxxC(this.maxFee)
+        return bnToLuxC(this.maxFee)
     }
 
     // balance - (gas * price)
@@ -305,7 +311,7 @@ export default class FormC extends Vue {
         if (!this.isCollectible) {
             if (this.formToken === 'native') {
                 // For LUX Transfers
-                let gasLimit = await TxHelper.estimateLuxxGas(
+                let gasLimit = await TxHelper.estimateLuxGas(
                     this.wallet.getEvmAddress(),
                     this.formAddress,
                     this.formAmount,

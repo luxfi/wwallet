@@ -1,26 +1,26 @@
 import { ValidatorListFilter } from '@/components/wallet/earn/Delegate/types'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import { DAY_MS } from '@/constants'
-import { ONELUX } from 'luxdefi/dist/utils'
-import { BN } from 'luxdefi'
+import { ONELUX } from 'avalanche/dist/utils'
+import { BN } from 'avalanche'
 
 function filterValidatorList(
     list: ValidatorListItem[],
     filter: ValidatorListFilter | null
 ): ValidatorListItem[] {
-    let now = Date.now()
+    const now = Date.now()
     if (!filter) return list
 
-    let minDurationMs = filter.minDuration * DAY_MS
-    let res = list.filter((val: ValidatorListItem) => {
+    const minDurationMs = filter.minDuration * DAY_MS
+    const res = list.filter((val: ValidatorListItem) => {
         // Filter by remaining stake amount
-        let minSpace = ONELUX.mul(new BN(filter.availableSpace))
+        const minSpace = ONELUX.mul(new BN(filter.availableSpace))
         if (val.remainingStake.lt(minSpace)) {
             return false
         }
 
         // Filter by time
-        let endTime = val.endTime
+        const endTime = val.endTime
         if (endTime.getTime() - now < minDurationMs) {
             return false
         }

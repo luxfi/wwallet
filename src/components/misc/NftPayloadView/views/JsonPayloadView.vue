@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { JSONPayload } from 'luxdefi/dist/utils'
+import { JSONPayload } from 'avalanche/dist/utils'
 
 import GenericPayloadView from '@/components/misc/NftPayloadView/views/GenericPayloadView.vue'
 
@@ -41,7 +41,7 @@ export default class JsonPayloadView extends Vue {
         try {
             let obj = JSON.parse(data)
 
-            if (obj.hasOwnProperty('luxdefi')) {
+            if (obj.hasOwnProperty('avalanche')) {
                 return true
             } else {
                 return false

@@ -49,7 +49,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import punycode from 'punycode'
 
 @Component
@@ -63,7 +63,7 @@ export default class EditPage extends Vue {
     err = null
     err_url = ''
 
-    @Prop() net!: LuxNetwork
+    @Prop() net!: AvaNetwork
 
     mounted() {
         let net = this.net
@@ -185,7 +185,7 @@ export default class EditPage extends Vue {
 //     },
 //     props: {
 //         net: {
-//             type: LuxNetwork,
+//             type: AvaNetwork,
 //             required: true
 //         }
 //     },

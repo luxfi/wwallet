@@ -49,11 +49,11 @@ import {
     StakeableLockOut,
     UTXO,
     UTXOSet,
-} from 'luxdefi/dist/apis/platformvm'
+} from 'avalanche/dist/apis/platformvm'
 
 import UtxoRow from '@/components/modals/UtxoSelect/UtxoRow.vue'
-import { BN } from 'luxdefi'
-import { UnixNow } from 'luxdefi/dist/utils'
+import { BN } from 'avalanche'
+import { UnixNow } from 'avalanche/dist/utils'
 import { bnToBig } from '@/helpers/helper'
 
 @Component({

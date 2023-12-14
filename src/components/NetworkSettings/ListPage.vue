@@ -17,7 +17,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import NetworkRow from './NetworkRow.vue'
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 
 @Component({
     components: {
@@ -25,11 +25,11 @@ import { LuxNetwork } from '@/js/LuxNetwork'
     },
 })
 export default class ListPage extends Vue {
-    get networks(): LuxNetwork[] {
+    get networks(): AvaNetwork[] {
         return this.$store.getters['Network/allNetworks']
     }
 
-    onEdit(net: LuxNetwork) {
+    onEdit(net: AvaNetwork) {
         this.$emit('edit', net)
     }
 }

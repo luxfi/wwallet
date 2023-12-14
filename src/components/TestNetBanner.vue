@@ -4,7 +4,7 @@
     </div>
 </template>
 <script lang="ts">
-import { LuxNetwork } from '@/js/LuxNetwork'
+import { AvaNetwork } from '@/js/AvaNetwork'
 import 'reflect-metadata'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 

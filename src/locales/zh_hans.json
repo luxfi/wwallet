@@ -5,15 +5,15 @@
     "address": "地址",
     "add_pk": "添加私钥",
     "home": {
-        "desc": "Luxlanche 钱包是一个简单、安全、无托管的钱包，用于存储 Luxlanche 上的资产。",
+        "desc": "Lux 钱包是一个简单、安全、无托管的钱包，用于存储 Lux 上的资产。",
         "access": {
             "title": "欢迎回来！",
-            "desc": "在这里访问你现有的 Luxlanche 钱包。",
+            "desc": "在这里访问你现有的 Lux 钱包。",
             "submit": "访问钱包"
         },
         "create": {
-            "title": "第一次使用 Luxlanche 钱包？",
-            "desc": "点击“创建”来创建一个新钱包来发送、接收和交换 Luxlanche 上的资产。",
+            "title": "第一次使用 Lux 钱包？",
+            "desc": "点击“创建”来创建一个新钱包来发送、接收和交换 Lux 上的资产。",
             "submit": "创建新钱包"
         }
     },
@@ -29,7 +29,7 @@
     },
     "access": {
         "title": "你想如何访问你的钱包？",
-        "create": "还没有 Luxlanche 钱包？",
+        "create": "还没有 Lux 钱包？",
         "but_mnemonic": "助记词",
         "but_keystore": "密钥存储文件",
         "cancel": "取消",
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "生成一个新的助记词以设置你的Luxlanche钱包。",
+        "generate": "生成一个新的助记词以设置你的Lux钱包。",
         "but_have": "已有钱包？",
         "submit": "生成助记词",
         "cancel": "取消",
         "mnemonic_title": "这是你的助记词。",
-        "mnemonic_desc": "按顺序使用这 24 个单词来恢复你的 Luxlanche 钱包",
+        "mnemonic_desc": "按顺序使用这 24 个单词来恢复你的 Lux 钱包",
         "attention": "注意！",
-        "warning": "将此助记词存储在一个安全的位置。任何持有此助记词的人都可以访问你的Luxlanche钱包。没有办法找回丢失的助记词。",
+        "warning": "将此助记词存储在一个安全的位置。任何持有此助记词的人都可以访问你的Lux钱包。没有办法找回丢失的助记词。",
         "confirm": "我已经在一个安全的地方写下了我的助记词。",
         "regenerate": "重新生成",
         "success_title": "恭喜！",
-        "success_desc": "是时候访问你的Luxlanche钱包了。",
+        "success_desc": "是时候访问你的Lux钱包了。",
         "success_submit": "访问钱包",
         "verify": "验证",
         "verifytitle": "验证助记词",
@@ -78,7 +78,7 @@
         "error_word": "你输入的助记词与实际的不匹配。"
     },
     "top": {
-        "title1": "派生Luxlanche钱包地址",
+        "title1": "派生Lux钱包地址",
         "title2": "余额",
         "title3": "子网",
         "title4": "网络",
@@ -86,7 +86,7 @@
         "nftempty": "你没有收集任何不可分割代币。",
         "locked": "锁定",
         "info2": "我在代币销售中购买了货币。我的LUX在哪里？",
-        "info2_desc": "该钱包已连接到Luxlanche Everest测试网络。Luxlanche主网启动后，你的购买将出现在钱包。",
+        "info2_desc": "该钱包已连接到Lux Everest测试网络。Lux主网启动后，你的购买将出现在钱包。",
         "hover1": "查看地址二维码",
         "hover2": "打印",
         "hover3": "复制",
@@ -101,7 +101,7 @@
             "collectibles": "收藏品"
         },
         "address": {
-            "derived": "派生Luxlanche钱包地址",
+            "derived": "派生Lux钱包地址",
             "desc": "这是你接收资金的地址。每次存款后你的地址都会改变。"
         }
     },
@@ -181,12 +181,12 @@
         "warning_2": "你必须在P链拥有至少{0}LUX以成为一个委托者。",
         "validate_card": {
             "title": "验证",
-            "desc": "你有一个想用于质押的Luxlanche节点。",
+            "desc": "你有一个想用于质押的Lux节点。",
             "submit": "添加验证者"
         },
         "delegate_card": {
             "title": "委托",
-            "desc": "你没有Luxlanche节点，但你想使用另一个节点进行质押。",
+            "desc": "你没有Lux节点，但你想使用另一个节点进行质押。",
             "submit": "添加委托者"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "搜索节点ID",
                 "id": "节点ID",
                 "val_stake": "验证者质押",
-                "luxl_stake": "可用",
-                "luxl_stake_tip": "还有多少可以委托给这个验证者。",
+                "aval_stake": "可用",
+                "aval_stake_tip": "还有多少可以委托给这个验证者。",
                 "users_tip": "委托者数量",
                 "end": "结束时间",
                 "up": "上线时间",
@@ -388,7 +388,7 @@
         "loading": "正在加载交易历史…",
         "warn_loading": "该列表可能不完整且无序。",
         "error_api": "未找到区块链浏览器 API。",
-        "error_api_desc": "你必须为此网络提供一个LUX 浏览器 API来查看交易历史。"
+        "error_api_desc": "你必须为此网络提供一个AVA 浏览器 API来查看交易历史。"
     },
     "modal": {
         "qr": {

@@ -5,15 +5,15 @@
     "address": "Adresse",
     "add_pk": "Tilføj privat nøgle",
     "home": {
-        "desc": "Luxlanche Wallet er en enkel, sikker, ikke-frihedsberøvende tegnebog til opbevaring af Luxlanche aktiver.",
+        "desc": "Lux Wallet er en enkel, sikker, ikke-frihedsberøvende tegnebog til opbevaring af Lux aktiver.",
         "access": {
             "title": "Velkommen tilbage!",
-            "desc": "Få adgang til din eksisterende Luxlanche-tegnebog her.",
+            "desc": "Få adgang til din eksisterende Lux-tegnebog her.",
             "submit": "Adgang til tegnebogen"
         },
         "create": {
-            "title": "Ny på Luxlanche Wallet?",
-            "desc": "'Opret' en ny tegnebog til at sende, modtage og bytte Luxlanche aktiver.",
+            "title": "Ny på Lux Wallet?",
+            "desc": "'Opret' en ny tegnebog til at sende, modtage og bytte Lux aktiver.",
             "submit": "Opret ny tegnebog"
         }
     },
@@ -50,7 +50,7 @@
             "manage": "Administrere",
             "send": "Send",
             "earn": "Tjen",
-            "advanced": "Luxnceret"
+            "advanced": "Avanceret"
         },
         "address_card": {},
         "collectibles": {
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Generer en ny nøglesætning for at opsætte din Luxlanche Wallet.",
+        "generate": "Generer en ny nøglesætning for at opsætte din Lux Wallet.",
         "but_have": "Har du allerede en tegnebog?",
         "submit": "Genere nøglesætning",
         "cancel": "Annuller",
         "mnemonic_title": "Dette er din nøglesætning.",
-        "mnemonic_desc": "Brug disse 24 ord i rækkefølge for at gendanne din Luxlanche Wallet",
+        "mnemonic_desc": "Brug disse 24 ord i rækkefølge for at gendanne din Lux Wallet",
         "attention": "Obs!",
-        "warning": "Gem denne nøglesætning et sikkert sted. Alle med denne nøglesætning kan have adgang til din Luxlanche Wallet. Du kan ikke gendanne mistede nøglesætninger.",
+        "warning": "Gem denne nøglesætning et sikkert sted. Alle med denne nøglesætning kan have adgang til din Lux Wallet. Du kan ikke gendanne mistede nøglesætninger.",
         "confirm": "Jeg skrev min nøglesætning ned et sikkert sted.",
         "regenerate": "Regenere",
         "success_title": "Tillykke!",
-        "success_desc": "Det er tid til at få adgang til din Luxlanche Wallet.",
+        "success_desc": "Det er tid til at få adgang til din Lux Wallet.",
         "success_submit": "Adgang til tegnebogen",
         "verify": "Bekræft",
         "verifytitle": "Bekræft Mnemonic",
@@ -78,7 +78,7 @@
         "error_word": "Den mnemonic-sætning, du indtastede med ord, stemmer ikke overens med den aktuelle sætning."
     },
     "top": {
-        "title1": "Afledt Luxlanche tegnebog-adresse",
+        "title1": "Afledt Lux tegnebog-adresse",
         "title2": "Saldo",
         "title3": "Subnet",
         "title4": "Netværk",
@@ -86,7 +86,7 @@
         "nftempty": "Du har ikke samlet nogen ikke-ombyttelige poletter.",
         "locked": "Låst",
         "info2": "Jeg købte mønter i Token Salg. Hvor er min LUX?",
-        "info2_desc": "Denne tegnebog er tilsluttet Luxlanche Everest testnetværket. Dit køb vises i tegnebogen efter Luxlanche Mainnet-lanceringen.",
+        "info2_desc": "Denne tegnebog er tilsluttet Lux Everest testnetværket. Dit køb vises i tegnebogen efter Lux Mainnet-lanceringen.",
         "hover1": "Se adresse for QR-kode",
         "hover2": "Print",
         "hover3": "Kopi",
@@ -101,7 +101,7 @@
             "collectibles": "Samlerobjekter"
         },
         "address": {
-            "derived": "Afledt Luxlanche tegnebog-adresse",
+            "derived": "Afledt Lux tegnebog-adresse",
             "desc": "Dette er din adresse til at modtage penge. Din adresse ændres efter hver indbetaling."
         }
     },
@@ -112,7 +112,7 @@
         "to": "Til adresse",
         "fees": "Gebyrer",
         "fee_tx": "Transaktionsgebyr",
-        "advanced": "Luxnceret",
+        "advanced": "Avanceret",
         "adv_change": "Skift adresse",
         "send": "Send transaktion",
         "summary": "Transaktionsoversigt",
@@ -127,7 +127,7 @@
         "button1": "Husk nøgler",
         "button2": "IMPORTER NØGLER",
         "button3": "EKSPORTER NØGLER",
-        "subtitle": "Aktiivinen Luxin",
+        "subtitle": "Aktiivinen Avain",
         "remember_key_button": "HUSK",
         "remember_key_desc": "Kod din tegnebog ind med en adgangskode, og gem den sikkert i denne browser.",
         "remember_key_check": "Husk nøgler",
@@ -181,12 +181,12 @@
         "warning_2": "Du skal have mindst {0} LUX i P-kæden for at blive delegeret.",
         "validate_card": {
             "title": "Bekræft",
-            "desc": "Du har en Luxlanche-knude, som du vil satse på.",
+            "desc": "Du har en Lux-knude, som du vil satse på.",
             "submit": "Tilføj Validator"
         },
         "delegate_card": {
             "title": "Deleger",
-            "desc": "Du ejer ikke en Luxlanche-knude, men du vil satse ved hjælp af en anden knude.",
+            "desc": "Du ejer ikke en Lux-knude, men du vil satse ved hjælp af en anden knude.",
             "submit": "Tilføj Delegator"
         },
         "transfer_card": {
@@ -292,8 +292,8 @@
                 "search": "Søg efter knude-id",
                 "id": "Knude ID",
                 "val_stake": "Validator indsats",
-                "luxl_stake": "Ledig",
-                "luxl_stake_tip": "Hvor meget mere kan delegeres til denne validator.",
+                "aval_stake": "Ledig",
+                "aval_stake_tip": "Hvor meget mere kan delegeres til denne validator.",
                 "users_tip": "Antal delegerede",
                 "end": "Sluttid",
                 "up": "Oppetid",
@@ -364,7 +364,7 @@
         }
     },
     "advanced": {
-        "title": "Luxnceret",
+        "title": "Avanceret",
         "import": {
             "title": "Import af kæde",
             "desc": "Hvis du har penge, som sidder fast i en mislykket kædeoverførsel, kan du afslutte importen her.",
@@ -388,7 +388,7 @@
         "loading": "Indlæser transaktionshistorik..",
         "warn_loading": "Denne liste kan være ufuldstændig og ude af drift.",
         "error_api": "Explorer API ikke fundet",
-        "error_api_desc": "Du skal give en LUX Explorer API til dette netværk for at se transaktionshistorik."
+        "error_api_desc": "Du skal give en AVA Explorer API til dette netværk for at se transaktionshistorik."
     },
     "modal": {
         "qr": {

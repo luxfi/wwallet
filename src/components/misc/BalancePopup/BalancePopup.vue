@@ -33,10 +33,10 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import LuxAsset from '@/js/LuxAsset'
+import AvaAsset from '@/js/AvaAsset'
 import BalanceRow from './BalanceRow.vue'
 import CollectibleTab from './CollectibleTab.vue'
-import { UTXO } from 'luxdefi/dist/apis/avm'
+import { UTXO } from 'avalanche/dist/apis/avm'
 
 @Component({
     components: {
@@ -45,13 +45,13 @@ import { UTXO } from 'luxdefi/dist/apis/avm'
     },
 })
 export default class BalancePopup extends Vue {
-    @Prop() assets!: LuxAsset[]
+    @Prop() assets!: AvaAsset[]
     @Prop({ default: false }) isNft?: boolean
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
 
     isActive: boolean = false
 
-    select(asset: LuxAsset) {
+    select(asset: AvaAsset) {
         if (asset.amount.isZero()) return
         if (this.isDisabled(asset)) return
 
@@ -63,7 +63,7 @@ export default class BalancePopup extends Vue {
         this.closePopup()
     }
 
-    isDisabled(asset: LuxAsset): boolean {
+    isDisabled(asset: AvaAsset): boolean {
         if (this.disabledIds.includes(asset.id)) return true
         return false
     }

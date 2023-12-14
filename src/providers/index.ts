@@ -1,8 +1,8 @@
-import { LuxNetwork } from '../js/LuxNetwork'
+import { AvaNetwork } from '../js/AvaNetwork'
 import { connectSocketX } from '@/providers/socket_x'
 import { connectSocketC } from '@/providers/socket_c'
 
-export function setSocketNetwork(network: LuxNetwork) {
+export function setSocketNetwork(network: AvaNetwork) {
     // Setup X chain connection
     connectSocketX(network)
     // Setup EVM socket connection

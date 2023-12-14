@@ -5,15 +5,15 @@
     "address": "Adres",
     "add_pk": "Dodać prywatny klucz",
     "home": {
-        "desc": "Portfel Luxlanche to prosty, bezpieczny portfel bez zabezpieczenia do przechowywania aktywów Luxlanche.",
+        "desc": "Portfel Lux to prosty, bezpieczny portfel bez zabezpieczenia do przechowywania aktywów Lux.",
         "access": {
             "title": "Witamy z powrotem!",
-            "desc": "„Uzyskaj dostęp” do swojego istniejącego portfela Luxlanche tutaj.",
+            "desc": "„Uzyskaj dostęp” do swojego istniejącego portfela Lux tutaj.",
             "submit": "Uzyskaj dostęp do Portfela"
         },
         "create": {
-            "title": "Nowy w portfelu Luxlanche?",
-            "desc": "„Utwórz” nowy portfel, aby wysyłać, odbierać i wymieniać aktywa Luxlanche.",
+            "title": "Nowy w portfelu Lux?",
+            "desc": "„Utwórz” nowy portfel, aby wysyłać, odbierać i wymieniać aktywa Lux.",
             "submit": "Stworzyćz nowy portfel"
         }
     },
@@ -58,18 +58,18 @@
         }
     },
     "create": {
-        "generate": "Wygeneruj nową frazę kluczową, aby skonfigurować portfel Luxlanche.",
+        "generate": "Wygeneruj nową frazę kluczową, aby skonfigurować portfel Lux.",
         "but_have": "Czy masz już portfel?",
         "submit": "Wygenerować Kluczowa Fraza",
         "cancel": "Anulować",
         "mnemonic_title": "To jest twoja kluczowa fraza.",
         "mnemonic_desc": "Użyj tych 24 słów w kolejności, aby odzyskać swój portfel lawinowy",
         "attention": "Uwaga!",
-        "warning": "Przechowuj tę frazę kluczową w bezpiecznym miejscu. Każdy, kto ma tę kluczową frazę, może uzyskać dostęp do Twojego portfela Luxlanche. Nie ma sposobu na odzyskanie utraconych fraz kluczowych.",
+        "warning": "Przechowuj tę frazę kluczową w bezpiecznym miejscu. Każdy, kto ma tę kluczową frazę, może uzyskać dostęp do Twojego portfela Lux. Nie ma sposobu na odzyskanie utraconych fraz kluczowych.",
         "confirm": "Zapisałem swoją kluczową frazę w bezpiecznym miejscu.",
         "regenerate": "Regenerować",
         "success_title": "Gratulujemy!",
-        "success_desc": "Nadszedł czas, aby uzyskać dostęp do portfela Luxlanche.",
+        "success_desc": "Nadszedł czas, aby uzyskać dostęp do portfela Lux.",
         "success_submit": "Dostęp do portfela",
         "verify": "Potwierdzać",
         "verifytitle": "Potwierdzać Mnemoniczną Frazę",
@@ -78,7 +78,7 @@
         "error_word": "Podana mnemoniczna fraza nie pasuje do rzeczywistej."
     },
     "top": {
-        "title1": "Otrzymany adres portfela Luxlanche",
+        "title1": "Otrzymany adres portfela Lux",
         "title2": "Saldo",
         "title3": "Podsieć",
         "title4": "Sieć",
@@ -86,7 +86,7 @@
         "nftempty": "Nie masz żadnych zamienne tokenów.",
         "locked": "Zablokowane",
         "info2": "Kupiłem monety podczas wyprzedaży. Gdzie są moje tokeny LUX?",
-        "info2_desc": "Ten portfel jest połączony z testową Luxlanche Everest siecią. Twój zakup pojawi się w portfelu po uruchomieniu Luxlanche Mainnet.",
+        "info2_desc": "Ten portfel jest połączony z testową Lux Everest siecią. Twój zakup pojawi się w portfelu po uruchomieniu Lux Mainnet.",
         "hover1": "Wyświetl QR kod adresu",
         "hover2": "Wydrukować",
         "hover3": "Kopiować",
@@ -101,7 +101,7 @@
             "collectibles": "Artykuły kolekcjonerskie"
         },
         "address": {
-            "derived": "Pochodny adres portfela Luxlanche",
+            "derived": "Pochodny adres portfela Lux",
             "desc": "To jest Twój adres, na który należy przekazywać środki. Twój adres zmieni się po każdej wpłacie."
         }
     },
@@ -181,7 +181,7 @@
         "warning_2": "Aby zostać delegatem, musisz mieć co najmniej {0} LUX w łańcuchu P.",
         "validate_card": {
             "title": "Waliduj",
-            "desc": "Masz węzeł Luxlanche, z którym chcesz postawić.",
+            "desc": "Masz węzeł Lux, z którym chcesz postawić.",
             "submit": "Dodaj walidatora"
         },
         "delegate_card": {
@@ -292,8 +292,8 @@
                 "search": "Wyszukaj identyfikator węzła",
                 "id": "Node ID",
                 "val_stake": "Walidator Stake",
-                "luxl_stake": "Dostępny",
-                "luxl_stake_tip": "O ile więcej można delegować do tego walidatora.",
+                "aval_stake": "Dostępny",
+                "aval_stake_tip": "O ile więcej można delegować do tego walidatora.",
                 "users_tip": "Liczba delegatów",
                 "end": "Koniec czasu",
                 "up": "Dostępność",
@@ -388,7 +388,7 @@
         "loading": "Wczytuję historię transakcji..",
         "warn_loading": "Ta lista może być niekompletna i nieaktualna.",
         "error_api": "Nie znaleziono interfejsu Explorer API",
-        "error_api_desc": "Aby wyświetlić historię transakcji, musisz udostępnić interfejs API LUX Explorer dla tej sieci."
+        "error_api_desc": "Aby wyświetlić historię transakcji, musisz udostępnić interfejs API AVA Explorer dla tej sieci."
     },
     "modal": {
         "qr": {
