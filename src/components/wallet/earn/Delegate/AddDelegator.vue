@@ -193,7 +193,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import LuxInput from '@/components/misc/LuxInput.vue'
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxwallet/components'
 import ValidatorsList from '@/components/misc/ValidatorList/ValidatorsList.vue'
 import { ValidatorRaw } from '@/components/misc/ValidatorList/types'
 import StakingCalculator from '@/components/wallet/earn/StakingCalculator.vue'
@@ -220,7 +220,7 @@ import NodeCard from '@/components/wallet/earn/Delegate/NodeCard.vue'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForStaking } from '@/helpers/utxoSelection/selectMaxUtxoForStaking'
 import Tooltip from '@/components/misc/Tooltip.vue'
-import { bnToLuxP } from '@avalabs/avalanche-wallet-sdk'
+import { bnToLuxP } from '@luxwallet/sdk'
 
 const MIN_MS = 60000
 const HOUR_MS = MIN_MS * 60

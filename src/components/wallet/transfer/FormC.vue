@@ -134,10 +134,10 @@ import {
     bnToBigLuxX,
     bnToBigLuxC,
     bnToLuxC,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 
 // @ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxwallet/components'
 import Big from 'big.js'
 import { BN } from 'avalanche'
 import { bnToBig } from '@/helpers/helper'

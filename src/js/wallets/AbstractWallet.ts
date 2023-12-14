@@ -12,7 +12,7 @@ import {
     TxHelper,
     GasHelper,
     chainIdFromAlias,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 import { ava, avm, bintools, cChain, pChain } from '@/AVA'
 import { UTXOSet as EVMUTXOSet } from 'avalanche/dist/apis/evm/utxos'
 import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx'

@@ -31,9 +31,9 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, Model } from 'vue-property-decorator'
-import { Big, bnToBig } from '@avalabs/avalanche-wallet-sdk'
+import { Big, bnToBig } from '@luxwallet/sdk'
 //@ts-ignore
-import { BigNumInput } from '@avalabs/vue_components'
+import { BigNumInput } from '@luxwallet/components'
 import { BN } from 'avalanche'
 import { priceDict } from '../../store/types'
 

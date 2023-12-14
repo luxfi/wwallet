@@ -16,7 +16,7 @@ Wallet types supported:
 -   Mnemonic Wallets
 -   Public Mnemonic Wallets (XPUB)
 
-Using the avalanche-wallet-sdk developers can:
+Using the Wallet SDK developers can:
 
 -   Receive and send tokens and NFTs.
 -   Cross chain transfer
@@ -29,11 +29,11 @@ Using the avalanche-wallet-sdk developers can:
 
 With npm
 
-`npm install --save @avalabs/avalanche-wallet-sdk`
+`npm install --save @luxwallet/sdk`
 
 or yarn
 
-`yarn add @avalabs/avalanche-wallet-sdk`
+`yarn add @luxwallet/sdk`
 
 ## Local build
 

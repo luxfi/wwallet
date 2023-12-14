@@ -146,7 +146,7 @@ import {
     bigToBN,
     luxCtoX,
     bnToLuxP,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForExportP } from '@/helpers/utxoSelection/selectMaxUtxoForExportP'
 

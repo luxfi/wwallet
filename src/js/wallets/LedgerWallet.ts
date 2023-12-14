@@ -70,7 +70,7 @@ import {
     chainIdFromAlias,
     getLedgerProvider,
     LedgerProvider,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 import { getTxOutputAddresses } from '@/utils/getAddressFromTx'
 
 class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {

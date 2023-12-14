@@ -65,7 +65,7 @@ import {
     Big,
     bnToBigLuxX,
     bnToBigLuxC,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 
 @Component
 export default class Balances extends Vue {

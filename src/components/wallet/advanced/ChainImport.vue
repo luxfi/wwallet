@@ -50,7 +50,7 @@ import {
     ExportChainsP,
     ExportChainsX,
     GasHelper,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 
 @Component({
     components: { Spinner },

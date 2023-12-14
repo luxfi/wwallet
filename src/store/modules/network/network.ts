@@ -10,7 +10,7 @@ import { getPreferredHRP } from 'avalanche/dist/utils'
 import router from '@/router'
 import { web3 } from '@/evm'
 import { setSocketNetwork } from '../../../providers'
-import { getConfigFromUrl, setNetworkAsync } from '@avalabs/avalanche-wallet-sdk'
+import { getConfigFromUrl, setNetworkAsync } from '@luxwallet/sdk'
 import { MainnetConfig, TestnetConfig } from '@/store/modules/network/constants'
 const network_module: Module<NetworkState, RootState> = {
     namespaced: true,

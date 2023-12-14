@@ -225,7 +225,7 @@ import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'avalanche'
 import Big from 'big.js'
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxwallet/components'
 import { bintools, pChain } from '@/AVA'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import ConfirmPage from '@/components/wallet/earn/Validate/ConfirmPage.vue'
@@ -242,7 +242,7 @@ import { AmountOutput, UTXO, UTXOSet } from 'avalanche/dist/apis/platformvm'
 import { WalletType } from '@/js/wallets/types'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForStaking } from '@/helpers/utxoSelection/selectMaxUtxoForStaking'
-import { bnToLuxP } from '@avalabs/avalanche-wallet-sdk'
+import { bnToLuxP } from '@luxwallet/sdk'
 
 const MIN_MS = 60000
 const HOUR_MS = MIN_MS * 60

@@ -33,7 +33,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'avalanche'
 import Big from 'big.js'
-import { bnToBigLuxP } from '@avalabs/avalanche-wallet-sdk'
+import { bnToBigLuxP } from '@luxwallet/sdk'
 import { PChainTransaction } from '@avalabs/glacier-sdk'
 
 @Component

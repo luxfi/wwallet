@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "wallet",
+    "name": "@luxwallet/monorepo",
     "version": "0.1.4",
     "scripts": {
         "build": "vue-cli-service build",
@@ -14,9 +14,9 @@
         "test:watch": "jest --verbose --watch ./tests"
     },
     "dependencies": {
-        "@avalabs/avalanche-wallet-sdk": "0.20.0-alpha.11",
+        "@luxwallet/sdk": "0.20.0-alpha.11",
         "@avalabs/glacier-sdk": "2.8.0-alpha.108",
-        "@avalabs/vue_components": "0.10.0",
+        "@luxwallet/components": "0.10.0",
         "@ethereumjs/common": "2.0.0",
         "@ethereumjs/tx": "3.0.0",
         "@fortawesome/fontawesome-svg-core": "1.2.26",
@@ -58,7 +58,7 @@
         "sockette": "2.0.6",
         "uniqid": "5.2.0",
         "uuid": "3.4.0",
-        "vue": "2.6.12",
+        "vue": "2.7.2",
         "vue-class-component": "7.2.3",
         "vue-country-flag": "2.0.2",
         "vue-datetime": "1.0.0-beta.14",

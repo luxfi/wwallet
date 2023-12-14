@@ -1,5 +1,5 @@
 import { Tx as AVMTx } from 'avalanche/dist/apis/avm/tx'
-import { xChain } from '@avalabs/avalanche-wallet-sdk'
+import { xChain } from '@luxwallet/sdk'
 import { bintools, cChain, pChain } from '@/AVA'
 import { Tx as PlatformTx } from 'avalanche/dist/apis/platformvm/tx'
 import { Tx as EVMTx } from 'avalanche/dist/apis/evm/tx'

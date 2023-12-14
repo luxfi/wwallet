@@ -45,7 +45,7 @@ import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { Transaction } from '@ethereumjs/tx'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
-import { ExportChainsC, ExportChainsP } from '@avalabs/avalanche-wallet-sdk'
+import { ExportChainsC, ExportChainsP } from '@luxwallet/sdk'
 
 // HD WALLET
 // Accounts are not used and the account index is fixed to 0

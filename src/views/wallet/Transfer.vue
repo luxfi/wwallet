@@ -141,7 +141,7 @@ import Big from 'big.js'
 import NftList from '@/components/wallet/transfer/NftList.vue'
 
 //@ts-ignore
-import { QrInput } from '@avalabs/vue_components'
+import { QrInput } from '@luxwallet/components'
 import { ava, avm, isValidAddress } from '../../AVA'
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import { ITransaction } from '@/components/wallet/transfer/types'

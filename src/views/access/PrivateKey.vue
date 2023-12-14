@@ -35,7 +35,7 @@ import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { privateToAddress } from 'ethereumjs-util'
 import { bintools } from '@/AVA'
 import { Buffer } from 'avalanche'
-import { strip0x } from '@avalabs/avalanche-wallet-sdk'
+import { strip0x } from '@luxwallet/sdk'
 
 @Component
 export default class PrivateKey extends Vue {

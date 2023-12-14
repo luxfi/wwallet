@@ -11,41 +11,6 @@
     event-pubsub "4.3.0"
     js-message "1.0.7"
 
-"@avalabs/avalanche-wallet-sdk@0.20.0-alpha.11":
-  version "0.20.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/@avalabs/avalanche-wallet-sdk/-/avalanche-wallet-sdk-0.20.0-alpha.11.tgz#6c499ebf52cbed9d319f1416bd8d22845851b2de"
-  integrity sha512-y3fV2C3dbi0ysAN824Y12nNZTK1EDF+XuXpq/i2KcBG0zikhNnSsf/FFfB4WJlxwxI5obKGTq7gyexOlM8wC4w==
-  dependencies:
-    "@avalabs/glacier-sdk" "2.8.0-alpha.92"
-    "@avalabs/hw-app-avalanche" "0.6.6"
-    "@ethereumjs/common" "2.6.0"
-    "@ethereumjs/tx" "3.4.0"
-    "@ledgerhq/hw-app-eth" "6.29.6"
-    "@ledgerhq/hw-transport" "6.27.5"
-    "@metamask/eth-sig-util" "4.0.0"
-    "@obsidiansystems/hw-app-avalanche" "0.2.2"
-    "@openzeppelin/contracts" "4.8.3"
-    big.js "^6.1.1"
-    bip32 "4.0.0"
-    bip32-path "0.4.2"
-    bip39 "3.0.4"
-    bitcoinjs-lib "5.2.0"
-    bn.js "5.2.1"
-    create-hash "1.2.0"
-    crypto-js "4.1.1"
-    ethereumjs-util "^7.0.7"
-    ethers "5.6.8"
-    hdkey "2.0.1"
-    moment "2.29.4"
-    randomstring "1.2.2"
-    sockette "2.0.6"
-    tiny-secp256k1 "1.1.6"
-    typescript-transform-paths "2.2.3"
-    url "0.11.0"
-    web3 "1.7.4"
-    web3-eth-contract "1.8.1"
-    xss "1.0.11"
-
 "@avalabs/glacier-sdk@2.8.0-alpha.108":
   version "2.8.0-alpha.108"
   resolved "https://registry.yarnpkg.com/@avalabs/glacier-sdk/-/glacier-sdk-2.8.0-alpha.108.tgz#8d22cbb292773a12763382e5657e739fd8222505"
@@ -66,9 +31,9 @@
     bs58 "^5.0.0"
     sha3 "^2.1.4"
 
-"@avalabs/vue_components@0.10.0":
+"@luxwallet/components@0.10.0":
   version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@avalabs/vue_components/-/vue_components-0.10.0.tgz"
+  resolved "https://registry.yarnpkg.com/@luxwallet/components/-/vue_components-0.10.0.tgz"
   integrity sha512-hQ+Th/5Ra4RWrRIWhIl2dYu+F38u8h1DHCqkfLNIGHRhIBHuQwKadIHh0iE6W1/GEau8dKl1O6QImNw5ZdI32A==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.27"

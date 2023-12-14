@@ -39,7 +39,7 @@ import {
     parseStakingTxs,
     HistoryItemType,
     isHistoryStakingTx,
-} from '@avalabs/avalanche-wallet-sdk'
+} from '@luxwallet/sdk'
 import { UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm'
 import { UTXOSet as PlatformUTXOSet, TransferableOutput } from 'avalanche/dist/apis/platformvm'
 import Balances from '@/views/wallet_readonly/Balances.vue'

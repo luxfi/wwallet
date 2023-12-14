@@ -27,7 +27,7 @@ import { CsvRowLuxTransferData, ITransactionData, UTXO } from '@/store/modules/h
 import { bnToBig } from '@/helpers/helper'
 const generate = require('csv-generate')
 import { downloadCSVFile } from '@/store/modules/history/history_utils'
-import { createCsvNormal, getHistoryForOwnedAddresses } from '@avalabs/avalanche-wallet-sdk'
+import { createCsvNormal, getHistoryForOwnedAddresses } from '@luxwallet/sdk'
 
 @Component({
     components: {

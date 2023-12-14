@@ -11,7 +11,7 @@
             <span>
                 These Terms of Use (these &ldquo;Terms&rdquo;) constitute a legally binding
                 agreement made between you, whether personally or on behalf of an entity
-                (&ldquo;you&rdquo;) and Ava Labs, Inc. (together with its subsidiaries and
+                (&ldquo;you&rdquo;) and Lux Partners Limited. (together with its subsidiaries and
                 affiliates, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
                 &ldquo;our&rdquo;) governing your download, access to and/or use of the Core Browser
                 Extension, the Core Mobile Application, the CoreWeb website, the core.app website
@@ -1227,7 +1227,7 @@
                 regarding use of the App, please contact us at:
             </span>
         </p>
-        <p class="c3"><span class="c0">Ava Labs, Inc.</span></p>
+        <p class="c3"><span class="c0">Lux Partners Limited.</span></p>
         <p class="c3"><span class="c0">1177 Avenue of the Americas</span></p>
         <p class="c3"><span class="c0">5th Floor, Suite 50922</span></p>
         <p class="c3"><span class="c0">New York, NY 10036</span></p>
