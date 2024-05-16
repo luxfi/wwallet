@@ -27,7 +27,7 @@ export function getEthAddressKeyFromAccountKey(xpub: string, index: number) {
     return node.toBase58();
 }
 
-export function getAppLux(transport: Transport, provider: LedgerProviderType): AppObsidian | AppZondax {
+export function getAppAvax(transport: Transport, provider: LedgerProviderType): AppObsidian | AppZondax {
     return provider === 'obsidian' ? ObsidianProvider.getApp(transport) : ZondaxProvider.getApp(transport);
 }
 

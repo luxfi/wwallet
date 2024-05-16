@@ -1,6 +1,5 @@
 {
-    "version": "@luxwallet/sdk",
-    "author": "Lux Partners Limited",
+    "version": "0.20.0-alpha.16",
     "license": "BSD-3",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -25,9 +24,11 @@
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
     },
+    "name": "@luxfi/wallet-sdk",
+    "author": "Lux Partners Limited",
     "repository": {
         "type": "git",
-        "url": "https://github.com/luxdefi/wallet.git"
+        "url": "https://github.com/luxfi/wallet"
     },
     "publishConfig": {
         "access": "public"

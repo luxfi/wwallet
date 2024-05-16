@@ -1,6 +1,6 @@
 import { NetworkConfig } from '@/Network/types';
 
-import { Lux } from 'avalanche';
+import { Avalanche } from 'avalanche';
 import { HttpClient } from './http_client';
 
 export function wsUrlFromConfigX(config: NetworkConfig): string {
@@ -14,11 +14,11 @@ export function wsUrlFromConfigEVM(config: NetworkConfig): string {
 }
 
 /**
- * Given the base url of an Lux API, requests the Network ID
- * @param url The base url for the Lux API
+ * Given the base url of an Avalanche API, requests the Network ID
+ * @param url The base url for the Avalanche API
  */
 export async function getNetworkIdFromURL(url: string): Promise<number> {
-    // TODO: Not be the best to assume /ext/info but Luxjs complicates things
+    // TODO: Not be the best to assume /ext/info but Avalanchejs complicates things
     let res = await fetch(url + '/ext/info', {
         method: 'POST',
         headers: {
@@ -36,8 +36,8 @@ export async function getNetworkIdFromURL(url: string): Promise<number> {
     return parseInt(data.result.networkID);
 }
 
-export function createLuxProvider(config: NetworkConfig) {
-    return new Lux(config.apiIp, config.apiPort, config.apiProtocol, config.networkID);
+export function createAvalancheProvider(config: NetworkConfig) {
+    return new Avalanche(config.apiIp, config.apiPort, config.apiProtocol, config.networkID);
 }
 
 /**
@@ -56,7 +56,7 @@ export function createExplorerApi(networkConfig: NetworkConfig) {
  * This must be true to use cookies.
  */
 export async function canUseCredentials(config: NetworkConfig): Promise<boolean> {
-    let provider = createLuxProvider(config);
+    let provider = createAvalancheProvider(config);
     provider.setRequestConfig('withCredentials', true);
 
     let infoApi = provider.Info();

@@ -60,7 +60,7 @@ export interface KeyFileKeyDecryptedV3 {
 }
 
 // V4 #################################
-// Lux uses bech32 addresses. Removed address field from keys and the warning message.
+// Avalanche uses bech32 addresses. Removed address field from keys and the warning message.
 export interface KeyFileV4 {
     salt: string;
     keys: KeyFileKeyV4[];

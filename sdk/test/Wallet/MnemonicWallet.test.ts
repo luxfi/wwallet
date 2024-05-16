@@ -15,7 +15,7 @@ jest.mock('@/Network/network', () => {
     return {
         avalanche: {
             getNetworkID: jest.fn().mockReturnValue(1),
-            getHRP: jest.fn().mockReturnValue('lux'),
+            getHRP: jest.fn().mockReturnValue('avax'),
         },
 
         //@ts-ignore
@@ -44,11 +44,11 @@ describe('Mnemonic Wallet', () => {
     const wallet = MnemonicWallet.fromMnemonic(TEST_MNEMONIC);
 
     it('can return initial X address', () => {
-        expect(wallet.getAddressX()).toEqual('X-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh');
+        expect(wallet.getAddressX()).toEqual('X-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh');
     });
 
     it('can return initial P address', () => {
-        expect(wallet.getAddressP()).toEqual('P-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh');
+        expect(wallet.getAddressP()).toEqual('P-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh');
     });
 
     it('can return initial C address', () => {
@@ -56,6 +56,6 @@ describe('Mnemonic Wallet', () => {
     });
 
     it('can return C chain bech32 address', () => {
-        expect(wallet.getEvmAddressBech()).toEqual('C-lux1t5dhkc4myzvyqsct3dmaue2hc43na8qh3v6xx4');
+        expect(wallet.getEvmAddressBech()).toEqual('C-avax1t5dhkc4myzvyqsct3dmaue2hc43na8qh3v6xx4');
     });
 });

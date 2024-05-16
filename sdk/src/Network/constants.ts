@@ -3,12 +3,12 @@ import { Defaults } from 'avalanche/dist/utils';
 import { getRpcC, getRpcP, getRpcX } from './helpers/rpcFromConfig';
 
 export const MainnetConfig: NetworkConfig = {
-    rawUrl: 'https://api.lux.network',
+    rawUrl: 'https://api.avax.network',
     apiProtocol: 'https',
-    apiIp: 'api.lux.network',
+    apiIp: 'api.avax.network',
     apiPort: 443,
-    explorerURL: 'https://explorerapi.lux.network',
-    explorerSiteURL: 'https://explorer.lux.network',
+    explorerURL: 'https://explorerapi.avax.network',
+    explorerSiteURL: 'https://explorer.avax.network',
     networkID: 1,
     // @ts-ignore
     xChainID: Defaults.network[1]['X']['blockchainID'],
@@ -19,7 +19,7 @@ export const MainnetConfig: NetworkConfig = {
     // @ts-ignore
     evmChainID: Defaults.network[1]['C']['chainID'],
     // @ts-ignore
-    luxID: Defaults.network[1]['X']['luxAssetID'],
+    avaxID: Defaults.network[1]['X']['avaxAssetID'],
     get rpcUrl() {
         return {
             c: getRpcC(this),
@@ -30,12 +30,12 @@ export const MainnetConfig: NetworkConfig = {
 };
 
 export const TestnetConfig: NetworkConfig = {
-    rawUrl: 'https://api.lux-test.network',
+    rawUrl: 'https://api.avax-test.network',
     apiProtocol: 'https',
-    apiIp: 'api.lux-test.network',
+    apiIp: 'api.avax-test.network',
     apiPort: 443,
-    explorerURL: 'https://explorerapi.lux-test.network',
-    explorerSiteURL: 'https://explorer.lux-test.network',
+    explorerURL: 'https://explorerapi.avax-test.network',
+    explorerSiteURL: 'https://explorer.avax-test.network',
     networkID: 5,
     // @ts-ignore
     xChainID: Defaults.network[5]['X']['blockchainID'],
@@ -46,7 +46,7 @@ export const TestnetConfig: NetworkConfig = {
     // @ts-ignore
     evmChainID: Defaults.network[5]['C']['chainID'],
     // @ts-ignore
-    luxID: Defaults.network[5]['X']['luxAssetID'],
+    avaxID: Defaults.network[5]['X']['avaxAssetID'],
     get rpcUrl() {
         return {
             c: getRpcC(this),
@@ -71,7 +71,7 @@ export const LocalnetConfig: NetworkConfig = {
     // @ts-ignore
     evmChainID: Defaults.network[12345]['C']['chainID'],
     // @ts-ignore
-    luxID: Defaults.network[12345]['X']['luxAssetID'],
+    avaxID: Defaults.network[12345]['X']['avaxAssetID'],
     get rpcUrl() {
         return {
             c: getRpcC(this),

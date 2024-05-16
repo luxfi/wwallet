@@ -2,6 +2,33 @@
 # yarn lockfile v1
 
 
+"@avalabs/avalanche-wallet-sdk@0.11.1-beta.1":
+  version "0.11.1-beta.1"
+  resolved "https://registry.yarnpkg.com/@avalabs/avalanche-wallet-sdk/-/avalanche-wallet-sdk-0.11.1-beta.1.tgz#3e04098a0fca0c10ccd7946ea308ea1730045788"
+  integrity sha512-o/rZVxNL8QP0QrOeXdRJr8rFvU74iqlwJ5BtCT2l/+oCDYci0zm1OF8wnZZWQJhu9E8EKUK8Tf/aTbwftSodvg==
+  dependencies:
+    "@ethereumjs/common" "2.5.0"
+    "@ethereumjs/tx" "3.3.2"
+    "@ledgerhq/hw-app-eth" "6.12.2"
+    "@obsidiansystems/hw-app-avalanche" "0.2.2"
+    "@openzeppelin/contracts" "4.3.3"
+    big.js "^6.1.1"
+    bip32 "^2.0.6"
+    bip32-path "^0.4.2"
+    bip39 "^3.0.4"
+    bn.js "5.1.1"
+    create-hash "1.2.0"
+    ethereumjs-util "^7.0.7"
+    ethers "^5.1.4"
+    moment "^2.29.1"
+    rollup-plugin-commonjs "^10.1.0"
+    sockette "^2.0.6"
+    typescript-transform-paths "^2.2.3"
+    url "^0.11.0"
+    web3 "1.6.0"
+    web3-eth-contract "1.6.0"
+    xss "^1.0.10"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.0":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.0.tgz#0dfc80309beec8411e65e706461c408b0bb9b431"

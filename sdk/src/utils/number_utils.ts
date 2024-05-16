@@ -41,32 +41,32 @@ export function bnToBig(val: BN, denomination = 0): Big {
 
 /**
  * Converts a BN amount of 18 decimals to 9.
- * Used for LUX C <-> X,P conversions
+ * Used for AVAX C <-> X,P conversions
  * @param amount
  */
-export function luxCtoX(amount: BN) {
+export function avaxCtoX(amount: BN) {
     let tens = new BN(10).pow(new BN(9));
     return amount.div(tens);
 }
 
-export function luxXtoC(amount: BN) {
+export function avaxXtoC(amount: BN) {
     let tens = new BN(10).pow(new BN(9));
     return amount.mul(tens);
 }
 
-export function luxPtoC(amount: BN) {
-    return luxXtoC(amount);
+export function avaxPtoC(amount: BN) {
+    return avaxXtoC(amount);
 }
 
-export function bnToBigLuxX(val: BN): Big {
+export function bnToBigAvaxX(val: BN): Big {
     return bnToBig(val, 9);
 }
 
-export function bnToBigLuxP(val: BN): Big {
-    return bnToBigLuxX(val);
+export function bnToBigAvaxP(val: BN): Big {
+    return bnToBigAvaxX(val);
 }
 
-export function bnToBigLuxC(val: BN): Big {
+export function bnToBigAvaxC(val: BN): Big {
     return bnToBig(val, 18);
 }
 
@@ -77,31 +77,31 @@ export function bnToBigLuxC(val: BN): Big {
  *
  * @example
  * ```
- * bnToLuxC(new BN('22500000000000000000')
+ * bnToAvaxC(new BN('22500000000000000000')
  * // will return  22.5
  *```
  *
  */
-export function bnToLuxC(val: BN): string {
+export function bnToAvaxC(val: BN): string {
     return bnToLocaleString(val, 18);
 }
 
 /**
  * Parses the value using a denomination of 9
  *
- * @param val the amount to parse given in nLUX
+ * @param val the amount to parse given in nAVAX
  */
-export function bnToLuxX(val: BN): string {
+export function bnToAvaxX(val: BN): string {
     return bnToLocaleString(val, 9);
 }
 
 /**
  * Parses the value using a denomination of 9
  *
- * @param val the amount to parse given in nLUX
+ * @param val the amount to parse given in nAVAX
  */
-export function bnToLuxP(val: BN): string {
-    return bnToLuxX(val);
+export function bnToAvaxP(val: BN): string {
+    return bnToAvaxX(val);
 }
 
 /**
@@ -116,15 +116,15 @@ export function numberToBN(val: number | string, decimals: number): BN {
     return valBN;
 }
 
-export function numberToBNLuxX(val: number | string) {
+export function numberToBNAvaxX(val: number | string) {
     return numberToBN(val, 9);
 }
 
-export function numberToBNLuxP(val: number | string) {
-    return numberToBNLuxX(val);
+export function numberToBNAvaxP(val: number | string) {
+    return numberToBNAvaxX(val);
 }
 
-export function numberToBNLuxC(val: number | string) {
+export function numberToBNAvaxC(val: number | string) {
     return numberToBN(val, 18);
 }
 

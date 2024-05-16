@@ -1,12 +1,12 @@
 import { HistoryItemType, HistoryItemTypeName, iHistoryImportExport, iHistoryItem, iHistoryStaking } from '@/History';
 import { parseMemo } from '@/History/history_helpers';
 import { activeNetwork, xChain } from '@/Network/network';
-import { bnToLuxP, bnToLuxX } from '@/utils';
+import { bnToAvaxP, bnToAvaxX } from '@/utils';
 import { BN } from 'avalanche';
 import { getBaseTxSummary } from '@/History/base_tx_parser';
 import { idToChainAlias } from '@/Network/helpers/aliasFromNetworkID';
 import { getExportSummary, getImportSummary } from '@/History/importExportParser';
-import { findSourceChain, getStakeAmount, OrteliusLuxTx } from '@/Explorer';
+import { findSourceChain, getStakeAmount, OrteliusAvalancheTx } from '@/Explorer';
 import {
     getEvmAssetBalanceFromUTXOs,
     getOutputTotals,
@@ -15,7 +15,7 @@ import {
 } from '@/Explorer/ortelius/utxoUtils';
 
 export async function getTransactionSummary(
-    tx: OrteliusLuxTx,
+    tx: OrteliusAvalancheTx,
     walletAddrs: string[],
     evmAddress: string
 ): Promise<HistoryItemType> {
@@ -41,7 +41,7 @@ export async function getTransactionSummary(
     }
 }
 
-function getUnsupportedSummary(tx: OrteliusLuxTx): iHistoryItem {
+function getUnsupportedSummary(tx: OrteliusAvalancheTx): iHistoryItem {
     return {
         id: tx.id,
         type: 'not_supported',
@@ -51,11 +51,11 @@ function getUnsupportedSummary(tx: OrteliusLuxTx): iHistoryItem {
     };
 }
 
-function getStakingSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryStaking {
+function getStakingSummary(tx: OrteliusAvalancheTx, ownerAddrs: string[]): iHistoryStaking {
     let time = new Date(tx.timestamp);
 
     // let pChainID = activeNetwork.pChainID;
-    // let luxID = activeNetwork.luxID;
+    // let avaxID = activeNetwork.avaxID;
     let ins = tx.inputs?.map((tx) => tx.output) || [];
     let myIns = getOwnedOutputs(ins, ownerAddrs);
 
@@ -78,7 +78,7 @@ function getStakingSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistorySta
     if (tx.rewarded) {
         let rewardOuts = getRewardOuts(myOuts);
         rewardAmount = getOutputTotals(rewardOuts);
-        rewardAmountClean = bnToLuxP(rewardAmount);
+        rewardAmountClean = bnToAvaxP(rewardAmount);
     }
 
     return {
@@ -90,7 +90,7 @@ function getStakingSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistorySta
         type: type,
         fee: new BN(0),
         amount: stakeAmount,
-        amountDisplayValue: bnToLuxP(stakeAmount),
+        amountDisplayValue: bnToAvaxP(stakeAmount),
         memo: parseMemo(tx.memo),
         isRewarded: tx.rewarded,
         rewardAmount: rewardAmount,
@@ -100,15 +100,15 @@ function getStakingSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistorySta
 }
 
 // Returns the summary for a C chain import TX
-function getImportSummaryC(tx: OrteliusLuxTx, ownerAddr: string) {
+function getImportSummaryC(tx: OrteliusAvalancheTx, ownerAddr: string) {
     let sourceChain = findSourceChain(tx);
     let chainAliasFrom = idToChainAlias(sourceChain);
     let chainAliasTo = idToChainAlias(tx.chainID);
 
-    let luxID = activeNetwork.luxID;
+    let avaxID = activeNetwork.avaxID;
 
     let outs = tx.outputs || [];
-    let amtOut = getEvmAssetBalanceFromUTXOs(outs, ownerAddr, luxID, tx.chainID);
+    let amtOut = getEvmAssetBalanceFromUTXOs(outs, ownerAddr, avaxID, tx.chainID);
 
     let time = new Date(tx.timestamp);
     let fee = xChain.getTxFee();
@@ -118,7 +118,7 @@ function getImportSummaryC(tx: OrteliusLuxTx, ownerAddr: string) {
         source: chainAliasFrom,
         destination: chainAliasTo,
         amount: amtOut,
-        amountDisplayValue: bnToLuxX(amtOut),
+        amountDisplayValue: bnToAvaxX(amtOut),
         timestamp: time,
         type: 'import',
         fee: fee,

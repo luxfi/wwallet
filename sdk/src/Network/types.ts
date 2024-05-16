@@ -18,6 +18,6 @@ export interface NetworkConfig {
     xChainID: string;
     pChainID: string;
     cChainID: string;
-    luxID: string;
+    avaxID: string;
     rpcUrl: NetworkConfigRpc;
 }

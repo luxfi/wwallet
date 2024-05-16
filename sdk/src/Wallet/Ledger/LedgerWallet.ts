@@ -39,7 +39,7 @@ import { Buffer as BufferNative } from 'buffer';
 import createHash from 'create-hash';
 import bippath from 'bip32-path';
 import { bintools } from '@/common';
-import { getAccountPathLux, getAccountPathEVM } from '@/Wallet/helpers/derivationHelper';
+import { getAccountPathAvalanche, getAccountPathEVM } from '@/Wallet/helpers/derivationHelper';
 import { PublicMnemonicWallet } from '@/Wallet/PublicMnemonicWallet';
 import {
     getAppEth,
@@ -94,12 +94,12 @@ export class LedgerWallet extends PublicMnemonicWallet {
     static async fromTransport(transport: Transport, accountIndex = 0) {
         transport.setExchangeTimeout(LEDGER_EXCHANGE_TIMEOUT);
 
-        const pubLux = await LedgerWallet.getExtendedPublicKeyLuxAccount(transport, accountIndex);
+        const pubAvax = await LedgerWallet.getExtendedPublicKeyAvaxAccount(transport, accountIndex);
         const pubEth = await LedgerWallet.getExtendedPublicKeyEthAddress(transport, accountIndex);
 
         // Use this transport for all ledger instances
         await LedgerWallet.setTransport(transport);
-        const wallet = new LedgerWallet(pubLux, pubEth, accountIndex);
+        const wallet = new LedgerWallet(pubAvax, pubEth, accountIndex);
         return wallet;
     }
 
@@ -135,9 +135,9 @@ export class LedgerWallet extends PublicMnemonicWallet {
      * @param transport
      * @param accountIndex Which account's public key to derive
      */
-    static async getExtendedPublicKeyLuxAccount(transport: Transport, accountIndex = 0): Promise<string> {
+    static async getExtendedPublicKeyAvaxAccount(transport: Transport, accountIndex = 0): Promise<string> {
         const prov = await getLedgerProvider(transport);
-        const res = await prov.getXPUB(transport, getAccountPathLux(accountIndex));
+        const res = await prov.getXPUB(transport, getAccountPathAvalanche(accountIndex));
 
         let pubKey = res.pubKey;
         let chainCode = res.chainCode;
@@ -213,7 +213,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
     async getTransactionPaths<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
-    ): Promise<{ paths: string[]; isLuxOnly: boolean }> {
+    ): Promise<{ paths: string[]; isAvaxOnly: boolean }> {
         let tx = unsignedTx.getTransaction();
         let txType = tx.getTxType();
 
@@ -238,14 +238,14 @@ export class LedgerWallet extends PublicMnemonicWallet {
         let hrp = avalanche.getHRP();
         let paths: string[] = [];
 
-        let isLuxOnly = true;
+        let isAvaxOnly = true;
         // Collect paths derivation paths for source addresses
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
             let assetId = bintools.cb58Encode(item.getAssetID());
-            if (assetId !== activeNetwork.luxID) {
-                isLuxOnly = false;
+            if (assetId !== activeNetwork.avaxID) {
+                isAvaxOnly = false;
             }
 
             let sigidxs: SigIdx[] = item.getInput().getSigIdxs();
@@ -279,7 +279,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
             }
         }
 
-        return { paths, isLuxOnly };
+        return { paths, isAvaxOnly };
     }
 
     getAddressPaths(addresses: string[]) {
@@ -353,7 +353,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
         const accountPath: bippath.Bip32Path =
             chainId === 'C'
                 ? bippath.fromString(`${ETH_ACCOUNT_PATH}`)
-                : bippath.fromString(getAccountPathLux(this.accountIndex));
+                : bippath.fromString(getAccountPathAvalanche(this.accountIndex));
         let txbuff = BufferNative.from(unsignedTx.toBuffer());
 
         // Get output addresses
@@ -412,7 +412,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
         // Sign the msg with ledger
         //TODO: Update when ledger supports Accounts
-        const accountPathSource = chainId === 'C' ? ETH_ACCOUNT_PATH : getAccountPathLux(this.accountIndex);
+        const accountPathSource = chainId === 'C' ? ETH_ACCOUNT_PATH : getAccountPathAvalanche(this.accountIndex);
         const accountPath = bippath.fromString(accountPathSource);
 
         const prov = LedgerWallet.getProvider();

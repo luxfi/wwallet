@@ -2,7 +2,7 @@
     <input type="number" inputmode="decimal" :placeholder="placeholder" v-model="val" :min="min" :max="maxNumString" :step="stepNum" @change="onChange">
 </template>
 <script>
-    import {Utils, BN, Big} from '@luxwallet/sdk'
+    import {Utils, BN, Big} from '@avalabs/avalanche-wallet-sdk'
 
     export default {
         data(){

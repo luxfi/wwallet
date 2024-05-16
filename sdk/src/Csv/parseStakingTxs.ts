@@ -1,5 +1,5 @@
 import { HistoryItemType, iHistoryStaking, isHistoryStakingTx } from '@/History';
-import { bnToBigLuxP } from '@/utils';
+import { bnToBigAvaxP } from '@/utils';
 import moment from 'moment';
 import { createCSVContent } from '@/Csv/createCsvContent';
 import { stakingHeaders } from '@/Csv/constants';
@@ -36,7 +36,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
         const stakeEnd = moment(tx.stakeEnd).format();
         const now = Date.now();
 
-        const stakeAmt = bnToBigLuxP(tx.amount).toString();
+        const stakeAmt = bnToBigAvaxP(tx.amount).toString();
 
         let rewardUSD;
         let rewardAmt: Big | string | undefined;
@@ -48,10 +48,10 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
             //Stake Not Rewarded
             rewardAmt = Big(0);
         } else if (tx.rewardAmount) {
-            const bigAmt = bnToBigLuxP(tx.rewardAmount);
+            const bigAmt = bnToBigAvaxP(tx.rewardAmount);
             rewardAmt = !tx.rewardAmount.isZero() ? bigAmt.toString() : 'Not Reward Owner';
-            if (tx.luxPrice) {
-                rewardUSD = bigAmt.mul(tx.luxPrice);
+            if (tx.avaxPrice) {
+                rewardUSD = bigAmt.mul(tx.avaxPrice);
             }
         } else {
             // Not reward owner
@@ -59,7 +59,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
         }
 
         const rewardUsdString = rewardUSD ? rewardUSD.toFixed(2) : '-';
-        const luxPriceString = tx.luxPrice ? tx.luxPrice.toFixed(2) : '-';
+        const avaxPriceString = tx.avaxPrice ? tx.avaxPrice.toFixed(2) : '-';
 
         return [
             tx.id,
@@ -72,7 +72,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
             tx.isRewarded.toString(),
             rewardAmt.toString(),
             rewardUsdString,
-            luxPriceString,
+            avaxPriceString,
         ];
     });
 }

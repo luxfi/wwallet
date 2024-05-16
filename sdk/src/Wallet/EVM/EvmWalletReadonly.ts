@@ -1,4 +1,4 @@
-import { BN, Buffer as BufferLux } from 'avalanche';
+import { BN, Buffer as BufferAvalanche } from 'avalanche';
 import { avalanche, web3 } from '@/Network/network';
 import { ethers } from 'ethers';
 import { KeyPair as EVMKeyPair } from 'avalanche/dist/apis/evm/keychain';
@@ -38,7 +38,7 @@ export class EvmWalletReadonly {
 
     getAddressBech32(): string {
         const compressedKey = this.getCompressedPublicKey();
-        let addr = EVMKeyPair.addressFromPublicKey(BufferLux.from(compressedKey.substring(2), 'hex'));
+        let addr = EVMKeyPair.addressFromPublicKey(BufferAvalanche.from(compressedKey.substring(2), 'hex'));
         return bintools.addressToString(avalanche.getHRP(), 'C', addr);
     }
 

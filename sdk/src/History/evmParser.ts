@@ -1,5 +1,5 @@
 import { iHistoryEVMTx } from '@/History/types';
-import { bnToLuxC } from '@/utils';
+import { bnToAvaxC } from '@/utils';
 import { BN } from 'avalanche';
 import { OrteliusEvmTx } from '@/Explorer';
 
@@ -7,7 +7,7 @@ export function getTransactionSummaryEVM(tx: OrteliusEvmTx, walletAddress: strin
     let isSender = tx.fromAddr.toUpperCase() === walletAddress.toUpperCase();
 
     let amt = new BN(tx.value);
-    let amtClean = bnToLuxC(amt);
+    let amtClean = bnToAvaxC(amt);
     let date = new Date(tx.createdAt);
 
     let gasLimit = new BN(tx.gasLimit);

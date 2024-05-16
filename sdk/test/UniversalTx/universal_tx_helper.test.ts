@@ -38,7 +38,7 @@ describe('Reduce parent balance of UniversalNode P', () => {
         (xChain.getTxFee as jest.Mock).mockReturnValue(FEE_XP);
     });
 
-    it('all parents have balance of 1 LUX', () => {
+    it('all parents have balance of 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(1000000000);
         let balC = new BN(1000000000);
@@ -89,7 +89,7 @@ describe('Reduce parent balance of UniversalNode X', () => {
         (xChain.getTxFee as jest.Mock).mockReturnValue(FEE_XP);
     });
 
-    it('all nodes have balance of 1 LUX', () => {
+    it('all nodes have balance of 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(1000000000);
         let balC = new BN(1000000000);
@@ -100,7 +100,7 @@ describe('Reduce parent balance of UniversalNode X', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('both parents have balance of 1 LUX', () => {
+    it('both parents have balance of 1 AVAX', () => {
         let balX = new BN(0);
         let balP = new BN(1000000000);
         let balC = new BN(1000000000);
@@ -111,7 +111,7 @@ describe('Reduce parent balance of UniversalNode X', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('parent P has balance of 1 LUX', () => {
+    it('parent P has balance of 1 AVAX', () => {
         let balX = new BN(0);
         let balP = new BN(1000000000);
         let balC = new BN(0);
@@ -122,7 +122,7 @@ describe('Reduce parent balance of UniversalNode X', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('parent C has balance of 1 LUX', () => {
+    it('parent C has balance of 1 AVAX', () => {
         let balX = new BN(0);
         let balP = new BN(0);
         let balC = new BN(1000000000);
@@ -144,7 +144,7 @@ describe('Reduce parent balance of UniversalNode X', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('starting node has 1 LUX', () => {
+    it('starting node has 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(0);
         let balC = new BN(0);
@@ -162,7 +162,7 @@ describe('Reduce parent balance of UniversalNode C', () => {
         (xChain.getTxFee as jest.Mock).mockReturnValue(FEE_XP);
     });
 
-    it('all nodes have balance of 1 LUX', () => {
+    it('all nodes have balance of 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(1000000000);
         let balC = new BN(1000000000);
@@ -173,7 +173,7 @@ describe('Reduce parent balance of UniversalNode C', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('both parents have balance of 1 LUX', () => {
+    it('both parents have balance of 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(1000000000);
         let balC = new BN(0);
@@ -184,7 +184,7 @@ describe('Reduce parent balance of UniversalNode C', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('parent P has balance of 1 LUX', () => {
+    it('parent P has balance of 1 AVAX', () => {
         let balX = new BN(0);
         let balP = new BN(1000000000);
         let balC = new BN(0);
@@ -195,7 +195,7 @@ describe('Reduce parent balance of UniversalNode C', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('parent X has balance of 1 LUX', () => {
+    it('parent X has balance of 1 AVAX', () => {
         let balX = new BN(1000000000);
         let balP = new BN(0);
         let balC = new BN(0);
@@ -217,7 +217,7 @@ describe('Reduce parent balance of UniversalNode C', () => {
         expect(tot).toEqual(expected);
     });
 
-    it('starting node has 1 LUX', () => {
+    it('starting node has 1 AVAX', () => {
         let balX = new BN(0);
         let balP = new BN(0);
         let balC = new BN(1000000000);
@@ -299,12 +299,12 @@ describe('Get transactions for balance on UniversalNode P', () => {
     });
 
     it('node needs balance from both parents and self', () => {
-        let balP = new BN(1_000_000_000); // 1 LUX
-        let balX = new BN(500_000_000); // 0.5 LUX
-        let balC = new BN(2_000_000_000); // 2 LUX
+        let balP = new BN(1_000_000_000); // 1 AVAX
+        let balX = new BN(500_000_000); // 0.5 AVAX
+        let balC = new BN(2_000_000_000); // 2 AVAX
 
         let nodeP = createGraphForP(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -333,12 +333,12 @@ describe('Get transactions for balance on UniversalNode P', () => {
     });
 
     it('node needs balance from both parents', () => {
-        let balP = new BN(0); // 0 LUX
-        let balX = new BN(1_000_000_000); // 1 LUX
-        let balC = new BN(2_000_000_000); // 2 LUX
+        let balP = new BN(0); // 0 AVAX
+        let balX = new BN(1_000_000_000); // 1 AVAX
+        let balC = new BN(2_000_000_000); // 2 AVAX
 
         let nodeP = createGraphForP(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -367,12 +367,12 @@ describe('Get transactions for balance on UniversalNode P', () => {
     });
 
     it('not enough balance', () => {
-        let balP = new BN(0); // 0 LUX
-        let balX = new BN(1_000_000_000); // 1 LUX
-        let balC = new BN(2_000_000_000); // 2 LUX
+        let balP = new BN(0); // 0 AVAX
+        let balX = new BN(1_000_000_000); // 1 AVAX
+        let balC = new BN(2_000_000_000); // 2 AVAX
 
         let nodeP = createGraphForP(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(20_000_000_000); // 2 LUX
+        let target = new BN(20_000_000_000); // 2 AVAX
 
         expect(() => {
             nodeP.getStepsForTargetBalance(target);
@@ -396,11 +396,11 @@ describe('Get transactions for balance on UniversalNode X', () => {
 
     it('node needs balance from parent P', () => {
         let balX = new BN(0);
-        let balP = new BN(5_000_000_000); // 5 LUX
+        let balP = new BN(5_000_000_000); // 5 AVAX
         let balC = new BN(0);
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -421,11 +421,11 @@ describe('Get transactions for balance on UniversalNode X', () => {
 
     it('node has partial balance, needs rest from parent P', () => {
         let balX = new BN(1_000_000_000);
-        let balP = new BN(5_000_000_000); // 5 LUX
+        let balP = new BN(5_000_000_000); // 5 AVAX
         let balC = new BN(0);
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -446,11 +446,11 @@ describe('Get transactions for balance on UniversalNode X', () => {
 
     it('node needs balance from P, both parent have balance', () => {
         let balX = new BN(0);
-        let balP = new BN(5_000_000_000); // 5 LUX
-        let balC = new BN(5_000_000_000); // 5 LUX
+        let balP = new BN(5_000_000_000); // 5 AVAX
+        let balC = new BN(5_000_000_000); // 5 AVAX
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -472,10 +472,10 @@ describe('Get transactions for balance on UniversalNode X', () => {
     it('node needs balance from C', () => {
         let balX = new BN(0);
         let balP = new BN(0);
-        let balC = new BN(5_000_000_000); // 5 LUX
+        let balC = new BN(5_000_000_000); // 5 AVAX
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -500,7 +500,7 @@ describe('Get transactions for balance on UniversalNode X', () => {
         let balC = new BN(700_000_000);
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(1_000_000_000); // 1 LUX
+        let target = new BN(1_000_000_000); // 1 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -529,12 +529,12 @@ describe('Get transactions for balance on UniversalNode X', () => {
     });
 
     it('not enough balance', () => {
-        let balP = new BN(1_000_000_000); // 0 LUX
-        let balX = new BN(1_000_000); // 1 LUX
-        let balC = new BN(2_000_000_000); // 2 LUX
+        let balP = new BN(1_000_000_000); // 0 AVAX
+        let balX = new BN(1_000_000); // 1 AVAX
+        let balC = new BN(2_000_000_000); // 2 AVAX
 
         let nodeX = createGraphForX(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(20_000_000_000); // 2 LUX
+        let target = new BN(20_000_000_000); // 2 AVAX
 
         expect(() => {
             nodeX.getStepsForTargetBalance(target);
@@ -558,11 +558,11 @@ describe('Get transactions for balance on UniversalNode C', () => {
 
     it('node needs balance from parent P', () => {
         let balX = new BN(0);
-        let balP = new BN(5_000_000_000); // 5 LUX
+        let balP = new BN(5_000_000_000); // 5 AVAX
         let balC = new BN(0);
 
         let nodeC = createGraphForC(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -583,11 +583,11 @@ describe('Get transactions for balance on UniversalNode C', () => {
 
     it('node has partial balance, needs rest from parent P', () => {
         let balX = new BN(0);
-        let balP = new BN(5_000_000_000); // 5 LUX
+        let balP = new BN(5_000_000_000); // 5 AVAX
         let balC = new BN(1_000_000_000);
 
         let nodeC = createGraphForC(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -612,7 +612,7 @@ describe('Get transactions for balance on UniversalNode C', () => {
         let balC = new BN(0);
 
         let nodeC = createGraphForC(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {
@@ -637,7 +637,7 @@ describe('Get transactions for balance on UniversalNode C', () => {
         let balC = new BN(0);
 
         let nodeC = createGraphForC(balX, balP, balC, FEE_XP, FEE_C);
-        let target = new BN(2_000_000_000); // 2 LUX
+        let target = new BN(2_000_000_000); // 2 AVAX
 
         let stepsExpected: UniversalTx[] = [
             {

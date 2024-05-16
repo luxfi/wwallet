@@ -9,7 +9,7 @@ export const stakingHeaders = [
     'Is Rewarded',
     'Reward Amount',
     'Reward Amount (USD)',
-    'LUX Price at Reward Date (USD)',
+    'AVAX Price at Reward Date (USD)',
 ];
 
 export const normalHeaders = ['Tx ID', 'Timestamp', 'Type', 'Token Symbol', 'Amount', 'Addresses', 'Chain'];

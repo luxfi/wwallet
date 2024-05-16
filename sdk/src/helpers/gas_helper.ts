@@ -96,7 +96,7 @@ export function estimateImportGasFeeFromMockTx(
 /**
  * Estimates the gas fee using a mock ExportTx built from the passed values.
  * @param destinationChain `X` or `P`
- * @param amount in nLUX
+ * @param amount in nAVAX
  * @param from The C chain hex address exported from
  * @param to The destination X or P address
  */
@@ -111,12 +111,12 @@ export function estimateExportGasFeeFromMockTx(
     const toBuff = bintools.stringToAddress(to);
     const netID = activeNetwork.networkID;
     const chainID = activeNetwork.cChainID;
-    const LUX_ID = activeNetwork.luxID;
-    const luxIDBuff = bintools.cb58Decode(LUX_ID);
+    const AVAX_ID = activeNetwork.avaxID;
+    const avaxIDBuff = bintools.cb58Decode(AVAX_ID);
 
-    const txIn = new EVMInput(from, amount, luxIDBuff);
+    const txIn = new EVMInput(from, amount, avaxIDBuff);
     const secpOut = new SECPTransferOutput(amount, [toBuff]);
-    const txOut = new TransferableOutput(luxIDBuff, secpOut);
+    const txOut = new TransferableOutput(avaxIDBuff, secpOut);
 
     // Create fake export Tx
     const chainIdBuff = bintools.cb58Decode(chainID);
@@ -130,7 +130,7 @@ export function estimateExportGasFeeFromMockTx(
 /**
  * Returns the estimated gas for the export transaction.
  * @param destinationChain Either `X` or `P`
- * @param amount The amount to export. In nLUX.
+ * @param amount The amount to export. In nAVAX.
  * @param from The C chain hex address exporting the asset
  * @param fromBech The C chain bech32 address exporting the asset
  * @param to The destination address on the destination chain

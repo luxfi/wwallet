@@ -42,7 +42,7 @@ export interface WalletCollectiblesXGroup {
     id: number;
 }
 
-export interface iLuxBalance {
+export interface iAvaxBalance {
     X: AssetBalanceRawX;
     P: AssetBalanceP;
     C: BN;
@@ -88,7 +88,7 @@ export interface ERC20Balance {
 export interface ILedgerAppConfig {
     version: string;
     commit: string;
-    name: 'Lux';
+    name: 'Avalanche';
 }
 
 export type WalletEventType = 'addressChanged' | 'balanceChangedX' | 'balanceChangedP' | 'balanceChangedC' | 'hd_ready';

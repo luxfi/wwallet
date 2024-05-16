@@ -1,7 +1,7 @@
 import * as bip39 from 'bip39';
 import bip32 from '@/utils/bip32';
 
-import { getAccountPathLux } from '@/Wallet/helpers/derivationHelper';
+import { getAccountPathAvalanche } from '@/Wallet/helpers/derivationHelper';
 import { TEST_MNEMONIC, TEST_MNEMONIC_ADDRS_EXT, TEST_MNEMONIC_ADDRS_INT } from './constants';
 import { HdScanner } from '@/Wallet/HdScanner';
 import { listChainsForAddresses } from '@/Explorer';
@@ -10,7 +10,7 @@ import { ChainAddressChainIdMap, BlockchainId } from '@avalabs/glacier-sdk';
 
 const seed = bip39.mnemonicToSeedSync(TEST_MNEMONIC);
 let masterHdKey = bip32.fromSeed(seed);
-let accountKey = masterHdKey.derivePath(getAccountPathLux(0));
+let accountKey = masterHdKey.derivePath(getAccountPathAvalanche(0));
 
 jest.mock('@/Network/network', () => {
     return {

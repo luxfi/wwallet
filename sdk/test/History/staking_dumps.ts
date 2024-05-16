@@ -1,4 +1,4 @@
-// Add validator 100 LUX, staking finished, not rewarded
+// Add validator 100 AVAX, staking finished, not rewarded
 export const StakeTx0 = `{
     "id": "27jssVvW2S77qy7H7K5SBtvvgPzEkHTFoWmCh6jcF9BjgZjP5i",
     "chainID": "11111111111111111111111111111111LpoYY",
@@ -124,7 +124,7 @@ export const StakeTx0 = `{
     "txBlockId": "DN7KhA2n9JPqhytgphpUeYkD2uxBQUeH6CGpadWqr5oREj4Ee"
 }`;
 
-// Add delegator 100 LUX, stake finished, rewarded
+// Add delegator 100 AVAX, stake finished, rewarded
 export const StakeTx1 = `{
     "id": "22HBFSK2gYnCvs2kEa49spgUzcGgrxDpvPnf6dedbvkeXhhpov",
     "chainID": "11111111111111111111111111111111LpoYY",
@@ -1246,7 +1246,7 @@ export const StakeTx1 = `{
     "txBlockId": "2PndWGKpbMAgZK3mo46Jhe6GWmSYxoQgDy5c6rZNKPRc3GPYHZ"
 }`;
 
-// Fee received from delegator 0.000225438 LUX
+// Fee received from delegator 0.000225438 AVAX
 export const StakeTx2 = `{
     "id": "2i8piG7iEJznXpdf83XLKgnhXhB9EXRtWewSA2kDr9s1HMbszr",
     "chainID": "11111111111111111111111111111111LpoYY",

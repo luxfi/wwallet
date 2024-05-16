@@ -33,7 +33,7 @@ export const ObsidianProvider: LedgerProvider = {
         };
     },
 
-    async getAddress(t, path, config = { show: true, hrp: 'lux' }) {
+    async getAddress(t, path, config = { show: true, hrp: 'avax' }) {
         const app = this.getApp(t) as AppObsidian;
 
         const res = await app.getWalletAddress(path.toString(), config.hrp);

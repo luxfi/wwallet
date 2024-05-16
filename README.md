@@ -1,18 +1,18 @@
-# Lux (LUX) Wallet
+# Lux Wallet
 
-This is the frontend Vue.js application for the Lux (LUX) Wallet.
+This is the frontend Vue.js application for the Lux Wallet.
 
 ## Prerequisites
 
 -   Yarn (https://classic.yarnpkg.com/en/docs/install/)
 -   Recent version of npm (7.4.0)
 -   Node v16
--   Gecko, Lux client in Golang (https://github.com/ava-labs/avalanchego)
+-   Gecko, Lux client in Golang (https://github.com/luxdefi/node)
 
 ## Installation
 
-1. Clone the repo `git clone https://github.com/ava-labs/avalanche-wallet.git`
-2. Go to root of the project `cd avalanche-wallet`
+1. Clone the repo `git clone https://github.com/luxdefi/wallet.git`
+2. Go to root of the project `cd wallet`
 3. Install javascript dependencies with `yarn install`.
 
 ## Running The Project
@@ -85,11 +85,11 @@ Saved into local storage as a 2 letter code.
 
 # Dependencies
 
-##### Lux Node (https://github.com/ava-labs/avalanchego)
+##### Lux Node (https://github.com/luxdefi/node)
 
-To get utxos and to send transactions.
+To get UTXOs and to send transactions.
 
-#### Explorer API Node (https://github.com/ava-labs/ortelius)
+#### Explorer API Node (https://github.com/luxdefi/indexer)
 
 To check if an address was used before, and to get activity history.
 
@@ -97,15 +97,15 @@ To check if an address was used before, and to get activity history.
 
 The wallet needs to connect to an Lux node, and an explorer node to operate properly.
 
-By default, there are two network options to connect to: `Mainnet` and `Fuji`.
+By default, there are two network options to connect to: `Mainnet` and `Testnet`.
 
 ##### Mainnet
 
--   Lux API: `https://api.lux.network:443`
--   Explorer API: `https://explorerapi.lux.network`
+-   Lux API: `https://api.lux.network`
+-   Explorer API: `https://api.explore.lux.network`
 
-##### Fuji (Testnet)
+##### Testnet
 
--   Lux API: `https://api.lux-test.network:443`
--   Explorer API: `https://explorerapi.lux-test.network`
+-   Lux API: `https://api.lux-test.network`
+-   Explorer API: `https://api.explore.lux-test.network`
 

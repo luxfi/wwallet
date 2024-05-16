@@ -22,7 +22,7 @@ export const ZondaxProvider: LedgerProvider = {
         path: Bip32Path,
         config = {
             show: false,
-            hrp: 'lux',
+            hrp: 'avax',
         }
     ) {
         const app = this.getApp(t) as AppZondax;
