@@ -42,7 +42,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 //@ts-ignore
-import { BigNumInput } from '@luxdefi/vue_components'
+import { BigNumInput } from '@luxfi/vue_components'
 import { BN } from 'luxnet'
 import EVMAssetDropdown from '@/components/misc/EVMInputDropdown/EVMAssetDropdown.vue'
 import Erc20Token from '@/js/Erc20Token'

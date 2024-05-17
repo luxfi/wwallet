@@ -134,10 +134,10 @@ import {
     bnToBigLuxX,
     bnToBigLuxC,
     bnToLuxC,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 
 // @ts-ignore
-import { QrInput } from '@luxdefi/vue_components'
+import { QrInput } from '@luxfi/vue_components'
 import Big from 'big.js'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'

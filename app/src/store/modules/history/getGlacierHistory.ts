@@ -1,6 +1,6 @@
 import { WalletType } from '@/js/wallets/types'
 import { getTransactionsForAddresses } from '@/js/Glacier/getTransactionsForAddresses'
-import { BlockchainId, Network, SortOrder } from '@luxdefi/glacier-sdk'
+import { BlockchainId, Network, SortOrder } from '@luxfi/glacier-sdk'
 import { filterDuplicateGlacierTxs } from '@/js/Glacier/filterDuplicateGlacierTxs'
 import { sortGlacierTxs } from '@/js/Glacier/sortGlacierTxs'
 

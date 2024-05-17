@@ -6,7 +6,7 @@ import {
     CChainTransaction,
     XChainTransaction,
 } from '@/js/Glacier/models'
-import { SortOrder, PChainTransaction } from '@luxdefi/glacier-sdk'
+import { SortOrder, PChainTransaction } from '@luxfi/glacier-sdk'
 
 export function sortGlacierTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {
     return txs.sort((a, b) => {

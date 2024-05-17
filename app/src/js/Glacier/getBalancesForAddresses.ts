@@ -6,7 +6,7 @@ import {
     ListPChainBalancesResponse,
     ListXChainBalancesResponse,
     ListCChainAtomicBalancesResponse,
-} from '@luxdefi/glacier-sdk'
+} from '@luxfi/glacier-sdk'
 
 export async function getBalancesForAddresses(config: GetBalancesParams) {
     // Max number of addresses glacier accepts

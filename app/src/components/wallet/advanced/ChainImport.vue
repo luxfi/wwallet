@@ -50,7 +50,7 @@ import {
     ExportChainsP,
     ExportChainsX,
     GasHelper,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 
 @Component({
     components: { Spinner },

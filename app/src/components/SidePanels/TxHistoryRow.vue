@@ -41,7 +41,7 @@ import {
 import ImportExport from '@/components/SidePanels/History/ViewTypes/ImportExport.vue'
 import BaseTx from '@/components/SidePanels/History/ViewTypes/BaseTx.vue'
 import StakingTx from '@/components/SidePanels/History/ViewTypes/StakingTx.vue'
-import { Utxo, PChainTransaction, PChainUtxo } from '@luxdefi/glacier-sdk'
+import { Utxo, PChainTransaction, PChainUtxo } from '@luxfi/glacier-sdk'
 import { getUrlFromTransaction } from '@/js/Glacier/getUrlFromTransaction'
 import { ava } from '@/LUX'
 import { isOwnedUTXO } from '@/js/Glacier/isOwnedUtxo'

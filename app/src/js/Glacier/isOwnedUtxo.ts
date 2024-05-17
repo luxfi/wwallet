@@ -1,4 +1,4 @@
-import { Utxo, PChainUtxo } from '@luxdefi/glacier-sdk'
+import { Utxo, PChainUtxo } from '@luxfi/glacier-sdk'
 
 /**
  * Check if the UTXO is owned by one of the given addresses

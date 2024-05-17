@@ -7,11 +7,11 @@ This is the frontend Vue.js application for the Lux Wallet.
 -   Yarn (https://classic.yarnpkg.com/en/docs/install/)
 -   Recent version of npm (7.4.0)
 -   Node v16
--   Gecko, Lux client in Golang (https://github.com/luxdefi/node)
+-   Gecko, Lux client in Golang (https://github.com/luxfi/node)
 
 ## Installation
 
-1. Clone the repo `git clone https://github.com/luxdefi/wallet.git`
+1. Clone the repo `git clone https://github.com/luxfi/wallet.git`
 2. Go to root of the project `cd wallet`
 3. Install javascript dependencies with `yarn install`.
 
@@ -85,11 +85,11 @@ Saved into local storage as a 2 letter code.
 
 # Dependencies
 
-##### Lux Node (https://github.com/luxdefi/node)
+##### Lux Node (https://github.com/luxfi/node)
 
 To get UTXOs and to send transactions.
 
-#### Explorer API Node (https://github.com/luxdefi/indexer)
+#### Explorer API Node (https://github.com/luxfi/indexer)
 
 To check if an address was used before, and to get activity history.
 

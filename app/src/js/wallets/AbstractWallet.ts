@@ -12,7 +12,7 @@ import {
     TxHelper,
     GasHelper,
     chainIdFromAlias,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 import { ava, avm, bintools, cChain, pChain } from '@/LUX'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx'
@@ -34,7 +34,7 @@ import {
     BlockchainId,
     CreatePrimaryNetworkTransactionExportRequest,
     PrimaryNetworkOptions,
-} from '@luxdefi/glacier-sdk'
+} from '@luxfi/glacier-sdk'
 import { toChecksumAddress } from 'ethereumjs-util'
 
 const uniqid = require('uniqid')

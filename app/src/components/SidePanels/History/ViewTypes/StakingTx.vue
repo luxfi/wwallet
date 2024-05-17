@@ -39,7 +39,7 @@ import { ValidatorRaw } from '@/components/misc/ValidatorList/types'
 import { WalletType } from '@/js/wallets/types'
 import { getPriceAtUnixTime } from '@/helpers/price_helper'
 import Big from 'big.js'
-import { PChainTransaction, PChainUtxo, RewardType } from '@luxdefi/glacier-sdk'
+import { PChainTransaction, PChainUtxo, RewardType } from '@luxfi/glacier-sdk'
 import { filterOwnedAddresses } from './filterOwnedAddresses'
 
 @Component

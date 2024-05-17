@@ -116,7 +116,7 @@
         <p class="c2">
             <span class="c0">
                 Supplemental terms and conditions or documents relating to the App or the Services
-                that may be posted on the luxdefi.org website (the &ldquo;Site&rdquo;) from time to
+                that may be posted on the luxfi.org website (the &ldquo;Site&rdquo;) from time to
                 time are hereby expressly incorporated herein by reference. We reserve the right, in
                 our sole discretion, to make changes or modifications to these Terms at any time and
                 for any reason. We will alert you about any changes by updating the date above and
@@ -701,10 +701,10 @@
             </span>
             <span class="c23">email at</span>
             <span class="c4">
-                <a class="c16" href="mailto:legal@luxdefi.org">legal@</a>
+                <a class="c16" href="mailto:legal@luxfi.org">legal@</a>
             </span>
             <span class="c4">
-                <a class="c16" href="mailto:legal@luxdefi.org">luxdefi.org</a>
+                <a class="c16" href="mailto:legal@luxfi.org">luxfi.org</a>
             </span>
             <span class="c0">
                 &nbsp;(such notice, an &ldquo;Arbitration Opt-out Notice&rdquo;) within 30 days
@@ -1233,7 +1233,7 @@
         <p class="c3"><span class="c0">New York, NY 10036</span></p>
         <p class="c3">
             <span class="c13">
-                <a class="c16" href="mailto:support@luxdefi.org">support@luxdefi.org</a>
+                <a class="c16" href="mailto:support@luxfi.org">support@luxfi.org</a>
             </span>
         </p>
     </div>

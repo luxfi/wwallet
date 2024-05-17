@@ -34,7 +34,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { AssetsDict, NftFamilyDict } from '@/store/modules/assets/types'
-import { PChainUtxo, Utxo } from '@luxdefi/glacier-sdk'
+import { PChainUtxo, Utxo } from '@luxfi/glacier-sdk'
 
 import StakingTx from '@/components/SidePanels/History/ViewTypes/StakingTx.vue'
 import BaseTx from '@/components/SidePanels/History/ViewTypes/BaseTx.vue'

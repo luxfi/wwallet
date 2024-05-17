@@ -10,7 +10,7 @@ import {
     SortOrder,
     Utxo,
     PChainUtxo,
-} from '@luxdefi/glacier-sdk'
+} from '@luxfi/glacier-sdk'
 
 export type XChainTransaction = XChainLinearTransaction | XChainNonLinearTransaction
 export interface GetBalancesParams {

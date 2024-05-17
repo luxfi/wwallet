@@ -33,8 +33,8 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import Big from 'big.js'
-import { bnToBigLuxP } from '@luxdefi/luxnet-wallet-sdk'
-import { PChainTransaction } from '@luxdefi/glacier-sdk'
+import { bnToBigLuxP } from '@luxfi/luxnet-wallet-sdk'
+import { PChainTransaction } from '@luxfi/glacier-sdk'
 
 @Component
 export default class UserRewardRow extends Vue {

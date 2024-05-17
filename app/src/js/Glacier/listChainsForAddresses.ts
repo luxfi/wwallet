@@ -3,7 +3,7 @@ import { splitToParts } from '@/js/Glacier/utils'
 import Glacier from '@/js/Glacier/Glacier'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
-import { Network } from '@luxdefi/glacier-sdk'
+import { Network } from '@luxfi/glacier-sdk'
 
 export async function listChainsForAddresses(addrs: string[]) {
     const addressLimit = 64

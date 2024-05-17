@@ -146,7 +146,7 @@ import {
     bigToBN,
     luxCtoX,
     bnToLuxP,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForExportP } from '@/helpers/utxoSelection/selectMaxUtxoForExportP'
 

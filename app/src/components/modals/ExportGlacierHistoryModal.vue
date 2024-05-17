@@ -82,7 +82,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
-import { BlockchainId, Glacier, OperationStatus } from '@luxdefi/glacier-sdk'
+import { BlockchainId, Glacier, OperationStatus } from '@luxfi/glacier-sdk'
 import { WalletType } from '@/js/wallets/types'
 import MultiSelect from '../misc/MultiSelect.vue'
 import glacier from '@/js/Glacier/Glacier'

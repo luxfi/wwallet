@@ -7,7 +7,7 @@ import {
     TransactionType,
 } from '@/js/Glacier/models'
 import { BN } from 'luxnet'
-import { Utxo, PChainUtxo, UtxoType } from '@luxdefi/glacier-sdk'
+import { Utxo, PChainUtxo, UtxoType } from '@luxfi/glacier-sdk'
 import LuxAsset from '@/js/LuxAsset'
 export function getExportBalances(tx: TransactionType, destinationChainId: string, getAsset: any) {
     const balances: {

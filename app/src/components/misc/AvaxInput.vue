@@ -31,9 +31,9 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, Model } from 'vue-property-decorator'
-import { Big, bnToBig } from '@luxdefi/luxnet-wallet-sdk'
+import { Big, bnToBig } from '@luxfi/luxnet-wallet-sdk'
 //@ts-ignore
-import { BigNumInput } from '@luxdefi/vue_components'
+import { BigNumInput } from '@luxfi/vue_components'
 import { BN } from 'luxnet'
 import { priceDict } from '../../store/types'
 

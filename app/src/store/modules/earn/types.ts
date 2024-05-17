@@ -1,4 +1,4 @@
-import { PChainTransaction } from '@luxdefi/glacier-sdk'
+import { PChainTransaction } from '@luxfi/glacier-sdk'
 
 export interface EarnState {
     stakingTxs: PChainTransaction[]

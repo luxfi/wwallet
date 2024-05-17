@@ -14,9 +14,9 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { Utxo } from '@luxdefi/glacier-sdk'
+import { Utxo } from '@luxfi/glacier-sdk'
 import { BN } from 'luxnet'
-import { bnToLocaleString } from '@luxdefi/luxnet-wallet-sdk'
+import { bnToLocaleString } from '@luxfi/luxnet-wallet-sdk'
 
 @Component
 export default class BaseTxUtxo extends Vue {

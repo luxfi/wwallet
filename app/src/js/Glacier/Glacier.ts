@@ -1,4 +1,4 @@
-import { Glacier } from '@luxdefi/glacier-sdk'
+import { Glacier } from '@luxfi/glacier-sdk'
 
 const api = new Glacier({
     BASE: 'https://glacier-api-dev.lux.network',

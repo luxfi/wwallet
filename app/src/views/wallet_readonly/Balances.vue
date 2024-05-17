@@ -65,7 +65,7 @@ import {
     Big,
     bnToBigLuxX,
     bnToBigLuxC,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 
 @Component
 export default class Balances extends Vue {

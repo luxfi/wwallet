@@ -5,7 +5,7 @@ import { ListStakingParams } from '@/js/Glacier/models'
 import { splitToParts } from '@/js/Glacier/utils'
 import { filterDuplicateGlacierTxs } from './filterDuplicateGlacierTxs'
 import Glacier from './Glacier'
-import { Network, PChainId, PChainTransaction, SortOrder } from '@luxdefi/glacier-sdk'
+import { Network, PChainId, PChainTransaction, SortOrder } from '@luxfi/glacier-sdk'
 
 export async function listStakingForAddresses(addrs: string[]) {
     if (!addrs.length) return []

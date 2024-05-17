@@ -70,7 +70,7 @@ import {
     chainIdFromAlias,
     getLedgerProvider,
     LedgerProvider,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 import { getTxOutputAddresses } from '@/utils/getAddressFromTx'
 
 class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {

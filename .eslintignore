@@ -2,5 +2,5 @@ node_modules/
 dist/
 tests/
 ../slopes
-../luxdefi.js/
-../hw-app-luxdefi/
+../luxfi.js/
+../hw-app-luxfi/

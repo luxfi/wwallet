@@ -1,5 +1,5 @@
 import { Tx as AVMTx } from 'luxnet/dist/apis/avm/tx'
-import { xChain } from '@luxdefi/luxnet-wallet-sdk'
+import { xChain } from '@luxfi/luxnet-wallet-sdk'
 import { bintools, cChain, pChain } from '@/LUX'
 import { Tx as PlatformTx } from 'luxnet/dist/apis/platformvm/tx'
 import { Tx as EVMTx } from 'luxnet/dist/apis/evm/tx'

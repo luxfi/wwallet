@@ -39,7 +39,7 @@ import {
     parseStakingTxs,
     HistoryItemType,
     isHistoryStakingTx,
-} from '@luxdefi/luxnet-wallet-sdk'
+} from '@luxfi/luxnet-wallet-sdk'
 import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm'
 import { UTXOSet as PlatformUTXOSet, TransferableOutput } from 'luxnet/dist/apis/platformvm'
 import Balances from '@/views/wallet_readonly/Balances.vue'

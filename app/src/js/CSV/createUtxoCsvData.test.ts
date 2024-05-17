@@ -1,6 +1,6 @@
 import { createUtxoCsvData } from '@/js/CSV/createUtxoCsvData'
 import { UtxoType } from '@/js/Glacier/models'
-import { Utxo } from '@luxdefi/glacier-sdk'
+import { Utxo } from '@luxfi/glacier-sdk'
 
 const LUX_ID = 'FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z'
 
