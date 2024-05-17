@@ -1,5 +1,5 @@
 import { HistoryItemType, iHistoryStaking, isHistoryStakingTx } from '@/History';
-import { bnToBigAvaxP } from '@/utils';
+import { bnToBigLuxP } from '@/utils';
 import moment from 'moment';
 import { createCSVContent } from '@/Csv/createCsvContent';
 import { stakingHeaders } from '@/Csv/constants';
@@ -36,7 +36,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
         const stakeEnd = moment(tx.stakeEnd).format();
         const now = Date.now();
 
-        const stakeAmt = bnToBigAvaxP(tx.amount).toString();
+        const stakeAmt = bnToBigLuxP(tx.amount).toString();
 
         let rewardUSD;
         let rewardAmt: Big | string | undefined;
@@ -48,7 +48,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
             //Stake Not Rewarded
             rewardAmt = Big(0);
         } else if (tx.rewardAmount) {
-            const bigAmt = bnToBigAvaxP(tx.rewardAmount);
+            const bigAmt = bnToBigLuxP(tx.rewardAmount);
             rewardAmt = !tx.rewardAmount.isZero() ? bigAmt.toString() : 'Not Reward Owner';
             if (tx.avaxPrice) {
                 rewardUSD = bigAmt.mul(tx.avaxPrice);

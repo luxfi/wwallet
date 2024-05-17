@@ -129,7 +129,7 @@ export async function buildPlatformExportTransaction(
  * @param amount
  * @param fromAddressBech
  * @param destinationChain Either `X` or `P`
- * @param fee Export fee in nAVAX
+ * @param fee Export fee in nLUX
  */
 export async function buildEvmExportTransaction(
     fromAddresses: string[],
@@ -142,7 +142,7 @@ export async function buildEvmExportTransaction(
     let destinationChainId = chainIdFromAlias(destinationChain);
 
     const nonce = await web3.eth.getTransactionCount(fromAddresses[0]);
-    const avaxAssetIDBuf: Buffer = await xChain.getAVAXAssetID();
+    const avaxAssetIDBuf: Buffer = await xChain.getLUXAssetID();
     const avaxAssetIDStr: string = bintools.cb58Encode(avaxAssetIDBuf);
 
     let fromAddressHex = fromAddresses[0];
@@ -328,12 +328,12 @@ export async function estimateErc721TransferGas(contract: string, from: string, 
 }
 
 /**
- * Estimates the gas needed to send AVAX
+ * Estimates the gas needed to send LUX
  * @param to Destination address
- * @param amount Amount of AVAX to send, given in WEI
+ * @param amount Amount of LUX to send, given in WEI
  * @param gasPrice Given in WEI
  */
-export async function estimateAvaxGas(from: string, to: string, amount: BN, gasPrice: BN): Promise<number> {
+export async function estimateLuxGas(from: string, to: string, amount: BN, gasPrice: BN): Promise<number> {
     try {
         return await web3.eth.estimateGas({
             from,

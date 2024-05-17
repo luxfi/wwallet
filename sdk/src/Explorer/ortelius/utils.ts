@@ -1,4 +1,4 @@
-import { OrteliusAvalancheTx } from '@/Explorer';
+import { OrteliusLuxTx } from '@/Explorer';
 import { BN } from 'avalanche';
 import { getOutputTotals } from '@/Explorer/ortelius/utxoUtils';
 
@@ -6,9 +6,9 @@ import { getOutputTotals } from '@/Explorer/ortelius/utxoUtils';
  * Given an array of transactions from the explorer, filter out duplicate transactions
  * @param txs
  */
-export function filterDuplicateOrtelius(txs: OrteliusAvalancheTx[]) {
+export function filterDuplicateOrtelius(txs: OrteliusLuxTx[]) {
     let txsIds: string[] = [];
-    let filtered: OrteliusAvalancheTx[] = [];
+    let filtered: OrteliusLuxTx[] = [];
 
     for (let i = 0; i < txs.length; i++) {
         let tx = txs[i];
@@ -30,7 +30,7 @@ export function filterDuplicateOrtelius(txs: OrteliusAvalancheTx[]) {
  * Returns the source chain id.
  * @param tx Tx data from the explorer.
  */
-export function findSourceChain(tx: OrteliusAvalancheTx): string {
+export function findSourceChain(tx: OrteliusLuxTx): string {
     let baseChain = tx.chainID;
     let ins = tx.inputs || [];
 
@@ -48,7 +48,7 @@ export function findSourceChain(tx: OrteliusAvalancheTx): string {
  * Returns the destination chain id.
  * @param tx Tx data from the explorer.
  */
-export function findDestinationChain(tx: OrteliusAvalancheTx): string {
+export function findDestinationChain(tx: OrteliusLuxTx): string {
     let baseChain = tx.chainID;
     let outs = tx.outputs || [];
 
@@ -61,7 +61,7 @@ export function findDestinationChain(tx: OrteliusAvalancheTx): string {
 }
 
 // To get the stake amount, sum the non-reward output utxos.
-export function getStakeAmount(tx: OrteliusAvalancheTx): BN {
+export function getStakeAmount(tx: OrteliusLuxTx): BN {
     let outs = tx.outputs || [];
     let nonRewardUtxos = outs.filter((utxo) => !utxo.rewardUtxo && utxo.stake);
 

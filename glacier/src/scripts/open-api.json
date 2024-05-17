@@ -2422,7 +2422,7 @@
             "name": "minDelegationCapacity",
             "required": false,
             "in": "query",
-            "description": "The minimum delegation capacity, used to filter the set of nodes being returned (Units - nAVAX). Default is 0.",
+            "description": "The minimum delegation capacity, used to filter the set of nodes being returned (Units - nLUX). Default is 0.",
             "example": "2000",
             "schema": {}
           }
@@ -2586,52 +2586,52 @@
   },
   "info": {
     "title": "Glacier API",
-    "description": "The Glacier API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Glacier, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://hackenproof.com/avalanche\">here</a>.",
+    "description": "The Glacier API provides web3 application developers with multi-chain data related to Lux's primary network, Lux subnets, and Ethereum. With Glacier, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://hackenproof.com/avalanche\">here</a>.",
     "version": "Beta",
     "contact": {}
   },
   "tags": [
     {
       "name": "EVM Chains",
-      "description": "Find information about indexed EVM-compatible chains, such as the Avalanche C-Chain."
+      "description": "Find information about indexed EVM-compatible chains, such as the Lux C-Chain."
     },
     {
       "name": "EVM Blocks",
-      "description": "Find information about blocks on EVM-compatible chains, such as the Avalanche C-Chain."
+      "description": "Find information about blocks on EVM-compatible chains, such as the Lux C-Chain."
     },
     {
       "name": "EVM Transactions",
-      "description": "Find information about transactions on EVM-compatible chains, such as the Avalanche C-Chain."
+      "description": "Find information about transactions on EVM-compatible chains, such as the Lux C-Chain."
     },
     {
       "name": "EVM Balances",
-      "description": "Find information about balances on EVM-compatible chains, such as the Avalanche C-Chain."
+      "description": "Find information about balances on EVM-compatible chains, such as the Lux C-Chain."
     },
     {
       "name": "EVM Contracts",
-      "description": "Find information about contracts on EVM-compatible chains, such as the Avalanche C-Chain."
+      "description": "Find information about contracts on EVM-compatible chains, such as the Lux C-Chain."
     },
     { "name": "Primary Network", "description": "" },
     {
       "name": "Primary Network Blocks",
-      "description": "Find information about blocks on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+      "description": "Find information about blocks on Lux's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
     },
-    { "name": "Primary Network Vertices", "description": "Find information about vertices on Avalanche's X-Chain." },
+    { "name": "Primary Network Vertices", "description": "Find information about vertices on Lux's X-Chain." },
     {
       "name": "Primary Network Transactions",
-      "description": "Find information about transactions on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+      "description": "Find information about transactions on Lux's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
     },
     {
       "name": "Primary Network Balances",
-      "description": "Find information about balances on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+      "description": "Find information about balances on Lux's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
     },
     {
       "name": "Primary Network UTXOs",
-      "description": "Find information about utxos on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+      "description": "Find information about utxos on Lux's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
     },
     {
       "name": "Primary Network Rewards",
-      "description": "Find information about rewards on Avalanche's Primary Network."
+      "description": "Find information about rewards on Lux's Primary Network."
     },
     { "name": "NFTs", "description": "" },
     { "name": "Operations", "description": "" },
@@ -2667,8 +2667,8 @@
       "NativeTokenBalance": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -2714,8 +2714,8 @@
             "description": "A wallet or contract address in mixed-case checksum encoding.",
             "example": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -2803,8 +2803,8 @@
             "description": "A wallet or contract address in mixed-case checksum encoding.",
             "example": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "ercType": { "type": "string", "enum": ["ERC-721"] },
           "tokenId": { "type": "string" },
           "tokenUri": { "type": "string" },
@@ -3008,8 +3008,8 @@
       "RichAddress": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -3036,8 +3036,8 @@
             "description": "A wallet or contract address in mixed-case checksum encoding.",
             "example": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -3075,8 +3075,8 @@
             "description": "A wallet or contract address in mixed-case checksum encoding.",
             "example": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "ercType": { "type": "string", "enum": ["ERC-721"] },
           "tokenId": { "type": "string" },
           "tokenUri": { "type": "string" },
@@ -3145,8 +3145,8 @@
       "NetworkToken": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -3345,7 +3345,7 @@
       "UnknownContract": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "description": { "type": "string" },
           "officialSite": { "type": "string" },
           "email": { "type": "string" },
@@ -3368,7 +3368,7 @@
       "Erc20Contract": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "description": { "type": "string" },
           "officialSite": { "type": "string" },
           "email": { "type": "string" },
@@ -3384,7 +3384,7 @@
           },
           "deploymentDetails": { "$ref": "#/components/schemas/ContractDeploymentDetails" },
           "ercType": { "type": "string", "enum": ["ERC-20"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "decimals": {
             "type": "number",
             "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
@@ -3397,7 +3397,7 @@
       "Erc721Contract": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "description": { "type": "string" },
           "officialSite": { "type": "string" },
           "email": { "type": "string" },
@@ -3413,14 +3413,14 @@
           },
           "deploymentDetails": { "$ref": "#/components/schemas/ContractDeploymentDetails" },
           "ercType": { "type": "string", "enum": ["ERC-721"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" }
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" }
         },
         "required": ["address", "deploymentDetails", "ercType"]
       },
       "Erc1155Contract": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "description": { "type": "string" },
           "officialSite": { "type": "string" },
           "email": { "type": "string" },
@@ -3436,7 +3436,7 @@
           },
           "deploymentDetails": { "$ref": "#/components/schemas/ContractDeploymentDetails" },
           "ercType": { "type": "string", "enum": ["ERC-1155"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "pricingProviders": { "$ref": "#/components/schemas/PricingProviders" }
         },
         "required": ["address", "deploymentDetails", "ercType"]
@@ -3482,9 +3482,9 @@
           "color": { "type": "string" },
           "resourceLinks": { "type": "array", "items": { "$ref": "#/components/schemas/ResourceLink" } },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "ercType": { "type": "string", "enum": ["ERC-1155"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "pricingProviders": { "$ref": "#/components/schemas/PricingProviders" }
         },
         "required": ["name", "ercType", "symbol"]
@@ -3500,9 +3500,9 @@
           "color": { "type": "string" },
           "resourceLinks": { "type": "array", "items": { "$ref": "#/components/schemas/ResourceLink" } },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "ercType": { "type": "string", "enum": ["ERC-20"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" },
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" },
           "pricingProviders": { "$ref": "#/components/schemas/PricingProviders" }
         },
         "required": ["name", "ercType", "symbol"]
@@ -3518,9 +3518,9 @@
           "color": { "type": "string" },
           "resourceLinks": { "type": "array", "items": { "$ref": "#/components/schemas/ResourceLink" } },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "ercType": { "type": "string", "enum": ["ERC-721"] },
-          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WAVAX" }
+          "symbol": { "type": "string", "description": "The contract symbol.", "example": "WLUX" }
         },
         "required": ["name", "ercType", "symbol"]
       },
@@ -3535,7 +3535,7 @@
           "color": { "type": "string" },
           "resourceLinks": { "type": "array", "items": { "$ref": "#/components/schemas/ResourceLink" } },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped AVAX" },
+          "name": { "type": "string", "description": "The contract name.", "example": "Wrapped LUX" },
           "ercType": { "type": "string", "enum": ["UNKNOWN"] }
         },
         "required": ["name", "ercType"]
@@ -3899,8 +3899,8 @@
             "description": "Unique ID for an asset.",
             "example": "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
           },
-          "name": { "type": "string", "description": "Name of this asset.", "example": "Avalanche" },
-          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "AVAX" },
+          "name": { "type": "string", "description": "Name of this asset.", "example": "Lux" },
+          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "LUX" },
           "denomination": {
             "type": "number",
             "description": "Denomination of this asset to represent fungibility.",
@@ -4017,8 +4017,8 @@
             "description": "Unique ID for an asset.",
             "example": "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
           },
-          "name": { "type": "string", "description": "Name of this asset.", "example": "Avalanche" },
-          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "AVAX" },
+          "name": { "type": "string", "description": "Name of this asset.", "example": "Lux" },
+          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "LUX" },
           "denomination": {
             "type": "number",
             "description": "Denomination of this asset to represent fungibility.",
@@ -4614,43 +4614,43 @@
         "type": "object",
         "properties": {
           "unlockedUnstaked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Avax that is consumable by any transaction.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Lux that is consumable by any transaction.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "unlockedStaked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Avax that is consumable by any transaction when the staking period ends.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Lux that is consumable by any transaction when the staking period ends.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "lockedPlatform": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Avax that is locked at the platform level and not consumable by any transaction at the current time.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Lux that is locked at the platform level and not consumable by any transaction at the current time.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "lockedStakeable": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Avax that is locked at the platform level and only consumeable for staking transactions.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unstaked Lux that is locked at the platform level and only consumeable for staking transactions.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "lockedStaked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Avax that will be locked when the staking period ends.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Lux that will be locked when the staking period ends.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "pendingStaked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Avax whose staking period has not yet started.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of staked Lux whose staking period has not yet started.",
             "example": [{ "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z", "amount": "100000000" }],
             "type": "array",
             "items": { "$ref": "#/components/schemas/PChainAsset" }
           },
           "atomicMemoryUnlocked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unlocked Avax in the atomic memory between P-Chain and other chain.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of unlocked Lux in the atomic memory between P-Chain and other chain.",
             "example": [
               {
                 "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
@@ -4663,7 +4663,7 @@
             "items": { "$ref": "#/components/schemas/PChainSharedAsset" }
           },
           "atomicMemoryLocked": {
-            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of locked Avax in the atomic memory between P-Chain and other chain.",
+            "description": "A list of objects containing P-chain Asset ID and the amount of that Asset ID. Denotes the amount of locked Lux in the atomic memory between P-Chain and other chain.",
             "example": [
               {
                 "assetId": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
@@ -4703,8 +4703,8 @@
             "description": "Unique ID for an asset.",
             "example": "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
           },
-          "name": { "type": "string", "description": "Name of this asset.", "example": "Avalanche" },
-          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "AVAX" },
+          "name": { "type": "string", "description": "Name of this asset.", "example": "Lux" },
+          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "LUX" },
           "denomination": {
             "type": "number",
             "description": "Denomination of this asset to represent fungibility.",
@@ -4724,8 +4724,8 @@
             "description": "Unique ID for an asset.",
             "example": "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
           },
-          "name": { "type": "string", "description": "Name of this asset.", "example": "Avalanche" },
-          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "AVAX" },
+          "name": { "type": "string", "description": "Name of this asset.", "example": "Lux" },
+          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "LUX" },
           "denomination": {
             "type": "number",
             "description": "Denomination of this asset to represent fungibility.",
@@ -4778,8 +4778,8 @@
             "description": "Unique ID for an asset.",
             "example": "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
           },
-          "name": { "type": "string", "description": "Name of this asset.", "example": "Avalanche" },
-          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "AVAX" },
+          "name": { "type": "string", "description": "Name of this asset.", "example": "Lux" },
+          "symbol": { "type": "string", "description": "Symbol for this asset (max 4 characters).", "example": "LUX" },
           "denomination": {
             "type": "number",
             "description": "Denomination of this asset to represent fungibility.",

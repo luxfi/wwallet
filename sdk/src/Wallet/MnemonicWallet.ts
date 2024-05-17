@@ -14,7 +14,7 @@ import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx, KeyPair as EVMKeyPair } from 
 import { CypherAES, digestMessage } from '@/utils';
 import { HDWalletAbstract } from '@/Wallet/HDWalletAbstract';
 import { bintools } from '@/common';
-import { getAccountPathAvalanche, getAccountPathEVM } from '@/Wallet/helpers/derivationHelper';
+import { getAccountPathLux, getAccountPathEVM } from '@/Wallet/helpers/derivationHelper';
 import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 
 //TODO: Should extend public mnemonic wallet
@@ -30,7 +30,7 @@ export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
         let seed: globalThis.Buffer = bip39.mnemonicToSeedSync(mnemonic);
 
         let masterHdKey = bip32.fromSeed(seed);
-        let accountKey = masterHdKey.derivePath(getAccountPathAvalanche(account));
+        let accountKey = masterHdKey.derivePath(getAccountPathLux(account));
 
         super(accountKey);
 

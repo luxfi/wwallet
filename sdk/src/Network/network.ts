@@ -1,4 +1,4 @@
-import { Avalanche } from 'avalanche/dist';
+import { Lux } from 'avalanche/dist';
 import { AVMAPI } from 'avalanche/dist/apis/avm';
 import { InfoAPI } from 'avalanche/dist/apis/info';
 import { EVMAPI } from 'avalanche/dist/apis/evm';
@@ -10,7 +10,7 @@ import URL from 'url';
 import { bintools } from '@/common';
 import {
     canUseCredentials,
-    createAvalancheProvider,
+    createLuxProvider,
     createExplorerApi,
     getNetworkIdFromURL,
 } from '@/helpers/network_helper';
@@ -20,7 +20,7 @@ import { getEthersJsonRpcProvider } from '@/Network/getEthersProvider';
 import { ethers } from 'ethers';
 import { HttpClient } from '@/helpers/http_client';
 
-export const avalanche: Avalanche = createAvalancheProvider(DefaultConfig);
+export const avalanche: Lux = createLuxProvider(DefaultConfig);
 
 export const xChain: AVMAPI = avalanche.XChain();
 export const cChain: EVMAPI = avalanche.CChain();
@@ -82,9 +82,9 @@ export function setRpcNetwork(conf: NetworkConfig, credentials = true): void {
     cChain.refreshBlockchainID(conf.cChainID);
     cChain.setBlockchainAlias('C');
 
-    xChain.setAVAXAssetID(conf.avaxID);
-    pChain.setAVAXAssetID(conf.avaxID);
-    cChain.setAVAXAssetID(conf.avaxID);
+    xChain.setLUXAssetID(conf.avaxID);
+    pChain.setLUXAssetID(conf.avaxID);
+    cChain.setLUXAssetID(conf.avaxID);
 
     if (conf.explorerURL) {
         explorer_api = createExplorerApi(conf);
@@ -101,7 +101,7 @@ export function setRpcNetwork(conf: NetworkConfig, credentials = true): void {
 }
 
 /**
- * Given the base url for an Avalanche API, returns a NetworkConfig object.
+ * Given the base url for an Lux API, returns a NetworkConfig object.
  * @param url A string including protocol, base domain, and ports (if any). Ex: `http://localhost:9650`
  */
 export async function getConfigFromUrl(url: string): Promise<NetworkConfig> {
@@ -117,7 +117,7 @@ export async function getConfigFromUrl(url: string): Promise<NetworkConfig> {
     let netID = await getNetworkIdFromURL(url);
     let protocol: NetworkProtocolType = urlObj.protocol === 'http:' ? 'http' : 'https';
 
-    let connection = new Avalanche(urlObj.hostname, parseInt(portStr), protocol, netID);
+    let connection = new Lux(urlObj.hostname, parseInt(portStr), protocol, netID);
     // TODO: Use a helper for this
     let connectionEvm = new Web3(getProviderFromUrl(urlObj.href + 'ext/bc/C/rpc') as any);
 
@@ -128,9 +128,9 @@ export async function getConfigFromUrl(url: string): Promise<NetworkConfig> {
     let fetchIdP = infoApi.getBlockchainID('P');
     let fetchIdC = infoApi.getBlockchainID('C');
     let fetchEvmChainID = connectionEvm.eth.getChainId();
-    let fetchAvaxId = await xApi.getAVAXAssetID();
+    let fetchLuxId = await xApi.getLUXAssetID();
 
-    let values = await Promise.all([fetchIdX, fetchIdP, fetchIdC, fetchAvaxId, fetchEvmChainID]);
+    let values = await Promise.all([fetchIdX, fetchIdP, fetchIdC, fetchLuxId, fetchEvmChainID]);
 
     let idX = values[0];
     let idP = values[1];

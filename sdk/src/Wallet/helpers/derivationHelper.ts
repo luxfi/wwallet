@@ -1,12 +1,12 @@
-import { AVAX_TOKEN_PATH, ETH_ACCOUNT_PATH } from '@/Wallet/constants';
+import { LUX_TOKEN_PATH, ETH_ACCOUNT_PATH } from '@/Wallet/constants';
 
 /**
- * Given an account number, returns the Avalanche account derivation path as a string
+ * Given an account number, returns the Lux account derivation path as a string
  * @param accountIndex
  */
-export function getAccountPathAvalanche(accountIndex: number) {
+export function getAccountPathLux(accountIndex: number) {
     if (accountIndex < 0) throw new Error('Account index can not be less than 0.');
-    return `${AVAX_TOKEN_PATH}/${accountIndex}'`;
+    return `${LUX_TOKEN_PATH}/${accountIndex}'`;
 }
 
 /**

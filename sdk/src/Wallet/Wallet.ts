@@ -7,7 +7,7 @@ import {
     ExportChainsC,
     ExportChainsP,
     ExportChainsX,
-    iAvaxBalance,
+    iLuxBalance,
     WalletBalanceX,
     WalletEventArgsType,
     WalletEventType,
@@ -24,7 +24,7 @@ import {
     buildEvmTransferNativeTx,
     buildMintNftTx,
     buildPlatformExportTransaction,
-    estimateAvaxGas,
+    estimateLuxGas,
     estimateErc20Gas,
 } from '@/helpers/tx_helper';
 import { BN, Buffer } from 'avalanche';
@@ -101,7 +101,7 @@ import {
     getAddressHistoryEVM,
     getTx,
     getTxEvm,
-    OrteliusAvalancheTx,
+    OrteliusLuxTx,
 } from '@/Explorer';
 import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 import { getHistoryForOwnedAddresses } from '@/History/getHistoryForOwnedAddresses';
@@ -202,11 +202,11 @@ export abstract class WalletProvider {
     }
 
     protected emitBalanceChangeP(): void {
-        this.emit('balanceChangedP', this.getAvaxBalanceP());
+        this.emit('balanceChangedP', this.getLuxBalanceP());
     }
 
     protected emitBalanceChangeC(): void {
-        this.emit('balanceChangedC', this.getAvaxBalanceC());
+        this.emit('balanceChangedC', this.getLuxBalanceC());
     }
 
     /**
@@ -231,10 +231,10 @@ export abstract class WalletProvider {
     /**
      *
      * @param to - the address funds are being send to.
-     * @param amount - amount of AVAX to send in nAVAX
+     * @param amount - amount of LUX to send in nLUX
      * @param memo - A MEMO for the transaction
      */
-    async sendAvaxX(to: string, amount: BN, memo?: string): Promise<string> {
+    async sendLuxX(to: string, amount: BN, memo?: string): Promise<string> {
         if (!activeNetwork) throw NO_NETWORK;
 
         let memoBuff = memo ? Buffer.from(memo) : undefined;
@@ -263,24 +263,24 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Sends AVAX to another address on the C chain using legacy transaction format.
-     * @param to Hex address to send AVAX to.
-     * @param amount Amount of AVAX to send, represented in WEI format.
+     * Sends LUX to another address on the C chain using legacy transaction format.
+     * @param to Hex address to send LUX to.
+     * @param amount Amount of LUX to send, represented in WEI format.
      * @param gasPrice Gas price in WEI format
      * @param gasLimit Gas limit
      *
      * @return Returns the transaction hash
      */
-    async sendAvaxC(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<string> {
+    async sendLuxC(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<string> {
         let fromAddr = this.getAddressC();
         let tx = await buildEvmTransferNativeTx(fromAddr, to, amount, gasPrice, gasLimit);
         let txId = await this.issueEvmTx(tx);
-        await this.updateAvaxBalanceC();
+        await this.updateLuxBalanceC();
         return txId;
     }
 
     /**
-     * Send Avalanche Native Tokens on X chain
+     * Send Lux Native Tokens on X chain
      * @param assetID ID of the token to send
      * @param amount How many units of the token to send. Based on smallest divisible unit.
      * @param to X chain address to send tokens to
@@ -378,13 +378,13 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Estimate the gas needed for a AVAX send transaction on the C chain.
+     * Estimate the gas needed for a LUX send transaction on the C chain.
      * @param to Destination address.
-     * @param amount Amount of AVAX to send, in WEI.
+     * @param amount Amount of LUX to send, in WEI.
      */
-    async estimateAvaxGasLimit(to: string, amount: BN, gasPrice: BN): Promise<number> {
+    async estimateLuxGasLimit(to: string, amount: BN, gasPrice: BN): Promise<number> {
         let from = this.getAddressC();
-        return await estimateAvaxGas(from, to, amount, gasPrice);
+        return await estimateLuxGas(from, to, amount, gasPrice);
     }
 
     /**
@@ -403,11 +403,11 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Returns the maximum spendable AVAX balance for the given chain.
+     * Returns the maximum spendable LUX balance for the given chain.
      * Scans all chains and take cross over fees into account
      * @param chainType X, P or C
      */
-    public getUsableAvaxBalanceForChain(chainType: ChainIdType, atomicFeeXP: BN, atomicFeeC: BN): BN {
+    public getUsableLuxBalanceForChain(chainType: ChainIdType, atomicFeeXP: BN, atomicFeeC: BN): BN {
         return this.createUniversalNode(chainType, atomicFeeXP, atomicFeeC).reduceTotalBalanceFromParents();
     }
 
@@ -417,9 +417,9 @@ export abstract class WalletProvider {
      * @private
      */
     private createUniversalNode(chain: ChainIdType, atomicFeeXP: BN, atomicFeeC: BN): UniversalNodeAbstract {
-        let xBal = this.getAvaxBalanceX().unlocked;
-        let pBal = this.getAvaxBalanceP().unlocked;
-        let cBal = avaxCtoX(this.getAvaxBalanceC()); // need to use 9 decimal places
+        let xBal = this.getLuxBalanceX().unlocked;
+        let pBal = this.getLuxBalanceP().unlocked;
+        let cBal = avaxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
 
         switch (chain) {
             case 'X':
@@ -437,7 +437,7 @@ export abstract class WalletProvider {
      * @param amount The amount to check against
      */
     public canHaveBalanceOnChain(chain: ChainIdType, amount: BN, atomicFeeXP: BN, atomicFeeC: BN): boolean {
-        // The maximum amount of AVAX we can have on this chain
+        // The maximum amount of LUX we can have on this chain
         let maxAmt = this.createUniversalNode(chain, atomicFeeXP, atomicFeeC).reduceTotalBalanceFromParents();
         return maxAmt.gte(amount);
     }
@@ -448,9 +448,9 @@ export abstract class WalletProvider {
      * @param amount The desired amount
      */
     public getTransactionsForBalance(chain: ChainIdType, amount: BN, atomicFeeXP: BN, atomicFeeC: BN): UniversalTx[] {
-        let xBal = this.getAvaxBalanceX().unlocked;
-        let pBal = this.getAvaxBalanceP().unlocked;
-        let cBal = avaxCtoX(this.getAvaxBalanceC()); // need to use 9 decimal places
+        let xBal = this.getLuxBalanceX().unlocked;
+        let pBal = this.getLuxBalanceP().unlocked;
+        let cBal = avaxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
 
         switch (chain) {
             case 'P':
@@ -475,9 +475,9 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Returns the C chain AVAX balance of the wallet in WEI format.
+     * Returns the C chain LUX balance of the wallet in WEI format.
      */
-    async updateAvaxBalanceC(): Promise<BN> {
+    async updateLuxBalanceC(): Promise<BN> {
         let balOld = this.evmWallet.getBalance();
         let balNew = await this.evmWallet.updateBalance();
 
@@ -533,7 +533,7 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Returns the number AVAX staked by this wallet.
+     * Returns the number LUX staked by this wallet.
      */
     public async getStake(): Promise<GetStakeResponse> {
         let addrs = await this.getAllAddressesP();
@@ -636,7 +636,7 @@ export abstract class WalletProvider {
             res[assetId] = asset;
         }
 
-        // If there are no AVAX UTXOs create a dummy empty balance object
+        // If there are no LUX UTXOs create a dummy empty balance object
         let avaxID = activeNetwork.avaxID;
         if (!res[avaxID]) {
             let assetInfo = await getAssetDescription(avaxID);
@@ -660,13 +660,13 @@ export abstract class WalletProvider {
     }
 
     /**
-     * A helpful method that returns the AVAX balance on X, P, C chains.
-     * Internally calls chain specific getAvaxBalance methods.
+     * A helpful method that returns the LUX balance on X, P, C chains.
+     * Internally calls chain specific getLuxBalance methods.
      */
-    public getAvaxBalance(): iAvaxBalance {
-        let X = this.getAvaxBalanceX();
-        let P = this.getAvaxBalanceP();
-        let C = this.getAvaxBalanceC();
+    public getLuxBalance(): iLuxBalance {
+        let X = this.getLuxBalanceX();
+        let P = this.getLuxBalanceP();
+        let C = this.getLuxBalanceC();
 
         return {
             X,
@@ -676,11 +676,11 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Returns the X chain AVAX balance of the current wallet state.
+     * Returns the X chain LUX balance of the current wallet state.
      * - Does not make a network request.
      * - Does not refresh wallet balance.
      */
-    public getAvaxBalanceX(): AssetBalanceRawX {
+    public getLuxBalanceX(): AssetBalanceRawX {
         if (!activeNetwork) {
             throw new Error('Network not selected.');
         }
@@ -692,16 +692,16 @@ export abstract class WalletProvider {
         );
     }
 
-    public getAvaxBalanceC(): BN {
+    public getLuxBalanceC(): BN {
         return this.evmWallet.getBalance();
     }
 
     /**
-     * Returns the P chain AVAX balance of the current wallet state.
+     * Returns the P chain LUX balance of the current wallet state.
      * - Does not make a network request.
      * - Does not refresh wallet balance.
      */
-    public getAvaxBalanceP(): AssetBalanceP {
+    public getLuxBalanceP(): AssetBalanceP {
         let unlocked = new BN(0);
         let locked = new BN(0);
         let lockedStakeable = new BN(0);
@@ -747,11 +747,11 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Exports AVAX from P chain to X chain
+     * Exports LUX from P chain to X chain
      * @remarks
      * The export fee is added automatically to the amount. Make sure the exported amount includes the import fee for the destination chain.
      *
-     * @param amt amount of nAVAX to transfer. Fees excluded.
+     * @param amt amount of nLUX to transfer. Fees excluded.
      * @param destinationChain Either `X` or `C`
      * @return returns the transaction id.
      */
@@ -785,7 +785,7 @@ export abstract class WalletProvider {
      * Estimates the required fee for a C chain export transaction
      * @param destinationChain Either `X` or `P`
      * @param baseFee Current base fee of the network, use a padded amount.
-     * @return BN C chain atomic export transaction fee in nAVAX.
+     * @return BN C chain atomic export transaction fee in nLUX.
      */
     estimateAtomicFeeExportC(destinationChain: ExportChainsC, baseFee: BN): BN {
         let destinationAddr = destinationChain === 'X' ? this.getAddressX() : this.getAddressP();
@@ -797,13 +797,13 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Exports AVAX from C chain to X chain
+     * Exports LUX from C chain to X chain
      * @remarks
      * Make sure the exported `amt` includes the import fee for the destination chain.
      *
-     * @param amt amount of nAVAX to transfer
+     * @param amt amount of nLUX to transfer
      * @param destinationChain either `X` or `P`
-     * @param exportFee Export fee in nAVAX
+     * @param exportFee Export fee in nLUX
      * @return returns the transaction id.
      */
     async exportCChain(amt: BN, destinationChain: ExportChainsC, exportFee?: BN): Promise<string> {
@@ -835,16 +835,16 @@ export abstract class WalletProvider {
 
         await waitTxC(txId);
 
-        await this.updateAvaxBalanceC();
+        await this.updateLuxBalanceC();
         return txId;
     }
 
     /**
-     * Exports AVAX from X chain to either P or C chain
+     * Exports LUX from X chain to either P or C chain
      * @remarks
      * The export fee will be added to the amount automatically. Make sure the exported amount has the import fee for the destination chain.
      *
-     * @param amt amount of nAVAX to transfer
+     * @param amt amount of nLUX to transfer
      * @param destinationChain Which chain to export to.
      * @return returns the transaction id.
      */
@@ -1046,7 +1046,7 @@ export abstract class WalletProvider {
 
         await waitTxC(id);
 
-        await this.updateAvaxBalanceC();
+        await this.updateLuxBalanceC();
 
         return id;
     }
@@ -1099,7 +1099,7 @@ export abstract class WalletProvider {
      * Adds a validator to the network using the given node id.
      *
      * @param nodeID The node id you are adding as a validator
-     * @param amt Amount of AVAX to stake in nAVAX
+     * @param amt Amount of LUX to stake in nLUX
      * @param start Validation period start date
      * @param end Validation period end date
      * @param delegationFee Minimum 2%
@@ -1253,12 +1253,12 @@ export abstract class WalletProvider {
         }
     }
 
-    async getHistoryX(limit = 0): Promise<OrteliusAvalancheTx[]> {
+    async getHistoryX(limit = 0): Promise<OrteliusLuxTx[]> {
         let addrs = await this.getAllAddressesX();
         return await getAddressHistory(addrs, limit, xChain.getBlockchainID());
     }
 
-    async getHistoryP(limit = 0): Promise<OrteliusAvalancheTx[]> {
+    async getHistoryP(limit = 0): Promise<OrteliusLuxTx[]> {
         let addrs = await this.getAllAddressesP();
         return await getAddressHistory(addrs, limit, pChain.getBlockchainID());
     }
@@ -1268,7 +1268,7 @@ export abstract class WalletProvider {
      * @remarks Excludes EVM transactions.
      * @param limit
      */
-    async getHistoryC(limit = 0): Promise<OrteliusAvalancheTx[]> {
+    async getHistoryC(limit = 0): Promise<OrteliusLuxTx[]> {
         let addrs = [this.getEvmAddressBech(), ...(await this.getAllAddressesX())];
         return await getAddressHistory(addrs, limit, cChain.getBlockchainID());
     }
@@ -1349,7 +1349,7 @@ export abstract class WalletProvider {
         return getTransactionSummaryEVM(rawData, addrC);
     }
 
-    async parseOrteliusTx(tx: OrteliusAvalancheTx): Promise<HistoryItemType> {
+    async parseOrteliusTx(tx: OrteliusLuxTx): Promise<HistoryItemType> {
         let addrsX = await this.getAllAddressesX();
         let addrBechC = this.getEvmAddressBech();
         let addrs = [...addrsX, addrBechC];

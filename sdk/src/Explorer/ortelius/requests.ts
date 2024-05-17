@@ -1,6 +1,6 @@
 import { explorer_api } from '@/Network/network';
 import { NO_EXPLORER_API } from '@/errors';
-import { OrteliusAvalancheTx, OrteliusEvmTx } from '@/Explorer';
+import { OrteliusLuxTx, OrteliusEvmTx } from '@/Explorer';
 
 /**
  * Returns transactions FROM and TO the address given
@@ -28,13 +28,13 @@ export async function getAddressHistoryEVM(addr: string): Promise<OrteliusEvmTx[
  * Returns the ortelius data from the given tx id.
  * @param txID
  */
-export async function getTx(txID: string): Promise<OrteliusAvalancheTx> {
+export async function getTx(txID: string): Promise<OrteliusLuxTx> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
 
     let url = `v2/transactions/${txID}`;
-    return await explorer_api.get<OrteliusAvalancheTx>(url);
+    return await explorer_api.get<OrteliusLuxTx>(url);
 }
 
 /**
@@ -59,12 +59,12 @@ export async function getTxEvm(txHash: string): Promise<OrteliusEvmTx> {
  * @param chainID The blockchain ID of X or P chain
  * @param endTime
  */
-async function getTransactionsAvalanche(
+async function getTransactionsLux(
     addresses: string[],
     limit = 20,
     chainID: string,
     endTime?: string
-): Promise<OrteliusAvalancheTx[]> {
+): Promise<OrteliusLuxTx[]> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
@@ -98,7 +98,7 @@ async function getTransactionsAvalanche(
         req.endTime = [endTime];
     }
 
-    const res = await explorer_api.post<{ transactions: OrteliusAvalancheTx[]; next?: string }>(rootUrl, req);
+    const res = await explorer_api.post<{ transactions: OrteliusLuxTx[]; next?: string }>(rootUrl, req);
     const resTxs = res.transactions;
     const next: string | undefined = res.next;
 
@@ -126,7 +126,7 @@ export async function getAddressHistory(
     limit = 20,
     chainID: string,
     endTime?: string
-): Promise<OrteliusAvalancheTx[]> {
+): Promise<OrteliusLuxTx[]> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
@@ -141,7 +141,7 @@ export async function getAddressHistory(
 
     // Get histories in parallel
     const promises = addrsChunks.map((chunk) => {
-        return getTransactionsAvalanche(chunk, limit, chainID, endTime);
+        return getTransactionsLux(chunk, limit, chainID, endTime);
     });
 
     const results = await Promise.all(promises);

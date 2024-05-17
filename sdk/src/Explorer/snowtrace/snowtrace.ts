@@ -26,7 +26,7 @@ export async function getErc20History(
     } else if (isFujiNetwork(networkConfig)) {
         resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceErc20Tx>>(query, false);
     } else {
-        throw new Error('Snow trace is only available for Avalanche Mainnet and Testnet');
+        throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
 
     return filterDuplicateTransactions<SnowtraceErc20Tx>(resp.result);
@@ -42,7 +42,7 @@ export async function getNormalHistory(address: string, networkConfig: NetworkCo
     } else if (isFujiNetwork(networkConfig)) {
         resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceNormalTx>>(query, false);
     } else {
-        throw new Error('Snow trace is only available for Avalanche Mainnet and Testnet');
+        throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
     return filterDuplicateTransactions<SnowtraceNormalTx>(resp.result);
 }
@@ -62,7 +62,7 @@ export async function getABIForContract(
     const isFuji = isFujiNetwork(networkConfig);
 
     if (!isMainnet && !isFuji) {
-        throw new Error('Snow trace is only available for Avalanche Mainnet and Testnet');
+        throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
 
     const params = new window.URLSearchParams({ module: 'contract', action: 'getabi', address });

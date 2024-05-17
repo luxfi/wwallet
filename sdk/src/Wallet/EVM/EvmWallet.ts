@@ -1,4 +1,4 @@
-import { Buffer as BufferAvalanche } from 'avalanche';
+import { Buffer as BufferLux } from 'avalanche';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
 import { avalanche } from '@/Network/network';
 import {
@@ -39,7 +39,7 @@ export class EvmWallet extends EvmWalletReadonly {
     }
 
     private getPrivateKeyBech(): string {
-        return `PrivateKey-` + bintools.cb58Encode(BufferAvalanche.from(this.privateKey));
+        return `PrivateKey-` + bintools.cb58Encode(BufferLux.from(this.privateKey));
     }
 
     getKeyChain(): EVMKeyChain {

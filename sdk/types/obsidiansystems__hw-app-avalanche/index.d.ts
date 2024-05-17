@@ -2,7 +2,7 @@ declare module '@obsidiansystems/hw-app-avalanche' {
     import Transport from '@ledgerhq/hw-transport';
     import bippath from 'bip32-path';
 
-    class Avalanche {
+    class Lux {
         constructor(t: Transport);
 
         /**
@@ -38,7 +38,7 @@ declare module '@obsidiansystems/hw-app-avalanche' {
         getAppConfiguration(): Promise<{
             version: string;
             commit: string;
-            name: 'Avalanche';
+            name: 'Lux';
         }>;
 
         getWalletAddress(derivation_path: string, hrp: string): Promise<Buffer>;
@@ -55,5 +55,5 @@ declare module '@obsidiansystems/hw-app-avalanche' {
         getWalletId(): Promise<Buffer>;
     }
 
-    export = Avalanche;
+    export = Lux;
 }

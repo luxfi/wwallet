@@ -85,7 +85,7 @@ export class EVMWebSocketProvider {
     private onBlock() {
         // Update wallet balances
         this.wallets.forEach((w) => {
-            w.updateAvaxBalanceC();
+            w.updateLuxBalanceC();
         });
     }
 }

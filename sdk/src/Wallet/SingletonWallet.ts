@@ -8,7 +8,7 @@ import {
     Tx as PlatformTx,
 } from 'avalanche/dist/apis/platformvm';
 import { pChain, xChain } from '@/Network/network';
-import { Buffer as BufferAvalanche } from 'avalanche';
+import { Buffer as BufferLux } from 'avalanche';
 import { EvmWallet } from '@/Wallet/EVM/EvmWallet';
 import { UnsignedTx, Tx } from 'avalanche/dist/apis/evm';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
@@ -18,7 +18,7 @@ import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 export class SingletonWallet extends WalletProvider implements UnsafeWallet {
     type: WalletNameType = 'singleton';
     key = '';
-    keyBuff: BufferAvalanche;
+    keyBuff: BufferLux;
     evmWallet: EvmWallet;
 
     /**
@@ -45,7 +45,7 @@ export class SingletonWallet extends WalletProvider implements UnsafeWallet {
     }
 
     static fromEvmKey(key: string): SingletonWallet {
-        let keyBuff = bintools.cb58Encode(BufferAvalanche.from(key, 'hex'));
+        let keyBuff = bintools.cb58Encode(BufferLux.from(key, 'hex'));
         let avmKeyStr = `PrivateKey-${keyBuff}`;
         return new SingletonWallet(avmKeyStr);
     }

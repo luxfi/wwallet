@@ -1,7 +1,7 @@
 import { HistoryItemType, isHistoryBaseTx, isHistoryEVMTx, isHistoryImportExportTx } from '@/History';
 import { normalHeaders } from '@/Csv/constants';
 import { createCSVContent } from '@/Csv/createCsvContent';
-import { bnToBig, bnToBigAvaxC, bnToBigAvaxX } from '@/utils';
+import { bnToBig, bnToBigLuxC, bnToBigLuxX } from '@/utils';
 import moment from 'moment';
 
 /**
@@ -27,14 +27,14 @@ export function parseNormalTxs(txs: HistoryItemType[]) {
             });
             rows.push(...tokenRows);
         } else if (isHistoryImportExportTx(tx)) {
-            const amtStr = bnToBigAvaxX(tx.amount).toString();
-            rows.push([tx.id, dateStr, tx.type, 'AVAX', amtStr, '', `${tx.source} to ${tx.destination}`]);
+            const amtStr = bnToBigLuxX(tx.amount).toString();
+            rows.push([tx.id, dateStr, tx.type, 'LUX', amtStr, '', `${tx.source} to ${tx.destination}`]);
         } else if (isHistoryEVMTx(tx)) {
-            const amtStr = bnToBigAvaxC(tx.amount).toString();
+            const amtStr = bnToBigLuxC(tx.amount).toString();
             const amtSigned = tx.isSender ? `-${amtStr}` : amtStr;
             if (!tx.input) {
                 const addr = tx.isSender ? tx.to : tx.from;
-                rows.push([tx.id, dateStr, tx.type, 'AVAX', amtSigned, addr, `C`]);
+                rows.push([tx.id, dateStr, tx.type, 'LUX', amtSigned, addr, `C`]);
             }
         }
     });

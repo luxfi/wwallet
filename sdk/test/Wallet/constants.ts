@@ -51,7 +51,7 @@ export const TEST_MNEMONIC_ADDRS_INT = [
 ];
 
 // m/44'/9000'/0'
-export const XPUB_AVAX = `xpub6CvdTKLRh3ehvVLR2f3M1GUTFesrz5zoYFbw32iZqRShmoDnxtfSaF7mdCvXwNRfTwce5RYEADGb6YAzhqEAujEkvjTod6s2WEkpUBJZwqf`;
+export const XPUB_LUX = `xpub6CvdTKLRh3ehvVLR2f3M1GUTFesrz5zoYFbw32iZqRShmoDnxtfSaF7mdCvXwNRfTwce5RYEADGb6YAzhqEAujEkvjTod6s2WEkpUBJZwqf`;
 // m/44'/60'/0'
 export const XPUB_ETH_ACCT = `xpub6CQ5fy7iAochmG1tL2ww2P4BviDRRrcEjG3u1uM6GcyGwzihscWoX9RwiCrZDcpAbYK8reYcy7cT8ZgZWVbReZ44ehVYqi5jZD9NknLx4TS`;
 export const XPUB_ETH_ADDR = `xpub6H6BqGq4LFAeEyDn4VspySZerHZCGFUAe5Y21UQnyd6VdyZmUX6nzjp9FyuyEtPVCfhK7yKy2Yan9S7wziMQxvb2PHHx6kZ4ByaFD76qJ3j`;

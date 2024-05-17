@@ -2,12 +2,12 @@ import { iHistoryImportExport } from '@/History/types';
 import { parseMemo } from '@/History/history_helpers';
 import { idToChainAlias } from '@/Network/helpers/aliasFromNetworkID';
 import { xChain } from '@/Network/network';
-import { bnToAvaxX, strip0x } from '@/utils';
+import { bnToLuxX, strip0x } from '@/utils';
 import { getOutputsOfChain, getOutputTotals, getOwnedOutputs } from '@/Explorer/ortelius/utxoUtils';
-import { findDestinationChain, findSourceChain, OrteliusAvalancheTx } from '@/Explorer';
+import { findDestinationChain, findSourceChain, OrteliusLuxTx } from '@/Explorer';
 import { BN } from 'avalanche';
 
-export function getImportSummary(tx: OrteliusAvalancheTx, addresses: string[], evmAddr: string): iHistoryImportExport {
+export function getImportSummary(tx: OrteliusLuxTx, addresses: string[], evmAddr: string): iHistoryImportExport {
     let sourceChain = findSourceChain(tx);
     let chainAliasFrom = idToChainAlias(sourceChain);
     let chainAliasTo = idToChainAlias(tx.chainID);
@@ -26,7 +26,7 @@ export function getImportSummary(tx: OrteliusAvalancheTx, addresses: string[], e
         source: chainAliasFrom,
         destination: chainAliasTo,
         amount: amtOut,
-        amountDisplayValue: bnToAvaxX(amtOut),
+        amountDisplayValue: bnToLuxX(amtOut),
         timestamp: time,
         type: 'import',
         fee: fee,
@@ -36,7 +36,7 @@ export function getImportSummary(tx: OrteliusAvalancheTx, addresses: string[], e
     return res;
 }
 
-export function getExportSummary(tx: OrteliusAvalancheTx, addresses: string[]): iHistoryImportExport {
+export function getExportSummary(tx: OrteliusLuxTx, addresses: string[]): iHistoryImportExport {
     let sourceChain = findSourceChain(tx);
     let chainAliasFrom = idToChainAlias(sourceChain);
 
@@ -57,7 +57,7 @@ export function getExportSummary(tx: OrteliusAvalancheTx, addresses: string[]): 
         source: chainAliasFrom,
         destination: chainAliasTo,
         amount: amtOut,
-        amountDisplayValue: bnToAvaxX(amtOut),
+        amountDisplayValue: bnToLuxX(amtOut),
         timestamp: time,
         type: 'export',
         fee: fee,

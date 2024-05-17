@@ -1,4 +1,4 @@
-import { findDestinationChain, findSourceChain, OrteliusAvalancheTx, OrteliusTransactionType } from '@/Explorer';
+import { findDestinationChain, findSourceChain, OrteliusLuxTx, OrteliusTransactionType } from '@/Explorer';
 import { ChainIdType } from '@/common';
 import { activeNetwork, idToChainAlias } from '@/Network';
 import { isOutputOwner } from '@/Explorer/ortelius/utxoUtils';
@@ -21,11 +21,11 @@ interface ParsedTxUtxos {
     assetID: string;
 }
 
-function isExportTx(tx: OrteliusAvalancheTx) {
+function isExportTx(tx: OrteliusLuxTx) {
     return tx.type === 'export' || tx.type === 'pvm_export' || tx.type === 'atomic_export_tx';
 }
 
-function isImport(tx: OrteliusAvalancheTx) {
+function isImport(tx: OrteliusLuxTx) {
     return tx.type === 'import' || tx.type === 'pvm_import' || tx.type === 'atomic_import_tx';
 }
 
@@ -34,7 +34,7 @@ function isImport(tx: OrteliusAvalancheTx) {
  * @param txs
  * @param ownedAddresses
  */
-export function parseTxUtxos(txs: OrteliusAvalancheTx[], ownedAddresses: string[]) {
+export function parseTxUtxos(txs: OrteliusLuxTx[], ownedAddresses: string[]) {
     const result: ParsedTxUtxos[] = [];
     txs.forEach((tx) => {
         const date = new Date(tx.timestamp);
@@ -43,8 +43,8 @@ export function parseTxUtxos(txs: OrteliusAvalancheTx[], ownedAddresses: string[
         const chainAlias = idToChainAlias(chainId);
 
         tx.inputs?.forEach((txIn) => {
-            const isAVAX = txIn.output.assetID === activeNetwork.avaxID;
-            const decimals = isAVAX ? 9 : 0;
+            const isLUX = txIn.output.assetID === activeNetwork.avaxID;
+            const decimals = isLUX ? 9 : 0;
             result.push({
                 txID: tx.id,
                 timeStamp: date,
@@ -57,13 +57,13 @@ export function parseTxUtxos(txs: OrteliusAvalancheTx[], ownedAddresses: string[
                 owners: txIn.output.addresses || txIn.output.caddresses || [],
                 locktime: txIn.output.locktime,
                 threshold: txIn.output.threshold,
-                assetID: isAVAX ? 'AVAX' : txIn.output.assetID,
+                assetID: isLUX ? 'LUX' : txIn.output.assetID,
             });
         });
 
         tx.outputs?.forEach((txOut) => {
-            const isAVAX = txOut.assetID === activeNetwork.avaxID;
-            const decimals = isAVAX ? 9 : 0;
+            const isLUX = txOut.assetID === activeNetwork.avaxID;
+            const decimals = isLUX ? 9 : 0;
 
             result.push({
                 txID: tx.id,
@@ -77,7 +77,7 @@ export function parseTxUtxos(txs: OrteliusAvalancheTx[], ownedAddresses: string[
                 owners: txOut.addresses || txOut.caddresses || [],
                 locktime: txOut.locktime,
                 threshold: txOut.threshold,
-                assetID: isAVAX ? 'AVAX' : txOut.assetID,
+                assetID: isLUX ? 'LUX' : txOut.assetID,
             });
         });
     });
@@ -90,7 +90,7 @@ export function parseTxUtxos(txs: OrteliusAvalancheTx[], ownedAddresses: string[
  * @param txs Array of Ortelius Transactions
  * @param ownedAddresses Addresses owned by the wallet.
  */
-export function createCsvFileOrtelius(txs: OrteliusAvalancheTx[], ownedAddresses: string[]) {
+export function createCsvFileOrtelius(txs: OrteliusLuxTx[], ownedAddresses: string[]) {
     type CsvRow = [string, string, string, string, string, string, string, string, string, string, string, string];
     const parsed = parseTxUtxos(txs, ownedAddresses);
 

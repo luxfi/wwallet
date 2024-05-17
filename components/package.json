@@ -12,6 +12,9 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@ledgerhq/cryptoassets": "^13.0.0",
+    "@ledgerhq/domain-service": "^1.1.21",
+    "@ledgerhq/evm-tools": "^1.0.19",
     "@zxing/library": "^0.15.2",
     "core-js": "^3.6.4",
     "vue": "^2.6.11"

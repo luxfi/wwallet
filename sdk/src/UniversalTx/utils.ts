@@ -95,7 +95,7 @@ export function getStepsForBalanceP(
     let startNode = createGraphForP(balX, balP, balC, atomicFeeXP, atomicFeeC);
 
     if (startNode.reduceTotalBalanceFromParents().lt(targetAmount)) {
-        throw new Error('Insufficient AVAX.');
+        throw new Error('Insufficient LUX.');
     }
 
     return startNode.getStepsForTargetBalance(targetAmount);
@@ -112,7 +112,7 @@ export function getStepsForBalanceC(
     let startNode = createGraphForC(balX, balP, balC, atomicFeeXP, atomicFeeC);
 
     if (startNode.reduceTotalBalanceFromParents().lt(targetAmount)) {
-        throw new Error('Insufficient AVAX.');
+        throw new Error('Insufficient LUX.');
     }
 
     return startNode.getStepsForTargetBalance(targetAmount);
@@ -129,7 +129,7 @@ export function getStepsForBalanceX(
     let startNode = createGraphForX(balX, balP, balC, atomicFeeXP, atomicFeeC);
 
     if (startNode.reduceTotalBalanceFromParents().lt(targetAmount)) {
-        throw new Error('Insufficient AVAX.');
+        throw new Error('Insufficient LUX.');
     }
 
     return startNode.getStepsForTargetBalance(targetAmount);

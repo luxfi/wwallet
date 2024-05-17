@@ -79,7 +79,7 @@ export abstract class UniversalNodeAbstract {
      * Assumes there is enough balance on node tree
      * Returns empty array even if transaction not possible!
      * What steps to take to have the target balance on this node.
-     * @param target Amount of nAVAX needed on this node.
+     * @param target Amount of nLUX needed on this node.
      */
     getStepsForTargetBalance(target: BN): UniversalTx[] {
         // If the node has enough balance no transaction needed
@@ -132,7 +132,7 @@ export abstract class UniversalNodeAbstract {
 
         // If we still have remaining balance, we can not complete this transfer
         if (remaining.gt(new BN(0))) {
-            throw new Error('Insufficient AVAX balances.');
+            throw new Error('Insufficient LUX balances.');
         }
 
         return transactions;

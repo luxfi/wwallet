@@ -21,7 +21,7 @@
 
 #### Changed
 
--   Max gas price increased to 1000 nAVAX
+-   Max gas price increased to 1000 nLUX
 
 ## v0.9.5
 

@@ -36,7 +36,7 @@ export interface OrteliusEvmTx {
 /**
  * Data coming from the explorer for X,P chain
  */
-export interface OrteliusAvalancheTx {
+export interface OrteliusLuxTx {
     chainID: string;
     id: string;
     inputTotals: {

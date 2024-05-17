@@ -21,10 +21,10 @@ import {
     getOutputTotals,
     getOwnedOutputs,
 } from '@/Explorer/ortelius/utxoUtils';
-import { getAvaxAssetID } from '@/Network/utils';
-import { OrteliusAvalancheTx, OrteliusUTXO } from '@/Explorer';
+import { getLuxAssetID } from '@/Network/utils';
+import { OrteliusLuxTx, OrteliusUTXO } from '@/Explorer';
 
-export async function getBaseTxSummary(tx: OrteliusAvalancheTx, ownerAddrs: string[]): Promise<iHistoryBaseTx> {
+export async function getBaseTxSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): Promise<iHistoryBaseTx> {
     let ins = tx.inputs?.map((input) => input.output) || [];
     let outs = tx.outputs || [];
 
@@ -50,7 +50,7 @@ export async function getBaseTxSummary(tx: OrteliusAvalancheTx, ownerAddrs: stri
     };
 }
 
-function getBaseTxNFTLosses(tx: OrteliusAvalancheTx, ownerAddrs: string[]): iHistoryBaseTxNFTsSentRaw {
+function getBaseTxNFTLosses(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsSentRaw {
     let ins = tx.inputs || [];
     let inUTXOs = ins.map((input) => input.output);
     let nftUTXOs = inUTXOs.filter((utxo) => {
@@ -69,7 +69,7 @@ function getBaseTxNFTLosses(tx: OrteliusAvalancheTx, ownerAddrs: string[]): iHis
     return res;
 }
 
-function getBaseTxNFTGains(tx: OrteliusAvalancheTx, ownerAddrs: string[]): iHistoryBaseTxNFTsReceivedRaw {
+function getBaseTxNFTGains(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsReceivedRaw {
     let outs = tx.outputs || [];
     let nftUTXOs = outs.filter((utxo) => {
         return utxo.outputType === AVMConstants.NFTXFEROUTPUTID;
@@ -139,7 +139,7 @@ async function getBaseTxTokensSummary(
         let tokenDesc = descsDict[id];
 
         // If we sent avax, deduct the fee
-        if (id === getAvaxAssetID() && !tokenLost.isZero()) {
+        if (id === getLuxAssetID() && !tokenLost.isZero()) {
             tokenLost = tokenLost.sub(getTxFeeX());
         }
 

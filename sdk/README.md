@@ -3,11 +3,11 @@
 -   This library is under development and there might be frequent breaking changes.
 -   Audit pending.
 
-# Avalanche Wallet SDK (Beta)
+# Lux Wallet SDK (Beta)
 
-Avalanche Wallet SDK is a Typescript library for creating and managing decentralized wallets.
+Lux Wallet SDK is a Typescript library for creating and managing decentralized wallets.
 
-It provides high level methods to transact on Avalanche's primary networks: X, P and C chain.
+It provides high level methods to transact on Lux's primary networks: X, P and C chain.
 
 Wallet types supported:
 
