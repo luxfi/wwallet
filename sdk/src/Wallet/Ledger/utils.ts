@@ -14,7 +14,7 @@ import { UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx';
 
 import bip32 from '@/utils/bip32';
 import AppObsidian from '@obsidiansystems/hw-app-avalanche';
-import AppZondax from '@avalabs/hw-app-avalanche';
+import AppZondax from '@luxfi/hw-app-lux';
 
 /**
  *

@@ -1,5 +1,5 @@
 import Transport from '@ledgerhq/hw-transport';
-import AppZondax from '@avalabs/hw-app-avalanche';
+import AppZondax from '@luxfi/hw-app-lux';
 import { Bip32Path } from 'bip32-path';
 import { LedgerProvider } from '@/Wallet/Ledger/provider/models';
 

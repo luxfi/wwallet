@@ -2,7 +2,7 @@ import { Bip32Path } from 'bip32-path';
 import Transport from '@ledgerhq/hw-transport';
 
 import AppObsidian from '@obsidiansystems/hw-app-avalanche';
-import AppZondax from '@avalabs/hw-app-avalanche';
+import AppZondax from '@luxfi/hw-app-lux';
 
 export interface LedgerProvider {
     type: LedgerProviderType;
