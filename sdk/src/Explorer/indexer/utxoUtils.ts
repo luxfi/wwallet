@@ -1,4 +1,4 @@
-import { OrteliusUTXO } from '@/Explorer';
+import { IndexerUTXO } from '@/Explorer';
 import { BN } from 'avalanche';
 import { iHistoryBaseTxTokenOwners } from '@/History';
 import { strip0x } from '@/utils';
@@ -17,7 +17,7 @@ export function isArraysOverlap(arr1: any[], arr2: any[]): boolean {
  * @param ownerAddrs Addresses to check against
  * @param output The UTXO
  */
-export function isOutputOwner(ownerAddrs: string[], output: OrteliusUTXO): boolean {
+export function isOutputOwner(ownerAddrs: string[], output: IndexerUTXO): boolean {
     // Remove prefix from owner addresses
     ownerAddrs = ownerAddrs.map((addr) => {
         const split = addr.split('-');
@@ -33,7 +33,7 @@ export function isOutputOwner(ownerAddrs: string[], output: OrteliusUTXO): boole
     return totAddrs.length > 0;
 }
 
-export function isOutputOwnerC(ownerAddr: string, output: OrteliusUTXO): boolean {
+export function isOutputOwnerC(ownerAddr: string, output: IndexerUTXO): boolean {
     let outAddrs = output.caddresses;
     if (!outAddrs) return false;
     return outAddrs.includes(ownerAddr);
@@ -48,7 +48,7 @@ export function isOutputOwnerC(ownerAddr: string, output: OrteliusUTXO): boolean
  * @param isStake Set to `true` if looking for staking utxos.
  */
 export function getAssetBalanceFromUTXOs(
-    utxos: OrteliusUTXO[],
+    utxos: IndexerUTXO[],
     addresses: string[],
     assetID: string,
     chainID: string,
@@ -82,7 +82,7 @@ export function getAssetBalanceFromUTXOs(
  * @param isStake Set to `true` if looking for staking utxos.
  */
 export function getEvmAssetBalanceFromUTXOs(
-    utxos: OrteliusUTXO[],
+    utxos: IndexerUTXO[],
     address: string,
     assetID: string,
     chainID: string,
@@ -112,7 +112,7 @@ export function getEvmAssetBalanceFromUTXOs(
  * @param outs UTXOs to filter
  * @param myAddrs Addresses to filter by
  */
-export function getOwnedOutputs(outs: OrteliusUTXO[], myAddrs: string[]) {
+export function getOwnedOutputs(outs: IndexerUTXO[], myAddrs: string[]) {
     return outs.filter((out) => {
         let outAddrs = out.addresses || [];
         let cAddrs = out.caddresses || [];
@@ -130,7 +130,7 @@ export function getOwnedOutputs(outs: OrteliusUTXO[], myAddrs: string[]) {
  * Returns addresses of the given UTXOs
  * @param outs UTXOs to get the addresses of.
  */
-export function getAddresses(outs: OrteliusUTXO[]): string[] {
+export function getAddresses(outs: IndexerUTXO[]): string[] {
     let allAddrs: string[] = [];
 
     for (let i = 0; i < outs.length; i++) {
@@ -148,7 +148,7 @@ export function getAddresses(outs: OrteliusUTXO[]): string[] {
  * @param outs
  * @param assetID
  */
-export function getAssetOutputs(outs: OrteliusUTXO[], assetID: string) {
+export function getAssetOutputs(outs: IndexerUTXO[], assetID: string) {
     return outs.filter((out) => out.assetID === assetID);
 }
 
@@ -157,20 +157,20 @@ export function getAssetOutputs(outs: OrteliusUTXO[], assetID: string) {
  * @param outs UTXOs to filter
  * @param myAddrs Addresses to filter by
  */
-export function getNotOwnedOutputs(outs: OrteliusUTXO[], myAddrs: string[]) {
+export function getNotOwnedOutputs(outs: IndexerUTXO[], myAddrs: string[]) {
     return outs.filter((out) => {
         let outAddrs = out.addresses || [];
         return !isArraysOverlap(myAddrs, outAddrs);
     });
 }
 
-export function getOutputTotals(outs: OrteliusUTXO[]) {
+export function getOutputTotals(outs: IndexerUTXO[]) {
     return outs.reduce((acc, out) => {
         return acc.add(new BN(out.amount));
     }, new BN(0));
 }
 
-export function getRewardOuts(outs: OrteliusUTXO[]) {
+export function getRewardOuts(outs: IndexerUTXO[]) {
     return outs.filter((out) => out.rewardUtxo);
 }
 
@@ -179,7 +179,7 @@ export function getRewardOuts(outs: OrteliusUTXO[]) {
  * @param outs UTXOs to filter
  * @param chainID Chain ID to filter by
  */
-export function getOutputsOfChain(outs: OrteliusUTXO[], chainID: string) {
+export function getOutputsOfChain(outs: IndexerUTXO[], chainID: string) {
     return outs.filter((out) => out.chainID === chainID);
 }
 
@@ -188,7 +188,7 @@ export function getOutputsOfChain(outs: OrteliusUTXO[], chainID: string) {
  * @param outs UTXOs to filter
  * @param type Output type to filter by
  */
-export function getOutputsOfType(outs: OrteliusUTXO[], type: number) {
+export function getOutputsOfType(outs: IndexerUTXO[], type: number) {
     return outs.filter((out) => out.outputType === type);
 }
 
@@ -196,7 +196,7 @@ export function getOutputsOfType(outs: OrteliusUTXO[], type: number) {
  * Returns a map of asset id to owner addresses
  * @param outs
  */
-export function getOutputsAssetOwners(outs: OrteliusUTXO[]): iHistoryBaseTxTokenOwners {
+export function getOutputsAssetOwners(outs: IndexerUTXO[]): iHistoryBaseTxTokenOwners {
     let assetIDs = getOutputsAssetIDs(outs);
     let res: iHistoryBaseTxTokenOwners = {};
 
@@ -214,7 +214,7 @@ export function getOutputsAssetOwners(outs: OrteliusUTXO[]): iHistoryBaseTxToken
  * Returns an array of Asset IDs from the given UTXOs
  * @param outs Array of UTXOs
  */
-export function getOutputsAssetIDs(outs: OrteliusUTXO[]): string[] {
+export function getOutputsAssetIDs(outs: IndexerUTXO[]): string[] {
     let res = [];
 
     for (let i = 0; i < outs.length; i++) {

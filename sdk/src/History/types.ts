@@ -1,7 +1,7 @@
 import { BN } from 'avalanche';
 import { ChainIdType } from '@/common';
 import { iAssetDescriptionClean } from '@/Asset/types';
-import { OrteliusLuxTx, OrteliusEvmTx } from '@/Explorer';
+import { IndexerLuxTx, IndexerEvmTx } from '@/Explorer';
 
 export type HistoryItemType = AVMHistoryItemType | PVMHistoryItemType | EVMHistoryITemType | iHistoryItem;
 
@@ -26,7 +26,7 @@ export interface iHistoryItem {
     timestamp: Date;
     fee: BN;
     memo?: string;
-    tx: OrteliusEvmTx | OrteliusLuxTx;
+    tx: IndexerEvmTx | IndexerLuxTx;
     avaxPrice?: number;
 }
 
@@ -39,7 +39,7 @@ export interface iHistoryImportExport extends iHistoryItem {
     amountDisplayValue: string;
     destination: ChainIdType;
     source: ChainIdType;
-    tx: OrteliusLuxTx;
+    tx: IndexerLuxTx;
 }
 
 /**
@@ -62,7 +62,7 @@ export interface iHistoryStaking extends iHistoryItem {
     isRewarded: boolean;
     rewardAmount?: BN;
     rewardAmountDisplayValue?: string;
-    tx: OrteliusLuxTx;
+    tx: IndexerLuxTx;
 }
 
 /**
@@ -80,7 +80,7 @@ export function isHistoryStakingTx(tx: HistoryItemType): tx is iHistoryStaking {
 export interface iHistoryBaseTx extends iHistoryItem {
     tokens: iHistoryBaseTxToken[];
     // nfts: iHistoryBaseTxNFTs;
-    tx: OrteliusLuxTx;
+    tx: IndexerLuxTx;
 }
 
 /**
@@ -104,7 +104,7 @@ export interface iHistoryEVMTx extends iHistoryItem {
     amountDisplayValue: string;
     isSender: boolean;
     input?: string;
-    tx: OrteliusEvmTx;
+    tx: IndexerEvmTx;
 }
 
 export function isHistoryEVMTx(tx: HistoryItemType): tx is iHistoryEVMTx {

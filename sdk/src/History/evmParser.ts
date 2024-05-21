@@ -1,9 +1,9 @@
 import { iHistoryEVMTx } from '@/History/types';
 import { bnToLuxC } from '@/utils';
 import { BN } from 'avalanche';
-import { OrteliusEvmTx } from '@/Explorer';
+import { IndexerEvmTx } from '@/Explorer';
 
-export function getTransactionSummaryEVM(tx: OrteliusEvmTx, walletAddress: string): iHistoryEVMTx {
+export function getTransactionSummaryEVM(tx: IndexerEvmTx, walletAddress: string): iHistoryEVMTx {
     let isSender = tx.fromAddr.toUpperCase() === walletAddress.toUpperCase();
 
     let amt = new BN(tx.value);

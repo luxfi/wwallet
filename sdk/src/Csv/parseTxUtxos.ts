@@ -1,7 +1,7 @@
-import { findDestinationChain, findSourceChain, OrteliusLuxTx, OrteliusTransactionType } from '@/Explorer';
+import { findDestinationChain, findSourceChain, IndexerLuxTx, IndexerTransactionType } from '@/Explorer';
 import { ChainIdType } from '@/common';
 import { activeNetwork, idToChainAlias } from '@/Network';
-import { isOutputOwner } from '@/Explorer/ortelius/utxoUtils';
+import { isOutputOwner } from '@/Explorer/indexer/utxoUtils';
 import { createCSVContent } from '@/Csv/createCsvContent';
 import { bnToBig } from '@/utils';
 import { BN } from 'avalanche';
@@ -10,7 +10,7 @@ interface ParsedTxUtxos {
     txID: string;
     timeStamp: Date;
     unixTime: string;
-    txType: OrteliusTransactionType;
+    txType: IndexerTransactionType;
     chain: ChainIdType;
     isInput: boolean;
     isOwner: boolean;
@@ -21,20 +21,20 @@ interface ParsedTxUtxos {
     assetID: string;
 }
 
-function isExportTx(tx: OrteliusLuxTx) {
+function isExportTx(tx: IndexerLuxTx) {
     return tx.type === 'export' || tx.type === 'pvm_export' || tx.type === 'atomic_export_tx';
 }
 
-function isImport(tx: OrteliusLuxTx) {
+function isImport(tx: IndexerLuxTx) {
     return tx.type === 'import' || tx.type === 'pvm_import' || tx.type === 'atomic_import_tx';
 }
 
 /**
- * Given an array of Ortelius transaction data return input and outputs as a single unified array
+ * Given an array of Indexer transaction data return input and outputs as a single unified array
  * @param txs
  * @param ownedAddresses
  */
-export function parseTxUtxos(txs: OrteliusLuxTx[], ownedAddresses: string[]) {
+export function parseTxUtxos(txs: IndexerLuxTx[], ownedAddresses: string[]) {
     const result: ParsedTxUtxos[] = [];
     txs.forEach((tx) => {
         const date = new Date(tx.timestamp);
@@ -86,11 +86,11 @@ export function parseTxUtxos(txs: OrteliusLuxTx[], ownedAddresses: string[]) {
 }
 
 /**
- * Create CSV file contents from the given Ortelius transactions.
- * @param txs Array of Ortelius Transactions
+ * Create CSV file contents from the given Indexer transactions.
+ * @param txs Array of Indexer Transactions
  * @param ownedAddresses Addresses owned by the wallet.
  */
-export function createCsvFileOrtelius(txs: OrteliusLuxTx[], ownedAddresses: string[]) {
+export function createCsvFileIndexer(txs: IndexerLuxTx[], ownedAddresses: string[]) {
     type CsvRow = [string, string, string, string, string, string, string, string, string, string, string, string];
     const parsed = parseTxUtxos(txs, ownedAddresses);
 
@@ -110,7 +110,7 @@ export function createCsvFileOrtelius(txs: OrteliusLuxTx[], ownedAddresses: stri
     ];
     const rows: CsvRow[] = [];
 
-    const unsupportedtypes: OrteliusTransactionType[] = [
+    const unsupportedtypes: IndexerTransactionType[] = [
         'add_validator',
         'add_delegator',
         'add_subnet_validator',

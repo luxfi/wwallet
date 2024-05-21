@@ -1,4 +1,4 @@
 export * from './constants';
-export * from './snowtrace';
+export * from './explorer';
 export * from './types';
 export * from './utils';

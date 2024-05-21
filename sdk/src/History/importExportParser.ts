@@ -3,11 +3,11 @@ import { parseMemo } from '@/History/history_helpers';
 import { idToChainAlias } from '@/Network/helpers/aliasFromNetworkID';
 import { xChain } from '@/Network/network';
 import { bnToLuxX, strip0x } from '@/utils';
-import { getOutputsOfChain, getOutputTotals, getOwnedOutputs } from '@/Explorer/ortelius/utxoUtils';
-import { findDestinationChain, findSourceChain, OrteliusLuxTx } from '@/Explorer';
+import { getOutputsOfChain, getOutputTotals, getOwnedOutputs } from '@/Explorer/indexer/utxoUtils';
+import { findDestinationChain, findSourceChain, IndexerLuxTx } from '@/Explorer';
 import { BN } from 'avalanche';
 
-export function getImportSummary(tx: OrteliusLuxTx, addresses: string[], evmAddr: string): iHistoryImportExport {
+export function getImportSummary(tx: IndexerLuxTx, addresses: string[], evmAddr: string): iHistoryImportExport {
     let sourceChain = findSourceChain(tx);
     let chainAliasFrom = idToChainAlias(sourceChain);
     let chainAliasTo = idToChainAlias(tx.chainID);
@@ -36,7 +36,7 @@ export function getImportSummary(tx: OrteliusLuxTx, addresses: string[], evmAddr
     return res;
 }
 
-export function getExportSummary(tx: OrteliusLuxTx, addresses: string[]): iHistoryImportExport {
+export function getExportSummary(tx: IndexerLuxTx, addresses: string[]): iHistoryImportExport {
     let sourceChain = findSourceChain(tx);
     let chainAliasFrom = idToChainAlias(sourceChain);
 

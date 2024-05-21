@@ -9,7 +9,7 @@ import { ImportTransaction, ImportTx1 } from './import_dumps';
 import { ExportTx, ExportTx1, ExportTx2, ExportTx3 } from './export_dumps';
 import { BaseTx, BaseTx1, BaseTx2, BaseTxSend0, BaseTxSend1, BaseTxSend2 } from './base_tx_dumps';
 import { StakeTx0, StakeTx1, StakeTx2, StakeTx3 } from './staking_dumps';
-import { OrteliusLuxTx } from '@/Explorer/ortelius/types';
+import { IndexerLuxTx } from '@/Explorer/indexer/types';
 
 jest.mock('@/Network/setNetwork', () => {
     return {
@@ -83,7 +83,7 @@ jest.mock('@/Asset/Assets', () => {
 
 describe('Import Tx', () => {
     it('single utxo import, all belong to wallet. P to X', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ImportTransaction);
+        let data: IndexerLuxTx = JSON.parse(ImportTransaction);
         const myAddresses = ['X-fuji1nqz4gndscpdp6yr326sz0afdlylcj0g6mf0q46'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = await getTransactionSummary(data, myAddresses, cAddr);
@@ -101,7 +101,7 @@ describe('Import Tx', () => {
     });
 
     it('multiple import utxos, P to X', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ImportTx1);
+        let data: IndexerLuxTx = JSON.parse(ImportTx1);
         const myAddresses = [
             'X-fuji1mj2x9eecn68weljg3tfaszem6hfx8yyq2kve2a',
             'X-fuji16spahfywxkm2jw0nmag8wdaymg76cccw3hpr5g',
@@ -122,7 +122,7 @@ describe('Import Tx', () => {
 
 describe('Export Tx', () => {
     it('multiple utxo export to C chain, all belong to wallet', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ExportTx);
+        let data: IndexerLuxTx = JSON.parse(ExportTx);
         const myAddresses = [
             'X-fuji1y7704g80palshkd97sz67ggjmvmd55y8mpalrk',
             'C-fuji1wukmzzjqn5hwsp4uaswc4c53gc0xz5asvxcujf',
@@ -139,7 +139,7 @@ describe('Export Tx', () => {
     });
 
     it('multiple utxos, P to X, with change utxo', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ExportTx1);
+        let data: IndexerLuxTx = JSON.parse(ExportTx1);
         const myAddresses = [
             'X-fuji15l87xul3ewrevmkcstyn3sed8nxf2y38sjau75',
             'P-fuji1kh5aznz5axhew258mjulrx3ne6t2qudnewqfen',
@@ -158,7 +158,7 @@ describe('Export Tx', () => {
     });
 
     it('single utxo, X to C', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ExportTx2);
+        let data: IndexerLuxTx = JSON.parse(ExportTx2);
         const myAddresses = [
             'X-fuji1zenmzsrswjd6fd2f5a76c5gkzhnrwfxezemkgz',
             'C-fuji138lyu5lw7uln54lnjec25e9wacm8q6xw752zyr',
@@ -175,7 +175,7 @@ describe('Export Tx', () => {
     });
 
     it('export C to X, single utxo', async () => {
-        let data: OrteliusLuxTx = JSON.parse(ExportTx3);
+        let data: IndexerLuxTx = JSON.parse(ExportTx3);
         const myAddresses = ['X-fuji1mnnsf9zftcud4cky8f2ctxaapnr9hfchnw9zjv'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryImportExport;
@@ -191,7 +191,7 @@ describe('Export Tx', () => {
 
 describe('Base Transaction Receive', () => {
     it('Simple receive LUX, faucet drip', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTx);
+        let data: IndexerLuxTx = JSON.parse(BaseTx);
         const myAddresses = ['X-fuji1ur873jhz9qnaqv5qthk5sn3e8nj3e0kmafyxut'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryBaseTx;
@@ -207,7 +207,7 @@ describe('Base Transaction Receive', () => {
     });
 
     it('Receive single ANT token', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTx1);
+        let data: IndexerLuxTx = JSON.parse(BaseTx1);
         const myAddresses = ['X-fuji1j4l8kt4jpcnua00m09uv4tssjwj5efv02lm04h'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryBaseTx;
@@ -223,7 +223,7 @@ describe('Base Transaction Receive', () => {
     });
 
     it('Receive 2 ANT tokens', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTx2);
+        let data: IndexerLuxTx = JSON.parse(BaseTx2);
         const myAddresses = ['X-fuji1qrpc4fdyupsc3jqytxdecw44skuggr4qq2vlpn'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryBaseTx;
@@ -247,7 +247,7 @@ describe('Base Transaction Receive', () => {
 
 describe('Base Transaction Send', () => {
     it('Simple send LUX', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTxSend0);
+        let data: IndexerLuxTx = JSON.parse(BaseTxSend0);
         const myAddresses = ['X-fuji1euwa0uxz7fcm8edj5fy490fvdj6e3s2mnmxh6p'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryBaseTx;
@@ -262,7 +262,7 @@ describe('Base Transaction Send', () => {
     });
 
     it('Send 1000 LUX', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTxSend1);
+        let data: IndexerLuxTx = JSON.parse(BaseTxSend1);
         const myAddresses = [
             'X-fuji1ysxw3923qapq43pukde9vud4wn84exyzdqletm',
             'X-fuji1lcx7plqaajp6730hh7pvyk9l3urjm6auxc3fx5',
@@ -281,7 +281,7 @@ describe('Base Transaction Send', () => {
     });
 
     it('Send 2 ANTs', async () => {
-        let data: OrteliusLuxTx = JSON.parse(BaseTxSend2);
+        let data: IndexerLuxTx = JSON.parse(BaseTxSend2);
         const myAddresses = [
             'X-fuji1lcx7plqaajp6730hh7pvyk9l3urjm6auxc3fx5',
             'X-fuji1ysxw3923qapq43pukde9vud4wn84exyzdqletm',
@@ -308,7 +308,7 @@ describe('Base Transaction Send', () => {
 
 describe('Staking TX', () => {
     it('Add validator 100 LUX, staking finished, not rewarded', async () => {
-        let data: OrteliusLuxTx = JSON.parse(StakeTx0);
+        let data: IndexerLuxTx = JSON.parse(StakeTx0);
         const myAddresses = [
             'P-fuji1ur873jhz9qnaqv5qthk5sn3e8nj3e0kmafyxut',
             'P-fuji1lzrmf3crp62ayj2kqwh9mzc5es9xv7q6cm00vl',
@@ -326,7 +326,7 @@ describe('Staking TX', () => {
     });
 
     it('Add delegator 100 LUX, uses lockedstakeable UTXOs, stake finished, rewarded', async () => {
-        let data: OrteliusLuxTx = JSON.parse(StakeTx1);
+        let data: IndexerLuxTx = JSON.parse(StakeTx1);
         const myAddresses = [
             'P-fuji1ur873jhz9qnaqv5qthk5sn3e8nj3e0kmafyxut',
             'P-fuji1qhu9lz4aqtp0xzywxz8z42curluwm4y9yj2wgf',
@@ -345,7 +345,7 @@ describe('Staking TX', () => {
     });
 
     it('Fee received from delegator 0.000225438 LUX', async () => {
-        let data: OrteliusLuxTx = JSON.parse(StakeTx2);
+        let data: IndexerLuxTx = JSON.parse(StakeTx2);
         const myAddresses = ['P-fuji1wvtapgjhf90p6hhsnvran54u9wy7gadkvy5j3p'];
         const cAddr = '0x5f658A6d1928c39B286b48192FEA8d46D87AD077';
         let summary = (await getTransactionSummary(data, myAddresses, cAddr)) as iHistoryStaking;
@@ -356,7 +356,7 @@ describe('Staking TX', () => {
     });
 
     it('Add validator, stake finished, rewarded', async () => {
-        let data: OrteliusLuxTx = JSON.parse(StakeTx3);
+        let data: IndexerLuxTx = JSON.parse(StakeTx3);
         const myAddresses = [
             'P-fuji1lzrmf3crp62ayj2kqwh9mzc5es9xv7q6cm00vl',
             'P-fuji1ur873jhz9qnaqv5qthk5sn3e8nj3e0kmafyxut',

@@ -94,14 +94,14 @@ import {
     estimateImportGasFeeFromMockTx,
     getBaseFeeRecommended,
 } from '@/helpers/gas_helper';
-import { getErc20History, getNormalHistory } from '@/Explorer/snowtrace';
+import { getErc20History, getNormalHistory } from '@/Explorer/explorer';
 import {
-    filterDuplicateOrtelius,
+    filterDuplicateIndexer,
     getAddressHistory,
     getAddressHistoryEVM,
     getTx,
     getTxEvm,
-    OrteliusLuxTx,
+    IndexerLuxTx,
 } from '@/Explorer';
 import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 import { getHistoryForOwnedAddresses } from '@/History/getHistoryForOwnedAddresses';
@@ -1253,12 +1253,12 @@ export abstract class WalletProvider {
         }
     }
 
-    async getHistoryX(limit = 0): Promise<OrteliusLuxTx[]> {
+    async getHistoryX(limit = 0): Promise<IndexerLuxTx[]> {
         let addrs = await this.getAllAddressesX();
         return await getAddressHistory(addrs, limit, xChain.getBlockchainID());
     }
 
-    async getHistoryP(limit = 0): Promise<OrteliusLuxTx[]> {
+    async getHistoryP(limit = 0): Promise<IndexerLuxTx[]> {
         let addrs = await this.getAllAddressesP();
         return await getAddressHistory(addrs, limit, pChain.getBlockchainID());
     }
@@ -1268,7 +1268,7 @@ export abstract class WalletProvider {
      * @remarks Excludes EVM transactions.
      * @param limit
      */
-    async getHistoryC(limit = 0): Promise<OrteliusLuxTx[]> {
+    async getHistoryC(limit = 0): Promise<IndexerLuxTx[]> {
         let addrs = [this.getEvmAddressBech(), ...(await this.getAllAddressesX())];
         return await getAddressHistory(addrs, limit, cChain.getBlockchainID());
     }
@@ -1283,7 +1283,7 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Returns the erc 20 activity for this wallet's C chain address. Uses Snowtrace APIs.
+     * Returns the erc 20 activity for this wallet's C chain address. Uses Explorer APIs.
      * @param offset Number of items per page. Optional.
      * @param page If provided will paginate the results. Optional.
      * @param contractAddress Filter activity by the ERC20 contract address. Optional.
@@ -1294,7 +1294,7 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Get a list of 'Normal' Transactions for wallet's C chain address. Uses Snowtrace APIs.
+     * Get a list of 'Normal' Transactions for wallet's C chain address. Uses Explorer APIs.
      * @param offset Number of items per page. Optional.
      * @param page If provided will paginate the results. Optional.
      */
@@ -1314,7 +1314,7 @@ export abstract class WalletProvider {
     }
 
     /**
-     * Return sorted history from Ortelius.
+     * Return sorted history from Indexer.
      * @param limit
      */
     async getHistoryRaw(limit = 0) {
@@ -1349,7 +1349,7 @@ export abstract class WalletProvider {
         return getTransactionSummaryEVM(rawData, addrC);
     }
 
-    async parseOrteliusTx(tx: OrteliusLuxTx): Promise<HistoryItemType> {
+    async parseIndexerTx(tx: IndexerLuxTx): Promise<HistoryItemType> {
         let addrsX = await this.getAllAddressesX();
         let addrBechC = this.getEvmAddressBech();
         let addrs = [...addrsX, addrBechC];

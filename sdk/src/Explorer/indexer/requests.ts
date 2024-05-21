@@ -1,18 +1,18 @@
 import { explorer_api } from '@/Network/network';
 import { NO_EXPLORER_API } from '@/errors';
-import { OrteliusLuxTx, OrteliusEvmTx } from '@/Explorer';
+import { IndexerLuxTx, IndexerEvmTx } from '@/Explorer';
 
 /**
  * Returns transactions FROM and TO the address given
  * @param addr The address to get historic transactions for.
  */
-export async function getAddressHistoryEVM(addr: string): Promise<OrteliusEvmTx[]> {
+export async function getAddressHistoryEVM(addr: string): Promise<IndexerEvmTx[]> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
 
     let endpoint = `v2/ctransactions?address=${addr}`;
-    let data = (await explorer_api.get<{ Transactions: OrteliusEvmTx[] }>(endpoint)).Transactions;
+    let data = (await explorer_api.get<{ Transactions: IndexerEvmTx[] }>(endpoint)).Transactions;
 
     data.sort((a, b) => {
         let dateA = new Date(a.createdAt);
@@ -25,29 +25,29 @@ export async function getAddressHistoryEVM(addr: string): Promise<OrteliusEvmTx[
 }
 
 /**
- * Returns the ortelius data from the given tx id.
+ * Returns the indexer data from the given tx id.
  * @param txID
  */
-export async function getTx(txID: string): Promise<OrteliusLuxTx> {
+export async function getTx(txID: string): Promise<IndexerLuxTx> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
 
     let url = `v2/transactions/${txID}`;
-    return await explorer_api.get<OrteliusLuxTx>(url);
+    return await explorer_api.get<IndexerLuxTx>(url);
 }
 
 /**
- * Returns ortelius data for a transaction hash on C chain EVM,
+ * Returns indexer data for a transaction hash on C chain EVM,
  * @param txHash
  */
-export async function getTxEvm(txHash: string): Promise<OrteliusEvmTx> {
+export async function getTxEvm(txHash: string): Promise<IndexerEvmTx> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
 
     let endpoint = `v2/ctransactions?hash=${txHash}`;
-    let data = (await explorer_api.get<{ Transactions: OrteliusEvmTx[] }>(endpoint)).Transactions[0];
+    let data = (await explorer_api.get<{ Transactions: IndexerEvmTx[] }>(endpoint)).Transactions[0];
 
     return data;
 }
@@ -64,7 +64,7 @@ async function getTransactionsLux(
     limit = 20,
     chainID: string,
     endTime?: string
-): Promise<OrteliusLuxTx[]> {
+): Promise<IndexerLuxTx[]> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }
@@ -98,7 +98,7 @@ async function getTransactionsLux(
         req.endTime = [endTime];
     }
 
-    const res = await explorer_api.post<{ transactions: OrteliusLuxTx[]; next?: string }>(rootUrl, req);
+    const res = await explorer_api.post<{ transactions: IndexerLuxTx[]; next?: string }>(rootUrl, req);
     const resTxs = res.transactions;
     const next: string | undefined = res.next;
 
@@ -126,7 +126,7 @@ export async function getAddressHistory(
     limit = 20,
     chainID: string,
     endTime?: string
-): Promise<OrteliusLuxTx[]> {
+): Promise<IndexerLuxTx[]> {
     if (!explorer_api) {
         throw NO_EXPLORER_API;
     }

@@ -1,4 +1,4 @@
-import { filterDuplicateOrtelius, getAddressHistory, getAddressHistoryEVM, OrteliusLuxTx } from '@/Explorer';
+import { filterDuplicateIndexer, getAddressHistory, getAddressHistoryEVM, IndexerLuxTx } from '@/Explorer';
 import { getTransactionSummary } from '@/History/parsers';
 import { getTransactionSummaryEVM } from '@/History/evmParser';
 import { cChain, pChain, xChain } from '@/Network';
@@ -16,7 +16,7 @@ export async function getHistoryP(addrs: string[], limit = 0) {
  * @remarks Excludes EVM transactions.
  * @param limit
  */
-export async function getHistoryC(addrC: string, addrsX: string[], limit = 0): Promise<OrteliusLuxTx[]> {
+export async function getHistoryC(addrC: string, addrsX: string[], limit = 0): Promise<IndexerLuxTx[]> {
     let addrs = [addrC, ...addrsX];
     return await getAddressHistory(addrs, limit, cChain.getBlockchainID());
 }
@@ -50,7 +50,7 @@ export async function getHistoryForOwnedAddresses(
         getHistoryC(cAddress, xAddresses, limit),
     ]);
 
-    let txsXPC = filterDuplicateOrtelius(txsX.concat(txsP, txsC));
+    let txsXPC = filterDuplicateIndexer(txsX.concat(txsP, txsC));
 
     let txsEVM = await getHistoryEVM(evmAddress);
 
@@ -84,7 +84,7 @@ export async function getHistoryForOwnedAddresses(
 }
 
 /**
- * Returns sorted history data from Ortelius for X, P, and C chains.
+ * Returns sorted history data from Indexer for X, P, and C chains.
  * @param xAddresses A list of owned X chain addresses
  * @param pAddresses A list of owned P chain addresses
  * @param cAddress Bech32 C chain address
@@ -102,7 +102,7 @@ export async function getHistoryForOwnedAddressesRaw(
         getHistoryC(cAddress, xAddresses, limit),
     ]);
 
-    let txsXPC = filterDuplicateOrtelius(txsX.concat(txsP, txsC));
+    let txsXPC = filterDuplicateIndexer(txsX.concat(txsP, txsC));
     let txsSorted = txsXPC.sort((x, y) => {
         const dateX = new Date(x.timestamp);
         const dateY = new Date(y.timestamp);

@@ -1,6 +1,6 @@
-export type SnowtraceTx = SnowtraceNormalTx | SnowtraceErc20Tx;
+export type ExplorerTx = ExplorerNormalTx | ExplorerErc20Tx;
 
-export interface SnowtraceErc20Tx {
+export interface ExplorerErc20Tx {
     blockNumber: string;
     timeStamp: string;
     hash: string;
@@ -22,7 +22,7 @@ export interface SnowtraceErc20Tx {
     confirmations: string;
 }
 
-export interface SnowtraceNormalTx {
+export interface ExplorerNormalTx {
     blockNumber: string;
     timeStamp: string;
     hash: string;
@@ -44,22 +44,22 @@ export interface SnowtraceNormalTx {
 }
 
 /**
- * Type guard for SnowtraceErc20Tx
+ * Type guard for ExplorerErc20Tx
  * @param tx
  */
-export function isSnowtraceErc20Tx(tx: SnowtraceNormalTx | SnowtraceErc20Tx): tx is SnowtraceErc20Tx {
+export function isExplorerErc20Tx(tx: ExplorerNormalTx | ExplorerErc20Tx): tx is ExplorerErc20Tx {
     return tx.hasOwnProperty('tokenName');
 }
 
 /**
- * Type guard for SnowtraceNormalTx
+ * Type guard for ExplorerNormalTx
  * @param tx
  */
-export function isSnowtraceNormalTx(tx: SnowtraceNormalTx | SnowtraceErc20Tx): tx is SnowtraceNormalTx {
+export function isExplorerNormalTx(tx: ExplorerNormalTx | ExplorerErc20Tx): tx is ExplorerNormalTx {
     return !tx.hasOwnProperty('tokenName');
 }
 
-export interface SnowtraceResponse<ResponseType> {
+export interface ExplorerResponse<ResponseType> {
     status: string;
     message: string;
     result: ResponseType[];

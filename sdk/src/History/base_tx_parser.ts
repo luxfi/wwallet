@@ -20,11 +20,11 @@ import {
     getOutputsOfType,
     getOutputTotals,
     getOwnedOutputs,
-} from '@/Explorer/ortelius/utxoUtils';
+} from '@/Explorer/indexer/utxoUtils';
 import { getLuxAssetID } from '@/Network/utils';
-import { OrteliusLuxTx, OrteliusUTXO } from '@/Explorer';
+import { IndexerLuxTx, IndexerUTXO } from '@/Explorer';
 
-export async function getBaseTxSummary(tx: OrteliusLuxTx, ownerAddrs: string[]): Promise<iHistoryBaseTx> {
+export async function getBaseTxSummary(tx: IndexerLuxTx, ownerAddrs: string[]): Promise<iHistoryBaseTx> {
     let ins = tx.inputs?.map((input) => input.output) || [];
     let outs = tx.outputs || [];
 
@@ -50,7 +50,7 @@ export async function getBaseTxSummary(tx: OrteliusLuxTx, ownerAddrs: string[]):
     };
 }
 
-function getBaseTxNFTLosses(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsSentRaw {
+function getBaseTxNFTLosses(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsSentRaw {
     let ins = tx.inputs || [];
     let inUTXOs = ins.map((input) => input.output);
     let nftUTXOs = inUTXOs.filter((utxo) => {
@@ -69,7 +69,7 @@ function getBaseTxNFTLosses(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBa
     return res;
 }
 
-function getBaseTxNFTGains(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsReceivedRaw {
+function getBaseTxNFTGains(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsReceivedRaw {
     let outs = tx.outputs || [];
     let nftUTXOs = outs.filter((utxo) => {
         return utxo.outputType === AVMConstants.NFTXFEROUTPUTID;
@@ -91,7 +91,7 @@ function getBaseTxNFTGains(tx: OrteliusLuxTx, ownerAddrs: string[]): iHistoryBas
  * @param utxos
  * @param ownerAddrs
  */
-function getOwnedTokens(utxos: OrteliusUTXO[], ownerAddrs: string[]): iHistoryBaseTxTokenLossGain {
+function getOwnedTokens(utxos: IndexerUTXO[], ownerAddrs: string[]): iHistoryBaseTxTokenLossGain {
     let tokenUTXOs = getOutputsOfType(utxos, AVMConstants.SECPXFEROUTPUTID);
     // Owned inputs
     let myUTXOs = getOwnedOutputs(tokenUTXOs, ownerAddrs);

@@ -1,10 +1,10 @@
-import { SNOWTRACE_MAINNET, SNOWTRACE_TESTNET } from '@/Explorer/snowtrace/constants';
+import { EXPLORER_MAINNET, EXPLORER_TESTNET } from '@/Explorer/explorer/constants';
 import { isFujiNetwork, isMainnetNetwork, NetworkConfig } from '@/Network';
-import { SnowtraceErc20Tx, SnowtraceNormalTx, SnowtraceResponse } from '@/Explorer/snowtrace/types';
+import { ExplorerErc20Tx, ExplorerNormalTx, ExplorerResponse } from '@/Explorer/explorer/types';
 import { filterDuplicateTransactions } from './utils';
 
-async function fetchSnowtraceAPI<T>(query: string, isMainnet = true): Promise<T> {
-    const baseUrl = isMainnet ? SNOWTRACE_MAINNET : SNOWTRACE_TESTNET;
+async function fetchExplorerAPI<T>(query: string, isMainnet = true): Promise<T> {
+    const baseUrl = isMainnet ? EXPLORER_MAINNET : EXPLORER_TESTNET;
     const response = await fetch(`${baseUrl}/${query}`);
     return response.json();
 }
@@ -22,14 +22,14 @@ export async function getErc20History(
 
     let resp;
     if (isMainnetNetwork(networkConfig)) {
-        resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceErc20Tx>>(query);
+        resp = await fetchExplorerAPI<ExplorerResponse<ExplorerErc20Tx>>(query);
     } else if (isFujiNetwork(networkConfig)) {
-        resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceErc20Tx>>(query, false);
+        resp = await fetchExplorerAPI<ExplorerResponse<ExplorerErc20Tx>>(query, false);
     } else {
         throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
 
-    return filterDuplicateTransactions<SnowtraceErc20Tx>(resp.result);
+    return filterDuplicateTransactions<ExplorerErc20Tx>(resp.result);
 }
 
 export async function getNormalHistory(address: string, networkConfig: NetworkConfig, page = 0, offset = 0) {
@@ -38,13 +38,13 @@ export async function getNormalHistory(address: string, networkConfig: NetworkCo
 
     let resp;
     if (isMainnetNetwork(networkConfig)) {
-        resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceNormalTx>>(query);
+        resp = await fetchExplorerAPI<ExplorerResponse<ExplorerNormalTx>>(query);
     } else if (isFujiNetwork(networkConfig)) {
-        resp = await fetchSnowtraceAPI<SnowtraceResponse<SnowtraceNormalTx>>(query, false);
+        resp = await fetchExplorerAPI<ExplorerResponse<ExplorerNormalTx>>(query, false);
     } else {
         throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
-    return filterDuplicateTransactions<SnowtraceNormalTx>(resp.result);
+    return filterDuplicateTransactions<ExplorerNormalTx>(resp.result);
 }
 
 /**
@@ -57,7 +57,7 @@ export async function getNormalHistory(address: string, networkConfig: NetworkCo
 export async function getABIForContract(
     address: string,
     networkConfig: NetworkConfig
-): Promise<SnowtraceResponse<string>> {
+): Promise<ExplorerResponse<string>> {
     const isMainnet = isMainnetNetwork(networkConfig);
     const isFuji = isFujiNetwork(networkConfig);
 
@@ -66,5 +66,5 @@ export async function getABIForContract(
     }
 
     const params = new window.URLSearchParams({ module: 'contract', action: 'getabi', address });
-    return await fetchSnowtraceAPI<SnowtraceResponse<string>>(`api?${params.toString()}`, isMainnet);
+    return await fetchExplorerAPI<ExplorerResponse<string>>(`api?${params.toString()}`, isMainnet);
 }

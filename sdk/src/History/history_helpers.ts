@@ -1,8 +1,8 @@
-import { OrteliusUTXO } from '@/Explorer';
+import { IndexerUTXO } from '@/Explorer';
 import { iHistoryNftFamilyBalance } from '@/History/types';
 import { AVMConstants } from 'avalanche/dist/apis/avm';
 import { parseNftPayload } from '@/utils';
-import { isOutputOwner } from '@/Explorer/ortelius/utxoUtils';
+import { isOutputOwner } from '@/Explorer/indexer/utxoUtils';
 
 /**
  * Parse the raw memo field to readable text.
@@ -17,7 +17,7 @@ export function parseMemo(raw: string): string {
 }
 
 export function getNFTBalanceFromUTXOs(
-    utxos: OrteliusUTXO[],
+    utxos: IndexerUTXO[],
     addresses: string[],
     assetID: string
 ): iHistoryNftFamilyBalance {
