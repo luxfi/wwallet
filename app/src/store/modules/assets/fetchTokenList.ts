@@ -5,11 +5,11 @@ function mapTokenInfo(token: any) {
 }
 
 /**
- * Fetch erc20 token information from glacier
+ * Fetch erc20 token information from aurora
  */
 export async function fetchTokenList(): Promise<TokenList> {
     const res = await fetch(
-        'https://glacier-api.lux.network/proxy/chain-assets/main/_lists/core-wallet/token-list.erc20.json'
+        'https://aurora-api.lux.network/proxy/chain-assets/main/_lists/core-wallet/token-list.erc20.json'
     )
     const json = await res.json()
 
@@ -19,7 +19,7 @@ export async function fetchTokenList(): Promise<TokenList> {
     return {
         name: 'Lux (C-Chain)',
         logoURI:
-            'https://glacier-api.lux.network/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
+            'https://aurora-api.lux.network/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
         keywords: [],
         timestamp: '',
         url: '',

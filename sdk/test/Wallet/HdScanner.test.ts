@@ -6,7 +6,7 @@ import { TEST_MNEMONIC, TEST_MNEMONIC_ADDRS_EXT, TEST_MNEMONIC_ADDRS_INT } from 
 import { HdScanner } from '@/Wallet/HdScanner';
 import { listChainsForAddresses } from '@/Explorer';
 import { HD_SCAN_GAP_SIZE } from '@/Wallet/constants';
-import { ChainAddressChainIdMap, BlockchainId } from '@avalabs/glacier-sdk';
+import { ChainAddressChainIdMap, BlockchainId } from '@luxfi/aurora';
 
 const seed = bip39.mnemonicToSeedSync(TEST_MNEMONIC);
 let masterHdKey = bip32.fromSeed(seed);

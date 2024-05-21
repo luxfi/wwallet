@@ -22,7 +22,7 @@ import Erc20Token from '@/js/Erc20Token'
 import ERC721Token from '@/js/ERC721Token'
 import { issueP, issueX } from '@/helpers/issueTx'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
-import glacier from '@/js/Glacier/Glacier'
+import aurora from '@/js/Aurora/Aurora'
 
 class WalletHelper {
     static async createNftFamily(

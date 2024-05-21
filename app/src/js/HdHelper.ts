@@ -19,7 +19,7 @@ import { LuxNetwork } from '@/js/LuxNetwork'
 import { ChainAlias } from './wallets/types'
 import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
 import { updateFilterAddresses } from '../providers'
-import { listChainsForAddresses } from '@/js/Glacier/listChainsForAddresses'
+import { listChainsForAddresses } from '@/js/Aurora/listChainsForAddresses'
 
 const INDEX_RANGE: number = 20 // a gap of at least 20 indexes is needed to claim an index unused
 
@@ -246,8 +246,8 @@ class HdHelper {
         const upTo = 512
 
         const addrs = this.getAllDerivedAddresses(startIndex + upTo, startIndex)
-        const addrChainsGlacier = await listChainsForAddresses(addrs)
-        const seenAddrs = addrChainsGlacier.map((addrData) => addrData.address)
+        const addrChainsAurora = await listChainsForAddresses(addrs)
+        const seenAddrs = addrChainsAurora.map((addrData) => addrData.address)
 
         for (let i = 0; i < addrs.length - INDEX_RANGE; i++) {
             let gapSize: number = 0

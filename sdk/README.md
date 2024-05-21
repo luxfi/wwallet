@@ -29,11 +29,11 @@ Using the avalanche-wallet-sdk developers can:
 
 With npm
 
-`npm install --save @avalabs/avalanche-wallet-sdk`
+`npm install --save @luxfi/avalanche-wallet-sdk`
 
 or yarn
 
-`yarn add @avalabs/avalanche-wallet-sdk`
+`yarn add @luxfi/avalanche-wallet-sdk`
 
 ## Local build
 

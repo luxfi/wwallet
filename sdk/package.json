@@ -1,6 +1,6 @@
 {
     "name": "@luxfi/wallet-sdk",
-    "version": "0.20.1",
+    "version": "0.20.2",
     "license": "BSD-3",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -76,8 +76,8 @@
         "typescript": "4.6.3"
     },
     "dependencies": {
-        "@avalabs/glacier-sdk": "2.8.0-alpha.92",
-        "@luxfi/hw-app-lux": "0.6.6",
+        "@luxfi/aurora": "2.8.0-alpha.92",
+        "@luxfi/hw-app-lux": "0.6.8",
         "@ethereumjs/common": "2.6.0",
         "@ethereumjs/tx": "3.4.0",
         "@ledgerhq/hw-app-eth": "6.29.6",

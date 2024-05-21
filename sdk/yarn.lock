@@ -9,20 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@avalabs/glacier-sdk@2.8.0-alpha.92":
+"@luxfi/aurora@2.8.0-alpha.92":
   version "2.8.0-alpha.92"
-  resolved "https://registry.yarnpkg.com/@avalabs/glacier-sdk/-/glacier-sdk-2.8.0-alpha.92.tgz#91f63d893432ceed46d701813ad67acf9d6b912d"
+  resolved "https://registry.yarnpkg.com/@luxfi/aurora/-/aurora-2.8.0-alpha.92.tgz#91f63d893432ceed46d701813ad67acf9d6b912d"
   integrity sha512-Kkj69Exk3WY1nVpmrcyvEM7F28jimgmhYDY2rs4SanyNM5j4A0KaVBKLtVqFe6wsXOxYihqXlAG0qS/VNTsTOg==
-
-"@luxfi/hw-app-lux@0.6.6":
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-lux/-/hw-app-avalanche-0.6.6.tgz#4d7675e1a712fd8a82142fbe9b800fdb7742b119"
-  integrity sha512-MulPLTd7kBLb1ti894Eox9sUZfy5z0+CzO5qPADnFpIJKeJTvvYkFt4FjN9TXj7fPXYXM9LmDjPrtgY5NJTy5Q==
-  dependencies:
-    "@ledgerhq/hw-app-eth" "^6.29.7"
-    "@ledgerhq/hw-transport" "^6.27.5"
-    bs58 "^5.0.0"
-    sha3 "^2.1.4"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.14.5":
   version "7.14.5"
@@ -2481,6 +2471,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@ledgerhq/cryptoassets@6.37.0":
+  version "6.37.0"
+  resolved "https://registry.yarnpkg.com/@ledgerhq/cryptoassets/-/cryptoassets-6.37.0.tgz#302833777bcd210809ca7820afb82cff8da5c296"
+  integrity sha512-xwrDKTS9koQBNNzc7CqgV6zfGHvNFWJjlIL0Kc4O4DVWYR2vUdztUHcvwHD1KPjxNYhVnsgIopmtq47fHt3nMg==
+  dependencies:
+    invariant "2"
+
 "@ledgerhq/cryptoassets@^6.34.0":
   version "6.34.0"
   resolved "https://registry.yarnpkg.com/@ledgerhq/cryptoassets/-/cryptoassets-6.34.0.tgz#a9c008ab426c35bfcec22f121dfcaaa59ecbfc09"
@@ -2656,6 +2653,17 @@
   version "6.10.1-nightly.0"
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-6.10.1-nightly.0.tgz#d87889a5fa30c93ed615d6fae0ffdefeb93e2a72"
   integrity sha512-hwoUwlC7le37kQ72W8hAzVq070zuY6IEpssYNXDTr3pEfc3cprTAgEnaBsb0jXQGiLdONPvxc7nPp8nSyGD3hQ==
+
+"@luxfi/hw-app-lux@0.6.8":
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-lux/-/hw-app-lux-0.6.8.tgz#8abd086158b4e2c60d966f3827cf317b5e290240"
+  integrity sha512-1OQtG0dvQvyrBLEwWEEx5IIzOktKAdP/nWsX734mcv2WJA4HfvaNfpPiXdvezpMCbIh+qqltlTKo1JUm93rZdQ==
+  dependencies:
+    "@ledgerhq/cryptoassets" "6.37.0"
+    "@ledgerhq/hw-app-eth" "^6.29.7"
+    "@ledgerhq/hw-transport" "^6.27.5"
+    bs58 "^5.0.0"
+    sha3 "^2.1.4"
 
 "@metamask/eth-sig-util@4.0.0":
   version "4.0.0"
@@ -7209,11 +7217,6 @@ humanize-ms@^1.2.1:
   integrity sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==
   dependencies:
     ms "^2.0.0"
-
-husky@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
-  integrity sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==
 
 iconv-lite@0.4.24:
   version "0.4.24"

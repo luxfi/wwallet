@@ -1,5 +1,5 @@
-import { TransactionTypeName } from '@/js/Glacier/models'
-import { BlockchainId } from '@luxfi/glacier-sdk'
+import { TransactionTypeName } from '@/js/Aurora/models'
+import { BlockchainId } from '@luxfi/aurora'
 
 export interface UtxoCsvRow {
     txID: string

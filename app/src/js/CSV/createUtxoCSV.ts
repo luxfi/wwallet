@@ -4,10 +4,10 @@ import {
     isTransactionX,
     isTransactionP,
     isCChainExportTransaction,
-} from '@/js/Glacier/models'
+} from '@/js/Aurora/models'
 import { UtxoCsvRow } from '@/js/CSV/models'
 import { createUtxoCsvData } from '@/js/CSV/createUtxoCsvData'
-import { getTxTimestamp } from '@/js/Glacier/getTxTimestamp'
+import { getTxTimestamp } from '@/js/Aurora/getTxTimestamp'
 
 const SUPPORTED_TYPE: TransactionTypeName[] = ['BaseTx', 'ExportTx', 'ImportTx', 'OperationTx']
 

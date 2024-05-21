@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "@luxfi/wallet-sdk": "0.20.0-alpha.11",
-        "@luxfi/glacier-sdk": "2.8.0-alpha.108",
+        "@luxfi/aurora": "2.8.0-alpha.108",
         "@luxfi/vue-components": "0.10.0",
         "@ethereumjs/common": "2.0.0",
         "@ethereumjs/tx": "3.0.0",

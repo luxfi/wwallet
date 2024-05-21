@@ -1,7 +1,7 @@
 import { Module } from 'vuex'
 import { RootState } from '@/store/types'
 import { EarnState } from '@/store/modules/earn/types'
-import { listStakingForAddresses } from '@/js/Glacier/listStakingForAddresses'
+import { listStakingForAddresses } from '@/js/Aurora/listStakingForAddresses'
 
 const ledger_module: Module<EarnState, RootState> = {
     namespaced: true,

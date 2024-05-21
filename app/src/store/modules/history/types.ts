@@ -1,10 +1,10 @@
 import Big from 'big.js'
 import moment from 'moment'
-import { TransactionType as GlacierTxType } from '@/js/Glacier/models'
+import { TransactionType as AuroraTxType } from '@/js/Aurora/models'
 
 export interface HistoryState {
-    recentTransactions: GlacierTxType[]
-    allTransactions: GlacierTxType[]
+    recentTransactions: AuroraTxType[]
+    allTransactions: AuroraTxType[]
     isUpdating: boolean
     isError: boolean
     isUpdatingAll: boolean

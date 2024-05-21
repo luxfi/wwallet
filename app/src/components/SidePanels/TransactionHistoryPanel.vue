@@ -29,7 +29,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import Spinner from '@/components/misc/Spinner.vue'
 import TxHistoryRow from '@/components/SidePanels/TxHistoryRow.vue'
 import { LuxNetwork } from '@/js/LuxNetwork'
-import { TransactionType } from '@/js/Glacier/models'
+import { TransactionType } from '@/js/Aurora/models'
 
 @Component({
     components: {

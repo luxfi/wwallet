@@ -1,9 +1,9 @@
-import { isUtxo, UtxoType } from '@/js/Glacier/models'
+import { isUtxo, UtxoType } from '@/js/Aurora/models'
 import { UtxoCsvRow } from '@/js/CSV/models'
-import { isOwnedUTXO } from '@/js/Glacier/isOwnedUtxo'
+import { isOwnedUTXO } from '@/js/Aurora/isOwnedUtxo'
 
 /**
- * Return data needed for a CSV row given a UTXO object from Glacier
+ * Return data needed for a CSV row given a UTXO object from Aurora
  * @param utxo
  * @param ownedAddresses
  */
