@@ -27,9 +27,9 @@ import {
     estimateLuxGas,
     estimateErc20Gas,
 } from '@/helpers/tx_helper';
-import { BN, Buffer } from 'avalanche';
+import { BN, Buffer } from 'luxnet';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
-import { activeNetwork, avalanche, cChain, pChain, web3, xChain } from '@/Network/network';
+import { activeNetwork, luxnet, cChain, pChain, web3, xChain } from '@/Network/network';
 import { EvmWallet } from '@/Wallet/EVM/EvmWallet';
 
 import {
@@ -48,7 +48,7 @@ import {
     Tx as AvmTx,
     AVMConstants,
     AmountOutput,
-} from 'avalanche/dist/apis/avm';
+} from 'luxnet/dist/apis/avm';
 import {
     UTXOSet as PlatformUTXOSet,
     UTXO as PlatformUTXO,
@@ -56,10 +56,10 @@ import {
     Tx as PlatformTx,
     PlatformVMConstants,
     StakeableLockOut,
-} from 'avalanche/dist/apis/platformvm';
-import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx, UTXOSet as EVMUTXOSet } from 'avalanche/dist/apis/evm';
+} from 'luxnet/dist/apis/platformvm';
+import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx, UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm';
 
-import { PayloadBase, UnixNow } from 'avalanche/dist/utils';
+import { PayloadBase, UnixNow } from 'luxnet/dist/utils';
 import { getAssetDescription } from '@/Asset/Assets';
 import { getErc20Token } from '@/Asset/Erc20';
 import { NO_NETWORK } from '@/errors';
@@ -84,7 +84,7 @@ import {
     UniversalTx,
 } from '@/UniversalTx';
 import { UniversalNodeAbstract } from '@/UniversalTx/UniversalNode';
-import { GetStakeResponse } from 'avalanche/dist/apis/platformvm/interfaces';
+import { GetStakeResponse } from 'luxnet/dist/apis/platformvm/interfaces';
 import { networkEvents } from '@/Network/eventEmitter';
 import { NetworkConfig } from '@/Network';
 import { chainIdFromAlias } from '@/Network/helpers/idFromAlias';
@@ -927,7 +927,7 @@ export abstract class WalletProvider {
 
         let xToAddr = this.getAddressX();
 
-        let hrp = avalanche.getHRP();
+        let hrp = luxnet.getHRP();
         let utxoAddrs = utxoSet.getAddresses().map((addr) => bintools.addressToString(hrp, 'X', addr));
 
         let fromAddrs = utxoAddrs;
@@ -966,7 +966,7 @@ export abstract class WalletProvider {
         // Owner addresses, the addresses we exported to
         let walletAddrP = this.getAddressP();
 
-        let hrp = avalanche.getHRP();
+        let hrp = luxnet.getHRP();
         let utxoAddrs = utxoSet.getAddresses().map((addr) => bintools.addressToString(hrp, 'P', addr));
 
         let ownerAddrs = utxoAddrs;

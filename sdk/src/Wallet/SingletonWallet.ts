@@ -1,16 +1,16 @@
 import { WalletProvider } from '@/Wallet/Wallet';
 import { UnsafeWallet, WalletNameType } from '@/Wallet/types';
 
-import { KeyChain as AVMKeyChain, UnsignedTx as AVMUnsignedTx, Tx as AVMTx } from 'avalanche/dist/apis/avm';
+import { KeyChain as AVMKeyChain, UnsignedTx as AVMUnsignedTx, Tx as AVMTx } from 'luxnet/dist/apis/avm';
 import {
     KeyChain as PlatformKeyChain,
     UnsignedTx as PlatformUnsignedTx,
     Tx as PlatformTx,
-} from 'avalanche/dist/apis/platformvm';
+} from 'luxnet/dist/apis/platformvm';
 import { pChain, xChain } from '@/Network/network';
-import { Buffer as BufferLux } from 'avalanche';
+import { Buffer as BufferLux } from 'luxnet';
 import { EvmWallet } from '@/Wallet/EVM/EvmWallet';
-import { UnsignedTx, Tx } from 'avalanche/dist/apis/evm';
+import { UnsignedTx, Tx } from 'luxnet/dist/apis/evm';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
 import { bintools } from '@/common';
 import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
@@ -23,7 +23,7 @@ export class SingletonWallet extends WalletProvider implements UnsafeWallet {
 
     /**
      *
-     * @param privateKey An avalanche private key, starts with `PrivateKey-`
+     * @param privateKey An luxnet private key, starts with `PrivateKey-`
      */
     constructor(privateKey: string) {
         super();

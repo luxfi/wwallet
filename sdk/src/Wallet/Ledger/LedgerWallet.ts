@@ -14,8 +14,8 @@ import {
     AVMConstants,
     ImportTx as AVMImportTx,
     SelectCredentialClass as AVMSelectCredentialClass,
-} from 'avalanche/dist/apis/avm';
-import { Credential, SigIdx, Signature } from 'avalanche/dist/common';
+} from 'luxnet/dist/apis/avm';
+import { Credential, SigIdx, Signature } from 'luxnet/dist/common';
 import {
     UnsignedTx as EVMUnsignedTx,
     Tx as EVMTx,
@@ -24,16 +24,16 @@ import {
     EVMInput,
     SelectCredentialClass as EVMSelectCredentialClass,
     EVMConstants,
-} from 'avalanche/dist/apis/evm';
+} from 'luxnet/dist/apis/evm';
 import {
     UnsignedTx as PlatformUnsignedTx,
     Tx as PlatformTx,
     PlatformVMConstants,
     ImportTx as PlatformImportTx,
     SelectCredentialClass as PlatformSelectCredentialClass,
-} from 'avalanche/dist/apis/platformvm';
-import { activeNetwork, avalanche, web3 } from '@/Network/network';
-import { Buffer } from 'avalanche';
+} from 'luxnet/dist/apis/platformvm';
+import { activeNetwork, luxnet, web3 } from '@/Network/network';
+import { Buffer } from 'luxnet';
 import { ChainIdType } from '@/common';
 import { Buffer as BufferNative } from 'buffer';
 import createHash from 'create-hash';
@@ -49,7 +49,7 @@ import {
 } from '@/Wallet/Ledger/utils';
 import Transport from '@ledgerhq/hw-transport';
 import { ERR_ConfigNotSet, ERR_ProviderNotSet, ERR_TransportNotSet, ERR_VersionNotSet } from '@/Wallet/Ledger/errors';
-import { ZondaxProvider, ObsidianProvider, LedgerProviderType } from './provider';
+import { ZondaxProvider, LuxProvider, LedgerProviderType } from './provider';
 export class LedgerWallet extends PublicMnemonicWallet {
     type: WalletNameType;
     static transport: Transport | undefined;
@@ -154,7 +154,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     static getProvider() {
         if (!LedgerWallet.provider) throw new Error('Provider is not set.');
-        return LedgerWallet.provider === 'obsidian' ? ObsidianProvider : ZondaxProvider;
+        return LedgerWallet.provider === 'lux' ? LuxProvider : ZondaxProvider;
     }
 
     async signEvm(tx: Transaction): Promise<Transaction> {
@@ -235,7 +235,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
             items = ((tx as AVMImportTx) || PlatformImportTx).getImportInputs();
         }
 
-        let hrp = avalanche.getHRP();
+        let hrp = luxnet.getHRP();
         let paths: string[] = [];
 
         let isLuxOnly = true;

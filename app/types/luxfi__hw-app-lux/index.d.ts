@@ -1,4 +1,4 @@
-declare module '@obsidiansystems/hw-app-luxnet' {
+declare module '@luxfi/hw-app-lux' {
     import Transport from '@ledgerhq/hw-transport'
     import bippath from 'bip32-path'
 

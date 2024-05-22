@@ -1,7 +1,7 @@
 import { CoinGeckoPriceHistoryResponse } from '@/Explorer/coingecko/types';
 
 const COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
-const LUX_COIN_ID = 'avalanche-2';
+const LUX_COIN_ID = 'luxnet-2';
 
 /**
  * Fetches the current LUX price using Coin Gecko.

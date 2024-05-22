@@ -1,10 +1,10 @@
 import * as bip32 from 'bip32';
-import { getPreferredHRP } from 'avalanche/dist/utils';
-import { activeNetwork, avalanche, pChain, xChain } from '@/Network/network';
-import { KeyPair as AVMKeyPair, KeyChain as AVMKeyChain } from 'avalanche/dist/apis/avm/keychain';
-import { KeyChain as PlatformKeyChain, KeyPair as PlatformKeyPair } from 'avalanche/dist/apis/platformvm';
+import { getPreferredHRP } from 'luxnet/dist/utils';
+import { activeNetwork, luxnet, pChain, xChain } from '@/Network/network';
+import { KeyPair as AVMKeyPair, KeyChain as AVMKeyChain } from 'luxnet/dist/apis/avm/keychain';
+import { KeyChain as PlatformKeyChain, KeyPair as PlatformKeyPair } from 'luxnet/dist/apis/platformvm';
 import { HdChainType } from './types';
-import { Buffer } from 'avalanche';
+import { Buffer } from 'luxnet';
 import {
     DERIVATION_SLEEP_INTERVAL,
     HD_SCAN_GAP_SIZE,
@@ -43,7 +43,7 @@ export class HdScanner {
         this.changePath = isInternal ? '1' : '0';
         this.accountKey = accountKey;
         // We need an instance of an AVM key to generate adddresses from public keys
-        let hrp = getPreferredHRP(avalanche.getNetworkID());
+        let hrp = getPreferredHRP(luxnet.getNetworkID());
         this.avmAddrFactory = new AVMKeyPair(hrp, 'X');
     }
 
@@ -188,7 +188,7 @@ export class HdScanner {
         let publicKey = key.publicKey.toString('hex');
         let publicKeyBuff = Buffer.from(publicKey, 'hex');
 
-        let hrp = getPreferredHRP(avalanche.getNetworkID());
+        let hrp = getPreferredHRP(luxnet.getNetworkID());
 
         let addrBuf = AVMKeyPair.addressFromPublicKey(publicKeyBuff);
         let addr = bintools.addressToString(hrp, chainId, addrBuf);

@@ -4,7 +4,7 @@ import { activeNetwork, idToChainAlias } from '@/Network';
 import { isOutputOwner } from '@/Explorer/indexer/utxoUtils';
 import { createCSVContent } from '@/Csv/createCsvContent';
 import { bnToBig } from '@/utils';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 
 interface ParsedTxUtxos {
     txID: string;

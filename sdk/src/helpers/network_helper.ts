@@ -1,6 +1,6 @@
 import { NetworkConfig } from '@/Network/types';
 
-import { Lux } from 'avalanche';
+import { Lux } from 'luxnet';
 import { HttpClient } from './http_client';
 
 export function wsUrlFromConfigX(config: NetworkConfig): string {

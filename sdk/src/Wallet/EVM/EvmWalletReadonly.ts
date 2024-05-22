@@ -1,7 +1,7 @@
-import { BN, Buffer as BufferLux } from 'avalanche';
-import { avalanche, web3 } from '@/Network/network';
+import { BN, Buffer as BufferLux } from 'luxnet';
+import { luxnet, web3 } from '@/Network/network';
 import { ethers } from 'ethers';
-import { KeyPair as EVMKeyPair } from 'avalanche/dist/apis/evm/keychain';
+import { KeyPair as EVMKeyPair } from 'luxnet/dist/apis/evm/keychain';
 import { bintools } from '@/common';
 import { computePublicKey, computeAddress } from 'ethers/lib/utils';
 import { payments, networks, ECPair } from 'bitcoinjs-lib';
@@ -39,7 +39,7 @@ export class EvmWalletReadonly {
     getAddressBech32(): string {
         const compressedKey = this.getCompressedPublicKey();
         let addr = EVMKeyPair.addressFromPublicKey(BufferLux.from(compressedKey.substring(2), 'hex'));
-        return bintools.addressToString(avalanche.getHRP(), 'C', addr);
+        return bintools.addressToString(luxnet.getHRP(), 'C', addr);
     }
 
     /**

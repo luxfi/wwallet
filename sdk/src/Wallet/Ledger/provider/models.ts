@@ -1,12 +1,12 @@
 import { Bip32Path } from 'bip32-path';
 import Transport from '@ledgerhq/hw-transport';
 
-import AppObsidian from '@obsidiansystems/hw-app-avalanche';
-import AppZondax from '@luxfi/hw-app-lux';
+import AppLux from '@luxfi/hw-app-lux';
+import AppZondax from '@luxfi/hw-app-luxz';
 
 export interface LedgerProvider {
     type: LedgerProviderType;
-    getApp(t: Transport): AppObsidian | AppZondax;
+    getApp(t: Transport): AppLux | AppZondax;
     getAddress(
         t: Transport,
         path: Bip32Path,
@@ -64,4 +64,4 @@ export interface LedgerProvider {
     canParseTx(txSize: number, signersSize: number, changePathsSize: number): boolean;
 }
 
-export type LedgerProviderType = 'obsidian' | 'zondax';
+export type LedgerProviderType = 'lux' | 'zondax';

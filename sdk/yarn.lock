@@ -2874,9 +2874,9 @@
     read-package-json-fast "^2.0.3"
     which "^2.0.2"
 
-"@obsidiansystems/hw-app-avalanche@0.2.2":
+"@luxfi/hw-app-lux@0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@obsidiansystems/hw-app-avalanche/-/hw-app-avalanche-0.2.2.tgz#a90843ac454b478d056f61467454c6c959a5ee07"
+  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-lux/-/hw-app-luxnet-0.2.2.tgz#a90843ac454b478d056f61467454c6c959a5ee07"
   integrity sha512-8hvNA+WKw32ua6FNZzyDBy/zahNXokZ2rvPIiPp8isXHIP/3hJKuiRm5Atuja29WExSxd0QW95rDReBT80amiw==
   dependencies:
     "@ledgerhq/hw-transport" "^5.9.0"
@@ -3956,9 +3956,9 @@ available-typed-arrays@^1.0.2:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.4.tgz#9e0ae84ecff20caae6a94a1c3bc39b955649b7a9"
   integrity sha512-SA5mXJWrId1TaQjfxUYghbqQ/hYioKmLJvPJyDuYRtXXenFNMjj4hSSt1Cf1xsuXSXrtxrVC5Ot4eU6cOtBDdA==
 
-avalanche@3.15.2:
+luxnet@3.15.2:
   version "3.15.2"
-  resolved "https://registry.yarnpkg.com/avalanche/-/avalanche-3.15.2.tgz#7eb708fa2e170fad451b81186f46a641a2ce8a2d"
+  resolved "https://registry.yarnpkg.com/luxnet/-/luxnet-3.15.2.tgz#7eb708fa2e170fad451b81186f46a641a2ce8a2d"
   integrity sha512-LVip5KyOI7Xemj8LdnsX6kMZ+x/Wyx27t3IU0Ffg35WfuMQ9b0uw82VBTvwNRLjvh91i2ZLJUjEkZVQqU5GrSg==
   dependencies:
     assert "2.0.0"

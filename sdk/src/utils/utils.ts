@@ -1,7 +1,7 @@
-import { Buffer as BufferLux } from 'avalanche';
+import { Buffer as BufferLux } from 'luxnet';
 import { validateAddress } from '@/helpers/address_helper';
 import createHash from 'create-hash';
-import { PayloadBase, PayloadTypes } from 'avalanche/dist/utils';
+import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils';
 
 /**
  * Checks if address is valid.

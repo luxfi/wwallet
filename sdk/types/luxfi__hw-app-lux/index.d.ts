@@ -1,4 +1,4 @@
-declare module '@obsidiansystems/hw-app-avalanche' {
+declare module '@luxfi/hw-app-lux' {
     import Transport from '@ledgerhq/hw-transport';
     import bippath from 'bip32-path';
 
@@ -48,7 +48,7 @@ declare module '@obsidiansystems/hw-app-avalanche' {
          *
          * @return a byte string
          * @example
-         * console.log((await avalanche.getWalletId()).toString("hex"));
+         * console.log((await luxnet.getWalletId()).toString("hex"));
          *
          * 79c46bc3
          */

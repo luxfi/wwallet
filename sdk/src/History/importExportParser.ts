@@ -5,7 +5,7 @@ import { xChain } from '@/Network/network';
 import { bnToLuxX, strip0x } from '@/utils';
 import { getOutputsOfChain, getOutputTotals, getOwnedOutputs } from '@/Explorer/indexer/utxoUtils';
 import { findDestinationChain, findSourceChain, IndexerLuxTx } from '@/Explorer';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 
 export function getImportSummary(tx: IndexerLuxTx, addresses: string[], evmAddr: string): iHistoryImportExport {
     let sourceChain = findSourceChain(tx);

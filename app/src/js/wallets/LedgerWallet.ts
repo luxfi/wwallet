@@ -1,6 +1,6 @@
 // import AppBtc from "@ledgerhq/hw-app-btc";
 //@ts-ignore
-import AppLux from '@obsidiansystems/hw-app-luxnet'
+import AppLux from '@luxfi/hw-app-lux'
 //@ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
 

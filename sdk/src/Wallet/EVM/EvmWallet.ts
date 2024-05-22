@@ -1,12 +1,12 @@
-import { Buffer as BufferLux } from 'avalanche';
+import { Buffer as BufferLux } from 'luxnet';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
-import { avalanche } from '@/Network/network';
+import { luxnet } from '@/Network/network';
 import {
     KeyChain as EVMKeyChain,
     KeyPair as EVMKeyPair,
     Tx as EVMTx,
     UnsignedTx as EVMUnsignedTx,
-} from 'avalanche/dist/apis/evm';
+} from 'luxnet/dist/apis/evm';
 import { EvmWalletReadonly } from '@/Wallet/EVM/EvmWalletReadonly';
 import { bintools } from '@/common';
 import { computePublicKey } from 'ethers/lib/utils';
@@ -43,13 +43,13 @@ export class EvmWallet extends EvmWalletReadonly {
     }
 
     getKeyChain(): EVMKeyChain {
-        let keychain = new EVMKeyChain(avalanche.getHRP(), 'C');
+        let keychain = new EVMKeyChain(luxnet.getHRP(), 'C');
         keychain.importKey(this.getPrivateKeyBech());
         return keychain;
     }
 
     getKeyPair(): EVMKeyPair {
-        let keychain = new EVMKeyChain(avalanche.getHRP(), 'C');
+        let keychain = new EVMKeyChain(luxnet.getHRP(), 'C');
         return keychain.importKey(this.getPrivateKeyBech());
     }
 

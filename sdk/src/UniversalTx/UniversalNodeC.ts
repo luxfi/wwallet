@@ -6,7 +6,7 @@ import {
     UniversalTxExportC,
     UniversalTxImportC,
 } from '@/UniversalTx/types';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 
 export default class UniversalNodeC extends UniversalNodeAbstract {
     constructor(balance: BN, feeExport: BN, feeImport: BN) {

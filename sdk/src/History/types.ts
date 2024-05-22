@@ -1,4 +1,4 @@
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import { ChainIdType } from '@/common';
 import { iAssetDescriptionClean } from '@/Asset/types';
 import { IndexerLuxTx, IndexerEvmTx } from '@/Explorer';

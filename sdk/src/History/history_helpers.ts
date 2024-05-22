@@ -1,6 +1,6 @@
 import { IndexerUTXO } from '@/Explorer';
 import { iHistoryNftFamilyBalance } from '@/History/types';
-import { AVMConstants } from 'avalanche/dist/apis/avm';
+import { AVMConstants } from 'luxnet/dist/apis/avm';
 import { parseNftPayload } from '@/utils';
 import { isOutputOwner } from '@/Explorer/indexer/utxoUtils';
 

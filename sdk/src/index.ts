@@ -9,7 +9,7 @@ export * from './utils';
 export * from './helpers';
 export * from './UniversalTx';
 export * from './Csv';
-export { BN, Buffer } from 'avalanche';
+export { BN, Buffer } from 'luxnet';
 
 import Big from 'big.js';
 

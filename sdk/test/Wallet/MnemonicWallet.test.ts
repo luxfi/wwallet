@@ -13,7 +13,7 @@ jest.mock('web3', () => {
 
 jest.mock('@/Network/network', () => {
     return {
-        avalanche: {
+        luxnet: {
             getNetworkID: jest.fn().mockReturnValue(1),
             getHRP: jest.fn().mockReturnValue('avax'),
         },

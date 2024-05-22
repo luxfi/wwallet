@@ -1,4 +1,4 @@
-import { Buffer } from 'avalanche';
+import { Buffer } from 'luxnet';
 import { Erc20Token } from '@/Asset/Erc20Token';
 
 export interface iAssetCache {

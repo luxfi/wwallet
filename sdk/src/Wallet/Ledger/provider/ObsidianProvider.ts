@@ -1,22 +1,22 @@
 import Transport from '@ledgerhq/hw-transport';
-import AppObsidian from '@obsidiansystems/hw-app-avalanche';
+import AppLux from '@luxfi/hw-app-lux';
 import { LedgerProvider } from '@/Wallet/Ledger/provider/models';
 import bip32Path, { Bip32Path } from 'bip32-path';
 
-export const ObsidianProvider: LedgerProvider = {
-    type: 'obsidian',
+export const LuxProvider: LedgerProvider = {
+    type: 'lux',
 
-    getApp(t: Transport): AppObsidian {
-        return new AppObsidian(t);
+    getApp(t: Transport): AppLux {
+        return new AppLux(t);
     },
 
     async getVersion(t): Promise<string> {
-        const app = this.getApp(t) as AppObsidian;
+        const app = this.getApp(t) as AppLux;
         return (await app.getAppConfiguration()).version;
     },
 
     async getXPUB(t: Transport, path: string) {
-        const app = this.getApp(t) as AppObsidian;
+        const app = this.getApp(t) as AppLux;
         const keys = await app.getWalletExtendedPublicKey(path);
         return {
             pubKey: keys.public_key,
@@ -25,7 +25,7 @@ export const ObsidianProvider: LedgerProvider = {
     },
 
     async signHash(t, hash, account, signers) {
-        const app = this.getApp(t) as AppObsidian;
+        const app = this.getApp(t) as AppLux;
         const signed = await app.signHash(account, signers, hash);
         return {
             signatures: signed,
@@ -34,7 +34,7 @@ export const ObsidianProvider: LedgerProvider = {
     },
 
     async getAddress(t, path, config = { show: true, hrp: 'avax' }) {
-        const app = this.getApp(t) as AppObsidian;
+        const app = this.getApp(t) as AppLux;
 
         const res = await app.getWalletAddress(path.toString(), config.hrp);
         return {
@@ -43,7 +43,7 @@ export const ObsidianProvider: LedgerProvider = {
     },
 
     async signTx(t: Transport, tx, accountPath, signers, change) {
-        const app = this.getApp(t) as AppObsidian;
+        const app = this.getApp(t) as AppLux;
 
         let changePath = undefined;
         if (change && change.length > 0) {
@@ -59,7 +59,7 @@ export const ObsidianProvider: LedgerProvider = {
     },
 
     /**
-     * This method is not supported on the Obsidian provider
+     * This method is not supported on the Lux provider
      */
     canParseTx(): boolean {
         return false;

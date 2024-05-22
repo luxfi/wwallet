@@ -23,7 +23,7 @@
     "@ledgerhq/hw-app-eth" "6.29.6"
     "@ledgerhq/hw-transport" "6.27.5"
     "@metamask/eth-sig-util" "4.0.0"
-    "@obsidiansystems/hw-app-luxnet" "0.2.2"
+    "@luxfi/hw-app-lux" "0.2.2"
     "@openzeppelin/contracts" "4.8.3"
     big.js "^6.1.1"
     bip32 "4.0.0"
@@ -2169,9 +2169,9 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@obsidiansystems/hw-app-luxnet@0.2.2":
+"@luxfi/hw-app-lux@0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@obsidiansystems/hw-app-luxnet/-/hw-app-luxnet-0.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-lux/-/hw-app-luxnet-0.2.2.tgz"
   integrity sha512-8hvNA+WKw32ua6FNZzyDBy/zahNXokZ2rvPIiPp8isXHIP/3hJKuiRm5Atuja29WExSxd0QW95rDReBT80amiw==
   dependencies:
     "@ledgerhq/hw-transport" "^5.9.0"

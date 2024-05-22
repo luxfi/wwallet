@@ -1,7 +1,7 @@
 import { HDWalletAbstract } from '@/Wallet/HDWalletAbstract';
-import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx } from 'avalanche/dist/apis/evm';
-import { UnsignedTx as PlatformUnsignedTx, Tx as PlatformTx } from 'avalanche/dist/apis/platformvm';
-import { UnsignedTx as AVMUnsignedTx, Tx as AVMTx } from 'avalanche/dist/apis/avm';
+import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx } from 'luxnet/dist/apis/evm';
+import { UnsignedTx as PlatformUnsignedTx, Tx as PlatformTx } from 'luxnet/dist/apis/platformvm';
+import { UnsignedTx as AVMUnsignedTx, Tx as AVMTx } from 'luxnet/dist/apis/avm';
 import { Transaction } from '@ethereumjs/tx';
 import { WalletNameType } from '@/Wallet/types';
 import { EvmWallet } from '@/Wallet/EVM/EvmWallet';

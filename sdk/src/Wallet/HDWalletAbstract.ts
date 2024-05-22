@@ -1,8 +1,8 @@
 import { WalletProvider } from '@/Wallet/Wallet';
 import { HdScanner } from '@/Wallet/HdScanner';
-import { UTXOSet as AVMUTXOSet } from 'avalanche/dist/apis/avm/utxos';
-import { avalanche } from '@/Network/network';
-import { UTXOSet as PlatformUTXOSet } from 'avalanche/dist/apis/platformvm';
+import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm/utxos';
+import { luxnet } from '@/Network/network';
+import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm';
 import { iHDWalletIndex } from '@/Wallet/types';
 import { bintools } from '@/common';
 import * as bip32 from 'bip32';
@@ -182,7 +182,7 @@ export abstract class HDWalletAbstract extends WalletProvider {
         // If the current internal or external X address is in the utxo set, increment hd index
         let utxoAddrs = utxosX.getAddresses();
         let utxoAddrsStr = utxoAddrs.map((addr) => {
-            return bintools.addressToString(avalanche.getHRP(), 'X', addr);
+            return bintools.addressToString(luxnet.getHRP(), 'X', addr);
         });
 
         let addrExternalX = this.getAddressX();
@@ -220,7 +220,7 @@ export abstract class HDWalletAbstract extends WalletProvider {
         // If the current P address is in the utxo set, increment hd index
         let utxoAddrs = utxosP.getAddresses();
         let utxoAddrsStr = utxoAddrs.map((addr) => {
-            return bintools.addressToString(avalanche.getHRP(), 'P', addr);
+            return bintools.addressToString(luxnet.getHRP(), 'P', addr);
         });
 
         let addrExternalP = this.getAddressP();

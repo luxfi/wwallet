@@ -1,6 +1,6 @@
 import { GetBalancesParams } from './models';
 import Aurora from './Aurora';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import { splitToParts } from './utils';
 import {
     ListPChainBalancesResponse,

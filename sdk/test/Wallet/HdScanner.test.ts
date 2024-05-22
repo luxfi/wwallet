@@ -17,7 +17,7 @@ jest.mock('@/Network/network', () => {
         activeNetwork: {
             explorerURL: 'test.explorer.network',
         },
-        avalanche: {
+        luxnet: {
             getNetworkID: jest.fn().mockReturnValue(1),
         },
         explorer_api: {},

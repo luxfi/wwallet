@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 
-const esModules = ['avalanche'].join('|');
+const esModules = ['luxnet'].join('|');
 
 export default {
     // All imported modules in your tests should be mocked automatically

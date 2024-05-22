@@ -1,20 +1,20 @@
 import Eth from '@ledgerhq/hw-app-eth';
 import Transport from '@ledgerhq/hw-transport';
-import { LedgerProviderType, ObsidianProvider, ZondaxProvider } from '@/Wallet/Ledger/provider';
+import { LedgerProviderType, LuxProvider, ZondaxProvider } from '@/Wallet/Ledger/provider';
 import { ZONDAX_VERSION } from '@/Wallet/Ledger/provider/constants';
-import { AddDelegatorTx, AddValidatorTx } from 'avalanche/dist/apis/platformvm';
+import { AddDelegatorTx, AddValidatorTx } from 'luxnet/dist/apis/platformvm';
 import { bintools } from '@/common';
-import { avalanche } from '@/Network';
-import { BaseTx as AVMBaseTx } from 'avalanche/dist/apis/avm';
-import { BaseTx as PlatformBaseTx } from 'avalanche/dist/apis/platformvm';
-import { EVMBaseTx } from 'avalanche/dist/apis/evm';
-import { UnsignedTx as AVMUnsignedTx } from 'avalanche/dist/apis/avm/tx';
-import { UnsignedTx as PlatformUnsignedTx } from 'avalanche/dist/apis/platformvm/tx';
-import { UnsignedTx as EVMUnsignedTx } from 'avalanche/dist/apis/evm/tx';
+import { luxnet } from '@/Network';
+import { BaseTx as AVMBaseTx } from 'luxnet/dist/apis/avm';
+import { BaseTx as PlatformBaseTx } from 'luxnet/dist/apis/platformvm';
+import { EVMBaseTx } from 'luxnet/dist/apis/evm';
+import { UnsignedTx as AVMUnsignedTx } from 'luxnet/dist/apis/avm/tx';
+import { UnsignedTx as PlatformUnsignedTx } from 'luxnet/dist/apis/platformvm/tx';
+import { UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx';
 
 import bip32 from '@/utils/bip32';
-import AppObsidian from '@obsidiansystems/hw-app-avalanche';
-import AppZondax from '@luxfi/hw-app-lux';
+import AppLux from '@luxfi/hw-app-lux';
+import AppZondax from '@luxfi/hw-app-luxz';
 
 /**
  *
@@ -27,8 +27,8 @@ export function getEthAddressKeyFromAccountKey(xpub: string, index: number) {
     return node.toBase58();
 }
 
-export function getAppLux(transport: Transport, provider: LedgerProviderType): AppObsidian | AppZondax {
-    return provider === 'obsidian' ? ObsidianProvider.getApp(transport) : ZondaxProvider.getApp(transport);
+export function getAppLux(transport: Transport, provider: LedgerProviderType): AppLux | AppZondax {
+    return provider === 'lux' ? LuxProvider.getApp(transport) : ZondaxProvider.getApp(transport);
 }
 
 export function getAppEth(transport: Transport): Eth {
@@ -37,11 +37,11 @@ export function getAppEth(transport: Transport): Eth {
 }
 
 export async function getLedgerProvider(transport: Transport) {
-    const isObsidian = await isObsidianApp(transport);
-    return isObsidian ? ObsidianProvider : ZondaxProvider;
+    const isLux = await isLuxApp(transport);
+    return isLux ? LuxProvider : ZondaxProvider;
 }
 
-export async function isObsidianApp(t: Transport): Promise<boolean> {
+export async function isLuxApp(t: Transport): Promise<boolean> {
     const versionZ = await ZondaxProvider.getVersion(t);
     if (versionZ >= ZONDAX_VERSION) return false;
     return true;
@@ -60,7 +60,7 @@ export function getStakeOutAddresses(tx: AVMBaseTx | PlatformBaseTx | EVMBaseTx)
                     .getOutput()
                     .getAddresses()
                     .map((addr) => {
-                        return bintools.addressToString(avalanche.getHRP(), 'P', addr);
+                        return bintools.addressToString(luxnet.getHRP(), 'P', addr);
                     })
             )
             .flat();
@@ -80,7 +80,7 @@ export function getOutputAddresses(tx: AVMBaseTx | PlatformBaseTx) {
                 .getOutput()
                 .getAddresses()
                 .map((addr) => {
-                    return bintools.addressToString(avalanche.getHRP(), chainID, addr);
+                    return bintools.addressToString(luxnet.getHRP(), chainID, addr);
                 })
         )
         .flat();

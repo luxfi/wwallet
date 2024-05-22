@@ -1,5 +1,5 @@
 import { IndexerUTXO } from '@/Explorer';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import { iHistoryBaseTxTokenOwners } from '@/History';
 import { strip0x } from '@/utils';
 

@@ -1,4 +1,4 @@
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import Big from 'big.js';
 
 declare module 'big.js' {

@@ -1,3 +1,3 @@
 export * from './models';
-export * from './ObsidianProvider';
+export * from './LuxProvider';
 export * from './ZondaxProvider';

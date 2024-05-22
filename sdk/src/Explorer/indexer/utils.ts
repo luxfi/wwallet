@@ -1,5 +1,5 @@
 import { IndexerLuxTx } from '@/Explorer';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import { getOutputTotals } from '@/Explorer/indexer/utxoUtils';
 
 /**

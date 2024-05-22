@@ -33,7 +33,7 @@ import { AccessWalletMultipleInput } from './types';
 // import { keyToKeypair } from '@/helpers/helper'
 import * as bip39 from 'bip39';
 import { bintools } from '@/common';
-import { Buffer as AjsBuffer } from 'avalanche';
+import { Buffer as AjsBuffer } from 'luxnet';
 import { ITERATIONS_V2, ITERATIONS_V3, KEYSTORE_VERSION } from '@/Keystore/constants';
 
 const cryptoHelpers = new Crypto();

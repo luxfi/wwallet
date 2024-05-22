@@ -1,7 +1,7 @@
-import { Lux } from 'avalanche/dist';
-import { AVMAPI } from 'avalanche/dist/apis/avm';
-import { InfoAPI } from 'avalanche/dist/apis/info';
-import { EVMAPI } from 'avalanche/dist/apis/evm';
+import { Lux } from 'luxnet/dist';
+import { AVMAPI } from 'luxnet/dist/apis/avm';
+import { InfoAPI } from 'luxnet/dist/apis/info';
+import { EVMAPI } from 'luxnet/dist/apis/evm';
 import Web3 from 'web3';
 import { DefaultConfig } from './constants';
 import { NetworkConfig, NetworkConfigRpc, NetworkProtocolType } from './types';
@@ -20,12 +20,12 @@ import { getEthersJsonRpcProvider } from '@/Network/getEthersProvider';
 import { ethers } from 'ethers';
 import { HttpClient } from '@/helpers/http_client';
 
-export const avalanche: Lux = createLuxProvider(DefaultConfig);
+export const luxnet: Lux = createLuxProvider(DefaultConfig);
 
-export const xChain: AVMAPI = avalanche.XChain();
-export const cChain: EVMAPI = avalanche.CChain();
-export const pChain = avalanche.PChain();
-export const infoApi: InfoAPI = avalanche.Info();
+export const xChain: AVMAPI = luxnet.XChain();
+export const cChain: EVMAPI = luxnet.CChain();
+export const pChain = luxnet.PChain();
+export const infoApi: InfoAPI = luxnet.Info();
 
 function getProviderFromUrl(url: string, credentials = false) {
     return new FetchHttpProvider(url, {
@@ -64,13 +64,13 @@ export async function setRpcNetworkAsync(config: NetworkConfig): Promise<void> {
  * @param credentials
  */
 export function setRpcNetwork(conf: NetworkConfig, credentials = true): void {
-    avalanche.setAddress(conf.apiIp, conf.apiPort, conf.apiProtocol);
-    avalanche.setNetworkID(conf.networkID);
+    luxnet.setAddress(conf.apiIp, conf.apiPort, conf.apiProtocol);
+    luxnet.setNetworkID(conf.networkID);
 
     if (credentials) {
-        avalanche.setRequestConfig('withCredentials', credentials);
+        luxnet.setRequestConfig('withCredentials', credentials);
     } else {
-        avalanche.removeRequestConfig('withCredentials');
+        luxnet.removeRequestConfig('withCredentials');
     }
 
     xChain.refreshBlockchainID(conf.xChainID);

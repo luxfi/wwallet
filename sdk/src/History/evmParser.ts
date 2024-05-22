@@ -1,6 +1,6 @@
 import { iHistoryEVMTx } from '@/History/types';
 import { bnToLuxC } from '@/utils';
-import { BN } from 'avalanche';
+import { BN } from 'luxnet';
 import { IndexerEvmTx } from '@/Explorer';
 
 export function getTransactionSummaryEVM(tx: IndexerEvmTx, walletAddress: string): iHistoryEVMTx {
