@@ -55,7 +55,7 @@ function getStakingSummary(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryStak
     let time = new Date(tx.timestamp);
 
     // let pChainID = activeNetwork.pChainID;
-    // let avaxID = activeNetwork.avaxID;
+    // let luxID = activeNetwork.luxID;
     let ins = tx.inputs?.map((tx) => tx.output) || [];
     let myIns = getOwnedOutputs(ins, ownerAddrs);
 
@@ -105,10 +105,10 @@ function getImportSummaryC(tx: IndexerLuxTx, ownerAddr: string) {
     let chainAliasFrom = idToChainAlias(sourceChain);
     let chainAliasTo = idToChainAlias(tx.chainID);
 
-    let avaxID = activeNetwork.avaxID;
+    let luxID = activeNetwork.luxID;
 
     let outs = tx.outputs || [];
-    let amtOut = getEvmAssetBalanceFromUTXOs(outs, ownerAddr, avaxID, tx.chainID);
+    let amtOut = getEvmAssetBalanceFromUTXOs(outs, ownerAddr, luxID, tx.chainID);
 
     let time = new Date(tx.timestamp);
     let fee = xChain.getTxFee();

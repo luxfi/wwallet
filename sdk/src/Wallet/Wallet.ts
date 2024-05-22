@@ -14,7 +14,7 @@ import {
     WalletNameType,
 } from './types';
 import {
-    buildAvmExportTransaction,
+    buildXvmExportTransaction,
     buildCreateNftFamilyTx,
     buildCustomEvmTx,
     buildEvmExportTransaction,
@@ -33,8 +33,8 @@ import { activeNetwork, luxnet, cChain, pChain, web3, xChain } from '@/Network/n
 import { EvmWallet } from '@/Wallet/EVM/EvmWallet';
 
 import {
-    avmGetAllUTXOs,
-    avmGetAtomicUTXOs,
+    xvmGetAllUTXOs,
+    xvmGetAtomicUTXOs,
     evmGetAtomicUTXOs,
     getStakeForAddresses,
     platformGetAllUTXOs,
@@ -42,13 +42,13 @@ import {
 } from '@/helpers/utxo_helper';
 
 import {
-    UTXOSet as AVMUTXOSet,
-    UnsignedTx as AVMUnsignedTx,
-    UTXO as AVMUTXO,
-    Tx as AvmTx,
-    AVMConstants,
+    UTXOSet as XVMUTXOSet,
+    UnsignedTx as XVMUnsignedTx,
+    UTXO as XVMUTXO,
+    Tx as XvmTx,
+    XVMConstants,
     AmountOutput,
-} from 'luxnet/dist/apis/avm';
+} from 'luxnet/dist/apis/xvm';
 import {
     UTXOSet as PlatformUTXOSet,
     UTXO as PlatformUTXO,
@@ -63,7 +63,7 @@ import { PayloadBase, UnixNow } from 'luxnet/dist/utils';
 import { getAssetDescription } from '@/Asset/Assets';
 import { getErc20Token } from '@/Asset/Erc20';
 import { NO_NETWORK } from '@/errors';
-import { avaxCtoX, bnToLocaleString, getTxFeeP, getTxFeeX, waitTxC, waitTxEvm, waitTxP, waitTxX } from '@/utils';
+import { luxCtoX, bnToLocaleString, getTxFeeP, getTxFeeX, waitTxC, waitTxEvm, waitTxP, waitTxX } from '@/utils';
 import { EvmWalletReadonly } from '@/Wallet/EVM/EvmWalletReadonly';
 import EventEmitter from 'events';
 import {
@@ -113,7 +113,7 @@ export abstract class WalletProvider {
     /**
      * The X chain UTXOs of the wallet's current state
      */
-    public utxosX: AVMUTXOSet = new AVMUTXOSet();
+    public utxosX: XVMUTXOSet = new XVMUTXOSet();
 
     /**
      * The P chain UTXOs of the wallet's current state
@@ -123,7 +123,7 @@ export abstract class WalletProvider {
     public balanceX: WalletBalanceX = {};
 
     abstract signEvm(tx: Transaction | FeeMarketEIP1559Transaction): Promise<Transaction | FeeMarketEIP1559Transaction>;
-    abstract signX(tx: AVMUnsignedTx): Promise<AvmTx>;
+    abstract signX(tx: XVMUnsignedTx): Promise<XvmTx>;
     abstract signP(tx: PlatformUnsignedTx): Promise<PlatformTx>;
     abstract signC(tx: EVMUnsignedTx): Promise<EVMTx>;
 
@@ -246,7 +246,7 @@ export abstract class WalletProvider {
         let tx = await xChain.buildBaseTx(
             utxoSet,
             amount,
-            activeNetwork.avaxID,
+            activeNetwork.luxID,
             [to],
             froms,
             [changeAddress],
@@ -419,7 +419,7 @@ export abstract class WalletProvider {
     private createUniversalNode(chain: ChainIdType, atomicFeeXP: BN, atomicFeeC: BN): UniversalNodeAbstract {
         let xBal = this.getLuxBalanceX().unlocked;
         let pBal = this.getLuxBalanceP().unlocked;
-        let cBal = avaxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
+        let cBal = luxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
 
         switch (chain) {
             case 'X':
@@ -450,7 +450,7 @@ export abstract class WalletProvider {
     public getTransactionsForBalance(chain: ChainIdType, amount: BN, atomicFeeXP: BN, atomicFeeC: BN): UniversalTx[] {
         let xBal = this.getLuxBalanceX().unlocked;
         let pBal = this.getLuxBalanceP().unlocked;
-        let cBal = avaxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
+        let cBal = luxCtoX(this.getLuxBalanceC()); // need to use 9 decimal places
 
         switch (chain) {
             case 'P':
@@ -494,9 +494,9 @@ export abstract class WalletProvider {
      *  - Updates `this.utxosX` with new UTXOs
      *  - Calls `this.updateBalanceX()` after success.
      *  */
-    public async updateUtxosX(): Promise<AVMUTXOSet> {
+    public async updateUtxosX(): Promise<XVMUTXOSet> {
         const addresses = await this.getAllAddressesX();
-        this.utxosX = await avmGetAllUTXOs(addresses);
+        this.utxosX = await xvmGetAllUTXOs(addresses);
 
         await this.updateUnknownAssetsX();
         await this.updateBalanceX();
@@ -507,7 +507,7 @@ export abstract class WalletProvider {
     /**
      *  Returns the fetched UTXOs on the X chain that belong to this wallet.
      */
-    public getUtxosX(): AVMUTXOSet {
+    public getUtxosX(): XVMUTXOSet {
         return this.utxosX;
     }
 
@@ -602,7 +602,7 @@ export abstract class WalletProvider {
             let out = utxo.getOutput();
             let type = out.getOutputID();
 
-            if (type != AVMConstants.SECPXFEROUTPUTID) continue;
+            if (type != XVMConstants.SECPXFEROUTPUTID) continue;
 
             let locktime = out.getLocktime();
             let threshold = out.getThreshold();
@@ -637,10 +637,10 @@ export abstract class WalletProvider {
         }
 
         // If there are no LUX UTXOs create a dummy empty balance object
-        let avaxID = activeNetwork.avaxID;
-        if (!res[avaxID]) {
-            let assetInfo = await getAssetDescription(avaxID);
-            res[avaxID] = {
+        let luxID = activeNetwork.luxID;
+        if (!res[luxID]) {
+            let assetInfo = await getAssetDescription(luxID);
+            res[luxID] = {
                 locked: new BN(0),
                 unlocked: new BN(0),
                 multisig: new BN(0),
@@ -685,7 +685,7 @@ export abstract class WalletProvider {
             throw new Error('Network not selected.');
         }
         return (
-            this.balanceX[activeNetwork.avaxID] || {
+            this.balanceX[activeNetwork.luxID] || {
                 unlocked: new BN(0),
                 locked: new BN(0),
             }
@@ -793,7 +793,7 @@ export abstract class WalletProvider {
         // The amount does not effect the fee that much
         const amt = new BN(0);
         const gas = estimateExportGasFeeFromMockTx(destinationChain, amt, hexAddr, destinationAddr);
-        return avaxCtoX(baseFee.mul(new BN(gas)));
+        return luxCtoX(baseFee.mul(new BN(gas)));
     }
 
     /**
@@ -817,7 +817,7 @@ export abstract class WalletProvider {
         if (!exportFee) {
             const gas = estimateExportGasFeeFromMockTx(destinationChain, amt, hexAddr, destinationAddr);
             const baseFee = await getBaseFeeRecommended();
-            exportFee = avaxCtoX(baseFee.mul(new BN(gas)));
+            exportFee = luxCtoX(baseFee.mul(new BN(gas)));
         }
 
         let exportTx = await buildEvmExportTransaction(
@@ -854,7 +854,7 @@ export abstract class WalletProvider {
         let fromAddresses = await this.getAllAddressesX();
         let changeAddress = this.getChangeAddressX();
         let utxos = this.utxosX;
-        let exportTx = await buildAvmExportTransaction(
+        let exportTx = await buildXvmExportTransaction(
             destinationChain,
             utxos,
             fromAddresses,
@@ -876,7 +876,7 @@ export abstract class WalletProvider {
 
     async getAtomicUTXOsX(sourceChain: ExportChainsX) {
         let addrs = await this.getAllAddressesX();
-        let result = await avmGetAtomicUTXOs(addrs, sourceChain);
+        let result = await xvmGetAtomicUTXOs(addrs, sourceChain);
         return result;
     }
 
@@ -1030,7 +1030,7 @@ export abstract class WalletProvider {
 
             const importGas = estimateImportGasFeeFromMockTx(numIns, numSigs);
             const baseFee = await getBaseFeeRecommended();
-            fee = avaxCtoX(baseFee.mul(new BN(importGas)));
+            fee = luxCtoX(baseFee.mul(new BN(importGas)));
         }
 
         const unsignedTx = await cChain.buildImportTx(
@@ -1074,7 +1074,7 @@ export abstract class WalletProvider {
         return await waitTxX(txId);
     }
 
-    async mintNft(mintUtxo: AVMUTXO, payload: PayloadBase, quantity: number) {
+    async mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number) {
         let ownerAddress = this.getAddressX();
         let changeAddress = this.getChangeAddressX();
 

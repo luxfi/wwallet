@@ -1,6 +1,6 @@
 import { WalletProvider } from '@/Wallet/Wallet';
 import { HdScanner } from '@/Wallet/HdScanner';
-import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm/utxos';
+import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm/utxos';
 import { luxnet } from '@/Network/network';
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm';
 import { iHDWalletIndex } from '@/Wallet/types';
@@ -176,7 +176,7 @@ export abstract class HDWalletAbstract extends WalletProvider {
         });
     }
 
-    public async updateUtxosX(): Promise<AVMUTXOSet> {
+    public async updateUtxosX(): Promise<XVMUTXOSet> {
         let utxosX = await super.updateUtxosX();
 
         // If the current internal or external X address is in the utxo set, increment hd index

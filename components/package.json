@@ -17,7 +17,7 @@
     "@ledgerhq/evm-tools": "^1.0.19",
     "@zxing/library": "^0.15.2",
     "core-js": "^3.6.4",
-    "vue": "^1.0.28"
+    "vue": "2.6.12"
   },
   "peerDependencies": {
     "@luxfi/wallet-sdk": ">=0.20.1"
@@ -25,27 +25,8 @@
   "devDependencies": {
     "@luxfi/wallet-sdk": "0.20.1",
     "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.1.2",
-    "np": "^10.0.5",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+    "np": "^10.0.5"
   },
   "browserslist": [
     "> 1%",

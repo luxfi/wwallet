@@ -8,7 +8,7 @@ import {
 } from '@/History';
 import * as Assets from '@/Asset/Assets';
 import { bnToLocaleString, getTxFeeX } from '@/utils';
-import { AVMConstants } from 'luxnet/dist/apis/avm';
+import { XVMConstants } from 'luxnet/dist/apis/xvm';
 import { BN } from 'luxnet';
 import { getNFTBalanceFromUTXOs, parseMemo } from '@/History/history_helpers';
 import {
@@ -54,7 +54,7 @@ function getBaseTxNFTLosses(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBas
     let ins = tx.inputs || [];
     let inUTXOs = ins.map((input) => input.output);
     let nftUTXOs = inUTXOs.filter((utxo) => {
-        return utxo.outputType === AVMConstants.NFTXFEROUTPUTID;
+        return utxo.outputType === XVMConstants.NFTXFEROUTPUTID;
     });
 
     let res: iHistoryBaseTxNFTsSentRaw = {};
@@ -72,7 +72,7 @@ function getBaseTxNFTLosses(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBas
 function getBaseTxNFTGains(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBaseTxNFTsReceivedRaw {
     let outs = tx.outputs || [];
     let nftUTXOs = outs.filter((utxo) => {
-        return utxo.outputType === AVMConstants.NFTXFEROUTPUTID;
+        return utxo.outputType === XVMConstants.NFTXFEROUTPUTID;
     });
     let res: iHistoryBaseTxNFTsReceivedRaw = {};
 
@@ -92,7 +92,7 @@ function getBaseTxNFTGains(tx: IndexerLuxTx, ownerAddrs: string[]): iHistoryBase
  * @param ownerAddrs
  */
 function getOwnedTokens(utxos: IndexerUTXO[], ownerAddrs: string[]): iHistoryBaseTxTokenLossGain {
-    let tokenUTXOs = getOutputsOfType(utxos, AVMConstants.SECPXFEROUTPUTID);
+    let tokenUTXOs = getOutputsOfType(utxos, XVMConstants.SECPXFEROUTPUTID);
     // Owned inputs
     let myUTXOs = getOwnedOutputs(tokenUTXOs, ownerAddrs);
 
@@ -138,7 +138,7 @@ async function getBaseTxTokensSummary(
         let tokenLost = losses[id] || new BN(0);
         let tokenDesc = descsDict[id];
 
-        // If we sent avax, deduct the fee
+        // If we sent lux, deduct the fee
         if (id === getLuxAssetID() && !tokenLost.isZero()) {
             tokenLost = tokenLost.sub(getTxFeeX());
         }

@@ -1,5 +1,5 @@
 import { Lux } from 'luxnet/dist';
-import { AVMAPI } from 'luxnet/dist/apis/avm';
+import { XVMAPI } from 'luxnet/dist/apis/xvm';
 import { InfoAPI } from 'luxnet/dist/apis/info';
 import { EVMAPI } from 'luxnet/dist/apis/evm';
 import Web3 from 'web3';
@@ -22,7 +22,7 @@ import { HttpClient } from '@/helpers/http_client';
 
 export const luxnet: Lux = createLuxProvider(DefaultConfig);
 
-export const xChain: AVMAPI = luxnet.XChain();
+export const xChain: XVMAPI = luxnet.XChain();
 export const cChain: EVMAPI = luxnet.CChain();
 export const pChain = luxnet.PChain();
 export const infoApi: InfoAPI = luxnet.Info();
@@ -82,9 +82,9 @@ export function setRpcNetwork(conf: NetworkConfig, credentials = true): void {
     cChain.refreshBlockchainID(conf.cChainID);
     cChain.setBlockchainAlias('C');
 
-    xChain.setLUXAssetID(conf.avaxID);
-    pChain.setLUXAssetID(conf.avaxID);
-    cChain.setLUXAssetID(conf.avaxID);
+    xChain.setLUXAssetID(conf.luxID);
+    pChain.setLUXAssetID(conf.luxID);
+    cChain.setLUXAssetID(conf.luxID);
 
     if (conf.explorerURL) {
         explorer_api = createExplorerApi(conf);
@@ -135,7 +135,7 @@ export async function getConfigFromUrl(url: string): Promise<NetworkConfig> {
     let idX = values[0];
     let idP = values[1];
     let idC = values[2];
-    let avaxId = bintools.cb58Encode(values[3]);
+    let luxId = bintools.cb58Encode(values[3]);
     let evmChainId = values[4];
 
     let config: NetworkConfig = {
@@ -147,7 +147,7 @@ export async function getConfigFromUrl(url: string): Promise<NetworkConfig> {
         xChainID: idX,
         pChainID: idP,
         cChainID: idC,
-        avaxID: avaxId,
+        luxID: luxId,
         evmChainID: evmChainId,
         get rpcUrl(): NetworkConfigRpc {
             return {

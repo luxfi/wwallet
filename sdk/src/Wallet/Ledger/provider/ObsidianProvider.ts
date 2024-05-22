@@ -33,7 +33,7 @@ export const LuxProvider: LedgerProvider = {
         };
     },
 
-    async getAddress(t, path, config = { show: true, hrp: 'avax' }) {
+    async getAddress(t, path, config = { show: true, hrp: 'lux' }) {
         const app = this.getApp(t) as AppLux;
 
         const res = await app.getWalletAddress(path.toString(), config.hrp);

@@ -111,12 +111,12 @@ export function estimateExportGasFeeFromMockTx(
     const toBuff = bintools.stringToAddress(to);
     const netID = activeNetwork.networkID;
     const chainID = activeNetwork.cChainID;
-    const LUX_ID = activeNetwork.avaxID;
-    const avaxIDBuff = bintools.cb58Decode(LUX_ID);
+    const LUX_ID = activeNetwork.luxID;
+    const luxIDBuff = bintools.cb58Decode(LUX_ID);
 
-    const txIn = new EVMInput(from, amount, avaxIDBuff);
+    const txIn = new EVMInput(from, amount, luxIDBuff);
     const secpOut = new SECPTransferOutput(amount, [toBuff]);
-    const txOut = new TransferableOutput(avaxIDBuff, secpOut);
+    const txOut = new TransferableOutput(luxIDBuff, secpOut);
 
     // Create fake export Tx
     const chainIdBuff = bintools.cb58Decode(chainID);

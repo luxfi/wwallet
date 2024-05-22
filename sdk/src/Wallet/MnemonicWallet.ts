@@ -6,9 +6,9 @@ import { EvmWallet } from './EVM/EvmWallet';
 import { UnsafeWallet, WalletNameType } from './types';
 import { Buffer } from 'luxnet';
 import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxnet/dist/apis/avm';
+import { Tx as XVMTx, UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm';
 import { Tx as PlatformTx, UnsignedTx as PlatformUnsignedTx } from 'luxnet/dist/apis/platformvm';
-import { KeyPair as AVMKeyPair, KeyChain as AVMKeyChain } from 'luxnet/dist/apis/avm/keychain';
+import { KeyPair as XVMKeyPair, KeyChain as XVMKeyChain } from 'luxnet/dist/apis/xvm/keychain';
 import { KeyChain as PlatformKeyChain } from 'luxnet/dist/apis/platformvm';
 import { UnsignedTx as EVMUnsignedTx, Tx as EVMTx, KeyPair as EVMKeyPair } from 'luxnet/dist/apis/evm';
 import { CypherAES, digestMessage } from '@/utils';
@@ -104,10 +104,10 @@ export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
     }
 
     /**
-     * Signs an AVM transaction.
+     * Signs an XVM transaction.
      * @param tx The unsigned transaction
      */
-    async signX(tx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(tx: XVMUnsignedTx): Promise<XVMTx> {
         return tx.sign(this.getKeyChainX());
     }
 
@@ -133,7 +133,7 @@ export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
      * Returns a keychain with the keys of every derived X chain address.
      * @private
      */
-    private getKeyChainX(): AVMKeyChain {
+    private getKeyChainX(): XVMKeyChain {
         let internal = this.internalScan.getKeyChainX();
         let external = this.externalScan.getKeyChainX();
         return internal.union(external);
@@ -149,7 +149,7 @@ export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
 
     // TODO: Support internal address as well
     signMessage(msgStr: string, index: number): string {
-        let key = this.externalScan.getKeyForIndexX(index) as AVMKeyPair;
+        let key = this.externalScan.getKeyForIndexX(index) as XVMKeyPair;
         let digest = digestMessage(msgStr);
 
         // Convert to the other Buffer and sign

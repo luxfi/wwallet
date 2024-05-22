@@ -5,10 +5,10 @@ import { ZONDAX_VERSION } from '@/Wallet/Ledger/provider/constants';
 import { AddDelegatorTx, AddValidatorTx } from 'luxnet/dist/apis/platformvm';
 import { bintools } from '@/common';
 import { luxnet } from '@/Network';
-import { BaseTx as AVMBaseTx } from 'luxnet/dist/apis/avm';
+import { BaseTx as XVMBaseTx } from 'luxnet/dist/apis/xvm';
 import { BaseTx as PlatformBaseTx } from 'luxnet/dist/apis/platformvm';
 import { EVMBaseTx } from 'luxnet/dist/apis/evm';
-import { UnsignedTx as AVMUnsignedTx } from 'luxnet/dist/apis/avm/tx';
+import { UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm/tx';
 import { UnsignedTx as PlatformUnsignedTx } from 'luxnet/dist/apis/platformvm/tx';
 import { UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx';
 
@@ -51,7 +51,7 @@ export async function isLuxApp(t: Transport): Promise<boolean> {
  * Returns an array of unique addresses that are found on stake outputs of a tx.
  * @param tx
  */
-export function getStakeOutAddresses(tx: AVMBaseTx | PlatformBaseTx | EVMBaseTx) {
+export function getStakeOutAddresses(tx: XVMBaseTx | PlatformBaseTx | EVMBaseTx) {
     if (tx instanceof AddValidatorTx || tx instanceof AddDelegatorTx) {
         const allAddrs = tx
             .getStakeOuts()
@@ -71,8 +71,8 @@ export function getStakeOutAddresses(tx: AVMBaseTx | PlatformBaseTx | EVMBaseTx)
     return [];
 }
 
-export function getOutputAddresses(tx: AVMBaseTx | PlatformBaseTx) {
-    const chainID = tx instanceof AVMBaseTx ? 'X' : 'P';
+export function getOutputAddresses(tx: XVMBaseTx | PlatformBaseTx) {
+    const chainID = tx instanceof XVMBaseTx ? 'X' : 'P';
     const outAddrs = tx
         .getOuts()
         .map((out) =>
@@ -91,7 +91,7 @@ export function getOutputAddresses(tx: AVMBaseTx | PlatformBaseTx) {
  * Returns every output address for the given transaction.
  * @param unsignedTx
  */
-export function getTxOutputAddresses<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+export function getTxOutputAddresses<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
     unsignedTx: UnsignedTx
 ) {
     if (unsignedTx instanceof EVMUnsignedTx) {
@@ -99,7 +99,7 @@ export function getTxOutputAddresses<UnsignedTx extends AVMUnsignedTx | Platform
     }
 
     const tx = unsignedTx.getTransaction();
-    if (unsignedTx instanceof AVMUnsignedTx) {
+    if (unsignedTx instanceof XVMUnsignedTx) {
         const outAddrs = getOutputAddresses(tx);
         return outAddrs;
     } else if (unsignedTx instanceof PlatformUnsignedTx) {

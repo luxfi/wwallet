@@ -44,18 +44,18 @@ export function bnToBig(val: BN, denomination = 0): Big {
  * Used for LUX C <-> X,P conversions
  * @param amount
  */
-export function avaxCtoX(amount: BN) {
+export function luxCtoX(amount: BN) {
     let tens = new BN(10).pow(new BN(9));
     return amount.div(tens);
 }
 
-export function avaxXtoC(amount: BN) {
+export function luxXtoC(amount: BN) {
     let tens = new BN(10).pow(new BN(9));
     return amount.mul(tens);
 }
 
-export function avaxPtoC(amount: BN) {
-    return avaxXtoC(amount);
+export function luxPtoC(amount: BN) {
+    return luxXtoC(amount);
 }
 
 export function bnToBigLuxX(val: BN): Big {

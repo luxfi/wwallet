@@ -10,9 +10,9 @@ import {
 
 import Web3 from 'web3';
 const addrEVM = '0x6a23c16777a3A194b2773df90FEB8753A8e619Ee';
-const addrC = 'C-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
-const addrP = 'P-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
-const addrX = 'X-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
+const addrC = 'C-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
+const addrP = 'P-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
+const addrX = 'X-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
 
 jest.mock('web3', () => {
     return {
@@ -48,7 +48,7 @@ describe('validate address', () => {
     });
 
     it('should fail for random chain id', () => {
-        let address = 'F-avax19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
+        let address = 'F-lux19v8flm9qt2gv2tctztjjerlgs4k3vgjsfw8udh';
         //@ts-ignore
         Web3.utils.isAddress.mockReturnValue(false);
 
@@ -156,11 +156,11 @@ describe('get chain', () => {
 });
 
 describe('get HRP', () => {
-    it('Return avax HRP', () => {
+    it('Return lux HRP', () => {
         let res = getAddressHRP(addrX);
         let res2 = getAddressHRP(addrP);
-        expect(res).toBe('avax');
-        expect(res2).toBe('avax');
+        expect(res).toBe('lux');
+        expect(res2).toBe('lux');
     });
 
     it('Return fuji HRP', () => {

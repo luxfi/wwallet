@@ -8557,7 +8557,7 @@ packages:
     dev: true
 
   /lodash.capitalize@4.2.1:
-    resolution: {integrity: sha512-kZzYOKspf8XVX5AvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
+    resolution: {integrity: sha512-kZzYOKspf8XVX5XvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
     dev: true
 
   /lodash.debounce@4.0.8:

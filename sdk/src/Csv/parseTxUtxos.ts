@@ -43,7 +43,7 @@ export function parseTxUtxos(txs: IndexerLuxTx[], ownedAddresses: string[]) {
         const chainAlias = idToChainAlias(chainId);
 
         tx.inputs?.forEach((txIn) => {
-            const isLUX = txIn.output.assetID === activeNetwork.avaxID;
+            const isLUX = txIn.output.assetID === activeNetwork.luxID;
             const decimals = isLUX ? 9 : 0;
             result.push({
                 txID: tx.id,
@@ -62,7 +62,7 @@ export function parseTxUtxos(txs: IndexerLuxTx[], ownedAddresses: string[]) {
         });
 
         tx.outputs?.forEach((txOut) => {
-            const isLUX = txOut.assetID === activeNetwork.avaxID;
+            const isLUX = txOut.assetID === activeNetwork.luxID;
             const decimals = isLUX ? 9 : 0;
 
             result.push({

@@ -3,9 +3,9 @@ import { ChainIdType } from '@/common';
 import { iAssetDescriptionClean } from '@/Asset/types';
 import { IndexerLuxTx, IndexerEvmTx } from '@/Explorer';
 
-export type HistoryItemType = AVMHistoryItemType | PVMHistoryItemType | EVMHistoryITemType | iHistoryItem;
+export type HistoryItemType = XVMHistoryItemType | PVMHistoryItemType | EVMHistoryITemType | iHistoryItem;
 
-export type AVMHistoryItemType = iHistoryBaseTx | iHistoryImportExport;
+export type XVMHistoryItemType = iHistoryBaseTx | iHistoryImportExport;
 export type PVMHistoryItemType = iHistoryStaking;
 export type EVMHistoryITemType = iHistoryEVMTx;
 
@@ -27,7 +27,7 @@ export interface iHistoryItem {
     fee: BN;
     memo?: string;
     tx: IndexerEvmTx | IndexerLuxTx;
-    avaxPrice?: number;
+    luxPrice?: number;
 }
 
 /**

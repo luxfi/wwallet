@@ -23,7 +23,7 @@ export function isLocalNetwork(activeNetwork: NetworkConfig) {
 }
 
 export function getLuxAssetID() {
-    return activeNetwork.avaxID;
+    return activeNetwork.luxID;
 }
 
 export function getActiveNetworkConfig() {

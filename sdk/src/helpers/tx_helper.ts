@@ -2,14 +2,14 @@ import { cChain, ethersProvider, pChain, web3, xChain } from '@/Network/network'
 
 import { BN, Buffer } from 'luxnet';
 import {
-    AVMConstants,
+    XVMConstants,
     MinterSet,
     NFTMintOutput,
-    UnsignedTx as AVMUnsignedTx,
-    UTXO as AVMUTXO,
-    UTXOSet as AVMUTXOSet,
+    UnsignedTx as XVMUnsignedTx,
+    UTXO as XVMUTXO,
+    UTXOSet as XVMUTXOSet,
     UTXOSet,
-} from 'luxnet/dist/apis/avm';
+} from 'luxnet/dist/apis/xvm';
 
 import { PayloadBase } from 'luxnet/dist/utils';
 import { OutputOwners } from 'luxnet/dist/common';
@@ -48,7 +48,7 @@ export async function buildCreateNftFamilyTx(
         minterSets.push(minterSet);
     }
 
-    let unsignedTx: AVMUnsignedTx = await xChain.buildCreateNFTAssetTx(
+    let unsignedTx: XVMUnsignedTx = await xChain.buildCreateNFTAssetTx(
         utxoSet,
         fromAddresses,
         [changeAddress],
@@ -60,14 +60,14 @@ export async function buildCreateNftFamilyTx(
 }
 
 export async function buildMintNftTx(
-    mintUtxo: AVMUTXO,
+    mintUtxo: XVMUTXO,
     payload: PayloadBase,
     quantity: number,
     ownerAddress: string,
     changeAddress: string,
     fromAddresses: string[],
     utxoSet: UTXOSet
-): Promise<AVMUnsignedTx> {
+): Promise<XVMUnsignedTx> {
     let addrBuf = bintools.parseAddress(ownerAddress, 'X');
     let owners = [];
 
@@ -92,9 +92,9 @@ export async function buildMintNftTx(
     return mintTx;
 }
 
-export async function buildAvmExportTransaction(
+export async function buildXvmExportTransaction(
     destinationChain: ExportChainsX,
-    utxoSet: AVMUTXOSet,
+    utxoSet: XVMUTXOSet,
     fromAddresses: string[],
     toAddress: string,
     amount: BN, // export amount + fee
@@ -102,7 +102,7 @@ export async function buildAvmExportTransaction(
 ) {
     let destinationChainId = chainIdFromAlias(destinationChain);
 
-    return await xChain.buildExportTx(utxoSet as AVMUTXOSet, amount, destinationChainId, [toAddress], fromAddresses, [
+    return await xChain.buildExportTx(utxoSet as XVMUTXOSet, amount, destinationChainId, [toAddress], fromAddresses, [
         sourceChangeAddress,
     ]);
 }
@@ -142,14 +142,14 @@ export async function buildEvmExportTransaction(
     let destinationChainId = chainIdFromAlias(destinationChain);
 
     const nonce = await web3.eth.getTransactionCount(fromAddresses[0]);
-    const avaxAssetIDBuf: Buffer = await xChain.getLUXAssetID();
-    const avaxAssetIDStr: string = bintools.cb58Encode(avaxAssetIDBuf);
+    const luxAssetIDBuf: Buffer = await xChain.getLUXAssetID();
+    const luxAssetIDStr: string = bintools.cb58Encode(luxAssetIDBuf);
 
     let fromAddressHex = fromAddresses[0];
 
     return await cChain.buildExportTx(
         amount,
-        avaxAssetIDStr,
+        luxAssetIDStr,
         destinationChainId,
         fromAddressHex,
         fromAddressBech,
@@ -342,18 +342,18 @@ export async function estimateLuxGas(from: string, to: string, amount: BN, gasPr
             value: `0x${amount.toString('hex')}`,
         });
     } catch (e) {
-        // TODO: Throws an error if we do not have enough avax balance
+        // TODO: Throws an error if we do not have enough lux balance
         //TODO: Is it ok to return 21000
         return 21000;
     }
 }
 
-export enum AvmTxNameEnum {
-    'Transaction' = AVMConstants.BASETX,
-    'Mint' = AVMConstants.CREATEASSETTX,
-    'Operation' = AVMConstants.OPERATIONTX,
-    'Import' = AVMConstants.IMPORTTX,
-    'Export' = AVMConstants.EXPORTTX,
+export enum XvmTxNameEnum {
+    'Transaction' = XVMConstants.BASETX,
+    'Mint' = XVMConstants.CREATEASSETTX,
+    'Operation' = XVMConstants.OPERATIONTX,
+    'Import' = XVMConstants.IMPORTTX,
+    'Export' = XVMConstants.EXPORTTX,
 }
 
 export enum PlatfromTxNameEnum {
@@ -370,10 +370,10 @@ export enum PlatfromTxNameEnum {
 }
 
 // TODO: create asset transactions
-export enum ParseableAvmTxEnum {
-    'Transaction' = AVMConstants.BASETX,
-    'Import' = AVMConstants.IMPORTTX,
-    'Export' = AVMConstants.EXPORTTX,
+export enum ParseableXvmTxEnum {
+    'Transaction' = XVMConstants.BASETX,
+    'Import' = XVMConstants.IMPORTTX,
+    'Export' = XVMConstants.EXPORTTX,
 }
 
 export enum ParseablePlatformEnum {

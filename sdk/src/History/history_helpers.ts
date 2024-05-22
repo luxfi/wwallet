@@ -1,6 +1,6 @@
 import { IndexerUTXO } from '@/Explorer';
 import { iHistoryNftFamilyBalance } from '@/History/types';
-import { AVMConstants } from 'luxnet/dist/apis/avm';
+import { XVMConstants } from 'luxnet/dist/apis/xvm';
 import { parseNftPayload } from '@/utils';
 import { isOutputOwner } from '@/Explorer/indexer/utxoUtils';
 
@@ -23,7 +23,7 @@ export function getNFTBalanceFromUTXOs(
 ): iHistoryNftFamilyBalance {
     let nftUTXOs = utxos.filter((utxo) => {
         if (
-            utxo.outputType === AVMConstants.NFTXFEROUTPUTID &&
+            utxo.outputType === XVMConstants.NFTXFEROUTPUTID &&
             utxo.assetID === assetID &&
             isOutputOwner(addresses, utxo)
         ) {

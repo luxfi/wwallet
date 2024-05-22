@@ -26,7 +26,7 @@ export async function getErc20History(
     } else if (isFujiNetwork(networkConfig)) {
         resp = await fetchExplorerAPI<ExplorerResponse<ExplorerErc20Tx>>(query, false);
     } else {
-        throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
+        throw new Error('Explorer is only available for Lux Mainnet and Testnet');
     }
 
     return filterDuplicateTransactions<ExplorerErc20Tx>(resp.result);

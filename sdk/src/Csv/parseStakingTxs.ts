@@ -50,8 +50,8 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
         } else if (tx.rewardAmount) {
             const bigAmt = bnToBigLuxP(tx.rewardAmount);
             rewardAmt = !tx.rewardAmount.isZero() ? bigAmt.toString() : 'Not Reward Owner';
-            if (tx.avaxPrice) {
-                rewardUSD = bigAmt.mul(tx.avaxPrice);
+            if (tx.luxPrice) {
+                rewardUSD = bigAmt.mul(tx.luxPrice);
             }
         } else {
             // Not reward owner
@@ -59,7 +59,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
         }
 
         const rewardUsdString = rewardUSD ? rewardUSD.toFixed(2) : '-';
-        const avaxPriceString = tx.avaxPrice ? tx.avaxPrice.toFixed(2) : '-';
+        const luxPriceString = tx.luxPrice ? tx.luxPrice.toFixed(2) : '-';
 
         return [
             tx.id,
@@ -72,7 +72,7 @@ export function parseStakingTxs(txs: iHistoryStaking[]) {
             tx.isRewarded.toString(),
             rewardAmt.toString(),
             rewardUsdString,
-            avaxPriceString,
+            luxPriceString,
         ];
     });
 }

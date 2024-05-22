@@ -1,4 +1,4 @@
-import { KeyPair as AVMKeyPair } from 'luxnet/dist/apis/avm';
+import { KeyPair as XVMKeyPair } from 'luxnet/dist/apis/xvm';
 
 import { BN } from 'luxnet';
 
@@ -9,7 +9,7 @@ import { LedgerWallet } from '@/Wallet/Ledger';
 import { iAssetDescriptionClean } from '@/Asset/types';
 
 export interface IIndexKeyCache {
-    [index: number]: AVMKeyPair;
+    [index: number]: XVMKeyPair;
 }
 
 export type ChainAlias = 'X' | 'P';

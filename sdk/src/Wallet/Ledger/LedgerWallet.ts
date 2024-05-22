@@ -7,14 +7,14 @@ import HDKey from 'hdkey';
 import { WalletNameType } from '@/Wallet/types';
 import { Transaction, TxOptions } from '@ethereumjs/tx';
 import {
-    UnsignedTx as AVMUnsignedTx,
-    Tx as AVMTx,
+    UnsignedTx as XVMUnsignedTx,
+    Tx as XVMTx,
     TransferableOperation,
     OperationTx,
-    AVMConstants,
-    ImportTx as AVMImportTx,
-    SelectCredentialClass as AVMSelectCredentialClass,
-} from 'luxnet/dist/apis/avm';
+    XVMConstants,
+    ImportTx as XVMImportTx,
+    SelectCredentialClass as XVMSelectCredentialClass,
+} from 'luxnet/dist/apis/xvm';
 import { Credential, SigIdx, Signature } from 'luxnet/dist/common';
 import {
     UnsignedTx as EVMUnsignedTx,
@@ -60,12 +60,12 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     /**
      *
-     * @param xpubAVM of derivation path m/44'/9000'/n' where `n` is the account index
+     * @param xpubXVM of derivation path m/44'/9000'/n' where `n` is the account index
      * @param xpubEVM of derivation path m/44'/60'/0'/0/n where `n` is the account index
      * @param accountIndex The given xpubs must match this index
      */
-    constructor(xpubAVM: string, xpubEVM: string, accountIndex: number) {
-        super(xpubAVM, xpubEVM);
+    constructor(xpubXVM: string, xpubEVM: string, accountIndex: number) {
+        super(xpubXVM, xpubEVM);
 
         this.type = 'ledger';
         this.accountIndex = accountIndex;
@@ -210,7 +210,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     // Returns an array of derivation paths that need to sign this transaction
     // Used with signTransactionHash and signTransactionParsable
-    async getTransactionPaths<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx>(
+    async getTransactionPaths<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ): Promise<{ paths: string[]; isLuxOnly: boolean }> {
@@ -229,10 +229,10 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
         let items = ins;
         if (
-            (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx).getImportInputs();
+            items = ((tx as XVMImportTx) || PlatformImportTx).getImportInputs();
         }
 
         let hrp = luxnet.getHRP();
@@ -244,7 +244,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
             let item = items[i];
 
             let assetId = bintools.cb58Encode(item.getAssetID());
-            if (assetId !== activeNetwork.avaxID) {
+            if (assetId !== activeNetwork.luxID) {
                 isLuxOnly = false;
             }
 
@@ -329,21 +329,21 @@ export class LedgerWallet extends PublicMnemonicWallet {
         }
     }
 
-    async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx> {
         let chainId: ChainIdType = 'X';
 
-        let { paths } = await this.getTransactionPaths<AVMUnsignedTx>(unsignedTx, chainId);
+        let { paths } = await this.getTransactionPaths<XVMUnsignedTx>(unsignedTx, chainId);
 
         if (!LedgerWallet.version) throw ERR_ConfigNotSet;
         if (!LedgerWallet.provider) throw ERR_ProviderNotSet;
 
-        return await this.signTransactionParsable<AVMUnsignedTx, AVMTx>(unsignedTx, paths, chainId);
+        return await this.signTransactionParsable<XVMUnsignedTx, XVMTx>(unsignedTx, paths, chainId);
     }
 
     // Used for signing transactions that are parsable
     async signTransactionParsable<
-        UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
-        SignedTx extends AVMTx | PlatformTx | EVMTx
+        UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
+        SignedTx extends XVMTx | PlatformTx | EVMTx
     >(unsignedTx: UnsignedTx, paths: string[], chainId: ChainIdType): Promise<SignedTx> {
         // There must be an active transport connection
         if (!LedgerWallet.transport) throw ERR_TransportNotSet;
@@ -372,7 +372,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
         let signedTx;
         switch (chainId) {
             case 'X':
-                signedTx = new AVMTx(unsignedTx as AVMUnsignedTx, creds);
+                signedTx = new XVMTx(unsignedTx as XVMUnsignedTx, creds);
                 break;
             case 'P':
                 signedTx = new PlatformTx(unsignedTx as PlatformUnsignedTx, creds);
@@ -401,8 +401,8 @@ export class LedgerWallet extends PublicMnemonicWallet {
     // Used for non parsable transactions.
     // Ideally we wont use this function at all, but ledger is not ready yet.
     async signTransactionHash<
-        UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
-        SignedTx extends AVMTx | PlatformTx | EVMTx
+        UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
+        SignedTx extends XVMTx | PlatformTx | EVMTx
     >(unsignedTx: UnsignedTx, paths: string[], chainId: ChainIdType): Promise<SignedTx> {
         if (!LedgerWallet.transport) throw ERR_TransportNotSet;
         let txbuff = unsignedTx.toBuffer();
@@ -425,7 +425,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
         let signedTx;
         switch (chainId) {
             case 'X':
-                signedTx = new AVMTx(unsignedTx as AVMUnsignedTx, creds);
+                signedTx = new XVMTx(unsignedTx as XVMUnsignedTx, creds);
                 break;
             case 'P':
                 signedTx = new PlatformTx(unsignedTx as PlatformUnsignedTx, creds);
@@ -450,7 +450,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
         return bip32Paths;
     }
 
-    getCredentials<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getCredentials<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         paths: string[],
         sigMap: Map<string, globalThis.Buffer>,
@@ -467,11 +467,11 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
         let items = ins;
         if (
-            (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P') ||
             (txType === EVMConstants.IMPORTTX && chainId === 'C')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx || EVMImportTx).getImportInputs();
+            items = ((tx as XVMImportTx) || PlatformImportTx || EVMImportTx).getImportInputs();
         }
 
         // Try to get operations, it will fail if there are none, ignore and continue
@@ -483,7 +483,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
         let CredentialClass;
         if (chainId === 'X') {
-            CredentialClass = AVMSelectCredentialClass;
+            CredentialClass = XVMSelectCredentialClass;
         } else if (chainId === 'P') {
             CredentialClass = PlatformSelectCredentialClass;
         } else {

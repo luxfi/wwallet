@@ -1,7 +1,7 @@
 import { WalletProvider } from '@/Wallet/Wallet';
 import { UnsafeWallet, WalletNameType } from '@/Wallet/types';
 
-import { KeyChain as AVMKeyChain, UnsignedTx as AVMUnsignedTx, Tx as AVMTx } from 'luxnet/dist/apis/avm';
+import { KeyChain as XVMKeyChain, UnsignedTx as XVMUnsignedTx, Tx as XVMTx } from 'luxnet/dist/apis/xvm';
 import {
     KeyChain as PlatformKeyChain,
     UnsignedTx as PlatformUnsignedTx,
@@ -46,11 +46,11 @@ export class SingletonWallet extends WalletProvider implements UnsafeWallet {
 
     static fromEvmKey(key: string): SingletonWallet {
         let keyBuff = bintools.cb58Encode(BufferLux.from(key, 'hex'));
-        let avmKeyStr = `PrivateKey-${keyBuff}`;
-        return new SingletonWallet(avmKeyStr);
+        let xvmKeyStr = `PrivateKey-${keyBuff}`;
+        return new SingletonWallet(xvmKeyStr);
     }
 
-    private getKeyChainX(): AVMKeyChain {
+    private getKeyChainX(): XVMKeyChain {
         let keyChain = xChain.newKeyChain();
         keyChain.importKey(this.key);
         return keyChain;
@@ -135,7 +135,7 @@ export class SingletonWallet extends WalletProvider implements UnsafeWallet {
         return tx.sign(this.getKeyChainP());
     }
 
-    async signX(tx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(tx: XVMUnsignedTx): Promise<XVMTx> {
         return tx.sign(this.getKeyChainX());
     }
 

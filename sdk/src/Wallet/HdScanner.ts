@@ -1,7 +1,7 @@
 import * as bip32 from 'bip32';
 import { getPreferredHRP } from 'luxnet/dist/utils';
 import { activeNetwork, luxnet, pChain, xChain } from '@/Network/network';
-import { KeyPair as AVMKeyPair, KeyChain as AVMKeyChain } from 'luxnet/dist/apis/avm/keychain';
+import { KeyPair as XVMKeyPair, KeyChain as XVMKeyChain } from 'luxnet/dist/apis/xvm/keychain';
 import { KeyChain as PlatformKeyChain, KeyPair as PlatformKeyPair } from 'luxnet/dist/apis/platformvm';
 import { HdChainType } from './types';
 import { Buffer } from 'luxnet';
@@ -22,7 +22,7 @@ type AddressCache = {
 };
 
 type KeyCacheX = {
-    [index: string]: AVMKeyPair;
+    [index: string]: XVMKeyPair;
 };
 
 type KeyCacheP = {
@@ -36,15 +36,15 @@ export class HdScanner {
     protected keyCacheX: KeyCacheX = {};
     protected keyCacheP: KeyCacheP = {};
     readonly changePath: string;
-    private avmAddrFactory: AVMKeyPair;
+    private xvmAddrFactory: XVMKeyPair;
     readonly accountKey: bip32.BIP32Interface;
 
     constructor(accountKey: bip32.BIP32Interface, isInternal = true) {
         this.changePath = isInternal ? '1' : '0';
         this.accountKey = accountKey;
-        // We need an instance of an AVM key to generate adddresses from public keys
+        // We need an instance of an XVM key to generate adddresses from public keys
         let hrp = getPreferredHRP(luxnet.getNetworkID());
-        this.avmAddrFactory = new AVMKeyPair(hrp, 'X');
+        this.xvmAddrFactory = new XVMKeyPair(hrp, 'X');
     }
 
     getIndex() {
@@ -120,7 +120,7 @@ export class HdScanner {
         return res;
     }
 
-    getKeyChainX(): AVMKeyChain {
+    getKeyChainX(): XVMKeyChain {
         let keychain = xChain.newKeyChain();
         for (let i = 0; i <= this.index; i++) {
             let key = this.getKeyForIndexX(i);
@@ -138,7 +138,7 @@ export class HdScanner {
         return keychain;
     }
 
-    getKeyForIndexX(index: number): AVMKeyPair {
+    getKeyForIndexX(index: number): XVMKeyPair {
         let cache = this.keyCacheX[index];
         if (cache) return cache;
 
@@ -190,7 +190,7 @@ export class HdScanner {
 
         let hrp = getPreferredHRP(luxnet.getNetworkID());
 
-        let addrBuf = AVMKeyPair.addressFromPublicKey(publicKeyBuff);
+        let addrBuf = XVMKeyPair.addressFromPublicKey(publicKeyBuff);
         let addr = bintools.addressToString(hrp, chainId, addrBuf);
 
         return addr;
