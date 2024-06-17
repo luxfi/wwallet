@@ -9,7 +9,7 @@ function mapTokenInfo(token: any) {
  */
 export async function fetchTokenList(): Promise<TokenList> {
     const res = await fetch(
-        'https://aurora-api.lux.network/proxy/chain-assets/main/_lists/core-wallet/token-list.erc20.json'
+        'https://api.luxcloud.xyz/proxy/chain-assets/main/_lists/core-wallet/token-list.erc20.json'
     )
     const json = await res.json()
 
@@ -19,7 +19,7 @@ export async function fetchTokenList(): Promise<TokenList> {
     return {
         name: 'Lux (C-Chain)',
         logoURI:
-            'https://aurora-api.lux.network/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
+            'https://api.luxcloud.xyz/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
         keywords: [],
         timestamp: '',
         url: '',

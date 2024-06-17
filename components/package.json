@@ -17,13 +17,14 @@
     "@ledgerhq/evm-tools": "^1.0.19",
     "@zxing/library": "^0.15.2",
     "core-js": "^3.6.4",
-    "vue": "2.6.12"
+    "vue": "^2.7.16",
+    "vue-template-compiler": "^2.7.16"
   },
   "peerDependencies": {
-    "@luxfi/wallet-sdk": ">=0.20.1"
+    "@luxfi/wallet-sdk": ">=0.20.4"
   },
   "devDependencies": {
-    "@luxfi/wallet-sdk": "0.20.1",
+    "@luxfi/wallet-sdk": "0.20.4",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "np": "^10.0.5"
