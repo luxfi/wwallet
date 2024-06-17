@@ -214,8 +214,8 @@ export class HdScanner {
     // explorer API.
     private async findAvailableIndexExplorer(startIndex = 0): Promise<number> {
         let addrs = await this.getAddressesInRange(startIndex, startIndex + HD_SCAN_LOOK_UP_WINDOW);
-        const addrChainsAurora = await listChainsForAddresses(addrs, activeNetwork.networkID);
-        const seenAddrs = addrChainsAurora.map((addrData) => addrData.address);
+        const addrChainsCloud = await listChainsForAddresses(addrs, activeNetwork.networkID);
+        const seenAddrs = addrChainsCloud.map((addrData) => addrData.address);
 
         for (let i = 0; i < addrs.length - HD_SCAN_GAP_SIZE; i++) {
             let gapSize: number = 0;

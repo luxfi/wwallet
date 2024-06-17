@@ -17,8 +17,9 @@ import { PlatformVMConstants, UTXOSet as PlatformUTXOSet } from 'luxnet/dist/api
 
 import { EVMConstants } from 'luxnet/dist/apis/evm';
 
-import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
-import EthereumjsCommon from '@ethereumjs/common';
+import { FeeMarketEIP1559Transaction, Transaction, TransactionFactory } from '@ethereumjs/tx';
+
+import { Common } from '@ethereumjs/common';
 
 import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json';
 import ERC721Abi from '@openzeppelin/contracts/build/contracts/ERC721.json';
@@ -173,7 +174,14 @@ export async function buildEvmTransferEIP1559Tx(
     const chainId = await web3.eth.getChainId();
     const networkId = await web3.eth.net.getId();
 
-    const common = EthereumjsCommon.custom({ networkId, chainId });
+    const common = new Common({
+        chain: {
+            name: 'mainnet', // Replace with your actual chain's name
+            chainId: 7777,
+            networkId: 7777
+        },
+        hardfork: 'istanbul'
+    });
 
     const tx = FeeMarketEIP1559Transaction.fromTxData(
         {
@@ -201,9 +209,16 @@ export async function buildEvmTransferNativeTx(
     const chainId = await web3.eth.getChainId();
     const networkId = await web3.eth.net.getId();
 
-    const common = EthereumjsCommon.custom({ networkId, chainId });
+    const common = new Common({
+        chain: {
+            name: 'mainnet', // Replace with your actual chain's name
+            chainId: 7777,
+            networkId: 7777
+        },
+        hardfork: 'istanbul'
+    });
 
-    const tx = Transaction.fromTxData(
+    const tx = TransactionFactory.fromTxData(
         {
             nonce: nonce,
             gasPrice: '0x' + gasPrice.toString('hex'),
@@ -233,13 +248,22 @@ export async function buildCustomEvmTx(
     const chainId = await web3.eth.getChainId();
     const networkId = await web3.eth.net.getId();
 
+    const common = new Common({
+        chain: {
+            name: 'mainnet', // Replace with your actual chain's name
+            chainId: 7777,
+            networkId: 7777
+        },
+        hardfork: 'istanbul'
+    });
+
     const chainParams = {
-        common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
+        common
     };
 
     let gasPriceHex = `0x${gasPrice.toString('hex')}`;
 
-    let tx = Transaction.fromTxData(
+    let tx = TransactionFactory.fromTxData(
         {
             nonce,
             gasPrice: gasPriceHex,
@@ -250,7 +274,7 @@ export async function buildCustomEvmTx(
         },
         chainParams
     );
-    return tx;
+    return tx as any;
 }
 
 export async function buildEvmTransferErc20Tx(
@@ -283,14 +307,23 @@ export async function buildEvmTransferErc721Tx(
     const nonce = await web3.eth.getTransactionCount(from);
     const chainId = await web3.eth.getChainId();
     const networkId = await web3.eth.net.getId();
+
+    const common = new Common({
+        chain: {
+            name: 'mainnet', // Replace with your actual chain's name
+            chainId: 7777,
+            networkId: 7777
+        },
+        hardfork: 'istanbul'
+    });
     const chainParams = {
-        common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
+        common
     };
     // @ts-ignore
     const contract = new web3.eth.Contract(ERC721Abi.abi, tokenContract);
     const tokenTx = contract.methods['safeTransferFrom(address,address,uint256)'](from, to, tokenId);
 
-    let tx = Transaction.fromTxData(
+    let tx = TransactionFactory.fromTxData(
         {
             nonce: nonce,
             gasPrice: '0x' + gasPrice.toString('hex'),

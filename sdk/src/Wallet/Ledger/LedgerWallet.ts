@@ -5,7 +5,8 @@ import { bnToRlp, rlp, BN as EthBN } from 'ethereumjs-util';
 import { ETH_ACCOUNT_PATH, LEDGER_EXCHANGE_TIMEOUT } from '@/Wallet/constants';
 import HDKey from 'hdkey';
 import { WalletNameType } from '@/Wallet/types';
-import { Transaction, TxOptions } from '@ethereumjs/tx';
+import { Transaction, TxOptions, FeeMarketEIP1559Transaction, TransactionFactory } from '@ethereumjs/tx';
+import { Common } from '@ethereumjs/common';
 import {
     UnsignedTx as XVMUnsignedTx,
     Tx as XVMTx,
@@ -50,6 +51,9 @@ import {
 import Transport from '@ledgerhq/hw-transport';
 import { ERR_ConfigNotSet, ERR_ProviderNotSet, ERR_TransportNotSet, ERR_VersionNotSet } from '@/Wallet/Ledger/errors';
 import { ZondaxProvider, LuxProvider, LedgerProviderType } from './provider';
+
+type AllowedTransactions = Transaction | FeeMarketEIP1559Transaction;
+
 export class LedgerWallet extends PublicMnemonicWallet {
     type: WalletNameType;
     static transport: Transport | undefined;
@@ -157,8 +161,10 @@ export class LedgerWallet extends PublicMnemonicWallet {
         return LedgerWallet.provider === 'lux' ? LuxProvider : ZondaxProvider;
     }
 
-    async signEvm(tx: Transaction): Promise<Transaction> {
+    async signEvm(_tx: Transaction): Promise<Transaction> {
         if (!LedgerWallet.transport) throw ERR_TransportNotSet;
+
+        const tx : any = _tx
 
         const rawUnsignedTx = rlp.encode([
             bnToRlp(tx.nonce),
@@ -179,33 +185,40 @@ export class LedgerWallet extends PublicMnemonicWallet {
         );
 
         const signatureBN = {
-            v: new EthBN(signature.v, 16),
-            r: new EthBN(signature.r, 16),
-            s: new EthBN(signature.s, 16),
+            v: BigInt(signature.v),
+            r: BigInt('0x' + signature.r),
+            s: BigInt('0x' + signature.s),
         };
 
         const chainId = await web3.eth.getChainId();
         const networkId = await web3.eth.net.getId();
 
-        let common = EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul');
+        const common = new Common({
+            chain: {
+                name: 'mainnet', // Replace with your actual chain's name
+                chainId: chainId,
+                networkId: networkId,
+            },
+            hardfork: 'istanbul'
+        });
 
         const chainParams: TxOptions = {
             common,
         };
 
-        const signedTx = Transaction.fromTxData(
-            {
-                nonce: tx.nonce,
-                gasPrice: tx.gasPrice,
-                gasLimit: tx.gasLimit,
-                to: tx.to,
-                value: tx.value,
-                data: tx.data,
-                ...signatureBN,
-            },
-            chainParams
-        );
-        return signedTx;
+        const signedTx = TransactionFactory.fromTxData({
+            nonce: tx.nonce,
+            gasPrice: tx.gasPrice,
+            gasLimit: tx.gasLimit,
+            to: tx.to,
+            value: tx.value,
+            data: tx.data,
+            v: signatureBN.v,
+            r: signatureBN.r,
+            s: signatureBN.s
+        });
+
+        return signedTx as any
     }
 
     // Returns an array of derivation paths that need to sign this transaction

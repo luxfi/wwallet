@@ -274,7 +274,7 @@ export abstract class WalletProvider {
     async sendLuxC(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<string> {
         let fromAddr = this.getAddressC();
         let tx = await buildEvmTransferNativeTx(fromAddr, to, amount, gasPrice, gasLimit);
-        let txId = await this.issueEvmTx(tx);
+        let txId = await this.issueEvmTx(tx as any);
         await this.updateLuxBalanceC();
         return txId;
     }
@@ -337,7 +337,7 @@ export abstract class WalletProvider {
      */
     async sendErc721(contractAddress: string, to: string, tokenID: number, gasPrice: BN, gasLimit: number) {
         const tx = await buildEvmTransferErc721Tx(this.getAddressC(), to, gasPrice, gasLimit, contractAddress, tokenID);
-        return await this.issueEvmTx(tx);
+        return await this.issueEvmTx(tx as any);
     }
 
     /**
@@ -468,7 +468,7 @@ export abstract class WalletProvider {
      */
     async issueEvmTx(tx: Transaction | FeeMarketEIP1559Transaction): Promise<string> {
         let signedTx = await this.signEvm(tx);
-        let txHex = signedTx.serialize().toString('hex');
+        let txHex = (signedTx as any).serialize().toString('hex');
         let hash = await web3.eth.sendSignedTransaction('0x' + txHex);
         const txHash = hash.transactionHash;
         return await waitTxEvm(txHash);

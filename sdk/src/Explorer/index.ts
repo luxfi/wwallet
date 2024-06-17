@@ -1,4 +1,4 @@
 export * from './explorer';
 export * from './indexer';
 export * from './coingecko';
-export * from './aurora';
+export * from './cloud';

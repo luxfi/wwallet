@@ -17,6 +17,8 @@ import { bintools } from '@/common';
 import { getAccountPathLux, getAccountPathEVM } from '@/Wallet/helpers/derivationHelper';
 import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 
+type AllowedTransactions = Transaction | FeeMarketEIP1559Transaction;
+
 //TODO: Should extend public mnemonic wallet
 export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
     evmWallet: EvmWallet;
@@ -99,7 +101,7 @@ export class MnemonicWallet extends HDWalletAbstract implements UnsafeWallet {
      * Signs an EVM transaction on the C chain.
      * @param tx The unsigned transaction
      */
-    async signEvm(tx: Transaction | FeeMarketEIP1559Transaction): Promise<Transaction | FeeMarketEIP1559Transaction> {
+    async signEvm(tx: AllowedTransactions): Promise<AllowedTransactions> {
         return this.evmWallet.signEVM(tx);
     }
 

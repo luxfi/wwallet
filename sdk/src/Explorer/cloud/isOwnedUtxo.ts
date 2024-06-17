@@ -1,4 +1,4 @@
-import { PChainConsumedUtxo, Utxo, PChainEmittedUtxo } from '@luxfi/aurora';
+import { PChainConsumedUtxo, Utxo, PChainEmittedUtxo } from '@luxfi/cloud';
 
 /**
  * Check if the UTXO is owned by one of the given addresses

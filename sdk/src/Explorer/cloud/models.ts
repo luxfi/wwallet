@@ -9,9 +9,9 @@ import {
     CChainImportTransaction,
     SortOrder,
     Utxo,
-    PChainConsumedUtxo,
-    PChainEmittedUtxo,
-} from '@luxfi/aurora';
+    //PChainConsumedUtxo,
+    //PChainEmittedUtxo,
+} from '@luxfi/cloud';
 
 export type XChainTransaction = XChainLinearTransaction | XChainNonLinearTransaction;
 export interface GetBalancesParams {
@@ -48,7 +48,7 @@ export type TransactionTypeName =
 
 export type TransactionType = XChainTransaction | PChainTransaction | CChainImportTransaction | CChainExportTransaction;
 
-export type UtxoType = Utxo | PChainEmittedUtxo | PChainConsumedUtxo;
+export type UtxoType = Utxo //| PChainEmittedUtxo | PChainConsumedUtxo;
 
 export function isTransactionX(tx: TransactionType): tx is XChainTransaction {
     return (tx as XChainTransaction).amountUnlocked !== undefined && (tx as XChainTransaction).memo !== undefined;
@@ -81,13 +81,13 @@ export interface GetTransactionsParams {
     sortOrder?: SortOrder;
 }
 
-export function isPChainEmittedUTXO(utxo: UtxoType): utxo is PChainEmittedUtxo {
-    return (utxo as PChainEmittedUtxo).assetId !== undefined;
-}
-
-export function isPChainConsumedUTXO(utxo: UtxoType): utxo is PChainConsumedUtxo {
-    return (utxo as PChainConsumedUtxo).fromTx !== undefined;
-}
+//export function isPChainEmittedUTXO(utxo: UtxoType): utxo is PChainEmittedUtxo {
+//    return (utxo as PChainEmittedUtxo).assetId !== undefined;
+//}
+//
+//export function isPChainConsumedUTXO(utxo: UtxoType): utxo is PChainConsumedUtxo {
+//    return (utxo as PChainConsumedUtxo).fromTx !== undefined;
+//}
 
 export function isUtxo(utxo: UtxoType): utxo is Utxo {
     return (utxo as Utxo).asset !== undefined;

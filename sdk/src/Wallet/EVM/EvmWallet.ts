@@ -1,5 +1,6 @@
 import { Buffer as BufferLux } from 'luxnet';
-import { FeeMarketEIP1559Transaction, Transaction } from '@ethereumjs/tx';
+import { Transaction, FeeMarketEIP1559Transaction, TransactionFactory } from '@ethereumjs/tx';
+import { Common } from '@ethereumjs/common';
 import { luxnet } from '@/Network/network';
 import {
     KeyChain as EVMKeyChain,
@@ -19,18 +20,24 @@ import {
     TypedMessage,
 } from '@metamask/eth-sig-util';
 import * as bitcoin from 'bitcoinjs-lib';
+import * as ecpair from 'ecpair';
+
+import { ECPairInterface, ECPairFactory, ECPairAPI, TinySecp256k1Interface } from 'ecpair';
+const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
+const ECPair: ECPairAPI = ECPairFactory(tinysecp);
+
+type AllowedTransactions = Transaction | FeeMarketEIP1559Transaction;
 
 export class EvmWallet extends EvmWalletReadonly {
     private privateKey: Buffer;
-    private btcPair: bitcoin.ECPairInterface;
+    private btcPair: ecpair.ECPairInterface;
 
     constructor(key: Buffer) {
-        // Compute the uncompressed public key from private key
         let pubKey = computePublicKey(key);
 
         super(pubKey);
 
-        this.btcPair = bitcoin.ECPair.fromPrivateKey(key);
+        this.btcPair = ECPair.fromPrivateKey(key);
         this.privateKey = key;
     }
 
@@ -53,8 +60,21 @@ export class EvmWallet extends EvmWalletReadonly {
         return keychain.importKey(this.getPrivateKeyBech());
     }
 
-    signEVM(tx: Transaction | FeeMarketEIP1559Transaction) {
-        return tx.sign(this.privateKey);
+    signEVM(tx: Transaction | FeeMarketEIP1559Transaction): Transaction | FeeMarketEIP1559Transaction {
+        const customCommon = new Common({
+            chain: {
+                name: 'mainnet', // Replace with your actual chain's name
+                chainId: 7777,
+                networkId: 7777
+            },
+            hardfork: 'istanbul'
+        });
+
+        const txData = (tx as any).toJSON();
+
+        const txFactory = TransactionFactory.fromTxData(txData, { common: customCommon });
+        const signedTx = txFactory.sign(this.privateKey);
+        return signedTx as Transaction | FeeMarketEIP1559Transaction;
     }
 
     signBTCHash(hash: Buffer) {
@@ -69,23 +89,10 @@ export class EvmWallet extends EvmWalletReadonly {
         return this.privateKey.toString('hex');
     }
 
-    /**
-     * This function is equivalent to the eth_sign Ethereum JSON-RPC method as specified in EIP-1417,
-     * as well as the MetaMask's personal_sign method.
-     * @param data The hex data to sign. Must start with `0x`.
-     */
     personalSign(data: string) {
         return personalSign({ privateKey: this.privateKey, data });
     }
 
-    /**
-     * Sign typed data according to EIP-712. The signing differs based upon the version.
-     * V1 is based upon an early version of EIP-712 that lacked some later security improvements, and should generally be neglected in favor of later versions.
-     * V3 is based on EIP-712, except that arrays and recursive data structures are not supported.
-     * V4 is based on EIP-712, and includes full support of arrays and recursive data structures.
-     * @param data The typed data to sign.
-     * @param version The signing version to use.
-     */
     signTypedData<V extends SignTypedDataVersion, T extends MessageTypes>(
         data: V extends 'V1' ? TypedDataV1 : TypedMessage<T>,
         version: V
@@ -97,26 +104,14 @@ export class EvmWallet extends EvmWalletReadonly {
         });
     }
 
-    /**
-     * V1 is based upon an early version of EIP-712 that lacked some later security improvements, and should generally be neglected in favor of later versions.
-     * @param data The typed data to sign.
-     * */
     signTypedData_V1(data: TypedDataV1) {
         return this.signTypedData(data, SignTypedDataVersion.V1);
     }
 
-    /**
-     * V3 is based on EIP-712, except that arrays and recursive data structures are not supported.
-     * @param data The typed data to sign.
-     */
     signTypedData_V3(data: TypedMessage<any>) {
         return this.signTypedData(data, SignTypedDataVersion.V3);
     }
 
-    /**
-     * V4 is based on EIP-712, and includes full support of arrays and recursive data structures.
-     * @param data The typed data to sign.
-     */
     signTypedData_V4(data: TypedMessage<any>) {
         return this.signTypedData(data, SignTypedDataVersion.V4);
     }
