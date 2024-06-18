@@ -1,3 +1,7 @@
+/*
+ * @Author: Jason
+ * @Description: 
+ */
 import { GetTransactionsParams, TransactionType } from './models';
 import { splitToParts } from './utils';
 import { filterDuplicateCloudTxs } from './filterDuplicateCloudTxs';
@@ -14,7 +18,7 @@ export async function getTransactionsForAddresses(config: GetTransactionsParams,
     const addrParts = splitToParts<string>(config.addresses, addressLimit);
 
     async function fetchAll(config: GetTransactionsParams, currentCount = 0): Promise<TransactionType[]> {
-        const res = await Cloud.primaryNetwork.listLatestPrimaryNetworkTransactions({
+        const res = await Cloud.primaryNetworkTransactions.listLatestPrimaryNetworkTransactions({
             ...config,
             addresses: config.addresses.join(','),
         });

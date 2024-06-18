@@ -2,11 +2,7 @@ import { GetBalancesParams } from './models';
 import Cloud from './Cloud';
 import { BN } from 'luxnet';
 import { splitToParts } from './utils';
-import {
-    ListPChainBalancesResponse,
-    ListXChainBalancesResponse,
-    ListCChainAtomicBalancesResponse,
-} from '@luxfi/cloud';
+import { ListPChainBalancesResponse, ListXChainBalancesResponse, ListCChainAtomicBalancesResponse } from '@luxfi/cloud';
 
 export async function getBalancesForAddresses(config: GetBalancesParams) {
     // Max number of addresses cloud accepts
@@ -14,7 +10,7 @@ export async function getBalancesForAddresses(config: GetBalancesParams) {
     const addressBuckets = splitToParts<string>(config.addresses, addressLimit);
 
     const promises = addressBuckets.map((bucketAddrs) => {
-        return Cloud.primaryNetwork.getBalancesByAddresses({
+        return Cloud.primaryNetworkBalances.getBalancesByAddresses({
             ...config,
             addresses: bucketAddrs.join(','),
         });
@@ -38,7 +34,10 @@ export async function getBalancesForAddresses(config: GetBalancesParams) {
         if (isPChainBalancesResponse(val)) {
             unlockedUnstaked.iadd(new BN(val.balances.unlockedUnstaked ? val.balances.unlockedUnstaked[0].amount : 0));
 
-            lockedUnstaked.iadd(new BN(val.balances.lockedUnstaked ? val.balances.lockedUnstaked[0].amount : 0));
+            // lockedUnstaked.iadd(new BN(val.balances.lockedUnstaked ? val.balances.lockedUnstaked[0].amount : 0));
+
+            // The return value is not defined lockedUnstaked
+            lockedUnstaked.iadd(new BN(0));
 
             unlockedStaked.iadd(new BN(val.balances.unlockedStaked ? val.balances.unlockedStaked[0].amount : 0));
 

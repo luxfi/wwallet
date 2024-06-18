@@ -1,7 +1,12 @@
+/*
+ * @Author: Jason
+ * @Description:
+ */
 import { splitToParts } from './utils';
 import Cloud from './Cloud';
 import { Network } from '@luxfi/cloud';
 import { isFujiNetworkId, isMainnetNetworkId } from '@/Network';
+import { NetworkValues } from '@/utils';
 
 export async function listChainsForAddresses(addrs: string[], netID: number) {
     const addressLimit = 64;
@@ -9,10 +14,10 @@ export async function listChainsForAddresses(addrs: string[], netID: number) {
 
     // Cannot use cloud for other networks
     if (!isMainnetNetworkId(netID) && !isFujiNetworkId(netID)) return [];
-    const network = isMainnetNetworkId(netID) ? Network.MAINNET : Network.FUJI;
+    const network = isMainnetNetworkId(netID) ? NetworkValues.MAINNET : NetworkValues.FUJI;
 
     const promises = addrParts.map((addresses) => {
-        return Cloud.primaryNetwork.getChainAddresses({
+        return Cloud.primaryNetwork.getChainIdsForAddresses({
             addresses: addresses.join(','),
             network,
         });

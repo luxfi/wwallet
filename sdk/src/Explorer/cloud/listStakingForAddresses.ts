@@ -4,11 +4,12 @@ import { splitToParts } from './utils';
 import { filterDuplicateCloudTxs } from './filterDuplicateCloudTxs';
 import Cloud from './Cloud';
 import { Network, PChainId, PChainTransaction, SortOrder } from '@luxfi/cloud';
+import { NetworkValues, SortOrderValues, P_CHAINValues } from '@/utils';
 
 export async function listStakingForAddresses(addrs: string[], netID: number) {
     if (!addrs.length) return [];
 
-    const network = isMainnetNetworkId(netID) ? Network.MAINNET : Network.FUJI;
+    const network = isMainnetNetworkId(netID) ? NetworkValues.MAINNET : NetworkValues.FUJI;
 
     // Cannot use cloud for other networks
     if (!isMainnetNetworkId(netID) && !isFujiNetworkId(netID)) return [];
@@ -18,7 +19,7 @@ export async function listStakingForAddresses(addrs: string[], netID: number) {
 
     async function fetchAll(config: ListStakingParams): Promise<PChainTransaction[]> {
         // const res = await CloudService.listStaking(config)
-        const res = await Cloud.primaryNetwork.listActivePrimaryNetworkStakingTransactions({
+        const res = await Cloud.primaryNetworkTransactions.listActivePrimaryNetworkStakingTransactions({
             ...config,
             addresses: config.addresses.join(','),
         });
@@ -37,8 +38,8 @@ export async function listStakingForAddresses(addrs: string[], netID: number) {
         return fetchAll({
             addresses: addrs,
             pageSize: 100,
-            sortOrder: SortOrder.DESC,
-            blockchainId: PChainId.P_CHAIN,
+            sortOrder: SortOrderValues.DESC,
+            blockchainId: P_CHAINValues.P_CHAIN,
             network,
         });
     });
