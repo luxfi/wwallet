@@ -1,8 +1,3 @@
-# 🔴WARNING: Beta Release🔴
-
--   This library is under development and there might be frequent breaking changes.
--   Audit pending.
-
 # Lux Wallet SDK (Beta)
 
 Lux Wallet SDK is a Typescript library for creating and managing decentralized wallets.
@@ -29,11 +24,11 @@ Using the luxnet-wallet-sdk developers can:
 
 With npm
 
-`npm install --save @luxfi/luxnet-wallet-sdk`
+`npm install --save @luxfi/wallet-sdk`
 
 or yarn
 
-`yarn add @luxfi/luxnet-wallet-sdk`
+`yarn add @luxfi/wallet-sdk`
 
 ## Local build
 
