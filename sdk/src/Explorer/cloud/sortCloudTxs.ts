@@ -1,7 +1,18 @@
+/*
+ * @Author: Jason
+ * @Description:
+ */
+/*
+ * @Author: Jason
+ * @Description:
+ */
 import { TransactionType, CChainTransaction, XChainTransaction } from './models';
+
+import { SortOrderValues } from '@/utils';
+
 import { SortOrder, PChainTransaction } from '@luxfi/cloud';
 
-export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {
+export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrderValues.DESC) {
     return txs.sort((a, b) => {
         const timeA =
             (a as XChainTransaction | CChainTransaction).timestamp || (a as PChainTransaction).blockTimestamp || 0;
@@ -11,7 +22,7 @@ export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = Sort
 
         const orderVal = timeB - timeA;
 
-        const multiplier = sortOrder === SortOrder.DESC ? 1 : -1;
+        const multiplier = sortOrder === SortOrderValues.DESC ? 1 : -1;
         return orderVal * multiplier;
     });
 }

@@ -1,7 +1,12 @@
+/*
+ * @Author: Jason
+ * @Description:
+ */
 import { Buffer as BufferLux } from 'luxnet';
 import { validateAddress } from '@/helpers/address_helper';
 import createHash from 'create-hash';
 import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils';
+import { Network, SortOrder, PChainId } from '@luxfi/cloud';
 
 /**
  * Checks if address is valid.
@@ -33,3 +38,25 @@ export function parseNftPayload(rawPayload: string): PayloadBase {
 
     return payloadbase;
 }
+
+/**
+ * rename Network.
+ */
+export const NetworkValues = {
+    MAINNET: 'mainnet' as Network,
+    FUJI: 'fuji' as Network,
+};
+/**
+ * rename SortOrder.
+ */
+export const SortOrderValues = {
+    ASC: 'asc' as SortOrder,
+    DESC: 'desc' as SortOrder,
+};
+/**
+ * rename P_CHAINV.
+ */
+export const P_CHAINValues = {
+    P_CHAIN: 'p-chain' as PChainId,
+    LPO_YY: '11111111111111111111111111111111LpoYY' as PChainId,
+};
