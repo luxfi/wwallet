@@ -14,7 +14,7 @@
         "test:watch": "jest --verbose --watch ./tests"
     },
     "dependencies": {
-        "@luxfi/wallet-sdk": "0.20.0-alpha.11",
+        "@luxfi/wallet-sdk": "0.20.6",
         "@luxfi/cloud": "0.1.0",
         "@luxfi/vue-components": "0.10.0",
         "@ethereumjs/common": "2.0.0",
