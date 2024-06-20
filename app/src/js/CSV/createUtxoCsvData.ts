@@ -1,9 +1,9 @@
-import { isUtxo, UtxoType } from '@/js/Aurora/models'
+import { isUtxo, UtxoType } from '@/js/Cloud/models'
 import { UtxoCsvRow } from '@/js/CSV/models'
-import { isOwnedUTXO } from '@/js/Aurora/isOwnedUtxo'
+import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
 
 /**
- * Return data needed for a CSV row given a UTXO object from Aurora
+ * Return data needed for a CSV row given a UTXO object from Cloud
  * @param utxo
  * @param ownedAddresses
  */

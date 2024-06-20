@@ -34,20 +34,20 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { AssetsDict, NftFamilyDict } from '@/store/modules/assets/types'
-import { PChainUtxo, Utxo } from '@luxfi/aurora'
+import { PChainUtxo, Utxo } from '@luxfi/cloud'
 
 import StakingTx from '@/components/SidePanels/History/ViewTypes/StakingTx.vue'
 import BaseTx from '@/components/SidePanels/History/ViewTypes/BaseTx.vue'
 import ImportExport from '@/components/SidePanels/History/ViewTypes/ImportExport.vue'
 import moment from 'moment'
-import { getUrlFromTransaction } from '@/js/Aurora/getUrlFromTransaction'
+import { getUrlFromTransaction } from '@/js/Cloud/getUrlFromTransaction'
 import {
     TransactionType,
     isCChainImportTransaction,
     isTransactionX,
     isTransactionC,
     TransactionTypeName,
-} from '@/js/Aurora/models'
+} from '@/js/Cloud/models'
 import { ava } from '@/LUX'
 
 @Component({

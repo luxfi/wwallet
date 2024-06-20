@@ -37,14 +37,14 @@ import {
     isTransactionC,
     TransactionTypeName,
     XChainTransaction,
-} from '@/js/Aurora/models'
+} from '@/js/Cloud/models'
 import ImportExport from '@/components/SidePanels/History/ViewTypes/ImportExport.vue'
 import BaseTx from '@/components/SidePanels/History/ViewTypes/BaseTx.vue'
 import StakingTx from '@/components/SidePanels/History/ViewTypes/StakingTx.vue'
-import { Utxo, PChainTransaction, PChainUtxo } from '@luxfi/aurora'
-import { getUrlFromTransaction } from '@/js/Aurora/getUrlFromTransaction'
+import { Utxo, PChainTransaction, PChainUtxo } from '@luxfi/cloud'
+import { getUrlFromTransaction } from '@/js/Cloud/getUrlFromTransaction'
 import { ava } from '@/LUX'
-import { isOwnedUTXO } from '@/js/Aurora/isOwnedUtxo'
+import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
 import { WalletType } from '@/js/wallets/types'
 
 @Component({

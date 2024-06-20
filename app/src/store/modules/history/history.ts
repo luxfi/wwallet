@@ -3,7 +3,7 @@ import { RootState } from '@/store/types'
 import { HistoryState } from '@/store/modules/history/types'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
-import { getAuroraHistory } from '@/store/modules/history/getAuroraHistory'
+import { getCloudHistory } from '@/store/modules/history/getCloudHistory'
 
 const history_module: Module<HistoryState, RootState> = {
     namespaced: true,
@@ -48,7 +48,7 @@ const history_module: Module<HistoryState, RootState> = {
             }
 
             state.isUpdating = true
-            const txs = await getAuroraHistory(wallet, network.networkId, isMainnet, 30)
+            const txs = await getCloudHistory(wallet, network.networkId, isMainnet, 30)
 
             state.recentTransactions = txs
             state.isUpdating = false
@@ -80,7 +80,7 @@ const history_module: Module<HistoryState, RootState> = {
 
             state.isUpdatingAll = true
             try {
-                const txs = await getAuroraHistory(wallet, network.networkId, isMainnet)
+                const txs = await getCloudHistory(wallet, network.networkId, isMainnet)
                 state.allTransactions = txs
             } catch (e) {
                 console.log(e)

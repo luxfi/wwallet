@@ -1,13 +1,13 @@
 import { WalletType } from '@/js/wallets/types'
-import { getTransactionsForAddresses } from '@/js/Aurora/getTransactionsForAddresses'
-import { BlockchainId, Network, SortOrder } from '@luxfi/aurora'
-import { filterDuplicateAuroraTxs } from '@/js/Aurora/filterDuplicateAuroraTxs'
-import { sortAuroraTxs } from '@/js/Aurora/sortAuroraTxs'
+import { getTransactionsForAddresses } from '@/js/Cloud/getTransactionsForAddresses'
+import { BlockchainId, Network, SortOrder } from '@luxfi/cloud'
+import { filterDuplicateCloudTxs } from '@/js/Cloud/filterDuplicateCloudTxs'
+import { sortCloudTxs } from '@/js/Cloud/sortCloudTxs'
 
 const PAGE_SIZE = 100
 const SORT = SortOrder.DESC
 
-export async function getAuroraHistory(
+export async function getCloudHistory(
     wallet: WalletType,
     networkId: number,
     isMainnet: boolean,
@@ -32,7 +32,7 @@ export async function getAuroraHistory(
         return []
     }
 
-    const txsAuroraX = await getTransactionsForAddresses(
+    const txsCloudX = await getTransactionsForAddresses(
         {
             addresses: avmAddrs,
             blockchainId: BlockchainId.X_CHAIN,
@@ -43,7 +43,7 @@ export async function getAuroraHistory(
         limit
     )
 
-    const txsAuroraP = await getTransactionsForAddresses(
+    const txsCloudP = await getTransactionsForAddresses(
         {
             addresses: pvmAddrs,
             blockchainId: BlockchainId.P_CHAIN,
@@ -56,7 +56,7 @@ export async function getAuroraHistory(
 
     const externalAddrs = xExternal.length > pvmAddrs.length ? xExternal.reverse() : pvmAddrs
 
-    const txsAuroraC = await getTransactionsForAddresses(
+    const txsCloudC = await getTransactionsForAddresses(
         {
             addresses: [wallet.getEvmAddressBech(), ...externalAddrs],
             blockchainId: BlockchainId.C_CHAIN,
@@ -68,11 +68,11 @@ export async function getAuroraHistory(
     )
 
     // Join X and P chain transactions
-    const joined = [...txsAuroraX, ...txsAuroraP, ...txsAuroraC]
+    const joined = [...txsCloudX, ...txsCloudP, ...txsCloudC]
     // Filter duplicates
-    const filtered = filterDuplicateAuroraTxs(joined)
+    const filtered = filterDuplicateCloudTxs(joined)
     // Sort by date
-    const sorted = sortAuroraTxs(filtered)
+    const sorted = sortCloudTxs(filtered)
 
     // Trimmed
     const trimmed = sorted.slice(0, limit)

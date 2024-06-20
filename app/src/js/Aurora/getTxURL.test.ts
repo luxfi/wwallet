@@ -1,4 +1,4 @@
-import { getTxURL } from '@/js/Aurora/getTxURL'
+import { getTxURL } from '@/js/Cloud/getTxURL'
 
 describe('getTxURL', () => {
     it('can get mainnet url for X Chain', () => {

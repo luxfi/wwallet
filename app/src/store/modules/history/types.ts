@@ -1,10 +1,10 @@
 import Big from 'big.js'
 import moment from 'moment'
-import { TransactionType as AuroraTxType } from '@/js/Aurora/models'
+import { TransactionType as CloudTxType } from '@/js/Cloud/models'
 
 export interface HistoryState {
-    recentTransactions: AuroraTxType[]
-    allTransactions: AuroraTxType[]
+    recentTransactions: CloudTxType[]
+    allTransactions: CloudTxType[]
     isUpdating: boolean
     isError: boolean
     isUpdatingAll: boolean

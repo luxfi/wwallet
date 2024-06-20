@@ -1,6 +1,6 @@
-import { Aurora } from '@luxfi/aurora'
+import { Cloud } from '@luxfi/cloud'
 
-const api = new Aurora({
-    BASE: 'https://aurora-api-dev.lux.network',
+const api = new Cloud({
+    BASE: 'https://cloud-api-dev.lux.network',
 })
 export default api

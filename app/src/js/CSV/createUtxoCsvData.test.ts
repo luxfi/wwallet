@@ -1,6 +1,6 @@
 import { createUtxoCsvData } from '@/js/CSV/createUtxoCsvData'
-import { UtxoType } from '@/js/Aurora/models'
-import { Utxo } from '@luxfi/aurora'
+import { UtxoType } from '@/js/Cloud/models'
+import { Utxo } from '@luxfi/cloud'
 
 const LUX_ID = 'FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z'
 

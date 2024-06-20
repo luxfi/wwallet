@@ -82,10 +82,10 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
-import { BlockchainId, Aurora, OperationStatus } from '@luxfi/aurora'
+import { BlockchainId, Cloud, OperationStatus } from '@luxfi/cloud'
 import { WalletType } from '@/js/wallets/types'
 import MultiSelect from '../misc/MultiSelect.vue'
-import aurora from '@/js/Aurora/Aurora'
+import cloud from '@/js/Cloud/Cloud'
 import Spinner from '@/components/misc/Spinner.vue'
 import RadioButtons from '../misc/RadioButtons.vue'
 import { setTimeoutInterval } from '@/helpers/setTimeoutInterval'
@@ -105,7 +105,7 @@ type Timeframe = 'Last 3 Months' | 'Last 6 Months' | 'This Year' | 'Last Year' |
         RadioButtons,
     },
 })
-export default class ExportAuroraHistoryModal extends Vue {
+export default class ExportCloudHistoryModal extends Vue {
     operationID: string | null = null
     downloadURL: string | null = null
     loading = false
@@ -143,7 +143,7 @@ export default class ExportAuroraHistoryModal extends Vue {
     async checkStatus(): Promise<boolean> {
         if (!this.operationID || this.downloadURL) return true
 
-        const res = await aurora.operations.getOperationResult({ operationId: this.operationID })
+        const res = await cloud.operations.getOperationResult({ operationId: this.operationID })
 
         if (res.operationStatus == OperationStatus.COMPLETED) {
             this.downloadURL = res.metadata.downloadUrl || null

@@ -1,5 +1,5 @@
-import { TransactionTypeName } from '@/js/Aurora/models'
-import { BlockchainId } from '@luxfi/aurora'
+import { TransactionTypeName } from '@/js/Cloud/models'
+import { BlockchainId } from '@luxfi/cloud'
 
 export interface UtxoCsvRow {
     txID: string

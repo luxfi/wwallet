@@ -5,10 +5,10 @@ import {
     TransactionType,
     CChainTransaction,
     XChainTransaction,
-} from '@/js/Aurora/models'
-import { SortOrder, PChainTransaction } from '@luxfi/aurora'
+} from '@/js/Cloud/models'
+import { SortOrder, PChainTransaction } from '@luxfi/cloud'
 
-export function sortAuroraTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {
+export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {
     return txs.sort((a, b) => {
         const timeA =
             (a as XChainTransaction | CChainTransaction).timestamp ||

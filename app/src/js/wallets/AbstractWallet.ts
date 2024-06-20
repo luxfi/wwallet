@@ -25,7 +25,7 @@ import { AvmImportChainType, WalletType } from '@/js/wallets/types'
 import { issueC, issueP, issueX } from '@/helpers/issueTx'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { getStakeForAddresses } from '@/helpers/utxo_helper'
-import aurora from '@/js/Aurora/Aurora'
+import cloud from '@/js/Cloud/Cloud'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 import { web3 } from '@/evm'
@@ -34,7 +34,7 @@ import {
     BlockchainId,
     CreatePrimaryNetworkTransactionExportRequest,
     PrimaryNetworkOptions,
-} from '@luxfi/aurora'
+} from '@luxfi/cloud'
 import { toChecksumAddress } from 'ethereumjs-util'
 
 const uniqid = require('uniqid')
@@ -115,12 +115,12 @@ abstract class AbstractWallet {
         const isFuji = isTestnetNetworkID(netID)
 
         let bal
-        // Can't use aurora if not mainnet/fuji
+        // Can't use cloud if not mainnet/fuji
         if (!isMainnet && !isFuji) {
             bal = new BN(await web3.eth.getBalance(this.getEvmAddress()))
         } else {
             const chainId = isMainnet ? '43114' : '43113'
-            const res = await aurora.evm.getNativeBalance({
+            const res = await cloud.evm.getNativeBalance({
                 chainId: chainId,
                 address: '0x' + this.getEvmAddress(),
             })
@@ -466,14 +466,14 @@ abstract class AbstractWallet {
     }
 
     /**
-     * Use Aurora to start a transaction history export job.
+     * Use Cloud to start a transaction history export job.
      * Excluding EVM for now.
      */
     async startTxExportJob(startDate: Date, endDate: Date, chains: BlockchainId[]) {
         const addresses = this.getHistoryAddresses()
         const stripped = addresses.map((addr) => addr.split('-')[1] || addr)
 
-        const res = await aurora.operations.postTransactionExportJob({
+        const res = await cloud.operations.postTransactionExportJob({
             requestBody: {
                 type:
                     CreatePrimaryNetworkTransactionExportRequest.type

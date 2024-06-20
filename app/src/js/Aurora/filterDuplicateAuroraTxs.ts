@@ -1,6 +1,6 @@
 import { TransactionType } from './models'
 
-export function filterDuplicateAuroraTxs(txs: TransactionType[]) {
+export function filterDuplicateCloudTxs(txs: TransactionType[]) {
     const ids: string[] = []
     return txs.filter((tx) => {
         if (ids.includes(tx.txHash)) return false

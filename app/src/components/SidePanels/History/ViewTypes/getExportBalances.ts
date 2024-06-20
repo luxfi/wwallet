@@ -5,9 +5,9 @@ import {
     isTransactionP,
     isTransactionX,
     TransactionType,
-} from '@/js/Aurora/models'
+} from '@/js/Cloud/models'
 import { BN } from 'luxnet'
-import { Utxo, PChainUtxo, UtxoType } from '@luxfi/aurora'
+import { Utxo, PChainUtxo, UtxoType } from '@luxfi/cloud'
 import LuxAsset from '@/js/LuxAsset'
 export function getExportBalances(tx: TransactionType, destinationChainId: string, getAsset: any) {
     const balances: {

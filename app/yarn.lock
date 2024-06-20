@@ -16,7 +16,7 @@
   resolved "https://registry.yarnpkg.com/@luxfi/luxnet-wallet-sdk/-/luxnet-wallet-sdk-0.20.0-alpha.11.tgz#6c499ebf52cbed9d319f1416bd8d22845851b2de"
   integrity sha512-y3fV2C3dbi0ysAN824Y12nNZTK1EDF+XuXpq/i2KcBG0zikhNnSsf/FFfB4WJlxwxI5obKGTq7gyexOlM8wC4w==
   dependencies:
-    "@luxfi/aurora" "2.8.0-alpha.92"
+    "@luxfi/cloud" "2.8.0-alpha.92"
     "@luxfi/hw-app-luxnet" "0.6.6"
     "@ethereumjs/common" "2.6.0"
     "@ethereumjs/tx" "3.4.0"
@@ -46,14 +46,14 @@
     web3-eth-contract "1.8.1"
     xss "1.0.11"
 
-"@luxfi/aurora@2.8.0-alpha.108":
+"@luxfi/cloud@2.8.0-alpha.108":
   version "2.8.0-alpha.108"
-  resolved "https://registry.yarnpkg.com/@luxfi/aurora/-/aurora-2.8.0-alpha.108.tgz#8d22cbb292773a12763382e5657e739fd8222505"
+  resolved "https://registry.yarnpkg.com/@luxfi/cloud/-/cloud-2.8.0-alpha.108.tgz#8d22cbb292773a12763382e5657e739fd8222505"
   integrity sha512-BMG8yfp6YyHbTQuOpN8xOqzShO0DSgL0wlZxX736+NVtWEgOZdG/PRqFxI82ISpP12w0JLUYeWwtOYLAP2E/sQ==
 
-"@luxfi/aurora@2.8.0-alpha.92":
+"@luxfi/cloud@2.8.0-alpha.92":
   version "2.8.0-alpha.92"
-  resolved "https://registry.yarnpkg.com/@luxfi/aurora/-/aurora-2.8.0-alpha.92.tgz#91f63d893432ceed46d701813ad67acf9d6b912d"
+  resolved "https://registry.yarnpkg.com/@luxfi/cloud/-/cloud-2.8.0-alpha.92.tgz#91f63d893432ceed46d701813ad67acf9d6b912d"
   integrity sha512-Kkj69Exk3WY1nVpmrcyvEM7F28jimgmhYDY2rs4SanyNM5j4A0KaVBKLtVqFe6wsXOxYihqXlAG0qS/VNTsTOg==
 
 "@luxfi/hw-app-luxnet@0.6.6":

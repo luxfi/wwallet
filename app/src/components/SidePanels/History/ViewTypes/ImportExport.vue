@@ -24,10 +24,10 @@ import {
     isTransactionX,
     TransactionType,
     XChainTransaction,
-} from '@/js/Aurora/models'
+} from '@/js/Cloud/models'
 import { getExportBalances } from '@/components/SidePanels/History/ViewTypes/getExportBalances'
 import { WalletType } from '@/js/wallets/types'
-import { isOwnedUTXO } from '@/js/Aurora/isOwnedUtxo'
+import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
 
 function idToAlias(chainId: string | undefined) {
     if (chainId === pChain.getBlockchainID()) {

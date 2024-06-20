@@ -1,8 +1,9 @@
-const webpack = require('webpack')
-const path    = require('path')
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     chainWebpack: config => {
+        // Set resolve aliases
         config.resolve.alias
             .set('@ledgerhq/cryptoassets/data/eip712', path.resolve(__dirname, 'node_modules/@ledgerhq/cryptoassets/lib-es/data/eip712'))
             .set('@ledgerhq/cryptoassets/data/evm/index', path.resolve(__dirname, 'node_modules/@ledgerhq/cryptoassets/lib-es/data/evm/index'))
@@ -16,27 +17,44 @@ module.exports = {
             .set('path', 'path-browserify')
             .set('zlib', 'browserify-zlib');
 
+        // Provide global variables
         config.plugin('provide').use(webpack.ProvidePlugin, [
             {
                 process: 'process/browser',
             },
         ]);
 
+        // Configure module rules
+        config.module
+            .rule('js')
+            .include
+                .add(/node_modules\/@metamask/)
+                .add(/node_modules\/@ethereumjs/)
+                .add(/node_modules\/superstruct/)
+                .end()
+            .use('babel-loader')
+                .loader('babel-loader')
+                .tap(options => {
+                    return options;
+                });
+
+        // Configure TypeScript rules
         config.module
             .rule('typescript')
             .test(/\.tsx?$/)
             .exclude
-            .add(filepath => (
-                /node_modules/.test(filepath) && !/node_modules\/@ledgerhq/.test(filepath)
-            ))
-            .end()
+                .add(filepath => (
+                    /node_modules/.test(filepath) && !/node_modules\/@ledgerhq/.test(filepath)
+                ))
+                .end()
             .use('ts-loader')
-            .loader('ts-loader')
-            .options({
-                transpileOnly: true,
-                configFile: 'tsconfig.json',
-            });
+                .loader('ts-loader')
+                .options({
+                    transpileOnly: true,
+                    configFile: 'tsconfig.json',
+                });
 
+        // Add resolve extensions
         config.resolve.extensions
             .merge(['.ts', '.tsx']);
     },

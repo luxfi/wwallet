@@ -10,7 +10,7 @@ import {
     SortOrder,
     Utxo,
     PChainUtxo,
-} from '@luxfi/aurora'
+} from '@luxfi/cloud'
 
 export type XChainTransaction = XChainLinearTransaction | XChainNonLinearTransaction
 export interface GetBalancesParams {

@@ -91,8 +91,8 @@ import TxHistoryNftFamilyGroup from '@/components/SidePanels/TxHistoryNftFamilyG
 import { getTransactionSummary } from '@/helpers/history_helper'
 import BaseTxOutput from '@/components/SidePanels/History/ViewTypes/BaseTxOutput.vue'
 import BaseTxNFTOutput from '@/components/SidePanels/History/ViewTypes/BaseTxNFTOutput.vue'
-import { isOwnedUTXO } from '@/js/Aurora/isOwnedUtxo'
-import { TransactionTypeName, XChainTransaction } from '@/js/Aurora/models'
+import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
+import { TransactionTypeName, XChainTransaction } from '@/js/Cloud/models'
 import BaseTxUtxo from '@/components/SidePanels/History/ViewTypes/BaseTxUtxo.vue'
 
 let payloadtypes = PayloadTypes.getInstance()

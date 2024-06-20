@@ -1,12 +1,12 @@
-import { isTransactionP, isTransactionX, TransactionType } from '@/js/Aurora/models'
+import { isTransactionP, isTransactionX, TransactionType } from '@/js/Cloud/models'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
-import { getTxURL } from '@/js/Aurora/getTxURL'
+import { getTxURL } from '@/js/Cloud/getTxURL'
 
 /**
- * Given a aurora transaction, returns its URL on the explorer.
+ * Given a cloud transaction, returns its URL on the explorer.
  * @param netID The network ID transaction is made on
- * @param transaction Transaction data from aurora
+ * @param transaction Transaction data from cloud
  */
 export function getUrlFromTransaction(netID: number, transaction: TransactionType) {
     const isMainnet = isMainnetNetworkID(netID)

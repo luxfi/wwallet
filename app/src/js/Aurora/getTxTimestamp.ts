@@ -1,4 +1,4 @@
-import { isTransactionC, isTransactionX, TransactionType } from '@/js/Aurora/models'
+import { isTransactionC, isTransactionX, TransactionType } from '@/js/Cloud/models'
 
 /**
  * Return Javascript UNIX timestamp of the given transaction

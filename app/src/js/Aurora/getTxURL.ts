@@ -13,7 +13,7 @@ const avascanFuji = `https://testnet.avascan.info`
  */
 export function getTxURL(txHash: string, chain: ChainIdType, isMainnet: boolean) {
     // For C chain use avascan
-    //TODO: Switch to aurora when ready
+    //TODO: Switch to cloud when ready
     if (chain === 'C') {
         const base = isMainnet ? avascanMainnet : avascanFuji
         return base + `/blockchain/c/tx/${txHash}`

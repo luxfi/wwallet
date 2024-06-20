@@ -1,9 +1,9 @@
 import { ava } from '@/LUX'
-import { splitToParts } from '@/js/Aurora/utils'
-import Aurora from '@/js/Aurora/Aurora'
+import { splitToParts } from '@/js/Cloud/utils'
+import Cloud from '@/js/Cloud/Cloud'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
-import { Network } from '@luxfi/aurora'
+import { Network } from '@luxfi/cloud'
 
 export async function listChainsForAddresses(addrs: string[]) {
     const addressLimit = 64
@@ -11,12 +11,12 @@ export async function listChainsForAddresses(addrs: string[]) {
 
     const netID = ava.getNetworkID()
 
-    // Cannot use aurora for other networks
+    // Cannot use cloud for other networks
     if (!isMainnetNetworkID(netID) && !isTestnetNetworkID(netID)) return []
     const network = isMainnetNetworkID(netID) ? Network.MAINNET : Network.FUJI
 
     const promises = addrParts.map((addresses) => {
-        return Aurora.primaryNetwork.getChainAddresses({
+        return Cloud.primaryNetwork.getChainAddresses({
             addresses: addresses.join(','),
             network,
         })

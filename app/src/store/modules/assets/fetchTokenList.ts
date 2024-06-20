@@ -5,7 +5,7 @@ function mapTokenInfo(token: any) {
 }
 
 /**
- * Fetch erc20 token information from aurora
+ * Fetch erc20 token information from cloud
  */
 export async function fetchTokenList(): Promise<TokenList> {
     const res = await fetch(

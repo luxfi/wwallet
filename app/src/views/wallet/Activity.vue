@@ -1,6 +1,6 @@
 <template>
     <div class="activity_page">
-        <ExportAuroraHistoryModal ref="aurora_csv_modal"></ExportAuroraHistoryModal>
+        <ExportCloudHistoryModal ref="cloud_csv_modal"></ExportCloudHistoryModal>
         <div class="explorer_warning" v-if="!hasExplorer">
             <div class="warning_body">
                 <h1>{{ $t('activity.no_explorer.title') }}</h1>
@@ -21,7 +21,7 @@
                             x-small
                             depressed
                             class="button_secondary"
-                            @click="openAuroraCsvModal"
+                            @click="openCloudCsvModal"
                             :disabled="isCsvDisabled"
                         >
                             Export History
@@ -91,7 +91,7 @@ import {
     isTransactionX,
     TransactionType,
     TransactionTypeName,
-} from '@/js/Aurora/models'
+} from '@/js/Cloud/models'
 
 import TxRow from '@/components/wallet/activity/TxRow.vue'
 import RadioButtons from '@/components/misc/RadioButtons.vue'
@@ -102,8 +102,8 @@ import { LuxNetwork } from '@/js/LuxNetwork'
 import ExportCsvModal from '@/components/modals/ExportCsvModal.vue'
 import ExportLuxCsvModal from '@/components/modals/ExportLuxCsvModal.vue'
 import { WalletType } from '@/js/wallets/types'
-import { BlockchainId } from '@luxfi/aurora'
-import ExportAuroraHistoryModal from '@/components/modals/ExportAuroraHistoryModal.vue'
+import { BlockchainId } from '@luxfi/cloud'
+import ExportCloudHistoryModal from '@/components/modals/ExportCloudHistoryModal.vue'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 
@@ -120,7 +120,7 @@ const MONTH_MIN = 8
     components: {
         ExportLuxCsvModal,
         ExportCsvModal,
-        ExportAuroraHistoryModal,
+        ExportCloudHistoryModal,
         Spinner,
         TxRow,
         RadioButtons,
@@ -148,7 +148,7 @@ export default class Activity extends Vue {
     $refs!: {
         csv_modal: ExportCsvModal
         lux_csv_modal: ExportLuxCsvModal
-        aurora_csv_modal: ExportAuroraHistoryModal
+        cloud_csv_modal: ExportCloudHistoryModal
     }
 
     openCsvModal() {
@@ -159,8 +159,8 @@ export default class Activity extends Vue {
         this.$refs.lux_csv_modal.open()
     }
 
-    openAuroraCsvModal() {
-        this.$refs.aurora_csv_modal.open()
+    openCloudCsvModal() {
+        this.$refs.cloud_csv_modal.open()
     }
 
     get isCsvDisabled() {

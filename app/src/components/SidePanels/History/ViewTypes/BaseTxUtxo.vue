@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { Utxo } from '@luxfi/aurora'
+import { Utxo } from '@luxfi/cloud'
 import { BN } from 'luxnet'
 import { bnToLocaleString } from '@luxfi/luxnet-wallet-sdk'
 

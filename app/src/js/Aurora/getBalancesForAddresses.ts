@@ -1,24 +1,24 @@
-import { GetBalancesParams } from '@/js/Aurora/models'
-import Aurora from '@/js/Aurora/Aurora'
+import { GetBalancesParams } from '@/js/Cloud/models'
+import Cloud from '@/js/Cloud/Cloud'
 import { BN } from 'luxnet'
-import { splitToParts } from '@/js/Aurora/utils'
+import { splitToParts } from '@/js/Cloud/utils'
 import {
     ListPChainBalancesResponse,
     ListXChainBalancesResponse,
     ListCChainAtomicBalancesResponse,
-} from '@luxfi/aurora'
+} from '@luxfi/cloud'
 
 export async function getBalancesForAddresses(config: GetBalancesParams) {
-    // Max number of addresses aurora accepts
+    // Max number of addresses cloud accepts
     const addressLimit = 64
     const addressBuckets = splitToParts<string>(config.addresses, addressLimit)
 
     const promises = addressBuckets.map((bucketAddrs) => {
-        return Aurora.primaryNetwork.getBalancesByAddresses({
+        return Cloud.primaryNetwork.getBalancesByAddresses({
             ...config,
             addresses: bucketAddrs.join(','),
         })
-        // return AuroraService.getBalances({ ...config, addresses: bucketAddrs })
+        // return CloudService.getBalances({ ...config, addresses: bucketAddrs })
     })
 
     const res = await Promise.all(promises)
