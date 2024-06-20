@@ -16,6 +16,7 @@
         "@ledgerhq/domain-service": "^1.2.0",
         "@ledgerhq/evm-tools": "^1.1.0",
         "@ledgerhq/types-cryptoassets": "^7.13.0",
+        "@luxfi/wallet-sdk": "^0.20.6",
         "@zxing/library": "^0.15.2",
         "assert": "^2.1.0",
         "browserify-zlib": "^0.2.0",
@@ -30,17 +31,13 @@
         "stream-browserify": "^3.0.0",
         "stream-http": "^3.2.0",
         "url": "^0.11.3",
-        "vue": "^2.7.16",
-        "vue-template-compiler": "^2.7.16"
-    },
-    "peerDependencies": {
-        "@luxfi/wallet-sdk": ">=0.20.4"
+        "vue": "^2.7.16"
     },
     "devDependencies": {
-        "@luxfi/wallet-sdk": "^0.20.4",
         "@vue/cli-plugin-babel": "^5.0.8",
         "@vue/cli-service": "^3.3.1",
-        "np": "^10.0.5"
+        "np": "^10.0.5",
+        "vue-template-compiler": "^2.7.16"
     },
     "browserslist": [
         "> 1%",

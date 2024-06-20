@@ -16,7 +16,7 @@ export default {
     input: 'src/index.ts',
     output: {
         dir: 'dist',
-        format: 'cjs',
+        format: 'esm',
         sourcemap: process.env.BUILD === 'production' ? false : true,
     },
     plugins: [

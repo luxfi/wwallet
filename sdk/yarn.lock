@@ -2008,7 +2008,7 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@ledgerhq/cryptoassets@13.0.0", "@ledgerhq/cryptoassets@^13.0.0":
+"@ledgerhq/cryptoassets@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@ledgerhq/cryptoassets/-/cryptoassets-13.0.0.tgz#c300884830399750ca6b23edfb4cb0d4a39459f5"
   integrity sha512-Gvy3YQqOZpNtQ6/TTPJRUp4Qba/SmGtHGOeeIYTaF2y94W2x2hyf/dtttOc2nwyp6ARggkqr6VZyMAzgnP7fyQ==
@@ -2056,7 +2056,7 @@
     crypto-js "4.2.0"
     ethers "5.7.2"
 
-"@ledgerhq/hw-app-eth@6.36.1", "@ledgerhq/hw-app-eth@^6.36.1":
+"@ledgerhq/hw-app-eth@6.36.1":
   version "6.36.1"
   resolved "https://registry.yarnpkg.com/@ledgerhq/hw-app-eth/-/hw-app-eth-6.36.1.tgz#a1fd499e53a1bd7cffa7c031886fe4c6725b152e"
   integrity sha512-S7r1gk87x8AgNX3jaFab+Yzb7TcsknRmWQqNNgf0gPmRYoii9Arrh1RhD/45r072mXEIDXKQCepPPNWGBGBfLw==
@@ -2130,14 +2130,11 @@
     bip32-path "0.4.2"
     create-hash "1.2.0"
 
-"@luxfi/hw-app-luxz@0.6.8":
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-luxz/-/hw-app-luxz-0.6.8.tgz#4a89af1086b4aeb6c98a3613f846c67ee3efc1e4"
-  integrity sha512-6IgheXiF2KIck/Aj+2QooDhiszN0fn7JYcAWVhaduNAvslzmXwo4UVVU8n1Ts7pDCtrldDGN9axzxDWBmUjt3g==
+"@luxfi/hw-app-luxz@0.6.11":
+  version "0.6.11"
+  resolved "https://registry.yarnpkg.com/@luxfi/hw-app-luxz/-/hw-app-luxz-0.6.11.tgz#f129422598a8ecdf857de1e7052b3c9b10750cfd"
+  integrity sha512-SIqWAqO973WfPlOILoGBBQoAQa/PKrHyXUTefqScZSRtHy2FrhiEG/yIcw/+a3SgzwsgsUUHz2Ls2h7w4Tx6KQ==
   dependencies:
-    "@ledgerhq/cryptoassets" "13.0.0"
-    "@ledgerhq/hw-app-eth" "^6.36.1"
-    "@ledgerhq/hw-transport" "^6.30.6"
     bs58 "^5.0.0"
     sha3 "^2.1.4"
 

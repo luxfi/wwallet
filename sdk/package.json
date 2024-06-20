@@ -1,6 +1,6 @@
 {
     "name": "@luxfi/wallet-sdk",
-    "version": "0.20.4",
+    "version": "0.20.6",
     "license": "BSD-3",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -70,7 +70,7 @@
         "@ledgerhq/hw-transport": "6.30.6",
         "@luxfi/cloud": "0.1.0",
         "@luxfi/hw-app-lux": "0.2.3",
-        "@luxfi/hw-app-luxz": "0.6.8",
+        "@luxfi/hw-app-luxz": "0.6.11",
         "@metamask/eth-sig-util": "7.0.2",
         "@openzeppelin/contracts": "5.0.2",
         "big.js": "^6.1.1",
