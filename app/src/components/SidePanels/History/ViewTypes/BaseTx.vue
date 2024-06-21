@@ -79,23 +79,23 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { TransactionValueDict } from '@/components/SidePanels/types'
-import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
-import { BN, Buffer } from 'luxnet'
+// import { TransactionValueDict } from '@/components/SidePanels/types'
+// import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
+// import { BN, Buffer } from 'luxnet'
 import { WalletType } from '@/js/wallets/types'
-import { xvm, pChain } from '@/LUX'
+// import { xvm, pChain } from '@/LUX'
 
 import TxHistoryValue from '@/components/SidePanels/TxHistoryValue.vue'
 import TxHistoryValueFunctional from '@/components/SidePanels/History/TxHistoryValueFunctional.vue'
 import TxHistoryNftFamilyGroup from '@/components/SidePanels/TxHistoryNftFamilyGroup.vue'
-import { getTransactionSummary } from '@/helpers/history_helper'
+// import { getTransactionSummary } from '@/helpers/history_helper'
 import BaseTxOutput from '@/components/SidePanels/History/ViewTypes/BaseTxOutput.vue'
 import BaseTxNFTOutput from '@/components/SidePanels/History/ViewTypes/BaseTxNFTOutput.vue'
 import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
 import { TransactionTypeName, XChainTransaction } from '@/js/Cloud/models'
 import BaseTxUtxo from '@/components/SidePanels/History/ViewTypes/BaseTxUtxo.vue'
 
-let payloadtypes = PayloadTypes.getInstance()
+// let payloadtypes = PayloadTypes.getInstance()
 
 @Component({
     components: {

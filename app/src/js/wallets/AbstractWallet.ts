@@ -12,14 +12,11 @@ import {
     TxHelper,
     GasHelper,
     chainIdFromAlias,
-} from '@luxfi/wallet-sdk'
+} from '@luxfi/wallet-sdk/dist/src'
 import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx'
-import {
-    Tx as PlatformTx,
-    UnsignedTx as PlatformUnsignedTx,
-} from 'luxnet/dist/apis/platformvm/tx'
+import { Tx as PlatformTx, UnsignedTx as PlatformUnsignedTx } from 'luxnet/dist/apis/platformvm/tx'
 import { Tx as XVMTx, UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm/tx'
 import { XvmImportChainType, WalletType } from '@/js/wallets/types'
 import { issueC, issueP, issueX } from '@/helpers/issueTx'

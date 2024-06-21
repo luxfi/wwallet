@@ -2,17 +2,29 @@ import { ava } from '@/LUX'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 import { ListStakingParams } from '@/js/Cloud/models'
-import { splitToParts } from '@/js/Cloud/utils'
-import { filterDuplicateCloudTxs } from './filterDuplicateCloudTxs'
-import Cloud from './Cloud'
-import { Network, PChainId, PChainTransaction, SortOrder } from '@luxfi/cloud'
+import { splitToParts } from '@luxfi/wallet-sdk/dist/src'
+import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/src/Explorer'
+import { Network, PChainId, PChainTransaction, SortOrder, Cloud } from '@luxfi/cloud'
 
+const NetworkValues = {
+    MAINNET: 'mainnet' as Network,
+    FUJI: 'fuji' as Network,
+}
+const SortOrderValues = {
+    ASC: 'asc' as SortOrder,
+    DESC: 'desc' as SortOrder,
+}
+
+const PChainIdValues = {
+    P_CHAIN: 'p-chain' as PChainId,
+    LpoYY: '11111111111111111111111111111111LpoYY' as PChainId,
+}
 export async function listStakingForAddresses(addrs: string[]) {
     if (!addrs.length) return []
 
     const netID = ava.getNetworkID()
 
-    const network = isMainnetNetworkID(netID) ? Network.MAINNET : Network.FUJI
+    const network = isMainnetNetworkID(netID) ? NetworkValues.MAINNET : NetworkValues.FUJI
 
     // Cannot use cloud for other networks
     if (!isMainnetNetworkID(netID) && !isTestnetNetworkID(netID)) return []
@@ -37,12 +49,12 @@ export async function listStakingForAddresses(addrs: string[]) {
         return res.transactions ?? []
     }
 
-    const promises = addrParts.map((addrs) => {
+    const promises = addrParts.map((addrs: any) => {
         return fetchAll({
             addresses: addrs,
             pageSize: 100,
-            sortOrder: SortOrder.DESC,
-            blockchainId: PChainId.P_CHAIN,
+            sortOrder: SortOrderValues.DESC,
+            blockchainId: PChainIdValues.P_CHAIN,
             network,
         })
     })

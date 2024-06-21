@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "name": "lux-wallet",
-  "engines": {
-    "pnpm": ">=8"
-  }
-}

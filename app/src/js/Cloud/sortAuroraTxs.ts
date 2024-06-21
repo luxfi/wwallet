@@ -5,7 +5,7 @@ import {
     TransactionType,
     CChainTransaction,
     XChainTransaction,
-} from '@/js/Cloud/models'
+} from '@luxfi/wallet-sdk/dist/src'
 import { SortOrder, PChainTransaction } from '@luxfi/cloud'
 
 export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {

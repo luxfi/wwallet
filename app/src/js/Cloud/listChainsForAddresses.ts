@@ -1,5 +1,5 @@
 import { ava } from '@/LUX'
-import { splitToParts } from '@/js/Cloud/utils'
+import { splitToParts } from '@luxfi/wallet-sdk/dist/src'
 import Cloud from '@/js/Cloud/Cloud'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'

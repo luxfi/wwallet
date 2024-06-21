@@ -175,9 +175,7 @@ describe('createUtxoCsvData', () => {
 
     describe('P Chain consumed UTXOs', () => {
         it('owned, single owner, lux', () => {
-            const utxo = createConsumedUtxoDataP(LUX_ID, '1000', 'chain1', [
-                'address1',
-            ]) as UtxoType
+            const utxo = createConsumedUtxoDataP(LUX_ID, '1000', 'chain1', ['address1']) as UtxoType
             const data = createUtxoCsvData(utxo, ['address1'])
 
             expect(data).toEqual({
@@ -210,9 +208,7 @@ describe('createUtxoCsvData', () => {
         })
 
         it('not owned, single owner, lux', () => {
-            const utxo = createConsumedUtxoDataP(LUX_ID, '1000', 'chain1', [
-                'address1',
-            ]) as UtxoType
+            const utxo = createConsumedUtxoDataP(LUX_ID, '1000', 'chain1', ['address1']) as UtxoType
             const data = createUtxoCsvData(utxo, ['address2'])
 
             expect(data).toEqual({
