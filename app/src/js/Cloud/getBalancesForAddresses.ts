@@ -1,5 +1,5 @@
 import { GetBalancesParams } from '@/js/Cloud/models'
-import Cloud from '@/js/Cloud/Cloud'
+import Cloud from '@/js/Cloud/Aurora'
 import { BN } from 'luxnet'
 import { splitToParts } from '@luxfi/wallet-sdk/dist/src'
 import {
