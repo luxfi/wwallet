@@ -1,4 +1,4 @@
-import { isFujiNetworkId, isMainnetNetworkId } from '@/Network';
+import { isTestnetNetworkId, isMainnetNetworkId } from '@/Network';
 import { ListStakingParams } from './models';
 import { splitToParts } from './utils';
 import { filterDuplicateCloudTxs } from './filterDuplicateCloudTxs';
@@ -9,10 +9,10 @@ import { NetworkValues, SortOrderValues, P_CHAINValues } from '@/utils';
 export async function listStakingForAddresses(addrs: string[], netID: number) {
     if (!addrs.length) return [];
 
-    const network = isMainnetNetworkId(netID) ? NetworkValues.MAINNET : NetworkValues.FUJI;
+    const network = isMainnetNetworkId(netID) ? NetworkValues.MAINNET : NetworkValues.TESTNET;
 
     // Cannot use cloud for other networks
-    if (!isMainnetNetworkId(netID) && !isFujiNetworkId(netID)) return [];
+    if (!isMainnetNetworkId(netID) && !isTestnetNetworkId(netID)) return [];
 
     const addressLimit = 64;
     const addrParts = splitToParts<string>(addrs, addressLimit);

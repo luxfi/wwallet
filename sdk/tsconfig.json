@@ -1,6 +1,9 @@
 {
     // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-    "include": ["src", "types", "test"],
+    "include": [
+      "src", "types", "test",
+      "node_modules/@luxfi/cloud/src/**/*.ts"
+    ],
     "compilerOptions": {
         "module": "esnext",
         "target": "ES6",
@@ -36,7 +39,8 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@luxfi/cloud": ["./node_modules/@luxfi/cloud/src/index.ts"]
         },
         "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
         "typeRoots": ["node_modules/@types", "./types"]
