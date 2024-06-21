@@ -1,8 +1,5 @@
 import { ava, cChain, pChain } from '@/LUX'
-import {
-    UTXOSet as PlatformUTXOSet,
-    UTXO as PlatformUTXO,
-} from 'luxnet/dist/apis/platformvm/utxos'
+import { UTXOSet as PlatformUTXOSet, UTXO as PlatformUTXO } from 'luxnet/dist/apis/platformvm/utxos'
 import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import { WalletType } from '@/js/wallets/types'
 
@@ -22,7 +19,6 @@ import Erc20Token from '@/js/Erc20Token'
 import ERC721Token from '@/js/ERC721Token'
 import { issueP, issueX } from '@/helpers/issueTx'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
-import cloud from '@/js/Cloud/Cloud'
 
 class WalletHelper {
     static async createNftFamily(

@@ -1,7 +1,7 @@
-import { isTransactionP, isTransactionX, TransactionType } from '@/js/Cloud/models'
+import { isTransactionP, isTransactionX, TransactionType } from '@luxfi/wallet-sdk/src'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
-import { getTxURL } from '@/js/Cloud/getTxURL'
+import { getTxURL } from './getTxURL'
 
 /**
  * Given a cloud transaction, returns its URL on the explorer.

@@ -128,13 +128,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
-import {
-    GasHelper,
-    TxHelper,
-    bnToBigLuxX,
-    bnToBigLuxC,
-    bnToLuxC,
-} from '@luxfi/wallet-sdk'
+import { GasHelper, TxHelper, bnToBigLuxX, bnToBigLuxC, bnToLuxC } from '@luxfi/wallet-sdk/dist/src'
 
 // @ts-ignore
 import { QrInput } from '@luxfi/vue_components'

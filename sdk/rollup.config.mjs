@@ -2,10 +2,6 @@
  * @Author: Jason
  * @Description:
  */
-/*
- * @Author: Jason
- * @Description:
- */
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import del from 'rollup-plugin-delete';

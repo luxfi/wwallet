@@ -1,7 +1,3 @@
-/*
- * @Author: Jason
- * @Description:
- */
 import { splitToParts } from './utils';
 import Cloud from './Cloud';
 import { Network } from '@luxfi/cloud';

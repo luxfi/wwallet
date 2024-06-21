@@ -1,4 +1,4 @@
-import { getTxURL } from '@/js/Cloud/getTxURL'
+import { getTxURL } from './getTxURL'
 
 describe('getTxURL', () => {
     it('can get mainnet url for X Chain', () => {
