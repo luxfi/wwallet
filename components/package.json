@@ -43,6 +43,9 @@
         "> 1%",
         "last 2 versions"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "description": "A collection of Vue based components by Lux Wallet.",
     "repository": {
         "type": "git",
