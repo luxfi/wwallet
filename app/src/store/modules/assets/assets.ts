@@ -13,12 +13,12 @@ import {
     IWalletNftMintDict,
     RootState,
 } from '@/store/types'
-import { ava, avm, bintools, cChain } from '@/LUX'
+import { ava, xvm, bintools, cChain } from '@/LUX'
 import Vue from 'vue'
 import LuxAsset from '@/js/LuxAsset'
 import { WalletType } from '@/js/wallets/types'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
-import { AmountOutput, UTXOSet as AVMUTXOSet, UTXO, NFTMintOutput } from 'luxnet/dist/apis/avm'
+import { AmountOutput, UTXOSet as XVMUTXOSet, UTXO, NFTMintOutput } from 'luxnet/dist/apis/xvm'
 import { UnixNow } from 'luxnet/dist/utils'
 import { BN } from 'luxnet'
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm/utxos'
@@ -143,7 +143,7 @@ const assets_module: Module<AssetsState, RootState> = {
          * and nftMintUTXOs
          */
         updateUtxoArrays({ state, rootState, getters }) {
-            const utxoSet = getters.walletAvmUtxoSet
+            const utxoSet = getters.walletXvmUtxoSet
             if (utxoSet === null) return {}
 
             const utxos = utxoSet.getAllUTXOs()
@@ -367,7 +367,7 @@ const assets_module: Module<AssetsState, RootState> = {
 
         // What is the LUX coin in the network
         async updateLuxAsset({ state, commit }) {
-            const res = await avm.getAssetDescription('LUX')
+            const res = await xvm.getAssetDescription('LUX')
             const id = bintools.cb58Encode(res.assetID)
             state.LUX_ASSET_ID = id
             const asset = new LuxAsset(id, res.name, res.symbol, res.denomination)
@@ -379,7 +379,7 @@ const assets_module: Module<AssetsState, RootState> = {
          * (locked, available, multisig)
          */
         updateBalanceDict({ state, rootState, getters }): IWalletBalanceDict {
-            const utxoSet = getters.walletAvmUtxoSet
+            const utxoSet = getters.walletXvmUtxoSet
             if (utxoSet === null) return {}
 
             const dict: IWalletBalanceDict = {}
@@ -564,9 +564,9 @@ const assets_module: Module<AssetsState, RootState> = {
         },
 
         /**
-         * Get the X-Chain (AVM) UTXO Set currently loaded in the wallet
+         * Get the X-Chain (XVM) UTXO Set currently loaded in the wallet
          */
-        walletAvmUtxoSet(state, getters, rootState): AVMUTXOSet | null {
+        walletXvmUtxoSet(state, getters, rootState): XVMUTXOSet | null {
             const wallet = rootState.activeWallet
             if (!wallet) return null
             return wallet.utxoset

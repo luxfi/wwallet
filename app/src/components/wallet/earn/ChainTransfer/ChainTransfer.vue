@@ -122,7 +122,7 @@ import Dropdown from '@/components/misc/Dropdown.vue'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import LuxAsset from '@/js/LuxAsset'
 import { BN } from 'luxnet'
-import { avm, cChain, pChain } from '@/LUX'
+import { xvm, cChain, pChain } from '@/LUX'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Spinner from '@/components/misc/Spinner.vue'
 import ChainCard from '@/components/wallet/earn/ChainTransfer/ChainCard.vue'
@@ -146,7 +146,7 @@ import {
     bigToBN,
     luxCtoX,
     bnToLuxP,
-} from '@luxfi/luxnet-wallet-sdk'
+} from '@luxfi/wallet-sdk'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForExportP } from '@/helpers/utxoSelection/selectMaxUtxoForExportP'
 
@@ -220,7 +220,7 @@ export default class ChainTransfer extends Vue {
         return this.platformBalance.available
     }
 
-    get avmUnlocked(): BN {
+    get xvmUnlocked(): BN {
         if (!this.ava_asset) return new BN(0)
         return this.ava_asset.amount
     }
@@ -236,7 +236,7 @@ export default class ChainTransfer extends Vue {
         } else if (this.sourceChain === 'C') {
             return this.evmUnlocked
         } else {
-            return this.avmUnlocked
+            return this.xvmUnlocked
         }
     }
 
@@ -258,7 +258,7 @@ export default class ChainTransfer extends Vue {
 
     getFee(chain: ChainIdType, isExport: boolean): Big {
         if (chain === 'X') {
-            return bnToBigLuxX(avm.getTxFee())
+            return bnToBigLuxX(xvm.getTxFee())
         } else if (chain === 'P') {
             return bnToBigLuxX(pChain.getTxFee())
         } else {
@@ -336,7 +336,7 @@ export default class ChainTransfer extends Vue {
         const destinationAddr =
             this.targetChain === 'C'
                 ? this.wallet.getEvmAddressBech()
-                : this.wallet.getCurrentAddressAvm()
+                : this.wallet.getCurrentAddressXvm()
 
         const res = selectMaxUtxoForExportP(sortedSet.getAllUTXOs())
         // The maximum form amount is = max possible export amount - export and import fees
@@ -425,7 +425,7 @@ export default class ChainTransfer extends Vue {
     async waitExportStatus(txId: string, remainingTries = 15) {
         let status
         if (this.sourceChain === 'X') {
-            status = await avm.getTxStatus(txId)
+            status = await xvm.getTxStatus(txId)
         } else if (this.sourceChain === 'P') {
             let resp = await pChain.getTxStatus(txId)
             if (typeof resp === 'string') {
@@ -513,7 +513,7 @@ export default class ChainTransfer extends Vue {
         let status
 
         if (this.targetChain === 'X') {
-            status = await avm.getTxStatus(txId)
+            status = await xvm.getTxStatus(txId)
         } else if (this.targetChain === 'P') {
             let resp = await pChain.getTxStatus(txId)
             if (typeof resp === 'string') {

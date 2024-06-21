@@ -1,4 +1,4 @@
-import { AmountOutput as AmountOutputX, UTXO as UTXOX } from 'luxnet/dist/apis/avm'
+import { AmountOutput as AmountOutputX, UTXO as UTXOX } from 'luxnet/dist/apis/xvm'
 import { AmountOutput as AmountOutputP, UTXO as UTXOP } from 'luxnet/dist/apis/platformvm'
 import { BN } from 'luxnet'
 

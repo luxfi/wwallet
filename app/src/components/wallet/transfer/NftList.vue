@@ -1,10 +1,10 @@
 <template>
     <div v-if="!isEmpty">
-        <AvmNftSelectModal
+        <XvmNftSelectModal
             ref="select_modal"
             @select="addNft"
             :disabled-ids="usedNftIds"
-        ></AvmNftSelectModal>
+        ></XvmNftSelectModal>
         <div class="added_list">
             <NftListItem
                 v-for="utxo in addedNfts"
@@ -32,16 +32,16 @@ import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import NftListItem from '@/components/wallet/transfer/NftListItem.vue'
 import { IGroupDict, IGroupQuantity } from '@/components/wallet/studio/mint/types'
 import { bintools } from '@/LUX'
-import AvmNftSelectModal from '@/components/modals/AvmNftSelectModal.vue'
+import XvmNftSelectModal from '@/components/modals/XvmNftSelectModal.vue'
 
 @Component({
     components: {
-        AvmNftSelectModal,
+        XvmNftSelectModal,
         BalancePopup,
         NftListItem,
     },
@@ -53,7 +53,7 @@ export default class NftList extends Vue {
 
     $refs!: {
         popup: BalancePopup
-        select_modal: AvmNftSelectModal
+        select_modal: XvmNftSelectModal
     }
 
     @Prop({ default: false }) disabled!: boolean

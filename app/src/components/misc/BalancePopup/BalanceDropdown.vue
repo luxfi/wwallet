@@ -12,12 +12,12 @@
         <!--            :disabled-ids="disabledIds"-->
         <!--            @close="onclose"-->
         <!--        ></BalancePopup>-->
-        <AvmTokenSelect
+        <XvmTokenSelect
             ref="token_modal"
             @select="onselect"
             :assets="assetArray"
             :disabled-ids="disabledIds"
-        ></AvmTokenSelect>
+        ></XvmTokenSelect>
     </div>
 </template>
 <script lang="ts">
@@ -26,11 +26,11 @@ import { Vue, Component, Prop, Ref, Model } from 'vue-property-decorator'
 
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 import LuxAsset from '@/js/LuxAsset'
-import AvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
+import XvmTokenSelect from '@/components/modals/XvmTokenSelect.vue'
 
 @Component({
     components: {
-        AvmTokenSelect,
+        XvmTokenSelect,
         BalancePopup,
     },
 })
@@ -48,7 +48,7 @@ export default class BalanceDropdown extends Vue {
 
     $refs!: {
         popup: BalancePopup
-        token_modal: AvmTokenSelect
+        token_modal: XvmTokenSelect
     }
 
     get disabledIds(): string[] {

@@ -1,16 +1,16 @@
-import { ava, avm, bintools, cChain, pChain } from '@/LUX'
+import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { digestMessage } from '@/helpers/helper'
 import { WalletNameType } from '@/js/wallets/types'
 
 import { Buffer as BufferLux, BN } from 'luxnet'
 import {
-    KeyPair as AVMKeyPair,
-    KeyChain as AVMKeyChain,
-    UTXOSet as AVMUTXOSet,
+    KeyPair as XVMKeyPair,
+    KeyChain as XVMKeyChain,
+    UTXOSet as XVMUTXOSet,
     UTXO,
     UnsignedTx,
-} from 'luxnet/dist/apis/avm'
+} from 'luxnet/dist/apis/xvm'
 import {
     KeyPair as PlatformKeyPair,
     KeyChain as PlatformKeyChain,
@@ -23,7 +23,7 @@ import { buildUnsignedTransaction } from '../TxHelper'
 import { LuxWalletCore, UnsafeWallet } from './types'
 import { UTXO as PlatformUTXO } from 'luxnet/dist/apis/platformvm/utxos'
 import { privateToAddress } from 'ethereumjs-util'
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxnet/dist/apis/avm/tx'
+import { Tx as XVMTx, UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm/tx'
 import {
     Tx as PlatformTx,
     UnsignedTx as PlatformUnsignedTx,
@@ -32,13 +32,13 @@ import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/t
 import Erc20Token from '@/js/Erc20Token'
 import { AbstractWallet } from '@/js/wallets/AbstractWallet'
 import { WalletHelper } from '@/helpers/wallet_helper'
-import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
-import { UTXO as AVMUTXO } from 'luxnet/dist/apis/avm/utxos'
+import { xvmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
+import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import { Transaction } from '@ethereumjs/tx'
 
 class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWallet {
-    keyChain: AVMKeyChain
-    keyPair: AVMKeyPair
+    keyChain: XVMKeyChain
+    keyPair: XVMKeyPair
 
     platformKeyChain: PlatformKeyChain
     platformKeyPair: PlatformKeyPair
@@ -63,12 +63,12 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
 
         this.key = pk
 
-        this.chainId = avm.getBlockchainAlias() || avm.getBlockchainID()
+        this.chainId = xvm.getBlockchainAlias() || xvm.getBlockchainID()
         this.chainIdP = pChain.getBlockchainAlias() || pChain.getBlockchainID()
 
         const hrp = ava.getHRP()
 
-        this.keyChain = new AVMKeyChain(hrp, this.chainId)
+        this.keyChain = new XVMKeyChain(hrp, this.chainId)
         this.keyPair = this.keyChain.importKey(pk)
 
         this.platformKeyChain = new PlatformKeyChain(hrp, this.chainIdP)
@@ -96,24 +96,24 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         this.isInit = true
     }
 
-    getChangeAddressAvm(): string {
-        return this.getCurrentAddressAvm()
+    getChangeAddressXvm(): string {
+        return this.getCurrentAddressXvm()
     }
 
     getAllExternalAddressesX(): string[] {
-        return [this.getCurrentAddressAvm()]
+        return [this.getCurrentAddressXvm()]
     }
 
     getAllChangeAddressesX(): string[] {
-        return [this.getChangeAddressAvm()]
+        return [this.getChangeAddressXvm()]
     }
 
-    getCurrentAddressAvm(): string {
+    getCurrentAddressXvm(): string {
         return this.keyPair.getAddressString()
     }
 
     getDerivedAddresses(): string[] {
-        const addr = this.getCurrentAddressAvm()
+        const addr = this.getCurrentAddressXvm()
         return [addr]
     }
 
@@ -131,7 +131,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
     }
 
     getHistoryAddresses(): string[] {
-        const addr = this.getCurrentAddressAvm()
+        const addr = this.getCurrentAddressXvm()
         return [addr]
     }
 
@@ -140,7 +140,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
     }
 
     getBaseAddress(): string {
-        return this.getCurrentAddressAvm()
+        return this.getCurrentAddressXvm()
     }
 
     getPlatformUTXOSet(): PlatformUTXOSet {
@@ -155,8 +155,8 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         return this.ethAddressBech
     }
 
-    async updateUTXOsX(): Promise<AVMUTXOSet> {
-        const result = await avmGetAllUTXOs([this.getCurrentAddressAvm()])
+    async updateUTXOsX(): Promise<XVMUTXOSet> {
+        const result = await xvmGetAllUTXOs([this.getCurrentAddressXvm()])
         this.utxoset = result
         return result
     }
@@ -186,9 +186,9 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         addr: string,
         memo?: BufferLux
     ) {
-        const changeAddress = this.getChangeAddressAvm()
+        const changeAddress = this.getChangeAddressXvm()
         const derivedAddresses = this.getDerivedAddresses()
-        const utxoset = this.getUTXOSet() as AVMUTXOSet
+        const utxoset = this.getUTXOSet() as XVMUTXOSet
 
         return buildUnsignedTransaction(
             orders,
@@ -201,7 +201,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
     }
 
     async issueBatchTx(
-        orders: (ITransaction | AVMUTXO)[],
+        orders: (ITransaction | XVMUTXO)[],
         addr: string,
         memo: BufferLux | undefined
     ): Promise<string> {
@@ -211,8 +211,8 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
     onnetworkchange(): void {
         const hrp = ava.getHRP()
 
-        this.keyChain = new AVMKeyChain(hrp, this.chainId)
-        this.utxoset = new AVMUTXOSet()
+        this.keyChain = new XVMKeyChain(hrp, this.chainId)
+        this.utxoset = new XVMUTXOSet()
         this.keyPair = this.keyChain.importKey(this.key)
 
         this.platformKeyChain = new PlatformKeyChain(hrp, this.chainIdP)
@@ -228,7 +228,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         this.getUTXOs()
     }
 
-    async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx> {
         const keychain = this.keyChain
 
         const tx = unsignedTx.sign(keychain)
@@ -265,7 +265,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         return await WalletHelper.createNftFamily(this, name, symbol, groupNum)
     }
 
-    async mintNft(mintUtxo: AVMUTXO, payload: PayloadBase, quantity: number) {
+    async mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number) {
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
 
@@ -288,7 +288,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
     }
 
     getAllAddressesX() {
-        return [this.getCurrentAddressAvm()]
+        return [this.getCurrentAddressXvm()]
     }
 
     getAllAddressesP() {

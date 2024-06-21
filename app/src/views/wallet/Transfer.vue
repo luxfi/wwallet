@@ -142,10 +142,10 @@ import NftList from '@/components/wallet/transfer/NftList.vue'
 
 //@ts-ignore
 import { QrInput } from '@luxfi/vue_components'
-import { ava, avm, isValidAddress } from '../../LUX'
+import { ava, xvm, isValidAddress } from '../../LUX'
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 import { Buffer, BN } from 'luxnet'
 import TxSummary from '@/components/wallet/transfer/TxSummary.vue'
 import { priceDict, IssueBatchTxInput } from '@/store/types'
@@ -360,7 +360,7 @@ export default class Transfer extends Vue {
     }
 
     async waitTxConfirm(txId: string) {
-        let status = await avm.getTxStatus(txId)
+        let status = await xvm.getTxStatus(txId)
         if (status === 'Unknown' || status === 'Processing') {
             // if not confirmed ask again
             setTimeout(() => {
@@ -440,12 +440,12 @@ export default class Transfer extends Vue {
     }
 
     get txFee(): Big {
-        let fee = avm.getTxFee()
+        let fee = xvm.getTxFee()
         return bnToBig(fee, 9)
     }
 
     get totalUSD(): Big {
-        let totalAsset = this.luxTxSize.add(avm.getTxFee())
+        let totalAsset = this.luxTxSize.add(xvm.getTxFee())
         let bigAmt = bnToBig(totalAsset, 9)
         let usdPrice = this.priceDict.usd
         let usdBig = bigAmt.times(usdPrice)

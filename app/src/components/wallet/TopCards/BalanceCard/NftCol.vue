@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
 import { IWalletNftDict } from '@/store/types'
-import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
@@ -114,15 +114,15 @@ export default class NftCol extends Vue {
     }
 
     get collectedAmt(): number {
-        let avmAmt = this.$store.state.Assets.nftUTXOs.length
+        let xvmAmt = this.$store.state.Assets.nftUTXOs.length
         let evmAmt = this.$store.getters['Assets/ERC721/totalOwned']
-        return avmAmt + evmAmt
+        return xvmAmt + evmAmt
     }
 
     get collectionAmt(): number {
-        let avmFamsAmt = this.$store.state.Assets.nftFams.length
+        let xvmFamsAmt = this.$store.state.Assets.nftFams.length
         let evmFamsAmt = this.$store.getters['Assets/ERC721/totalCollectionsOwned']
-        return avmFamsAmt + evmFamsAmt
+        return xvmFamsAmt + evmFamsAmt
     }
 
     get statusText(): string {

@@ -1,4 +1,4 @@
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 
 export interface NftGroupDict {
     [key: string]: [UTXO]

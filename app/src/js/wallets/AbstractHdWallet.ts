@@ -1,10 +1,10 @@
 import { ChainAlias } from '@/js/wallets/types'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 
 import { BN, Buffer } from 'luxnet'
 import { ITransaction } from '@/components/wallet/transfer/types'
-import { ava, avm, bintools, pChain } from '@/LUX'
-import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm/utxos'
+import { ava, xvm, bintools, pChain } from '@/LUX'
+import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm/utxos'
 import HDKey from 'hdkey'
 import { HdHelper } from '@/js/HdHelper'
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm/utxos'
@@ -30,7 +30,7 @@ abstract class AbstractHdWallet extends AbstractWallet {
     constructor(accountHdKey: HDKey, ethHdNode: HDKey, isPublic = true) {
         super()
         this.ethHdNode = ethHdNode
-        this.chainId = avm.getBlockchainAlias() || avm.getBlockchainID()
+        this.chainId = xvm.getBlockchainAlias() || xvm.getBlockchainID()
         this.externalHelper = new HdHelper('m/0', accountHdKey, undefined, isPublic)
         this.internalHelper = new HdHelper('m/1', accountHdKey, undefined, isPublic)
         this.platformHelper = new HdHelper('m/0', accountHdKey, 'P', isPublic)
@@ -60,10 +60,10 @@ abstract class AbstractHdWallet extends AbstractWallet {
         )
     }
 
-    updateAvmUTXOSet(): void {
+    updateXvmUTXOSet(): void {
         // if (this.isFetchUtxos) return
-        const setExternal = this.externalHelper.utxoSet as AVMUTXOSet
-        const setInternal = this.internalHelper.utxoSet as AVMUTXOSet
+        const setExternal = this.externalHelper.utxoSet as XVMUTXOSet
+        const setInternal = this.internalHelper.utxoSet as XVMUTXOSet
 
         const joined = setInternal.merge(setExternal)
         this.utxoset = joined
@@ -102,13 +102,13 @@ abstract class AbstractHdWallet extends AbstractWallet {
     async updateUTXOsExternal() {
         const res = await this.externalHelper.updateUtxos()
         this.updateFetchState()
-        this.updateAvmUTXOSet()
+        this.updateXvmUTXOSet()
     }
 
     async updateUTXOsInternal() {
         const utxoSet = await this.internalHelper.updateUtxos()
         this.updateFetchState()
-        this.updateAvmUTXOSet()
+        this.updateXvmUTXOSet()
     }
 
     async updateUTXOsP() {
@@ -158,11 +158,11 @@ abstract class AbstractHdWallet extends AbstractWallet {
         return [...internal, ...external, evmBech32]
     }
 
-    getCurrentAddressAvm(): string {
+    getCurrentAddressXvm(): string {
         return this.externalHelper.getCurrentAddress()
     }
 
-    getChangeAddressAvm() {
+    getChangeAddressXvm() {
         return this.internalHelper.getCurrentAddress()
     }
 
@@ -236,7 +236,7 @@ abstract class AbstractHdWallet extends AbstractWallet {
     }
 
     async buildUnsignedTransaction(orders: (ITransaction | UTXO)[], addr: string, memo?: Buffer) {
-        const changeAddress = this.getChangeAddressAvm()
+        const changeAddress = this.getChangeAddressXvm()
         const derivedAddresses: string[] = this.getDerivedAddresses()
         const utxoset = this.getUTXOSet()
 

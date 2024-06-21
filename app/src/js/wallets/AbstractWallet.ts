@@ -2,7 +2,7 @@
 The base wallet class used for common functionality
 */
 import { BN } from 'luxnet'
-import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm'
+import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm'
 import {
     ExportChainsC,
@@ -12,16 +12,16 @@ import {
     TxHelper,
     GasHelper,
     chainIdFromAlias,
-} from '@luxfi/luxnet-wallet-sdk'
-import { ava, avm, bintools, cChain, pChain } from '@/LUX'
+} from '@luxfi/wallet-sdk'
+import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx'
 import {
     Tx as PlatformTx,
     UnsignedTx as PlatformUnsignedTx,
 } from 'luxnet/dist/apis/platformvm/tx'
-import { Tx as AVMTx, UnsignedTx as AVMUnsignedTx } from 'luxnet/dist/apis/avm/tx'
-import { AvmImportChainType, WalletType } from '@/js/wallets/types'
+import { Tx as XVMTx, UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm/tx'
+import { XvmImportChainType, WalletType } from '@/js/wallets/types'
 import { issueC, issueP, issueX } from '@/helpers/issueTx'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { getStakeForAddresses } from '@/helpers/utxo_helper'
@@ -42,7 +42,7 @@ const uniqid = require('uniqid')
 abstract class AbstractWallet {
     id: string
 
-    utxoset: AVMUTXOSet
+    utxoset: XVMUTXOSet
     platformUtxoset: PlatformUTXOSet
     stakeAmount: BN
     ethBalance: BN
@@ -52,8 +52,8 @@ abstract class AbstractWallet {
 
     abstract getEvmAddressBech(): string
     abstract getEvmAddress(): string
-    abstract getCurrentAddressAvm(): string
-    abstract getChangeAddressAvm(): string
+    abstract getCurrentAddressXvm(): string
+    abstract getChangeAddressXvm(): string
     abstract getCurrentAddressPlatform(): string
     abstract getAllAddressesP(): string[]
     abstract getAllAddressesX(): string[]
@@ -61,7 +61,7 @@ abstract class AbstractWallet {
     abstract getAllExternalAddressesX(): string[]
     abstract getHistoryAddresses(): string[]
     abstract signC(unsignedTx: EVMUnsignedTx): Promise<EVMTx>
-    abstract signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx>
+    abstract signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx>
     abstract signP(unsignedTx: PlatformUnsignedTx): Promise<PlatformTx>
 
     abstract signMessage(msg: string, address?: string): Promise<string>
@@ -75,13 +75,13 @@ abstract class AbstractWallet {
         return toChecksumAddress('0x' + this.getEvmAddress())
     }
 
-    getUTXOSet(): AVMUTXOSet {
+    getUTXOSet(): XVMUTXOSet {
         return this.utxoset
     }
 
     protected constructor() {
         this.id = uniqid()
-        this.utxoset = new AVMUTXOSet()
+        this.utxoset = new XVMUTXOSet()
         this.platformUtxoset = new PlatformUTXOSet()
         this.stakeAmount = new BN(0)
         this.ethBalance = new BN(0)
@@ -173,7 +173,7 @@ abstract class AbstractWallet {
         return this.issueC(tx)
     }
 
-    protected async issueX(tx: AVMTx) {
+    protected async issueX(tx: XVMTx) {
         return issueX(tx)
     }
 
@@ -210,9 +210,9 @@ abstract class AbstractWallet {
         }
 
         const fromAddresses = this.getAllAddressesX()
-        const changeAddress = this.getChangeAddressAvm()
+        const changeAddress = this.getChangeAddressXvm()
         const utxos = this.getUTXOSet()
-        const exportTx = await TxHelper.buildAvmExportTransaction(
+        const exportTx = await TxHelper.buildXvmExportTransaction(
             destinationChain,
             utxos,
             fromAddresses,
@@ -243,13 +243,13 @@ abstract class AbstractWallet {
             amtFee = amt.add(importFee)
         } else if (destinationChain === 'X') {
             // We can add the import fee for X chain
-            const fee = avm.getTxFee()
+            const fee = xvm.getTxFee()
             amtFee = amt.add(fee)
         }
 
         // Get the destination address for the right chain
         const destinationAddr =
-            destinationChain === 'C' ? this.getEvmAddressBech() : this.getCurrentAddressAvm()
+            destinationChain === 'C' ? this.getEvmAddressBech() : this.getCurrentAddressXvm()
 
         const exportTx = await TxHelper.buildPlatformExportTransaction(
             sortedSet,
@@ -274,7 +274,7 @@ abstract class AbstractWallet {
     async exportFromCChain(amt: BN, destinationChain: ExportChainsC, exportFee: BN) {
         // Add import fee
         // X and P have the same fee
-        const importFee = avm.getTxFee()
+        const importFee = xvm.getTxFee()
         const amtFee = amt.add(importFee)
 
         const hexAddr = this.getEvmAddress()
@@ -284,7 +284,7 @@ abstract class AbstractWallet {
 
         const destinationAddr =
             destinationChain === 'X'
-                ? this.getCurrentAddressAvm()
+                ? this.getCurrentAddressXvm()
                 : this.getCurrentAddressPlatform()
 
         const exportTx = await TxHelper.buildEvmExportTransaction(
@@ -311,7 +311,7 @@ abstract class AbstractWallet {
 
         const destinationAddr =
             destinationChain === 'X'
-                ? this.getCurrentAddressAvm()
+                ? this.getCurrentAddressXvm()
                 : this.getCurrentAddressPlatform()
 
         return GasHelper.estimateExportGasFee(
@@ -323,9 +323,9 @@ abstract class AbstractWallet {
         )
     }
 
-    async avmGetAtomicUTXOs(sourceChain: ExportChainsX) {
+    async xvmGetAtomicUTXOs(sourceChain: ExportChainsX) {
         const addrs = this.getAllAddressesX()
-        return await UtxoHelper.avmGetAtomicUTXOs(addrs, sourceChain)
+        return await UtxoHelper.xvmGetAtomicUTXOs(addrs, sourceChain)
     }
 
     async platformGetAtomicUTXOs(sourceChain: ExportChainsP) {
@@ -367,14 +367,14 @@ abstract class AbstractWallet {
         return this.issueP(tx)
     }
 
-    async importToXChain(sourceChain: AvmImportChainType) {
-        const utxoSet = await this.avmGetAtomicUTXOs(sourceChain)
+    async importToXChain(sourceChain: XvmImportChainType) {
+        const utxoSet = await this.xvmGetAtomicUTXOs(sourceChain)
 
         if (utxoSet.getAllUTXOs().length === 0) {
             throw new Error('Nothing to import.')
         }
 
-        const xToAddr = this.getCurrentAddressAvm()
+        const xToAddr = this.getCurrentAddressXvm()
 
         const hrp = ava.getHRP()
         const utxoAddrs = utxoSet
@@ -387,7 +387,7 @@ abstract class AbstractWallet {
         const sourceChainId = chainIdFromAlias(sourceChain)
 
         // Owner addresses, the addresses we exported to
-        const unsignedTx = await avm.buildImportTx(
+        const unsignedTx = await xvm.buildImportTx(
             utxoSet,
             ownerAddrs,
             sourceChainId,

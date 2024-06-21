@@ -25,7 +25,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { LuxNftFamily } from '../../../../../js/LuxNftFamily'
 import { IWalletNftMintDict } from '@/store/types'
-import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import NftFamilyCardsPreview from '@/components/misc/NftFamilyCardsPreview.vue'
 @Component({

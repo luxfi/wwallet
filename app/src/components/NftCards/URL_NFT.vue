@@ -34,7 +34,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
 import { PayloadBase } from 'luxnet/dist/utils'
 import BaseNftCard from '@/components/NftCards/BaseNftCard.vue'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 import UrlPayloadView from '@/components/misc/NftPayloadView/views/UrlPayloadView.vue'
 @Component({
     components: {

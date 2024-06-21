@@ -16,25 +16,25 @@ export async function getCloudHistory(
     // Reverse the list so we get history for the most recent address first
     const xInternal = wallet.getAllChangeAddressesX()
     const xExternal = wallet.getAllExternalAddressesX()
-    const avmAddrs = []
+    const xvmAddrs = []
     // Combine X addresses and reverse ordering so most recent is first
     while (xInternal.length || xExternal.length) {
         const internal = xInternal.pop()
         const external = xExternal.pop()
-        internal && avmAddrs.push(internal)
-        external && avmAddrs.push(external)
+        internal && xvmAddrs.push(internal)
+        external && xvmAddrs.push(external)
     }
 
     const pvmAddrs: string[] = wallet.getAllAddressesP().reverse()
 
     // this shouldn't ever happen, but to avoid getting every transaction...
-    if (avmAddrs.length === 0) {
+    if (xvmAddrs.length === 0) {
         return []
     }
 
     const txsCloudX = await getTransactionsForAddresses(
         {
-            addresses: avmAddrs,
+            addresses: xvmAddrs,
             blockchainId: BlockchainId.X_CHAIN,
             network: isMainnet ? Network.MAINNET : Network.FUJI,
             pageSize: PAGE_SIZE,

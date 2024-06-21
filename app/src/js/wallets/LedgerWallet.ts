@@ -17,18 +17,18 @@ import bippath from 'bip32-path'
 import createHash from 'create-hash'
 import store from '@/store'
 import { importPublic, publicToAddress, bnToRlp, rlp } from 'ethereumjs-util'
-import { UTXO as AVMUTXO } from 'luxnet/dist/apis/avm/utxos'
+import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import { LuxWalletCore } from '@/js/wallets/types'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import {
-    AVMConstants,
+    XVMConstants,
     OperationTx,
-    SelectCredentialClass as AVMSelectCredentialClass,
+    SelectCredentialClass as XVMSelectCredentialClass,
     TransferableOperation,
-    Tx as AVMTx,
-    UnsignedTx as AVMUnsignedTx,
-    ImportTx as AVMImportTx,
-} from 'luxnet/dist/apis/avm'
+    Tx as XVMTx,
+    UnsignedTx as XVMUnsignedTx,
+    ImportTx as XVMImportTx,
+} from 'luxnet/dist/apis/xvm'
 
 import {
     ImportTx as PlatformImportTx,
@@ -60,7 +60,7 @@ import { AbiParsed, decodeTxData } from '@/js/AbiDecoder'
 import { web3 } from '@/evm'
 import { LUX_ACCOUNT_PATH, ETH_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from './MnemonicWallet'
 import { ChainIdType } from '@/constants'
-import { ParseableAvmTxEnum, ParseablePlatformEnum, ParseableEvmTxEnum } from '../TxHelper'
+import { ParseableXvmTxEnum, ParseablePlatformEnum, ParseableEvmTxEnum } from '../TxHelper'
 import { ILedgerBlockMessage } from '../../store/modules/ledger/types'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
@@ -70,7 +70,7 @@ import {
     chainIdFromAlias,
     getLedgerProvider,
     LedgerProvider,
-} from '@luxfi/luxnet-wallet-sdk'
+} from '@luxfi/wallet-sdk'
 import { getTxOutputAddresses } from '@/utils/getAddressFromTx'
 
 class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
@@ -131,7 +131,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
     // Returns an array of derivation paths that need to sign this transaction
     // Used with signTransactionHash and signTransactionParsable
-    getTransactionPaths<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx>(
+    getTransactionPaths<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ): { paths: string[]; isLuxOnly: boolean } {
@@ -152,10 +152,10 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
         let items = ins
         if (
-            (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx).getImportInputs()
+            items = ((tx as XVMImportTx) || PlatformImportTx).getImportInputs()
         }
 
         const hrp = getPreferredHRP(ava.getNetworkID())
@@ -248,7 +248,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return [...paths].map((path) => bippath.fromString(path))
     }
 
-    getChangeBipPath<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getChangeBipPath<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ) {
@@ -281,7 +281,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return bippath.fromString(`${LUX_ACCOUNT_PATH}/${chainChangePath}/${changeIdx}`)
     }
 
-    getCredentials<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getCredentials<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         paths: string[],
         sigMap: Map<string, Buffer>,
@@ -298,11 +298,11 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
         let items = ins
         if (
-            (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P') ||
             (txType === EVMConstants.IMPORTTX && chainId === 'C')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx || EVMImportTx).getImportInputs()
+            items = ((tx as XVMImportTx) || PlatformImportTx || EVMImportTx).getImportInputs()
         }
 
         // Try to get operations, it will fail if there are none, ignore and continue
@@ -314,7 +314,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
         let CredentialClass
         if (chainId === 'X') {
-            CredentialClass = AVMSelectCredentialClass
+            CredentialClass = XVMSelectCredentialClass
         } else if (chainId === 'P') {
             CredentialClass = PlatformSelectCredentialClass
         } else {
@@ -390,8 +390,8 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
     // Used for non parsable transactions.
     // Ideally we wont use this function at all, but ledger is not ready yet.
     async signTransactionHash<
-        UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
-        SignedTx extends AVMTx | PlatformTx | EvmTx
+        UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
+        SignedTx extends XVMTx | PlatformTx | EvmTx
     >(unsignedTx: UnsignedTx, paths: string[], chainId: ChainIdType): Promise<SignedTx> {
         const txbuff = unsignedTx.toBuffer()
         const msg: BufferLux = BufferLux.from(createHash('sha256').update(txbuff).digest())
@@ -428,7 +428,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
             let signedTx
             switch (chainId) {
                 case 'X':
-                    signedTx = new AVMTx(unsignedTx as AVMUnsignedTx, creds)
+                    signedTx = new XVMTx(unsignedTx as XVMUnsignedTx, creds)
                     break
                 case 'P':
                     signedTx = new PlatformTx(unsignedTx as PlatformUnsignedTx, creds)
@@ -448,13 +448,13 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
     // Used for signing transactions that are parsable
     async signTransactionParsable<
-        UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
-        SignedTx extends AVMTx | PlatformTx | EvmTx
+        UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx,
+        SignedTx extends XVMTx | PlatformTx | EvmTx
     >(unsignedTx: UnsignedTx, paths: string[], chainId: ChainIdType): Promise<SignedTx> {
         const tx = unsignedTx.getTransaction()
         const txType = tx.getTxType()
         const parseableTxs = {
-            X: ParseableAvmTxEnum,
+            X: ParseableXvmTxEnum,
             P: ParseablePlatformEnum,
             C: ParseableEvmTxEnum,
         }[chainId]
@@ -500,7 +500,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
             let signedTx
             switch (chainId) {
                 case 'X':
-                    signedTx = new AVMTx(unsignedTx as AVMUnsignedTx, creds)
+                    signedTx = new XVMTx(unsignedTx as XVMUnsignedTx, creds)
                     break
                 case 'P':
                     signedTx = new PlatformTx(unsignedTx as PlatformUnsignedTx, creds)
@@ -518,7 +518,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         }
     }
 
-    getOutputMsgs<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getOutputMsgs<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType,
         changePath: null | bippath.Bip32Path
@@ -531,7 +531,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         // @ts-ignore
         let outs
         if (
-            (txType === AVMConstants.EXPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.EXPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.EXPORTTX && chainId === 'P')
         ) {
             outs = (tx as PlatformExportTx).getExportOutputs()
@@ -582,13 +582,13 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return messages
     }
 
-    getValidateDelegateMsgs<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx>(
+    getValidateDelegateMsgs<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ): ILedgerBlockMessage[] {
         const tx =
             ((unsignedTx as
-                | AVMUnsignedTx
+                | XVMUnsignedTx
                 | PlatformUnsignedTx).getTransaction() as AddValidatorTx) || AddDelegatorTx
         const txType = tx.getTxType()
         const messages: ILedgerBlockMessage[] = []
@@ -642,7 +642,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return messages
     }
 
-    getFeeMsgs<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getFeeMsgs<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ): ILedgerBlockMessage[] {
@@ -651,9 +651,9 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         const messages = []
 
         if (
-            (txType === AVMConstants.BASETX && chainId === 'X') ||
-            (txType === AVMConstants.EXPORTTX && chainId === 'X') ||
-            (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.BASETX && chainId === 'X') ||
+            (txType === XVMConstants.EXPORTTX && chainId === 'X') ||
+            (txType === XVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.EXPORTTX && chainId === 'P') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P') ||
             (txType === EVMConstants.EXPORTTX && chainId === 'C') ||
@@ -666,7 +666,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
     }
 
     // Given the unsigned transaction returns an array of messages that will be displayed on ledgegr window
-    getTransactionMessages<UnsignedTx extends AVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
+    getTransactionMessages<UnsignedTx extends XVMUnsignedTx | PlatformUnsignedTx | EVMUnsignedTx>(
         unsignedTx: UnsignedTx,
         chainId: ChainIdType,
         changePath: null | bippath.Bip32Path
@@ -677,7 +677,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         messages.push(...outputMessages)
 
         const validateDelegateMessages = this.getValidateDelegateMsgs(
-            unsignedTx as AVMUnsignedTx | PlatformUnsignedTx,
+            unsignedTx as XVMUnsignedTx | PlatformUnsignedTx,
             chainId
         )
         messages.push(...validateDelegateMessages)
@@ -726,9 +726,9 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return msgs
     }
 
-    async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx> {
         const chainId: ChainIdType = 'X'
-        const { paths } = this.getTransactionPaths<AVMUnsignedTx>(unsignedTx, chainId)
+        const { paths } = this.getTransactionPaths<XVMUnsignedTx>(unsignedTx, chainId)
 
         // We dont know the number of change paths but can assume worst case and use number of signer paths
         const canSign = this.provider.canParseTx(
@@ -739,13 +739,13 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
         let signedTx
         if (canSign) {
-            signedTx = await this.signTransactionParsable<AVMUnsignedTx, AVMTx>(
+            signedTx = await this.signTransactionParsable<XVMUnsignedTx, XVMTx>(
                 unsignedTx,
                 paths,
                 chainId
             )
         } else {
-            signedTx = await this.signTransactionHash<AVMUnsignedTx, AVMTx>(
+            signedTx = await this.signTransactionHash<XVMUnsignedTx, XVMTx>(
                 unsignedTx,
                 paths,
                 chainId
@@ -917,7 +917,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
     }
 
     async issueBatchTx(
-        orders: (ITransaction | AVMUTXO)[],
+        orders: (ITransaction | XVMUTXO)[],
         addr: string,
         memo: BufferLux | undefined
     ): Promise<string> {
@@ -955,7 +955,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return await WalletHelper.createNftFamily(this, name, symbol, groupNum)
     }
 
-    async mintNft(mintUtxo: AVMUTXO, payload: PayloadBase, quantity: number) {
+    async mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number) {
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
 

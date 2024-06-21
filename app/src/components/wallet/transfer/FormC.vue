@@ -134,7 +134,7 @@ import {
     bnToBigLuxX,
     bnToBigLuxC,
     bnToLuxC,
-} from '@luxfi/luxnet-wallet-sdk'
+} from '@luxfi/wallet-sdk'
 
 // @ts-ignore
 import { QrInput } from '@luxfi/vue_components'

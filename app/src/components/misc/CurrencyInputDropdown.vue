@@ -48,7 +48,7 @@ import { ICurrencyInputDropdownValue } from '@/components/wallet/transfer/types'
 import { IWalletAssetsDict, IWalletBalanceDict, priceDict } from '@/store/types'
 
 import BalanceDropdown from '@/components/misc/BalancePopup/BalanceDropdown.vue'
-import { avm } from '@/LUX'
+import { xvm } from '@/LUX'
 import Big from 'big.js'
 import { bnToBig } from '@/helpers/helper'
 interface IDropdownValue {
@@ -191,7 +191,7 @@ export default class CurrencyInputDropdown extends Vue {
 
         // Max amount is BALANCE - FEE for LUX
         if (assetId === luxId) {
-            let fee = avm.getTxFee()
+            let fee = xvm.getTxFee()
             // console.log(fee);
             if (fee.gte(balance.amount)) {
                 return new BN(0)

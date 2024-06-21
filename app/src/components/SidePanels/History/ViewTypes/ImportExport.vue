@@ -15,7 +15,7 @@
     </div>
 </template>
 <script lang="ts">
-import { avm, cChain, pChain } from '@/LUX'
+import { xvm, cChain, pChain } from '@/LUX'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'
@@ -32,7 +32,7 @@ import { isOwnedUTXO } from '@/js/Cloud/isOwnedUtxo'
 function idToAlias(chainId: string | undefined) {
     if (chainId === pChain.getBlockchainID()) {
         return 'P'
-    } else if (chainId === avm.getBlockchainID()) {
+    } else if (chainId === xvm.getBlockchainID()) {
         return 'X'
     } else if (chainId === cChain.getBlockchainID()) {
         return 'C'

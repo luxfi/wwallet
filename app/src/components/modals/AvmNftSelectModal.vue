@@ -16,13 +16,13 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import CollectibleFamily from '@/components/misc/BalancePopup/CollectibleFamily.vue'
 @Component({
     components: { CollectibleFamily, Modal },
 })
-export default class AvmNftSelectModal extends Vue {
+export default class XvmNftSelectModal extends Vue {
     $refs!: {
         modal: Modal
     }

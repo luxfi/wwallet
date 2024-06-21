@@ -66,7 +66,7 @@ function updateWalletBalanceX() {
     })
 }
 
-// AVM Socket Listeners
+// XVM Socket Listeners
 
 function xOnOpen() {
     updateFilterAddresses()

@@ -33,7 +33,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import Big from 'big.js'
-import { bnToBigLuxP } from '@luxfi/luxnet-wallet-sdk'
+import { bnToBigLuxP } from '@luxfi/wallet-sdk'
 import { PChainTransaction } from '@luxfi/cloud'
 
 @Component

@@ -52,7 +52,7 @@ const payloadtypes = PayloadTypes.getInstance()
 import Tooltip from '@/components/misc/Tooltip.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import NFTViewModal from '@/components/modals/NFTViewModal.vue'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 @Component({
     components: { NFTViewModal, NftPayloadView, Tooltip },
 })

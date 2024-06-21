@@ -83,7 +83,7 @@ import { TransactionValueDict } from '@/components/SidePanels/types'
 import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
 import { BN, Buffer } from 'luxnet'
 import { WalletType } from '@/js/wallets/types'
-import { avm, pChain } from '@/LUX'
+import { xvm, pChain } from '@/LUX'
 
 import TxHistoryValue from '@/components/SidePanels/TxHistoryValue.vue'
 import TxHistoryValueFunctional from '@/components/SidePanels/History/TxHistoryValueFunctional.vue'

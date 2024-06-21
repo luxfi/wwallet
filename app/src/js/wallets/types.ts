@@ -1,13 +1,13 @@
 import HDKey from 'hdkey'
 import {
-    KeyChain as AVMKeyChain,
-    KeyPair as AVMKeyPair,
+    KeyChain as XVMKeyChain,
+    KeyPair as XVMKeyPair,
     UTXOSet,
-    UTXO as AVMUTXO,
-    Tx as AVMTx,
-    UnsignedTx as AVMUnsignedTx,
+    UTXO as XVMUTXO,
+    Tx as XVMTx,
+    UnsignedTx as XVMUnsignedTx,
     UnsignedTx,
-} from 'luxnet/dist/apis/avm'
+} from 'luxnet/dist/apis/xvm'
 
 import {
     UTXOSet as PlatformUTXOSet,
@@ -31,24 +31,24 @@ import { Transaction } from '@ethereumjs/tx'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
-import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxfi/luxnet-wallet-sdk'
+import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxfi/wallet-sdk'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 
 export interface IIndexKeyCache {
-    [index: number]: AVMKeyPair
+    [index: number]: XVMKeyPair
 }
 
 export type ChainAlias = 'X' | 'P'
-export type AvmImportChainType = 'P' | 'C'
-export type AvmExportChainType = 'P' | 'C'
+export type XvmImportChainType = 'P' | 'C'
+export type XvmExportChainType = 'P' | 'C'
 
 export type WalletNameType = 'mnemonic' | 'ledger' | 'singleton'
 export type WalletType = MnemonicWallet | LedgerWallet | SingletonWallet
 
 interface IAddressManager {
-    getCurrentAddressAvm(): string
+    getCurrentAddressXvm(): string
     getCurrentAddressPlatform(): string
-    getChangeAddressAvm(): string
+    getChangeAddressXvm(): string
     getChangeAddressPlatform(): string
     getDerivedAddresses(): string[]
     getDerivedAddressesP(): string[]
@@ -80,7 +80,7 @@ export interface LuxWalletCore extends IAddressManager {
     getStake(): Promise<BN>
     getPlatformUTXOSet(): PlatformUTXOSet
     createNftFamily(name: string, symbol: string, groupNum: number): Promise<string>
-    mintNft(mintUtxo: AVMUTXO, payload: PayloadBase, quantity: number): Promise<string>
+    mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number): Promise<string>
     getEthBalance(): Promise<BN>
     sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<string>
     sendERC20(
@@ -92,7 +92,7 @@ export interface LuxWalletCore extends IAddressManager {
     ): Promise<string>
     estimateGas(to: string, amount: BN, token: Erc20Token): Promise<number>
 
-    signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx>
+    signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx>
     signP(unsignedTx: PlatformUnsignedTx): Promise<PlatformTx>
     signC(unsignedTx: EVMUnsignedTx): Promise<EVMTx>
     signEvm(tx: Transaction): Promise<Transaction>
@@ -121,7 +121,7 @@ export interface LuxWalletCore extends IAddressManager {
     importToPlatformChain(sourceChain: ExportChainsP): Promise<string>
     importToXChain(sourceChain: ExportChainsX): Promise<string>
     importToCChain(sourceChain: ExportChainsC, baseFee: BN, utxoSet?: EVMUTXOSet): Promise<string>
-    issueBatchTx(orders: (AVMUTXO | ITransaction)[], addr: string, memo?: Buffer): Promise<string>
+    issueBatchTx(orders: (XVMUTXO | ITransaction)[], addr: string, memo?: Buffer): Promise<string>
     signMessage(msg: string, address: string): Promise<string>
 }
 
@@ -135,6 +135,6 @@ export interface ILuxHdWallet extends LuxWalletCore, UnsafeWallet {
     seed: string
     hdKey: HDKey
     getMnemonic(): string
-    getCurrentKey(): AVMKeyPair
-    getKeyChain(): AVMKeyChain
+    getCurrentKey(): XVMKeyPair
+    getKeyChain(): XVMKeyChain
 }

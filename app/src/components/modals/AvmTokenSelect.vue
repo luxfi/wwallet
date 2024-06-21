@@ -1,6 +1,6 @@
 <template>
     <modal ref="modal" title="Select Token" class="modal_main">
-        <div class="avm_token_select">
+        <div class="xvm_token_select">
             <div class="list">
                 <div
                     v-for="asset in assets"
@@ -70,7 +70,7 @@ export default class PrivateKey extends Vue {
 <style scoped lang="scss">
 @use '../../main';
 
-.avm_token_select {
+.xvm_token_select {
     width: 520px;
     max-width: 100%;
 }
@@ -112,7 +112,7 @@ export default class PrivateKey extends Vue {
 }
 
 @include main.mobile-device {
-    .avm_token_select {
+    .xvm_token_select {
         width: 100%;
     }
 }

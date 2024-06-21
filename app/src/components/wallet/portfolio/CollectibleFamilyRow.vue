@@ -28,7 +28,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import NFTCard from './NftCard.vue'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
-import { NFTTransferOutput, UTXO, AVMConstants, NFTMintOutput } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput, UTXO, XVMConstants, NFTMintOutput } from 'luxnet/dist/apis/xvm'
 import { NftGroupDict } from '@/components/wallet/portfolio/types'
 import CollectibleFamilyGroup from '@/components/wallet/portfolio/CollectibleFamilyGroup.vue'
 @Component({
@@ -93,7 +93,7 @@ export default class CollectibleFamilyRow extends Vue {
     get groupIds(): number[] {
         let ids: number[] = this.allUtxos.map((val) => {
             let id = val.getOutput().getOutputID()
-            if (id === AVMConstants.NFTMINTOUTPUTID) {
+            if (id === XVMConstants.NFTMINTOUTPUTID) {
                 let out = val.getOutput() as NFTMintOutput
                 return out.getGroupID()
             } else {

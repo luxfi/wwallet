@@ -1,4 +1,4 @@
-import { ava, avm, bintools, cChain, pChain } from '@/LUX'
+import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { BN, Buffer } from 'luxnet'
 import {
@@ -8,12 +8,12 @@ import {
     NFTMintOutput,
     TransferableInput,
     TransferableOutput,
-    UnsignedTx as AVMUnsignedTx,
-    UTXO as AVMUTXO,
+    UnsignedTx as XVMUnsignedTx,
+    UTXO as XVMUTXO,
     UTXOSet,
-    UTXOSet as AVMUTXOSet,
-    AVMConstants,
-} from 'luxnet/dist/apis/avm'
+    UTXOSet as XVMUTXOSet,
+    XVMConstants,
+} from 'luxnet/dist/apis/xvm'
 
 import { PayloadBase } from 'luxnet/dist/utils'
 import { OutputOwners } from 'luxnet/dist/common'
@@ -28,10 +28,10 @@ import EthereumjsCommon from '@ethereumjs/common'
 import Erc20Token from '@/js/Erc20Token'
 
 export async function buildUnsignedTransaction(
-    orders: (ITransaction | AVMUTXO)[],
+    orders: (ITransaction | XVMUTXO)[],
     addr: string,
     derivedAddresses: string[],
-    utxoset: AVMUTXOSet,
+    utxoset: XVMUTXOSet,
     changeAddress?: string,
     memo?: Buffer
 ) {
@@ -46,7 +46,7 @@ export async function buildUnsignedTransaction(
 
     // TODO: use internal asset ID
     // This does not update on network change, causing issues
-    const LUX_ID_BUF = await avm.getLUXAssetID()
+    const LUX_ID_BUF = await xvm.getLUXAssetID()
     const LUX_ID_STR = LUX_ID_BUF.toString('hex')
     const TO_BUF = bintools.stringToAddress(addr)
 
@@ -58,7 +58,7 @@ export async function buildUnsignedTransaction(
 
     // Aggregate Fungible ins & outs
     for (let i: number = 0; i < orders.length; i++) {
-        const order: ITransaction | AVMUTXO = orders[i]
+        const order: ITransaction | XVMUTXO = orders[i]
 
         if ((order as ITransaction).asset) {
             // if fungible
@@ -68,7 +68,7 @@ export async function buildUnsignedTransaction(
             const amt: BN = tx.amount
 
             if (assetId.toString('hex') === LUX_ID_STR) {
-                aad.addAssetAmount(assetId, amt, avm.getTxFee())
+                aad.addAssetAmount(assetId, amt, xvm.getTxFee())
                 isFeeAdded = true
             } else {
                 aad.addAssetAmount(assetId, amt, ZERO)
@@ -78,8 +78,8 @@ export async function buildUnsignedTransaction(
 
     // If fee isn't added, add it
     if (!isFeeAdded) {
-        if (avm.getTxFee().gt(ZERO)) {
-            aad.addAssetAmount(LUX_ID_BUF, ZERO, avm.getTxFee())
+        if (xvm.getTxFee().gt(ZERO)) {
+            aad.addAssetAmount(LUX_ID_BUF, ZERO, xvm.getTxFee())
         }
     }
 
@@ -101,12 +101,12 @@ export async function buildUnsignedTransaction(
     })
 
     // If transferring an NFT, build the transaction on top of an NFT tx
-    let unsignedTx: AVMUnsignedTx
+    let unsignedTx: XVMUnsignedTx
     const networkId: number = ava.getNetworkID()
-    const chainId: Buffer = bintools.cb58Decode(avm.getBlockchainID())
+    const chainId: Buffer = bintools.cb58Decode(xvm.getBlockchainID())
 
     if (nftUtxos.length > 0) {
-        const nftSet = new AVMUTXOSet()
+        const nftSet = new XVMUTXOSet()
         nftSet.addArray(nftUtxos)
 
         const utxoIds: string[] = nftSet.getUTXOIDs()
@@ -144,7 +144,7 @@ export async function buildUnsignedTransaction(
         rawTx.ins = insNft.concat(ins)
     } else {
         const baseTx: BaseTx = new BaseTx(networkId, chainId, outs, ins, memo)
-        unsignedTx = new AVMUnsignedTx(baseTx)
+        unsignedTx = new XVMUnsignedTx(baseTx)
     }
     return unsignedTx
 }
@@ -170,7 +170,7 @@ export async function buildCreateNftFamilyTx(
         minterSets.push(minterSet)
     }
 
-    const unsignedTx: AVMUnsignedTx = await avm.buildCreateNFTAssetTx(
+    const unsignedTx: XVMUnsignedTx = await xvm.buildCreateNFTAssetTx(
         utxoSet,
         fromAddresses,
         [changeAddress],
@@ -182,14 +182,14 @@ export async function buildCreateNftFamilyTx(
 }
 
 export async function buildMintNftTx(
-    mintUtxo: AVMUTXO,
+    mintUtxo: XVMUTXO,
     payload: PayloadBase,
     quantity: number,
     ownerAddress: string,
     changeAddress: string,
     fromAddresses: string[],
     utxoSet: UTXOSet
-): Promise<AVMUnsignedTx> {
+): Promise<XVMUnsignedTx> {
     const addrBuf = bintools.parseAddress(ownerAddress, 'X')
     const owners = []
 
@@ -202,7 +202,7 @@ export async function buildMintNftTx(
 
     const groupID = (mintUtxo.getOutput() as NFTMintOutput).getGroupID()
 
-    const mintTx = await avm.buildCreateNFTMintTx(
+    const mintTx = await xvm.buildCreateNFTMintTx(
         utxoSet,
         owners,
         sourceAddresses,
@@ -304,12 +304,12 @@ export async function buildEvmTransferErc721Tx(
     return tx
 }
 
-export enum AvmTxNameEnum {
-    'Transaction' = AVMConstants.BASETX,
-    'Mint' = AVMConstants.CREATEASSETTX,
-    'Operation' = AVMConstants.OPERATIONTX,
-    'Import' = AVMConstants.IMPORTTX,
-    'Export' = AVMConstants.EXPORTTX,
+export enum XvmTxNameEnum {
+    'Transaction' = XVMConstants.BASETX,
+    'Mint' = XVMConstants.CREATEASSETTX,
+    'Operation' = XVMConstants.OPERATIONTX,
+    'Import' = XVMConstants.IMPORTTX,
+    'Export' = XVMConstants.EXPORTTX,
 }
 
 export enum PlatfromTxNameEnum {
@@ -326,10 +326,10 @@ export enum PlatfromTxNameEnum {
 }
 
 // TODO: create asset transactions
-export enum ParseableAvmTxEnum {
-    'Transaction' = AVMConstants.BASETX,
-    'Import' = AVMConstants.IMPORTTX,
-    'Export' = AVMConstants.EXPORTTX,
+export enum ParseableXvmTxEnum {
+    'Transaction' = XVMConstants.BASETX,
+    'Import' = XVMConstants.IMPORTTX,
+    'Export' = XVMConstants.EXPORTTX,
 }
 
 export enum ParseablePlatformEnum {

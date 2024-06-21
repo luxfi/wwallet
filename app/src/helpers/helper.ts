@@ -1,11 +1,11 @@
 import { ava } from '@/LUX'
 
 import {
-    KeyChain as AVMKeyChain,
-    KeyPair as AVMKeyPair,
+    KeyChain as XVMKeyChain,
+    KeyPair as XVMKeyPair,
     NFTTransferOutput,
     UTXO,
-} from 'luxnet/dist/apis/avm'
+} from 'luxnet/dist/apis/xvm'
 
 import { Defaults, getPreferredHRP, ONELUX, PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
 import Big from 'big.js'
@@ -17,9 +17,9 @@ function bnToBig(val: BN, denomination = 0): Big {
     return new Big(val.toString()).div(Math.pow(10, denomination))
 }
 
-function keyToKeypair(key: string, chainID: string = 'X'): AVMKeyPair {
+function keyToKeypair(key: string, chainID: string = 'X'): XVMKeyPair {
     const hrp = getPreferredHRP(ava.getNetworkID())
-    const keychain = new AVMKeyChain(hrp, chainID)
+    const keychain = new XVMKeyChain(hrp, chainID)
     return keychain.importKey(key)
 }
 

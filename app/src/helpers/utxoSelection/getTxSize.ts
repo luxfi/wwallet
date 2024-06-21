@@ -1,7 +1,7 @@
 import {
     UnsignedTx as UnsignedTxX,
     TransferableInput as TransferableInputX,
-} from 'luxnet/dist/apis/avm'
+} from 'luxnet/dist/apis/xvm'
 import {
     UnsignedTx as UnsignedTxP,
     TransferableInput as TransferableInputP,

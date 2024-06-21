@@ -203,7 +203,7 @@ import moment from 'moment'
 
 import { BN } from 'luxnet'
 import { AmountOutput, PlatformVMConstants, UTXO, UTXOSet } from 'luxnet/dist/apis/platformvm'
-import { ava, avm, bintools, infoApi, pChain } from '@/LUX'
+import { ava, xvm, bintools, infoApi, pChain } from '@/LUX'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { bnToBig, calculateStakingReward } from '@/helpers/helper'
 import { Defaults, ONELUX } from 'luxnet/dist/utils'
@@ -220,7 +220,7 @@ import NodeCard from '@/components/wallet/earn/Delegate/NodeCard.vue'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForStaking } from '@/helpers/utxoSelection/selectMaxUtxoForStaking'
 import Tooltip from '@/components/misc/Tooltip.vue'
-import { bnToLuxP } from '@luxfi/luxnet-wallet-sdk'
+import { bnToLuxP } from '@luxfi/wallet-sdk'
 
 const MIN_MS = 60000
 const HOUR_MS = MIN_MS * 60

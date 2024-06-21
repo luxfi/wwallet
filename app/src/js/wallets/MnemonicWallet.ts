@@ -1,18 +1,18 @@
 // A simple wrapper thar combines luxnet.js, bip39 and HDWallet
 
 import {
-    KeyPair as AVMKeyPair,
-    KeyChain as AVMKeyChain,
-    UTXOSet as AVMUTXOSet,
+    KeyPair as XVMKeyPair,
+    KeyChain as XVMKeyChain,
+    UTXOSet as XVMUTXOSet,
     TransferableInput,
     TransferableOutput,
     BaseTx,
-    UnsignedTx as AVMUnsignedTx,
-    Tx as AVMTx,
-    UTXO as AVMUTXO,
+    UnsignedTx as XVMUnsignedTx,
+    Tx as XVMTx,
+    UTXO as XVMUTXO,
     AssetAmountDestination,
     UTXOSet,
-} from 'luxnet/dist/apis/avm'
+} from 'luxnet/dist/apis/xvm'
 
 import { privateToAddress } from 'ethereumjs-util'
 
@@ -32,8 +32,8 @@ import { getPreferredHRP, PayloadBase } from 'luxnet/dist/utils'
 
 import * as bip39 from 'bip39'
 import { BN, Buffer as BufferLux } from 'luxnet'
-import { ava, avm, bintools, cChain, pChain } from '@/LUX'
-import { AvmExportChainType, AvmImportChainType, ILuxHdWallet } from '@/js/wallets/types'
+import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
+import { XvmExportChainType, XvmImportChainType, ILuxHdWallet } from '@/js/wallets/types'
 import HDKey from 'hdkey'
 import { ITransaction } from '@/components/wallet/transfer/types'
 import { KeyPair as PlatformVMKeyPair } from 'luxnet/dist/apis/platformvm'
@@ -45,7 +45,7 @@ import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { Transaction } from '@ethereumjs/tx'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
-import { ExportChainsC, ExportChainsP } from '@luxfi/luxnet-wallet-sdk'
+import { ExportChainsC, ExportChainsP } from '@luxfi/wallet-sdk'
 
 // HD WALLET
 // Accounts are not used and the account index is fixed to 0
@@ -154,8 +154,8 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
         return
     }
 
-    getCurrentKey(): AVMKeyPair {
-        return this.externalHelper.getCurrentKey() as AVMKeyPair
+    getCurrentKey(): XVMKeyPair {
+        return this.externalHelper.getCurrentKey() as XVMKeyPair
     }
 
     /**
@@ -170,7 +170,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
     }
 
     async issueBatchTx(
-        orders: (ITransaction | AVMUTXO)[],
+        orders: (ITransaction | XVMUTXO)[],
         addr: string,
         memo: BufferLux | undefined
     ): Promise<string> {
@@ -178,12 +178,12 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
     }
 
     // returns a keychain that has all the derived private/public keys for X chain
-    getKeyChain(): AVMKeyChain {
-        const internal = this.internalHelper.getAllDerivedKeys() as AVMKeyPair[]
-        const external = this.externalHelper.getAllDerivedKeys() as AVMKeyPair[]
+    getKeyChain(): XVMKeyChain {
+        const internal = this.internalHelper.getAllDerivedKeys() as XVMKeyPair[]
+        const external = this.externalHelper.getAllDerivedKeys() as XVMKeyPair[]
 
         const allKeys = internal.concat(external)
-        const keychain: AVMKeyChain = new AVMKeyChain(
+        const keychain: XVMKeyChain = new XVMKeyChain(
             getPreferredHRP(ava.getNetworkID()),
             this.chainId
         )
@@ -194,7 +194,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
         return keychain
     }
 
-    async signX(unsignedTx: AVMUnsignedTx): Promise<AVMTx> {
+    async signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx> {
         const keychain = this.getKeyChain()
 
         const tx = unsignedTx.sign(keychain)
@@ -218,7 +218,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
     }
 
     async signHashByExternalIndex(index: number, hash: BufferLux) {
-        const key = this.externalHelper.getKeyForIndex(index) as AVMKeyPair
+        const key = this.externalHelper.getKeyForIndex(index) as XVMKeyPair
         const signed = key.sign(hash)
         return bintools.cb58Encode(signed)
     }
@@ -227,7 +227,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
         return await WalletHelper.createNftFamily(this, name, symbol, groupNum)
     }
 
-    async mintNft(mintUtxo: AVMUTXO, payload: PayloadBase, quantity: number) {
+    async mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number) {
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
 }

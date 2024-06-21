@@ -1,7 +1,7 @@
 import { ITransactionData, UTXO } from '@/store/modules/history/types'
 import { WalletType } from '@/js/wallets/types'
 import { BN } from 'luxnet'
-import { AVMConstants } from 'luxnet/dist/apis/avm'
+import { XVMConstants } from 'luxnet/dist/apis/xvm'
 
 // Summary item returned for each transaction
 export interface BaseTxSummary {
@@ -85,13 +85,13 @@ function getLossNFT(tx: ITransactionData, wallet: WalletType): NFTSummaryResultD
 
     const nfts = inputs.filter((input) => {
         const type = input.output.outputType
-        if (type === AVMConstants.NFTXFEROUTPUTID) return true
+        if (type === XVMConstants.NFTXFEROUTPUTID) return true
         return false
     })
 
     const nftsOuts = outputs.filter((output) => {
         const type = output.outputType
-        if (type === AVMConstants.NFTXFEROUTPUTID) return true
+        if (type === XVMConstants.NFTXFEROUTPUTID) return true
         return false
     })
 
@@ -142,13 +142,13 @@ function getGainNFT(tx: ITransactionData, wallet: WalletType): NFTSummaryResultD
 
     const nftsIns = inputs.filter((input) => {
         const type = input.output.outputType
-        if (type === AVMConstants.NFTXFEROUTPUTID) return true
+        if (type === XVMConstants.NFTXFEROUTPUTID) return true
         return false
     })
 
     const nftsOuts = outputs.filter((output) => {
         const type = output.outputType
-        if (type === AVMConstants.NFTXFEROUTPUTID) return true
+        if (type === XVMConstants.NFTXFEROUTPUTID) return true
         return false
     })
 
@@ -198,7 +198,7 @@ function getLoss(tx: ITransactionData, wallet: WalletType): TokenSummaryResult {
             const input = ins[i]
             const utxo = input.output
             const outputType = utxo.outputType
-            const isNft = outputType === AVMConstants.NFTXFEROUTPUTID
+            const isNft = outputType === XVMConstants.NFTXFEROUTPUTID
 
             if (isNft) continue
 
@@ -245,7 +245,7 @@ function getProfit(tx: ITransactionData, wallet: WalletType): TokenSummaryResult
         for (let i = 0; i < outs.length; i++) {
             const utxo = outs[i]
             const outputType = utxo.outputType
-            const isNft = outputType === AVMConstants.NFTXFEROUTPUTID
+            const isNft = outputType === XVMConstants.NFTXFEROUTPUTID
 
             // Skip NFTs
             if (isNft) continue
