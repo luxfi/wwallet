@@ -34,6 +34,7 @@ export default {
         'luxnet',
         'luxnet/dist/utils',
         'luxnet/dist',
+        '@luxfi/cloud',
         'ethers',
         'web3',
         'url',

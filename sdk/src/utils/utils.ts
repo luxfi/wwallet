@@ -44,7 +44,7 @@ export function parseNftPayload(rawPayload: string): PayloadBase {
  */
 export const NetworkValues = {
     MAINNET: 'mainnet' as Network,
-    FUJI: 'fuji' as Network,
+    TESTNET: 'testnet' as Network,
 };
 /**
  * rename SortOrder.

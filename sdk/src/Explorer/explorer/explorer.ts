@@ -1,5 +1,5 @@
 import { EXPLORER_MAINNET, EXPLORER_TESTNET } from '@/Explorer/explorer/constants';
-import { isFujiNetwork, isMainnetNetwork, NetworkConfig } from '@/Network';
+import { isTestnetNetwork, isMainnetNetwork, NetworkConfig } from '@/Network';
 import { ExplorerErc20Tx, ExplorerNormalTx, ExplorerResponse } from '@/Explorer/explorer/types';
 import { filterDuplicateTransactions } from './utils';
 
@@ -23,7 +23,7 @@ export async function getErc20History(
     let resp;
     if (isMainnetNetwork(networkConfig)) {
         resp = await fetchExplorerAPI<ExplorerResponse<ExplorerErc20Tx>>(query);
-    } else if (isFujiNetwork(networkConfig)) {
+    } else if (isTestnetNetwork(networkConfig)) {
         resp = await fetchExplorerAPI<ExplorerResponse<ExplorerErc20Tx>>(query, false);
     } else {
         throw new Error('Explorer is only available for Lux Mainnet and Testnet');
@@ -39,7 +39,7 @@ export async function getNormalHistory(address: string, networkConfig: NetworkCo
     let resp;
     if (isMainnetNetwork(networkConfig)) {
         resp = await fetchExplorerAPI<ExplorerResponse<ExplorerNormalTx>>(query);
-    } else if (isFujiNetwork(networkConfig)) {
+    } else if (isTestnetNetwork(networkConfig)) {
         resp = await fetchExplorerAPI<ExplorerResponse<ExplorerNormalTx>>(query, false);
     } else {
         throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
@@ -59,9 +59,9 @@ export async function getABIForContract(
     networkConfig: NetworkConfig
 ): Promise<ExplorerResponse<string>> {
     const isMainnet = isMainnetNetwork(networkConfig);
-    const isFuji = isFujiNetwork(networkConfig);
+    const isTestnet = isTestnetNetwork(networkConfig);
 
-    if (!isMainnet && !isFuji) {
+    if (!isMainnet && !isTestnet) {
         throw new Error('Snow trace is only available for Lux Mainnet and Testnet');
     }
 
