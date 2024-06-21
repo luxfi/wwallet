@@ -24,7 +24,7 @@ import {
     KeyFileV6,
     KeystoreFileKeyType,
 } from './IKeystore'
-import { avm, bintools } from '@/LUX'
+import { xvm, bintools } from '@/LUX'
 import { Buffer } from 'buffer/'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Crypto from '@/js/Crypto'
@@ -263,7 +263,7 @@ async function readKeyFile(data: AllKeyFileTypes, pass: string): Promise<AllKeyF
 function extractKeysV2(
     file: KeyFileDecryptedV2 | KeyFileDecryptedV3 | KeyFileDecryptedV4
 ): AccessWalletMultipleInput[] {
-    const chainID = avm.getBlockchainAlias()
+    const chainID = xvm.getBlockchainAlias()
     const keys = (file as KeyFileDecryptedV2 | KeyFileDecryptedV3 | KeyFileDecryptedV4).keys
 
     return keys.map((key) => {

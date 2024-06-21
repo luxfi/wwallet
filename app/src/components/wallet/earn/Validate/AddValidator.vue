@@ -242,7 +242,7 @@ import { AmountOutput, UTXO, UTXOSet } from 'luxnet/dist/apis/platformvm'
 import { WalletType } from '@/js/wallets/types'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForStaking } from '@/helpers/utxoSelection/selectMaxUtxoForStaking'
-import { bnToLuxP } from '@luxfi/luxnet-wallet-sdk'
+import { bnToLuxP } from '@luxfi/wallet-sdk'
 
 const MIN_MS = 60000
 const HOUR_MS = MIN_MS * 60

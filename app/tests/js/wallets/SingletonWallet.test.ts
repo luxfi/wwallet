@@ -4,10 +4,10 @@ const TEST_KEY = 'PrivateKey-r6yxM4MiGc93hZ4QxSHhixLEH5RtPjGw6Y85gzg8mgaia6HT3'
 const ADDR_X = 'X-fuji1np2h3agqvgxc29sqfh0dy2nvmedus0sa44ktlr'
 const ADDR_C = '506433b9338e2a5706e3c0d6bce041d30688935f'
 
-import { ava, avm, cChain, pChain } from '@/LUX'
+import { ava, xvm, cChain, pChain } from '@/LUX'
 
 ava.setNetworkID(5)
-avm.setBlockchainAlias('X')
+xvm.setBlockchainAlias('X')
 pChain.setBlockchainAlias('P')
 cChain.setBlockchainAlias('C')
 
@@ -19,13 +19,13 @@ describe('Singleton Wallet', () => {
     })
 
     test('correct address', () => {
-        let addrX = wallet.getCurrentAddressAvm() === ADDR_X
+        let addrX = wallet.getCurrentAddressXvm() === ADDR_X
         let addrC = wallet.getEvmAddress() === ADDR_C
         expect(addrX && addrC).toEqual(true)
     })
 
-    test('getCurrentAddressAvm', () => {
-        let addr1 = wallet.getCurrentAddressAvm()
+    test('getCurrentAddressXvm', () => {
+        let addr1 = wallet.getCurrentAddressXvm()
         expect(addr1).toEqual(ADDR_X)
     })
 

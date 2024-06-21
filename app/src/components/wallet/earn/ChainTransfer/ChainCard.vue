@@ -70,7 +70,7 @@ export default class ChainCard extends Vue {
         return this.$store.getters['Assets/walletPlatformBalance'].available
     }
 
-    get avmUnlocked(): BN {
+    get xvmUnlocked(): BN {
         if (!this.ava_asset) return new BN(0)
         return this.ava_asset.amount
     }
@@ -82,7 +82,7 @@ export default class ChainCard extends Vue {
 
     get balance() {
         if (this.chain === 'X') {
-            return this.avmUnlocked
+            return this.xvmUnlocked
         } else if (this.chain === 'P') {
             return this.platformUnlocked
         } else {

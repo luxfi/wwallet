@@ -1,12 +1,12 @@
 import {
-    KeyChain as AVMKeyChain,
-    KeyPair as AVMKeyPair,
-    UTXOSet as AVMUTXOSet,
-} from 'luxnet/dist/apis/avm'
+    KeyChain as XVMKeyChain,
+    KeyPair as XVMKeyPair,
+    UTXOSet as XVMUTXOSet,
+} from 'luxnet/dist/apis/xvm'
 
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm'
 import { getPreferredHRP } from 'luxnet/dist/utils'
-import { ava, avm, bintools, pChain } from '@/LUX'
+import { ava, xvm, bintools, pChain } from '@/LUX'
 import HDKey from 'hdkey'
 import { Buffer } from 'luxnet'
 import {
@@ -17,7 +17,7 @@ import store from '@/store'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
 import { ChainAlias } from './wallets/types'
-import { avmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
+import { xvmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
 import { updateFilterAddresses } from '../providers'
 import { listChainsForAddresses } from '@/js/Cloud/listChainsForAddresses'
 
@@ -27,9 +27,9 @@ const SCAN_SIZE: number = 100 // the total number of utxos to look at initially 
 const SCAN_RANGE: number = SCAN_SIZE - INDEX_RANGE // How many items are actually scanned
 class HdHelper {
     chainId: ChainAlias
-    keyChain: AVMKeyChain | PlatformVMKeyChain
+    keyChain: XVMKeyChain | PlatformVMKeyChain
     keyCache: {
-        [index: number]: AVMKeyPair | PlatformVMKeyPair
+        [index: number]: XVMKeyPair | PlatformVMKeyPair
     }
     addressCache: {
         [index: number]: string
@@ -40,7 +40,7 @@ class HdHelper {
     changePath: string
     masterKey: HDKey
     hdIndex: number
-    utxoSet: AVMUTXOSet | PlatformUTXOSet
+    utxoSet: XVMUTXOSet | PlatformUTXOSet
     isPublic: boolean
     isFetchUtxo: boolean // true if updating balance
     isInit: boolean // true if HD index is found
@@ -58,8 +58,8 @@ class HdHelper {
         this.chainId = chainId
         const hrp = getPreferredHRP(ava.getNetworkID())
         if (chainId === 'X') {
-            this.keyChain = new AVMKeyChain(hrp, chainId)
-            this.utxoSet = new AVMUTXOSet()
+            this.keyChain = new XVMKeyChain(hrp, chainId)
+            this.utxoSet = new XVMUTXOSet()
         } else {
             this.keyChain = new PlatformVMKeyChain(hrp, chainId)
             this.utxoSet = new PlatformUTXOSet()
@@ -85,8 +85,8 @@ class HdHelper {
         this.isInit = false
         const hrp = getPreferredHRP(ava.getNetworkID())
         if (this.chainId === 'X') {
-            this.keyChain = new AVMKeyChain(hrp, this.chainId)
-            this.utxoSet = new AVMUTXOSet()
+            this.keyChain = new XVMKeyChain(hrp, this.chainId)
+            this.utxoSet = new XVMUTXOSet()
         } else {
             this.keyChain = new PlatformVMKeyChain(hrp, this.chainId)
             this.utxoSet = new PlatformUTXOSet()
@@ -102,8 +102,8 @@ class HdHelper {
 
         if (!this.isPublic) {
             if (this.chainId === 'X') {
-                const keychain = this.keyChain as AVMKeyChain
-                const newKey = this.getKeyForIndex(newIndex) as AVMKeyPair
+                const keychain = this.keyChain as XVMKeyChain
+                const newKey = this.getKeyForIndex(newIndex) as XVMKeyPair
                 keychain.addKey(newKey)
             } else {
                 const keychain = this.keyChain as PlatformVMKeyChain
@@ -141,7 +141,7 @@ class HdHelper {
 
     // Fetches the utxos for the current keychain
     // and increments the index if last index has a utxo
-    async updateUtxos(): Promise<AVMUTXOSet | PlatformUTXOSet> {
+    async updateUtxos(): Promise<XVMUTXOSet | PlatformUTXOSet> {
         this.isFetchUtxo = true
 
         if (!this.isInit) {
@@ -149,10 +149,10 @@ class HdHelper {
         }
 
         const addrs: string[] = this.getAllDerivedAddresses()
-        let result: AVMUTXOSet | PlatformUTXOSet
+        let result: XVMUTXOSet | PlatformUTXOSet
 
         if (this.chainId === 'X') {
-            result = await avmGetAllUTXOs(addrs)
+            result = await xvmGetAllUTXOs(addrs)
         } else {
             result = await platformGetAllUTXOs(addrs)
         }
@@ -177,26 +177,26 @@ class HdHelper {
     }
 
     // Not used?
-    getUtxos(): AVMUTXOSet | PlatformUTXOSet {
+    getUtxos(): XVMUTXOSet | PlatformUTXOSet {
         return this.utxoSet
     }
 
     // Updates the helper keychain to contain keys upto the HD Index
-    updateKeychain(): AVMKeyChain | PlatformVMKeyChain {
+    updateKeychain(): XVMKeyChain | PlatformVMKeyChain {
         const hrp = getPreferredHRP(ava.getNetworkID())
-        let keychain: AVMKeyChain | PlatformVMKeyChain
+        let keychain: XVMKeyChain | PlatformVMKeyChain
 
         if (this.chainId === 'X') {
-            keychain = new AVMKeyChain(hrp, this.chainId)
+            keychain = new XVMKeyChain(hrp, this.chainId)
         } else {
             keychain = new PlatformVMKeyChain(hrp, this.chainId)
         }
 
         for (let i: number = 0; i <= this.hdIndex; i++) {
-            let key: AVMKeyPair | PlatformVMKeyPair
+            let key: XVMKeyPair | PlatformVMKeyPair
             if (this.chainId === 'X') {
-                key = this.getKeyForIndex(i) as AVMKeyPair
-                ;(keychain as AVMKeyChain).addKey(key)
+                key = this.getKeyForIndex(i) as XVMKeyPair
+                ;(keychain as XVMKeyChain).addKey(key)
             } else {
                 key = this.getKeyForIndex(i) as PlatformVMKeyPair
                 ;(keychain as PlatformVMKeyChain).addKey(key)
@@ -211,12 +211,12 @@ class HdHelper {
     }
 
     // Returns all key pairs up to hd index
-    getAllDerivedKeys(upTo = this.hdIndex): AVMKeyPair[] | PlatformVMKeyPair[] {
-        const set: AVMKeyPair[] | PlatformVMKeyPair[] = []
+    getAllDerivedKeys(upTo = this.hdIndex): XVMKeyPair[] | PlatformVMKeyPair[] {
+        const set: XVMKeyPair[] | PlatformVMKeyPair[] = []
         for (let i = 0; i <= upTo; i++) {
             if (this.chainId === 'X') {
-                const key = this.getKeyForIndex(i) as AVMKeyPair
-                ;(set as AVMKeyPair[]).push(key)
+                const key = this.getKeyForIndex(i) as XVMKeyPair
+                ;(set as XVMKeyPair[]).push(key)
             } else {
                 const key = this.getKeyForIndex(i) as PlatformVMKeyPair
                 ;(set as PlatformVMKeyPair[]).push(key)
@@ -291,7 +291,7 @@ class HdHelper {
         let utxoSet
 
         if (this.chainId === 'X') {
-            utxoSet = (await avm.getUTXOs(addrs)).utxos
+            utxoSet = (await xvm.getUTXOs(addrs)).utxos
         } else {
             utxoSet = (await pChain.getUTXOs(addrs)).utxos
         }
@@ -342,7 +342,7 @@ class HdHelper {
         return this.getAddressForIndex(idx)
     }
 
-    getCurrentKey(): AVMKeyPair | PlatformVMKeyPair {
+    getCurrentKey(): XVMKeyPair | PlatformVMKeyPair {
         const index: number = this.hdIndex
         return this.getKeyForIndex(index)
     }
@@ -353,12 +353,12 @@ class HdHelper {
     }
 
     // TODO: Public wallet should never be using this
-    getKeyForIndex(index: number, isPrivate: boolean = true): AVMKeyPair | PlatformVMKeyPair {
+    getKeyForIndex(index: number, isPrivate: boolean = true): XVMKeyPair | PlatformVMKeyPair {
         // If key is cached return that
-        let cacheExternal: AVMKeyPair | PlatformVMKeyPair
+        let cacheExternal: XVMKeyPair | PlatformVMKeyPair
 
         if (this.chainId === 'X') {
-            cacheExternal = this.keyCache[index] as AVMKeyPair
+            cacheExternal = this.keyCache[index] as XVMKeyPair
         } else {
             cacheExternal = this.keyCache[index] as PlatformVMKeyPair
         }
@@ -415,8 +415,8 @@ class HdHelper {
         const chainId = this.chainId
 
         // No need for PlatformKeypair because addressToString uses chainID to decode
-        const keypair = new AVMKeyPair(hrp, chainId)
-        const addrBuf = AVMKeyPair.addressFromPublicKey(pkBuff)
+        const keypair = new XVMKeyPair(hrp, chainId)
+        const addrBuf = XVMKeyPair.addressFromPublicKey(pkBuff)
         const addr = bintools.addressToString(hrp, chainId, addrBuf)
 
         this.addressCache[index] = addr

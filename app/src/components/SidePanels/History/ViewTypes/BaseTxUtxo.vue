@@ -16,7 +16,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { Utxo } from '@luxfi/cloud'
 import { BN } from 'luxnet'
-import { bnToLocaleString } from '@luxfi/luxnet-wallet-sdk'
+import { bnToLocaleString } from '@luxfi/wallet-sdk'
 
 @Component
 export default class BaseTxUtxo extends Vue {

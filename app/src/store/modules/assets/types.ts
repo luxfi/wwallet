@@ -1,10 +1,10 @@
-import { UTXO, UTXOSet } from 'luxnet/dist/apis/avm'
+import { UTXO, UTXOSet } from 'luxnet/dist/apis/xvm'
 
 import LuxAsset from '@/js/LuxAsset'
 import { BN } from 'luxnet'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletBalanceDict } from '@/store/types'
-import { UTXO as AVMUTXO } from 'luxnet/dist/apis/avm/utxos'
+import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import Erc20Token from '@/js/Erc20Token'
 import ERC721Token from '@/js/ERC721Token'
 
@@ -16,8 +16,8 @@ export interface AssetsState {
     nftFams: LuxNftFamily[]
     nftFamsDict: NftFamilyDict
     balanceDict: IWalletBalanceDict
-    nftUTXOs: AVMUTXO[]
-    nftMintUTXOs: AVMUTXO[]
+    nftUTXOs: XVMUTXO[]
+    nftMintUTXOs: XVMUTXO[]
     erc20Tokens: Erc20Token[]
     erc20TokensCustom: Erc20Token[]
     evmChainId: number

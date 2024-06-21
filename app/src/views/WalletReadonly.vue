@@ -39,8 +39,8 @@ import {
     parseStakingTxs,
     HistoryItemType,
     isHistoryStakingTx,
-} from '@luxfi/luxnet-wallet-sdk'
-import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm'
+} from '@luxfi/wallet-sdk'
+import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
 import { UTXOSet as PlatformUTXOSet, TransferableOutput } from 'luxnet/dist/apis/platformvm'
 import Balances from '@/views/wallet_readonly/Balances.vue'
 import { downloadCSVFile } from '@/store/modules/history/history_utils'
@@ -62,7 +62,7 @@ export default class WalletReadonly extends Vue {
     addressX = ''
     addressP = ''
     addressC = ''
-    utxosX: null | AVMUTXOSet = null
+    utxosX: null | XVMUTXOSet = null
     utxosP: null | PlatformUTXOSet = null
     stakeOuts: null | TransferableOutput[] = null
 

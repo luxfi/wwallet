@@ -8,7 +8,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { NFTTransferOutput } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
 import { Buffer } from 'luxnet'

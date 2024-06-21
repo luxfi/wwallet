@@ -14,7 +14,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Modal from './Modal.vue'
 import CopyText from '../misc/CopyText.vue'
 import QRCode from 'qrcode'
-import { KeyPair as AVMKeyPair } from 'luxnet/dist/apis/avm'
+import { KeyPair as XVMKeyPair } from 'luxnet/dist/apis/xvm'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 

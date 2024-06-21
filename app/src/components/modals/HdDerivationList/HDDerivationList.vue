@@ -39,7 +39,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
-import { KeyPair as AVMKeyPair, UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm'
+import { KeyPair as XVMKeyPair, UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm'
 import { ava, bintools } from '@/LUX'
 import Big from 'big.js'
@@ -92,7 +92,7 @@ export default class HDDerivationList extends Vue {
     }
 
     utxoSetToBalanceDict(
-        set: AVMUTXOSet | PlatformUTXOSet,
+        set: XVMUTXOSet | PlatformUTXOSet,
         addrs: string[]
     ): DerivationListBalanceDict[] {
         let assets: LuxAsset[] = this.$store.state.Assets.assets
@@ -121,7 +121,7 @@ export default class HDDerivationList extends Vue {
 
     get keyBalancesExternal(): DerivationListBalanceDict[] {
         let wallet = this.wallet
-        let utxoSet = wallet.externalHelper.utxoSet as AVMUTXOSet
+        let utxoSet = wallet.externalHelper.utxoSet as XVMUTXOSet
         let addrs = this.addrsExternal
 
         return this.utxoSetToBalanceDict(utxoSet, addrs)

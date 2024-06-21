@@ -1,4 +1,4 @@
-import { UTXO as AVMUTXO } from 'luxnet/dist/apis/avm'
+import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm'
 import {
     AmountOutput,
     UTXO as PlatformUTXO,
@@ -11,7 +11,7 @@ import { UTXO as EVMUTXO } from 'luxnet/dist/apis/evm'
  * @param utxos UTXOs to sort
  * @param isAscending If true, sorts lower value UTXO first.
  */
-export function sortUTXOsByAmount<UTXOType extends AVMUTXO | PlatformUTXO | EVMUTXO>(
+export function sortUTXOsByAmount<UTXOType extends XVMUTXO | PlatformUTXO | EVMUTXO>(
     utxos: UTXOType[],
     isAscending: boolean
 ) {

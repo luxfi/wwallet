@@ -69,7 +69,7 @@
                 <div class="alt_breakdown" v-else>
                     <div>
                         <label>{{ $t('top.balance.available') }} (X)</label>
-                        <p>{{ avmUnlocked | cleanLuxBN }} LUX</p>
+                        <p>{{ xvmUnlocked | cleanLuxBN }} LUX</p>
                         <label>{{ $t('top.balance.available') }} (P)</label>
                         <p>{{ platformUnlocked | cleanLuxBN }} LUX</p>
                         <label>{{ $t('top.balance.available') }} (C)</label>
@@ -77,7 +77,7 @@
                     </div>
                     <div v-if="hasLocked">
                         <label>{{ $t('top.balance.locked') }} (X)</label>
-                        <p>{{ avmLocked | cleanLuxBN }} LUX</p>
+                        <p>{{ xvmLocked | cleanLuxBN }} LUX</p>
                         <label>{{ $t('top.balance.locked') }} (P)</label>
                         <p>{{ platformLocked | cleanLuxBN }} LUX</p>
                         <label>{{ $t('top.balance.locked_stake') }} (P)</label>
@@ -85,7 +85,7 @@
                     </div>
                     <div v-if="hasMultisig">
                         <label>Multisig (X)</label>
-                        <p>{{ avmMultisig | cleanLuxBN }} LUX</p>
+                        <p>{{ xvmMultisig | cleanLuxBN }} LUX</p>
                         <label>Multisig (P)</label>
                         <p>{{ platformMultisig | cleanLuxBN }} LUX</p>
                     </div>
@@ -154,12 +154,12 @@ export default class BalanceCard extends Vue {
         this.isBreakdown = !this.isBreakdown
     }
 
-    get avmUnlocked(): BN {
+    get xvmUnlocked(): BN {
         if (!this.ava_asset) return new BN(0)
         return this.ava_asset.amount
     }
 
-    get avmLocked(): BN {
+    get xvmLocked(): BN {
         if (!this.ava_asset) return new BN(0)
         return this.ava_asset.amountLocked
     }
@@ -256,13 +256,13 @@ export default class BalanceCard extends Vue {
 
         if (this.ava_asset !== null) {
             let denom = this.ava_asset.denomination
-            return bnToBig(this.avmMultisig.add(this.platformMultisig), denom).toLocaleString()
+            return bnToBig(this.xvmMultisig.add(this.platformMultisig), denom).toLocaleString()
         } else {
             return '--'
         }
     }
 
-    get avmMultisig(): BN {
+    get xvmMultisig(): BN {
         if (this.ava_asset !== null) {
             return this.ava_asset.amountMultisig
         } else {
@@ -360,13 +360,13 @@ export default class BalanceCard extends Vue {
 
     get hasLocked(): boolean {
         return (
-            !this.avmLocked.isZero() ||
+            !this.xvmLocked.isZero() ||
             !this.platformLocked.isZero() ||
             !this.platformLockedStakeable.isZero()
         )
     }
     get hasMultisig(): boolean {
-        return !this.avmMultisig.isZero() || !this.platformMultisig.isZero()
+        return !this.xvmMultisig.isZero() || !this.platformMultisig.isZero()
     }
 }
 </script>

@@ -2,7 +2,7 @@ import { Module } from 'vuex'
 import { RootState } from '@/store/types'
 import { NetworkState } from '@/store/modules/network/types'
 
-import { ava, avm, bintools, cChain, infoApi, pChain } from '@/LUX'
+import { ava, xvm, bintools, cChain, infoApi, pChain } from '@/LUX'
 import { LuxNetwork } from '@/js/LuxNetwork'
 import { explorer_api } from '@/explorer_api'
 import { BN } from 'luxnet'
@@ -10,7 +10,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
 import router from '@/router'
 import { web3 } from '@/evm'
 import { setSocketNetwork } from '../../../providers'
-import { getConfigFromUrl, setNetworkAsync } from '@luxfi/luxnet-wallet-sdk'
+import { getConfigFromUrl, setNetworkAsync } from '@luxfi/wallet-sdk'
 import { MainnetConfig, TestnetConfig } from '@/store/modules/network/constants'
 const network_module: Module<NetworkState, RootState> = {
     namespaced: true,
@@ -118,14 +118,14 @@ const network_module: Module<NetworkState, RootState> = {
             const chainIdP = await infoApi.getBlockchainID('P')
             const chainIdC = await infoApi.getBlockchainID('C')
 
-            avm.refreshBlockchainID(chainIdX)
-            avm.setBlockchainAlias('X')
+            xvm.refreshBlockchainID(chainIdX)
+            xvm.setBlockchainAlias('X')
             pChain.refreshBlockchainID(chainIdP)
             pChain.setBlockchainAlias('P')
             cChain.refreshBlockchainID(chainIdC)
             cChain.setBlockchainAlias('C')
 
-            avm.getLUXAssetID(true)
+            xvm.getLUXAssetID(true)
             pChain.getLUXAssetID(true)
             cChain.getLUXAssetID(true)
 
@@ -178,7 +178,7 @@ const network_module: Module<NetworkState, RootState> = {
         async updateTxFee({ state }) {
             const txFee = await infoApi.getTxFee()
             state.txFee = txFee.txFee
-            avm.setTxFee(txFee.txFee)
+            xvm.setTxFee(txFee.txFee)
         },
 
         async init({ state, commit, dispatch }) {

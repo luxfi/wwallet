@@ -1,4 +1,4 @@
-import { KeyChain as AVMKeyChain, AVMAPI } from 'luxnet/dist/apis/avm'
+import { KeyChain as XVMKeyChain, XVMAPI } from 'luxnet/dist/apis/xvm'
 import { InfoAPI } from 'luxnet/dist/apis/info'
 import Lux from 'luxnet'
 //@ts-ignore
@@ -15,11 +15,11 @@ const chain_id: string = 'X'
 const bintools: BinTools = BinTools.getInstance()
 const ava: Lux = new Lux(ip, port, protocol, network_id, chain_id)
 
-const avm: AVMAPI = ava.XChain()
+const xvm: XVMAPI = ava.XChain()
 const cChain: EVMAPI = ava.CChain()
 const pChain = ava.PChain()
 const infoApi: InfoAPI = ava.Info()
-const keyChain: AVMKeyChain = avm.keyChain()
+const keyChain: XVMKeyChain = xvm.keyChain()
 
 function isValidAddress(addr: string) {
     try {
@@ -30,4 +30,4 @@ function isValidAddress(addr: string) {
     }
 }
 
-export { ava, avm, pChain, cChain, infoApi, bintools, isValidAddress, keyChain }
+export { ava, xvm, pChain, cChain, infoApi, bintools, isValidAddress, keyChain }

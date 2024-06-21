@@ -22,7 +22,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletNftDict } from '@/store/types'
-import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { Buffer } from 'luxnet'
 import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'

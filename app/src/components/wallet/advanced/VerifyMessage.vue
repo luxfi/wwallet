@@ -32,11 +32,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { KeyPair } from 'luxnet/dist/apis/avm'
+import { KeyPair } from 'luxnet/dist/apis/xvm'
 import { ava, bintools } from '@/LUX'
 import createHash from 'create-hash'
 import { getPreferredHRP } from 'luxnet/dist/utils'
-import { avm } from '@/LUX'
+import { xvm } from '@/LUX'
 import { Buffer } from 'luxnet'
 import { digestMessage } from '@/helpers/helper'
 

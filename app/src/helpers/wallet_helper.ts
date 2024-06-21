@@ -3,7 +3,7 @@ import {
     UTXOSet as PlatformUTXOSet,
     UTXO as PlatformUTXO,
 } from 'luxnet/dist/apis/platformvm/utxos'
-import { UTXO as AVMUTXO } from 'luxnet/dist/apis/avm/utxos'
+import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import { WalletType } from '@/js/wallets/types'
 
 import { BN, Buffer } from 'luxnet'
@@ -32,9 +32,9 @@ class WalletHelper {
         groupNum: number
     ) {
         const fromAddresses = wallet.getDerivedAddresses()
-        const changeAddress = wallet.getChangeAddressAvm()
+        const changeAddress = wallet.getChangeAddressXvm()
 
-        const minterAddress = wallet.getCurrentAddressAvm()
+        const minterAddress = wallet.getCurrentAddressXvm()
 
         const utxoSet = wallet.getUTXOSet()
 
@@ -54,12 +54,12 @@ class WalletHelper {
 
     static async mintNft(
         wallet: WalletType,
-        mintUtxo: AVMUTXO,
+        mintUtxo: XVMUTXO,
         payload: PayloadBase,
         quantity: number
     ) {
-        const ownerAddress = wallet.getCurrentAddressAvm()
-        const changeAddress = wallet.getChangeAddressAvm()
+        const ownerAddress = wallet.getCurrentAddressXvm()
+        const changeAddress = wallet.getChangeAddressXvm()
 
         const sourceAddresses = wallet.getDerivedAddresses()
 
@@ -79,7 +79,7 @@ class WalletHelper {
 
     static async issueBatchTx(
         wallet: WalletType,
-        orders: (ITransaction | AVMUTXO)[],
+        orders: (ITransaction | XVMUTXO)[],
         addr: string,
         memo: Buffer | undefined
     ): Promise<string> {

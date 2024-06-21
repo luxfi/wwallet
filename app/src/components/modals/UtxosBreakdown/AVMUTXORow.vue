@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { AmountOutput, AVMConstants, UTXO as AVMUTXO } from 'luxnet/dist/apis/avm'
+import { AmountOutput, XVMConstants, UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm'
 import {
     PlatformVMConstants,
     StakeableLockOut,
@@ -38,7 +38,7 @@ import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
 export default class UTXORow extends Vue {
-    @Prop() utxo!: AVMUTXO | PlatformUTXO
+    @Prop() utxo!: XVMUTXO | PlatformUTXO
     @Prop({ default: true }) isX!: boolean
 
     get out() {
@@ -125,13 +125,13 @@ export default class UTXORow extends Vue {
     get typeName(): string {
         PlatformVMConstants
         switch (this.typeID) {
-            case AVMConstants.SECPMINTOUTPUTID:
+            case XVMConstants.SECPMINTOUTPUTID:
                 return 'SECP Mint Output'
-            case AVMConstants.SECPXFEROUTPUTID:
+            case XVMConstants.SECPXFEROUTPUTID:
                 return 'SECP Transfer Output'
-            case AVMConstants.NFTMINTOUTPUTID:
+            case XVMConstants.NFTMINTOUTPUTID:
                 return 'NFT Mint Output'
-            case AVMConstants.NFTXFEROUTPUTID:
+            case XVMConstants.NFTXFEROUTPUTID:
                 return 'NFT Transfer Output'
             case PlatformVMConstants.STAKEABLELOCKOUTID:
                 return 'Stakeable Lock Output'

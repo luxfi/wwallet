@@ -1,6 +1,6 @@
-import { UTXOSet as AVMUTXOSet } from 'luxnet/dist/apis/avm/utxos'
+import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm/utxos'
 import { UTXOSet as PlatformUTXOSet } from 'luxnet/dist/apis/platformvm/utxos'
-import { avm, pChain } from '@/LUX'
+import { xvm, pChain } from '@/LUX'
 import { BN } from 'luxnet'
 
 export async function getStakeForAddresses(addrs: string[]): Promise<BN> {
@@ -18,30 +18,30 @@ export async function getStakeForAddresses(addrs: string[]): Promise<BN> {
     }
 }
 
-export async function avmGetAllUTXOs(addrs: string[]): Promise<AVMUTXOSet> {
+export async function xvmGetAllUTXOs(addrs: string[]): Promise<XVMUTXOSet> {
     if (addrs.length <= 1024) {
-        const utxos = await avmGetAllUTXOsForAddresses(addrs)
+        const utxos = await xvmGetAllUTXOsForAddresses(addrs)
         return utxos
     } else {
         //Break the list in to 1024 chunks
         const chunk = addrs.slice(0, 1024)
         const remainingChunk = addrs.slice(1024)
 
-        const newSet = await avmGetAllUTXOsForAddresses(chunk)
-        return newSet.merge(await avmGetAllUTXOs(remainingChunk))
+        const newSet = await xvmGetAllUTXOsForAddresses(chunk)
+        return newSet.merge(await xvmGetAllUTXOs(remainingChunk))
     }
 }
 
-export async function avmGetAllUTXOsForAddresses(
+export async function xvmGetAllUTXOsForAddresses(
     addrs: string[],
     endIndex: any = undefined
-): Promise<AVMUTXOSet> {
+): Promise<XVMUTXOSet> {
     if (addrs.length > 1024) throw new Error('Maximum length of addresses is 1024')
     let response
     if (!endIndex) {
-        response = await avm.getUTXOs(addrs)
+        response = await xvm.getUTXOs(addrs)
     } else {
-        response = await avm.getUTXOs(addrs, undefined, 0, endIndex)
+        response = await xvm.getUTXOs(addrs, undefined, 0, endIndex)
     }
 
     const utxoSet = response.utxos
@@ -50,7 +50,7 @@ export async function avmGetAllUTXOsForAddresses(
     const len = response.numFetched
 
     if (len >= 1024) {
-        const subUtxos = await avmGetAllUTXOsForAddresses(addrs, nextEndIndex)
+        const subUtxos = await xvmGetAllUTXOsForAddresses(addrs, nextEndIndex)
         return utxoSet.merge(subUtxos)
     }
     return utxoSet

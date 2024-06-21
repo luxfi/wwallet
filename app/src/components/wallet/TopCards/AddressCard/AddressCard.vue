@@ -65,7 +65,7 @@ import CopyText from '@/components/misc/CopyText.vue'
 import QRModal from '@/components/modals/QRModal.vue'
 import PaperWallet from '@/components/modals/PaperWallet/PaperWallet.vue'
 import QRCode from 'qrcode'
-import { KeyPair as AVMKeyPair } from 'luxnet/dist/apis/avm'
+import { KeyPair as XVMKeyPair } from 'luxnet/dist/apis/xvm'
 import { WalletType, WalletNameType } from '@/js/wallets/types'
 
 import MnemonicWallet, {
@@ -178,7 +178,7 @@ export default class AddressCard extends Vue {
         if (!wallet) {
             return '-'
         }
-        return wallet.getCurrentAddressAvm()
+        return wallet.getCurrentAddressXvm()
     }
 
     get addressPVM() {

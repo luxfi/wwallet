@@ -25,7 +25,7 @@ Vue.use(Vuex)
 
 import router from '@/router'
 
-import { avm, bintools } from '@/LUX'
+import { xvm, bintools } from '@/LUX'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 
 import {
@@ -76,7 +76,7 @@ export default new Vuex.Store({
             if (!state.activeWallet) {
                 state.address = null
             } else {
-                const addrNow = state.activeWallet.getCurrentAddressAvm()
+                const addrNow = state.activeWallet.getCurrentAddressXvm()
                 state.address = addrNow
 
                 // Update the websocket addresses

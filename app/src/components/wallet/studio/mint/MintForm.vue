@@ -131,9 +131,9 @@ import JsonForm from '@/components/wallet/studio/mint/forms/JsonForm.vue'
 import GenericForm from '@/components/wallet/studio/mint/forms/GenericForm.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 
-import { NFTMintOutput, NFTTransferOutput, UTXO } from 'luxnet/dist/apis/avm'
+import { NFTMintOutput, NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { NftFamilyDict } from '@/store/modules/assets/types'
-import { avm, bintools, pChain } from '@/LUX'
+import { xvm, bintools, pChain } from '@/LUX'
 import {
     GenericFormType,
     JsonFormType,
@@ -243,7 +243,7 @@ export default class MintNft extends Vue {
     }
 
     get txFee(): Big {
-        return bnToBig(avm.getTxFee(), 9)
+        return bnToBig(xvm.getTxFee(), 9)
     }
 
     onInput(form: NftMintFormType | null) {

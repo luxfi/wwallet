@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                             <UTXORow
-                                v-for="utxo in avmUTXOs"
+                                v-for="utxo in xvmUTXOs"
                                 :key="utxo.getUTXOID()"
                                 :utxo="utxo"
                                 v-show="chain === 'X'"
@@ -52,14 +52,14 @@ import { Vue, Component } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import { WalletType } from '@/js/wallets/types'
 
-import { UTXOSet as AVMUTXOSet, UTXO as AVMUTXO, AVMConstants } from 'luxnet/dist/apis/avm'
+import { UTXOSet as XVMUTXOSet, UTXO as XVMUTXO, XVMConstants } from 'luxnet/dist/apis/xvm'
 import {
     UTXOSet as PlatformUTXOSet,
     UTXO as PlatformUTXO,
     PlatformVMConstants,
     StakeableLockOut,
 } from 'luxnet/dist/apis/platformvm'
-import UTXORow from '@/components/modals/UtxosBreakdown/AVMUTXORow.vue'
+import UTXORow from '@/components/modals/UtxosBreakdown/XVMUTXORow.vue'
 
 @Component({
     components: { UTXORow, Modal },
@@ -84,7 +84,7 @@ export default class UtxosBreakdownModal extends Vue {
         return this.$store.state.activeWallet
     }
 
-    get avmUTXOs(): AVMUTXO[] {
+    get xvmUTXOs(): XVMUTXO[] {
         if (!this.wallet) return []
         let utxos = this.wallet.getUTXOSet().getAllUTXOs()
         let sorted = utxos.sort(this.sortFnc)
@@ -100,13 +100,13 @@ export default class UtxosBreakdownModal extends Vue {
 
     get isEmpty() {
         if (this.chain === 'X') {
-            return this.avmUTXOs.length === 0
+            return this.xvmUTXOs.length === 0
         } else {
             return this.platformUTXOs.length === 0
         }
     }
 
-    sortFnc<UTXO extends AVMUTXO | PlatformUTXO>(a: UTXO, b: UTXO) {
+    sortFnc<UTXO extends XVMUTXO | PlatformUTXO>(a: UTXO, b: UTXO) {
         let aOut = a.getOutput()
         let bOut = b.getOutput()
 
@@ -128,31 +128,31 @@ export default class UtxosBreakdownModal extends Vue {
             if (aLock !== bLock) return bLock - aLock
             return 0
         } else {
-            if (aType === AVMConstants.SECPXFEROUTPUTID) {
+            if (aType === XVMConstants.SECPXFEROUTPUTID) {
                 return -1
-            } else if (bType === AVMConstants.SECPXFEROUTPUTID) {
+            } else if (bType === XVMConstants.SECPXFEROUTPUTID) {
                 return 1
             }
 
-            if (aType === AVMConstants.NFTXFEROUTPUTID) {
+            if (aType === XVMConstants.NFTXFEROUTPUTID) {
                 return -1
-            } else if (bType === AVMConstants.NFTXFEROUTPUTID) {
+            } else if (bType === XVMConstants.NFTXFEROUTPUTID) {
                 return 1
             }
 
-            if (aType === AVMConstants.NFTMINTOUTPUTID) {
+            if (aType === XVMConstants.NFTMINTOUTPUTID) {
                 return -1
-            } else if (bType === AVMConstants.NFTMINTOUTPUTID) {
+            } else if (bType === XVMConstants.NFTMINTOUTPUTID) {
                 return 1
             }
 
-            if (aType === AVMConstants.SECPMINTOUTPUTID) {
+            if (aType === XVMConstants.SECPMINTOUTPUTID) {
                 return -1
-            } else if (bType === AVMConstants.SECPMINTOUTPUTID) {
+            } else if (bType === XVMConstants.SECPMINTOUTPUTID) {
                 return 1
             }
 
-            // if(aType === AVMConstants.)
+            // if(aType === XVMConstants.)
         }
 
         return 0

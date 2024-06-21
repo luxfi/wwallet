@@ -36,7 +36,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import LuxAsset from '@/js/LuxAsset'
 import BalanceRow from './BalanceRow.vue'
 import CollectibleTab from './CollectibleTab.vue'
-import { UTXO } from 'luxnet/dist/apis/avm'
+import { UTXO } from 'luxnet/dist/apis/xvm'
 
 @Component({
     components: {
