@@ -34,10 +34,12 @@ export async function listStakingForAddresses(addrs: string[]) {
 
     async function fetchAll(config: ListStakingParams): Promise<PChainTransaction[]> {
         // const res = await CloudService.listStaking(config)
-        const res = await Cloud.primaryNetwork.listActivePrimaryNetworkStakingTransactions({
-            ...config,
-            addresses: config.addresses.join(','),
-        })
+        const res = await Cloud.primaryNetworkTransactions.listActivePrimaryNetworkStakingTransactions(
+            {
+                ...config,
+                addresses: config.addresses.join(','),
+            }
+        )
 
         if (res.nextPageToken) {
             const next = await fetchAll({
