@@ -25,7 +25,7 @@ import {
     KeystoreFileKeyType,
 } from './IKeystore'
 import { xvm, bintools } from '@/LUX'
-import { Buffer } from 'buffer/'
+import { Buffer } from 'buffer'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Crypto from '@/js/Crypto'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'

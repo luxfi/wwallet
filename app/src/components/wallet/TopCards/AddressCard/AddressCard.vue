@@ -321,13 +321,13 @@ export default class AddressCard extends Vue {
 }
 
 .qr_but {
-    background-image: url('/img/qr_icon.png');
+    background-image: url('@public/img/qr_icon.png');
 }
 .print_but {
-    background-image: url('/img/faucet_icon.png');
+    background-image: url('@public/img/faucet_icon.png');
 }
 .ledger_but {
-    background-image: url('/img/ledger_icon.png');
+    background-image: url('@public/img/ledger_icon.png');
 }
 .copy_but {
     color: var(--primary-color);
@@ -349,22 +349,22 @@ export default class AddressCard extends Vue {
     justify-content: center;
 }
 .mainnet_but {
-    background-image: url('/img/modal_icons/mainnet_addr.svg');
+    background-image: url('@public/img/modal_icons/mainnet_addr.svg');
 }
 
 @include main.night-mode {
     .qr_but {
-        background-image: url('/img/qr_icon_night.svg');
+        background-image: url('@public/img/qr_icon_night.svg');
     }
     .print_but {
-        background-image: url('/img/print_icon_night.svg');
+        background-image: url('@public/img/print_icon_night.svg');
     }
     .ledger_but {
-        background-image: url('/img/ledger_night.svg');
+        background-image: url('@public/img/ledger_night.svg');
     }
 
     .mainnet_but {
-        background-image: url('/img/modal_icons/mainnet_addr_night.svg');
+        background-image: url('@public/img/modal_icons/mainnet_addr_night.svg');
     }
 }
 

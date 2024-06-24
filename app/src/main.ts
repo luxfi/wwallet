@@ -14,6 +14,9 @@ import vuetify from './plugins/vuetify'
 import i18n from './plugins/i18n.js'
 // @ts-ignore
 import posthogPlugin from './plugins/posthog.js'
+import { Buffer } from 'buffer'
+
+window.Buffer = Buffer
 
 // Install Posthog
 Vue.use(posthogPlugin)

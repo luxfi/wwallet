@@ -1,7 +1,19 @@
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 const path = require('path')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 module.exports = {
+    chainWebpack: (config) => {
+        config.module
+            .rule('scss')
+            .oneOf('vue')
+            .use('sass-loader')
+            .tap((options) => {
+                return {
+                    ...options,
+                }
+            })
+    },
     productionSourceMap: false,
     transpileDependencies: ['vuetify'],
     devServer: {
@@ -13,6 +25,7 @@ module.exports = {
         port: 5000,
     },
     configureWebpack: {
+        plugins: [new NodePolyfillPlugin()],
         optimization: {
             splitChunks: {
                 chunks: 'all',
@@ -24,6 +37,13 @@ module.exports = {
             symlinks: false,
             alias: {
                 '@': path.resolve(__dirname, 'src'),
+                '@public': path.resolve(__dirname, 'public'),
+            },
+            fallback: {
+                buffer: require.resolve('buffer/'),
+                ieee754: require.resolve('ieee754'),
+                'base64-js': require.resolve('base64-js'),
+                inherits: require.resolve('inherits'),
             },
         },
     },
