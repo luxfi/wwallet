@@ -10,7 +10,7 @@ export const MainnetConfig = new LuxNetwork(
 )
 
 export const TestnetConfig = new LuxNetwork(
-    'Fuji',
+    'Testnet',
     'https://api.lux-test.network:443',
     5,
     'https://api.explore.lux-test.network',

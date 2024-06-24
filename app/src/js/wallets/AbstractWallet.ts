@@ -109,11 +109,11 @@ abstract class AbstractWallet {
     async getEthBalance() {
         const netID = ava.getNetworkID()
         const isMainnet = isMainnetNetworkID(netID)
-        const isFuji = isTestnetNetworkID(netID)
+        const isTestnet = isTestnetNetworkID(netID)
 
         let bal
-        // Can't use cloud if not mainnet/fuji
-        if (!isMainnet && !isFuji) {
+        // Can't use cloud if not mainnet/testnet
+        if (!isMainnet && !isTestnet) {
             bal = new BN(await web3.eth.getBalance(this.getEvmAddress()))
         } else {
             const chainId = isMainnet ? '43114' : '43113'
