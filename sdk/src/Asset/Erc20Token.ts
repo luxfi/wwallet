@@ -1,5 +1,5 @@
 import { activeNetwork, web3 } from '@/Network/network';
-import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json';
+import ERC20 from '@openzeppelin/contracts/build/contracts/ERC20.json';
 import { Erc20TokenData } from '@/Asset/types';
 import { NO_NETWORK } from '@/errors';
 import { BN } from 'luxnet';
@@ -23,7 +23,7 @@ export class Erc20Token {
         this.data = data;
 
         //@ts-ignore
-        this.contract = new web3.eth.Contract(ERC20Abi.abi, data.address);
+        this.contract = new web3.eth.Contract(ERC20.abi, data.address);
     }
 
     toData(): Erc20TokenData {
@@ -32,7 +32,7 @@ export class Erc20Token {
 
     static async getData(address: string): Promise<Erc20TokenData> {
         //@ts-ignore
-        let contract = new web3.eth.Contract(ERC20Abi.abi, address);
+        let contract = new web3.eth.Contract(ERC20.abi, address);
 
         let contractCalls = await Promise.all([
             contract.methods.name().call(),

@@ -1,4 +1,4 @@
-import { abi } from '@openzeppelin/contracts/build/contracts/ERC721.json';
+import ERC721 from '@openzeppelin/contracts/build/contracts/ERC721.json';
 import { ContractFactory } from 'ethers';
 // import { web3 } from '@/Network';
 // import { AbiItem } from 'web3-utils';
@@ -7,7 +7,7 @@ import { ContractFactory } from 'ethers';
  * @param address
  */
 export function getErc721TokenEthers(address: string) {
-    return ContractFactory.getContract(address, abi);
+    return ContractFactory.getContract(address, ERC721.abi);
 }
 
 /**

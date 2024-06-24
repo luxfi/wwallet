@@ -21,8 +21,8 @@ import { FeeMarketEIP1559Transaction, Transaction, TransactionFactory } from '@e
 
 import { Common } from '@ethereumjs/common';
 
-import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json';
-import ERC721Abi from '@openzeppelin/contracts/build/contracts/ERC721.json';
+import ERC20 from '@openzeppelin/contracts/build/contracts/ERC20.json';
+import ERC721 from '@openzeppelin/contracts/build/contracts/ERC721.json';
 import { bintools } from '@/common';
 import { ExportChainsC, ExportChainsP, ExportChainsX } from '@/Wallet/types';
 import { chainIdFromAlias } from '@/Network/helpers/idFromAlias';
@@ -286,7 +286,7 @@ export async function buildEvmTransferErc20Tx(
     contractAddress: string
 ) {
     //@ts-ignore
-    const cont = new web3.eth.Contract(ERC20Abi.abi, contractAddress);
+    const cont = new web3.eth.Contract(ERC20.abi, contractAddress);
     const tokenTx = cont.methods.transfer(to, amount.toString());
 
     let data = tokenTx.encodeABI();
@@ -320,7 +320,7 @@ export async function buildEvmTransferErc721Tx(
         common
     };
     // @ts-ignore
-    const contract = new web3.eth.Contract(ERC721Abi.abi, tokenContract);
+    const contract = new web3.eth.Contract(ERC721.abi, tokenContract);
     const tokenTx = contract.methods['safeTransferFrom(address,address,uint256)'](from, to, tokenId);
 
     let tx = TransactionFactory.fromTxData(
@@ -339,7 +339,7 @@ export async function buildEvmTransferErc721Tx(
 
 export async function estimateErc20Gas(tokenContract: string, from: string, to: string, value: BN) {
     //@ts-ignore
-    const contract = new web3.eth.Contract(ERC20Abi.abi, tokenContract);
+    const contract = new web3.eth.Contract(ERC20.abi, tokenContract);
     const tokenTx = contract.methods.transfer(to, value.toString());
     return await tokenTx.estimateGas({
         from: from,
