@@ -70,7 +70,7 @@
         "@ethereumjs/tx": "5.3.0",
         "@ledgerhq/hw-app-eth": "6.36.1",
         "@ledgerhq/hw-transport": "6.30.6",
-        "@luxfi/cloud": "0.1.0",
+        "@luxfi/cloud": "0.1.2",
         "@luxfi/hw-app-lux": "0.2.3",
         "@luxfi/hw-app-luxz": "0.6.11",
         "@metamask/eth-sig-util": "7.0.2",
