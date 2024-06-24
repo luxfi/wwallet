@@ -32,7 +32,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { LUX_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 import { LEDGER_EXCHANGE_TIMEOUT } from '@/store/modules/ledger/types'
 import ImageDayNight from '@/components/misc/ImageDayNight.vue'
-import { getLedgerProvider }  from '@luxfi/wallet-sdk/src'
+import { getLedgerProvider }  from '@luxfi/wallet-sdk'
 import { MIN_LEDGER_V } from '@/js/wallets/constants'
 const { detect } = require('detect-browser')
 

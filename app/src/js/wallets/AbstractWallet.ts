@@ -12,7 +12,7 @@ import {
     TxHelper,
     GasHelper,
     chainIdFromAlias,
-} from '@luxfi/wallet-sdk/dist/src'
+} from '@luxfi/wallet-sdk'
 import { ava, xvm, bintools, cChain, pChain } from '@/LUX'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 import { Tx as EVMTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx'

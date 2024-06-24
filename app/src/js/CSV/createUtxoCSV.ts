@@ -4,10 +4,10 @@ import {
     isTransactionX,
     isTransactionP,
     isCChainExportTransaction,
-} from '@luxfi/wallet-sdk/dist/src'
+} from '@luxfi/wallet-sdk'
 import { UtxoCsvRow } from '@/js/CSV/models'
 import { createUtxoCsvData } from '@/js/CSV/createUtxoCsvData'
-import { getTxTimestamp } from '@luxfi/wallet-sdk/dist/src'
+import { getTxTimestamp } from '@luxfi/wallet-sdk'
 
 const SUPPORTED_TYPE: TransactionTypeName[] = ['BaseTx', 'ExportTx', 'ImportTx', 'OperationTx']
 

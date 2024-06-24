@@ -65,7 +65,7 @@ import {
     Big,
     bnToBigLuxX,
     bnToBigLuxC,
-} from '@luxfi/wallet-sdk/src'
+} from '@luxfi/wallet-sdk'
 
 @Component
 export default class Balances extends Vue {

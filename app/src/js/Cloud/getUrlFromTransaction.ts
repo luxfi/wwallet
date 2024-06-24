@@ -1,4 +1,4 @@
-import { isTransactionP, isTransactionX, TransactionType } from '@luxfi/wallet-sdk/src'
+import { isTransactionP, isTransactionX, TransactionType } from '@luxfi/wallet-sdk'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 import { getTxURL } from './getTxURL'

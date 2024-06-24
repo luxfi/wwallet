@@ -1,9 +1,9 @@
-import { GetTransactionsParams, TransactionType } from '@luxfi/wallet-sdk/dist/src'
-import { splitToParts } from '@luxfi/wallet-sdk/dist/src'
+import { GetTransactionsParams, TransactionType } from '@luxfi/wallet-sdk'
+import { splitToParts } from '@luxfi/wallet-sdk'
 
-import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/src/Explorer'
+import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/Explorer'
 
-import { sortCloudTxs } from '@luxfi/wallet-sdk/dist/src'
+import { sortCloudTxs } from '@luxfi/wallet-sdk'
 import { Cloud } from '@luxfi/cloud'
 
 /**

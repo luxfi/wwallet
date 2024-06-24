@@ -2,8 +2,8 @@ import { ava } from '@/LUX'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 import { ListStakingParams } from '@/js/Cloud/models'
-import { splitToParts } from '@luxfi/wallet-sdk/dist/src'
-import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/src/Explorer'
+import { splitToParts } from '@luxfi/wallet-sdk'
+import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/Explorer'
 import { Network, PChainId, PChainTransaction, SortOrder, Cloud } from '@luxfi/cloud'
 
 const NetworkValues = {
