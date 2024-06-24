@@ -2,7 +2,10 @@
     <input type="number" inputmode="decimal" :placeholder="placeholder" v-model="val" :min="min" :max="maxNumString" :step="stepNum" @change="onChange">
 </template>
 <script>
-    import {Utils, BN, Big} from '@luxfi/wallet-sdk'
+    import { BN, Big} from '@luxfi/wallet-sdk/src'
+
+
+    import Utils from '@luxfi/wallet-sdk/src'
 
     export default {
         data(){

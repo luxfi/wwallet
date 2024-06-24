@@ -31,7 +31,7 @@ import { Transaction } from '@ethereumjs/tx'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
-import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxfi/wallet-sdk'
+import { ExportChainsC, ExportChainsP, ExportChainsX } from '@luxfi/wallet-sdk/src'
 import { UTXOSet as EVMUTXOSet } from 'luxnet/dist/apis/evm/utxos'
 
 export interface IIndexKeyCache {
