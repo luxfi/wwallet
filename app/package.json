@@ -14,7 +14,7 @@
         "test:watch": "jest --verbose --watch ./tests"
     },
     "dependencies": {
-        "@luxfi/wallet-sdk": "0.20.7",
+        "@luxfi/wallet-sdk": "0.20.8",
         "@luxfi/cloud": "0.1.0",
         "@luxfi/vue-components": "0.10.1",
         "@ethereumjs/common": "4.3.0",
@@ -121,5 +121,5 @@
     "engines": {
         "node": ">=16"
     },
-    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+ 
 }

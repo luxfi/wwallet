@@ -17,7 +17,7 @@
         "@ledgerhq/domain-service": "^1.2.0",
         "@ledgerhq/evm-tools": "^1.1.0",
         "@ledgerhq/types-cryptoassets": "^7.13.0",
-        "@luxfi/wallet-sdk": "^0.20.6",
+        "@luxfi/wallet-sdk": "^0.20.8",
         "@zxing/library": "^0.15.2",
         "assert": "^2.1.0",
         "browserify-zlib": "^0.2.0",
@@ -67,5 +67,6 @@
     "bugs": {
         "url": "https://github.com/luxfi/wallet/issues"
     },
-    "homepage": "https://github.com/luxfi/wallet#readme"
+    "homepage": "https://github.com/luxfi/wallet#readme",
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
