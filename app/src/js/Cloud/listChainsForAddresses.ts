@@ -13,7 +13,7 @@ export async function listChainsForAddresses(addrs: string[]) {
 
     // Cannot use cloud for other networks
     if (!isMainnetNetworkID(netID) && !isTestnetNetworkID(netID)) return []
-    const network = isMainnetNetworkID(netID) ? Network.MAINNET : Network.FUJI
+    const network = isMainnetNetworkID(netID) ? Network.MAINNET : Network.TESTNET
 
     const promises = addrParts.map((addresses) => {
         return Cloud.primaryNetwork.getChainAddresses({

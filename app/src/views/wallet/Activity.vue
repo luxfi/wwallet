@@ -101,7 +101,7 @@ import VirtualList from 'vue-virtual-scroll-list'
 import { LuxNetwork } from '@/js/LuxNetwork'
 import ExportCsvModal from '@/components/modals/ExportCsvModal.vue'
 import ExportLuxCsvModal from '@/components/modals/ExportLuxCsvModal.vue'
- 
+
 import ExportCloudHistoryModal from '@/components/modals/ExportCloudHistoryModal.vue'
 import { isMainnetNetworkID } from '@/store/modules/network/isMainnetNetworkID'
 import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
@@ -163,7 +163,7 @@ export default class Activity extends Vue {
     }
 
     get isCsvDisabled() {
-        return !this.hasExplorer || this.isFuji
+        return !this.hasExplorer || this.isTestnet
     }
 
     get showList(): boolean {
@@ -200,16 +200,16 @@ export default class Activity extends Vue {
         return this.activeNetwork && isMainnetNetworkID(this.activeNetwork.networkId)
     }
 
-    get isFuji() {
+    get isTestnet() {
         return this.activeNetwork && isTestnetNetworkID(this.activeNetwork.networkId)
     }
 
     /**
-     * Returns true if conencted to mainnet or fuji
+     * Returns true if conencted to mainnet or testnet
      */
     get hasExplorer() {
         if (!this.activeNetwork) return false
-        return this.isMainnet || this.isFuji
+        return this.isMainnet || this.isTestnet
     }
 
     mounted() {

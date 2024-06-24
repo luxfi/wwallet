@@ -8,7 +8,7 @@ import { Network, PChainId, PChainTransaction, SortOrder, Cloud } from '@luxfi/c
 
 const NetworkValues = {
     MAINNET: 'mainnet' as Network,
-    FUJI: 'fuji' as Network,
+    TESTNET: 'testnet' as Network,
 }
 const SortOrderValues = {
     ASC: 'asc' as SortOrder,
@@ -24,7 +24,7 @@ export async function listStakingForAddresses(addrs: string[]) {
 
     const netID = ava.getNetworkID()
 
-    const network = isMainnetNetworkID(netID) ? NetworkValues.MAINNET : NetworkValues.FUJI
+    const network = isMainnetNetworkID(netID) ? NetworkValues.MAINNET : NetworkValues.TESTNET
 
     // Cannot use cloud for other networks
     if (!isMainnetNetworkID(netID) && !isTestnetNetworkID(netID)) return []

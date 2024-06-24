@@ -37,7 +37,7 @@ export async function getCloudHistory(
         {
             addresses: xvmAddrs,
             blockchainId: BlockchainId.X_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.FUJI,
+            network: isMainnet ? Network.MAINNET : Network.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },
@@ -48,7 +48,7 @@ export async function getCloudHistory(
         {
             addresses: pvmAddrs,
             blockchainId: BlockchainId.P_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.FUJI,
+            network: isMainnet ? Network.MAINNET : Network.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },
@@ -61,7 +61,7 @@ export async function getCloudHistory(
         {
             addresses: [wallet.getEvmAddressBech(), ...externalAddrs],
             blockchainId: BlockchainId.C_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.FUJI,
+            network: isMainnet ? Network.MAINNET : Network.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },

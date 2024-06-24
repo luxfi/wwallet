@@ -10,9 +10,9 @@ import { getTxURL } from './getTxURL'
  */
 export function getUrlFromTransaction(netID: number, transaction: TransactionType) {
     const isMainnet = isMainnetNetworkID(netID)
-    const isFuji = isTestnetNetworkID(netID)
+    const isTestnet = isTestnetNetworkID(netID)
 
-    if (!isMainnet && !isFuji) return null
+    if (!isMainnet && !isTestnet) return null
 
     const isX = isTransactionX(transaction)
     const isP = isTransactionP(transaction)

@@ -11,9 +11,7 @@
             <!--            <p>{{ uptimeText }}</p>-->
             <p style="font-size: 0.8rem">
                 Please refer to
-                <a :href="vscoutURL" target="_blank">VScout</a>
-                or
-                <a :href="avascanURL" target="_blank">Luxscan</a>
+                <a :href="exploreURL" target="_blank">Lux Explore</a>
                 to get more information about a node's uptime.
             </p>
         </div>
@@ -77,18 +75,14 @@ export default class NodeCard extends Vue {
         return bnToBig(this.node.validatorStake.add(this.node.delegatedStake), 9)
     }
 
-    get avascanURL() {
+    get exploreURL() {
         let activeNet: LuxNetwork = this.$store.state.Network.selectedNetwork
 
         if (activeNet.networkId === 1) {
-            return `https://avascan.info/staking/validator/${this.node.nodeID}`
+            return `https://explore.lux.network/staking/validator/${this.node.nodeID}`
         } else {
-            return `https://testnet.avascan.info/staking/validator/${this.node.nodeID}`
+            return `https://explore.lux-test.network/staking/validator/${this.node.nodeID}`
         }
-    }
-
-    get vscoutURL() {
-        return `https://vscout.io/validator/${this.node.nodeID}`
     }
 }
 </script>
