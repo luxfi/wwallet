@@ -21,13 +21,13 @@ jobs:
             - name: add .npmrc
               run: echo '//registry.npmjs.org/:_authToken= ${{ secrets.NPM_TOKEN_READONLY }}' >> .npmrc
             - name: Install dependencies
-              run: yarn install
+              run: pnpm install
             - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   RELEASE_BRANCH: master
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: yarn run semantic-release
+              run: pnpm run semantic-release
             - name: Rebase dev branch
               run: |
                   git checkout dev &&

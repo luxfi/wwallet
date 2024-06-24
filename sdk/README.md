@@ -26,15 +26,15 @@ With npm
 
 `npm install --save @luxfi/wallet-sdk`
 
-or yarn
+or pnpm
 
-`yarn add @luxfi/wallet-sdk`
+`pnpm add @luxfi/wallet-sdk`
 
 ## Local build
 
 1. Clone the repository.
-2. Install dependencies `yarn install`
-3. Run for development `yarn start`
+2. Install dependencies `pnpm install`
+3. Run for development `pnpm start`
 
 ## Webpack
 
@@ -42,4 +42,4 @@ For Webpack version 5 and above you must use this plugin with it. https://www.np
 
 ## Docs
 
-Can generate documentation with `yarn docs` and open `docs/index.html` in a browser.
+Can generate documentation with `pnpm docs` and open `docs/index.html` in a browser.

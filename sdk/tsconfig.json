@@ -1,18 +1,18 @@
 
 {
     "include": [
-      "src", "types", "test",
-      "node_modules/@luxfi/cloud/src/**/*.ts"
+      "src", "types", "test"
     ],
     "compilerOptions": {
         "module": "esnext",
-        "target": "ES6",
-        "lib": ["dom", "esnext"],
+        "target": "ES2021",
+        "lib": ["dom", "es2022"],
         "importHelpers": true,
         "outDir": "./dist",
+        "declarationDir": "./dist",
+        "rootDir": "./src",
         "declaration": true,
         "sourceMap": true,
-        "rootDir": ".",
         "strict": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
@@ -27,8 +27,7 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"],
-            "@luxfi/cloud": ["node_modules/@luxfi/cloud/src/index.ts"]
+            "@/*": ["src/*"]
         },
         "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
         "typeRoots": ["node_modules/@types", "./types"]

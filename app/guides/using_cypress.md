@@ -5,7 +5,7 @@ We use Cypress for end-to-end testing.
 ## Basic Info
 
 -   Cypress is configured with the cypress.(local).json file, this is the config file for telling cypress what environment it is running in.
--   To run cypress locally use `yarn run cypress`. Later we will add a command to run against prod or staging.
+-   To run cypress locally use `pnpm run cypress`. Later we will add a command to run against prod or staging.
 -   To configure cypress for git actions you go into the .git/workflows folder here in the project, there is a main.yml file that is the git actions main file
 -   You can find info on the cypress setup [here](https://github.com/cypress-io/github-action/tree/baf61dc3944ed4baccb528a8085f0255be155e2e#basic)
 

@@ -11,5 +11,5 @@ A text input field coupled with qr_reader.
 
 
 ## Publishing
-1) Build the library wit h`yarn build`
+1) Build the library wit h`pnpm build`
 2) Publish using `np`

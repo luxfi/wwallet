@@ -4,30 +4,28 @@ This is the frontend Vue.js application for the Lux Wallet.
 
 ## Prerequisites
 
--   Yarn (https://classic.yarnpkg.com/en/docs/install/)
--   Recent version of npm (7.4.0)
--   Node v16
--   Gecko, Lux client in Golang (https://github.com/luxfi/node)
+- Node v18+ and pnpm v9+
+- Lux client in Golang (https://github.com/luxfi/node)
 
 ## Installation
 
 1. Clone the repo `git clone https://github.com/luxfi/wallet.git`
 2. Go to root of the project `cd wallet`
-3. Install javascript dependencies with `yarn install`.
+3. Install javascript dependencies with `pnpm install`.
 
 ## Running The Project
 
 In order for the wallet to work, it needs the Lux network to operate on. By default the wallet will connect to the Lux mainnet.
 
 1. If you want to connect to a local network, make sure you have installed and able to run a AvlaancheGo node properly.
-2. Run the project with hot reloading `yarn serve`
+2. Run the project with hot reloading `pnpm serve`
 
 When you go to the website on your browser, you might get a warning saying
 "Site is not secure". This is because we are signing our own SSL Certificates. Please ignore and continue to the website.
 
 ## Deployment
 
-1.  Compile and minify to have a production ready application with `yarn build`.
+1.  Compile and minify to have a production ready application with `pnpm build`.
 2.  Serve from the `/dist` directory.
 
 ## Changing the Network
@@ -63,7 +61,7 @@ devServer: {
 },
 ```
 
-and run `yarn serve` to reflect the change.
+and run `pnpm serve` to reflect the change.
 
 # Accounts
 
@@ -89,7 +87,7 @@ Saved into local storage as a 2 letter code.
 
 To get UTXOs and to send transactions.
 
-#### Explorer API Node (https://github.com/luxfi/indexer)
+#### Explorer API Node (https://github.com/luxfi/explorer)
 
 To check if an address was used before, and to get activity history.
 
@@ -108,4 +106,3 @@ By default, there are two network options to connect to: `Mainnet` and `Testnet`
 
 -   Lux API: `https://api.lux-test.network`
 -   Explorer API: `https://api.explore.lux-test.network`
-
