@@ -1,4 +1,5 @@
 process.env.VUE_APP_VERSION = process.env.npm_package_version
+const path = require('path')
 
 module.exports = {
     productionSourceMap: false,
@@ -21,6 +22,9 @@ module.exports = {
         },
         resolve: {
             symlinks: false,
+            alias: {
+                '@': path.resolve(__dirname, 'src'),
+            },
         },
     },
     pwa: {

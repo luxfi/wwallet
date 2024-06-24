@@ -27,7 +27,7 @@ import { CsvRowLuxTransferData, ITransactionData, UTXO } from '@/store/modules/h
 import { bnToBig } from '@/helpers/helper'
 const generate = require('csv-generate')
 import { downloadCSVFile } from '@/store/modules/history/history_utils'
-import { createCsvNormal, getHistoryForOwnedAddresses } from '@luxfi/wallet-sdk'
+import { createCsvNormal, getHistoryForOwnedAddresses }  from '@luxfi/wallet-sdk/src'
 
 @Component({
     components: {
