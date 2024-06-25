@@ -225,7 +225,7 @@ import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'luxnet'
 import Big from 'big.js'
 //@ts-ignore
-import { QrInput } from '@luxfi/vue_components'
+import { QrInput } from '@luxfi/vue-components'
 import { bintools, pChain } from '@/LUX'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import ConfirmPage from '@/components/wallet/earn/Validate/ConfirmPage.vue'

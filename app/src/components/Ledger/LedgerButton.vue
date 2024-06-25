@@ -17,7 +17,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import TransportU2F from '@ledgerhq/hw-transport-u2f'
+// import TransportU2F from '@ledgerhq/hw-transport-u2f'
 //@ts-ignore
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
 // @ts-ignore
@@ -81,7 +81,9 @@ export default class LedgerButton extends Vue {
         if (window.USB) {
             transport = await TransportWebUSB.create()
         } else {
-            transport = await TransportU2F.create()
+            // TransportU2F is deprecated
+        
+            // transport = await TransportU2F.create()
         }
         return transport
     }

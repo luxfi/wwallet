@@ -131,7 +131,7 @@ import { WalletType } from '@/js/wallets/types'
 import { GasHelper, TxHelper, bnToBigLuxX, bnToBigLuxC, bnToLuxC } from '@luxfi/wallet-sdk'
 
 // @ts-ignore
-import { QrInput } from '@luxfi/vue_components'
+import { QrInput } from '@luxfi/vue-components'
 import Big from 'big.js'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'

@@ -193,7 +193,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import LuxInput from '@/components/misc/LuxInput.vue'
 //@ts-ignore
-import { QrInput } from '@luxfi/vue_components'
+import { QrInput } from '@luxfi/vue-components'
 import ValidatorsList from '@/components/misc/ValidatorList/ValidatorsList.vue'
 import { ValidatorRaw } from '@/components/misc/ValidatorList/types'
 import StakingCalculator from '@/components/wallet/earn/StakingCalculator.vue'
