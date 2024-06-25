@@ -5,6 +5,29 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 module.exports = {
     chainWebpack: (config) => {
         config.module
+            .rule('typescript')
+            .test(/\.tsx?$/)
+            .exclude.add(
+                (filepath) =>
+                    /node_modules/.test(filepath) && !/node_modules\/@ledgerhq/.test(filepath)
+            )
+            .end()
+            .use('babel-loader')
+            .loader('babel-loader')
+            .options({
+                presets: ['@babel/preset-env', '@babel/preset-typescript'],
+            })
+            .end()
+            .use('ts-loader')
+            .loader('ts-loader')
+            .options({
+                transpileOnly: true,
+                appendTsSuffixTo: [/\.vue$/],
+            })
+
+        // Add resolve extensions
+        config.resolve.extensions.merge(['.ts', '.tsx'])
+        config.module
             .rule('scss')
             .oneOf('vue')
             .use('sass-loader')
@@ -44,6 +67,7 @@ module.exports = {
                 ieee754: require.resolve('ieee754'),
                 'base64-js': require.resolve('base64-js'),
                 inherits: require.resolve('inherits'),
+                process: require.resolve('process/browser'),
             },
         },
     },

@@ -1,8 +1,8 @@
 import { WalletType } from '@/js/wallets/types'
-import { getTransactionsForAddresses } from '@luxfi/wallet-sdk/dist/Explorer/cloud'
+import { getTransactionsForAddresses } from '@luxfi/wallet-sdk'
 
 import { BlockchainId, Network, SortOrder } from '@luxfi/cloud'
-import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/Explorer'
+import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk'
 import { sortCloudTxs } from '@luxfi/wallet-sdk'
 
 const PAGE_SIZE = 100

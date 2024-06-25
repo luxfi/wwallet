@@ -42,7 +42,7 @@ import Dropdown from '@/components/misc/Dropdown.vue'
 // import BigNumInput from "@/components/misc/BigNumInput";
 
 // @ts-ignore
-import { BigNumInput } from '@luxfi/vue_components'
+import { BigNumInput } from '@luxfi/vue-components'
 import LuxAsset from '@/js/LuxAsset'
 import { ICurrencyInputDropdownValue } from '@/components/wallet/transfer/types'
 import { IWalletAssetsDict, IWalletBalanceDict, priceDict } from '@/store/types'

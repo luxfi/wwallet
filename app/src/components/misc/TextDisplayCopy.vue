@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-import { CopyText } from '@luxfi/vue_components'
+import { CopyText } from '@luxfi/vue-components'
 export default {
     components: {
         CopyText,
