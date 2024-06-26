@@ -1,9 +1,11 @@
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 const path = require('path')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     chainWebpack: (config) => {
+        // TypeScript loader configuration
         config.module
             .rule('typescript')
             .test(/\.tsx?$/)
@@ -25,8 +27,20 @@ module.exports = {
                 appendTsSuffixTo: [/\.vue$/],
             })
 
-        // Add resolve extensions
-        config.resolve.extensions.merge(['.ts', '.tsx'])
+        // Vue loader configuration
+        config.module
+            .rule('vue')
+            .test(/\.vue$/)
+            .use('vue-loader')
+            .loader('vue-loader')
+            .tap((options) => {
+                return {
+                    ...options,
+                }
+            })
+            .end()
+
+        // SCSS loader configuration
         config.module
             .rule('scss')
             .oneOf('vue')
@@ -36,25 +50,37 @@ module.exports = {
                     ...options,
                 }
             })
+
+        // Add resolve extensions
+        config.resolve.extensions.merge(['.ts', '.tsx', '.vue'])
+
+        // WebAssembly loader configuration
+        config.module
+            .rule('wasm')
+            .test(/\.wasm$/)
+            .type('webassembly/async')
     },
     productionSourceMap: false,
     transpileDependencies: ['vuetify'],
     devServer: {
-        /**
-         * For e2e testing we turn this off using vue cli --mode e2e
-         * @link https://cli.vuejs.org/guide/mode-and-env.html#modes
-         */
         https: !process.env.USE_HTTP,
         port: 5000,
     },
     configureWebpack: {
-        plugins: [new NodePolyfillPlugin()],
+        plugins: [
+            new NodePolyfillPlugin(),
+
+            // new VueLoaderPlugin()
+        ],
         optimization: {
             splitChunks: {
                 chunks: 'all',
                 minSize: 600 * 1000,
-                maxSize: 2000 * 1000,
+                maxSize: 4000 * 1000,
             },
+        },
+        experiments: {
+            asyncWebAssembly: true,
         },
         resolve: {
             symlinks: false,

@@ -59,7 +59,7 @@ import {
     PlatformVMConstants,
     StakeableLockOut,
 } from 'luxnet/dist/apis/platformvm'
-import UTXORow from '@/components/modals/UtxosBreakdown/XVMUTXORow.vue'
+import UTXORow from '@/components/modals/UtxosBreakdown/AVMUTXORow.vue'
 
 @Component({
     components: { UTXORow, Modal },
