@@ -63,7 +63,13 @@ module.exports = {
     productionSourceMap: false,
     transpileDependencies: ['vuetify'],
     devServer: {
-        https: !process.env.USE_HTTP,
+        server: {
+            type: 'https',
+            // port: 5000,
+        },
+        // disableHostCheck: true,
+        // https:
+        // https: !process.env.USE_HTTP,
         port: 5000,
     },
     configureWebpack: {

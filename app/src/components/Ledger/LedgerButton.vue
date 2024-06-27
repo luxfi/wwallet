@@ -17,10 +17,10 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-// import TransportU2F from '@ledgerhq/hw-transport-u2f'
+import TransportU2F from '@ledgerhq/hw-transport-u2f'
 //@ts-ignore
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
-// @ts-ignore
+ 
 import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 // @ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
@@ -67,30 +67,37 @@ export default class LedgerButton extends Vue {
         return false
     }
 
-    async getTransport() {
-        let transport
+    async getTransport(): Promise<Transport> {
+    let transport: Transport;
 
-        try {
-            transport = await TransportWebHID.create()
-            return transport
-        } catch (e) {
-            console.log('Web HID not supported.')
-        }
+    try {
+        transport = await TransportWebHID.create();
+        return transport;
+    } catch (e) {
+        console.log('Web HID not supported.');
+    }
 
+    try {
         //@ts-ignore
         if (window.USB) {
-            transport = await TransportWebUSB.create()
+            transport = await TransportWebUSB.create();
         } else {
-            // TransportU2F is deprecated
-        
-            // transport = await TransportU2F.create()
+            // TransportU2F is deprecated, consider using an alternative method
+            transport = await TransportU2F.create() as unknown as Transport;
         }
-        return transport
+        return transport;
+    } catch (e) {
+        console.log('No suitable transport method found.');
+        throw e; // Re-throw the error to notify caller
     }
+}
+
 
     async submit() {
         try {
             let transport = await this.getTransport()
+            console.log('transport',transport);
+            
             transport.setExchangeTimeout(LEDGER_EXCHANGE_TIMEOUT)
 
             // Wait for app config

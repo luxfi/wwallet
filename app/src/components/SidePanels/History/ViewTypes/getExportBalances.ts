@@ -9,6 +9,7 @@ import {
 import { BN } from 'luxnet'
 import { Utxo, PChainUtxo, UtxoType } from '@luxfi/cloud'
 import LuxAsset from '@/js/LuxAsset'
+import { UtxoTypes } from '@/utils/typeconvert'
 export function getExportBalances(tx: TransactionType, destinationChainId: string, getAsset: any) {
     const balances: {
         [assetID: string]: {
@@ -43,7 +44,7 @@ export function getExportBalances(tx: TransactionType, destinationChainId: strin
                 outputIndex: 0,
                 blockTimestamp: 0,
                 blockNumber: '0',
-                utxoType: UtxoType.TRANSFER,
+                utxoType: UtxoTypes.TRANSFER,
             } as PChainUtxo
         })
     }

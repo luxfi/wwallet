@@ -7,8 +7,9 @@ import {
     XChainTransaction,
 } from '@luxfi/wallet-sdk'
 import { SortOrder, PChainTransaction } from '@luxfi/cloud'
+import { SortOrders } from '@/utils/typeconvert'
 
-export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrder.DESC) {
+export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = SortOrders.DESC) {
     return txs.sort((a, b) => {
         const timeA =
             (a as XChainTransaction | CChainTransaction).timestamp ||
@@ -22,7 +23,7 @@ export function sortCloudTxs(txs: TransactionType[], sortOrder: SortOrder = Sort
 
         const orderVal = timeB - timeA
 
-        const multiplier = sortOrder === SortOrder.DESC ? 1 : -1
+        const multiplier = sortOrder === SortOrders.DESC ? 1 : -1
         return orderVal * multiplier
     })
 }
