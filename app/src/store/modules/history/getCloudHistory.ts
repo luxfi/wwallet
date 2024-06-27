@@ -4,9 +4,10 @@ import { getTransactionsForAddresses } from '@luxfi/wallet-sdk'
 import { BlockchainId, Network, SortOrder } from '@luxfi/cloud'
 import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk'
 import { sortCloudTxs } from '@luxfi/wallet-sdk'
+import { BlockchainIds, Networks, SortOrders } from '@/utils/typeconvert'
 
 const PAGE_SIZE = 100
-const SORT = SortOrder.DESC
+const SORT = SortOrders.DESC
 
 export async function getCloudHistory(
     wallet: WalletType,
@@ -36,8 +37,8 @@ export async function getCloudHistory(
     const txsCloudX = await getTransactionsForAddresses(
         {
             addresses: xvmAddrs,
-            blockchainId: BlockchainId.X_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.TESTNET,
+            blockchainId: BlockchainIds.X_CHAIN,
+            network: isMainnet ? Networks.MAINNET : Networks.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },
@@ -47,8 +48,8 @@ export async function getCloudHistory(
     const txsCloudP = await getTransactionsForAddresses(
         {
             addresses: pvmAddrs,
-            blockchainId: BlockchainId.P_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.TESTNET,
+            blockchainId: BlockchainIds.P_CHAIN,
+            network: isMainnet ? Networks.MAINNET : Networks.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },
@@ -60,8 +61,8 @@ export async function getCloudHistory(
     const txsCloudC = await getTransactionsForAddresses(
         {
             addresses: [wallet.getEvmAddressBech(), ...externalAddrs],
-            blockchainId: BlockchainId.C_CHAIN,
-            network: isMainnet ? Network.MAINNET : Network.TESTNET,
+            blockchainId: BlockchainIds.C_CHAIN,
+            network: isMainnet ? Networks.MAINNET : Networks.TESTNET,
             pageSize: PAGE_SIZE,
             sortOrder: SORT,
         },

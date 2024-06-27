@@ -41,6 +41,7 @@ import { getPriceAtUnixTime } from '@/helpers/price_helper'
 import Big from 'big.js'
 import { PChainTransaction, PChainUtxo, RewardType } from '@luxfi/cloud'
 import { filterOwnedAddresses } from './filterOwnedAddresses'
+import { RewardTypes } from '@/utils/typeconvert'
 
 @Component
 export default class StakingTx extends Vue {
@@ -89,7 +90,7 @@ export default class StakingTx extends Vue {
      */
     get validatorReward(): PChainUtxo | undefined {
         return (this.transaction.emittedUtxos || []).filter((utxo) => {
-            return utxo.rewardType === RewardType.VALIDATOR
+            return utxo.rewardType === RewardTypes.VALIDATOR
         })[0]
     }
 
@@ -98,7 +99,7 @@ export default class StakingTx extends Vue {
      */
     get delegatorReward(): PChainUtxo | undefined {
         return (this.transaction.emittedUtxos || []).filter((utxo) => {
-            return utxo.rewardType === RewardType.DELEGATOR
+            return utxo.rewardType === RewardTypes.DELEGATOR
         })[0]
     }
 

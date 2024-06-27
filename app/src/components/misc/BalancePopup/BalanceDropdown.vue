@@ -27,11 +27,11 @@ import { Vue, Component, Prop, Ref, Model } from 'vue-property-decorator'
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 import LuxAsset from '@/js/LuxAsset'
 
-// import XvmTokenSelect from '@/components/modals/XvmTokenSelect.vue'
+import XvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
 
 @Component({
     components: {
-        // XvmTokenSelect,
+        XvmTokenSelect,
         BalancePopup,
     },
 })

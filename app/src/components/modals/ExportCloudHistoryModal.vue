@@ -79,16 +79,18 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
-import { BlockchainId, Cloud, OperationStatus } from '@luxfi/cloud'
+import { BlockchainId,  } from '@luxfi/cloud'
 import { WalletType } from '@/js/wallets/types'
 import MultiSelect from '../misc/MultiSelect.vue'
 import cloud from '@/js/Cloud/Cloud'
 import Spinner from '@/components/misc/Spinner.vue'
 import RadioButtons from '../misc/RadioButtons.vue'
 import { setTimeoutInterval } from '@/helpers/setTimeoutInterval'
+
+import {  BlockchainIds,OperationStatusIds} from "@/utils/typeconvert";
 
 const DAY = 24 * 60 * 60 * 1000
 const MONTH = 30 * DAY
@@ -124,9 +126,9 @@ export default class ExportCloudHistoryModal extends Vue {
     timeframe: Timeframe = 'Last 3 Months'
 
     includeChains: BlockchainId[] = [
-        BlockchainId.X_CHAIN,
-        BlockchainId.P_CHAIN,
-        BlockchainId.C_CHAIN,
+    BlockchainIds.X_CHAIN,
+    BlockchainIds.P_CHAIN,
+    BlockchainIds.C_CHAIN,
     ]
 
     formEndISO: string = this.endDate.toISOString()
@@ -145,14 +147,14 @@ export default class ExportCloudHistoryModal extends Vue {
 
         const res = await cloud.operations.getOperationResult({ operationId: this.operationID })
 
-        if (res.operationStatus == OperationStatus.COMPLETED) {
+        if (res.operationStatus === OperationStatusIds.COMPLETED) {
             this.downloadURL = res.metadata.downloadUrl || null
             this.loading = false
             return true
-        } else if (res.operationStatus == OperationStatus.FAILED) {
+        } else if (res.operationStatus === OperationStatusIds.FAILED) {
             this.onError(new Error(res.message))
             return true
-        } else if (res.operationStatus !== OperationStatus.RUNNING) {
+        } else if (res.operationStatus !== OperationStatusIds.RUNNING) {
             this.loading = false
             return true
         }
@@ -165,7 +167,7 @@ export default class ExportCloudHistoryModal extends Vue {
     }
 
     get initialSelection() {
-        return [BlockchainId.X_CHAIN, BlockchainId.P_CHAIN, BlockchainId.C_CHAIN]
+        return [BlockchainIds.X_CHAIN, BlockchainIds.P_CHAIN, BlockchainIds.C_CHAIN]
     }
 
     get canSubmit() {

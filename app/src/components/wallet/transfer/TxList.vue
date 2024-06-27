@@ -31,7 +31,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
-const uuidv1 = require('uuid/v1')
+const { v1: uuidv1,   } = require('uuid');
 
 import { BN } from 'luxnet'
 import CurrencyInputDropdown from '@/components/misc/CurrencyInputDropdown.vue'
