@@ -5,7 +5,7 @@
             <span class="c9 c27 c17">TERMS OF USE</span>
         </h1>
         <h4 class="c28 c38" id="h.rzukxuno5xic">
-            <span class="c17 c39">Effective August 25, 2022</span>
+            <span class="c17 c39">Effective Jun 30, 2024</span>
         </h4>
         <p class="c18">
             <span>
@@ -1227,13 +1227,13 @@
                 regarding use of the App, please contact us at:
             </span>
         </p>
-        <p class="c3"><span class="c0">Lux Labs, Inc.</span></p>
-        <p class="c3"><span class="c0">1177 Avenue of the Americas</span></p>
-        <p class="c3"><span class="c0">5th Floor, Suite 50922</span></p>
-        <p class="c3"><span class="c0">New York, NY 10036</span></p>
+        <p class="c3"><span class="c0">Lux Partners Limited</span></p>
+        <p class="c3"><span class="c0">27 Hope St</span></p>
+        <p class="c3"><span class="c0">Floor 3</span></p>
+        <p class="c3"><span class="c0">Douglas, Isle of Man IM1 1AR</span></p>
         <p class="c3">
             <span class="c13">
-                <a class="c16" href="mailto:support@luxfi.org">support@luxfi.org</a>
+                <a class="c16" href="mailto:support@lux.network">support@lux.network</a>
             </span>
         </p>
     </div>
