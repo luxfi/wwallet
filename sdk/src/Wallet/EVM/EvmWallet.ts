@@ -23,8 +23,10 @@ import * as bitcoin from 'bitcoinjs-lib';
 import * as ecpair from 'ecpair';
 
 import { ECPairInterface, ECPairFactory, ECPairAPI, TinySecp256k1Interface } from 'ecpair';
-const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
-const ECPair: ECPairAPI = ECPairFactory(tinysecp);
+// const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
+// import tinysecp from 'tiny-secp256k1';
+import * as ecc from '@bitcoinerlab/secp256k1';
+const ECPair: ECPairAPI = ECPairFactory(ecc);
 
 type AllowedTransactions = Transaction | FeeMarketEIP1559Transaction;
 
@@ -65,9 +67,9 @@ export class EvmWallet extends EvmWalletReadonly {
             chain: {
                 name: 'mainnet', // Replace with your actual chain's name
                 chainId: 7777,
-                networkId: 7777
+                networkId: 7777,
             },
-            hardfork: 'istanbul'
+            hardfork: 'istanbul',
         });
 
         const txData = (tx as any).toJSON();

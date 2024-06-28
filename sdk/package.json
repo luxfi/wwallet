@@ -1,7 +1,7 @@
 {
     "type": "module",
     "name": "@luxfi/wallet-sdk",
-    "version": "0.20.12",
+    "version": "0.20.16",
     "license": "BSD-3",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -66,6 +66,7 @@
         "typescript": "5.4.5"
     },
     "dependencies": {
+        "@bitcoinerlab/secp256k1": "^1.1.1",
         "@ethereumjs/common": "^4.3.0",
         "@ethereumjs/tx": "5.3.0",
         "@ledgerhq/hw-app-eth": "6.36.1",
