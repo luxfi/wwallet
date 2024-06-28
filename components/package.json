@@ -1,6 +1,6 @@
 {
     "name": "@luxfi/vue-components",
-    "version": "0.10.4",
+    "version": "0.10.7",
     "main": "dist/index.umd.js",
     "scripts": {
         "serve": "vue-cli-service serve",
@@ -16,7 +16,7 @@
         "@ledgerhq/domain-service": "^1.2.0",
         "@ledgerhq/evm-tools": "^1.1.0",
         "@ledgerhq/types-cryptoassets": "^7.13.0",
-        "@luxfi/wallet-sdk": "^0.20.12",
+        "@luxfi/wallet-sdk": "^0.20.16",
         "@zxing/library": "^0.15.2",
         "assert": "^2.1.0",
         "browserify-zlib": "^0.2.0",

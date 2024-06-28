@@ -24,8 +24,9 @@ import * as ecpair from 'ecpair';
 
 import { ECPairInterface, ECPairFactory, ECPairAPI, TinySecp256k1Interface } from 'ecpair';
 // const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
-import tinysecp from 'tiny-secp256k1';
-const ECPair: ECPairAPI = ECPairFactory(tinysecp);
+// import tinysecp from 'tiny-secp256k1';
+import * as ecc from '@bitcoinerlab/secp256k1';
+const ECPair: ECPairAPI = ECPairFactory(ecc);
 
 type AllowedTransactions = Transaction | FeeMarketEIP1559Transaction;
 
