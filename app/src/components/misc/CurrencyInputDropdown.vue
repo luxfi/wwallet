@@ -96,13 +96,14 @@ export default class CurrencyInputDropdown extends Vue {
     }
 
     get stepSize() {
+
         if (this.denomination > 3) {
-            let stepNum = Math.pow(10, this.denomination - 2)
-            return new BN(stepNum.toString())
-        } else {
-            let stepNum = Math.pow(10, this.denomination)
-            return new BN(stepNum.toString())
-        }
+        let stepNum = BigInt(10) ** BigInt(this.denomination - 2);
+        return new BN(stepNum.toString());
+      } else {
+        let stepNum = BigInt(10) ** BigInt(this.denomination);
+        return new BN(stepNum.toString());
+      }
     }
     maxOut() {
         // @ts-ignore

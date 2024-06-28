@@ -1,6 +1,6 @@
 {
     "name": "@luxfi/vue-components",
-    "version": "0.10.2",
+    "version": "0.10.4",
     "main": "dist/index.umd.js",
     "scripts": {
         "serve": "vue-cli-service serve",
@@ -49,10 +49,20 @@
         "webpack": "^5.92.1",
         "webpack-cli": "^5.1.4"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ],
+    "browserslist": {
+        "production": [
+            "chrome >= 67",
+            "edge >= 79",
+            "firefox >= 68",
+            "opera >= 54",
+            "safari >= 14"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
     "publishConfig": {
         "access": "public"
     },
