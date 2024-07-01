@@ -25,7 +25,7 @@ import {
     KeystoreFileKeyType,
 } from './types';
 import { xChain } from '@/Network/network';
-import { Buffer } from 'buffer/';
+import { Buffer } from 'buffer';
 import { MnemonicWallet } from '@/Wallet/MnemonicWallet';
 import Crypto from './Crypto';
 import { SingletonWallet } from '@/Wallet/SingletonWallet';
