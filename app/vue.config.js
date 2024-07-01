@@ -2,6 +2,7 @@ process.env.VUE_APP_VERSION = process.env.npm_package_version
 const path = require('path')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const { defineConfig } = require('@vue/cli-service')
 
 module.exports = {
     chainWebpack: (config) => {
@@ -41,14 +42,41 @@ module.exports = {
             .end()
 
         // SCSS loader configuration
+        // config.module
+        //     .rule('scss')
+        //     .oneOf('vue')
+        //     .use('sass-loader')
+        //     .tap((options) => {
+        //         return {
+        //             ...options,
+        //         }
+        //     })
+        // Ensure SCSS files are handled with SCSS syntax
         config.module
             .rule('scss')
             .oneOf('vue')
             .use('sass-loader')
+            .loader('sass-loader')
             .tap((options) => {
-                return {
-                    ...options,
-                }
+                options = options || {}
+                options.implementation = require('sass')
+                options.sassOptions = options.sassOptions || {}
+                options.sassOptions.indentedSyntax = false // Use SCSS syntax for .scss files
+                return options
+            })
+
+        // Ensure SASS files are handled with indented syntax
+        config.module
+            .rule('sass')
+            .oneOf('vue')
+            .use('sass-loader')
+            .loader('sass-loader')
+            .tap((options) => {
+                options = options || {}
+                options.implementation = require('sass')
+                options.sassOptions = options.sassOptions || {}
+                options.sassOptions.indentedSyntax = true // Use indented syntax for .sass files
+                return options
             })
 
         // Add resolve extensions
@@ -63,19 +91,23 @@ module.exports = {
     productionSourceMap: false,
     transpileDependencies: ['vuetify'],
     devServer: {
+        proxy: {
+            '/api': {
+                target: 'https://api.lux.network',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/ext/info', // 将 /api 替换为 /ext/info
+                },
+            },
+        },
         server: {
             type: 'https',
-            // port: 5000,
         },
-        // disableHostCheck: true,
-        // https:
-        // https: !process.env.USE_HTTP,
         port: 5000,
     },
     configureWebpack: {
         plugins: [
             new NodePolyfillPlugin(),
-
             // new VueLoaderPlugin()
         ],
         optimization: {
@@ -93,6 +125,12 @@ module.exports = {
             alias: {
                 '@': path.resolve(__dirname, 'src'),
                 '@public': path.resolve(__dirname, 'public'),
+                bip32: path.resolve(__dirname, 'node_modules/bip32/src/index.js'),
+                // ecpair: path.resolve(__dirname, 'node_modules/ecpair/src/index.js'),
+                // '@bitcoinerlab/secp256k1': path.resolve(
+                //     __dirname,
+                //     'node_modules/@bitcoinerlab/secp256k1'
+                // ),
             },
             fallback: {
                 buffer: require.resolve('buffer/'),
@@ -100,6 +138,7 @@ module.exports = {
                 'base64-js': require.resolve('base64-js'),
                 inherits: require.resolve('inherits'),
                 process: require.resolve('process/browser'),
+                fs: false, // 确保 fs 模块在浏览器环境中被替换
             },
         },
     },

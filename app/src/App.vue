@@ -21,7 +21,7 @@
         <TestNetBanner></TestNetBanner>
     </v-app>
 </template>
-<script>
+<script setup>
 import Analytics from '@/components/Analytics/Analytics'
 import Notifications from '@/components/Notifications'
 import Navbar from './components/Navbar'

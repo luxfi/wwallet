@@ -28,7 +28,7 @@
       "src/**/*.vue",
       "tests/**/*.ts",
       "tests/**/*.tsx"
-    ],
+, "src/components/VComponents/index.js"    ],
     "exclude": ["**/node_modules/*", "../luxnet.js/*"]
   }
   

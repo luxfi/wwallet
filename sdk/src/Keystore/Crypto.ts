@@ -1,4 +1,4 @@
-import { Buffer } from 'buffer/';
+import { Buffer } from 'buffer';
 import createHash from 'create-hash';
 
 /**

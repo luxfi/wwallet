@@ -9,7 +9,10 @@ import { BTCNetworkType } from '@/Wallet';
 import { buildEvmTransferErc721Tx, estimateErc721TransferGas } from '@/helpers/tx_helper';
 
 import { TinySecp256k1Interface, ECPairFactory, ECPairAPI } from 'ecpair';
-import * as ecc from '@bitcoinerlab/secp256k1';
+import * as ecc from 'tiny-secp256k1';
+
+// import tinysecp from 'tiny-secp256k1';
+
 const ECPair = ECPairFactory(ecc);
 
 export class EvmWalletReadonly {

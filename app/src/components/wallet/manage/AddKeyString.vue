@@ -21,7 +21,7 @@
 import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
 // @ts-ignore
-import { QrInput } from '@luxfi/vue-components'
+import { QrInput } from '@/components/VComponents'
 import Spinner from '@/components/misc/Spinner.vue'
 
 @Component({

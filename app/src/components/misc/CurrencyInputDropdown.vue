@@ -42,7 +42,7 @@ import Dropdown from '@/components/misc/Dropdown.vue'
 // import BigNumInput from "@/components/misc/BigNumInput";
 
 // @ts-ignore
-import { BigNumInput } from '@luxfi/vue-components'
+import { BigNumInput } from '@/components/VComponents'
 import LuxAsset from '@/js/LuxAsset'
 import { ICurrencyInputDropdownValue } from '@/components/wallet/transfer/types'
 import { IWalletAssetsDict, IWalletBalanceDict, priceDict } from '@/store/types'
@@ -96,14 +96,13 @@ export default class CurrencyInputDropdown extends Vue {
     }
 
     get stepSize() {
-
         if (this.denomination > 3) {
-        let stepNum = BigInt(10) ** BigInt(this.denomination - 2);
-        return new BN(stepNum.toString());
-      } else {
-        let stepNum = BigInt(10) ** BigInt(this.denomination);
-        return new BN(stepNum.toString());
-      }
+            let stepNum = BigInt(10) ** BigInt(this.denomination - 2)
+            return new BN(stepNum.toString())
+        } else {
+            let stepNum = BigInt(10) ** BigInt(this.denomination)
+            return new BN(stepNum.toString())
+        }
     }
     maxOut() {
         // @ts-ignore
