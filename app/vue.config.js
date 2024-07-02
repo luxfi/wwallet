@@ -96,7 +96,7 @@ module.exports = {
                 target: 'https://api.lux.network',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/api': '/ext/info', // 将 /api 替换为 /ext/info
+                    '^/api': '',
                 },
             },
         },
