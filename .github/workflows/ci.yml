@@ -21,6 +21,7 @@ jobs:
               with:
                   cache: pnpm
                   node-version: ${{ matrix.node-version }}
+            - run: cd /home/runner/work/lux_wallet/lux_wallet/app                  
             - run: pnpm install --frozen-lockfile
-            - run: cd /home/runner/work/lux_wallet/lux_wallet/app
+
             - run: pnpm build
