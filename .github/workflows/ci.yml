@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [15]
+        node-version: [18]
     steps:
       - uses: actions/checkout@v2
+      - name: Install pnpm
+        run: npm install -g pnpm
       - uses: actions/setup-node@v2
         with:
           cache: pnpm
