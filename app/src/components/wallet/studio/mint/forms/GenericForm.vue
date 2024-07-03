@@ -20,7 +20,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import {
     GenericFormType,
     IGenericNft,
@@ -92,7 +92,7 @@ class GenericForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
-export default toNative(GenericForm)
+export default GenericForm
 </script>
 <style scoped lang="scss">
 textarea {

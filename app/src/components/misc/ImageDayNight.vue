@@ -3,7 +3,7 @@
     <img v-else :src="night" />
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 class ImageDayNight extends Vue {
@@ -15,6 +15,6 @@ class ImageDayNight extends Vue {
         return this.$root.theme === 'day'
     }
 }
-export default toNative(ImageDayNight)
+export default ImageDayNight
 </script>
 <style scoped lang="scss"></style>

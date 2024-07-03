@@ -48,7 +48,7 @@
     </Modal>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import { WalletType } from '@/js/wallets/types'
 
@@ -158,7 +158,7 @@ class UtxosBreakdownModal extends Vue {
         return 0
     }
 }
-export default toNative(UtxosBreakdownModal)
+export default UtxosBreakdownModal
 </script>
 <style scoped lang="scss">
 .utxos_breakdown_body {

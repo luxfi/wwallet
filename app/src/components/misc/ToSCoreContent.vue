@@ -1239,11 +1239,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 class ToSCoreContent extends Vue {}
-export default toNative(ToSCoreContent)
+export default ToSCoreContent
 </script>
 <style scoped lang="scss">
 .content {

@@ -22,7 +22,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { LuxNftFamily } from '../../../../../js/LuxNftFamily'
 import { IWalletNftMintDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
@@ -93,7 +93,7 @@ class FamilyRow extends Vue {
         this.$emit('select', this.mintUtxos[0])
     }
 }
-export default toNative(FamilyRow)
+export default FamilyRow
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

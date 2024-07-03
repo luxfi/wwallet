@@ -9,7 +9,7 @@
     </form>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import AccountSettingsModal from '@/components/modals/AccountSettings/AccountSettingsModal.vue'
 
 @Component
@@ -40,7 +40,7 @@ class SaveKeys extends Vue {
             })
     }
 }
-export default toNative(SaveKeys)
+export default SaveKeys
 </script>
 <style scoped lang="scss">
 @use './style';

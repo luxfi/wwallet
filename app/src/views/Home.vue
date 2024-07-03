@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import ToS from '@/components/misc/ToS.vue'
 
 @Component({
@@ -75,7 +75,7 @@ import ToS from '@/components/misc/ToS.vue'
     components: { ToS },
 })
 class Home extends Vue {}
-export default toNative(Home)
+export default Home
 </script>
 
 <style scoped lang="scss">

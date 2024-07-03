@@ -31,7 +31,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { KeyPair } from 'luxnet/dist/apis/xvm'
 import { ava, bintools } from '@/LUX'
 import createHash from 'create-hash'
@@ -93,7 +93,7 @@ class VerifyMessage extends Vue {
         return true
     }
 }
-export default toNative(VerifyMessage)
+export default VerifyMessage
 </script>
 <style lang="scss" scoped>
 textarea,

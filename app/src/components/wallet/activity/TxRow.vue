@@ -32,7 +32,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { AssetsDict, NftFamilyDict } from '@/store/modules/assets/types'
 import { PChainUtxo, Utxo } from '@luxfi/cloud'
 
@@ -137,7 +137,7 @@ class TxRow extends Vue {
         return this.mom.format('Y')
     }
 }
-export default toNative(TxRow)
+export default TxRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

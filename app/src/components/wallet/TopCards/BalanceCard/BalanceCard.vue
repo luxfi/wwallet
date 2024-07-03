@@ -101,7 +101,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Ref, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
 import LuxAsset from '@/js/LuxAsset'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import Spinner from '@/components/misc/Spinner.vue'
@@ -369,7 +369,7 @@ class BalanceCard extends Vue {
         return !this.xvmMultisig.isZero() || !this.platformMultisig.isZero()
     }
 }
-export default toNative(BalanceCard)
+export default BalanceCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

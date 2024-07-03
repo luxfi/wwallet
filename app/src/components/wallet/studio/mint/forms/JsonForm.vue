@@ -8,7 +8,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { JsonFormType } from '@/components/wallet/studio/mint/types'
 
 // const JSONEditor = require('jsoneditor')
@@ -52,7 +52,7 @@ class JsonForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
-export default toNative(JsonForm)
+export default JsonForm
 </script>
 <style scoped lang="scss">
 textarea,

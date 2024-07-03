@@ -1,25 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Transfer from '@/views/wallet/Transfer.vue'
-import ManageKeys from '@/views/wallet/ManageKeys.vue'
-import Menu from '../views/access/Menu.vue'
-import Keystore from '../views/access/Keystore.vue'
-import Mnemonic from '@/views/access/Mnemonic.vue'
-import PrivateKey from '@/views/access/PrivateKey.vue'
-import Access from '../views/access/Access.vue'
-import Create from '@/views/Create.vue'
-import Wallet from '@/views/Wallet.vue'
-import WalletHome from '@/views/wallet/Portfolio.vue'
-import Earn from '@/views/wallet/Earn.vue'
-import Advanced from '@/views/wallet/Advanced.vue'
-import Activity from '@/views/wallet/Activity.vue'
-import Account from '@/views/access/Account.vue'
-import Legal from '@/views/Legal.vue'
-import Studio from '@/views/wallet/Studio.vue'
-import Export from '@/views/wallet/CrossChain.vue'
-import Xpub from '@/views/access/Xpub.vue'
-import WalletReadonly from '@/views/WalletReadonly.vue'
-import { PublicMnemonicWallet } from '@luxfi/wallet-sdk'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '../store/index'
 
 const ifNotAuthenticated = (to, from, next) => {
@@ -38,99 +17,99 @@ const ifAuthenticated = (to, from, next) => {
     next('/')
 }
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
-        component: Home,
+        component: () => import('../views/Home.vue'),
         beforeEnter: ifNotAuthenticated,
     },
     {
         path: '/access',
-        component: Access,
+        component: () => import('../views/access/Access.vue'),
         beforeEnter: ifNotAuthenticated,
         children: [
             {
                 path: '',
                 name: 'access',
-                component: Menu,
+                component: () => import('../views/access/Menu.vue'),
             },
             {
                 path: 'keystore',
-                component: Keystore,
+                component: () => import('../views/access/Keystore.vue'),
             },
             {
                 path: 'privatekey',
-                component: PrivateKey,
+                component: () => import('../views/access/PrivateKey.vue'),
             },
             {
                 path: 'mnemonic',
-                component: Mnemonic,
+                component: () => import('../views/access/Mnemonic.vue'),
             },
             {
                 path: 'account/:index',
-                component: Account,
+                component: () => import('../views/access/Account.vue'),
                 name: 'Account',
             },
             {
                 path: 'xpub',
-                component: Xpub,
+                component: () => import('../views/access/Xpub.vue'),
             },
         ],
     },
     {
         path: '/legal',
         name: 'legal',
-        component: Legal,
+        component: () => import('../views/Legal.vue'),
     },
     {
         path: '/create',
         name: 'create',
-        component: Create,
+        component: () => import('../views/Create.vue'),
         beforeEnter: ifNotAuthenticated,
     },
     {
         path: '/xpub',
         name: 'wallet_readonly',
-        component: WalletReadonly,
+        component: () => import('../views/WalletReadonly.vue'),
     },
     {
         path: '/wallet',
-        component: Wallet,
+        component: () => import('../views/Wallet.vue'),
         beforeEnter: ifAuthenticated,
         children: [
             {
                 path: '',
                 name: 'wallet',
-                component: WalletHome,
+                component: () => import('../views/wallet/Portfolio.vue'),
             },
             {
                 path: 'transfer',
-                component: Transfer,
+                component: () => import('../views/wallet/Transfer.vue'),
             },
             {
                 path: 'cross_chain',
-                component: Export,
+                component: () => import('../views/wallet/CrossChain.vue'),
             },
             {
                 path: 'keys',
-                component: ManageKeys,
+                component: () => import('../views/wallet/ManageKeys.vue'),
             },
             {
                 path: 'earn',
-                component: Earn,
+                component: () => import('../views/wallet/Earn.vue'),
             },
             {
                 path: 'studio',
-                component: Studio,
+                component: () => import('../views/wallet/Studio.vue'),
             },
             {
                 path: 'advanced',
-                component: Advanced,
+                component: () => import('../views/wallet/Advanced.vue'),
             },
             {
                 path: 'activity',
-                component: Activity,
+                component: () => import('../views/wallet/Activity.vue'),
             },
         ],
     },

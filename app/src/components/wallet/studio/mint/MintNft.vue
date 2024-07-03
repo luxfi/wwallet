@@ -8,7 +8,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { pChain } from '@/LUX'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
@@ -73,6 +73,6 @@ class MintNft extends Vue {
         }
     }
 }
-export default toNative(MintNft)
+export default MintNft
 </script>
 <style scoped lang="scss"></style>

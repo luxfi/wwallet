@@ -59,7 +59,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import CopyText from '@/components/misc/CopyText.vue'
 import QRModal from '@/components/modals/QRModal.vue'
@@ -287,7 +287,7 @@ class AddressCard extends Vue {
         this.updateQR()
     }
 }
-export default toNative(AddressCard)
+export default AddressCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

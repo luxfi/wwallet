@@ -13,7 +13,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { Utxo } from '@luxfi/cloud'
 import { BN } from 'luxnet'
 import { bnToLocaleString } from '@luxfi/wallet-sdk'
@@ -63,7 +63,7 @@ class BaseTxUtxo extends Vue {
         }
     }
 }
-export default toNative(BaseTxUtxo)
+export default BaseTxUtxo
 </script>
 <style scoped lang="scss">
 .utxo {

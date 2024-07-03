@@ -98,7 +98,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import AddValidator from '@/components/wallet/earn/Validate/AddValidator.vue'
 import AddDelegator from '@/components/wallet/earn/Delegate/AddDelegator.vue'
@@ -192,7 +192,7 @@ class Earn extends Vue {
         return bnToBig(bn, 9)
     }
 }
-export default toNative(Earn)
+export default Earn
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 // @ts-ignore
 import { QrInput } from '@/components/VComponents'
 import Spinner from '@/components/misc/Spinner.vue'
@@ -76,7 +76,7 @@ class AddKeyString extends Vue {
         this.error = ''
     }
 }
-export default toNative(AddKeyString)
+export default AddKeyString
 </script>
 <style scoped lang="scss">
 @use '../../../main';

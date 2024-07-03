@@ -25,7 +25,7 @@
     </form>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import AccountSettingsModal from '@/components/modals/AccountSettings/AccountSettingsModal.vue'
 import { ChangePasswordInput } from '@/store/modules/accounts/types'
 
@@ -87,7 +87,7 @@ class ChangePassword extends Vue {
             })
     }
 }
-export default toNative(ChangePassword)
+export default ChangePassword
 </script>
 <style scoped lang="scss">
 @use './style';

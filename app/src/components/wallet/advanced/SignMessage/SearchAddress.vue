@@ -27,7 +27,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 
@@ -78,7 +78,7 @@ class SearchAddress extends Vue {
         this.matchingAddrs = [...pAddrs.slice(0, 2), ...xAddrs.slice(0, 2)]
     }
 }
-export default toNative(SearchAddress)
+export default SearchAddress
 </script>
 <style scoped lang="scss">
 $addrSize: 14px;

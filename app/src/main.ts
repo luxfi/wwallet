@@ -91,9 +91,6 @@
 //         return `${wholeStr}.${trimmed}`
 //     }
 // }
-console.log('开始加载')
-
-import 'reflect-metadata'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -118,48 +115,45 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 window.Buffer = Buffer
 
-const app = createApp(App)
+try {
+    const app = createApp(App)
 
-// 安装 Posthog 插件
-app.use(posthogPlugin)
+    app.use(posthogPlugin)
 
-// 安装 BootstrapVue 插件
-app.use(BootstrapVue)
+    app.use(BootstrapVue)
 
-// 安装 Vue I18n 插件
+    app.use(i18nOptions)
 
-app.use(i18nOptions)
+    app.component('datetime', Datetime)
+    app.component('fa', FontAwesomeIcon)
 
-app.component('datetime', Datetime)
-app.component('fa', FontAwesomeIcon)
+    app.use(router)
+    app.use(store)
+    app.use(vuetify)
 
-app.use(router)
-app.use(store)
-app.use(vuetify)
+    app.config.globalProperties.productionTip = false
 
-app.config.globalProperties.productionTip = false
+    app.mount('#app')
 
-app.mount('#app')
-
-// 显示应用版本并隐藏加载器
-app.mixin({
-    mounted() {
-        console.log(`App Version: ${process.env.VUE_APP_VERSION}`)
-        const loader = document.getElementById('app_loading')
-        if (loader) {
-            loader.style.display = 'none'
-        }
-    },
-})
+    app.mixin({
+        mounted() {
+            console.log(`App Version: ${process.env.VUE_APP_VERSION}`)
+            const loader = document.getElementById('app_loading')
+            if (loader) {
+                loader.style.display = 'none'
+            }
+        },
+    })
+} catch (error) {
+    console.log('error', error)
+}
 
 // @ts-ignore
 if (window.Cypress) {
-    // 仅在 E2E 测试期间可用
     // @ts-ignore
     window.app = app
 }
 
-// 扩展 Big.js 添加一个辅助函数
 import Big from 'big.js'
 
 declare module 'big.js' {

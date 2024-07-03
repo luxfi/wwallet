@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import TopInfo from '@/components/wallet/TopInfo.vue'
 import Sidebar from '@/components/wallet/Sidebar.vue'
 import MainPanel from '@/components/SidePanels/MainPanel.vue'
@@ -111,7 +111,7 @@ class Wallet extends Vue {
         return this.$store.state.volatileWallets.length > 0
     }
 }
-export default toNative(Wallet)
+export default Wallet
 </script>
 
 <style lang="scss" scoped>

@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { iUserAccountEncrypted } from '@/store/types'
 import Identicon from '@/components/misc/Identicon.vue'
 import SaveAccountModal from '@/components/modals/SaveAccount/SaveAccountModal.vue'
@@ -59,7 +59,7 @@ class AccountMenu extends Vue {
         this.$refs.save_modal.open()
     }
 }
-export default toNative(AccountMenu)
+export default AccountMenu
 </script>
 <style scoped lang="scss">
 .account_but {

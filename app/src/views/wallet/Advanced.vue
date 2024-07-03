@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import ChainImport from '@/components/wallet/advanced/ChainImport.vue'
 import SignMessage from '@/components/wallet/advanced/SignMessage/SignMessage.vue'
@@ -40,7 +40,7 @@ class Advanced extends Vue {
         this.$refs.token_list.open()
     }
 }
-export default toNative(Advanced)
+export default Advanced
 </script>
 <style scoped lang="scss">
 @use '../../main';

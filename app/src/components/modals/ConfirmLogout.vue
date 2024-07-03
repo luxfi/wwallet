@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import CopyText from '@/components/misc/CopyText.vue'
@@ -56,7 +56,7 @@ class ConfirmLogout extends Vue {
         this.close()
     }
 }
-export default toNative(ConfirmLogout)
+export default ConfirmLogout
 </script>
 <style scoped lang="scss">
 .confirm_body {

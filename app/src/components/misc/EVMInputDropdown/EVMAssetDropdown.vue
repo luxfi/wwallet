@@ -11,7 +11,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletType } from '@/js/wallets/types'
 
@@ -63,7 +63,7 @@ class EVMAssetDropdown extends Vue {
         this.$emit('changeCollectible', val)
     }
 }
-export default toNative(EVMAssetDropdown)
+export default EVMAssetDropdown
 </script>
 <style scoped lang="scss">
 @use "../../../main";

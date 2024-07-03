@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import { xvm, cChain, pChain } from '@/LUX'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'
 import {
@@ -141,7 +141,7 @@ class ImportExport extends Vue {
         }, new BN(0))
     }
 }
-export default toNative(ImportExport)
+export default ImportExport
 </script>
 <style scoped lang="scss">
 .import_row {

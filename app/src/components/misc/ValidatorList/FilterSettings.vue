@@ -97,7 +97,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import moment from 'moment'
 import { ValidatorListFilter } from '@/components/wallet/earn/Delegate/types'
 import { ValidatorListItem } from '@/store/modules/platform/types'
@@ -190,7 +190,7 @@ class FilterSettings extends Vue {
         return true
     }
 }
-export default toNative(FilterSettings)
+export default FilterSettings
 </script>
 <style scoped lang="scss">
 .filter_settings {

@@ -125,7 +125,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import TextDisplayCopy from '@/components/misc/TextDisplayCopy.vue'
 import Spinner from '@/components/misc/Spinner.vue'
 // import TorusGoogle from "@/components/Torus/TorusGoogle.vue";
@@ -196,7 +196,7 @@ class CreateWallet extends Vue {
         }, 500)
     }
 }
-export default toNative(CreateWallet)
+export default CreateWallet
 </script>
 <style scoped lang="scss">
 @use '../../main';

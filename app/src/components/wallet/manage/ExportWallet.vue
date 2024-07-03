@@ -40,7 +40,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { ExportWalletsInput } from '@/store/types'
 
@@ -94,7 +94,7 @@ class ExportWallet extends Vue {
         }, 200)
     }
 }
-export default toNative(ExportWallet)
+export default ExportWallet
 </script>
 <style lang="scss">
 .export_wallet {

@@ -125,7 +125,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { priceDict } from '@/store/types'
 import { WalletType } from '@/js/wallets/types'
@@ -486,7 +486,7 @@ class FormC extends Vue {
         })
     }
 }
-export default toNative(FormC)
+export default FormC
 </script>
 <style scoped lang="scss">
 @use '../../../main';

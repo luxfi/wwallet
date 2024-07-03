@@ -33,7 +33,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 import FileInput from '../../components/misc/FileInput.vue'
 // import RememberKey from "../../components/misc/RememberKey.vue";
@@ -127,7 +127,7 @@ class Keystore extends Vue {
         return true
     }
 }
-export default toNative(Keystore)
+export default Keystore
 </script>
 <style scoped lang="scss">
 @use '../../main';

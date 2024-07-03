@@ -2,7 +2,7 @@
     <p>{{ tweenedNumber.toLocaleString() }}</p>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Big from 'big.js'
 
 @Component
@@ -41,5 +41,5 @@ class NumberCounter extends Vue {
         this.animate()
     }
 }
-export default toNative(NumberCounter)
+export default NumberCounter
 </script>

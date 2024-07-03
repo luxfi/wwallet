@@ -39,7 +39,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import { WalletType } from '@/js/wallets/types'
@@ -161,7 +161,7 @@ class ChainImport extends Vue {
         }
     }
 }
-export default toNative(ChainImport)
+export default ChainImport
 </script>
 <style scoped lang="scss">
 .v-btn {

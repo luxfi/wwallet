@@ -55,7 +55,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
 import axios from 'axios'
@@ -201,7 +201,7 @@ class CustomPage extends Vue {
         this.url = ''
     }
 }
-export default toNative(CustomPage)
+export default CustomPage
 </script>
 <style scoped lang="scss">
 @use '../../main';

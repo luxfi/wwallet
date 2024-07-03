@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 //@ts-ignore
 import langMap from '@/locales/lang_map'
@@ -84,7 +84,7 @@ class LanguageSelect extends Vue {
         return res
     }
 }
-export default toNative(LanguageSelect)
+export default LanguageSelect
 </script>
 <style scoped lang="scss">
 .sel_locale {

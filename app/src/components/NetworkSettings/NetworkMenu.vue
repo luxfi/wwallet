@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import NetworkRow from './NetworkRow.vue'
 import CustomPage from './CustomPage.vue'
@@ -147,7 +147,7 @@ class NetworkMenu extends Vue {
         return false
     }
 }
-export default toNative(NetworkMenu)
+export default NetworkMenu
 </script>
 <style scoped lang="scss">
 @use '../../main';

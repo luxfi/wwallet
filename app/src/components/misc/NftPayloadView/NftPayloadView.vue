@@ -21,7 +21,7 @@
     <Component v-else :is="viewerSmall" :payload="payload" class="nft_payload_view"></Component>
 </template>
 <script lang="ts">
-import { Component, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { PayloadBase } from 'luxnet/dist/utils'
 
 import UrlPayloadView from '@/components/misc/NftPayloadView/views/UrlPayloadView.vue'
@@ -114,7 +114,7 @@ class NftPayloadView extends Vue {
         }
     }
 }
-export default toNative(NftPayloadView)
+export default NftPayloadView
 </script>
 <style scoped>
 .nft_payload_view {

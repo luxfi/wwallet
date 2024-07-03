@@ -39,7 +39,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import {
@@ -145,7 +145,7 @@ class UtxoSelect extends Vue {
         return bnToBig(this.selectedBalance, 9).toLocaleString()
     }
 }
-export default toNative(UtxoSelect)
+export default UtxoSelect
 </script>
 <style scoped lang="scss">
 .utxo_select_modal_body {

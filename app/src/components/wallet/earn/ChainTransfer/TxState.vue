@@ -31,7 +31,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Model, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Model, Prop, Vue, Watch } from 'vue-property-decorator'
 import Spinner from '@/components/misc/Spinner.vue'
 import { UTXO } from 'luxnet/dist/apis/platformvm'
 import { ChainIdType } from '@/constants'
@@ -55,7 +55,7 @@ class TxStateCard extends Vue {
     @Prop() txId!: string
     @Prop({ default: true }) isExport?: boolean
 }
-export default toNative(TxStateCard)
+export default TxStateCard
 </script>
 <style scoped lang="scss">
 .loading_header {

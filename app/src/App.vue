@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-main>
+        <!-- <v-main>
             <template>
                 <UrlBanner></UrlBanner>
                 <navbar v-show="isNavbar"></navbar>
@@ -11,14 +11,14 @@
                     </transition>
                 </div>
             </template>
-        </v-main>
-        <LedgerBlock ref="ledger_block"></LedgerBlock>
+        </v-main> -->
+        <!-- <LedgerBlock ref="ledger_block"></LedgerBlock>
         <LedgerUpgrade></LedgerUpgrade>
         <LedgerWalletLoading></LedgerWalletLoading>
         <NetworkLoadingBlock></NetworkLoadingBlock>
         <notifications></notifications>
         <analytics></analytics>
-        <TestNetBanner></TestNetBanner>
+        <TestNetBanner></TestNetBanner> -->
     </v-app>
 </template>
 <script>
@@ -70,9 +70,9 @@ export default {
     },
     computed: {
         isNavbar() {
-            if (this.$route.path.includes('/wallet')) {
-                return false
-            }
+            // if (this.$route.path.includes('/wallet')) {
+            //     return false
+            // }
             return true
         },
     },

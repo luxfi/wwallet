@@ -122,7 +122,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import SelectMintUTXO from '@/components/wallet/studio/mint/SelectMintUtxo/SelectMintUTXO.vue'
 import UrlForm from '@/components/wallet/studio/mint/forms/UrlForm.vue'
@@ -353,7 +353,7 @@ class MintNft extends Vue {
         this.isLoading = false
     }
 }
-export default toNative(MintNft)
+export default MintNft
 </script>
 <style lang="scss">
 .mint_form {

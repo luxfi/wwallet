@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Ref, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
 import { IWalletNftDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
@@ -130,7 +130,7 @@ class NftCol extends Vue {
         return res
     }
 }
-export default toNative(NftCol)
+export default NftCol
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

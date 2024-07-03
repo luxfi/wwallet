@@ -31,7 +31,7 @@ import { IWalletNftDict } from '../../../store/types'
 import { NftFamilyDict } from '../../../store/modules/assets/types'
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import NftListItem from '@/components/wallet/transfer/NftListItem.vue'
@@ -152,7 +152,7 @@ class NftList extends Vue {
 
     activated() {}
 }
-export default toNative(NftList)
+export default NftList
 </script>
 <style scoped lang="scss">
 @use '../../../main';

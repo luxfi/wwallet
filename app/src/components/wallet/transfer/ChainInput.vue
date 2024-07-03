@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Model, Prop } from 'vue-property-decorator'
 import { ChainIdType } from '@/constants'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
@@ -31,7 +31,7 @@ class ChainInput extends Vue {
         return this.wallet.ethAddress
     }
 }
-export default toNative(ChainInput)
+export default ChainInput
 </script>
 <style scoped lang="scss">
 @use '../../../main';

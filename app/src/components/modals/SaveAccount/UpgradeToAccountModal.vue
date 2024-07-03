@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Modal from '../Modal.vue'
 import {
     AllKeyFileDecryptedTypes,
@@ -130,7 +130,7 @@ class UpgradeToAccountModal extends Vue {
         this.$refs.modal.open()
     }
 }
-export default toNative(UpgradeToAccountModal)
+export default UpgradeToAccountModal
 </script>
 <style scoped lang="scss">
 @use '../../../main';

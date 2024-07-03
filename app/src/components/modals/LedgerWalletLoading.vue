@@ -7,7 +7,7 @@
     </modal>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import Spinner from '@/components/misc/Spinner.vue'
 @Component({
@@ -37,7 +37,7 @@ class LedgerWalletLoading extends Vue {
         }
     }
 }
-export default toNative(LedgerWalletLoading)
+export default LedgerWalletLoading
 </script>
 <style scoped lang="scss">
 .ledger_loading_body {

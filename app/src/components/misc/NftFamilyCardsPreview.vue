@@ -14,7 +14,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
@@ -45,7 +45,7 @@ class NftFamilyCardsPreview extends Vue {
         })
     }
 }
-export default toNative(NftFamilyCardsPreview)
+export default NftFamilyCardsPreview
 </script>
 <style scoped lang="scss">
 .previews {

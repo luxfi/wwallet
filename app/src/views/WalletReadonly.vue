@@ -27,7 +27,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import {
     PublicMnemonicWallet,
     iLuxBalance,
@@ -196,7 +196,7 @@ class WalletReadonly extends Vue {
         this.init()
     }
 }
-export default toNative(WalletReadonly)
+export default WalletReadonly
 </script>
 <style scoped lang="scss">
 .wallet_body {

@@ -47,7 +47,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
 import punycode from 'punycode'
@@ -171,7 +171,7 @@ class EditPage extends Vue {
         this.$emit('success')
     }
 }
-export default toNative(EditPage)
+export default EditPage
 // export default {
 //     data(){
 //         return {

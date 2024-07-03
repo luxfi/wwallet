@@ -20,7 +20,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { URLPayload } from 'luxnet/dist/utils'
 
 @Component
@@ -50,7 +50,7 @@ class UrlPayloadView extends Vue {
         return extension
     }
 }
-export default toNative(UrlPayloadView)
+export default UrlPayloadView
 </script>
 <style scoped lang="scss">
 .url_payload_view {

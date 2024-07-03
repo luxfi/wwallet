@@ -12,7 +12,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { iUserAccountEncrypted } from '@/store/types'
 import Identicon from '@/components/misc/Identicon.vue'
 
@@ -36,7 +36,7 @@ class AccountsFound extends Vue {
         this.$router.push(`/access/account/${index}`)
     }
 }
-export default toNative(AccountsFound)
+export default AccountsFound
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -189,7 +189,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import LuxInput from '@/components/misc/LuxInput.vue'
 //@ts-ignore
@@ -644,7 +644,7 @@ class AddDelegator extends Vue {
         this.$emit('cancel')
     }
 }
-export default toNative(AddDelegator)
+export default AddDelegator
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

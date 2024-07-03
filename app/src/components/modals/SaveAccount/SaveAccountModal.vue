@@ -46,7 +46,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '../Modal.vue'
 import { SaveAccountInput } from '@/store/types'
@@ -134,7 +134,7 @@ class SaveAccountModal extends Vue {
         return this.$store.getters['Accounts/baseAddresses']
     }
 }
-export default toNative(SaveAccountModal)
+export default SaveAccountModal
 </script>
 <style scoped lang="scss">
 @use '../../../main';

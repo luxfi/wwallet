@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Big from 'big.js'
 import LuxAsset from '@/js/LuxAsset'
@@ -113,7 +113,7 @@ class TxHistoryValue extends Vue {
         }
     }
 }
-export default toNative(TxHistoryValue)
+export default TxHistoryValue
 </script>
 <style scoped lang="scss">
 @use '../../main';

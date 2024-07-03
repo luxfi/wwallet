@@ -28,7 +28,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Ref, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Ref } from 'vue-property-decorator'
 import FileInput from '@/components/misc/FileInput.vue'
 import { ImportKeyfileInput } from '@/store/types'
 import { AllKeyFileTypes } from '@/js/IKeystore'
@@ -122,7 +122,7 @@ class AddKeyFile extends Vue {
         this.fileIn.clear()
     }
 }
-export default toNative(AddKeyFile)
+export default AddKeyFile
 </script>
 <style lang="scss">
 .add_key_file {

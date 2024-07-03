@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
@@ -28,7 +28,7 @@ class HdDerivationList extends Vue {
         modal.open()
     }
 }
-export default toNative(HdDerivationList)
+export default HdDerivationList
 </script>
 <style scoped lang="scss">
 .hd_deriv_modal_body {

@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Emit, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator'
 
 import { BN } from 'luxnet'
 // import Big from 'big.js';
@@ -213,7 +213,7 @@ class CurrencyInputDropdown extends Vue {
         return this.$store.state.prices
     }
 }
-export default toNative(CurrencyInputDropdown)
+export default CurrencyInputDropdown
 </script>
 <style scoped lang="scss">
 @use '../../main';

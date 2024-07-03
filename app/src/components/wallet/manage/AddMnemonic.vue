@@ -20,7 +20,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import * as bip39 from 'bip39'
 
 @Component
@@ -96,7 +96,7 @@ class AddMnemonic extends Vue {
         return true
     }
 }
-export default toNative(AddMnemonic)
+export default AddMnemonic
 </script>
 <style scoped lang="scss">
 .add_mnemonic {

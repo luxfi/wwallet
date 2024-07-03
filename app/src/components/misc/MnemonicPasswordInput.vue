@@ -16,7 +16,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 const SIZE = 24
 @Component
@@ -64,7 +64,7 @@ class MnemonicPasswordInput extends Vue {
         this.$emit('change', val.trim())
     }
 }
-export default toNative(MnemonicPasswordInput)
+export default MnemonicPasswordInput
 </script>
 <style scoped lang="scss">
 .input_cont {

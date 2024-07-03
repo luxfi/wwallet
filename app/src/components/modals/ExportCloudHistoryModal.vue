@@ -79,7 +79,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import { BlockchainId } from '@luxfi/cloud'
@@ -293,7 +293,7 @@ class ExportCloudHistoryModal extends Vue {
         this.loading = false
     }
 }
-export default toNative(ExportCloudHistoryModal)
+export default ExportCloudHistoryModal
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

@@ -78,7 +78,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 // import { TransactionValueDict } from '@/components/SidePanels/types'
 // import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
 // import { BN, Buffer } from 'luxnet'
@@ -182,7 +182,7 @@ class BaseTx extends Vue {
         return this.transaction.txType as TransactionTypeName
     }
 }
-export default toNative(BaseTx)
+export default BaseTx
 </script>
 <style scoped lang="scss">
 label {

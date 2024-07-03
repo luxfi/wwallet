@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import CopyText from '@/components/misc/CopyText.vue'
@@ -64,7 +64,7 @@ class MnemonicPhrase extends Vue {
         return this.$store.state.wallets
     }
 }
-export default toNative(MnemonicPhrase)
+export default MnemonicPhrase
 </script>
 <style scoped lang="scss">
 .update_keystore_modal_body {

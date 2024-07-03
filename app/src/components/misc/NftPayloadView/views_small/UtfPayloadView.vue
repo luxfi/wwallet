@@ -5,7 +5,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { UTF8Payload } from 'luxnet/dist/utils'
 
 @Component
@@ -38,7 +38,7 @@ class UtfPayloadView extends Vue {
         return this.payload.getContent()
     }
 }
-export default toNative(UtfPayloadView)
+export default UtfPayloadView
 </script>
 <style scoped lang="scss">
 .utf_payload_view {

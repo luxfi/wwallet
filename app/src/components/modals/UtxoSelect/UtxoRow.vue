@@ -12,7 +12,7 @@
     </tr>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import {
     UTXO,
     PlatformVMConstants,
@@ -87,7 +87,7 @@ class UtxoRow extends Vue {
         return false
     }
 }
-export default toNative(UtxoRow)
+export default UtxoRow
 </script>
 <style scoped lang="scss">
 tr {

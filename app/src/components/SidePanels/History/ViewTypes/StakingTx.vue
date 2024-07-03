@@ -31,7 +31,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'
 import { UnixNow } from 'luxnet/dist/utils'
@@ -133,7 +133,7 @@ class StakingTx extends Vue {
 
     // TODO: Add missing stake info for staking transactions, start/end date, potential reward, reward date, reward USD price
 }
-export default toNative(StakingTx)
+export default StakingTx
 </script>
 <style scoped lang="scss">
 .data_row {

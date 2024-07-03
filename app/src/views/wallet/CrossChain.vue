@@ -10,7 +10,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 import ChainTransfer from '@/components/wallet/earn/ChainTransfer/ChainTransfer.vue'
 @Component({
@@ -20,7 +20,7 @@ import ChainTransfer from '@/components/wallet/earn/ChainTransfer/ChainTransfer.
     },
 })
 class CrossChain extends Vue {}
-export default toNative(CrossChain)
+export default CrossChain
 </script>
 <style scoped lang="scss">
 h1 {

@@ -5,7 +5,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { UrlFormType } from '@/components/wallet/studio/mint/types'
 
 @Component
@@ -46,7 +46,7 @@ class UrlForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
-export default toNative(UrlForm)
+export default UrlForm
 </script>
 <style scoped lang="scss">
 input {

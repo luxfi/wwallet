@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 
@@ -28,7 +28,7 @@ class PrivateKey extends Vue {
         modal.open()
     }
 }
-export default toNative(PrivateKey)
+export default PrivateKey
 </script>
 <style scoped lang="scss">
 .singleton_modal_body {

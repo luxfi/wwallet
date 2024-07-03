@@ -18,7 +18,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import ERC721Token from '@/js/ERC721Token'
 import ERC721View from '@/components/misc/ERC721View.vue'
 import { iErc721SelectInput } from '@/components/misc/EVMInputDropdown/types'
@@ -56,7 +56,7 @@ class ERC721Row extends Vue {
     //     this.nftItems = items
     // }
 }
-export default toNative(ERC721Row)
+export default ERC721Row
 </script>
 
 <style scoped lang="scss">

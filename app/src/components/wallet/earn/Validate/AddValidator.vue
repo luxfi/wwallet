@@ -219,7 +219,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 //@ts-ignore
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'luxnet'
@@ -675,7 +675,7 @@ class AddValidator extends Vue {
         })
     }
 }
-export default toNative(AddValidator)
+export default AddValidator
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

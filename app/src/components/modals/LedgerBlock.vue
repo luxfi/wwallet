@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import Modal from './Modal.vue'
@@ -79,7 +79,7 @@ class LedgerBlock extends Vue {
         }
     }
 }
-export default toNative(LedgerBlock)
+export default LedgerBlock
 </script>
 <style scoped lang="scss">
 .ledger_block {

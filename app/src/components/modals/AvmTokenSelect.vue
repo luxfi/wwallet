@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import LuxAsset from '@/js/LuxAsset'
@@ -66,7 +66,7 @@ class PrivateKey extends Vue {
         return false
     }
 }
-export default toNative(PrivateKey)
+export default PrivateKey
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Watch, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Watch, Prop } from 'vue-property-decorator'
 
 import Modal from '../Modal.vue'
 
@@ -233,7 +233,7 @@ class PaperWallet extends Vue {
         })
     }
 }
-export default toNative(PaperWallet)
+export default PaperWallet
 </script>
 <style scoped>
 .qr_body {

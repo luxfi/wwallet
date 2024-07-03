@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
 import { getRandomMnemonicWord } from '@/helpers/getRandomMnemonicWord'
 
@@ -46,7 +46,7 @@ class MnemonicDisplay extends Vue {
         return getRandomMnemonicWord()
     }
 }
-export default toNative(MnemonicDisplay)
+export default MnemonicDisplay
 </script>
 <style scoped lang="scss">
 @use "../../main";

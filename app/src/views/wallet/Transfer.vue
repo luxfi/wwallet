@@ -133,7 +133,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Ref, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Ref } from 'vue-property-decorator'
 
 import TxList from '@/components/wallet/transfer/TxList.vue'
 import Big from 'big.js'
@@ -492,7 +492,7 @@ class Transfer extends Vue {
         }
     }
 }
-export default toNative(Transfer)
+export default Transfer
 </script>
 
 <style lang="scss">

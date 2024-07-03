@@ -50,7 +50,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ava, pChain } from '@/LUX'
 import { BN } from 'luxnet'
 
@@ -116,7 +116,7 @@ class ValidatorsList extends Vue {
         this.$emit('select', val)
     }
 }
-export default toNative(ValidatorsList)
+export default ValidatorsList
 </script>
 <style scoped lang="scss">
 .validator_list {

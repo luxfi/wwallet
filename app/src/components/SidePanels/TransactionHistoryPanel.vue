@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import TxHistoryRow from '@/components/SidePanels/TxHistoryRow.vue'
@@ -72,7 +72,7 @@ class TransactionHistoryPanel extends Vue {
         return `https://explorer.lux.network/address/${addr}`
     }
 }
-export default toNative(TransactionHistoryPanel)
+export default TransactionHistoryPanel
 </script>
 <style scoped lang="scss">
 @use '../../main';

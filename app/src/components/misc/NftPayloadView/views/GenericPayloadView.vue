@@ -27,7 +27,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { JSONPayload } from 'luxnet/dist/utils'
 import { IGenericNft } from '@/components/wallet/studio/mint/types'
 
@@ -84,7 +84,7 @@ class UtfPayloadView extends Vue {
         }
     }
 }
-export default toNative(UtfPayloadView)
+export default UtfPayloadView
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

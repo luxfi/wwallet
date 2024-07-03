@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
@@ -49,7 +49,7 @@ class CollectibleFamilyGroup extends Vue {
         return payloadbase
     }
 }
-export default toNative(CollectibleFamilyGroup)
+export default CollectibleFamilyGroup
 </script>
 <style scoped lang="scss">
 @use '../../../main';

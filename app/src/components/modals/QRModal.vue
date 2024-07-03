@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from './Modal.vue'
 import CopyText from '../misc/CopyText.vue'
@@ -76,7 +76,7 @@ class QRModal extends Vue {
         )
     }
 }
-export default toNative(QRModal)
+export default QRModal
 </script>
 <style scoped lang="scss">
 .qr_body {

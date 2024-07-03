@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import NetworkRow from './NetworkRow.vue'
 import { LuxNetwork } from '@/js/LuxNetwork'
@@ -33,7 +33,7 @@ class ListPage extends Vue {
         this.$emit('edit', net)
     }
 }
-export default toNative(ListPage)
+export default ListPage
 </script>
 <style scoped lang="scss">
 .networks_list {

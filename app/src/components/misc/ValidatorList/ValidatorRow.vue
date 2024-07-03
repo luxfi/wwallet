@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import moment from 'moment'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'
@@ -70,7 +70,7 @@ class ValidatorsList extends Vue {
         this.$emit('select', this.validator)
     }
 }
-export default toNative(ValidatorsList)
+export default ValidatorsList
 </script>
 <style scoped lang="scss">
 @use '../../../main';

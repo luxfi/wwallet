@@ -13,7 +13,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BaseTxAssetSummary, BaseTxNFTSummary } from '@/helpers/history_helper'
 import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
@@ -64,7 +64,7 @@ class BaseTxNFTOutput extends Vue {
         return gNums
     }
 }
-export default toNative(BaseTxNFTOutput)
+export default BaseTxNFTOutput
 </script>
 <style scoped lang="scss">
 .amount {

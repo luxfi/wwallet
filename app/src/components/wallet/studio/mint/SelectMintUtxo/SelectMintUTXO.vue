@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { IWalletNftMintDict } from '@/store/types'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -31,7 +31,7 @@ class SelectMintUTXO extends Vue {
         this.$emit('change', utxo)
     }
 }
-export default toNative(SelectMintUTXO)
+export default SelectMintUTXO
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

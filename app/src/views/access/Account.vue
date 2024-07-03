@@ -29,7 +29,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { ImportKeyfileInput, iUserAccountEncrypted } from '@/store/types'
 import Identicon from '@/components/misc/Identicon.vue'
 
@@ -108,7 +108,7 @@ class Account extends Vue {
         return true
     }
 }
-export default toNative(Account)
+export default Account
 </script>
 <style scoped lang="scss">
 @use '../../main';

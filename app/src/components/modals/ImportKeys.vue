@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import AddKeyFile from '@/components/wallet/manage/AddKeyFile.vue'
 import AddKeyString from '@/components/wallet/manage/AddKeyString.vue'
@@ -81,7 +81,7 @@ class ImportKeys extends Vue {
         })
     }
 }
-export default toNative(ImportKeys)
+export default ImportKeys
 </script>
 
 <style scoped lang="scss">

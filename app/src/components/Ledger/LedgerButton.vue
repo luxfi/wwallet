@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import TransportU2F from '@ledgerhq/hw-transport-u2f'
 //@ts-ignore
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
@@ -201,7 +201,7 @@ class LedgerButton extends Vue {
         })
     }
 }
-export default toNative(LedgerButton)
+export default LedgerButton
 </script>
 <style scoped lang="scss">
 .spinner {

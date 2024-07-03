@@ -29,7 +29,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { ImportKeyfileInput } from '@/store/types'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { privateToAddress } from 'ethereumjs-util'
@@ -72,7 +72,7 @@ class PrivateKey extends Vue {
         return true
     }
 }
-export default toNative(PrivateKey)
+export default PrivateKey
 </script>
 <style scoped lang="scss">
 @use '../../main';

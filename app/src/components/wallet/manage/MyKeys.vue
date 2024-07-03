@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import KeyRow from '@/components/wallet/manage/KeyRow.vue'
 import RememberKey from '@/components/misc/RememberKey.vue'
@@ -78,7 +78,7 @@ class MyKeys extends Vue {
         return this.$store.state.activeWallet
     }
 }
-export default toNative(MyKeys)
+export default MyKeys
 </script>
 <style scoped lang="scss">
 @use "../../../main";

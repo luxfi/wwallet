@@ -41,7 +41,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import FaucetLink from '@/components/misc/FaucetLink.vue'
 import FungibleRow from '@/components/wallet/portfolio/FungibleRow.vue'
@@ -153,7 +153,7 @@ class Fungibles extends Vue {
         return balance
     }
 }
-export default toNative(Fungibles)
+export default Fungibles
 </script>
 <style scoped lang="scss">
 @use '../../../main';

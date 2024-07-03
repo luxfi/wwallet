@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch, Model } from 'vue-property-decorator'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
 @Component
@@ -16,7 +16,7 @@ class CurrencySelect extends Vue {
         this.$emit('change', val)
     }
 }
-export default toNative(CurrencySelect)
+export default CurrencySelect
 </script>
 <style scoped lang="scss">
 .currency_select {

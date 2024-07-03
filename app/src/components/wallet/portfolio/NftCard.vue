@@ -44,7 +44,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { PayloadTypes, PayloadBase } from 'luxnet/dist/utils'
 
 const payloadtypes = PayloadTypes.getInstance()
@@ -114,7 +114,7 @@ class NftCard extends Vue {
         }
     }
 }
-export default toNative(NftCard)
+export default NftCard
 </script>
 <style scoped lang="scss">
 @use 'nft_card';

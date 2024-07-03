@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Ref, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Ref, Prop } from 'vue-property-decorator'
 import { ITransaction } from './types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
 import { BN } from 'luxnet'
@@ -74,7 +74,7 @@ class TxSummary extends Vue {
         return this.nftOrders.length === 0
     }
 }
-export default toNative(TxSummary)
+export default TxSummary
 </script>
 <style scoped lang="scss">
 .tx_summary {

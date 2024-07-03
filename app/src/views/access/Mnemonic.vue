@@ -31,7 +31,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import * as bip39 from 'bip39'
 import MnemonicPasswordInput from '@/components/misc/MnemonicPasswordInput.vue'
@@ -110,7 +110,7 @@ class Mnemonic extends Vue {
         }, 500)
     }
 }
-export default toNative(Mnemonic)
+export default Mnemonic
 </script>
 <style scoped lang="scss">
 @use '../../main';

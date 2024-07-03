@@ -6,7 +6,7 @@
     </modal>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
@@ -24,7 +24,7 @@ class NFTViewModal extends Vue {
         this.$refs.modal.open()
     }
 }
-export default toNative(NFTViewModal)
+export default NFTViewModal
 </script>
 <style scoped lang="scss">
 .nft_view_body {

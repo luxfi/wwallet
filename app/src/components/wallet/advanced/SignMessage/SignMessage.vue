@@ -25,7 +25,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { WalletType } from '@/js/wallets/types'
 import SearchAddress from '@/components/wallet/advanced/SignMessage/SearchAddress.vue'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
@@ -78,7 +78,7 @@ class SignMessage extends Vue {
         return true
     }
 }
-export default toNative(SignMessage)
+export default SignMessage
 </script>
 <style scoped lang="scss">
 select,

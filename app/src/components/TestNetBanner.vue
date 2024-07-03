@@ -7,7 +7,7 @@
 import 'reflect-metadata'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 class TestNetBanner extends Vue {
@@ -20,7 +20,7 @@ class TestNetBanner extends Vue {
         return true
     }
 }
-export default toNative(TestNetBanner)
+export default TestNetBanner
 </script>
 <style scoped lang="scss">
 $h: 24px;

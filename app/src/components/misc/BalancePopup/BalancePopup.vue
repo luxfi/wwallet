@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import LuxAsset from '@/js/LuxAsset'
 import BalanceRow from './BalanceRow.vue'
 import CollectibleTab from './CollectibleTab.vue'
@@ -73,7 +73,7 @@ class BalancePopup extends Vue {
         this.$emit('close')
     }
 }
-export default toNative(BalancePopup)
+export default BalancePopup
 </script>
 <style lang="scss">
 .popup_body {

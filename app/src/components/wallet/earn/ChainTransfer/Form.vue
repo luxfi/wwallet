@@ -47,7 +47,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'luxnet'
 import Big from 'big.js'
@@ -151,7 +151,7 @@ class Form extends Vue {
         this.onChange()
     }
 }
-export default toNative(Form)
+export default Form
 </script>
 <style scoped lang="scss">
 .swap_form {

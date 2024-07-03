@@ -73,7 +73,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import { pChain } from '@/LUX'
 import { bnToBig } from '@/helpers/helper'
@@ -168,7 +168,7 @@ class NewCollectibleFamily extends Vue {
         return this.$store.state.Assets.nftMintUTXOs
     }
 }
-export default toNative(NewCollectibleFamily)
+export default NewCollectibleFamily
 </script>
 <style scoped lang="scss">
 .new_family {

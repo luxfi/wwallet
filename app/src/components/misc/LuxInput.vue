@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 import { Big, bnToBig } from '@luxfi/wallet-sdk'
 //@ts-ignore
 import { BigNumInput } from '@/components/VComponents'
@@ -74,7 +74,7 @@ class LuxInput extends Vue {
         return this.$store.state.prices
     }
 }
-export default toNative(LuxInput)
+export default LuxInput
 </script>
 <style scoped lang="scss">
 @use '../../main';

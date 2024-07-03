@@ -117,7 +117,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Component, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import Dropdown from '@/components/misc/Dropdown.vue'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import LuxAsset from '@/js/LuxAsset'
@@ -610,7 +610,7 @@ class ChainTransfer extends Vue {
         return true
     }
 }
-export default toNative(ChainTransfer)
+export default ChainTransfer
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

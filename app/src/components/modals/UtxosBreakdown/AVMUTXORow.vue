@@ -23,7 +23,7 @@
     </tr>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { AmountOutput, XVMConstants, UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm'
 import {
     PlatformVMConstants,
@@ -139,7 +139,7 @@ class UTXORow extends Vue {
         return ''
     }
 }
-export default toNative(UTXORow)
+export default UTXORow
 </script>
 <style scoped lang="scss">
 tr {

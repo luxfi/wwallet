@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { DAY_MS, MINUTE_MS } from '../../../constants'
-import { Component, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 
 const MIN_STAKE_DURATION = DAY_MS * 14
 
@@ -149,7 +149,7 @@ class DateForm extends Vue {
         return endDate.toISOString()
     }
 }
-export default toNative(DateForm)
+export default DateForm
 </script>
 <style lang="scss">
 .dates_form {

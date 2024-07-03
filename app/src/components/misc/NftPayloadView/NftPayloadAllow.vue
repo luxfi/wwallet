@@ -13,7 +13,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 
-import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Model, Prop } from 'vue-property-decorator'
 
 @Component
 class NftPayloadAllow extends Vue {
@@ -26,7 +26,7 @@ class NftPayloadAllow extends Vue {
         this.$emit('change', true)
     }
 }
-export default toNative(NftPayloadAllow)
+export default NftPayloadAllow
 </script>
 <style scoped lang="scss">
 .nft_allow {

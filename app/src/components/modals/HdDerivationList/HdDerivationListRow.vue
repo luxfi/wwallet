@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import Big from 'big.js'
 import { DerivationListBalanceDict } from '@/components/modals/HdDerivationList/types'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
@@ -71,7 +71,7 @@ class HdDerivationListRow extends Vue {
         wallet.verifyAddress(this.index, isInternal)
     }
 }
-export default toNative(HdDerivationListRow)
+export default HdDerivationListRow
 </script>
 <style scoped lang="scss">
 .col_index {

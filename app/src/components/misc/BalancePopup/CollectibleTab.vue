@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Prop, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Prop, Component } from 'vue-property-decorator'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -47,7 +47,7 @@ class CollectibleTab extends Vue {
         this.$emit('select', nft)
     }
 }
-export default toNative(CollectibleTab)
+export default CollectibleTab
 </script>
 <style scoped lang="scss">
 .collectible_tab {

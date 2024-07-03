@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 const { v1: uuidv1 } = require('uuid')
 
@@ -174,7 +174,7 @@ class TxList extends Vue {
         return true
     }
 }
-export default toNative(TxList)
+export default TxList
 </script>
 <style scoped lang="scss">
 @use '../../../main';

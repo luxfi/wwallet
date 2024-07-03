@@ -11,7 +11,7 @@
     </v-banner>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 class UrlBanner extends Vue {
@@ -25,7 +25,7 @@ class UrlBanner extends Vue {
         this.$refs.banner.toggle()
     }
 }
-export default toNative(UrlBanner)
+export default UrlBanner
 </script>
 <style scoped lang="scss">
 .url_banner {

@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import ERC721Token from '@/js/ERC721Token'
 import axios from 'axios'
 
@@ -65,7 +65,7 @@ class ERC721View extends Vue {
         // this.metadata = res
     }
 }
-export default toNative(ERC721View)
+export default ERC721View
 </script>
 <style scoped lang="scss">
 .erc721_view {

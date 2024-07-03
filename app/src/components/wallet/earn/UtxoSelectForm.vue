@@ -27,7 +27,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Model, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Model, Watch } from 'vue-property-decorator'
 import UtxoSelectModal from '@/components/modals/UtxoSelect/UtxoSelect.vue'
 import { AmountOutput, UTXO, UTXOSet } from 'luxnet/dist/apis/platformvm'
 import { WalletType } from '@/js/wallets/types'
@@ -119,7 +119,7 @@ class UtxoSelectForm extends Vue {
         }
     }
 }
-export default toNative(UtxoSelectForm)
+export default UtxoSelectForm
 </script>
 <style scoped lang="scss">
 .available {

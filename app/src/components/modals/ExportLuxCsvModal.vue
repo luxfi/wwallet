@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import { CsvRowLuxTransferData, ITransactionData, UTXO } from '@/store/modules/history/types'
@@ -97,7 +97,7 @@ class ExportLuxCsvModal extends Vue {
         }
     }
 }
-export default toNative(ExportLuxCsvModal)
+export default ExportLuxCsvModal
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

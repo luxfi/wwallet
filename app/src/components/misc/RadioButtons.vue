@@ -15,7 +15,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 
-import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 
 @Component
 class RadioButtons extends Vue {
@@ -29,7 +29,7 @@ class RadioButtons extends Vue {
         this.$emit('change', val)
     }
 }
-export default toNative(RadioButtons)
+export default RadioButtons
 </script>
 <style scoped lang="scss">
 @use '../../main';

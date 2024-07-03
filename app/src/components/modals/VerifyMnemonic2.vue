@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
@@ -135,7 +135,7 @@ class VerifyMnemoni2 extends Vue {
         this.$emit('complete')
     }
 }
-export default toNative(VerifyMnemoni2)
+export default VerifyMnemoni2
 </script>
 <style scoped lang="scss">
 @use "../../main";

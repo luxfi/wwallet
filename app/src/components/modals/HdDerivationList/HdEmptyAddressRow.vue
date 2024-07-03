@@ -12,7 +12,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { WalletType } from '@/js/wallets/types'
 
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
@@ -40,7 +40,7 @@ class HdEmptyAddressRow extends Vue {
         wallet.verifyAddress(this.index, isInternal)
     }
 }
-export default toNative(HdEmptyAddressRow)
+export default HdEmptyAddressRow
 </script>
 <style scoped lang="scss">
 .list_row_empty {

@@ -55,7 +55,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import {
     bnToLuxX,
     bnToLuxP,
@@ -128,7 +128,7 @@ class Balances extends Vue {
         ).add(bnToBigLuxC(this.balances.C))
     }
 }
-export default toNative(Balances)
+export default Balances
 </script>
 <style scoped lang="scss">
 label {

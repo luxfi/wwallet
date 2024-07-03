@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import moment from 'moment'
 import TxHistoryNftFamilyGroup from '@/components/SidePanels/TxHistoryNftFamilyGroup.vue'
@@ -137,7 +137,7 @@ class TxHistoryRow extends Vue {
         }
     }
 }
-export default toNative(TxHistoryRow)
+export default TxHistoryRow
 </script>
 <style scoped lang="scss">
 @use '../../main';

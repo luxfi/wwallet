@@ -18,7 +18,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Model, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
+import { Component, Model, Prop, Vue, Watch } from 'vue-property-decorator'
 import { UTXO } from 'luxnet/dist/apis/platformvm'
 import { ChainIdType } from '@/constants'
 import { BN } from 'luxnet'
@@ -99,7 +99,7 @@ class ChainCard extends Vue {
 
     mounted() {}
 }
-export default toNative(ChainCard)
+export default ChainCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

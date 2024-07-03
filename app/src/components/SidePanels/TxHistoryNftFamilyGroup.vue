@@ -7,7 +7,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { NFTTransferOutput } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
@@ -69,7 +69,7 @@ class TxHistoryNftFamilyGroup extends Vue {
         return null
     }
 }
-export default toNative(TxHistoryNftFamilyGroup)
+export default TxHistoryNftFamilyGroup
 </script>
 <style scoped lang="scss">
 @use '../../main';

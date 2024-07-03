@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { LuxWalletCore } from '../../../js/wallets/types'
 import UserRewardRow from '@/components/wallet/earn/UserRewardRow.vue'
 import { bnToBig } from '@/helpers/helper'
@@ -96,7 +96,7 @@ class UserRewards extends Vue {
         return bnToBig(this.totalReward, 9)
     }
 }
-export default toNative(UserRewards)
+export default UserRewards
 </script>
 <style scoped lang="scss">
 .user_rewards {

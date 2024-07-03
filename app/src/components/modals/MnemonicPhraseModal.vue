@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import MnemonicDisplay from '@/components/misc/MnemonicDisplay.vue'
@@ -33,7 +33,7 @@ class MnemonicPhraseModal extends Vue {
         modal.open()
     }
 }
-export default toNative(MnemonicPhraseModal)
+export default MnemonicPhraseModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

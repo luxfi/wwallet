@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from './Modal.vue'
 import { web3 } from '@/evm'
@@ -135,7 +135,7 @@ class AddERC20TokenModal extends Vue {
         this.$refs.modal.close()
     }
 }
-export default toNative(AddERC20TokenModal)
+export default AddERC20TokenModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 class Modal extends Vue {
@@ -41,7 +41,7 @@ class Modal extends Vue {
         this.isActive = false
     }
 }
-export default toNative(Modal)
+export default Modal
 </script>
 <style scoped lang="scss">
 @use '../../main';

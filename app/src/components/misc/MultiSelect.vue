@@ -13,7 +13,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 import RadioButtons from './RadioButtons.vue'
 
 @Component
@@ -38,7 +38,7 @@ class MultiSelect extends Vue {
         this.$emit('change', Array.from(now))
     }
 }
-export default toNative(MultiSelect)
+export default MultiSelect
 </script>
 <style scoped lang="scss">
 @use '../../main';

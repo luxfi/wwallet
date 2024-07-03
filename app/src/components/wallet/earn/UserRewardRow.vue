@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import Big from 'big.js'
 import { bnToBigLuxP } from '@luxfi/wallet-sdk'
@@ -95,7 +95,7 @@ class UserRewardRow extends Vue {
         return Math.min(res, 1)
     }
 }
-export default toNative(UserRewardRow)
+export default UserRewardRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

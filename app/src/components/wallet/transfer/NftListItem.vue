@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { getPayloadFromUTXO } from '@/helpers/helper'
@@ -104,7 +104,7 @@ class NftListItem extends Vue {
         this.emit()
     }
 }
-export default toNative(NftListItem)
+export default NftListItem
 </script>
 <style scoped lang="scss">
 $remove_w: 24px;

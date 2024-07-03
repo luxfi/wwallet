@@ -40,7 +40,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import { TokenList } from '@/store/modules/assets/types'
@@ -107,7 +107,7 @@ class TokenListModal extends Vue {
         modal.open()
     }
 }
-export default toNative(TokenListModal)
+export default TokenListModal
 </script>
 <style scoped lang="scss">
 .tokenlist_modal {

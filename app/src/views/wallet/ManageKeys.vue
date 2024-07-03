@@ -37,7 +37,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import MyKeys from '@/components/wallet/manage/MyKeys.vue'
 import ImportKeys from '@/components/modals/ImportKeys.vue'
 import ExportKeys from '@/components/modals/ExportKeys.vue'
@@ -106,7 +106,7 @@ class ManageKeys extends Vue {
         return this.$store.state.warnUpdateKeyfile
     }
 }
-export default toNative(ManageKeys)
+export default ManageKeys
 </script>
 <style scoped lang="scss">
 @use '../../main';

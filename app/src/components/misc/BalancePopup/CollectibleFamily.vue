@@ -19,7 +19,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletNftDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
@@ -75,7 +75,7 @@ class CollectibleFamily extends Vue {
         this.$emit('select', utxo)
     }
 }
-export default toNative(CollectibleFamily)
+export default CollectibleFamily
 </script>
 <style scoped lang="scss">
 @use '../../../main';

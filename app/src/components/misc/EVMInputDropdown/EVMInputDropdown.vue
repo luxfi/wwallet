@@ -40,7 +40,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 //@ts-ignore
 import { BigNumInput } from '@/components/VComponents'
 import { BN } from 'luxnet'
@@ -199,7 +199,7 @@ class EVMInputDropdown extends Vue {
         this.$emit('amountChange', amt)
     }
 }
-export default toNative(EVMInputDropdown)
+export default EVMInputDropdown
 </script>
 <style scoped lang="scss">
 .evm_input_dropdown {

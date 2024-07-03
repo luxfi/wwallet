@@ -8,7 +8,7 @@
     </form>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 class DeleteAccount extends Vue {
@@ -35,7 +35,7 @@ class DeleteAccount extends Vue {
             })
     }
 }
-export default toNative(DeleteAccount)
+export default DeleteAccount
 </script>
 <style scoped lang="scss">
 @use './style';

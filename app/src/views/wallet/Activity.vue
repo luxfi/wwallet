@@ -85,7 +85,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, toNative, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import {
     isTransactionC,
     isTransactionX,
@@ -394,7 +394,7 @@ class Activity extends Vue {
         this.listH = h
     }
 }
-export default toNative(Activity)
+export default Activity
 </script>
 <style scoped lang="scss">
 @use '../../main';

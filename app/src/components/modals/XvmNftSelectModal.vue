@@ -14,7 +14,7 @@
     </Modal>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import { UTXO } from 'luxnet/dist/apis/xvm'
 import { NftFamilyDict } from '@/store/modules/assets/types'
@@ -53,7 +53,7 @@ class XvmNftSelectModal extends Vue {
         return this.disabledIds.includes(utxo.getUTXOID())
     }
 }
-export default toNative(XvmNftSelectModal)
+export default XvmNftSelectModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

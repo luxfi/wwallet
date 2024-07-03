@@ -7,7 +7,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, toNative } from 'vue-facing-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import ToSContent from '@/components/misc/ToSContent.vue'
 import ToSCoreContent from '@/components/misc/ToSCoreContent.vue'
 @Component({
@@ -22,7 +22,7 @@ class Legal extends Vue {
         return false
     }
 }
-export default toNative(Legal)
+export default Legal
 </script>
 <style scoped lang="scss">
 .legal_cont {
