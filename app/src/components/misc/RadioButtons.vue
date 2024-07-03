@@ -13,6 +13,8 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
+
 import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
 
 @Component
@@ -21,7 +23,7 @@ class RadioButtons extends Vue {
     @Prop() keys!: string[]
     @Prop({ default: false }) disabled!: boolean
 
-    @Model('change', { type: String }) readonly selection!: string
+    // @Model('change', { type: String }) readonly selection!: string
 
     select(val: string) {
         this.$emit('change', val)

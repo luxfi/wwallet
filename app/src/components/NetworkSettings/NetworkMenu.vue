@@ -13,65 +13,58 @@
             ></span>
             <p v-if="activeNetwork">{{ activeNetwork.name }}</p>
             <p v-else>Disconnected</p>
-            <!--            <template v-if="status === 'disconnected' || status === 'connecting'">-->
-            <!--                <img v-if="$root.theme === 'day'" src="@/assets/network_off.png" />-->
-            <!--                <img v-else src="@/assets/network_off_night.svg" />-->
-            <!--            </template>-->
-            <!--            <template v-else>-->
-            <!--                <img v-if="$root.theme === 'day'" src="@/assets/network_on.png" />-->
-            <!--                <img v-else src="@/assets/network_off_night.svg" />-->
-            <!--            </template>-->
-            <!--            <button v-if="status === 'connected'">-->
-            <!--                {{ activeNetwork.name }}-->
-            <!--            </button>-->
-            <!--            <button v-else-if="status === 'connecting'">-->
-            <!--                {{ $t('network.status1') }}-->
-            <!--            </button>-->
-            <!--            <button v-else>{{ $t('network.status2') }}</button>-->
         </div>
         <transition name="fade">
             <div class="network_dispose_bg" v-if="isActive" key="bg" @click="closeMenu"></div>
         </transition>
         <transition name="slide_right">
-            <div class="network_body" v-if="isActive" key="body">
-                <div class="header" data-cy="custom-network-option">
-                    <template v-if="page === 'list'">
-                        <h4>{{ $t('network.title') }}</h4>
-                        <button
-                            @click="viewCustom"
-                            class="button_secondary"
-                            data-cy="create-custom-option"
-                        >
-                            {{ $t('network.custom') }}
-                        </button>
-                    </template>
-                    <template v-if="page === 'custom'">
-                        <h4>{{ $t('network.title2') }}</h4>
-                        <button @click="viewList" class="tab_cancel">
-                            {{ $t('network.cancel') }}
-                        </button>
-                    </template>
-                    <template v-if="page === 'edit'">
-                        <h4>{{ $t('network.title3') }}</h4>
-                        <button @click="viewList" class="tab_cancel">
-                            {{ $t('network.cancel') }}
-                        </button>
-                    </template>
-                </div>
+            <div v-if="isActive" key="body">
+                <div class="network_body">
+                    <div class="header" data-cy="custom-network-option">
+                        <template v-if="page === 'list'">
+                            <h4>{{ $t('network.title') }}</h4>
+                            <button
+                                @click="viewCustom"
+                                class="button_secondary"
+                                data-cy="create-custom-option"
+                            >
+                                {{ $t('network.custom') }}
+                            </button>
+                        </template>
+                        <template v-if="page === 'custom'">
+                            <h4>{{ $t('network.title2') }}</h4>
+                            <button @click="viewList" class="tab_cancel">
+                                {{ $t('network.cancel') }}
+                            </button>
+                        </template>
+                        <template v-if="page === 'edit'">
+                            <h4>{{ $t('network.title3') }}</h4>
+                            <button @click="viewList" class="tab_cancel">
+                                {{ $t('network.cancel') }}
+                            </button>
+                        </template>
+                    </div>
 
-                <transition name="fade" mode="out-in">
-                    <ListPage v-if="page === 'list'" @edit="onedit"></ListPage>
-                    <CustomPage v-if="page === 'custom'" @add="addCustomNetwork"></CustomPage>
-                    <EditPage
-                        v-if="page === 'edit'"
-                        :net="editNetwork"
-                        @success="networkUpdated"
-                    ></EditPage>
-                </transition>
+                    <transition name="fade" mode="out-in">
+                        <div>
+                            <ListPage v-if="page === 'list'" @edit="onedit"></ListPage>
+                            <CustomPage
+                                v-if="page === 'custom'"
+                                @add="addCustomNetwork"
+                            ></CustomPage>
+                            <EditPage
+                                v-if="page === 'edit'"
+                                :net="editNetwork"
+                                @success="networkUpdated"
+                            ></EditPage>
+                        </div>
+                    </transition>
+                </div>
             </div>
         </transition>
     </div>
 </template>
+
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'

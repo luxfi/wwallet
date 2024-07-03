@@ -11,13 +11,15 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
+
 import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
 
 @Component
 class NftPayloadAllow extends Vue {
     @Prop({}) nftID!: string
     @Prop({ default: false }) isSmall!: boolean
-    @Model('change', { type: Boolean }) readonly isShow!: boolean
+    // @Model('change', { type: Boolean }) readonly isShow!: boolean
 
     show() {
         this.$store.commit('Assets/whitelistNFT', this.nftID)

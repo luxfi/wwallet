@@ -8,13 +8,14 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
 import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
 import { ChainIdType } from '@/constants'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
 @Component
 class ChainInput extends Vue {
-    @Model('change', { type: String }) readonly formType!: CurrencyType
+    // @Model('change', { type: String }) readonly formType!: CurrencyType
     @Prop({ default: false }) disabled!: boolean
 
     set(val: ChainIdType) {

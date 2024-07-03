@@ -40,7 +40,7 @@ class BalanceDropdown extends Vue {
 
     @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
     @Prop({ default: false }) disabled!: boolean
-    @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
+    // @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
 
     get assetArray(): LuxAsset[] {
         // return this.$store.getters.walletAssetsArray

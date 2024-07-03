@@ -91,19 +91,23 @@
 //         return `${wholeStr}.${trimmed}`
 //     }
 // }
+import 'reflect-metadata'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
 import { BootstrapVue } from 'bootstrap-vue'
 import vuetify from './plugins/vuetify'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import i18nOptions from './plugins/i18n.js'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import posthogPlugin from './plugins/posthog.js'
 import { Buffer } from 'buffer'

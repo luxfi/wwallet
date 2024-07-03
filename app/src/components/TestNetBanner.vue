@@ -4,8 +4,9 @@
     </div>
 </template>
 <script lang="ts">
-import { LuxNetwork } from '@/js/LuxNetwork'
 import 'reflect-metadata'
+
+import { LuxNetwork } from '@/js/LuxNetwork'
 import { Component, toNative, Vue } from 'vue-facing-decorator'
 
 @Component

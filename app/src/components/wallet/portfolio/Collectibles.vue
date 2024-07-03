@@ -27,9 +27,10 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
 import NFTCard from './NftCard.vue'
 import CollectibleFamilyRow from '@/components/wallet/portfolio/CollectibleFamilyRow.vue'
-import 'reflect-metadata'
+
 import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
 import { LuxNftFamily } from '@/js/LuxNftFamily'

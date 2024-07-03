@@ -26,11 +26,11 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
 import { IWalletNftDict } from '../../../store/types'
 import { NftFamilyDict } from '../../../store/modules/assets/types'
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 
-import 'reflect-metadata'
 import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'

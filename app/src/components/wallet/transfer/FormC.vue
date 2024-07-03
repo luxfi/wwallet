@@ -124,6 +124,7 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
 import { Vue, Component, toNative } from 'vue-facing-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { priceDict } from '@/store/types'
