@@ -2,6 +2,7 @@ const path = require('path')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const { VuetifyPlugin } = require('webpack-plugin-vuetify')
 
+
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 
 module.exports = {

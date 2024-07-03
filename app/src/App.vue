@@ -22,9 +22,9 @@
     </v-app>
 </template>
 <script>
-import Analytics from '@/components/Analytics/Analytics'
+import Analytics from '@/components/Analytics/Analytics.vue'
 import Notifications from '@/components/Notifications'
-import Navbar from './components/Navbar'
+import Navbar from '@/components/Navbar'
 import SaveAccountModal from '@/components/modals/SaveAccount/SaveAccountModal'
 import LedgerBlock from '@/components/modals/LedgerBlock'
 import LedgerUpgrade from '@/components/modals/LedgerUpgrade'

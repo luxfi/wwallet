@@ -215,7 +215,7 @@ export default class LedgerButton extends Vue {
     object-fit: contain;
 }
 
-.spinner::v-deep p {
+.spinner :deep(p) {
     color: inherit;
 }
 

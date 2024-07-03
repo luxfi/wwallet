@@ -545,7 +545,7 @@ h4 {
     margin-bottom: 10px;
 }
 
-.addressIn >>> input {
+.addressIn :deep(input) {
     color: var(--bg) !important;
     padding: 5px 6px !important;
     text-align: center;
@@ -553,7 +553,7 @@ h4 {
     font-size: 12px;
 }
 
-.addressIn >>> input::-webkit-input-placeholder {
+.addressIn :deep(input::-webkit-input-placeholder) {
     color: var(--primary-color-light) !important;
 }
 
