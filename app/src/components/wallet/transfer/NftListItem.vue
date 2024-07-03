@@ -110,8 +110,8 @@ $remove_w: 24px;
 .removeBut {
     position: absolute;
     z-index: 1;
-    top: -$remove_w/4;
-    right: -$remove_w/4;
+    top: calc(-1 * $remove_w / 4);
+    right: calc(-1 * $remove_w / 4);
     width: $remove_w;
     height: $remove_w;
     background-color: var(--bg-light);

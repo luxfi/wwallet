@@ -29,9 +29,11 @@ import { web3 } from '@/evm'
 import { UTXO as PlatformUTXO } from 'luxnet/dist/apis/platformvm/utxos'
 import {
     BlockchainId,
-    CreatePrimaryNetworkTransactionExportRequest,
-    PrimaryNetworkOptions,
+    // CreatePrimaryNetworkTransactionExportRequest,
+    // PrimaryNetworkOptions,
 } from '@luxfi/cloud'
+const CreatePrimaryNetworkTransactionExportRequest = require('@luxfi/cloud').CreatePrimaryNetworkTransactionExportRequest;
+const PrimaryNetworkOptions = require('@luxfi/cloud').PrimaryNetworkOptions;
 import { toChecksumAddress } from 'ethereumjs-util'
 
 const uniqid = require('uniqid')
@@ -114,9 +116,11 @@ abstract class AbstractWallet {
         let bal
         // Can't use cloud if not mainnet/testnet
         if (!isMainnet && !isTestnet) {
+            //@ts-ignore
             bal = new BN(await web3.eth.getBalance(this.getEvmAddress()))
         } else {
             const chainId = isMainnet ? '43114' : '43113'
+            //@ts-ignore
             const res = await cloud.evm.getNativeBalance({
                 chainId: chainId,
                 address: '0x' + this.getEvmAddress(),
@@ -471,6 +475,7 @@ abstract class AbstractWallet {
         const stripped = addresses.map((addr) => addr.split('-')[1] || addr)
 
         const res = await cloud.operations.postTransactionExportJob({
+            //@ts-ignore
             requestBody: {
                 type:
                     CreatePrimaryNetworkTransactionExportRequest.type

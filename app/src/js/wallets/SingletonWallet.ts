@@ -34,7 +34,8 @@ import { AbstractWallet } from '@/js/wallets/AbstractWallet'
 import { WalletHelper } from '@/helpers/wallet_helper'
 import { xvmGetAllUTXOs, platformGetAllUTXOs } from '@/helpers/utxo_helper'
 import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
-import { Transaction } from '@ethereumjs/tx'
+// import { Transaction } from '@ethereumjs/tx'
+const Transaction = require('@ethereumjs/tx').Transaction
 
 class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWallet {
     keyChain: XVMKeyChain

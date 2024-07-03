@@ -23,9 +23,9 @@ import { UnsignedTx as EVMUnsignedTx, EVMConstants } from 'luxnet/dist/apis/evm'
 
 import { web3 } from '@/evm'
 import ERC721Token from '@/js/ERC721Token'
-import { Transaction } from '@ethereumjs/tx'
-import EthereumjsCommon from '@ethereumjs/common'
+import * as EthereumjsCommon from '@ethereumjs/common';
 import Erc20Token from '@/js/Erc20Token'
+const Transaction = require('@ethereumjs/tx').Transaction;
 
 export async function buildUnsignedTransaction(
     orders: (ITransaction | XVMUTXO)[],
@@ -225,10 +225,11 @@ export async function buildEvmTransferNativeTx(
     const chainId = await web3.eth.getChainId()
     const networkId = await web3.eth.net.getId()
     const chainParams = {
+        //@ts-ignore
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }
-
-    const tx = new Transaction(
+    //@ts-ignore
+    const tx = Transaction.fromTxData(
         {
             nonce: nonce,
             gasPrice: gasPrice,
@@ -254,12 +255,13 @@ export async function buildEvmTransferErc20Tx(
     const chainId = await web3.eth.getChainId()
     const networkId = await web3.eth.net.getId()
     const chainParams = {
+        //@ts-ignore
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }
 
     const tokenTx = token.createTransferTx(to, amount)
-
-    const tx = new Transaction(
+    //@ts-ignore    
+    const tx = Transaction.fromTxData(
         {
             nonce: nonce,
             gasPrice: gasPrice,
@@ -285,12 +287,13 @@ export async function buildEvmTransferErc721Tx(
     const chainId = await web3.eth.getChainId()
     const networkId = await web3.eth.net.getId()
     const chainParams = {
+        //@ts-ignore
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }
 
     const tokenTx = token.createTransferTx(from, to, tokenId)
-
-    const tx = new Transaction(
+    //@ts-ignore
+    const tx = Transaction.fromTxData(
         {
             nonce: nonce,
             gasPrice: gasPrice,

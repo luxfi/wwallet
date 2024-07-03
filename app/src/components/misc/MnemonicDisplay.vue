@@ -5,13 +5,13 @@
         translate="no"
     >
         <template v-for="(word, i) in phraseArray" class="word">
-            <div v-if="i % 2 == 0" :key="i" class="word">
+            <div v-if="i % 2 == 0" :key="`word-${i}`" class="word">
                 <p class="index">{{ i / 2 + 1 }}.</p>
                 <span class="phrase_word" translate="no">
                     {{ word }}
                 </span>
             </div>
-            <div v-else class="fake" :key="i">
+            <div v-else :key="`fake-${i}`" class="fake">
                 <p class="index">{{ i }}.</p>
                 <span class="phrase_word" translate="no">
                     {{ word }}

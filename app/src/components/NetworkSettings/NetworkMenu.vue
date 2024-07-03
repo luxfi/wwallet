@@ -60,8 +60,8 @@
                 </div>
 
                 <transition name="fade" mode="out-in">
-                    <ListPage v-if="page === 'list'" @edit="onedit"></ListPage>
-                    <CustomPage v-if="page === 'custom'" @add="addCustomNetwork"></CustomPage>
+                    <!-- <ListPage v-if="page === 'list'" @edit="onedit"></ListPage> -->
+                    <!-- <CustomPage v-if="page === 'custom'" @add="addCustomNetwork"></CustomPage> -->
                     <EditPage
                         v-if="page === 'edit'"
                         :net="editNetwork"

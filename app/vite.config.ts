@@ -30,7 +30,18 @@ export default defineConfig({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', ".vue"],
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext'
+    }
+  },
+  esbuild: {
+    supported: {
+      'top-level-await': true
+    },
+  },
   build: {
+    target: 'esnext',
     sourcemap: false,
     rollupOptions: {
       output: {
@@ -42,21 +53,21 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://api.lux.network',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
-    // https: true,
-    port: 5000,
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://api.lux.network',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  //   // https: true,
+  //   // port: 5000,
+  // },
   // optimizeDeps: {
   //   exclude: ['buffer', 'ieee754', 'base64-js', 'inherits', 'process'],
   // },
-  define: {
-    'process.env.VUE_APP_VERSION': JSON.stringify(process.env.npm_package_version),
-  },
+  // define: {
+  //   'process.env.VUE_APP_VERSION': JSON.stringify(process.env.npm_package_version),
+  // },
 })

@@ -76,8 +76,8 @@ export default class TxHistoryNftFamilyGroup extends Vue {
 $countW: 18px;
 .count {
     position: absolute;
-    top: -$countW/2.5;
-    left: -$countW/2.5;
+    top: calc(-1 * $countW / 2.5);
+    left: calc(-1 * $countW / 2.5);
     width: $countW;
     height: $countW;
     border-radius: $countW;

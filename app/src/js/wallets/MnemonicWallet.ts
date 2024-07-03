@@ -43,7 +43,8 @@ import { digestMessage } from '@/helpers/helper'
 import { KeyChain } from 'luxnet/dist/apis/evm'
 import Erc20Token from '@/js/Erc20Token'
 import { WalletHelper } from '@/helpers/wallet_helper'
-import { Transaction } from '@ethereumjs/tx'
+// import { Transaction } from '@ethereumjs/tx'
+const Transaction = require('@ethereumjs/tx').Transaction
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
 
 // HD WALLET
