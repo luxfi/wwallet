@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
+// src/plugins/vuetify.ts
+import { createVuetify } from 'vuetify'
 import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -67,6 +67,7 @@ import {
 import { faBtc, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// 添加图标到库
 library.add(
     faDollarSign,
     faBtc,
@@ -130,11 +131,8 @@ library.add(
     faGlasses
 )
 
-Vue.component('fa', FontAwesomeIcon)
-
-Vue.use(Vuetify)
-
-export default new Vuetify({
+// 创建 Vuetify 实例
+const vuetify = createVuetify({
     theme: {
         themes: {
             light: {
@@ -149,6 +147,18 @@ export default new Vuetify({
         },
     },
     icons: {
-        iconfont: 'fa',
+        defaultSet: 'fa',
+        aliases: {
+            'fa-dollar-sign': 'faDollarSign',
+            'fa-times-circle': 'faTimesCircle',
+            // 根据需要添加其他图标
+        },
+        sets: {
+            fa: {
+                component: FontAwesomeIcon,
+            },
+        },
     },
 })
+
+export default vuetify

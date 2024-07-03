@@ -1,11 +1,13 @@
-process.env.VUE_APP_VERSION = process.env.npm_package_version
 const path = require('path')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
-const { defineConfig } = require('@vue/cli-service')
+const { VuetifyPlugin } = require('webpack-plugin-vuetify')
+
+process.env.VUE_APP_VERSION = process.env.npm_package_version
 
 module.exports = {
     chainWebpack: (config) => {
+        config.resolve.alias.set('vue', '@vue/compat')
+
         // TypeScript loader configuration
         config.module
             .rule('typescript')
@@ -37,47 +39,14 @@ module.exports = {
             .tap((options) => {
                 return {
                     ...options,
+                    compilerOptions: {
+                        compatConfig: {
+                            MODE: 2,
+                        },
+                    },
                 }
             })
             .end()
-
-        // SCSS loader configuration
-        // config.module
-        //     .rule('scss')
-        //     .oneOf('vue')
-        //     .use('sass-loader')
-        //     .tap((options) => {
-        //         return {
-        //             ...options,
-        //         }
-        //     })
-        // Ensure SCSS files are handled with SCSS syntax
-        config.module
-            .rule('scss')
-            .oneOf('vue')
-            .use('sass-loader')
-            .loader('sass-loader')
-            .tap((options) => {
-                options = options || {}
-                options.implementation = require('sass')
-                options.sassOptions = options.sassOptions || {}
-                options.sassOptions.indentedSyntax = false // Use SCSS syntax for .scss files
-                return options
-            })
-
-        // Ensure SASS files are handled with indented syntax
-        config.module
-            .rule('sass')
-            .oneOf('vue')
-            .use('sass-loader')
-            .loader('sass-loader')
-            .tap((options) => {
-                options = options || {}
-                options.implementation = require('sass')
-                options.sassOptions = options.sassOptions || {}
-                options.sassOptions.indentedSyntax = true // Use indented syntax for .sass files
-                return options
-            })
 
         // Add resolve extensions
         config.resolve.extensions.merge(['.ts', '.tsx', '.vue'])
@@ -89,7 +58,6 @@ module.exports = {
             .type('webassembly/async')
     },
     productionSourceMap: false,
-    transpileDependencies: ['vuetify'],
     devServer: {
         proxy: {
             '/api': {
@@ -108,7 +76,9 @@ module.exports = {
     configureWebpack: {
         plugins: [
             new NodePolyfillPlugin(),
-            // new VueLoaderPlugin()
+            new VuetifyPlugin({
+                autoImport: true, // 启用自动导入
+            }),
         ],
         optimization: {
             splitChunks: {
@@ -126,11 +96,6 @@ module.exports = {
                 '@': path.resolve(__dirname, 'src'),
                 '@public': path.resolve(__dirname, 'public'),
                 bip32: path.resolve(__dirname, 'node_modules/bip32/src/index.js'),
-                // ecpair: path.resolve(__dirname, 'node_modules/ecpair/src/index.js'),
-                // '@bitcoinerlab/secp256k1': path.resolve(
-                //     __dirname,
-                //     'node_modules/@bitcoinerlab/secp256k1'
-                // ),
             },
             fallback: {
                 buffer: require.resolve('buffer/'),
@@ -140,6 +105,12 @@ module.exports = {
                 process: require.resolve('process/browser'),
                 fs: false, // 确保 fs 模块在浏览器环境中被替换
             },
+        },
+    },
+    pluginOptions: {
+        vuetify: {
+            // 你可以在这里添加任何 vuetify 插件的选项
+            // 例如： customVariables: ['~/src/styles/variables.scss']
         },
     },
     pwa: {
