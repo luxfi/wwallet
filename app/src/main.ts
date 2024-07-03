@@ -96,7 +96,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { createI18n } from 'vue-i18n'
 //@ts-ignore
 import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
@@ -122,8 +121,8 @@ app.use(posthogPlugin)
 app.use(BootstrapVue)
 
 // 安装 Vue I18n 插件
-const i18n = createI18n(i18nOptions)
-app.use(i18n)
+
+app.use(i18nOptions)
 
 app.component('datetime', Datetime)
 app.component('fa', FontAwesomeIcon)
