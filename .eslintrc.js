@@ -6,6 +6,8 @@ module.exports = {
         es2020: true,
     },
     extends: [
+        'plugin:vue/base',
+        'plugin:vuetify/base',
         'plugin:vue/essential',
         'eslint:recommended',
         '@vue/typescript',

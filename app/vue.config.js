@@ -78,7 +78,6 @@ module.exports = {
             new NodePolyfillPlugin(),
             new VuetifyPlugin({
                 autoImport: true, // 启用自动导入
-                styles: { configFile: 'src/styles/variables.scss' }, // 指定样式配置文件
             }),
         ],
         optimization: {
@@ -106,6 +105,12 @@ module.exports = {
                 process: require.resolve('process/browser'),
                 fs: false, // 确保 fs 模块在浏览器环境中被替换
             },
+        },
+    },
+    pluginOptions: {
+        vuetify: {
+            // 你可以在这里添加任何 vuetify 插件的选项
+            // 例如： customVariables: ['~/src/styles/variables.scss']
         },
     },
     pwa: {

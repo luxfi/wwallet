@@ -128,6 +128,15 @@ importers:
       '@fortawesome/vue-fontawesome':
         specifier: 0.1.9
         version: 0.1.9(@fortawesome/fontawesome-svg-core@1.2.26)(vue@3.4.31(typescript@4.0.8))
+      '@intlify/core-base':
+        specifier: ^9.13.1
+        version: 9.13.1
+      '@intlify/message-compiler':
+        specifier: ^9.13.1
+        version: 9.13.1
+      '@intlify/shared':
+        specifier: ^9.13.1
+        version: 9.13.1
       '@ledgerhq/cryptoassets':
         specifier: ^13.1.0
         version: 13.1.1(debug@4.3.5)
@@ -206,6 +215,9 @@ importers:
       '@vue/compat':
         specifier: ^3.4.0
         version: 3.4.31(vue@3.4.31(typescript@4.0.8))
+      '@vue/devtools-api':
+        specifier: ^6.6.3
+        version: 6.6.3
       '@zxing/library':
         specifier: ^0.15.2
         version: 0.15.2
@@ -530,6 +542,9 @@ importers:
       vue-datetime:
         specifier: 1.0.0-beta.14
         version: 1.0.0-beta.14(luxon@1.28.1)(vue@3.4.31(typescript@4.0.8))(weekstart@1.0.1)
+      vue-facing-decorator:
+        specifier: ^3.0.4
+        version: 3.0.4(vue@3.4.31(typescript@4.0.8))
       vue-functional-data-merge:
         specifier: ^3.1.0
         version: 3.1.0
@@ -774,6 +789,9 @@ importers:
       eslint-plugin-vue:
         specifier: ^9.0.0
         version: 9.27.0(eslint@8.57.0)
+      eslint-plugin-vuetify:
+        specifier: ^2.4.0
+        version: 2.4.0(eslint@8.57.0)(vuetify@3.6.10(typescript@4.0.8)(vue-i18n@9.13.1(vue@3.4.31(typescript@4.0.8)))(vue@3.4.31(typescript@4.0.8))(webpack-plugin-vuetify@3.0.3))
       jest:
         specifier: ^26.1.0
         version: 26.6.3(bufferutil@4.0.8)(ts-node@10.9.2(typescript@4.0.8))(utf-8-validate@5.0.10)
@@ -5487,6 +5505,12 @@ packages:
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
 
+  eslint-plugin-vuetify@2.4.0:
+    resolution: {integrity: sha512-WAZjnGXPrxqHBzYjxxUT8jf30O69Hitmj+wYhTIEG/XgqfvnPwqVtqrU2FGLsDtfFskKva0vuZemfbiq8yA/fQ==}
+    peerDependencies:
+      eslint: ^8.0.0
+      vuetify: ^3.0.0
+
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
     engines: {node: '>=8.0.0'}
@@ -8889,6 +8913,10 @@ packages:
   require-main-filename@2.0.0:
     resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}
 
+  requireindex@1.2.0:
+    resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
+    engines: {node: '>=0.10.5'}
+
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
 
@@ -10137,6 +10165,11 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  vue-facing-decorator@3.0.4:
+    resolution: {integrity: sha512-Lk90PevJllB6qRRdLvLFjATZrv00nof1Ob6afavKL7Pc7V3eEin3vhdvEDRORdWKVvNoXhJbHejngWVuT0Pt0g==}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue-functional-data-merge@3.1.0:
     resolution: {integrity: sha512-leT4kdJVQyeZNY1kmnS1xiUlQ9z1B/kdBFCILIjYYQDqZgLqCLa0UhjSSeRX6c3mUe6U5qYeM8LrEqkHJ1B4LA==}
@@ -17515,6 +17548,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-vuetify@2.4.0(eslint@8.57.0)(vuetify@3.6.10(typescript@4.0.8)(vue-i18n@9.13.1(vue@3.4.31(typescript@4.0.8)))(vue@3.4.31(typescript@4.0.8))(webpack-plugin-vuetify@3.0.3)):
+    dependencies:
+      eslint: 8.57.0
+      eslint-plugin-vue: 9.27.0(eslint@8.57.0)
+      requireindex: 1.2.0
+      vuetify: 3.6.10(typescript@4.0.8)(vue-i18n@9.13.1(vue@3.4.31(typescript@4.0.8)))(vue@3.4.31(typescript@4.0.8))(webpack-plugin-vuetify@3.0.3)
+    transitivePeerDependencies:
+      - supports-color
+
   eslint-scope@5.1.1:
     dependencies:
       esrecurse: 4.3.0
@@ -21786,6 +21828,8 @@ snapshots:
 
   require-main-filename@2.0.0: {}
 
+  requireindex@1.2.0: {}
+
   requires-port@1.0.0: {}
 
   reselect@4.1.8: {}
@@ -23177,6 +23221,10 @@ snapshots:
       semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
+
+  vue-facing-decorator@3.0.4(vue@3.4.31(typescript@4.0.8)):
+    dependencies:
+      vue: 3.4.31(typescript@4.0.8)
 
   vue-functional-data-merge@3.1.0: {}
 
