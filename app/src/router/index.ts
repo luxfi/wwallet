@@ -1,7 +1,5 @@
-import Vue from 'vue'
-import VueRouter, { Route } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-
 import Transfer from '@/views/wallet/Transfer.vue'
 import ManageKeys from '@/views/wallet/ManageKeys.vue'
 import Menu from '../views/access/Menu.vue'
@@ -13,21 +11,18 @@ import Create from '@/views/Create.vue'
 import Wallet from '@/views/Wallet.vue'
 import WalletHome from '@/views/wallet/Portfolio.vue'
 import Earn from '@/views/wallet/Earn.vue'
-import Advanced from '@/views/wallet/Advanced.vue' // your vuex store
-import Activity from '@/views/wallet/Activity.vue' // your vuex store
-import Account from '@/views/access/Account.vue' // your vuex store
+import Advanced from '@/views/wallet/Advanced.vue'
+import Activity from '@/views/wallet/Activity.vue'
+import Account from '@/views/access/Account.vue'
 import Legal from '@/views/Legal.vue'
-
-Vue.use(VueRouter)
-
-import store from '../store/index'
 import Studio from '@/views/wallet/Studio.vue'
 import Export from '@/views/wallet/CrossChain.vue'
 import Xpub from '@/views/access/Xpub.vue'
 import WalletReadonly from '@/views/WalletReadonly.vue'
 import { PublicMnemonicWallet } from '@luxfi/wallet-sdk'
+import store from '../store/index'
 
-const ifNotAuthenticated = (to: Route, from: Route, next: Function) => {
+const ifNotAuthenticated = (to, from, next) => {
     if (!store.state.isAuth) {
         next()
         return
@@ -35,7 +30,7 @@ const ifNotAuthenticated = (to: Route, from: Route, next: Function) => {
     next('/wallet')
 }
 
-const ifAuthenticated = (to: Route, from: Route, next: Function) => {
+const ifAuthenticated = (to, from, next) => {
     if (store.state.isAuth) {
         next()
         return
@@ -52,9 +47,11 @@ const routes = [
     },
     {
         path: '/access',
+        component: Access,
+        beforeEnter: ifNotAuthenticated,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'access',
                 component: Menu,
             },
@@ -80,8 +77,6 @@ const routes = [
                 component: Xpub,
             },
         ],
-        component: Access,
-        beforeEnter: ifNotAuthenticated,
     },
     {
         path: '/legal',
@@ -101,9 +96,11 @@ const routes = [
     },
     {
         path: '/wallet',
+        component: Wallet,
+        beforeEnter: ifAuthenticated,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'wallet',
                 component: WalletHome,
             },
@@ -136,14 +133,11 @@ const routes = [
                 component: Activity,
             },
         ],
-        component: Wallet,
-        beforeEnter: ifAuthenticated,
     },
 ]
 
-const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
+const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
     routes,
 })
 

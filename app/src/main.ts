@@ -91,6 +91,8 @@
 //         return `${wholeStr}.${trimmed}`
 //     }
 // }
+console.log('开始加载')
+
 import 'reflect-metadata'
 
 import { createApp } from 'vue'
