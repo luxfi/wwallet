@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import moment from 'moment'
 import TxHistoryNftFamilyGroup from '@/components/SidePanels/TxHistoryNftFamilyGroup.vue'
@@ -52,7 +52,7 @@ import { WalletType } from '@/js/wallets/types'
         TxHistoryNftFamilyGroup,
     },
 })
-export default class TxHistoryRow extends Vue {
+class TxHistoryRow extends Vue {
     @Prop() transaction!: XChainTransaction | PChainTransaction
 
     get explorerUrl(): string | null {
@@ -137,6 +137,7 @@ export default class TxHistoryRow extends Vue {
         }
     }
 }
+export default toNative(TxHistoryRow)
 </script>
 <style scoped lang="scss">
 @use '../../main';

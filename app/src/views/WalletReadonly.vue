@@ -27,7 +27,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import {
     PublicMnemonicWallet,
     iLuxBalance,
@@ -39,7 +39,7 @@ import {
     parseStakingTxs,
     HistoryItemType,
     isHistoryStakingTx,
-}  from '@luxfi/wallet-sdk'
+} from '@luxfi/wallet-sdk'
 import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
 import { UTXOSet as PlatformUTXOSet, TransferableOutput } from 'luxnet/dist/apis/platformvm'
 import Balances from '@/views/wallet_readonly/Balances.vue'
@@ -52,7 +52,7 @@ import { getPriceAtUnixTime } from '@/helpers/price_helper'
 @Component({
     components: { Spinner, Addresses, Balances },
 })
-export default class WalletReadonly extends Vue {
+class WalletReadonly extends Vue {
     isWalletLoading = true
     isBalanceLoading = false
     isStakeDownloading = false
@@ -196,6 +196,7 @@ export default class WalletReadonly extends Vue {
         this.init()
     }
 }
+export default toNative(WalletReadonly)
 </script>
 <style scoped lang="scss">
 .wallet_body {

@@ -5,12 +5,13 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class FungibleRow extends Vue {
+class FungibleRow extends Vue {
     @Prop({ default: false }) isLux?: boolean
 }
+export default toNative(FungibleRow)
 </script>
 <style scoped lang="scss">
 .hex_img {

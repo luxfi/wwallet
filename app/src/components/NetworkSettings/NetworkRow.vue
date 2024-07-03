@@ -26,11 +26,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, toNative } from 'vue-facing-decorator'
 import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
-export default class NetworkRow extends Vue {
+class NetworkRow extends Vue {
     @Prop() network!: LuxNetwork
 
     get endpoint() {
@@ -106,6 +106,7 @@ export default class NetworkRow extends Vue {
         }
     }
 }
+export default toNative(NetworkRow)
 </script>
 <style scoped lang="scss">
 @use '../../main';

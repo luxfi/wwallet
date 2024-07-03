@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import LuxAsset from '@/js/LuxAsset'
 import BalanceRow from './BalanceRow.vue'
 import CollectibleTab from './CollectibleTab.vue'
@@ -44,7 +44,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         CollectibleTab,
     },
 })
-export default class BalancePopup extends Vue {
+class BalancePopup extends Vue {
     @Prop() assets!: LuxAsset[]
     @Prop({ default: false }) isNft?: boolean
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
@@ -73,6 +73,7 @@ export default class BalancePopup extends Vue {
         this.$emit('close')
     }
 }
+export default toNative(BalancePopup)
 </script>
 <style lang="scss">
 .popup_body {

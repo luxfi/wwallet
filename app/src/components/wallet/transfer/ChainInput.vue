@@ -8,12 +8,12 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Model, Prop } from 'vue-property-decorator'
+import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
 import { ChainIdType } from '@/constants'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
 @Component
-export default class ChainInput extends Vue {
+class ChainInput extends Vue {
     @Model('change', { type: String }) readonly formType!: CurrencyType
     @Prop({ default: false }) disabled!: boolean
 
@@ -30,6 +30,7 @@ export default class ChainInput extends Vue {
         return this.wallet.ethAddress
     }
 }
+export default toNative(ChainInput)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

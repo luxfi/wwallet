@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import Erc20Token from '@/js/Erc20Token'
@@ -52,7 +52,7 @@ import { iErc721SelectInput } from '@/components/misc/EVMInputDropdown/types'
         Modal,
     },
 })
-export default class EVMTokenSelectModal extends Vue {
+class EVMTokenSelectModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -101,6 +101,7 @@ export default class EVMTokenSelectModal extends Vue {
         this.$refs.modal.close()
     }
 }
+export default toNative(EVMTokenSelectModal)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { getPayloadFromUTXO } from '@/helpers/helper'
@@ -30,7 +30,7 @@ import { IGroupQuantity } from '@/components/wallet/studio/mint/types'
         NftPayloadView,
     },
 })
-export default class NftListItem extends Vue {
+class NftListItem extends Vue {
     @Prop() sample!: UTXO
     @Prop({ default: false }) disabled!: boolean
 
@@ -104,6 +104,7 @@ export default class NftListItem extends Vue {
         this.emit()
     }
 }
+export default toNative(NftListItem)
 </script>
 <style scoped lang="scss">
 $remove_w: 24px;

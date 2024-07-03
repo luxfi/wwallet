@@ -13,10 +13,10 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Model } from 'vue-property-decorator'
+import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class RadioButtons extends Vue {
+class RadioButtons extends Vue {
     @Prop() labels!: string[]
     @Prop() keys!: string[]
     @Prop({ default: false }) disabled!: boolean
@@ -27,6 +27,7 @@ export default class RadioButtons extends Vue {
         this.$emit('change', val)
     }
 }
+export default toNative(RadioButtons)
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -28,12 +28,12 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import { BN } from 'luxnet'
 import Big from 'big.js'
 
 @Component
-export default class ConfirmPage extends Vue {
+class ConfirmPage extends Vue {
     @Prop() nodeID!: string
     @Prop() end!: Date
     @Prop() delegationFee!: number
@@ -75,6 +75,7 @@ export default class ConfirmPage extends Vue {
         return amt.toLocaleString(9)
     }
 }
+export default toNative(ConfirmPage)
 </script>
 <style scoped lang="scss">
 .confirmation {

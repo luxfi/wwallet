@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import CopyText from '@/components/misc/CopyText.vue'
@@ -32,7 +32,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
         ExportWallet,
     },
 })
-export default class MnemonicPhrase extends Vue {
+class MnemonicPhrase extends Vue {
     isSuccess: boolean = false
 
     $refs!: {
@@ -64,6 +64,7 @@ export default class MnemonicPhrase extends Vue {
         return this.$store.state.wallets
     }
 }
+export default toNative(MnemonicPhrase)
 </script>
 <style scoped lang="scss">
 .update_keystore_modal_body {

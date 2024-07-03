@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import ChainImport from '@/components/wallet/advanced/ChainImport.vue'
 import SignMessage from '@/components/wallet/advanced/SignMessage/SignMessage.vue'
@@ -32,7 +32,7 @@ import TokenListModal from '@/components/modals/TokenList/TokenListModal.vue'
         VerifyMessage,
     },
 })
-export default class Advanced extends Vue {
+class Advanced extends Vue {
     $refs!: {
         token_list: TokenListModal
     }
@@ -40,6 +40,7 @@ export default class Advanced extends Vue {
         this.$refs.token_list.open()
     }
 }
+export default toNative(Advanced)
 </script>
 <style scoped lang="scss">
 @use '../../main';

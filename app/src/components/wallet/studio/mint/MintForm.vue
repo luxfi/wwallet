@@ -122,7 +122,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import SelectMintUTXO from '@/components/wallet/studio/mint/SelectMintUtxo/SelectMintUTXO.vue'
 import UrlForm from '@/components/wallet/studio/mint/forms/UrlForm.vue'
@@ -161,7 +161,7 @@ type NftType = 'utf8' | 'url' | 'json'
         JsonForm,
     },
 })
-export default class MintNft extends Vue {
+class MintNft extends Vue {
     @Prop() mintUtxo!: UTXO
 
     quantity = 1
@@ -353,6 +353,7 @@ export default class MintNft extends Vue {
         this.isLoading = false
     }
 }
+export default toNative(MintNft)
 </script>
 <style lang="scss">
 .mint_form {

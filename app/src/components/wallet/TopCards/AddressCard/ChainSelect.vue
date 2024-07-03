@@ -7,11 +7,11 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Model } from 'vue-property-decorator'
+import { Vue, Component, Model, toNative } from 'vue-facing-decorator'
 import { ChainAlias, WalletType } from '@/js/wallets/types'
 
 @Component
-export default class ChainSelect extends Vue {
+class ChainSelect extends Vue {
     @Model('change', { type: String }) readonly chain!: ChainAlias
 
     get isEVMSupported() {
@@ -24,6 +24,7 @@ export default class ChainSelect extends Vue {
         this.$emit('change', val)
     }
 }
+export default toNative(ChainSelect)
 </script>
 <style scoped lang="scss">
 .chain_select {

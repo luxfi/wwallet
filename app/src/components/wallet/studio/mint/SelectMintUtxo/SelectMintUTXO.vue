@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, toNative, Vue } from 'vue-facing-decorator'
 import { IWalletNftMintDict } from '@/store/types'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -17,7 +17,7 @@ import FamilyRow from '@/components/wallet/studio/mint/SelectMintUtxo/FamilyRow.
 @Component({
     components: { FamilyRow },
 })
-export default class SelectMintUTXO extends Vue {
+class SelectMintUTXO extends Vue {
     get nftFamsDict(): NftFamilyDict {
         return this.$store.state.Assets.nftFamsDict
     }
@@ -31,6 +31,7 @@ export default class SelectMintUTXO extends Vue {
         this.$emit('change', utxo)
     }
 }
+export default toNative(SelectMintUTXO)
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

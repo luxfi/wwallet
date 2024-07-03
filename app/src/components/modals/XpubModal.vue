@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 
@@ -27,7 +27,7 @@ import Modal from '@/components/modals/Modal.vue'
         Modal,
     },
 })
-export default class XpubModal extends Vue {
+class XpubModal extends Vue {
     @Prop({ default: '' }) xpub!: string
 
     open(): void {
@@ -35,6 +35,7 @@ export default class XpubModal extends Vue {
         modal.open()
     }
 }
+export default toNative(XpubModal)
 </script>
 <style scoped lang="scss">
 .singleton_modal_body {

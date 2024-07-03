@@ -20,21 +20,21 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import { CsvRowLuxTransferData, ITransactionData, UTXO } from '@/store/modules/history/types'
 import { bnToBig } from '@/helpers/helper'
 const generate = require('csv-generate')
 import { downloadCSVFile } from '@/store/modules/history/history_utils'
-import { createCsvNormal, getHistoryForOwnedAddresses }  from '@luxfi/wallet-sdk'
+import { createCsvNormal, getHistoryForOwnedAddresses } from '@luxfi/wallet-sdk'
 
 @Component({
     components: {
         Modal,
     },
 })
-export default class ExportLuxCsvModal extends Vue {
+class ExportLuxCsvModal extends Vue {
     error: Error | null = null
     isLoading = false
 
@@ -97,6 +97,7 @@ export default class ExportLuxCsvModal extends Vue {
         }
     }
 }
+export default toNative(ExportLuxCsvModal)
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

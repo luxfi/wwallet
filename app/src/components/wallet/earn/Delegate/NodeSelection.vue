@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import ValidatorsList from '@/components/misc/ValidatorList/ValidatorsList.vue'
 import { ValidatorListItem } from '@/store/modules/platform/types'
@@ -38,7 +38,7 @@ import { ValidatorListItem } from '@/store/modules/platform/types'
         ValidatorsList,
     },
 })
-export default class NodeSelection extends Vue {
+class NodeSelection extends Vue {
     search: string = ''
 
     openFilters() {
@@ -50,6 +50,7 @@ export default class NodeSelection extends Vue {
         this.$emit('select', val)
     }
 }
+export default toNative(NodeSelection)
 </script>
 <style scoped lang="scss">
 .node_selection {

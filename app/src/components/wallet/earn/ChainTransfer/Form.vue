@@ -47,7 +47,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'luxnet'
 import Big from 'big.js'
@@ -68,7 +68,7 @@ const chainNames = {
         LuxInput,
     },
 })
-export default class Form extends Vue {
+class Form extends Vue {
     sourceChain: ChainIdType = 'X'
     targetChain: ChainIdType = 'P'
     amt: BN = new BN(0)
@@ -151,6 +151,7 @@ export default class Form extends Vue {
         this.onChange()
     }
 }
+export default toNative(Form)
 </script>
 <style scoped lang="scss">
 .swap_form {

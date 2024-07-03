@@ -13,7 +13,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { BaseTxAssetSummary, BaseTxNFTSummary } from '@/helpers/history_helper'
 import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
@@ -28,7 +28,7 @@ interface GroupDict {
 @Component({
     components: { TxHistoryNftFamilyGroup },
 })
-export default class BaseTxNFTOutput extends Vue {
+class BaseTxNFTOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: UTXO[]
 
@@ -64,6 +64,7 @@ export default class BaseTxNFTOutput extends Vue {
         return gNums
     }
 }
+export default toNative(BaseTxNFTOutput)
 </script>
 <style scoped lang="scss">
 .amount {

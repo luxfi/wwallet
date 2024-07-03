@@ -114,7 +114,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import { bintools, keyChain } from '@/LUX'
 import LuxAsset from '@/js/LuxAsset'
@@ -148,7 +148,7 @@ interface IKeyBalanceDict {
         XpubModal,
     },
 })
-export default class KeyRow extends Vue {
+class KeyRow extends Vue {
     @Prop() wallet!: WalletType
     @Prop({ default: false }) is_default?: boolean
 
@@ -297,6 +297,7 @@ export default class KeyRow extends Vue {
         this.$refs.modal_priv_key_c.open()
     }
 }
+export default toNative(KeyRow)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

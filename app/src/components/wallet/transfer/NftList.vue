@@ -31,7 +31,7 @@ import { NftFamilyDict } from '../../../store/modules/assets/types'
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import NftListItem from '@/components/wallet/transfer/NftListItem.vue'
@@ -46,7 +46,7 @@ import XvmNftSelectModal from '@/components/modals/XvmNftSelectModal.vue'
         NftListItem,
     },
 })
-export default class NftList extends Vue {
+class NftList extends Vue {
     addedNfts: UTXO[] = []
 
     groupUtxos: IGroupDict = {}
@@ -152,6 +152,7 @@ export default class NftList extends Vue {
 
     activated() {}
 }
+export default toNative(NftList)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

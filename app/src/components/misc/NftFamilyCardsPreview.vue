@@ -14,7 +14,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { UTXO } from 'luxnet/dist/apis/xvm'
 import { getPayloadFromUTXO } from '@/helpers/helper'
@@ -24,7 +24,7 @@ import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
         NftPayloadView,
     },
 })
-export default class NftFamilyCardsPreview extends Vue {
+class NftFamilyCardsPreview extends Vue {
     @Prop() utxos!: UTXO[]
     @Prop({ default: false }) spread!: boolean
     @Prop() max!: number
@@ -45,6 +45,7 @@ export default class NftFamilyCardsPreview extends Vue {
         })
     }
 }
+export default toNative(NftFamilyCardsPreview)
 </script>
 <style scoped lang="scss">
 .previews {

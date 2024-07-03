@@ -74,7 +74,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import NetworkRow from './NetworkRow.vue'
 import CustomPage from './CustomPage.vue'
@@ -91,7 +91,7 @@ import { NetworkStatus } from '@/store/modules/network/types'
         EditPage,
     },
 })
-export default class NetworkMenu extends Vue {
+class NetworkMenu extends Vue {
     page: string = 'list'
     isActive: boolean = false
     editNetwork: LuxNetwork | null = null
@@ -154,6 +154,7 @@ export default class NetworkMenu extends Vue {
         return false
     }
 }
+export default toNative(NetworkMenu)
 </script>
 <style scoped lang="scss">
 @use '../../main';

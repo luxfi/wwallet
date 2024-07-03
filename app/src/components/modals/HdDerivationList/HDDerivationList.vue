@@ -36,7 +36,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { KeyPair as XVMKeyPair, UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
@@ -55,7 +55,7 @@ import HdChainTable from '@/components/modals/HdDerivationList/HdChainTable.vue'
         HdChainTable,
     },
 })
-export default class HDDerivationList extends Vue {
+class HDDerivationList extends Vue {
     @Prop() wallet!: MnemonicWallet | LedgerWallet
 
     addrsExternal: string[] = []
@@ -141,6 +141,7 @@ export default class HDDerivationList extends Vue {
         return this.utxoSetToBalanceDict(utxoSet, addrs)
     }
 }
+export default toNative(HDDerivationList)
 </script>
 
 <style scoped lang="scss">

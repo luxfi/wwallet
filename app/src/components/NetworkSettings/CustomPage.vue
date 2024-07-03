@@ -55,14 +55,14 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
 import axios from 'axios'
 import punycode from 'punycode'
 
 @Component
-export default class CustomPage extends Vue {
+class CustomPage extends Vue {
     name = 'My Custom Network'
     url = ''
     explorer_api = ''
@@ -201,6 +201,7 @@ export default class CustomPage extends Vue {
         this.url = ''
     }
 }
+export default toNative(CustomPage)
 </script>
 <style scoped lang="scss">
 @use '../../main';

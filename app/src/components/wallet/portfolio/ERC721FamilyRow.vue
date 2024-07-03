@@ -20,7 +20,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import ERC721Token from '@/js/ERC721Token'
 import { WalletType } from '@/js/wallets/types'
 import ERC721View from '@/components/wallet/portfolio/ERC721Card.vue'
@@ -28,7 +28,7 @@ import { ERC721WalletBalance } from '@/store/modules/assets/modules/types'
 @Component({
     components: { ERC721View },
 })
-export default class ERC721FamilyRow extends Vue {
+class ERC721FamilyRow extends Vue {
     @Prop() family!: ERC721Token
 
     get walletBalance(): string[] {
@@ -39,6 +39,7 @@ export default class ERC721FamilyRow extends Vue {
         return this.walletBalance.length > 0
     }
 }
+export default toNative(ERC721FamilyRow)
 </script>
 <style scoped lang="scss">
 @use "tokens";

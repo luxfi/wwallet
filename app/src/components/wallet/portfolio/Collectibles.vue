@@ -30,7 +30,7 @@
 import NFTCard from './NftCard.vue'
 import CollectibleFamilyRow from '@/components/wallet/portfolio/CollectibleFamilyRow.vue'
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { NftFamilyDict } from '@/store/modules/assets/types'
@@ -48,7 +48,7 @@ import { WalletType } from '@/js/wallets/types'
         CollectibleFamilyRow,
     },
 })
-export default class Collectibles extends Vue {
+class Collectibles extends Vue {
     @Prop() search!: string
     isScroll = false
 
@@ -133,6 +133,7 @@ export default class Collectibles extends Vue {
         this.$refs.add_token_modal.open()
     }
 }
+export default toNative(Collectibles)
 </script>
 <style lang="scss" scoped>
 @use '../../../main';

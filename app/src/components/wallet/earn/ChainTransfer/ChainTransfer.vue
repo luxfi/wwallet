@@ -117,7 +117,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, toNative, Vue, Watch } from 'vue-facing-decorator'
 import Dropdown from '@/components/misc/Dropdown.vue'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import LuxAsset from '@/js/LuxAsset'
@@ -146,7 +146,7 @@ import {
     bigToBN,
     luxCtoX,
     bnToLuxP,
-}  from '@luxfi/wallet-sdk'
+} from '@luxfi/wallet-sdk'
 import { sortUTxoSetP } from '@/helpers/sortUTXOs'
 import { selectMaxUtxoForExportP } from '@/helpers/utxoSelection/selectMaxUtxoForExportP'
 
@@ -164,7 +164,7 @@ const BALANCE_DELAY = 2000 // in ms
         TxStateCard,
     },
 })
-export default class ChainTransfer extends Vue {
+class ChainTransfer extends Vue {
     $refs!: {
         form: ChainSwapForm
     }
@@ -610,6 +610,7 @@ export default class ChainTransfer extends Vue {
         return true
     }
 }
+export default toNative(ChainTransfer)
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

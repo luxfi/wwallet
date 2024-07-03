@@ -11,10 +11,10 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Model, Prop } from 'vue-property-decorator'
+import { Vue, Component, Model, Prop, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class NftPayloadAllow extends Vue {
+class NftPayloadAllow extends Vue {
     @Prop({}) nftID!: string
     @Prop({ default: false }) isSmall!: boolean
     @Model('change', { type: Boolean }) readonly isShow!: boolean
@@ -24,6 +24,7 @@ export default class NftPayloadAllow extends Vue {
         this.$emit('change', true)
     }
 }
+export default toNative(NftPayloadAllow)
 </script>
 <style scoped lang="scss">
 .nft_allow {

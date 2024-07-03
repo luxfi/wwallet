@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 import { PayloadBase } from 'luxnet/dist/utils'
@@ -23,7 +23,7 @@ let payloadtypes = PayloadTypes.getInstance()
 @Component({
     components: { NftCard, NFTViewModal, Tooltip, NftPayloadView },
 })
-export default class CollectibleFamilyGroup extends Vue {
+class CollectibleFamilyGroup extends Vue {
     @Prop() utxos!: UTXO[]
     $refs!: {
         modal: NFTViewModal
@@ -49,6 +49,7 @@ export default class CollectibleFamilyGroup extends Vue {
         return payloadbase
     }
 }
+export default toNative(CollectibleFamilyGroup)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

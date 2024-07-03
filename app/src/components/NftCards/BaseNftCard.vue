@@ -20,10 +20,10 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Prop, Component } from 'vue-property-decorator'
+import { Vue, Prop, Component, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class BaseNftCard extends Vue {
+class BaseNftCard extends Vue {
     @Prop({ default: false }) mini!: boolean
     @Prop({ default: false }) rawCard!: boolean
     @Prop() utxoId!: string
@@ -49,6 +49,7 @@ export default class BaseNftCard extends Vue {
         })
     }
 }
+export default toNative(BaseNftCard)
 </script>
 <style scoped lang="scss">
 .card_container {

@@ -133,7 +133,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Ref } from 'vue-property-decorator'
+import { Vue, Component, Ref, toNative } from 'vue-facing-decorator'
 
 import TxList from '@/components/wallet/transfer/TxList.vue'
 import Big from 'big.js'
@@ -169,7 +169,7 @@ import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
         ChainInput,
     },
 })
-export default class Transfer extends Vue {
+class Transfer extends Vue {
     formType: ChainIdType = 'X'
     showAdvanced: boolean = false
     isAjax: boolean = false
@@ -492,6 +492,7 @@ export default class Transfer extends Vue {
         }
     }
 }
+export default toNative(Transfer)
 </script>
 
 <style lang="scss">

@@ -18,11 +18,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import Erc20Token from '@/js/Erc20Token'
 
 @Component
-export default class ERC20Row extends Vue {
+class ERC20Row extends Vue {
     @Prop() token!: Erc20Token
 
     get balText() {
@@ -37,6 +37,7 @@ export default class ERC20Row extends Vue {
         return `/wallet/transfer?chain=C&token=${this.token.data.address}`
     }
 }
+export default toNative(ERC20Row)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

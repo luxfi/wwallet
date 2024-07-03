@@ -3,8 +3,9 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class StakingCalculator extends Vue {}
+class StakingCalculator extends Vue {}
+export default toNative(StakingCalculator)
 </script>

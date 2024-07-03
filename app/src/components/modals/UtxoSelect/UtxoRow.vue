@@ -12,7 +12,7 @@
     </tr>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import {
     UTXO,
     PlatformVMConstants,
@@ -25,7 +25,7 @@ import { UnixNow } from 'luxnet/dist/utils'
 import { BN } from 'luxnet'
 
 @Component
-export default class UtxoRow extends Vue {
+class UtxoRow extends Vue {
     @Prop() utxo!: UTXO
     isSelect = false
 
@@ -87,6 +87,7 @@ export default class UtxoRow extends Vue {
         return false
     }
 }
+export default toNative(UtxoRow)
 </script>
 <style scoped lang="scss">
 tr {

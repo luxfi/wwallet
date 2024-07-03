@@ -29,9 +29,9 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
-const { v1: uuidv1,   } = require('uuid');
+const { v1: uuidv1 } = require('uuid')
 
 import { BN } from 'luxnet'
 import CurrencyInputDropdown from '@/components/misc/CurrencyInputDropdown.vue'
@@ -44,7 +44,7 @@ import { ICurrencyInputDropdownValue, ITransaction } from '@/components/wallet/t
         CurrencyInputDropdown,
     },
 })
-export default class TxList extends Vue {
+class TxList extends Vue {
     tx_list: ITransaction[] = []
     disabledAssets: LuxAsset[][] = []
     next_initial: LuxAsset | null = null
@@ -174,6 +174,7 @@ export default class TxList extends Vue {
         return true
     }
 }
+export default toNative(TxList)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

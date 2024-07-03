@@ -7,11 +7,11 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import LuxAsset from '@/js/LuxAsset'
 
 @Component
-export default class BalanceRow extends Vue {
+class BalanceRow extends Vue {
     @Prop() asset!: LuxAsset
 
     get name() {
@@ -24,6 +24,7 @@ export default class BalanceRow extends Vue {
         return sym
     }
 }
+export default toNative(BalanceRow)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import TxHistoryRow from '@/components/SidePanels/TxHistoryRow.vue'
@@ -37,7 +37,7 @@ import { TransactionType } from '@/js/Cloud/models'
         Spinner,
     },
 })
-export default class TransactionHistoryPanel extends Vue {
+class TransactionHistoryPanel extends Vue {
     get isExplorer(): boolean {
         let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
         if (!network) return false
@@ -72,6 +72,7 @@ export default class TransactionHistoryPanel extends Vue {
         return `https://explorer.lux.network/address/${addr}`
     }
 }
+export default toNative(TransactionHistoryPanel)
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -6,16 +6,17 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch, Model } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Model, toNative } from 'vue-facing-decorator'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
 @Component
-export default class CurrencySelect extends Vue {
+class CurrencySelect extends Vue {
     @Model('change', { type: String }) readonly currency!: CurrencyType
     setType(val: CurrencyType) {
         this.$emit('change', val)
     }
 }
+export default toNative(CurrencySelect)
 </script>
 <style scoped lang="scss">
 .currency_select {

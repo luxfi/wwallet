@@ -46,13 +46,13 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 import { bnToBig } from '@/helpers/helper'
 import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
-export default class NodeCard extends Vue {
+class NodeCard extends Vue {
     @Prop() node!: ValidatorListItem
 
     get uptimeText(): string {
@@ -85,6 +85,7 @@ export default class NodeCard extends Vue {
         }
     }
 }
+export default toNative(NodeCard)
 </script>
 <style scoped lang="scss">
 .node_card {

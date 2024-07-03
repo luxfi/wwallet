@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import CreateWallet from '@/components/CreateWalletWorkflow/CreateWallet.vue'
 
@@ -38,7 +38,8 @@ import CreateWallet from '@/components/CreateWalletWorkflow/CreateWallet.vue'
         }
     },
 })
-export default class Create extends Vue {}
+class Create extends Vue {}
+export default toNative(Create)
 </script>
 <style scoped lang="scss">
 @use '../main';

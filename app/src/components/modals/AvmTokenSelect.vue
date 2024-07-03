@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import LuxAsset from '@/js/LuxAsset'
@@ -39,7 +39,7 @@ import { bnToBig } from '@/helpers/helper'
         },
     },
 })
-export default class PrivateKey extends Vue {
+class PrivateKey extends Vue {
     @Prop() assets!: LuxAsset[]
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
 
@@ -66,6 +66,7 @@ export default class PrivateKey extends Vue {
         return false
     }
 }
+export default toNative(PrivateKey)
 </script>
 <style scoped lang="scss">
 @use '../../main';

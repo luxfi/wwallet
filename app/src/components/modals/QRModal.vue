@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 import Modal from './Modal.vue'
 import CopyText from '../misc/CopyText.vue'
@@ -24,7 +24,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
         CopyText,
     },
 })
-export default class QRModal extends Vue {
+class QRModal extends Vue {
     colorDark: string = '#242729'
     colorLight: string = '#FFF'
 
@@ -76,6 +76,7 @@ export default class QRModal extends Vue {
         )
     }
 }
+export default toNative(QRModal)
 </script>
 <style scoped lang="scss">
 .qr_body {

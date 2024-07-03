@@ -44,7 +44,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, toNative, Vue } from 'vue-facing-decorator'
 import NewCollectibleFamily from '@/components/wallet/studio/NewCollectibleFamily.vue'
 import MintNft from '@/components/wallet/studio/mint/MintNft.vue'
 import { IWalletNftMintDict } from '@/store/types'
@@ -58,7 +58,7 @@ import { BN } from 'luxnet'
         NewCollectibleFamily,
     },
 })
-export default class Studio extends Vue {
+class Studio extends Vue {
     pageNow: any = null
     subtitle: string = ''
 
@@ -115,6 +115,7 @@ export default class Studio extends Vue {
         this.clearPage()
     }
 }
+export default toNative(Studio)
 </script>
 <style scoped lang="scss">
 .header {

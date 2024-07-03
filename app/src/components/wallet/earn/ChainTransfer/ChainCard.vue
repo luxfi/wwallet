@@ -18,7 +18,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Model, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Model, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
 import { UTXO } from 'luxnet/dist/apis/platformvm'
 import { ChainIdType } from '@/constants'
 import { BN } from 'luxnet'
@@ -41,7 +41,7 @@ const chainNames = {
         NumberCounter,
     },
 })
-export default class ChainCard extends Vue {
+class ChainCard extends Vue {
     // @Model('change', { type: String }) readonly chain!: ChainIdType
     @Prop() chain!: ChainIdType
     // @Prop() exclude!: ChainIdType
@@ -99,6 +99,7 @@ export default class ChainCard extends Vue {
 
     mounted() {}
 }
+export default toNative(ChainCard)
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

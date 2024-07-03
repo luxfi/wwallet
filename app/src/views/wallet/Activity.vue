@@ -85,7 +85,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, toNative, Vue } from 'vue-facing-decorator'
 import {
     isTransactionC,
     isTransactionX,
@@ -126,7 +126,7 @@ const MONTH_MIN = 8
         VirtualList,
     },
 })
-export default class Activity extends Vue {
+class Activity extends Vue {
     mode: ModeKeyType = 'all'
     modes = [
         this.$t('activity.mode1'),
@@ -394,6 +394,7 @@ export default class Activity extends Vue {
         this.listH = h
     }
 }
+export default toNative(Activity)
 </script>
 <style scoped lang="scss">
 @use '../../main';

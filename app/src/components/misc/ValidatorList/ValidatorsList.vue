@@ -50,7 +50,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { ava, pChain } from '@/LUX'
 import { BN } from 'luxnet'
 
@@ -65,7 +65,7 @@ import { filterValidatorList } from '@/components/wallet/earn/Delegate/helper'
 @Component({
     components: { Tooltip, ValidatorRow, FilterSettings },
 })
-export default class ValidatorsList extends Vue {
+class ValidatorsList extends Vue {
     @Prop() search!: string
     showFilter = false
     filter: ValidatorListFilter | null = null
@@ -116,6 +116,7 @@ export default class ValidatorsList extends Vue {
         this.$emit('select', val)
     }
 }
+export default toNative(ValidatorsList)
 </script>
 <style scoped lang="scss">
 .validator_list {

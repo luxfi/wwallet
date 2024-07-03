@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Prop, Component } from 'vue-property-decorator'
+import { Vue, Prop, Component, toNative } from 'vue-facing-decorator'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
 import { NftFamilyDict } from '@/store/modules/assets/types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -28,7 +28,7 @@ import CollectibleFamily from '@/components/misc/BalancePopup/CollectibleFamily.
         CollectibleFamily,
     },
 })
-export default class CollectibleTab extends Vue {
+class CollectibleTab extends Vue {
     @Prop({ default: [] }) disabledIds!: string[]
     get isEmpty(): boolean {
         // return this.$store.getters.walletNftUTXOs.length === 0
@@ -47,6 +47,7 @@ export default class CollectibleTab extends Vue {
         this.$emit('select', nft)
     }
 }
+export default toNative(CollectibleTab)
 </script>
 <style scoped lang="scss">
 .collectible_tab {

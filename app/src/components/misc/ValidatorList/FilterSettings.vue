@@ -97,7 +97,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import moment from 'moment'
 import { ValidatorListFilter } from '@/components/wallet/earn/Delegate/types'
 import { ValidatorListItem } from '@/store/modules/platform/types'
@@ -108,7 +108,7 @@ const HOUR_MS = MINUTE_MS * 60
 const DAY_MS = HOUR_MS * 24
 
 @Component
-export default class FilterSettings extends Vue {
+class FilterSettings extends Vue {
     minDuration = 14
     maxFee = 10
     minUptime = 90
@@ -190,6 +190,7 @@ export default class FilterSettings extends Vue {
         return true
     }
 }
+export default toNative(FilterSettings)
 </script>
 <style scoped lang="scss">
 .filter_settings {

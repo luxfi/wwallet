@@ -7,10 +7,10 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class FileInput extends Vue {
+class FileInput extends Vue {
     files: FileList | null = null
 
     @Prop({ default: false }) multiple!: boolean
@@ -60,6 +60,7 @@ export default class FileInput extends Vue {
         return this.files.length
     }
 }
+export default toNative(FileInput)
 </script>
 <style scoped lang="scss">
 @use '../../main';

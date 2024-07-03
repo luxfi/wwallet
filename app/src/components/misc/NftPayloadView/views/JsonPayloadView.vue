@@ -5,7 +5,7 @@
     <GenericPayloadView v-else :payload="payload"></GenericPayloadView>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
 import { JSONPayload } from 'luxnet/dist/utils'
 
 import GenericPayloadView from '@/components/misc/NftPayloadView/views/GenericPayloadView.vue'
@@ -15,7 +15,7 @@ import GenericPayloadView from '@/components/misc/NftPayloadView/views/GenericPa
         GenericPayloadView,
     },
 })
-export default class JsonPayloadView extends Vue {
+class JsonPayloadView extends Vue {
     @Prop() payload!: JSONPayload
     val = ''
 
@@ -61,6 +61,7 @@ export default class JsonPayloadView extends Vue {
         this.updateText()
     }
 }
+export default toNative(JsonPayloadView)
 </script>
 <style scoped lang="scss">
 .json_payload_view {

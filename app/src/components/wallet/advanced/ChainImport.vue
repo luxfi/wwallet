@@ -39,23 +39,17 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import { WalletType } from '@/js/wallets/types'
 import { BN } from 'luxnet'
-import {
-    luxCtoX,
-    ExportChainsC,
-    ExportChainsP,
-    ExportChainsX,
-    GasHelper,
-}  from '@luxfi/wallet-sdk'
+import { luxCtoX, ExportChainsC, ExportChainsP, ExportChainsX, GasHelper } from '@luxfi/wallet-sdk'
 
 @Component({
     components: { Spinner },
 })
-export default class ChainImport extends Vue {
+class ChainImport extends Vue {
     err = ''
     isSuccess = false
     isLoading = false
@@ -167,6 +161,7 @@ export default class ChainImport extends Vue {
         }
     }
 }
+export default toNative(ChainImport)
 </script>
 <style scoped lang="scss">
 .v-btn {

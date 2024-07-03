@@ -31,7 +31,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { BN } from 'luxnet'
 import { bnToBig } from '@/helpers/helper'
 import { UnixNow } from 'luxnet/dist/utils'
@@ -44,7 +44,7 @@ import { filterOwnedAddresses } from './filterOwnedAddresses'
 import { RewardTypes } from '@/utils/typeconvert'
 
 @Component
-export default class StakingTx extends Vue {
+class StakingTx extends Vue {
     @Prop() transaction!: PChainTransaction
     isStarted = false
 
@@ -133,6 +133,7 @@ export default class StakingTx extends Vue {
 
     // TODO: Add missing stake info for staking transactions, start/end date, potential reward, reward date, reward USD price
 }
+export default toNative(StakingTx)
 </script>
 <style scoped lang="scss">
 .data_row {

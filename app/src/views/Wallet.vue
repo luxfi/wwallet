@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import TopInfo from '@/components/wallet/TopInfo.vue'
 import Sidebar from '@/components/wallet/Sidebar.vue'
 import MainPanel from '@/components/SidePanels/MainPanel.vue'
@@ -38,7 +38,7 @@ const TIMEOUT_DUR_MS = TIMEOUT_DURATION * 1000
         UpdateKeystoreModal,
     },
 })
-export default class Wallet extends Vue {
+class Wallet extends Vue {
     intervalId: ReturnType<typeof setTimeout> | null = null
     logoutTimestamp = Date.now() + TIMEOUT_DUR_MS
     isLogOut = false
@@ -111,6 +111,7 @@ export default class Wallet extends Vue {
         return this.$store.state.volatileWallets.length > 0
     }
 }
+export default toNative(Wallet)
 </script>
 
 <style lang="scss" scoped>

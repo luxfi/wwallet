@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import Big from 'big.js'
 import { DerivationListBalanceDict } from '@/components/modals/HdDerivationList/types'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
@@ -32,7 +32,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
 import { LUX_ACCOUNT_PATH } from '../../../js/wallets/MnemonicWallet'
 
 @Component
-export default class HdDerivationListRow extends Vue {
+class HdDerivationListRow extends Vue {
     @Prop() index!: number
     @Prop() path!: number
     @Prop() address!: string
@@ -71,6 +71,7 @@ export default class HdDerivationListRow extends Vue {
         wallet.verifyAddress(this.index, isInternal)
     }
 }
+export default toNative(HdDerivationListRow)
 </script>
 <style scoped lang="scss">
 .col_index {

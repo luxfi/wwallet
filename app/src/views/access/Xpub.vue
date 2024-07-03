@@ -41,16 +41,16 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
 import Form from '@/components/wallet/earn/ChainTransfer/Form.vue'
-import { PublicMnemonicWallet, getEthAddressKeyFromAccountKey }  from '@luxfi/wallet-sdk'
+import { PublicMnemonicWallet, getEthAddressKeyFromAccountKey } from '@luxfi/wallet-sdk'
 import WalletReadonly from '@/views/WalletReadonly.vue'
 import { ethers } from 'ethers'
 
 @Component({
     components: { WalletReadonly, Form },
 })
-export default class Xpub extends Vue {
+class Xpub extends Vue {
     xpubXP = ''
     evmAddr = ''
     xpubC = ''
@@ -87,6 +87,7 @@ export default class Xpub extends Vue {
         }
     }
 }
+export default toNative(Xpub)
 </script>
 <style scoped lang="scss">
 @use '../../main';

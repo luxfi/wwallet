@@ -39,7 +39,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import {
@@ -67,7 +67,7 @@ import {
         Modal,
     },
 })
-export default class ExportCsvModal extends Vue {
+class ExportCsvModal extends Vue {
     showValidation = true
     showDelegation = true
     showFees = true
@@ -232,6 +232,7 @@ export default class ExportCsvModal extends Vue {
         }
     }
 }
+export default toNative(ExportCsvModal)
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

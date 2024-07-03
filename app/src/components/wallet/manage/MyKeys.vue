@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import KeyRow from '@/components/wallet/manage/KeyRow.vue'
 import RememberKey from '@/components/misc/RememberKey.vue'
@@ -35,7 +35,7 @@ import { WalletType } from '@/js/wallets/types'
         RememberKey,
     },
 })
-export default class MyKeys extends Vue {
+class MyKeys extends Vue {
     selectWallet(wallet: WalletType) {
         this.$store.dispatch('activateWallet', wallet)
         this.$store.dispatch('History/updateTransactionHistory')
@@ -78,6 +78,7 @@ export default class MyKeys extends Vue {
         return this.$store.state.activeWallet
     }
 }
+export default toNative(MyKeys)
 </script>
 <style scoped lang="scss">
 @use "../../../main";

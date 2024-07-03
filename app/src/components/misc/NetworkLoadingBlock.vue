@@ -7,7 +7,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import Spinner from '@/components/misc/Spinner.vue'
 
 @Component({
@@ -15,12 +15,13 @@ import Spinner from '@/components/misc/Spinner.vue'
         Spinner,
     },
 })
-export default class NetworkLoadingBlock extends Vue {
+class NetworkLoadingBlock extends Vue {
     get networkLoading() {
         // return true
         return this.$store.state.Network.status === 'connecting'
     }
 }
+export default toNative(NetworkLoadingBlock)
 </script>
 <style scoped lang="scss">
 .network_loading {

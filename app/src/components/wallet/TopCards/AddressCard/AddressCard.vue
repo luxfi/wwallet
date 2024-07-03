@@ -59,7 +59,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 import CopyText from '@/components/misc/CopyText.vue'
 import QRModal from '@/components/modals/QRModal.vue'
@@ -86,7 +86,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
         ChainSelect,
     },
 })
-export default class AddressCard extends Vue {
+class AddressCard extends Vue {
     colorLight: string = '#FFF'
     colorDark: string = '#242729'
     chainNow: ChainIdType = 'X'
@@ -287,6 +287,7 @@ export default class AddressCard extends Vue {
         this.updateQR()
     }
 }
+export default toNative(AddressCard)
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

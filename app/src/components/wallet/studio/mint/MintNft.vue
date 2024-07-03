@@ -8,7 +8,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import { pChain } from '@/LUX'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
@@ -22,7 +22,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         MintForm,
     },
 })
-export default class MintNft extends Vue {
+class MintNft extends Vue {
     isLoading = false
     mintUtxo: null | UTXO = null
 
@@ -73,5 +73,6 @@ export default class MintNft extends Vue {
         }
     }
 }
+export default toNative(MintNft)
 </script>
 <style scoped lang="scss"></style>

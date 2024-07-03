@@ -6,14 +6,14 @@
     </modal>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import ERC721View from '../misc/ERC721View.vue'
 import ERC721Token from '@/js/ERC721Token'
 @Component({
     components: { ERC721View, Modal },
 })
-export default class ERC721ViewModal extends Vue {
+class ERC721ViewModal extends Vue {
     @Prop() token!: ERC721Token
     @Prop() tokenId!: string
 
@@ -25,6 +25,7 @@ export default class ERC721ViewModal extends Vue {
         this.$refs.modal.open()
     }
 }
+export default toNative(ERC721ViewModal)
 </script>
 <style scoped lang="scss">
 .nft_view_body {

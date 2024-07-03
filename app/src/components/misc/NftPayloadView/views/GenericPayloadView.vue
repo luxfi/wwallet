@@ -27,12 +27,12 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, toNative, Vue, Watch } from 'vue-facing-decorator'
 import { JSONPayload } from 'luxnet/dist/utils'
 import { IGenericNft } from '@/components/wallet/studio/mint/types'
 
 @Component
-export default class UtfPayloadView extends Vue {
+class UtfPayloadView extends Vue {
     $refs!: {
         image: HTMLImageElement
         video: HTMLVideoElement
@@ -84,6 +84,7 @@ export default class UtfPayloadView extends Vue {
         }
     }
 }
+export default toNative(UtfPayloadView)
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

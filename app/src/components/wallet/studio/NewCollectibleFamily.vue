@@ -73,14 +73,14 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
 import { BN } from 'luxnet'
 import { pChain } from '@/LUX'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
 
 @Component
-export default class NewCollectibleFamily extends Vue {
+class NewCollectibleFamily extends Vue {
     name: string = ''
     symbol: string = ''
     groupNum = 1
@@ -168,6 +168,7 @@ export default class NewCollectibleFamily extends Vue {
         return this.$store.state.Assets.nftMintUTXOs
     }
 }
+export default toNative(NewCollectibleFamily)
 </script>
 <style scoped lang="scss">
 .new_family {

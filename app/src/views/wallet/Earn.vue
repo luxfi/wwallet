@@ -98,7 +98,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import AddValidator from '@/components/wallet/earn/Validate/AddValidator.vue'
 import AddDelegator from '@/components/wallet/earn/Delegate/AddDelegator.vue'
@@ -115,7 +115,7 @@ import Big from 'big.js'
         AddDelegator,
     },
 })
-export default class Earn extends Vue {
+class Earn extends Vue {
     pageNow: any = null
     subtitle: string = ''
     intervalID: any = null
@@ -192,6 +192,7 @@ export default class Earn extends Vue {
         return bnToBig(bn, 9)
     }
 }
+export default toNative(Earn)
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -18,7 +18,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import ERC721Token from '@/js/ERC721Token'
 import ERC721View from '@/components/misc/ERC721View.vue'
 import { iErc721SelectInput } from '@/components/misc/EVMInputDropdown/types'
@@ -27,7 +27,7 @@ import { ERC721WalletBalance } from '@/store/modules/assets/modules/types'
 @Component({
     components: { ERC721View },
 })
-export default class ERC721Row extends Vue {
+class ERC721Row extends Vue {
     @Prop() token!: ERC721Token
 
     // created() {
@@ -56,7 +56,9 @@ export default class ERC721Row extends Vue {
     //     this.nftItems = items
     // }
 }
+export default toNative(ERC721Row)
 </script>
+
 <style scoped lang="scss">
 .family_row {
     display: flex !important;

@@ -44,7 +44,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { PayloadTypes, PayloadBase } from 'luxnet/dist/utils'
 
 const payloadtypes = PayloadTypes.getInstance()
@@ -56,7 +56,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
 @Component({
     components: { NFTViewModal, NftPayloadView, Tooltip },
 })
-export default class NftCard extends Vue {
+class NftCard extends Vue {
     @Prop() payload!: PayloadBase
     @Prop({ default: 1 }) quantity!: number
     @Prop() groupID!: number
@@ -114,6 +114,7 @@ export default class NftCard extends Vue {
         }
     }
 }
+export default toNative(NftCard)
 </script>
 <style scoped lang="scss">
 @use 'nft_card';

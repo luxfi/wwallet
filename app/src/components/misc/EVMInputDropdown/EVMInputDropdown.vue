@@ -40,7 +40,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 //@ts-ignore
 import { BigNumInput } from '@/components/VComponents'
 import { BN } from 'luxnet'
@@ -63,7 +63,7 @@ import ERC721Token from '@/js/ERC721Token'
         BigNumInput,
     },
 })
-export default class EVMInputDropdown extends Vue {
+class EVMInputDropdown extends Vue {
     token: Erc20Token | 'native' = 'native'
     isCollectible = false
     collectible: iErc721SelectInput | null = null
@@ -199,6 +199,7 @@ export default class EVMInputDropdown extends Vue {
         this.$emit('amountChange', amt)
     }
 }
+export default toNative(EVMInputDropdown)
 </script>
 <style scoped lang="scss">
 .evm_input_dropdown {

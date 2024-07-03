@@ -219,7 +219,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 //@ts-ignore
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { BN } from 'luxnet'
@@ -266,7 +266,7 @@ const MAX_STAKE_DURATION = DAY_MS * 365
         UtxoSelectForm,
     },
 })
-export default class AddValidator extends Vue {
+class AddValidator extends Vue {
     startDate: string = new Date(Date.now() + MIN_MS * 15).toISOString()
     endDate: string = new Date().toISOString()
     delegationFee: string = '2.0'
@@ -675,6 +675,7 @@ export default class AddValidator extends Vue {
         })
     }
 }
+export default toNative(AddValidator)
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

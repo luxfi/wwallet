@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Model } from 'vue-property-decorator'
+import { Vue, Component, Prop, Model, toNative } from 'vue-facing-decorator'
 import { Big, bnToBig } from '@luxfi/wallet-sdk'
 //@ts-ignore
 import { BigNumInput } from '@/components/VComponents'
@@ -42,7 +42,7 @@ import { priceDict } from '../../store/types'
         BigNumInput,
     },
 })
-export default class LuxInput extends Vue {
+class LuxInput extends Vue {
     @Model('change', { type: Object }) readonly amount!: BN
 
     @Prop({
@@ -74,6 +74,7 @@ export default class LuxInput extends Vue {
         return this.$store.state.prices
     }
 }
+export default toNative(LuxInput)
 </script>
 <style scoped lang="scss">
 @use '../../main';

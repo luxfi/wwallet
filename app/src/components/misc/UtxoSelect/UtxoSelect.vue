@@ -11,12 +11,12 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import { UTXOSet } from 'luxnet/dist/apis/platformvm'
 import { UnixNow } from 'luxnet/dist/utils'
 type Selection = 'all' | 'unlocked' | 'locked'
 @Component
-export default class UTXOSelect extends Vue {
+class UTXOSelect extends Vue {
     @Prop() utxos!: UTXOSet
     selected: Selection = 'all'
     select(type: Selection) {
@@ -55,6 +55,7 @@ export default class UTXOSelect extends Vue {
         return this.utxos.difference(this.unlocked)
     }
 }
+export default toNative(UTXOSelect)
 </script>
 <style scoped lang="scss">
 .utxo_select {

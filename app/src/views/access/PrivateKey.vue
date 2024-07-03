@@ -29,16 +29,16 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import { ImportKeyfileInput } from '@/store/types'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { privateToAddress } from 'ethereumjs-util'
 import { bintools } from '@/LUX'
 import { Buffer } from 'luxnet'
-import { strip0x }  from '@luxfi/wallet-sdk'
+import { strip0x } from '@luxfi/wallet-sdk'
 
 @Component
-export default class PrivateKey extends Vue {
+class PrivateKey extends Vue {
     privatekey: string = ''
     isLoading: boolean = false
     error: string = ''
@@ -72,6 +72,7 @@ export default class PrivateKey extends Vue {
         return true
     }
 }
+export default toNative(PrivateKey)
 </script>
 <style scoped lang="scss">
 @use '../../main';

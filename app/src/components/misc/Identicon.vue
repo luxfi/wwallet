@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import makeBlockie from 'ethereum-blockies-base64'
 
 @Component
-export default class Identicon extends Vue {
+class Identicon extends Vue {
     $refs!: {
         image_tag: HTMLImageElement
     }
@@ -29,6 +29,7 @@ export default class Identicon extends Vue {
         this.$refs.image_tag.src = base64
     }
 }
+export default toNative(Identicon)
 </script>
 <style scoped lang="scss">
 img {

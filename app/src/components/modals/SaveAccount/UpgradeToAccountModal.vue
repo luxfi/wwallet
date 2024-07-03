@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import Modal from '../Modal.vue'
 import {
     AllKeyFileDecryptedTypes,
@@ -44,7 +44,7 @@ import { SaveAccountInput } from '@/store/types'
 @Component({
     components: { Modal },
 })
-export default class UpgradeToAccountModal extends Vue {
+class UpgradeToAccountModal extends Vue {
     password: string = ''
     isLoading: boolean = false
     err: string = ''
@@ -130,6 +130,7 @@ export default class UpgradeToAccountModal extends Vue {
         this.$refs.modal.open()
     }
 }
+export default toNative(UpgradeToAccountModal)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

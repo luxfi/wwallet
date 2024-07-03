@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Watch, Prop } from 'vue-property-decorator'
+import { Vue, Component, Watch, Prop, toNative } from 'vue-facing-decorator'
 
 import Modal from '../Modal.vue'
 
@@ -49,7 +49,7 @@ const designWidth = 525 - 60
         Modal,
     },
 })
-export default class PaperWallet extends Vue {
+class PaperWallet extends Vue {
     $refs!: {
         modal: Modal
         pdf: HTMLCanvasElement
@@ -233,6 +233,7 @@ export default class PaperWallet extends Vue {
         })
     }
 }
+export default toNative(PaperWallet)
 </script>
 <style scoped>
 .qr_body {

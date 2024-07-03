@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { LuxWalletCore } from '../../../js/wallets/types'
 import UserRewardRow from '@/components/wallet/earn/UserRewardRow.vue'
 import { bnToBig } from '@/helpers/helper'
@@ -45,7 +45,7 @@ import { EarnState } from '@/store/modules/earn/types'
         UserRewardRow,
     },
 })
-export default class UserRewards extends Vue {
+class UserRewards extends Vue {
     updateInterval: ReturnType<typeof setInterval> | undefined = undefined
 
     get userAddresses() {
@@ -96,6 +96,7 @@ export default class UserRewards extends Vue {
         return bnToBig(this.totalReward, 9)
     }
 }
+export default toNative(UserRewards)
 </script>
 <style scoped lang="scss">
 .user_rewards {

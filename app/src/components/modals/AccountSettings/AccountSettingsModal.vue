@@ -35,7 +35,7 @@
     </modal>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import Identicon from '@/components/misc/Identicon.vue'
@@ -50,7 +50,7 @@ import SaveKeys from '@/components/modals/AccountSettings/SaveKeys.vue'
         Modal,
     },
 })
-export default class AccountSettingsModal extends Vue {
+class AccountSettingsModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -88,6 +88,7 @@ export default class AccountSettingsModal extends Vue {
         return this.$store.state.volatileWallets.length > 0
     }
 }
+export default toNative(AccountSettingsModal)
 </script>
 <style scoped lang="scss">
 .modal_body {

@@ -8,11 +8,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, toNative, Vue } from 'vue-facing-decorator'
 import { UrlFormType, UtfFormType } from '@/components/wallet/studio/mint/types'
 
 @Component
-export default class Utf8Form extends Vue {
+class Utf8Form extends Vue {
     val = ''
 
     get isValid(): boolean {
@@ -37,6 +37,7 @@ export default class Utf8Form extends Vue {
         this.$emit('onInput', msg)
     }
 }
+export default toNative(Utf8Form)
 </script>
 <style scoped lang="scss">
 textarea {

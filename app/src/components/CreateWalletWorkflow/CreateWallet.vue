@@ -125,7 +125,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import TextDisplayCopy from '@/components/misc/TextDisplayCopy.vue'
 import Spinner from '@/components/misc/Spinner.vue'
 // import TorusGoogle from "@/components/Torus/TorusGoogle.vue";
@@ -151,7 +151,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
         MnemonicCopied,
     },
 })
-export default class CreateWallet extends Vue {
+class CreateWallet extends Vue {
     // TODO: We do not need to create keyPair, only mnemonic is sufficient
     isLoad: boolean = false
     keyPhrase: MnemonicPhrase | null = null
@@ -196,6 +196,7 @@ export default class CreateWallet extends Vue {
         }, 500)
     }
 }
+export default toNative(CreateWallet)
 </script>
 <style scoped lang="scss">
 @use '../../main';

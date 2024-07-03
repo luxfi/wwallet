@@ -12,7 +12,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 @Component({
     metaInfo: () => {
         const description =
@@ -39,7 +39,8 @@ import { Vue, Component } from 'vue-property-decorator'
         }
     },
 })
-export default class Access extends Vue {}
+class Access extends Vue {}
+export default toNative(Access)
 </script>
 <style scoped lang="scss">
 @use "../../main";

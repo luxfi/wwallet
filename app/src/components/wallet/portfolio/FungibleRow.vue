@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import LuxAsset from '../../../js/LuxAsset'
 import Hexagon from '@/components/misc/Hexagon.vue'
@@ -45,7 +45,7 @@ import Big from 'big.js'
         Hexagon,
     },
 })
-export default class FungibleRow extends Vue {
+class FungibleRow extends Vue {
     @Prop() asset!: LuxAsset
 
     get iconUrl(): string | null {
@@ -133,6 +133,7 @@ export default class FungibleRow extends Vue {
         return balRnd
     }
 }
+export default toNative(FungibleRow)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

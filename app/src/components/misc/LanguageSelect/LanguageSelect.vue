@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 //@ts-ignore
 import langMap from '@/locales/lang_map'
@@ -45,7 +45,7 @@ const FLAGS_OVERRIDE: FLAG_DICT = {
         CountryFlag,
     },
 })
-export default class LanguageSelect extends Vue {
+class LanguageSelect extends Vue {
     locale = 'en'
 
     mounted() {
@@ -84,6 +84,7 @@ export default class LanguageSelect extends Vue {
         return res
     }
 }
+export default toNative(LanguageSelect)
 </script>
 <style scoped lang="scss">
 .sel_locale {

@@ -34,7 +34,7 @@
 import { WalletType } from '@/js/wallets/types'
 
 import 'reflect-metadata'
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
 
 import Modal from './Modal.vue'
 import { MIN_LEDGER_V } from '@/js/wallets/constants'
@@ -44,7 +44,7 @@ import { MIN_LEDGER_V } from '@/js/wallets/constants'
         Modal,
     },
 })
-export default class LedgerUpgrade extends Vue {
+class LedgerUpgrade extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -87,6 +87,7 @@ export default class LedgerUpgrade extends Vue {
         }
     }
 }
+export default toNative(LedgerUpgrade)
 </script>
 <style scoped lang="scss">
 .ledger_block {

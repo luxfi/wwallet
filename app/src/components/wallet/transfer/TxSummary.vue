@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Ref, Prop } from 'vue-property-decorator'
+import { Vue, Component, Ref, Prop, toNative } from 'vue-facing-decorator'
 import { ITransaction } from './types'
 import { UTXO } from 'luxnet/dist/apis/xvm'
 import { BN } from 'luxnet'
@@ -39,7 +39,7 @@ import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
         NftPayloadView,
     },
 })
-export default class TxSummary extends Vue {
+class TxSummary extends Vue {
     @Prop() orders!: ITransaction[]
     @Prop() nftOrders!: UTXO[]
 
@@ -74,6 +74,7 @@ export default class TxSummary extends Vue {
         return this.nftOrders.length === 0
     }
 }
+export default toNative(TxSummary)
 </script>
 <style scoped lang="scss">
 .tx_summary {

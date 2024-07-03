@@ -90,7 +90,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import LanguageSelect from './misc/LanguageSelect/LanguageSelect.vue'
 import AnalyticsCheckbox from '@/components/wallet/sidebar/AnalyticsCheckbox.vue'
 import DayNightToggle from '@/components/misc/DayNightToggle.vue'
@@ -107,7 +107,7 @@ import AccountMenu from '@/components/wallet/sidebar/AccountMenu.vue'
         LanguageSelect,
     },
 })
-export default class Navbar extends Vue {
+class Navbar extends Vue {
     isDrawer: boolean = false
     popupOpen: boolean = false
 
@@ -124,6 +124,7 @@ export default class Navbar extends Vue {
         this.popupOpen = !this.popupOpen
     }
 }
+export default toNative(Navbar)
 </script>
 <style scoped lang="scss">
 @use '../main';

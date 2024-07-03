@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch, toNative } from 'vue-facing-decorator'
 
 import Spinner from '@/components/misc/Spinner.vue'
 import Modal from './Modal.vue'
@@ -33,7 +33,7 @@ import { LEDGER_EXCHANGE_TIMEOUT } from '../../store/modules/ledger/types'
         Spinner,
     },
 })
-export default class LedgerBlock extends Vue {
+class LedgerBlock extends Vue {
     intervalId: ReturnType<typeof setTimeout> | null = null
 
     open() {
@@ -79,6 +79,7 @@ export default class LedgerBlock extends Vue {
         }
     }
 }
+export default toNative(LedgerBlock)
 </script>
 <style scoped lang="scss">
 .ledger_block {

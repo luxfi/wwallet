@@ -16,11 +16,11 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
 import TransportU2F from '@ledgerhq/hw-transport-u2f'
 //@ts-ignore
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
- 
+
 import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 // @ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
@@ -32,7 +32,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { LUX_ACCOUNT_PATH, LEDGER_ETH_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 import { LEDGER_EXCHANGE_TIMEOUT } from '@/store/modules/ledger/types'
 import ImageDayNight from '@/components/misc/ImageDayNight.vue'
-import { getLedgerProvider }  from '@luxfi/wallet-sdk'
+import { getLedgerProvider } from '@luxfi/wallet-sdk'
 import { MIN_LEDGER_V } from '@/js/wallets/constants'
 const { detect } = require('detect-browser')
 
@@ -45,7 +45,7 @@ const UnsupportedBrowsers = ['firefox', 'safari']
         LedgerBlock,
     },
 })
-export default class LedgerButton extends Vue {
+class LedgerButton extends Vue {
     isLoading: boolean = false
     version?: string = undefined
     destroyed() {
@@ -68,36 +68,35 @@ export default class LedgerButton extends Vue {
     }
 
     async getTransport(): Promise<Transport> {
-    let transport: Transport;
+        let transport: Transport
 
-    try {
-        transport = await TransportWebHID.create();
-        return transport;
-    } catch (e) {
-        console.log('Web HID not supported.');
-    }
-
-    try {
-        //@ts-ignore
-        if (window.USB) {
-            transport = await TransportWebUSB.create();
-        } else {
-            // TransportU2F is deprecated, consider using an alternative method
-            transport = await TransportU2F.create() as unknown as Transport;
+        try {
+            transport = await TransportWebHID.create()
+            return transport
+        } catch (e) {
+            console.log('Web HID not supported.')
         }
-        return transport;
-    } catch (e) {
-        console.log('No suitable transport method found.');
-        throw e; // Re-throw the error to notify caller
-    }
-}
 
+        try {
+            //@ts-ignore
+            if (window.USB) {
+                transport = await TransportWebUSB.create()
+            } else {
+                // TransportU2F is deprecated, consider using an alternative method
+                transport = ((await TransportU2F.create()) as unknown) as Transport
+            }
+            return transport
+        } catch (e) {
+            console.log('No suitable transport method found.')
+            throw e // Re-throw the error to notify caller
+        }
+    }
 
     async submit() {
         try {
             let transport = await this.getTransport()
-            console.log('transport',transport);
-            
+            console.log('transport', transport)
+
             transport.setExchangeTimeout(LEDGER_EXCHANGE_TIMEOUT)
 
             // Wait for app config
@@ -202,6 +201,7 @@ export default class LedgerButton extends Vue {
         })
     }
 }
+export default toNative(LedgerButton)
 </script>
 <style scoped lang="scss">
 .spinner {

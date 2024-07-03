@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Ref, Model } from 'vue-property-decorator'
+import { Vue, Component, Prop, Ref, Model, toNative } from 'vue-facing-decorator'
 
 import BalancePopup from '@/components/misc/BalancePopup/BalancePopup.vue'
 import LuxAsset from '@/js/LuxAsset'
@@ -35,7 +35,7 @@ import XvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
         BalancePopup,
     },
 })
-export default class BalanceDropdown extends Vue {
+class BalanceDropdown extends Vue {
     isPopup: boolean = false
 
     @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
@@ -87,6 +87,7 @@ export default class BalanceDropdown extends Vue {
         this.$emit('change', asset)
     }
 }
+export default toNative(BalanceDropdown)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

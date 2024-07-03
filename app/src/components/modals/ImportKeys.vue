@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import AddKeyFile from '@/components/wallet/manage/AddKeyFile.vue'
 import AddKeyString from '@/components/wallet/manage/AddKeyString.vue'
@@ -48,7 +48,7 @@ interface ITab {
         AddMnemonic,
     },
 })
-export default class ImportKeys extends Vue {
+class ImportKeys extends Vue {
     title: string = ''
     selectedTab: string = ''
 
@@ -81,6 +81,7 @@ export default class ImportKeys extends Vue {
         })
     }
 }
+export default toNative(ImportKeys)
 </script>
 
 <style scoped lang="scss">

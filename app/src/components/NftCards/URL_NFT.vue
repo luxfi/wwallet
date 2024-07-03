@@ -31,7 +31,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Ref, Watch, toNative } from 'vue-facing-decorator'
 import { PayloadBase } from 'luxnet/dist/utils'
 import BaseNftCard from '@/components/NftCards/BaseNftCard.vue'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -42,7 +42,7 @@ import UrlPayloadView from '@/components/misc/NftPayloadView/views/UrlPayloadVie
         UrlPayloadView,
     },
 })
-export default class URL_NFT extends Vue {
+class URL_NFT extends Vue {
     img_types = ['jpeg', 'jpg', 'gif', 'png', 'apng', 'svg', 'bmp', 'ico']
     valid_types = this.img_types.concat(['pdf'])
     @Prop() payload!: PayloadBase
@@ -66,6 +66,7 @@ export default class URL_NFT extends Vue {
         return extension
     }
 }
+export default toNative(URL_NFT)
 </script>
 <style scoped lang="scss">
 .url_nft {

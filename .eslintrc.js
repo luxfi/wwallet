@@ -1,4 +1,5 @@
 module.exports = {
+    parser: 'vue-eslint-parser',
     root: true,
     env: {
         node: true,
@@ -22,5 +23,7 @@ module.exports = {
         'vue/multiline-html-element-content-newline': 'off',
         'no-unreachable': 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
     },
 }

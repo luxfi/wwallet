@@ -24,7 +24,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import NFTCard from './NftCard.vue'
 import { IWalletNftDict, IWalletNftMintDict } from '@/store/types'
@@ -37,7 +37,7 @@ import CollectibleFamilyGroup from '@/components/wallet/portfolio/CollectibleFam
         CollectibleFamilyGroup,
     },
 })
-export default class CollectibleFamilyRow extends Vue {
+class CollectibleFamilyRow extends Vue {
     @Prop() family!: LuxNftFamily
 
     // get groups() {}
@@ -113,6 +113,7 @@ export default class CollectibleFamilyRow extends Vue {
         return idsUnique
     }
 }
+export default toNative(CollectibleFamilyRow)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

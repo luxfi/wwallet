@@ -2,9 +2,10 @@
     <div>Addresses</div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 
 @Component
-export default class Addresses extends Vue {}
+class Addresses extends Vue {}
+export default toNative(Addresses)
 </script>
 <style scoped lang="scss"></style>

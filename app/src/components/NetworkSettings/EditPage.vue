@@ -47,13 +47,13 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 
 import { LuxNetwork } from '@/js/LuxNetwork'
 import punycode from 'punycode'
 
 @Component
-export default class EditPage extends Vue {
+class EditPage extends Vue {
     name = 'My Custom Network'
     url = ''
     networkId = 12345
@@ -171,6 +171,7 @@ export default class EditPage extends Vue {
         this.$emit('success')
     }
 }
+export default toNative(EditPage)
 // export default {
 //     data(){
 //         return {

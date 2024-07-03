@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Ref, Watch, toNative } from 'vue-facing-decorator'
 import { IWalletNftDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
 import NftCard from '@/components/wallet/portfolio/NftCard.vue'
@@ -42,7 +42,7 @@ let payloadtypes = PayloadTypes.getInstance()
         NftPayloadView,
     },
 })
-export default class NftCol extends Vue {
+class NftCol extends Vue {
     get isEmpty(): boolean {
         return this.nftArray.length + this.erc721BalanceArray.length === 0
     }
@@ -130,6 +130,7 @@ export default class NftCol extends Vue {
         return res
     }
 }
+export default toNative(NftCol)
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

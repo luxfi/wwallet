@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 import ERC721Token from '@/js/ERC721Token'
 import axios from 'axios'
 
@@ -17,7 +17,7 @@ import axios from 'axios'
 const REDIRECT_DOMAINS = ['gateway.pinata.cloud/ipfs']
 const CF_IPFS_BASE = 'https://cloudflare-ipfs.com/ipfs/'
 @Component
-export default class ERC721View extends Vue {
+class ERC721View extends Vue {
     @Prop() index!: string
     @Prop() token!: ERC721Token
     metadata: any = {}
@@ -65,6 +65,7 @@ export default class ERC721View extends Vue {
         // this.metadata = res
     }
 }
+export default toNative(ERC721View)
 </script>
 <style scoped lang="scss">
 .erc721_view {

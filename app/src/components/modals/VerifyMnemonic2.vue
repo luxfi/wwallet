@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
 import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
@@ -40,7 +40,7 @@ interface Question {
         Modal,
     },
 })
-export default class VerifyMnemoni2 extends Vue {
+class VerifyMnemoni2 extends Vue {
     isActive: boolean = false
     keysIn: string[] = []
     hiddenIndices: number[] = []
@@ -135,6 +135,7 @@ export default class VerifyMnemoni2 extends Vue {
         this.$emit('complete')
     }
 }
+export default toNative(VerifyMnemoni2)
 </script>
 <style scoped lang="scss">
 @use "../../main";

@@ -28,7 +28,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Ref } from 'vue-property-decorator'
+import { Vue, Component, Ref, toNative } from 'vue-facing-decorator'
 import FileInput from '@/components/misc/FileInput.vue'
 import { ImportKeyfileInput } from '@/store/types'
 import { AllKeyFileTypes } from '@/js/IKeystore'
@@ -39,7 +39,7 @@ import { KEYSTORE_VERSION } from '@/js/Keystore'
         FileInput,
     },
 })
-export default class AddKeyFile extends Vue {
+class AddKeyFile extends Vue {
     canAdd: boolean = false
     pass: string = ''
     keyfile: File | null = null
@@ -122,6 +122,7 @@ export default class AddKeyFile extends Vue {
         this.fileIn.clear()
     }
 }
+export default toNative(AddKeyFile)
 </script>
 <style lang="scss">
 .add_key_file {

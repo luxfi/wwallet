@@ -12,14 +12,14 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { BaseTxAssetSummary } from '@/helpers/history_helper'
 import LuxAsset from '@/js/LuxAsset'
 import { bnToBig } from '@/helpers/helper'
 import { BN } from 'luxnet'
 
 @Component
-export default class BaseTxOutput extends Vue {
+class BaseTxOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: BaseTxAssetSummary
 
@@ -58,6 +58,7 @@ export default class BaseTxOutput extends Vue {
         return big.toLocaleString()
     }
 }
+export default toNative(BaseTxOutput)
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

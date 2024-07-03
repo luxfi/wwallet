@@ -22,7 +22,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import { LuxNftFamily } from '../../../../../js/LuxNftFamily'
 import { IWalletNftMintDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
@@ -31,7 +31,7 @@ import NftFamilyCardsPreview from '@/components/misc/NftFamilyCardsPreview.vue'
 @Component({
     components: { NftFamilyCardsPreview, NftPayloadView },
 })
-export default class FamilyRow extends Vue {
+class FamilyRow extends Vue {
     @Prop() family!: LuxNftFamily
 
     maxReviewItems = 14
@@ -93,6 +93,7 @@ export default class FamilyRow extends Vue {
         this.$emit('select', this.mintUtxos[0])
     }
 }
+export default toNative(FamilyRow)
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

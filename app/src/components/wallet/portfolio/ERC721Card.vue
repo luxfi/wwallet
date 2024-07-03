@@ -46,7 +46,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import axios from 'axios'
 import Tooltip from '@/components/misc/Tooltip.vue'
 import ERC721Token from '@/js/ERC721Token'
@@ -55,7 +55,7 @@ import ERC721ViewModal from '@/components/modals/ERC721ViewModal.vue'
 @Component({
     components: { ERC721ViewModal, ERC721View, Tooltip },
 })
-export default class ERC721Card extends Vue {
+class ERC721Card extends Vue {
     @Prop() index!: string
     @Prop() token!: ERC721Token
 
@@ -112,6 +112,7 @@ export default class ERC721Card extends Vue {
         this.isRaw = !this.isRaw
     }
 }
+export default toNative(ERC721Card)
 </script>
 <style scoped lang="scss">
 @use 'nft_card';

@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 import Modal from '@/components/modals/Modal.vue'
 import ExportWallet from '@/components/wallet/manage/ExportWallet.vue'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
@@ -26,7 +26,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
         ExportWallet,
     },
 })
-export default class ExportKeys extends Vue {
+class ExportKeys extends Vue {
     isActive: boolean = false
     title: string = 'Export Keys'
 
@@ -55,6 +55,7 @@ export default class ExportKeys extends Vue {
         this.close()
     }
 }
+export default toNative(ExportKeys)
 </script>
 
 <style scoped lang="scss">

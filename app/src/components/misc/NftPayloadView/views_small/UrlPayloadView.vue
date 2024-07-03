@@ -14,11 +14,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
 import { URLPayload } from 'luxnet/dist/utils'
 
 @Component
-export default class UrlPayloadView extends Vue {
+class UrlPayloadView extends Vue {
     @Prop() payload!: URLPayload
 
     img_types = ['jpeg', 'jpg', 'gif', 'png', 'apng', 'svg', 'bmp', 'ico', 'webp']
@@ -44,6 +44,7 @@ export default class UrlPayloadView extends Vue {
         return extension
     }
 }
+export default toNative(UrlPayloadView)
 </script>
 <style scoped lang="scss">
 .url_payload_view {

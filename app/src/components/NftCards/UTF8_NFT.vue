@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Ref, Watch, toNative } from 'vue-facing-decorator'
 import { PayloadBase } from 'luxnet/dist/utils'
 import BaseNftCard from '@/components/NftCards/BaseNftCard.vue'
 import { UTXO } from 'luxnet/dist/apis/xvm'
@@ -23,7 +23,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         BaseNftCard,
     },
 })
-export default class UTF8_NFT extends Vue {
+class UTF8_NFT extends Vue {
     @Prop() payload!: PayloadBase
     @Prop({ default: false }) mini?: boolean
     @Prop({ default: false }) rawCard?: boolean
@@ -33,6 +33,7 @@ export default class UTF8_NFT extends Vue {
         return this.payload.getContent().toString('utf-8')
     }
 }
+export default toNative(UTF8_NFT)
 </script>
 <style scoped lang="scss">
 .utf8_nft {

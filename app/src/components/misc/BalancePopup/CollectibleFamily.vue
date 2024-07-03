@@ -19,7 +19,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, toNative, Vue } from 'vue-facing-decorator'
 import { LuxNftFamily } from '@/js/LuxNftFamily'
 import { IWalletNftDict } from '@/store/types'
 import { NFTTransferOutput, UTXO } from 'luxnet/dist/apis/xvm'
@@ -35,7 +35,7 @@ let payloadtypes = PayloadTypes.getInstance()
         NftPayloadView,
     },
 })
-export default class CollectibleFamily extends Vue {
+class CollectibleFamily extends Vue {
     @Prop() family!: LuxNftFamily
     @Prop({ default: [] }) disabledIds!: string[]
 
@@ -75,6 +75,7 @@ export default class CollectibleFamily extends Vue {
         this.$emit('select', utxo)
     }
 }
+export default toNative(CollectibleFamily)
 </script>
 <style scoped lang="scss">
 @use '../../../main';

@@ -36,7 +36,7 @@
 </template>
 <script lang="ts">
 import 'reflect-metadata'
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, toNative } from 'vue-facing-decorator'
 
 import Modal from './Modal.vue'
 import { web3 } from '@/evm'
@@ -54,7 +54,7 @@ import ERC721Token from '@/js/ERC721Token'
         Modal,
     },
 })
-export default class AddERC721TokenModal extends Vue {
+class AddERC721TokenModal extends Vue {
     tokenAddress = ''
     name = ''
     symbol = ''
@@ -148,6 +148,7 @@ export default class AddERC721TokenModal extends Vue {
         return this.$store.getters['Assets/ERC721/networkContractsCustom']
     }
 }
+export default toNative(AddERC721TokenModal)
 </script>
 <style scoped lang="scss">
 @use '../../main';

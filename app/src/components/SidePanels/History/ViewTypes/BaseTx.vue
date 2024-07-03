@@ -78,7 +78,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, toNative } from 'vue-facing-decorator'
 // import { TransactionValueDict } from '@/components/SidePanels/types'
 // import { PayloadBase, PayloadTypes } from 'luxnet/dist/utils'
 // import { BN, Buffer } from 'luxnet'
@@ -107,7 +107,7 @@ import BaseTxUtxo from '@/components/SidePanels/History/ViewTypes/BaseTxUtxo.vue
         TxHistoryNftFamilyGroup,
     },
 })
-export default class BaseTx extends Vue {
+class BaseTx extends Vue {
     @Prop() transaction!: XChainTransaction
 
     get inputUTXOs() {
@@ -182,6 +182,7 @@ export default class BaseTx extends Vue {
         return this.transaction.txType as TransactionTypeName
     }
 }
+export default toNative(BaseTx)
 </script>
 <style scoped lang="scss">
 label {

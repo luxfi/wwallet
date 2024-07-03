@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, toNative } from 'vue-facing-decorator'
 import LedgerButton from '@/components/Ledger/LedgerButton.vue'
 import AccountsFound from '@/components/Access/AccountsFound.vue'
 import ToS from '@/components/misc/ToS.vue'
@@ -55,7 +55,8 @@ import ImageDayNight from '@/components/misc/ImageDayNight.vue'
         AccountsFound,
     },
 })
-export default class Menu extends Vue {}
+class Menu extends Vue {}
+export default toNative(Menu)
 </script>
 
 <style scoped lang="scss">
