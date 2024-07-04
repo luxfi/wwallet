@@ -13,26 +13,26 @@
             </template>
         </v-main>
         <LedgerBlock ref="ledger_block"></LedgerBlock>
-        <LedgerUpgrade></LedgerUpgrade>
-        <LedgerWalletLoading></LedgerWalletLoading>
-        <NetworkLoadingBlock></NetworkLoadingBlock>
-        <notifications></notifications>
-        <analytics></analytics>
-        <TestNetBanner></TestNetBanner>
+        <!-- <LedgerUpgrade></LedgerUpgrade> -->
+        <!-- <LedgerWalletLoading></LedgerWalletLoading> -->
+        <!-- <NetworkLoadingBlock></NetworkLoadingBlock> -->
+        <!-- <notifications></notifications> -->
+        <!-- <analytics></analytics> -->
+        <!-- <TestNetBanner></TestNetBanner> -->
     </v-app>
 </template>
 <script>
-import Analytics from '@/components/Analytics/Analytics'
-import Notifications from '@/components/Notifications'
-import Navbar from './components/Navbar'
-import SaveAccountModal from '@/components/modals/SaveAccount/SaveAccountModal'
-import LedgerBlock from '@/components/modals/LedgerBlock'
-import LedgerUpgrade from '@/components/modals/LedgerUpgrade'
-import TestNetBanner from '@/components/TestNetBanner'
-import NetworkLoadingBlock from '@/components/misc/NetworkLoadingBlock'
-import UpgradeToAccountModal from '@/components/modals/SaveAccount/UpgradeToAccountModal'
-import LedgerWalletLoading from '@/components/modals/LedgerWalletLoading'
-import UrlBanner from '@/components/misc/UrlBanner'
+import Analytics from '@/components/Analytics/Analytics.vue'
+import Notifications from '@/components/Notifications.vue'
+import Navbar from './components/Navbar.vue'
+import SaveAccountModal from '@/components/modals/SaveAccount/SaveAccountModal.vue'
+import LedgerBlock from '@/components/modals/LedgerBlock.vue'
+import LedgerUpgrade from '@/components/modals/LedgerUpgrade.vue'
+import TestNetBanner from '@/components/TestNetBanner.vue'
+import NetworkLoadingBlock from '@/components/misc/NetworkLoadingBlock.vue'
+import UpgradeToAccountModal from '@/components/modals/SaveAccount/UpgradeToAccountModal.vue'
+import LedgerWalletLoading from '@/components/modals/LedgerWalletLoading.vue'
+import UrlBanner from '@/components/misc/UrlBanner.vue'
 
 export default {
     components: {

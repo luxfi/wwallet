@@ -25,5 +25,12 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['datetime', 'fa'],
+            },
+        ],
     },
 }

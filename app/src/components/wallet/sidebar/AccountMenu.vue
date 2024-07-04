@@ -32,7 +32,7 @@ import { WalletType } from '@/js/wallets/types'
     },
 })
 class AccountMenu extends Vue {
-    $refs!: {
+    declare $refs!: {
         save_modal: SaveAccountModal
         settings_modal: AccountSettingsModal
     }
