@@ -32,7 +32,7 @@ import TokenListModal from '@/components/modals/TokenList/TokenListModal.vue'
         VerifyMessage,
     },
 })
-export default class Advanced extends Vue {
+class Advanced extends Vue {
     $refs!: {
         token_list: TokenListModal
     }
@@ -40,6 +40,7 @@ export default class Advanced extends Vue {
         this.$refs.token_list.open()
     }
 }
+export default Advanced
 </script>
 <style scoped lang="scss">
 @use '../../main';

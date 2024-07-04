@@ -35,7 +35,7 @@ let payloadtypes = PayloadTypes.getInstance()
         NftPayloadView,
     },
 })
-export default class CollectibleFamily extends Vue {
+class CollectibleFamily extends Vue {
     @Prop() family!: LuxNftFamily
     @Prop({ default: [] }) disabledIds!: string[]
 
@@ -75,6 +75,7 @@ export default class CollectibleFamily extends Vue {
         this.$emit('select', utxo)
     }
 }
+export default CollectibleFamily
 </script>
 <style scoped lang="scss">
 @use '../../../main';

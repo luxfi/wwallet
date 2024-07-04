@@ -58,7 +58,7 @@ import { BN } from 'luxnet'
         NewCollectibleFamily,
     },
 })
-export default class Studio extends Vue {
+class Studio extends Vue {
     pageNow: any = null
     subtitle: string = ''
 
@@ -115,6 +115,7 @@ export default class Studio extends Vue {
         this.clearPage()
     }
 }
+export default Studio
 </script>
 <style scoped lang="scss">
 .header {

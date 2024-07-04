@@ -39,7 +39,8 @@ import { Vue, Component } from 'vue-property-decorator'
         }
     },
 })
-export default class Access extends Vue {}
+class Access extends Vue {}
+export default Access
 </script>
 <style scoped lang="scss">
 @use "../../main";

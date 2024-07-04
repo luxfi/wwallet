@@ -22,7 +22,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         MintForm,
     },
 })
-export default class MintNft extends Vue {
+class MintNft extends Vue {
     isLoading = false
     mintUtxo: null | UTXO = null
 
@@ -73,5 +73,6 @@ export default class MintNft extends Vue {
         }
     }
 }
+export default MintNft
 </script>
 <style scoped lang="scss"></style>

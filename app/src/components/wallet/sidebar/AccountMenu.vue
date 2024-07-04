@@ -31,7 +31,7 @@ import { WalletType } from '@/js/wallets/types'
         Identicon,
     },
 })
-export default class AccountMenu extends Vue {
+class AccountMenu extends Vue {
     $refs!: {
         save_modal: SaveAccountModal
         settings_modal: AccountSettingsModal
@@ -59,6 +59,7 @@ export default class AccountMenu extends Vue {
         this.$refs.save_modal.open()
     }
 }
+export default AccountMenu
 </script>
 <style scoped lang="scss">
 .account_but {

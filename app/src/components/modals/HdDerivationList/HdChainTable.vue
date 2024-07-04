@@ -47,7 +47,7 @@ import { HdHelper } from '@/js/HdHelper'
 @Component({
     components: { HdEmptyAddressRow, HdDerivationListRow },
 })
-export default class HdChainTable extends Vue {
+class HdChainTable extends Vue {
     @Prop() wallet!: MnemonicWallet | LedgerWallet
     @Prop() addresses!: string[]
     @Prop() balanceDict!: DerivationListBalanceDict[]
@@ -70,6 +70,7 @@ export default class HdChainTable extends Vue {
         this.addressesFuture.push(...addrs)
     }
 }
+export default HdChainTable
 </script>
 <style lang="scss">
 .hd_chain_table {

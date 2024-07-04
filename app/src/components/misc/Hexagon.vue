@@ -8,9 +8,10 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class FungibleRow extends Vue {
+class FungibleRow extends Vue {
     @Prop({ default: false }) isLux?: boolean
 }
+export default FungibleRow
 </script>
 <style scoped lang="scss">
 .hex_img {

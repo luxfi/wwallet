@@ -65,7 +65,7 @@ import { filterValidatorList } from '@/components/wallet/earn/Delegate/helper'
 @Component({
     components: { Tooltip, ValidatorRow, FilterSettings },
 })
-export default class ValidatorsList extends Vue {
+class ValidatorsList extends Vue {
     @Prop() search!: string
     showFilter = false
     filter: ValidatorListFilter | null = null
@@ -116,6 +116,7 @@ export default class ValidatorsList extends Vue {
         this.$emit('select', val)
     }
 }
+export default ValidatorsList
 </script>
 <style scoped lang="scss">
 .validator_list {

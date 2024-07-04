@@ -24,7 +24,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
         CopyText,
     },
 })
-export default class QRModal extends Vue {
+class QRModal extends Vue {
     colorDark: string = '#242729'
     colorLight: string = '#FFF'
 
@@ -76,6 +76,7 @@ export default class QRModal extends Vue {
         )
     }
 }
+export default QRModal
 </script>
 <style scoped lang="scss">
 .qr_body {

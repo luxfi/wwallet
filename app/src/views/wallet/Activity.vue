@@ -126,7 +126,7 @@ const MONTH_MIN = 8
         VirtualList,
     },
 })
-export default class Activity extends Vue {
+class Activity extends Vue {
     mode: ModeKeyType = 'all'
     modes = [
         this.$t('activity.mode1'),
@@ -394,6 +394,7 @@ export default class Activity extends Vue {
         this.listH = h
     }
 }
+export default Activity
 </script>
 <style scoped lang="scss">
 @use '../../main';

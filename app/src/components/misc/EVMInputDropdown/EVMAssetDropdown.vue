@@ -23,7 +23,7 @@ import ERC721Token from '@/js/ERC721Token'
 @Component({
     components: { EVMTokenSelectModal },
 })
-export default class EVMAssetDropdown extends Vue {
+class EVMAssetDropdown extends Vue {
     isPopup = false
     selected: Erc20Token | ERC721Token | 'native' = 'native'
 
@@ -63,6 +63,7 @@ export default class EVMAssetDropdown extends Vue {
         this.$emit('changeCollectible', val)
     }
 }
+export default EVMAssetDropdown
 </script>
 <style scoped lang="scss">
 @use "../../../main";

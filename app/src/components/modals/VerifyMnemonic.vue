@@ -33,7 +33,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
         Modal,
     },
 })
-export default class VerifyMnemonic extends Vue {
+class VerifyMnemonic extends Vue {
     isActive: boolean = false
     keysIn: string[] = []
     hiddenIndices: number[] = []
@@ -119,6 +119,7 @@ export default class VerifyMnemonic extends Vue {
         this.$emit('complete')
     }
 }
+export default VerifyMnemonic
 </script>
 <style scoped lang="scss">
 @use "../../main";

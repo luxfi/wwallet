@@ -30,7 +30,7 @@ import AccountSettingsModal from '@/components/modals/AccountSettings/AccountSet
 import { ChangePasswordInput } from '@/store/modules/accounts/types'
 
 @Component
-export default class ChangePassword extends Vue {
+class ChangePassword extends Vue {
     pass = ''
     passOld = ''
     passConfirm = ''
@@ -87,6 +87,7 @@ export default class ChangePassword extends Vue {
             })
     }
 }
+export default ChangePassword
 </script>
 <style scoped lang="scss">
 @use './style';

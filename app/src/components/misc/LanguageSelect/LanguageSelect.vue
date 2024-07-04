@@ -45,7 +45,7 @@ const FLAGS_OVERRIDE: FLAG_DICT = {
         CountryFlag,
     },
 })
-export default class LanguageSelect extends Vue {
+class LanguageSelect extends Vue {
     locale = 'en'
 
     mounted() {
@@ -84,6 +84,7 @@ export default class LanguageSelect extends Vue {
         return res
     }
 }
+export default LanguageSelect
 </script>
 <style scoped lang="scss">
 .sel_locale {

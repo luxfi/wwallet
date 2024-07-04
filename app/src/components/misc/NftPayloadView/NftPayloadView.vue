@@ -46,7 +46,7 @@ import { payloadToHash } from '@/utils/payloadToHash'
         JsonPayloadViewSmall,
     },
 })
-export default class NftPayloadView extends Vue {
+class NftPayloadView extends Vue {
     @Prop() payload!: PayloadBase
     @Prop({ default: false }) small!: boolean
 
@@ -114,6 +114,7 @@ export default class NftPayloadView extends Vue {
         }
     }
 }
+export default NftPayloadView
 </script>
 <style scoped>
 .nft_payload_view {

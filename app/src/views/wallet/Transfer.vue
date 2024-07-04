@@ -169,7 +169,7 @@ import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
         ChainInput,
     },
 })
-export default class Transfer extends Vue {
+class Transfer extends Vue {
     formType: ChainIdType = 'X'
     showAdvanced: boolean = false
     isAjax: boolean = false
@@ -492,6 +492,7 @@ export default class Transfer extends Vue {
         }
     }
 }
+export default Transfer
 </script>
 
 <style lang="scss">

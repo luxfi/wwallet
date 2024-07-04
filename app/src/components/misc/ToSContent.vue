@@ -1009,7 +1009,8 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class ToSContent extends Vue {}
+class ToSContent extends Vue {}
+export default ToSContent
 </script>
 <style scoped lang="scss">
 .content {

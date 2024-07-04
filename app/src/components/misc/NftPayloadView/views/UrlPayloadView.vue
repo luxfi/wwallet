@@ -24,7 +24,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { URLPayload } from 'luxnet/dist/utils'
 
 @Component
-export default class UrlPayloadView extends Vue {
+class UrlPayloadView extends Vue {
     @Prop() payload!: URLPayload
 
     img_types = ['jpeg', 'jpg', 'gif', 'png', 'apng', 'svg', 'bmp', 'ico', 'webp']
@@ -50,6 +50,7 @@ export default class UrlPayloadView extends Vue {
         return extension
     }
 }
+export default UrlPayloadView
 </script>
 <style scoped lang="scss">
 .url_payload_view {

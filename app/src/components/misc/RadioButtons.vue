@@ -13,20 +13,23 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
+
 import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 
 @Component
-export default class RadioButtons extends Vue {
+class RadioButtons extends Vue {
     @Prop() labels!: string[]
     @Prop() keys!: string[]
     @Prop({ default: false }) disabled!: boolean
 
-    @Model('change', { type: String }) readonly selection!: string
+    // @Model('change', { type: String }) readonly selection!: string
 
     select(val: string) {
         this.$emit('change', val)
     }
 }
+export default RadioButtons
 </script>
 <style scoped lang="scss">
 @use '../../main';

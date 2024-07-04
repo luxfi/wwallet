@@ -24,7 +24,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import * as bip39 from 'bip39'
 
 @Component
-export default class AddMnemonic extends Vue {
+class AddMnemonic extends Vue {
     phrase: string = ''
     err: string = ''
     isLoading: boolean = false
@@ -96,6 +96,7 @@ export default class AddMnemonic extends Vue {
         return true
     }
 }
+export default AddMnemonic
 </script>
 <style scoped lang="scss">
 .add_mnemonic {

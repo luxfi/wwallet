@@ -32,7 +32,7 @@ import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 @Component({
     components: { SearchAddress },
 })
-export default class SignMessage extends Vue {
+class SignMessage extends Vue {
     sourceAddress = null
     message = ''
     signed = ''
@@ -78,6 +78,7 @@ export default class SignMessage extends Vue {
         return true
     }
 }
+export default SignMessage
 </script>
 <style scoped lang="scss">
 select,

@@ -48,7 +48,7 @@ interface ITab {
         AddMnemonic,
     },
 })
-export default class ImportKeys extends Vue {
+class ImportKeys extends Vue {
     title: string = ''
     selectedTab: string = ''
 
@@ -81,6 +81,7 @@ export default class ImportKeys extends Vue {
         })
     }
 }
+export default ImportKeys
 </script>
 
 <style scoped lang="scss">

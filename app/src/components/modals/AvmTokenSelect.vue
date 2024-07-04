@@ -39,7 +39,7 @@ import { bnToBig } from '@/helpers/helper'
         },
     },
 })
-export default class PrivateKey extends Vue {
+class PrivateKey extends Vue {
     @Prop() assets!: LuxAsset[]
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
 
@@ -66,6 +66,7 @@ export default class PrivateKey extends Vue {
         return false
     }
 }
+export default PrivateKey
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -22,7 +22,7 @@ let payloadtypes = PayloadTypes.getInstance()
 @Component({
     components: { NftPayloadView },
 })
-export default class TxHistoryNftFamilyGroup extends Vue {
+class TxHistoryNftFamilyGroup extends Vue {
     // @Prop() payloads!: PayloadBase[]
     @Prop() utxos!: UTXO[]
     @Prop() assetID!: string
@@ -69,6 +69,7 @@ export default class TxHistoryNftFamilyGroup extends Vue {
         return null
     }
 }
+export default TxHistoryNftFamilyGroup
 </script>
 <style scoped lang="scss">
 @use '../../main';

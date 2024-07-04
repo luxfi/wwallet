@@ -11,7 +11,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class DeleteAccount extends Vue {
+class DeleteAccount extends Vue {
     pass = ''
     error = ''
 
@@ -35,6 +35,7 @@ export default class DeleteAccount extends Vue {
             })
     }
 }
+export default DeleteAccount
 </script>
 <style scoped lang="scss">
 @use './style';

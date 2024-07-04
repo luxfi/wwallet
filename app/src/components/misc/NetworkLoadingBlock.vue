@@ -15,12 +15,13 @@ import Spinner from '@/components/misc/Spinner.vue'
         Spinner,
     },
 })
-export default class NetworkLoadingBlock extends Vue {
+class NetworkLoadingBlock extends Vue {
     get networkLoading() {
         // return true
         return this.$store.state.Network.status === 'connecting'
     }
 }
+export default NetworkLoadingBlock
 </script>
 <style scoped lang="scss">
 .network_loading {

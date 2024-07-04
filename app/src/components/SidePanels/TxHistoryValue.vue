@@ -21,7 +21,7 @@ import { TransactionType } from '@/store/modules/history/types'
 import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
 
 @Component
-export default class TxHistoryValue extends Vue {
+class TxHistoryValue extends Vue {
     @Prop() amount!: number | string
     @Prop() assetId!: string
     @Prop() type!: TransactionType
@@ -113,6 +113,7 @@ export default class TxHistoryValue extends Vue {
         }
     }
 }
+export default TxHistoryValue
 </script>
 <style scoped lang="scss">
 @use '../../main';

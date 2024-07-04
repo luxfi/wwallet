@@ -38,7 +38,7 @@ import { ValidatorListItem } from '@/store/modules/platform/types'
         ValidatorsList,
     },
 })
-export default class NodeSelection extends Vue {
+class NodeSelection extends Vue {
     search: string = ''
 
     openFilters() {
@@ -50,6 +50,7 @@ export default class NodeSelection extends Vue {
         this.$emit('select', val)
     }
 }
+export default NodeSelection
 </script>
 <style scoped lang="scss">
 .node_selection {

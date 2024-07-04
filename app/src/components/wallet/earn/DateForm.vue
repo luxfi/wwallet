@@ -29,7 +29,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 const MIN_STAKE_DURATION = DAY_MS * 14
 
 @Component
-export default class DateForm extends Vue {
+class DateForm extends Vue {
     // timeNow = 0
 
     localStart = this.startDateMin
@@ -149,6 +149,7 @@ export default class DateForm extends Vue {
         return endDate.toISOString()
     }
 }
+export default DateForm
 </script>
 <style lang="scss">
 .dates_form {

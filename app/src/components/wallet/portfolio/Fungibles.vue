@@ -61,7 +61,7 @@ import { WalletType } from '@/js/wallets/types'
         FungibleRow,
     },
 })
-export default class Fungibles extends Vue {
+class Fungibles extends Vue {
     @Prop() search!: string
 
     $refs!: {
@@ -153,6 +153,7 @@ export default class Fungibles extends Vue {
         return balance
     }
 }
+export default Fungibles
 </script>
 <style scoped lang="scss">
 @use '../../../main';

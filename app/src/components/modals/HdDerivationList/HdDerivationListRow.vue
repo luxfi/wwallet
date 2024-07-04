@@ -32,7 +32,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
 import { LUX_ACCOUNT_PATH } from '../../../js/wallets/MnemonicWallet'
 
 @Component
-export default class HdDerivationListRow extends Vue {
+class HdDerivationListRow extends Vue {
     @Prop() index!: number
     @Prop() path!: number
     @Prop() address!: string
@@ -71,6 +71,7 @@ export default class HdDerivationListRow extends Vue {
         wallet.verifyAddress(this.index, isInternal)
     }
 }
+export default HdDerivationListRow
 </script>
 <style scoped lang="scss">
 .col_index {

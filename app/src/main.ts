@@ -96,15 +96,17 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { createI18n } from 'vue-i18n'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
 import { BootstrapVue } from 'bootstrap-vue'
 import vuetify from './plugins/vuetify'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import i18nOptions from './plugins/i18n.js'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import posthogPlugin from './plugins/posthog.js'
 import { Buffer } from 'buffer'
@@ -113,48 +115,45 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 window.Buffer = Buffer
 
-const app = createApp(App)
+try {
+    const app = createApp(App)
 
-// 安装 Posthog 插件
-app.use(posthogPlugin)
+    app.use(posthogPlugin)
 
-// 安装 BootstrapVue 插件
-app.use(BootstrapVue)
+    app.use(BootstrapVue)
 
-// 安装 Vue I18n 插件
-const i18n = createI18n(i18nOptions)
-app.use(i18n)
+    app.use(i18nOptions)
 
-app.component('datetime', Datetime)
-app.component('fa', FontAwesomeIcon)
+    app.component('datetime', Datetime)
+    app.component('fa', FontAwesomeIcon)
 
-app.use(router)
-app.use(store)
-app.use(vuetify)
+    app.use(router)
+    app.use(store)
+    app.use(vuetify)
 
-app.config.globalProperties.productionTip = false
+    app.config.globalProperties.productionTip = false
 
-app.mount('#app')
+    app.mount('#app')
 
-// 显示应用版本并隐藏加载器
-app.mixin({
-    mounted() {
-        console.log(`App Version: ${process.env.VUE_APP_VERSION}`)
-        const loader = document.getElementById('app_loading')
-        if (loader) {
-            loader.style.display = 'none'
-        }
-    },
-})
+    app.mixin({
+        mounted() {
+            console.log(`App Version: ${process.env.VUE_APP_VERSION}`)
+            const loader = document.getElementById('app_loading')
+            if (loader) {
+                loader.style.display = 'none'
+            }
+        },
+    })
+} catch (error) {
+    console.log('error', error)
+}
 
 // @ts-ignore
 if (window.Cypress) {
-    // 仅在 E2E 测试期间可用
     // @ts-ignore
     window.app = app
 }
 
-// 扩展 Big.js 添加一个辅助函数
 import Big from 'big.js'
 
 declare module 'big.js' {

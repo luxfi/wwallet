@@ -108,7 +108,7 @@ const HOUR_MS = MINUTE_MS * 60
 const DAY_MS = HOUR_MS * 24
 
 @Component
-export default class FilterSettings extends Vue {
+class FilterSettings extends Vue {
     minDuration = 14
     maxFee = 10
     minUptime = 90
@@ -190,6 +190,7 @@ export default class FilterSettings extends Vue {
         return true
     }
 }
+export default FilterSettings
 </script>
 <style scoped lang="scss">
 .filter_settings {

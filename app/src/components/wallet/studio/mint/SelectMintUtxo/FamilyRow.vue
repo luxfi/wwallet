@@ -31,7 +31,7 @@ import NftFamilyCardsPreview from '@/components/misc/NftFamilyCardsPreview.vue'
 @Component({
     components: { NftFamilyCardsPreview, NftPayloadView },
 })
-export default class FamilyRow extends Vue {
+class FamilyRow extends Vue {
     @Prop() family!: LuxNftFamily
 
     maxReviewItems = 14
@@ -93,6 +93,7 @@ export default class FamilyRow extends Vue {
         this.$emit('select', this.mintUtxos[0])
     }
 }
+export default FamilyRow
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

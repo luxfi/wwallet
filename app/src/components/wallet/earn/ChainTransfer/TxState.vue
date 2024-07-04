@@ -48,13 +48,14 @@ import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
         Spinner,
     },
 })
-export default class TxStateCard extends Vue {
+class TxStateCard extends Vue {
     @Prop() state!: TxState
     @Prop() status!: string
     @Prop() reason!: string
     @Prop() txId!: string
     @Prop({ default: true }) isExport?: boolean
 }
+export default TxStateCard
 </script>
 <style scoped lang="scss">
 .loading_header {

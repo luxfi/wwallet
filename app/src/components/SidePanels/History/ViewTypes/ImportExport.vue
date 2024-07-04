@@ -41,7 +41,7 @@ function idToAlias(chainId: string | undefined) {
 }
 
 @Component
-export default class ImportExport extends Vue {
+class ImportExport extends Vue {
     @Prop() transaction!: TransactionType
 
     toLocaleString(val: BN, decimals: number) {
@@ -141,6 +141,7 @@ export default class ImportExport extends Vue {
         }, new BN(0))
     }
 }
+export default ImportExport
 </script>
 <style scoped lang="scss">
 .import_row {

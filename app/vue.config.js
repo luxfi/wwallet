@@ -5,6 +5,7 @@ const { VuetifyPlugin } = require('webpack-plugin-vuetify')
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 
 module.exports = {
+    parallel: false,
     chainWebpack: (config) => {
         config.resolve.alias.set('vue', '@vue/compat')
 
@@ -35,7 +36,6 @@ module.exports = {
             .rule('vue')
             .test(/\.vue$/)
             .use('vue-loader')
-            .loader('vue-loader')
             .tap((options) => {
                 return {
                     ...options,
@@ -74,12 +74,8 @@ module.exports = {
         port: 5000,
     },
     configureWebpack: {
-        plugins: [
-            new NodePolyfillPlugin(),
-            new VuetifyPlugin({
-                autoImport: true, // 启用自动导入
-            }),
-        ],
+        stats: 'verbose',
+        plugins: [new NodePolyfillPlugin(), new VuetifyPlugin()],
         optimization: {
             splitChunks: {
                 chunks: 'all',

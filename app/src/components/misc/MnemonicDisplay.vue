@@ -5,13 +5,13 @@
         translate="no"
     >
         <template v-for="(word, i) in phraseArray" class="word">
-            <div v-if="i % 2 == 0" :key="i" class="word">
+            <div v-if="i % 2 == 0" :key="JSON.parse(word + i)" class="word">
                 <p class="index">{{ i / 2 + 1 }}.</p>
                 <span class="phrase_word" translate="no">
                     {{ word }}
                 </span>
             </div>
-            <div v-else class="fake" :key="i">
+            <div v-else class="fake" :key="JSON.parse(word + i + 'else')">
                 <p class="index">{{ i }}.</p>
                 <span class="phrase_word" translate="no">
                     {{ word }}
@@ -27,7 +27,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
 import { getRandomMnemonicWord } from '@/helpers/getRandomMnemonicWord'
 
 @Component
-export default class MnemonicDisplay extends Vue {
+class MnemonicDisplay extends Vue {
     @Prop({ default: '#FFFFFF' }) bgColor?: string
     @Prop({ default: 4 }) rowSize!: number
     @Prop() phrase!: MnemonicPhrase
@@ -46,6 +46,7 @@ export default class MnemonicDisplay extends Vue {
         return getRandomMnemonicWord()
     }
 }
+export default MnemonicDisplay
 </script>
 <style scoped lang="scss">
 @use "../../main";

@@ -124,6 +124,7 @@
     </div>
 </template>
 <script lang="ts">
+import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
 import LuxInput from '@/components/misc/LuxInput.vue'
 import { priceDict } from '@/store/types'
@@ -148,7 +149,7 @@ import { WalletHelper } from '@/helpers/wallet_helper'
         QrInput,
     },
 })
-export default class FormC extends Vue {
+class FormC extends Vue {
     isConfirm = false
     isSuccess = false
     addressIn = ''
@@ -485,6 +486,7 @@ export default class FormC extends Vue {
         })
     }
 }
+export default FormC
 </script>
 <style scoped lang="scss">
 @use '../../../main';

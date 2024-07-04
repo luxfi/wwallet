@@ -45,7 +45,7 @@ import { EarnState } from '@/store/modules/earn/types'
         UserRewardRow,
     },
 })
-export default class UserRewards extends Vue {
+class UserRewards extends Vue {
     updateInterval: ReturnType<typeof setInterval> | undefined = undefined
 
     get userAddresses() {
@@ -96,6 +96,7 @@ export default class UserRewards extends Vue {
         return bnToBig(this.totalReward, 9)
     }
 }
+export default UserRewards
 </script>
 <style scoped lang="scss">
 .user_rewards {

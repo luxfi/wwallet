@@ -40,7 +40,7 @@ interface Question {
         Modal,
     },
 })
-export default class VerifyMnemoni2 extends Vue {
+class VerifyMnemoni2 extends Vue {
     isActive: boolean = false
     keysIn: string[] = []
     hiddenIndices: number[] = []
@@ -135,6 +135,7 @@ export default class VerifyMnemoni2 extends Vue {
         this.$emit('complete')
     }
 }
+export default VerifyMnemoni2
 </script>
 <style scoped lang="scss">
 @use "../../main";

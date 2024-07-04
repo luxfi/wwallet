@@ -1,4 +1,4 @@
-<template functional>
+<template>
     <div class="utxo" :income="props.amount > 0">
         <p class="action">
             {{ $options.getActionText(props.type, props.amount, props.operationDirection) }}

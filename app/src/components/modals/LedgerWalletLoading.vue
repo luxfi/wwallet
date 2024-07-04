@@ -13,7 +13,7 @@ import Spinner from '@/components/misc/Spinner.vue'
 @Component({
     components: { Spinner, Modal },
 })
-export default class LedgerWalletLoading extends Vue {
+class LedgerWalletLoading extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -37,6 +37,7 @@ export default class LedgerWalletLoading extends Vue {
         }
     }
 }
+export default LedgerWalletLoading
 </script>
 <style scoped lang="scss">
 .ledger_loading_body {

@@ -39,7 +39,7 @@ import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
         NftPayloadView,
     },
 })
-export default class TxSummary extends Vue {
+class TxSummary extends Vue {
     @Prop() orders!: ITransaction[]
     @Prop() nftOrders!: UTXO[]
 
@@ -74,6 +74,7 @@ export default class TxSummary extends Vue {
         return this.nftOrders.length === 0
     }
 }
+export default TxSummary
 </script>
 <style scoped lang="scss">
 .tx_summary {

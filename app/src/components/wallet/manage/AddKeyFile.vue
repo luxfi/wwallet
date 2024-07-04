@@ -39,7 +39,7 @@ import { KEYSTORE_VERSION } from '@/js/Keystore'
         FileInput,
     },
 })
-export default class AddKeyFile extends Vue {
+class AddKeyFile extends Vue {
     canAdd: boolean = false
     pass: string = ''
     keyfile: File | null = null
@@ -122,6 +122,7 @@ export default class AddKeyFile extends Vue {
         this.fileIn.clear()
     }
 }
+export default AddKeyFile
 </script>
 <style lang="scss">
 .add_key_file {

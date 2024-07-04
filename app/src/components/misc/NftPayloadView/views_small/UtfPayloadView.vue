@@ -9,7 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { UTF8Payload } from 'luxnet/dist/utils'
 
 @Component
-export default class UtfPayloadView extends Vue {
+class UtfPayloadView extends Vue {
     @Prop() payload!: UTF8Payload
     isText = false
 
@@ -38,6 +38,7 @@ export default class UtfPayloadView extends Vue {
         return this.payload.getContent()
     }
 }
+export default UtfPayloadView
 </script>
 <style scoped lang="scss">
 .utf_payload_view {

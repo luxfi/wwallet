@@ -29,7 +29,7 @@ import { BN } from 'luxnet/dist'
 import Big from 'big.js'
 
 @Component
-export default class ConfirmPage extends Vue {
+class ConfirmPage extends Vue {
     @Prop() nodeID!: string
     // @Prop() start!: Date
     @Prop() end!: Date
@@ -62,6 +62,7 @@ export default class ConfirmPage extends Vue {
         return amt.toLocaleString(9)
     }
 }
+export default ConfirmPage
 </script>
 <style scoped lang="scss">
 .confirmation {

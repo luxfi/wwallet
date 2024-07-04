@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
 import Assets from './modules/assets/assets'
 import Network from './modules/network/network'
@@ -21,8 +20,6 @@ import {
 import { WalletType } from '@/js/wallets/types'
 import { AllKeyFileDecryptedTypes } from '@/js/IKeystore'
 
-Vue.use(Vuex)
-
 import router from '@/router'
 
 import { xvm, bintools } from '@/LUX'
@@ -41,7 +38,7 @@ import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
 import { getLuxPriceUSD } from '@/helpers/price_helper'
 
-export default new Vuex.Store({
+export default createStore({
     modules: {
         Assets,
         Notifications,

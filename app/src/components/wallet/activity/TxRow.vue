@@ -57,7 +57,7 @@ import { ava } from '@/LUX'
         ImportExport,
     },
 })
-export default class TxRow extends Vue {
+class TxRow extends Vue {
     @Prop() index!: number
     @Prop() source!: TransactionType
 
@@ -137,9 +137,10 @@ export default class TxRow extends Vue {
         return this.mom.format('Y')
     }
 }
+export default TxRow
 </script>
 <style scoped lang="scss">
-@use '../../../_main';
+@use '../../../main';
 .tx_row {
     //display: grid;
     //grid-template-columns: 1fr 1fr;

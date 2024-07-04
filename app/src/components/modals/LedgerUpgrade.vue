@@ -44,7 +44,7 @@ import { MIN_LEDGER_V } from '@/js/wallets/constants'
         Modal,
     },
 })
-export default class LedgerUpgrade extends Vue {
+class LedgerUpgrade extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -87,6 +87,7 @@ export default class LedgerUpgrade extends Vue {
         }
     }
 }
+export default LedgerUpgrade
 </script>
 <style scoped lang="scss">
 .ledger_block {

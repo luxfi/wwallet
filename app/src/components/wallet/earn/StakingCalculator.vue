@@ -6,5 +6,6 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class StakingCalculator extends Vue {}
+class StakingCalculator extends Vue {}
+export default StakingCalculator
 </script>

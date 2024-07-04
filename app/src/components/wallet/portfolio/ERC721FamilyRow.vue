@@ -28,7 +28,7 @@ import { ERC721WalletBalance } from '@/store/modules/assets/modules/types'
 @Component({
     components: { ERC721View },
 })
-export default class ERC721FamilyRow extends Vue {
+class ERC721FamilyRow extends Vue {
     @Prop() family!: ERC721Token
 
     get walletBalance(): string[] {
@@ -39,6 +39,7 @@ export default class ERC721FamilyRow extends Vue {
         return this.walletBalance.length > 0
     }
 }
+export default ERC721FamilyRow
 </script>
 <style scoped lang="scss">
 @use "tokens";

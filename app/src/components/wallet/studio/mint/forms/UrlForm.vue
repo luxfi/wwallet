@@ -9,7 +9,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { UrlFormType } from '@/components/wallet/studio/mint/types'
 
 @Component
-export default class UrlForm extends Vue {
+class UrlForm extends Vue {
     urlIn = ''
 
     isValidUrl(url: string) {
@@ -46,6 +46,7 @@ export default class UrlForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
+export default UrlForm
 </script>
 <style scoped lang="scss">
 input {

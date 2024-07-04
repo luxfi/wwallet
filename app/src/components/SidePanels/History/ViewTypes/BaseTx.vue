@@ -107,7 +107,7 @@ import BaseTxUtxo from '@/components/SidePanels/History/ViewTypes/BaseTxUtxo.vue
         TxHistoryNftFamilyGroup,
     },
 })
-export default class BaseTx extends Vue {
+class BaseTx extends Vue {
     @Prop() transaction!: XChainTransaction
 
     get inputUTXOs() {
@@ -182,6 +182,7 @@ export default class BaseTx extends Vue {
         return this.transaction.txType as TransactionTypeName
     }
 }
+export default BaseTx
 </script>
 <style scoped lang="scss">
 label {

@@ -32,7 +32,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
         ExportWallet,
     },
 })
-export default class MnemonicPhrase extends Vue {
+class MnemonicPhrase extends Vue {
     isSuccess: boolean = false
 
     $refs!: {
@@ -64,6 +64,7 @@ export default class MnemonicPhrase extends Vue {
         return this.$store.state.wallets
     }
 }
+export default MnemonicPhrase
 </script>
 <style scoped lang="scss">
 .update_keystore_modal_body {

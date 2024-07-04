@@ -28,7 +28,7 @@ interface GroupDict {
 @Component({
     components: { TxHistoryNftFamilyGroup },
 })
-export default class BaseTxNFTOutput extends Vue {
+class BaseTxNFTOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: UTXO[]
 
@@ -64,6 +64,7 @@ export default class BaseTxNFTOutput extends Vue {
         return gNums
     }
 }
+export default BaseTxNFTOutput
 </script>
 <style scoped lang="scss">
 .amount {

@@ -30,7 +30,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
-export default class NetworkRow extends Vue {
+class NetworkRow extends Vue {
     @Prop() network!: LuxNetwork
 
     get endpoint() {
@@ -106,6 +106,7 @@ export default class NetworkRow extends Vue {
         }
     }
 }
+export default NetworkRow
 </script>
 <style scoped lang="scss">
 @use '../../main';

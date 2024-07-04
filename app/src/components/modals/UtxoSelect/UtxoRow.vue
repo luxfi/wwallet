@@ -25,7 +25,7 @@ import { UnixNow } from 'luxnet/dist/utils'
 import { BN } from 'luxnet'
 
 @Component
-export default class UtxoRow extends Vue {
+class UtxoRow extends Vue {
     @Prop() utxo!: UTXO
     isSelect = false
 
@@ -87,6 +87,7 @@ export default class UtxoRow extends Vue {
         return false
     }
 }
+export default UtxoRow
 </script>
 <style scoped lang="scss">
 tr {

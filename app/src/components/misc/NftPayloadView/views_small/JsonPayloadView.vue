@@ -15,7 +15,7 @@ import GenericPayloadViewSmall from '@/components/misc/NftPayloadView/views_smal
         GenericPayloadViewSmall,
     },
 })
-export default class JsonPayloadView extends Vue {
+class JsonPayloadView extends Vue {
     @Prop() payload!: JSONPayload
     val = ''
 
@@ -61,6 +61,7 @@ export default class JsonPayloadView extends Vue {
         this.updateText()
     }
 }
+export default JsonPayloadView
 </script>
 <style scoped lang="scss">
 .json_payload_view {

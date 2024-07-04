@@ -10,12 +10,13 @@ import { Vue, Component, Prop, Watch, Model } from 'vue-property-decorator'
 import { CurrencyType } from '@/components/misc/CurrencySelect/types'
 
 @Component
-export default class CurrencySelect extends Vue {
+class CurrencySelect extends Vue {
     @Model('change', { type: String }) readonly currency!: CurrencyType
     setType(val: CurrencyType) {
         this.$emit('change', val)
     }
 }
+export default CurrencySelect
 </script>
 <style scoped lang="scss">
 .currency_select {
