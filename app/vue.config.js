@@ -5,6 +5,7 @@ const { VuetifyPlugin } = require('webpack-plugin-vuetify')
 process.env.VUE_APP_VERSION = process.env.npm_package_version
 
 module.exports = {
+    parallel: false,
     chainWebpack: (config) => {
         config.resolve.alias.set('vue', '@vue/compat')
 
