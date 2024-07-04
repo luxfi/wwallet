@@ -177,7 +177,7 @@ export default class CreateWallet extends Vue {
     }
     verifyMnemonic() {
         // @ts-ignore
-        this.$refs.verify.open()
+        this.$refs?.verify.open()
     }
 
     complete() {

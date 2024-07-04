@@ -5,7 +5,9 @@ const { VueLoaderPlugin } = require('vue-loader')
 const { defineConfig } = require('@vue/cli-service')
 
 module.exports = {
+    parallel: false,
     chainWebpack: (config) => {
+        config.stats('verbose')
         // TypeScript loader configuration
         config.module
             .rule('typescript')
@@ -23,9 +25,13 @@ module.exports = {
             .end()
             .use('ts-loader')
             .loader('ts-loader')
-            .options({
-                transpileOnly: true,
-                appendTsSuffixTo: [/\.vue$/],
+
+            .tap((options) => {
+                return {
+                    ...options,
+                    transpileOnly: true,
+                    appendTsSuffixTo: [/\.vue$/],
+                }
             })
 
         // Vue loader configuration
@@ -106,6 +112,7 @@ module.exports = {
         port: 5000,
     },
     configureWebpack: {
+        stats: 'verbose',
         plugins: [
             new NodePolyfillPlugin(),
             // new VueLoaderPlugin()
