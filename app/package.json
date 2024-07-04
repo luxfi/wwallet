@@ -200,7 +200,7 @@
         "vue-functional-data-merge": "^3.1.0",
         "vue-i18n": "9.13.1",
         "vue-meta": "2.4.0",
-        "vue-router": "4.1.0",
+        "vue-router": "4.4.0",
         "vue-property-decorator": "8.4.2",
         "vue-virtual-scroll-list": "2.3.2",
         "vuetify": "3.6.10",
