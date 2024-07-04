@@ -161,7 +161,7 @@ type NftType = 'utf8' | 'url' | 'json'
         JsonForm,
     },
 })
-export default class MintNft extends Vue {
+class MintNft extends Vue {
     @Prop() mintUtxo!: UTXO
 
     quantity = 1
@@ -353,6 +353,7 @@ export default class MintNft extends Vue {
         this.isLoading = false
     }
 }
+export default MintNft
 </script>
 <style lang="scss">
 .mint_form {

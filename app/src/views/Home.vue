@@ -74,7 +74,8 @@ import ToS from '@/components/misc/ToS.vue'
     name: 'home',
     components: { ToS },
 })
-export default class Home extends Vue {}
+class Home extends Vue {}
+export default Home
 </script>
 
 <style scoped lang="scss">

@@ -41,7 +41,7 @@ const chainNames = {
         NumberCounter,
     },
 })
-export default class ChainCard extends Vue {
+class ChainCard extends Vue {
     // @Model('change', { type: String }) readonly chain!: ChainIdType
     @Prop() chain!: ChainIdType
     // @Prop() exclude!: ChainIdType
@@ -99,6 +99,7 @@ export default class ChainCard extends Vue {
 
     mounted() {}
 }
+export default ChainCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

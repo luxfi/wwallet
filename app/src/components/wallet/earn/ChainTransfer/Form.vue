@@ -68,7 +68,7 @@ const chainNames = {
         LuxInput,
     },
 })
-export default class Form extends Vue {
+class Form extends Vue {
     sourceChain: ChainIdType = 'X'
     targetChain: ChainIdType = 'P'
     amt: BN = new BN(0)
@@ -151,6 +151,7 @@ export default class Form extends Vue {
         this.onChange()
     }
 }
+export default Form
 </script>
 <style scoped lang="scss">
 .swap_form {

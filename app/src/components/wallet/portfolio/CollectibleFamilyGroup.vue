@@ -23,7 +23,7 @@ let payloadtypes = PayloadTypes.getInstance()
 @Component({
     components: { NftCard, NFTViewModal, Tooltip, NftPayloadView },
 })
-export default class CollectibleFamilyGroup extends Vue {
+class CollectibleFamilyGroup extends Vue {
     @Prop() utxos!: UTXO[]
     $refs!: {
         modal: NFTViewModal
@@ -49,6 +49,7 @@ export default class CollectibleFamilyGroup extends Vue {
         return payloadbase
     }
 }
+export default CollectibleFamilyGroup
 </script>
 <style scoped lang="scss">
 @use '../../../main';

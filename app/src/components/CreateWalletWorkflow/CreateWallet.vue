@@ -151,7 +151,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
         MnemonicCopied,
     },
 })
-export default class CreateWallet extends Vue {
+class CreateWallet extends Vue {
     // TODO: We do not need to create keyPair, only mnemonic is sufficient
     isLoad: boolean = false
     keyPhrase: MnemonicPhrase | null = null
@@ -196,6 +196,7 @@ export default class CreateWallet extends Vue {
         }, 500)
     }
 }
+export default CreateWallet
 </script>
 <style scoped lang="scss">
 @use '../../main';

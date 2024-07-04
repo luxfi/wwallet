@@ -15,7 +15,7 @@ export interface RootState {
     isAuth: boolean
     activeWallet: null | WalletType
     wallets: WalletType[]
-    address: String | null
+    address: string | null
     volatileWallets: WalletType[] // will be forgotten when tab is closed
     warnUpdateKeyfile: boolean
     prices: priceDict // USD value of 1 LUX

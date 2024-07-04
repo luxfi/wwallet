@@ -22,7 +22,7 @@ import CollectibleFamily from '@/components/misc/BalancePopup/CollectibleFamily.
 @Component({
     components: { CollectibleFamily, Modal },
 })
-export default class XvmNftSelectModal extends Vue {
+class XvmNftSelectModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -53,6 +53,7 @@ export default class XvmNftSelectModal extends Vue {
         return this.disabledIds.includes(utxo.getUTXOID())
     }
 }
+export default XvmNftSelectModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

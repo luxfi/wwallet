@@ -36,7 +36,7 @@ import Identicon from '@/components/misc/Identicon.vue'
 @Component({
     components: { Identicon },
 })
-export default class Account extends Vue {
+class Account extends Vue {
     password: string = ''
     isLoading: boolean = false
     error: string = ''
@@ -108,6 +108,7 @@ export default class Account extends Vue {
         return true
     }
 }
+export default Account
 </script>
 <style scoped lang="scss">
 @use '../../main';

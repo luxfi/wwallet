@@ -30,7 +30,7 @@ import { IGroupQuantity } from '@/components/wallet/studio/mint/types'
         NftPayloadView,
     },
 })
-export default class NftListItem extends Vue {
+class NftListItem extends Vue {
     @Prop() sample!: UTXO
     @Prop({ default: false }) disabled!: boolean
 
@@ -104,14 +104,15 @@ export default class NftListItem extends Vue {
         this.emit()
     }
 }
+export default NftListItem
 </script>
 <style scoped lang="scss">
 $remove_w: 24px;
 .removeBut {
     position: absolute;
     z-index: 1;
-    top: -$remove_w/4;
-    right: -$remove_w/4;
+    top: calc(-1 * $remove_w / 4);
+    right: calc(-1 * $remove_w / 4);
     width: $remove_w;
     height: $remove_w;
     background-color: var(--bg-light);

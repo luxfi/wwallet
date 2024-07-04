@@ -27,14 +27,14 @@ import { CsvRowLuxTransferData, ITransactionData, UTXO } from '@/store/modules/h
 import { bnToBig } from '@/helpers/helper'
 const generate = require('csv-generate')
 import { downloadCSVFile } from '@/store/modules/history/history_utils'
-import { createCsvNormal, getHistoryForOwnedAddresses }  from '@luxfi/wallet-sdk'
+import { createCsvNormal, getHistoryForOwnedAddresses } from '@luxfi/wallet-sdk'
 
 @Component({
     components: {
         Modal,
     },
 })
-export default class ExportLuxCsvModal extends Vue {
+class ExportLuxCsvModal extends Vue {
     error: Error | null = null
     isLoading = false
 
@@ -97,6 +97,7 @@ export default class ExportLuxCsvModal extends Vue {
         }
     }
 }
+export default ExportLuxCsvModal
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

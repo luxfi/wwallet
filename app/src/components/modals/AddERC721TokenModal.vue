@@ -54,7 +54,7 @@ import ERC721Token from '@/js/ERC721Token'
         Modal,
     },
 })
-export default class AddERC721TokenModal extends Vue {
+class AddERC721TokenModal extends Vue {
     tokenAddress = ''
     name = ''
     symbol = ''
@@ -148,6 +148,7 @@ export default class AddERC721TokenModal extends Vue {
         return this.$store.getters['Assets/ERC721/networkContractsCustom']
     }
 }
+export default AddERC721TokenModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

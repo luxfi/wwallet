@@ -5,6 +5,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class Addresses extends Vue {}
+class Addresses extends Vue {}
+export default Addresses
 </script>
 <style scoped lang="scss"></style>

@@ -37,7 +37,7 @@ import { TransactionType } from '@/js/Cloud/models'
         Spinner,
     },
 })
-export default class TransactionHistoryPanel extends Vue {
+class TransactionHistoryPanel extends Vue {
     get isExplorer(): boolean {
         let network: LuxNetwork | null = this.$store.state.Network.selectedNetwork
         if (!network) return false
@@ -72,6 +72,7 @@ export default class TransactionHistoryPanel extends Vue {
         return `https://explorer.lux.network/address/${addr}`
     }
 }
+export default TransactionHistoryPanel
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -82,7 +82,7 @@ import 'reflect-metadata'
 import { Vue, Component, Watch } from 'vue-property-decorator'
 
 import Modal from '@/components/modals/Modal.vue'
-import { BlockchainId,  } from '@luxfi/cloud'
+import { BlockchainId } from '@luxfi/cloud'
 import { WalletType } from '@/js/wallets/types'
 import MultiSelect from '../misc/MultiSelect.vue'
 import cloud from '@/js/Cloud/Cloud'
@@ -90,7 +90,7 @@ import Spinner from '@/components/misc/Spinner.vue'
 import RadioButtons from '../misc/RadioButtons.vue'
 import { setTimeoutInterval } from '@/helpers/setTimeoutInterval'
 
-import {  BlockchainIds,OperationStatusIds} from "@/utils/typeconvert";
+import { BlockchainIds, OperationStatusIds } from '@/utils/typeconvert'
 
 const DAY = 24 * 60 * 60 * 1000
 const MONTH = 30 * DAY
@@ -107,7 +107,7 @@ type Timeframe = 'Last 3 Months' | 'Last 6 Months' | 'This Year' | 'Last Year' |
         RadioButtons,
     },
 })
-export default class ExportCloudHistoryModal extends Vue {
+class ExportCloudHistoryModal extends Vue {
     operationID: string | null = null
     downloadURL: string | null = null
     loading = false
@@ -126,9 +126,9 @@ export default class ExportCloudHistoryModal extends Vue {
     timeframe: Timeframe = 'Last 3 Months'
 
     includeChains: BlockchainId[] = [
-    BlockchainIds.X_CHAIN,
-    BlockchainIds.P_CHAIN,
-    BlockchainIds.C_CHAIN,
+        BlockchainIds.X_CHAIN,
+        BlockchainIds.P_CHAIN,
+        BlockchainIds.C_CHAIN,
     ]
 
     formEndISO: string = this.endDate.toISOString()
@@ -293,6 +293,7 @@ export default class ExportCloudHistoryModal extends Vue {
         this.loading = false
     }
 }
+export default ExportCloudHistoryModal
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

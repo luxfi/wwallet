@@ -24,7 +24,7 @@ import { LuxNetwork } from '@/js/LuxNetwork'
         NetworkRow,
     },
 })
-export default class ListPage extends Vue {
+class ListPage extends Vue {
     get networks(): LuxNetwork[] {
         return this.$store.getters['Network/allNetworks']
     }
@@ -33,6 +33,7 @@ export default class ListPage extends Vue {
         this.$emit('edit', net)
     }
 }
+export default ListPage
 </script>
 <style scoped lang="scss">
 .networks_list {

@@ -41,7 +41,7 @@ import MnemonicPasswordInput from '@/components/misc/MnemonicPasswordInput.vue'
         MnemonicPasswordInput,
     },
 })
-export default class Mnemonic extends Vue {
+class Mnemonic extends Vue {
     isLoading: boolean = false
     err: string = ''
     canSubmit = false
@@ -110,6 +110,7 @@ export default class Mnemonic extends Vue {
         }, 500)
     }
 }
+export default Mnemonic
 </script>
 <style scoped lang="scss">
 @use '../../main';

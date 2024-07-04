@@ -41,7 +41,7 @@ import { Buffer } from 'luxnet'
 import { digestMessage } from '@/helpers/helper'
 
 @Component
-export default class VerifyMessage extends Vue {
+class VerifyMessage extends Vue {
     message: string = ''
     addressX: string = ''
     addressP: string = ''
@@ -93,6 +93,7 @@ export default class VerifyMessage extends Vue {
         return true
     }
 }
+export default VerifyMessage
 </script>
 <style lang="scss" scoped>
 textarea,

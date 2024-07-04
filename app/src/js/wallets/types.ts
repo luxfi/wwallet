@@ -27,7 +27,7 @@ import { PayloadBase } from 'luxnet/dist/utils'
 import { ChainIdType } from '@/constants'
 import Erc20Token from '@/js/Erc20Token'
 
-import { Transaction } from '@ethereumjs/tx'
+// import { Transaction } from '@ethereumjs/tx'
 import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { SingletonWallet } from '@/js/wallets/SingletonWallet'
@@ -95,6 +95,7 @@ export interface LuxWalletCore extends IAddressManager {
     signX(unsignedTx: XVMUnsignedTx): Promise<XVMTx>
     signP(unsignedTx: PlatformUnsignedTx): Promise<PlatformTx>
     signC(unsignedTx: EVMUnsignedTx): Promise<EVMTx>
+    //@ts-ignore
     signEvm(tx: Transaction): Promise<Transaction>
     validate(
         nodeID: string,

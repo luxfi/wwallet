@@ -44,7 +44,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         CollectibleTab,
     },
 })
-export default class BalancePopup extends Vue {
+class BalancePopup extends Vue {
     @Prop() assets!: LuxAsset[]
     @Prop({ default: false }) isNft?: boolean
     @Prop({ default: () => [] }) disabledIds!: string[] // asset id | if nft the utxo id
@@ -73,6 +73,7 @@ export default class BalancePopup extends Vue {
         this.$emit('close')
     }
 }
+export default BalancePopup
 </script>
 <style lang="scss">
 .popup_body {

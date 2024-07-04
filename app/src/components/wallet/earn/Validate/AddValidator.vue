@@ -266,7 +266,7 @@ const MAX_STAKE_DURATION = DAY_MS * 365
         UtxoSelectForm,
     },
 })
-export default class AddValidator extends Vue {
+class AddValidator extends Vue {
     startDate: string = new Date(Date.now() + MIN_MS * 15).toISOString()
     endDate: string = new Date().toISOString()
     delegationFee: string = '2.0'
@@ -675,6 +675,7 @@ export default class AddValidator extends Vue {
         })
     }
 }
+export default AddValidator
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

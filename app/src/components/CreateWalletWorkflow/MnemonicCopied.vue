@@ -1,8 +1,14 @@
 <template>
     <div>
-        <v-checkbox :label="explain" v-model="value" @change="change" class="checkbox"></v-checkbox>
+        <v-checkbox
+            :label="explain"
+            v-model="localValue"
+            @change="change"
+            class="checkbox"
+        ></v-checkbox>
     </div>
 </template>
+
 <script>
 export default {
     props: {
@@ -12,13 +18,23 @@ export default {
             default: 'Back up your mnemonic keyphrase!',
         },
     },
+    data() {
+        return {
+            localValue: this.value,
+        }
+    },
+    watch: {
+        value(newVal) {
+            this.localValue = newVal
+        },
+    },
     model: {
         prop: 'value',
         event: 'change',
     },
     methods: {
         change() {
-            this.$emit('change', this.value)
+            this.$emit('update:value', this.localValue)
         },
     },
 }

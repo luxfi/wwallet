@@ -37,7 +37,7 @@ import { UnixNow } from 'luxnet/dist/utils'
 import { LuxNetwork } from '@/js/LuxNetwork'
 
 @Component
-export default class UTXORow extends Vue {
+class UTXORow extends Vue {
     @Prop() utxo!: XVMUTXO | PlatformUTXO
     @Prop({ default: true }) isX!: boolean
 
@@ -139,6 +139,7 @@ export default class UTXORow extends Vue {
         return ''
     }
 }
+export default UTXORow
 </script>
 <style scoped lang="scss">
 tr {

@@ -29,7 +29,7 @@ import {
 } from '@/components/wallet/studio/mint/types'
 
 @Component
-export default class GenericForm extends Vue {
+class GenericForm extends Vue {
     title = ''
     description = ''
     imgUrl = ''
@@ -92,6 +92,7 @@ export default class GenericForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
+export default GenericForm
 </script>
 <style scoped lang="scss">
 textarea {

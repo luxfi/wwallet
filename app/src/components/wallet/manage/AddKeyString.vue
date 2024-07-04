@@ -30,7 +30,7 @@ import Spinner from '@/components/misc/Spinner.vue'
         Spinner,
     },
 })
-export default class AddKeyString extends Vue {
+class AddKeyString extends Vue {
     privateKeyInput: string = ''
     canAdd: boolean = false
     error: string = ''
@@ -76,6 +76,7 @@ export default class AddKeyString extends Vue {
         this.error = ''
     }
 }
+export default AddKeyString
 </script>
 <style scoped lang="scss">
 @use '../../../main';

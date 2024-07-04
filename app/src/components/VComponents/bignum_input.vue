@@ -11,9 +11,9 @@
     />
 </template>
 <script>
-import { BN, Big } from '@luxfi/wallet-sdk'
+import { BN, Big, bnToBig, stringToBN } from '@luxfi/wallet-sdk'
 
-import Utils from '@luxfi/wallet-sdk'
+// import Utils from '@luxfi/wallet-sdk'
 
 export default {
     data() {
@@ -112,10 +112,10 @@ export default {
     },
     methods: {
         bnToString(val) {
-            return Utils.bnToBig(val, this.denomination).toString()
+            return bnToBig(val, this.denomination).toString()
         },
         stringToBN(strVal) {
-            return Utils.stringToBN(strVal, this.denomination)
+            return stringToBN(strVal, this.denomination)
         },
         maxout() {
             if (this.maxNumBN != null) {

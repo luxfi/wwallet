@@ -67,7 +67,7 @@ import {
         Modal,
     },
 })
-export default class ExportCsvModal extends Vue {
+class ExportCsvModal extends Vue {
     showValidation = true
     showDelegation = true
     showFees = true
@@ -232,6 +232,7 @@ export default class ExportCsvModal extends Vue {
         }
     }
 }
+export default ExportCsvModal
 </script>
 <style scoped lang="scss">
 .csv_modal_body {

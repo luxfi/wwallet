@@ -4,8 +4,8 @@ const POSTHOG_DEV_APP_ID = 'phc_6HUmT6KtEAPlKpIw9lKf6mpIog3YU1ClbcylLudAcb0'
 const POSTHOG_DEV_HOST_URL = 'https://proxy-api.lux.network/ph'
 
 export default {
-    install(Vue, options) {
-        Vue.prototype.$posthog = posthog.init(POSTHOG_DEV_APP_ID, {
+    install(app, options) {
+        app.config.globalProperties.$posthog = posthog.init(POSTHOG_DEV_APP_ID, {
             loaded: (ph) => {
                 if (!localStorage.getItem('consentsToAnalytics')) {
                     // opting out if no consent

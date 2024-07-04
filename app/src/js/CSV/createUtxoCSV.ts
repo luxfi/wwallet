@@ -55,7 +55,7 @@ export async function createUtxoCSV(
                     })
                 })
             } else if (isTransactionP(tx)) {
-                ;(tx.consumedUtxos || []).forEach((utxo) => {
+                (tx.consumedUtxos || []).forEach((utxo) => {
                     txRows.push({
                         ...shared,
                         ...createUtxoCsvData(utxo, ownedAddresses),

@@ -115,7 +115,7 @@ import Big from 'big.js'
         AddDelegator,
     },
 })
-export default class Earn extends Vue {
+class Earn extends Vue {
     pageNow: any = null
     subtitle: string = ''
     intervalID: any = null
@@ -192,6 +192,7 @@ export default class Earn extends Vue {
         return bnToBig(bn, 9)
     }
 }
+export default Earn
 </script>
 <style scoped lang="scss">
 @use '../../main';

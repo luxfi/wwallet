@@ -28,7 +28,7 @@ import CollectibleFamily from '@/components/misc/BalancePopup/CollectibleFamily.
         CollectibleFamily,
     },
 })
-export default class CollectibleTab extends Vue {
+class CollectibleTab extends Vue {
     @Prop({ default: [] }) disabledIds!: string[]
     get isEmpty(): boolean {
         // return this.$store.getters.walletNftUTXOs.length === 0
@@ -47,6 +47,7 @@ export default class CollectibleTab extends Vue {
         this.$emit('select', nft)
     }
 }
+export default CollectibleTab
 </script>
 <style scoped lang="scss">
 .collectible_tab {

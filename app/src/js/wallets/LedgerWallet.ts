@@ -4,8 +4,9 @@ import AppLux from '@luxfi/hw-app-lux'
 //@ts-ignore
 import Eth from '@ledgerhq/hw-app-eth'
 
-import EthereumjsCommon from '@ethereumjs/common'
-import { Transaction } from '@ethereumjs/tx'
+import * as EthereumjsCommon from '@ethereumjs/common'
+// // import { Transaction } from '@ethereumjs/tx'
+const Transaction = require('@ethereumjs/tx').Transaction
 
 import Transport from '@ledgerhq/hw-transport'
 import moment from 'moment'
@@ -688,7 +689,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return messages
     }
 
-    getEvmTransactionMessages(tx: Transaction): ILedgerBlockMessage[] {
+    getEvmTransactionMessages(tx: typeof Transaction): ILedgerBlockMessage[] {
         const gasPrice = tx.gasPrice
         const gasLimit = tx.gasLimit
         const totFee = gasPrice.mul(gasLimit)
@@ -806,7 +807,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         store.commit('Ledger/closeModal')
         return txSigned
     }
-
+    //@ts-ignore
     async signEvm(tx: Transaction) {
         const rawUnsignedTx = rlp.encode([
             bnToRlp(tx.nonce),
@@ -844,6 +845,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
             const chainId = await web3.eth.getChainId()
             const networkId = await web3.eth.net.getId()
             const chainParams = {
+                //@ts-ignore
                 common: EthereumjsCommon.forCustomChain(
                     'mainnet',
                     { networkId, chainId },
@@ -958,7 +960,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
     async mintNft(mintUtxo: XVMUTXO, payload: PayloadBase, quantity: number) {
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
-
+    //@ts-ignore
     async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number) {
         return await WalletHelper.sendEth(this, to, amount, gasPrice, gasLimit)
     }
@@ -990,6 +992,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         token: Erc20Token
     ): Promise<string> {
         // throw 'Not Implemented'
+        //@ts-ignore
         return await WalletHelper.sendErc20(this, to, amount, gasPrice, gasLimit, token)
     }
 }

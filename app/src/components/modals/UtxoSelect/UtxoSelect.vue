@@ -62,7 +62,7 @@ import { bnToBig } from '@/helpers/helper'
         UtxoRow,
     },
 })
-export default class UtxoSelect extends Vue {
+class UtxoSelect extends Vue {
     @Model('change', { type: Array }) readonly utxos!: UTXO[]
     @Prop() all!: UTXO[]
 
@@ -145,6 +145,7 @@ export default class UtxoSelect extends Vue {
         return bnToBig(this.selectedBalance, 9).toLocaleString()
     }
 }
+export default UtxoSelect
 </script>
 <style scoped lang="scss">
 .utxo_select_modal_body {

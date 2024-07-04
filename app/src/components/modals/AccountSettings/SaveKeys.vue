@@ -13,7 +13,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import AccountSettingsModal from '@/components/modals/AccountSettings/AccountSettingsModal.vue'
 
 @Component
-export default class SaveKeys extends Vue {
+class SaveKeys extends Vue {
     pass = ''
     error = ''
 
@@ -40,6 +40,7 @@ export default class SaveKeys extends Vue {
             })
     }
 }
+export default SaveKeys
 </script>
 <style scoped lang="scss">
 @use './style';

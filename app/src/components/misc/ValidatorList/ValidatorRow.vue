@@ -20,7 +20,7 @@ import { bnToBig } from '@/helpers/helper'
 import { ValidatorListItem } from '@/store/modules/platform/types'
 
 @Component
-export default class ValidatorsList extends Vue {
+class ValidatorsList extends Vue {
     @Prop() validator!: ValidatorListItem
 
     get remainingMs(): number {
@@ -70,6 +70,7 @@ export default class ValidatorsList extends Vue {
         this.$emit('select', this.validator)
     }
 }
+export default ValidatorsList
 </script>
 <style scoped lang="scss">
 @use '../../../main';

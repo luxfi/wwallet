@@ -23,7 +23,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
         BaseNftCard,
     },
 })
-export default class UTF8_NFT extends Vue {
+class UTF8_NFT extends Vue {
     @Prop() payload!: PayloadBase
     @Prop({ default: false }) mini?: boolean
     @Prop({ default: false }) rawCard?: boolean
@@ -33,6 +33,7 @@ export default class UTF8_NFT extends Vue {
         return this.payload.getContent().toString('utf-8')
     }
 }
+export default UTF8_NFT
 </script>
 <style scoped lang="scss">
 .utf8_nft {

@@ -148,7 +148,7 @@ interface IKeyBalanceDict {
         XpubModal,
     },
 })
-export default class KeyRow extends Vue {
+class KeyRow extends Vue {
     @Prop() wallet!: WalletType
     @Prop({ default: false }) is_default?: boolean
 
@@ -297,6 +297,7 @@ export default class KeyRow extends Vue {
         this.$refs.modal_priv_key_c.open()
     }
 }
+export default KeyRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

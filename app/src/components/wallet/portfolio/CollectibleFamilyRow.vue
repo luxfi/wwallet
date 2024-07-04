@@ -37,7 +37,7 @@ import CollectibleFamilyGroup from '@/components/wallet/portfolio/CollectibleFam
         CollectibleFamilyGroup,
     },
 })
-export default class CollectibleFamilyRow extends Vue {
+class CollectibleFamilyRow extends Vue {
     @Prop() family!: LuxNftFamily
 
     // get groups() {}
@@ -113,6 +113,7 @@ export default class CollectibleFamilyRow extends Vue {
         return idsUnique
     }
 }
+export default CollectibleFamilyRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

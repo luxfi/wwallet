@@ -45,7 +45,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { ExportWalletsInput } from '@/store/types'
 
 @Component
-export default class ExportWallet extends Vue {
+class ExportWallet extends Vue {
     isLoading: boolean = false
     pass: string = ''
     passConfirm: string = ''
@@ -94,6 +94,7 @@ export default class ExportWallet extends Vue {
         }, 200)
     }
 }
+export default ExportWallet
 </script>
 <style lang="scss">
 .export_wallet {

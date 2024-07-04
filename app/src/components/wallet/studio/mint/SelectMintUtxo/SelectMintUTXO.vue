@@ -17,7 +17,7 @@ import FamilyRow from '@/components/wallet/studio/mint/SelectMintUtxo/FamilyRow.
 @Component({
     components: { FamilyRow },
 })
-export default class SelectMintUTXO extends Vue {
+class SelectMintUTXO extends Vue {
     get nftFamsDict(): NftFamilyDict {
         return this.$store.state.Assets.nftFamsDict
     }
@@ -31,6 +31,7 @@ export default class SelectMintUTXO extends Vue {
         this.$emit('change', utxo)
     }
 }
+export default SelectMintUTXO
 </script>
 <style scoped lang="scss">
 @use '../../../../../main';

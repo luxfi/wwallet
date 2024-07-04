@@ -48,7 +48,7 @@ export async function getLuxPriceUSD(): Promise<number> {
     return 0.00011
 }
 
-let priceHistory: [number, number][] = [
+const priceHistory: [number, number][] = [
     // Hardcoded price history as an example
     [1622505600000, 0.0001],
     [1622592000000, 0.00012],

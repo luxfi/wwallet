@@ -50,7 +50,7 @@ import SaveKeys from '@/components/modals/AccountSettings/SaveKeys.vue'
         Modal,
     },
 })
-export default class AccountSettingsModal extends Vue {
+class AccountSettingsModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -88,6 +88,7 @@ export default class AccountSettingsModal extends Vue {
         return this.$store.state.volatileWallets.length > 0
     }
 }
+export default AccountSettingsModal
 </script>
 <style scoped lang="scss">
 .modal_body {

@@ -19,7 +19,8 @@ import ChainTransfer from '@/components/wallet/earn/ChainTransfer/ChainTransfer.
         ChainTransfer,
     },
 })
-export default class CrossChain extends Vue {}
+class CrossChain extends Vue {}
+export default CrossChain
 </script>
 <style scoped lang="scss">
 h1 {

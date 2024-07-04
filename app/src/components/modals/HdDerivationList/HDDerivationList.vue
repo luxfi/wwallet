@@ -55,7 +55,7 @@ import HdChainTable from '@/components/modals/HdDerivationList/HdChainTable.vue'
         HdChainTable,
     },
 })
-export default class HDDerivationList extends Vue {
+class HDDerivationList extends Vue {
     @Prop() wallet!: MnemonicWallet | LedgerWallet
 
     addrsExternal: string[] = []
@@ -141,6 +141,7 @@ export default class HDDerivationList extends Vue {
         return this.utxoSetToBalanceDict(utxoSet, addrs)
     }
 }
+export default HDDerivationList
 </script>
 
 <style scoped lang="scss">

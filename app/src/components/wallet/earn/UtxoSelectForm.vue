@@ -41,7 +41,7 @@ import { UnixNow } from 'luxnet/dist/utils'
         UtxoSelectModal,
     },
 })
-export default class UtxoSelectForm extends Vue {
+class UtxoSelectForm extends Vue {
     customUtxos: UTXO[] = []
     formType = 'all'
     @Model('change', { type: Array }) readonly utxos!: UTXO[]
@@ -119,6 +119,7 @@ export default class UtxoSelectForm extends Vue {
         }
     }
 }
+export default UtxoSelectForm
 </script>
 <style scoped lang="scss">
 .available {

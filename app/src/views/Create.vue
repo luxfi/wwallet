@@ -38,7 +38,8 @@ import CreateWallet from '@/components/CreateWalletWorkflow/CreateWallet.vue'
         }
     },
 })
-export default class Create extends Vue {}
+class Create extends Vue {}
+export default Create
 </script>
 <style scoped lang="scss">
 @use '../main';

@@ -35,12 +35,12 @@ import XvmTokenSelect from '@/components/modals/AvmTokenSelect.vue'
         BalancePopup,
     },
 })
-export default class BalanceDropdown extends Vue {
+class BalanceDropdown extends Vue {
     isPopup: boolean = false
 
     @Prop({ default: () => [] }) disabled_assets!: LuxAsset[]
     @Prop({ default: false }) disabled!: boolean
-    @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
+    // @Model('change', { type: LuxAsset }) readonly asset!: LuxAsset
 
     get assetArray(): LuxAsset[] {
         // return this.$store.getters.walletAssetsArray
@@ -87,6 +87,7 @@ export default class BalanceDropdown extends Vue {
         this.$emit('change', asset)
     }
 }
+export default BalanceDropdown
 </script>
 <style scoped lang="scss">
 @use '../../../main';

@@ -13,7 +13,7 @@ import { PayloadBase } from 'luxnet/dist/utils'
 @Component({
     components: { NftPayloadView, Modal },
 })
-export default class NFTViewModal extends Vue {
+class NFTViewModal extends Vue {
     @Prop() payload!: PayloadBase
 
     $refs!: {
@@ -24,6 +24,7 @@ export default class NFTViewModal extends Vue {
         this.$refs.modal.open()
     }
 }
+export default NFTViewModal
 </script>
 <style scoped lang="scss">
 .nft_view_body {

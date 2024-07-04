@@ -169,7 +169,7 @@ import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
         ChainInput,
     },
 })
-export default class Transfer extends Vue {
+class Transfer extends Vue {
     formType: ChainIdType = 'X'
     showAdvanced: boolean = false
     isAjax: boolean = false
@@ -492,6 +492,7 @@ export default class Transfer extends Vue {
         }
     }
 }
+export default Transfer
 </script>
 
 <style lang="scss">
@@ -545,7 +546,7 @@ h4 {
     margin-bottom: 10px;
 }
 
-.addressIn >>> input {
+.addressIn :deep(input) {
     color: var(--bg) !important;
     padding: 5px 6px !important;
     text-align: center;
@@ -553,7 +554,7 @@ h4 {
     font-size: 12px;
 }
 
-.addressIn >>> input::-webkit-input-placeholder {
+.addressIn :deep(input::-webkit-input-placeholder) {
     color: var(--primary-color-light) !important;
 }
 

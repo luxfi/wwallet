@@ -6,7 +6,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Big from 'big.js'
 
 @Component
-export default class NumberCounter extends Vue {
+class NumberCounter extends Vue {
     tweenedNumber: Big = Big(0)
     @Prop() value!: Big
 
@@ -41,4 +41,5 @@ export default class NumberCounter extends Vue {
         this.animate()
     }
 }
+export default NumberCounter
 </script>

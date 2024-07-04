@@ -50,7 +50,7 @@ import { TokenList } from '@/store/modules/assets/types'
         Modal,
     },
 })
-export default class TokenListModal extends Vue {
+class TokenListModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -107,6 +107,7 @@ export default class TokenListModal extends Vue {
         modal.open()
     }
 }
+export default TokenListModal
 </script>
 <style scoped lang="scss">
 .tokenlist_modal {

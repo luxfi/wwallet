@@ -68,7 +68,7 @@ import {
 } from '@luxfi/wallet-sdk'
 
 @Component
-export default class Balances extends Vue {
+class Balances extends Vue {
     @Prop() balances!: iLuxBalance
     @Prop() stakeAmt!: BN
 
@@ -128,6 +128,7 @@ export default class Balances extends Vue {
         ).add(bnToBigLuxC(this.balances.C))
     }
 }
+export default Balances
 </script>
 <style scoped lang="scss">
 label {

@@ -23,7 +23,7 @@ import 'reflect-metadata'
 import { Vue, Prop, Component } from 'vue-property-decorator'
 
 @Component
-export default class BaseNftCard extends Vue {
+class BaseNftCard extends Vue {
     @Prop({ default: false }) mini!: boolean
     @Prop({ default: false }) rawCard!: boolean
     @Prop() utxoId!: string
@@ -49,6 +49,7 @@ export default class BaseNftCard extends Vue {
         })
     }
 }
+export default BaseNftCard
 </script>
 <style scoped lang="scss">
 .card_container {

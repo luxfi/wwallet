@@ -42,7 +42,7 @@ let payloadtypes = PayloadTypes.getInstance()
         NftPayloadView,
     },
 })
-export default class NftCol extends Vue {
+class NftCol extends Vue {
     get isEmpty(): boolean {
         return this.nftArray.length + this.erc721BalanceArray.length === 0
     }
@@ -130,6 +130,7 @@ export default class NftCol extends Vue {
         return res
     }
 }
+export default NftCol
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

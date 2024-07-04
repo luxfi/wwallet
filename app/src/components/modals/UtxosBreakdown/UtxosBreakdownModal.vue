@@ -64,7 +64,7 @@ import UTXORow from '@/components/modals/UtxosBreakdown/AVMUTXORow.vue'
 @Component({
     components: { UTXORow, Modal },
 })
-export default class UtxosBreakdownModal extends Vue {
+class UtxosBreakdownModal extends Vue {
     chain = 'X'
 
     $refs!: {
@@ -158,6 +158,7 @@ export default class UtxosBreakdownModal extends Vue {
         return 0
     }
 }
+export default UtxosBreakdownModal
 </script>
 <style scoped lang="scss">
 .utxos_breakdown_body {

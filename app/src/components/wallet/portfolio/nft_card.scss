@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .nft_card {
   height: 100%;
   position: relative;
@@ -9,8 +11,8 @@
 $countW: 28px;
 .count {
   position: absolute;
-  top: -$countW/3;
-  right: -$countW/3;
+  top: math.div(-$countW, 3);
+  right: math.div(-$countW, 3);
   width: $countW;
   height: $countW;
   border-radius: $countW;

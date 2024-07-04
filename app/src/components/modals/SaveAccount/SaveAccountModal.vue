@@ -59,7 +59,7 @@ import Identicon from '@/components/misc/Identicon.vue'
         Modal,
     },
 })
-export default class SaveAccountModal extends Vue {
+class SaveAccountModal extends Vue {
     password: string = ''
     password_confirm: string = ''
     isLoading: boolean = false
@@ -134,6 +134,7 @@ export default class SaveAccountModal extends Vue {
         return this.$store.getters['Accounts/baseAddresses']
     }
 }
+export default SaveAccountModal
 </script>
 <style scoped lang="scss">
 @use '../../../main';
