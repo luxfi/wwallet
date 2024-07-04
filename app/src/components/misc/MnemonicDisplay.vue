@@ -27,7 +27,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
 import { getRandomMnemonicWord } from '@/helpers/getRandomMnemonicWord'
 
 @Component
-export default class MnemonicDisplay extends Vue {
+class MnemonicDisplay extends Vue {
     @Prop({ default: '#FFFFFF' }) bgColor?: string
     @Prop({ default: 4 }) rowSize!: number
     @Prop() phrase!: MnemonicPhrase
@@ -46,6 +46,7 @@ export default class MnemonicDisplay extends Vue {
         return getRandomMnemonicWord()
     }
 }
+export default MnemonicDisplay
 </script>
 <style scoped lang="scss">
 @use "../../main";

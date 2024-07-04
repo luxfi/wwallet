@@ -31,7 +31,7 @@ import CopyText from '@/components/misc/CopyText.vue'
         CopyText,
     },
 })
-export default class ConfirmLogout extends Vue {
+class ConfirmLogout extends Vue {
     isLoading = false
     @Prop({ default: '' }) phrase!: string
 
@@ -56,6 +56,7 @@ export default class ConfirmLogout extends Vue {
         this.close()
     }
 }
+export default ConfirmLogout
 </script>
 <style scoped lang="scss">
 .confirm_body {

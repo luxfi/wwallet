@@ -19,7 +19,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class Modal extends Vue {
+class Modal extends Vue {
     @Prop({ default: 'Modal Title' }) title!: string
     @Prop({ default: true }) can_close!: boolean
     @Prop({ default: false }) icy!: boolean
@@ -41,6 +41,7 @@ export default class Modal extends Vue {
         this.isActive = false
     }
 }
+export default Modal
 </script>
 <style scoped lang="scss">
 @use '../../main';

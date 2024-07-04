@@ -43,7 +43,7 @@ import { TokenListToken } from '@/store/modules/assets/types'
         Modal,
     },
 })
-export default class AddERC20TokenModal extends Vue {
+class AddERC20TokenModal extends Vue {
     tokenAddress = ''
     name = ''
     symbol = ''
@@ -135,6 +135,7 @@ export default class AddERC20TokenModal extends Vue {
         this.$refs.modal.close()
     }
 }
+export default AddERC20TokenModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

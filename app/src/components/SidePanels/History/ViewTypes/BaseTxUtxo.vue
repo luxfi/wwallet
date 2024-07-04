@@ -19,7 +19,7 @@ import { BN } from 'luxnet'
 import { bnToLocaleString } from '@luxfi/wallet-sdk'
 
 @Component
-export default class BaseTxUtxo extends Vue {
+class BaseTxUtxo extends Vue {
     @Prop() utxo!: Utxo
     @Prop() ins!: Utxo[]
     @Prop() outs!: Utxo[]
@@ -63,6 +63,7 @@ export default class BaseTxUtxo extends Vue {
         }
     }
 }
+export default BaseTxUtxo
 </script>
 <style scoped lang="scss">
 .utxo {

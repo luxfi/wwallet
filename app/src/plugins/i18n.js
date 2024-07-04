@@ -1,8 +1,4 @@
-import * as VueI18n from 'vue-i18n'
-import Vue from 'vue'
-
-Vue.use(VueI18n)
-
+import { createI18n } from 'vue-i18n'
 import en from '../locales/en.json'
 import fr from '../locales/fr.json'
 import tr from '../locales/tr.json'
@@ -68,7 +64,7 @@ const messages = {
 }
 
 // Create VueI18n instance with options
-const i18n = new VueI18n({
+const i18n = createI18n({
     locale: 'en', // set locale
     fallbackLocale: 'en',
     messages, // set locale messages

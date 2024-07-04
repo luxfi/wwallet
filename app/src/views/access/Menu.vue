@@ -55,7 +55,8 @@ import ImageDayNight from '@/components/misc/ImageDayNight.vue'
         AccountsFound,
     },
 })
-export default class Menu extends Vue {}
+class Menu extends Vue {}
+export default Menu
 </script>
 
 <style scoped lang="scss">

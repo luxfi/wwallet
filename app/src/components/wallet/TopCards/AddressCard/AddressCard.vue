@@ -86,7 +86,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
         ChainSelect,
     },
 })
-export default class AddressCard extends Vue {
+class AddressCard extends Vue {
     colorLight: string = '#FFF'
     colorDark: string = '#242729'
     chainNow: ChainIdType = 'X'
@@ -287,6 +287,7 @@ export default class AddressCard extends Vue {
         this.updateQR()
     }
 }
+export default AddressCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

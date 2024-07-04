@@ -58,7 +58,7 @@ import AccountSettingsModal from '@/components/modals/AccountSettings/AccountSet
         SaveAccountModal,
     },
 })
-export default class ManageKeys extends Vue {
+class ManageKeys extends Vue {
     $refs!: {
         import: ImportKeys
         export: ExportKeys
@@ -106,6 +106,7 @@ export default class ManageKeys extends Vue {
         return this.$store.state.warnUpdateKeyfile
     }
 }
+export default ManageKeys
 </script>
 <style scoped lang="scss">
 @use '../../main';

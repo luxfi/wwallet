@@ -21,7 +21,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
 import { LUX_ACCOUNT_PATH } from '@/js/wallets/MnemonicWallet'
 
 @Component
-export default class HdEmptyAddressRow extends Vue {
+class HdEmptyAddressRow extends Vue {
     @Prop() index!: number
     @Prop() path!: number
     @Prop() address!: string
@@ -40,6 +40,7 @@ export default class HdEmptyAddressRow extends Vue {
         wallet.verifyAddress(this.index, isInternal)
     }
 }
+export default HdEmptyAddressRow
 </script>
 <style scoped lang="scss">
 .list_row_empty {

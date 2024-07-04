@@ -62,7 +62,7 @@ import axios from 'axios'
 import punycode from 'punycode'
 
 @Component
-export default class CustomPage extends Vue {
+class CustomPage extends Vue {
     name = 'My Custom Network'
     url = ''
     explorer_api = ''
@@ -201,6 +201,7 @@ export default class CustomPage extends Vue {
         this.url = ''
     }
 }
+export default CustomPage
 </script>
 <style scoped lang="scss">
 @use '../../main';

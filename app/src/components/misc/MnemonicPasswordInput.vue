@@ -20,7 +20,7 @@ import { Vue, Component } from 'vue-property-decorator'
 
 const SIZE = 24
 @Component
-export default class MnemonicPasswordInput extends Vue {
+class MnemonicPasswordInput extends Vue {
     // words = Array.from(''.repeat(24))
     onFocus(ev: any) {
         ev.target.setAttribute('type', 'text')
@@ -64,6 +64,7 @@ export default class MnemonicPasswordInput extends Vue {
         this.$emit('change', val.trim())
     }
 }
+export default MnemonicPasswordInput
 </script>
 <style scoped lang="scss">
 .input_cont {

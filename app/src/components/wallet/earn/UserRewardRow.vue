@@ -33,11 +33,11 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { BN } from 'luxnet'
 import Big from 'big.js'
-import { bnToBigLuxP }  from '@luxfi/wallet-sdk'
+import { bnToBigLuxP } from '@luxfi/wallet-sdk'
 import { PChainTransaction } from '@luxfi/cloud'
 
 @Component
-export default class UserRewardRow extends Vue {
+class UserRewardRow extends Vue {
     now: number = Date.now()
     intervalID: any = null
 
@@ -95,6 +95,7 @@ export default class UserRewardRow extends Vue {
         return Math.min(res, 1)
     }
 }
+export default UserRewardRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

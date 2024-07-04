@@ -52,7 +52,7 @@ import { iErc721SelectInput } from '@/components/misc/EVMInputDropdown/types'
         Modal,
     },
 })
-export default class EVMTokenSelectModal extends Vue {
+class EVMTokenSelectModal extends Vue {
     $refs!: {
         modal: Modal
     }
@@ -101,6 +101,7 @@ export default class EVMTokenSelectModal extends Vue {
         this.$refs.modal.close()
     }
 }
+export default EVMTokenSelectModal
 </script>
 <style scoped lang="scss">
 @use '../../../main';

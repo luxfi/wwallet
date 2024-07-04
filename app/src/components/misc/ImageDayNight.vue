@@ -6,7 +6,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class ImageDayNight extends Vue {
+class ImageDayNight extends Vue {
     @Prop() day!: string
     @Prop() night!: string
 
@@ -15,5 +15,6 @@ export default class ImageDayNight extends Vue {
         return this.$root.theme === 'day'
     }
 }
+export default ImageDayNight
 </script>
 <style scoped lang="scss"></style>

@@ -33,7 +33,7 @@ import { LEDGER_EXCHANGE_TIMEOUT } from '../../store/modules/ledger/types'
         Spinner,
     },
 })
-export default class LedgerBlock extends Vue {
+class LedgerBlock extends Vue {
     intervalId: ReturnType<typeof setTimeout> | null = null
 
     open() {
@@ -79,6 +79,7 @@ export default class LedgerBlock extends Vue {
         }
     }
 }
+export default LedgerBlock
 </script>
 <style scoped lang="scss">
 .ledger_block {

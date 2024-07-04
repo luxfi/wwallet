@@ -27,7 +27,7 @@ import { ERC721WalletBalance } from '@/store/modules/assets/modules/types'
 @Component({
     components: { ERC721View },
 })
-export default class ERC721Row extends Vue {
+class ERC721Row extends Vue {
     @Prop() token!: ERC721Token
 
     // created() {
@@ -56,7 +56,9 @@ export default class ERC721Row extends Vue {
     //     this.nftItems = items
     // }
 }
+export default ERC721Row
 </script>
+
 <style scoped lang="scss">
 .family_row {
     display: flex !important;

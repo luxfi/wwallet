@@ -13,7 +13,7 @@ import ToSCoreContent from '@/components/misc/ToSCoreContent.vue'
 @Component({
     components: { ToSContent, ToSCoreContent },
 })
-export default class Legal extends Vue {
+class Legal extends Vue {
     get isCore() {
         let urlParams = new URLSearchParams(window.location.search)
         if (urlParams.has('core')) {
@@ -22,6 +22,7 @@ export default class Legal extends Vue {
         return false
     }
 }
+export default Legal
 </script>
 <style scoped lang="scss">
 .legal_cont {

@@ -130,7 +130,7 @@ import UtxosBreakdownModal from '@/components/modals/UtxosBreakdown/UtxosBreakdo
         },
     },
 })
-export default class BalanceCard extends Vue {
+class BalanceCard extends Vue {
     isBreakdown = true
 
     $refs!: {
@@ -369,6 +369,7 @@ export default class BalanceCard extends Vue {
         return !this.xvmMultisig.isZero() || !this.platformMultisig.isZero()
     }
 }
+export default BalanceCard
 </script>
 <style scoped lang="scss">
 @use '../../../../main';

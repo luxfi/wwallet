@@ -21,7 +21,7 @@ import Identicon from '@/components/misc/Identicon.vue'
         Identicon,
     },
 })
-export default class AccountsFound extends Vue {
+class AccountsFound extends Vue {
     accounts: iUserAccountEncrypted[] = []
 
     created() {
@@ -36,6 +36,7 @@ export default class AccountsFound extends Vue {
         this.$router.push(`/access/account/${index}`)
     }
 }
+export default AccountsFound
 </script>
 <style scoped lang="scss">
 @use '../../main';

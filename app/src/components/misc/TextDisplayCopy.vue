@@ -1,13 +1,16 @@
 <template>
     <div class="display_copy">
-        <input class="disp" type="text" disabled :value="value" @input="$emit('update:value', $event.target.value)" />
-        <copy-text :value="value" class="copy" @copy="oncopy">
+        <input class="disp" type="text" disabled :value="localValue" />
+        <copy-text :value="localValue" class="copy" @copy="onCopy" @update:value="updateValue">
             <fa icon="copy"></fa>
         </copy-text>
     </div>
 </template>
+
 <script>
-import { CopyText } from '@/components/VComponents'
+import CopyText from '@/components/VComponents/CopyText.vue'
+import { mapActions } from 'vuex'
+
 export default {
     components: {
         CopyText,
@@ -18,40 +21,29 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            localValue: this.value,
+        }
+    },
+    watch: {
+        value(newVal) {
+            this.localValue = newVal
+        },
+    },
     methods: {
-        oncopy(val) {
-            this.$store.dispatch('Notifications/add', {
+        ...mapActions('Notifications', ['add']),
+        onCopy() {
+            this.add({
                 title: 'Copy',
                 message: 'Copied to clipboard.',
             })
-            this.$emit('copy', this.value)
+            this.$emit('copy', this.localValue)
+        },
+        updateValue(newValue) {
+            this.localValue = newValue
+            this.$emit('update:value', newValue)
         },
     },
 }
 </script>
-<style scoped>
-.display_copy {
-    display: flex;
-    background-color: #e2e2e2;
-    border-radius: 2px;
-    overflow: hidden;
-    border: 1px solid #d2d2d2;
-}
-
-.disp {
-    padding: 6px;
-    flex-grow: 1;
-    text-align: center;
-}
-
-.copy {
-    width: 50px;
-    background-color: #cecece;
-    color: #676767;
-}
-
-.copy:hover {
-    background-color: #f2f2f2;
-    color: #42b983;
-}
-</style>

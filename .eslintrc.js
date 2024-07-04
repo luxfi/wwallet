@@ -1,4 +1,5 @@
 module.exports = {
+    parser: 'vue-eslint-parser',
     root: true,
     env: {
         node: true,
@@ -6,11 +7,9 @@ module.exports = {
         es2020: true,
     },
     extends: [
-        'plugin:vue/base',
-        'plugin:vuetify/base',
         'plugin:vue/essential',
+        'plugin:vuetify/base',
         'eslint:recommended',
-        '@vue/typescript',
         '@vue/typescript/recommended',
     ],
     parserOptions: {
@@ -24,5 +23,14 @@ module.exports = {
         'vue/multiline-html-element-content-newline': 'off',
         'no-unreachable': 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['datetime', 'fa'],
+            },
+        ],
     },
 }

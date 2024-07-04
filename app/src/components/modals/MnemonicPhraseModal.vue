@@ -25,7 +25,7 @@ import MnemonicPhrase from '@/js/wallets/MnemonicPhrase'
         CopyText,
     },
 })
-export default class MnemonicPhraseModal extends Vue {
+class MnemonicPhraseModal extends Vue {
     @Prop({ default: '' }) phrase!: MnemonicPhrase
 
     open(): void {
@@ -33,6 +33,7 @@ export default class MnemonicPhraseModal extends Vue {
         modal.open()
     }
 }
+export default MnemonicPhraseModal
 </script>
 <style scoped lang="scss">
 @use '../../main';

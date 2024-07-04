@@ -49,7 +49,7 @@ const designWidth = 525 - 60
         Modal,
     },
 })
-export default class PaperWallet extends Vue {
+class PaperWallet extends Vue {
     $refs!: {
         modal: Modal
         pdf: HTMLCanvasElement
@@ -233,6 +233,7 @@ export default class PaperWallet extends Vue {
         })
     }
 }
+export default PaperWallet
 </script>
 <style scoped>
 .qr_body {

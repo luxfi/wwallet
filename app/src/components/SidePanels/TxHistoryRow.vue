@@ -52,7 +52,7 @@ import { WalletType } from '@/js/wallets/types'
         TxHistoryNftFamilyGroup,
     },
 })
-export default class TxHistoryRow extends Vue {
+class TxHistoryRow extends Vue {
     @Prop() transaction!: XChainTransaction | PChainTransaction
 
     get explorerUrl(): string | null {
@@ -137,6 +137,7 @@ export default class TxHistoryRow extends Vue {
         }
     }
 }
+export default TxHistoryRow
 </script>
 <style scoped lang="scss">
 @use '../../main';

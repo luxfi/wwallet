@@ -24,7 +24,7 @@ import NftPayloadView from '@/components/misc/NftPayloadView/NftPayloadView.vue'
         NftPayloadView,
     },
 })
-export default class NftFamilyCardsPreview extends Vue {
+class NftFamilyCardsPreview extends Vue {
     @Prop() utxos!: UTXO[]
     @Prop({ default: false }) spread!: boolean
     @Prop() max!: number
@@ -45,6 +45,7 @@ export default class NftFamilyCardsPreview extends Vue {
         })
     }
 }
+export default NftFamilyCardsPreview
 </script>
 <style scoped lang="scss">
 .previews {

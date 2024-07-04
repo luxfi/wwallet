@@ -14,7 +14,7 @@ import { JsonFormType } from '@/components/wallet/studio/mint/types'
 // const JSONEditor = require('jsoneditor')
 
 @Component
-export default class JsonForm extends Vue {
+class JsonForm extends Vue {
     data = '{\n\n}'
 
     get isValid(): boolean {
@@ -52,6 +52,7 @@ export default class JsonForm extends Vue {
         this.$emit('onInput', msg)
     }
 }
+export default JsonForm
 </script>
 <style scoped lang="scss">
 textarea,

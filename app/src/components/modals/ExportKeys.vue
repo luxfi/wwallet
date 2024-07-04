@@ -26,7 +26,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
         ExportWallet,
     },
 })
-export default class ExportKeys extends Vue {
+class ExportKeys extends Vue {
     isActive: boolean = false
     title: string = 'Export Keys'
 
@@ -55,6 +55,7 @@ export default class ExportKeys extends Vue {
         this.close()
     }
 }
+export default ExportKeys
 </script>
 
 <style scoped lang="scss">

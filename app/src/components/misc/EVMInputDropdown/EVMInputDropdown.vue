@@ -63,7 +63,7 @@ import ERC721Token from '@/js/ERC721Token'
         BigNumInput,
     },
 })
-export default class EVMInputDropdown extends Vue {
+class EVMInputDropdown extends Vue {
     token: Erc20Token | 'native' = 'native'
     isCollectible = false
     collectible: iErc721SelectInput | null = null
@@ -199,6 +199,7 @@ export default class EVMInputDropdown extends Vue {
         this.$emit('amountChange', amt)
     }
 }
+export default EVMInputDropdown
 </script>
 <style scoped lang="scss">
 .evm_input_dropdown {

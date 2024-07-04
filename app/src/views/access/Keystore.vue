@@ -46,7 +46,7 @@ import { AllKeyFileTypes } from '@/js/IKeystore'
         FileInput,
     },
 })
-export default class Keystore extends Vue {
+class Keystore extends Vue {
     pass: string = ''
     file: File | null = null
     fileText: string | null = null
@@ -127,6 +127,7 @@ export default class Keystore extends Vue {
         return true
     }
 }
+export default Keystore
 </script>
 <style scoped lang="scss">
 @use '../../main';

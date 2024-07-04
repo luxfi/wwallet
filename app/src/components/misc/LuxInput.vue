@@ -42,7 +42,7 @@ import { priceDict } from '../../store/types'
         BigNumInput,
     },
 })
-export default class LuxInput extends Vue {
+class LuxInput extends Vue {
     @Model('change', { type: Object }) readonly amount!: BN
 
     @Prop({
@@ -74,6 +74,7 @@ export default class LuxInput extends Vue {
         return this.$store.state.prices
     }
 }
+export default LuxInput
 </script>
 <style scoped lang="scss">
 @use '../../main';

@@ -45,7 +45,7 @@ import Big from 'big.js'
         Hexagon,
     },
 })
-export default class FungibleRow extends Vue {
+class FungibleRow extends Vue {
     @Prop() asset!: LuxAsset
 
     get iconUrl(): string | null {
@@ -133,6 +133,7 @@ export default class FungibleRow extends Vue {
         return balRnd
     }
 }
+export default FungibleRow
 </script>
 <style scoped lang="scss">
 @use '../../../main';

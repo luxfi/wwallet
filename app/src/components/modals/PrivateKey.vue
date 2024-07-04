@@ -20,7 +20,7 @@ import Modal from '@/components/modals/Modal.vue'
         Modal,
     },
 })
-export default class PrivateKey extends Vue {
+class PrivateKey extends Vue {
     @Prop({ default: '' }) privateKey!: string
 
     open(): void {
@@ -28,6 +28,7 @@ export default class PrivateKey extends Vue {
         modal.open()
     }
 }
+export default PrivateKey
 </script>
 <style scoped lang="scss">
 .singleton_modal_body {

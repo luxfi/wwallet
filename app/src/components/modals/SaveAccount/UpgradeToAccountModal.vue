@@ -44,7 +44,7 @@ import { SaveAccountInput } from '@/store/types'
 @Component({
     components: { Modal },
 })
-export default class UpgradeToAccountModal extends Vue {
+class UpgradeToAccountModal extends Vue {
     password: string = ''
     isLoading: boolean = false
     err: string = ''
@@ -130,6 +130,7 @@ export default class UpgradeToAccountModal extends Vue {
         this.$refs.modal.open()
     }
 }
+export default UpgradeToAccountModal
 </script>
 <style scoped lang="scss">
 @use '../../../main';

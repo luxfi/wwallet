@@ -56,7 +56,7 @@ import { UTXO } from 'luxnet/dist/apis/xvm'
 @Component({
     components: { NFTViewModal, NftPayloadView, Tooltip },
 })
-export default class NftCard extends Vue {
+class NftCard extends Vue {
     @Prop() payload!: PayloadBase
     @Prop({ default: 1 }) quantity!: number
     @Prop() groupID!: number
@@ -114,6 +114,7 @@ export default class NftCard extends Vue {
         }
     }
 }
+export default NftCard
 </script>
 <style scoped lang="scss">
 @use 'nft_card';

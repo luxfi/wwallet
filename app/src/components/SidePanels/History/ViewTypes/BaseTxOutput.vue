@@ -19,7 +19,7 @@ import { bnToBig } from '@/helpers/helper'
 import { BN } from 'luxnet'
 
 @Component
-export default class BaseTxOutput extends Vue {
+class BaseTxOutput extends Vue {
     @Prop() assetID!: string
     @Prop() summary!: BaseTxAssetSummary
 
@@ -58,6 +58,7 @@ export default class BaseTxOutput extends Vue {
         return big.toLocaleString()
     }
 }
+export default BaseTxOutput
 </script>
 <style scoped lang="scss">
 @use "../../../../main";

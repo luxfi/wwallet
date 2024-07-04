@@ -244,7 +244,7 @@ const DAY_MS = HOUR_MS * 24
         Expandable,
     },
 })
-export default class AddDelegator extends Vue {
+class AddDelegator extends Vue {
     search: string = ''
     selected: ValidatorListItem | null = null
     stakeAmt: BN = new BN(0)
@@ -644,6 +644,7 @@ export default class AddDelegator extends Vue {
         this.$emit('cancel')
     }
 }
+export default AddDelegator
 </script>
 <style scoped lang="scss">
 @use "../../../../main";
