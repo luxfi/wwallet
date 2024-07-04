@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import wasm from 'vite-plugin-wasm';
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
 
 const filename = fileURLToPath(import.meta.url);
 const pathSegments = path.dirname(filename);
@@ -15,9 +16,6 @@ export default defineConfig({
     wasm(),
     vueJsx(),
   ],
-  // optimizeDeps: {
-  //   disabled: true,
-  // },
   resolve: {
     alias: {
       '@': path.resolve(pathSegments, './src'),
@@ -32,12 +30,18 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      target: 'esnext'
+      target: 'esnext',
+      // plugins:[
+      //   esbuildCommonjs([''])
+      // ]
     }
   },
   esbuild: {
     supported: {
       'top-level-await': true
+    },
+    define: {
+      global: 'globalThis'
     },
   },
   build: {
@@ -52,6 +56,16 @@ export default defineConfig({
         },
       },
     },
+  },
+  define: {
+    // By default, Vite doesn't include shims for NodeJS/
+    // necessary for segment analytics lib to work
+    "global": {},
+    // "process.env": {},
+    "Buffer": Buffer,
+    "process.env": process.env, 
+    //"process.env.version" : '3.5',
+    "process.browser": true,
   },
   // server: {
   //   proxy: {
