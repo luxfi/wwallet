@@ -21,12 +21,12 @@ jobs:
               with:
                   cache: pnpm
                   node-version: ${{ matrix.node-version }}
-            - name: Verify directory
-              run: |
-                  cd  /app
-                  echo "Current directory: $(pwd)"
-                  ls -la
+            # - name: Verify directory
+            #   run: |
+            #       cd  /app
+            #       echo "Current directory: $(pwd)"
+            #       ls -la
             - run: pnpm install
-              working-directory: /app
+              # working-directory: /app
             - run: pnpm build
-              working-directory: /app
+              # working-directory: /app
