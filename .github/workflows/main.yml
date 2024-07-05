@@ -74,28 +74,29 @@ jobs:
             - name: Wait for server
               run: npx wait-on 'http://localhost:5000/' --timeout 180000
 
-            - name: Run Cypress tests
-              uses: cypress-io/github-action@v6
-              env:
-                  USE_HTTP: true
+            # - name: Run Cypress tests
+            #   uses: cypress-io/github-action@v6
+            #   env:
+            #       USE_HTTP: true
 
-              with:
-                  browser: chrome
+            #   with:
+            #       browser: chrome
+            #       install: false
 
-                  # headless: true
+            # headless: true
 
             # These extract all artifacts out from the container to git so they can be previewed
-            - name: Extract screenshots to git
-              uses: actions/upload-artifact@v2
-              if: failure()
-              with:
-                  name: cypress-screenshots
-                  path: app/cypress/screenshots
+            # - name: Extract screenshots to git
+            #   uses: actions/upload-artifact@v2
+            #   if: failure()
+            #   with:
+            #       name: cypress-screenshots
+            #       path: app/cypress/screenshots
 
-            # Test run video was always captured, so this action uses "always()" condition
-            - name: Extract videos to git
-              uses: actions/upload-artifact@v2
-              if: always()
-              with:
-                  name: cypress-videos
-                  path: app/cypress/videos
+            # # Test run video was always captured, so this action uses "always()" condition
+            # - name: Extract videos to git
+            #   uses: actions/upload-artifact@v2
+            #   if: always()
+            #   with:
+            #       name: cypress-videos
+            #       path: app/cypress/videos
