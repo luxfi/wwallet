@@ -7,7 +7,7 @@ jobs:
 
         strategy:
             matrix:
-                # The node version, you can put one or many versions in here to test with
+                # 可以在此测试一个或多个 Node 版本
                 node: [18.20.3]
 
         steps:
@@ -19,9 +19,12 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # 重置 npm 缓存所有者以避免权限问题
+            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
             - name: Fix npm cache permissions
-              run: sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+              run: |
+                if [ -d "/Users/runner/.npm" ]; then
+                  sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+                fi
 
             # 缓存 pnpm store
             - name: Cache pnpm store
