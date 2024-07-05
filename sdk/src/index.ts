@@ -1,4 +1,3 @@
-import 'tsconfig-paths/register';
 export * from './Network';
 export * from './Asset';
 export * from './common';
