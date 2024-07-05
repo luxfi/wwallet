@@ -27,6 +27,6 @@ jobs:
                   echo "Current directory: $(pwd)"
                   ls -la
             - run: pnpm install --frozen-lockfile
-              working-directory: /home/runner/work/lux_wallet/lux_wallet/app
+              working-directory: /home/runner/work/wallet/wallet/app
             - run: pnpm build
-              working-directory: /home/runner/work/lux_wallet/lux_wallet/app
+              working-directory: /home/runner/work/wallet/wallet/app
