@@ -19,13 +19,6 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
-            - name: Fix npm cache permissions
-              run: |
-                if [ -d "/Users/runner/.npm" ]; then
-                  sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
-                fi
-
             # 缓存 pnpm store
             - name: Cache pnpm store
               uses: actions/cache@v2
@@ -62,13 +55,19 @@ jobs:
             #   run: pnpm test
             #   working-directory: ./app
 
+            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
+            - name: Fix npm cache permissions
+              run: |
+                  if [ -d "/Users/runner/.npm" ]; then
+                    sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+                  fi
+
             - name: Cypress run
               uses: cypress-io/github-action@v6
               env:
                   USE_HTTP: true
               with:
-         
-                  start: pnpm serve --mode e2e --prefix  
+                  start: pnpm serve --mode e2e --prefix
                   wait-on: 'http://localhost:5000/'
                   # wait for 3 minutes for the server to respond
                   wait-on-timeout: 180
