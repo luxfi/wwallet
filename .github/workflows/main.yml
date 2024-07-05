@@ -79,9 +79,8 @@ jobs:
               env:
                   USE_HTTP: true
               with:
-                  working-directory: ./app
                   browser: chrome
-                  headless: true
+                  # headless: true
 
             # These extract all artifacts out from the container to git so they can be previewed
             - name: Extract screenshots to git
