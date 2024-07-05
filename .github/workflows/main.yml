@@ -48,13 +48,13 @@ jobs:
                   echo "Current directory: $(pwd)"
                   ls -la
 
-            # - name: Linting
-            #   run: pnpm run lint
-            #   working-directory: ./app
+            - name: Linting
+              run: pnpm run lint
+              working-directory: ./app
 
-            # - name: Jest run
-            #   run: pnpm test
-            #   working-directory: ./app
+            - name: Jest run
+              run: pnpm test
+              working-directory: ./app
 
             - name: Cypress run
               uses: cypress-io/github-action@v2
