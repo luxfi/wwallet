@@ -31,12 +31,19 @@ jobs:
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
 
+            - name: Verify directory
+              run: |
+                  cd /home/runner/work/wallet/wallet/app
+                  echo "Current directory: $(pwd)"
+                  ls -la
             - name: linting
               run: pnpm run lint
+              working-directory: /home/runner/work/wallet/wallet/app
 
             - name: jest-run
               run: pnpm test
-
+              working-directory: /home/runner/work/wallet/wallet/app
+              
             - name: cypress-run
               uses: cypress-io/github-action@v2
               env:
