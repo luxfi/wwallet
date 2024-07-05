@@ -23,7 +23,7 @@ jobs:
               uses: actions/cache@v2
               with:
                   path: '**/node_modules'
-                  key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm.lock') }}
+                  key: ${{ runner.os }}-modules-${{ hashFiles('app/pnpm-lock.yaml') }}
 
             - run: sudo npm install -g pnpm
 
