@@ -65,7 +65,9 @@ jobs:
             - name: Start server
               run: |
                   cd app
-                  pnpm serve --mode e2e &
+                  pnpm serve --mode e2e 
+                  # 等待 10 分钟，以便服务器启动
+                  sleep 300
               env:
                   USE_HTTP: true
 
