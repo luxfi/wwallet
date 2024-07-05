@@ -30,12 +30,14 @@ jobs:
             - run: pnpm install --fetch-timeout  1000000
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+              working-directory: ./app
 
             - name: Verify directory
               run: |
                   cd app
                   echo "Current directory: $(pwd)"
                   ls -la
+
             # - name: linting
             #   run: pnpm run lint
             #   working-directory: ./app
@@ -43,13 +45,13 @@ jobs:
             # - name: jest-run
             #   run: pnpm test
             #   working-directory: ./app
-              
+
             - name: cypress-run
               uses: cypress-io/github-action@v2
               env:
                   USE_HTTP: true
               with:
-                  start: pnpm serve --mode e2e
+                  start: pnpm serve --mode e2e --prefix ./app
                   wait-on: 'http://localhost:5000/'
                   # wait for 3 minutes for the server to respond
                   wait-on-timeout: 180
@@ -62,11 +64,12 @@ jobs:
               if: failure()
               with:
                   name: cypress-screenshots
-                  path: cypress/screenshots
+                  path: app/cypress/screenshots
+
             # Test run video was always captured, so this action uses "always()" condition
             - name: extract videos to git
               uses: actions/upload-artifact@v2
               if: always()
               with:
                   name: cypress-videos
-                  path: cypress/videos
+                  path: app/cypress/videos
