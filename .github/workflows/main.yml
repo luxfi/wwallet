@@ -2,83 +2,85 @@ name: Main Commit Checks
 on: [push]
 
 jobs:
-    build:
-        runs-on: macos-latest
+  build:
+    runs-on: macos-latest
 
-        strategy:
-            matrix:
-                # The node version, you can put一个或多个版本在此测试
-                node: [18.20.3]
+    strategy:
+      matrix:
+        # 可以在此测试一个或多个 Node 版本
+        node: [18.20.3]
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-            - name: Use Node.js ${{ matrix.node }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node }}
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
 
-            # 缓存 node 模块
-            - name: Cache pnpm store
-              uses: actions/cache@v2
-              with:
-                  path: ~/.pnpm-store
-                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
+      # 缓存 pnpm store
+      - name: Cache pnpm store
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
 
-            - name: Cache node_modules
-              uses: actions/cache@v2
-              with:
-                  path: app/node_modules
-                  key: ${{ runner.os }}-node_modules-${{ hashFiles('app/pnpm-lock.yaml') }}
-                  restore-keys: |
-                    ${{ runner.os }}-node_modules-
+      # 缓存 node_modules
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: app/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('app/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
 
-            - run: sudo npm install -g pnpm
+      - run: sudo npm install -g pnpm
 
-            - name: Install dependencies
-              run: pnpm install --fetch-timeout 1000000
-              env:
-                  CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
-              working-directory: ./app
+      - name: Install dependencies
+        run: pnpm install --fetch-timeout 1000000
+        env:
+          CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+        working-directory: ./app
 
-            - name: Verify directory
-              run: |
-                  cd app
-                  echo "Current directory: $(pwd)"
-                  ls -la
+      - name: Verify directory
+        run: |
+          cd app
+          echo "Current directory: $(pwd)"
+          ls -la
 
-            # - name: Linting
-            #   run: pnpm run lint
-            #   working-directory: ./app
+      # - name: Linting
+      #   run: pnpm run lint
+      #   working-directory: ./app
 
-            # - name: Jest run
-            #   run: pnpm test
-            #   working-directory: ./app
+      # - name: Jest run
+      #   run: pnpm test
+      #   working-directory: ./app
 
-            - name: Cypress run
-              uses: cypress-io/github-action@v2
-              with:
-                  working-directory: ./app
-                  start: pnpm serve --mode e2e --prefix 
-                  wait-on: 'http://localhost:5000/'
-                  wait-on-timeout: 180
-                  browser: chrome
-                  headless: true
-              env:
-                  USE_HTTP: true
-            
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./app
+          command: pnpm exec cypress run
+          start: pnpm serve --mode e2e --prefix  
+          wait-on: 'http://localhost:5000/'
+          wait-on-timeout: 180
+          browser: chrome
+          headless: true
+        env:
+          USE_HTTP: true
+    
 
-            - name: Extract screenshots to git
-              uses: actions/upload-artifact@v2
-              if: failure()
-              with:
-                  name: cypress-screenshots
-                  path: app/cypress/screenshots
+      - name: Extract screenshots to git
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: app/cypress/screenshots
 
-            - name: Extract videos to git
-              uses: actions/upload-artifact@v2
-              if: always()
-              with:
-                  name: cypress-videos
-                  path: app/cypress/videos
+      - name: Extract videos to git
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: app/cypress/videos
