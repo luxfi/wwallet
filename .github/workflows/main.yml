@@ -65,8 +65,8 @@ jobs:
             - name: Start server
               run: |
                   cd app
-                  pnpm serve --mode e2e   
-                  sleep 150
+                  pnpm serve --mode e2e
+
               env:
                   USE_HTTP: true
 
