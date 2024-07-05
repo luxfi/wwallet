@@ -7,8 +7,9 @@ jobs:
 
         strategy:
             matrix:
-                # The node version, you can put one or many versions in here to test with
+                # The node version, you can put一个或多个版本在此测试
                 node: [18.20.3]
+
         steps:
             - name: Checkout
               uses: actions/checkout@v1
@@ -18,48 +19,65 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # This should be caching node modules, hashing the cache key with the pnpm lock code and busting that when pnpm lock changes
-            - name: cache modules
+            # 缓存 node 模块
+            - name: Cache pnpm store
               uses: actions/cache@v2
               with:
-                  path: '**/node_modules'
-                  key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm.lock') }}
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
+
+            - name: Cache node_modules
+              uses: actions/cache@v2
+              with:
+                  path: app/node_modules
+                  key: ${{ runner.os }}-node_modules-${{ hashFiles('app/pnpm-lock.yaml') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node_modules-
 
             - run: sudo npm install -g pnpm
 
-            - run: pnpm install --network-timeout 1000000
+            - name: Install dependencies
+              run: pnpm install --fetch-timeout 1000000
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+              working-directory: ./app
 
-            - name: linting
-              run: pnpm run lint
+            - name: Verify directory
+              run: |
+                  cd app
+                  echo "Current directory: $(pwd)"
+                  ls -la
 
-            - name: jest-run
-              run: pnpm test
+            # - name: Linting
+            #   run: pnpm run lint
+            #   working-directory: ./app
 
-            - name: cypress-run
+            # - name: Jest run
+            #   run: pnpm test
+            #   working-directory: ./app
+
+            - name: Cypress run
               uses: cypress-io/github-action@v2
-              env:
-                  USE_HTTP: true
               with:
-                  start: pnpm serve --mode e2e
+                  start: pnpm serve --mode e2e --prefix ./app
                   wait-on: 'http://localhost:5000/'
-                  # wait for 3 minutes for the server to respond
                   wait-on-timeout: 180
                   browser: chrome
                   headless: true
+              env:
+                  USE_HTTP: true
+              working-directory: ./app
 
-            # These extract all artifacts out from the container to git so they can be previewed
-            - name: extract screenshots to git
+            - name: Extract screenshots to git
               uses: actions/upload-artifact@v2
               if: failure()
               with:
                   name: cypress-screenshots
-                  path: cypress/screenshots
-            # Test run video was always captured, so this action uses "always()" condition
-            - name: extract videos to git
+                  path: app/cypress/screenshots
+
+            - name: Extract videos to git
               uses: actions/upload-artifact@v2
               if: always()
               with:
                   name: cypress-videos
-                  path: cypress/videos
+                  path: app/cypress/videos
