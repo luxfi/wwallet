@@ -47,7 +47,7 @@ jobs:
             #   working-directory: ./app
 
             - name: cypress-run
-              uses: cypress-io/github-action@v2
+              uses: cypress-io/github-action@v6
               env:
                   USE_HTTP: true
               with:
