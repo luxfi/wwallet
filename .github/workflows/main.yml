@@ -85,7 +85,7 @@ jobs:
 
               with:
                   browser: chrome
-
+                  working-directory: ./app
                   # headless: true
 
             # These extract all artifacts out from the container to git so they can be previewed
