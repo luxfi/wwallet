@@ -67,8 +67,8 @@ jobs:
               env:
                   USE_HTTP: true
               with:
-                  working-directory: ./app
-                  start: pnpm serve --mode e2e --prefix ./app
+         
+                  start: pnpm serve --mode e2e --prefix  
                   wait-on: 'http://localhost:5000/'
                   # wait for 3 minutes for the server to respond
                   wait-on-timeout: 180
