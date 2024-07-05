@@ -19,13 +19,6 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
-            - name: Fix npm cache permissions
-              run: |
-                  if [ -d "/Users/runner/.npm" ]; then
-                    sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
-                  fi
-
             # 缓存 pnpm store
             - name: Cache pnpm store
               uses: actions/cache@v2
@@ -61,6 +54,13 @@ jobs:
             # - name: jest-run
             #   run: pnpm test
             #   working-directory: ./app
+
+            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
+            - name: Fix npm cache permissions
+              run: |
+                  if [ -d "/Users/runner/.npm" ]; then
+                    sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+                  fi
 
             - name: Start server
               run: |
