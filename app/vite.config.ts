@@ -6,7 +6,8 @@ import path from 'path';
 import wasm from 'vite-plugin-wasm';
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
-
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import commonjs from 'vite-plugin-commonjs'
 const filename = fileURLToPath(import.meta.url);
 const pathSegments = path.dirname(filename);
 
@@ -15,6 +16,8 @@ export default defineConfig({
     vue(),
     wasm(),
     vueJsx(),
+    nodePolyfills(),
+    commonjs ()
   ],
   resolve: {
     alias: {
@@ -56,6 +59,7 @@ export default defineConfig({
         },
       },
     },
+    commonjsOptions: { transformMixedEsModules: true } // enable require
   },
   define: {
     // By default, Vite doesn't include shims for NodeJS/
