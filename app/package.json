@@ -70,7 +70,7 @@
         "@luxfi/cloud": "0.1.4",
         "@luxfi/hw-app-lux": "0.2.3",
         "@luxfi/hw-app-luxz": "0.6.11",
-        "@luxfi/wallet-sdk": "^0.20.27",
+        "@luxfi/wallet-sdk": "^0.20.29",
         "@metamask/abi-utils": "^2.0.2",
         "@metamask/eth-sig-util": "7.0.2",
         "@metamask/superstruct": "^3.0.0",
