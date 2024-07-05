@@ -66,7 +66,7 @@ jobs:
               run: |
                   cd app
                   pnpm serve --mode e2e  &
-                  sleep 100
+                  sleep 80
                   curl -I http://localhost:5000  # 检查服务器是否已经启动
               env:
                   USE_HTTP: true

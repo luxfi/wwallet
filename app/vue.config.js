@@ -107,7 +107,7 @@ module.exports = {
             },
         },
         server: {
-            type: 'https',
+            type: 'http',
         },
         port: 5000,
     },
