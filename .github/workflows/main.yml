@@ -78,8 +78,12 @@ jobs:
               uses: cypress-io/github-action@v6
               env:
                   USE_HTTP: true
+
               with:
                   browser: chrome
+                  start: pnpm serve --mode e2e --prefix ./app
+                  wait-on: 'http://localhost:5000/'
+                  wait-on-timeout: 300000
                   # headless: true
 
             # These extract all artifacts out from the container to git so they can be previewed
