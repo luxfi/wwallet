@@ -18,16 +18,17 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # This should be caching node modules, hashing the cache key with the pnpm lock code and busting that when pnpm lock changes
+            # Cache node modules
             - name: cache modules
               uses: actions/cache@v2
               with:
-                  path: '**/node_modules'
+                  path: app/node_modules
                   key: ${{ runner.os }}-modules-${{ hashFiles('app/pnpm-lock.yaml') }}
 
             - run: sudo npm install -g pnpm
 
-            - run: pnpm install --fetch-timeout  1000000
+            - name: Install dependencies
+              run: pnpm install --fetch-timeout  1000000
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
               working-directory: ./app
@@ -38,36 +39,36 @@ jobs:
                   echo "Current directory: $(pwd)"
                   ls -la
 
-            # - name: linting
+            # - name: Linting
             #   run: pnpm run lint
             #   working-directory: ./app
 
-            # - name: jest-run
+            # - name: Jest run
             #   run: pnpm test
             #   working-directory: ./app
 
-            - name: cypress-run
+            - name: Cypress run
               uses: cypress-io/github-action@v2
-              env:
-                  USE_HTTP: true
               with:
-                  start: pnpm serve --mode e2e --prefix ./app
+                  working-directory: ./app
+                  start: pnpm serve --mode e2e
                   wait-on: 'http://localhost:5000/'
-                  # wait for 3 minutes for the server to respond
                   wait-on-timeout: 180
                   browser: chrome
                   headless: true
+              env:
+                  USE_HTTP: true
 
-            # These extract all artifacts out from the container to git so they can be previewed
-            - name: extract screenshots to git
+            # Extract screenshots to git if tests fail
+            - name: Extract screenshots to git
               uses: actions/upload-artifact@v2
               if: failure()
               with:
                   name: cypress-screenshots
                   path: app/cypress/screenshots
 
-            # Test run video was always captured, so this action uses "always()" condition
-            - name: extract videos to git
+            # Always extract videos to git
+            - name: Extract videos to git
               uses: actions/upload-artifact@v2
               if: always()
               with:
