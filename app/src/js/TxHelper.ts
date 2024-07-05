@@ -26,6 +26,7 @@ import ERC721Token from '@/js/ERC721Token'
 import { Transaction } from '@ethereumjs/tx'
 import EthereumjsCommon from '@ethereumjs/common'
 import Erc20Token from '@/js/Erc20Token'
+import { BNLike } from 'ethereumjs-util'
 
 export async function buildUnsignedTransaction(
     orders: (ITransaction | XVMUTXO)[],
@@ -221,9 +222,10 @@ export async function buildEvmTransferNativeTx(
     gasPrice: BN,
     gasLimit: number
 ) {
-    const nonce = await web3.eth.getTransactionCount(from)
-    const chainId = await web3.eth.getChainId()
-    const networkId = await web3.eth.net.getId()
+    const nonceBigInt = await web3.eth.getTransactionCount(from)
+    const nonce = new BN(nonceBigInt.toString())
+    const chainId = Number(await web3.eth.getChainId())
+    const networkId = Number(await web3.eth.net.getId())
     const chainParams = {
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }
@@ -250,9 +252,10 @@ export async function buildEvmTransferErc20Tx(
     gasLimit: number,
     token: Erc20Token
 ) {
-    const nonce = await web3.eth.getTransactionCount(from)
-    const chainId = await web3.eth.getChainId()
-    const networkId = await web3.eth.net.getId()
+    const nonceBigInt = await web3.eth.getTransactionCount(from)
+    const nonce = new BN(nonceBigInt.toString())
+    const chainId = Number(await web3.eth.getChainId())
+    const networkId = Number(await web3.eth.net.getId())
     const chainParams = {
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }
@@ -281,9 +284,10 @@ export async function buildEvmTransferErc721Tx(
     token: ERC721Token,
     tokenId: string
 ) {
-    const nonce = await web3.eth.getTransactionCount(from)
-    const chainId = await web3.eth.getChainId()
-    const networkId = await web3.eth.net.getId()
+    const nonceBigInt = await web3.eth.getTransactionCount(from)
+    const nonce = new BN(nonceBigInt.toString())
+    const chainId = Number(await web3.eth.getChainId())
+    const networkId = Number(await web3.eth.net.getId())
     const chainParams = {
         common: EthereumjsCommon.forCustomChain('mainnet', { networkId, chainId }, 'istanbul'),
     }

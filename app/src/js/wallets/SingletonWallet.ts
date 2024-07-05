@@ -24,10 +24,7 @@ import { LuxWalletCore, UnsafeWallet } from './types'
 import { UTXO as PlatformUTXO } from 'luxnet/dist/apis/platformvm/utxos'
 import { privateToAddress } from 'ethereumjs-util'
 import { Tx as XVMTx, UnsignedTx as XVMUnsignedTx } from 'luxnet/dist/apis/xvm/tx'
-import {
-    Tx as PlatformTx,
-    UnsignedTx as PlatformUnsignedTx,
-} from 'luxnet/dist/apis/platformvm/tx'
+import { Tx as PlatformTx, UnsignedTx as PlatformUnsignedTx } from 'luxnet/dist/apis/platformvm/tx'
 import { Tx as EvmTx, UnsignedTx as EVMUnsignedTx } from 'luxnet/dist/apis/evm/tx'
 import Erc20Token from '@/js/Erc20Token'
 import { AbstractWallet } from '@/js/wallets/AbstractWallet'
@@ -269,7 +266,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
 
-    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number) {
+    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<number | any> {
         return await WalletHelper.sendEth(this, to, amount, gasPrice, gasLimit)
     }
 
@@ -283,7 +280,7 @@ class SingletonWallet extends AbstractWallet implements LuxWalletCore, UnsafeWal
         gasPrice: BN,
         gasLimit: number,
         token: Erc20Token
-    ): Promise<string> {
+    ): Promise<string | any> {
         return await WalletHelper.sendErc20(this, to, amount, gasPrice, gasLimit, token)
     }
 

@@ -452,7 +452,7 @@ export default class FormC extends Vue {
         }
     }
 
-    onSuccess(txId: string) {
+    onSuccess(txId: string | any) {
         this.isLoading = false
         this.isSuccess = true
         this.txHash = txId

@@ -34,9 +34,21 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 import Modal from './Modal.vue'
 import { web3 } from '@/evm'
+
 import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json'
 import Erc20Token from '@/js/Erc20Token'
 import { TokenListToken } from '@/store/modules/assets/types'
+
+interface ERC20Methods {
+    name(): { call(): Promise<string> }
+    symbol(): { call(): Promise<string> }
+    decimals(): { call(): Promise<string> }
+    // 其他 ERC20 方法
+}
+
+interface ERC20Contract {
+    methods: ERC20Methods
+}
 
 @Component({
     components: {
@@ -67,13 +79,15 @@ export default class AddERC20TokenModal extends Vue {
         }
         try {
             //@ts-ignore
-            var tokenInst = new web3.eth.Contract(ERC20Abi.abi, val)
+            var tokenInst = new web3.eth.Contract(ERC20Abi.abi, val) as ERC20Contract
             let name = await tokenInst.methods.name().call()
             let symbol = await tokenInst.methods.symbol().call()
             let decimals = await tokenInst.methods.decimals().call()
-
+            //@ts-ignore
             this.symbol = symbol
+            //@ts-ignore
             this.denomination = decimals
+            //@ts-ignore
             this.name = name
 
             this.canAdd = true

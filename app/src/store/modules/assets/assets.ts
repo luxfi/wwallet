@@ -113,7 +113,7 @@ const assets_module: Module<AssetsState, RootState> = {
     actions: {
         async onNetworkChange({ state }, network: LuxNetwork) {
             const id = await web3.eth.getChainId()
-            state.evmChainId = id
+            state.evmChainId = Number(id)
         },
         // Called on a logout event
         onLogout({ state, commit }) {

@@ -39,7 +39,9 @@ import {
     parseStakingTxs,
     HistoryItemType,
     isHistoryStakingTx,
-}  from '@luxfi/wallet-sdk'
+    HdScanner,
+    HDWalletAbstract,
+} from '@luxfi/wallet-sdk'
 import { UTXOSet as XVMUTXOSet } from 'luxnet/dist/apis/xvm'
 import { UTXOSet as PlatformUTXOSet, TransferableOutput } from 'luxnet/dist/apis/platformvm'
 import Balances from '@/views/wallet_readonly/Balances.vue'
@@ -66,7 +68,7 @@ export default class WalletReadonly extends Vue {
     utxosP: null | PlatformUTXOSet = null
     stakeOuts: null | TransferableOutput[] = null
 
-    get wallet(): PublicMnemonicWallet {
+    get wallet(): HDWalletAbstract {
         //@ts-ignore
         return this.$route.params.wallet
     }

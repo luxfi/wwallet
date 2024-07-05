@@ -17,7 +17,7 @@ export async function listChainsForAddresses(addrs: string[]) {
     const network = isMainnetNetworkID(netID) ? Networks.MAINNET : Networks.TESTNET
 
     const promises = addrParts.map((addresses) => {
-        return Cloud.primaryNetwork.getChainAddresses({
+        return Cloud.primaryNetwork.getChainIdsForAddresses({
             addresses: addresses.join(','),
             network,
         })

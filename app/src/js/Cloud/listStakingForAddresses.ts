@@ -4,7 +4,8 @@ import { isTestnetNetworkID } from '@/store/modules/network/isTestnetNetworkID'
 import { ListStakingParams } from '@/js/Cloud/models'
 import { splitToParts } from '@luxfi/wallet-sdk'
 import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk'
-import { Network, PChainId, PChainTransaction, SortOrder, Cloud } from '@luxfi/cloud'
+import { Network, PChainId, PChainTransaction, SortOrder } from '@luxfi/cloud'
+import Cloud from '@/js/Cloud/Cloud'
 
 const NetworkValues = {
     MAINNET: 'mainnet' as Network,
@@ -34,6 +35,7 @@ export async function listStakingForAddresses(addrs: string[]) {
 
     async function fetchAll(config: ListStakingParams): Promise<PChainTransaction[]> {
         // const res = await CloudService.listStaking(config)
+
         const res = await Cloud.primaryNetworkTransactions.listActivePrimaryNetworkStakingTransactions(
             {
                 ...config,

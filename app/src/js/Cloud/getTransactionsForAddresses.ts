@@ -4,7 +4,7 @@ import { splitToParts } from '@luxfi/wallet-sdk'
 import { filterDuplicateCloudTxs } from '@luxfi/wallet-sdk/dist/Explorer'
 
 import { sortCloudTxs } from '@luxfi/wallet-sdk'
-import { Cloud } from '@luxfi/cloud'
+import Cloud from '@/js/Cloud/Cloud'
 
 /**
  *
@@ -19,7 +19,7 @@ export async function getTransactionsForAddresses(config: GetTransactionsParams,
         config: GetTransactionsParams,
         currentCount = 0
     ): Promise<TransactionType[]> {
-        const res = await Cloud.primaryNetwork.listLatestPrimaryNetworkTransactions({
+        const res = await Cloud.primaryNetworkTransactions.listLatestPrimaryNetworkTransactions({
             ...config,
             addresses: config.addresses.join(','),
         })

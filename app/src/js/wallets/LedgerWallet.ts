@@ -16,7 +16,7 @@ import { ava, bintools } from '@/LUX'
 import bippath from 'bip32-path'
 import createHash from 'create-hash'
 import store from '@/store'
-import { importPublic, publicToAddress, bnToRlp, rlp } from 'ethereumjs-util'
+import { importPublic, publicToAddress, bnToRlp, rlp, bnToUnpaddedBuffer } from 'ethereumjs-util'
 import { UTXO as XVMUTXO } from 'luxnet/dist/apis/xvm/utxos'
 import { LuxWalletCore } from '@/js/wallets/types'
 import { ITransaction } from '@/components/wallet/transfer/types'
@@ -809,13 +809,14 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
 
     async signEvm(tx: Transaction) {
         const rawUnsignedTx = rlp.encode([
-            bnToRlp(tx.nonce),
-            bnToRlp(tx.gasPrice),
-            bnToRlp(tx.gasLimit),
+            bnToUnpaddedBuffer(tx.nonce),
+            bnToUnpaddedBuffer(tx.gasPrice),
+            bnToUnpaddedBuffer(tx.gasLimit),
             tx.to !== undefined ? tx.to.buf : Buffer.from([]),
-            bnToRlp(tx.value),
+            bnToUnpaddedBuffer(tx.value),
             tx.data,
-            bnToRlp(new BN(tx.getChainId())),
+            //@ts-ignore
+            bnToUnpaddedBuffer(new BN(tx.getChainId())),
             Buffer.from([]),
             Buffer.from([]),
         ])
@@ -841,8 +842,8 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
                 s: new BN(signature.s, 16),
             }
 
-            const chainId = await web3.eth.getChainId()
-            const networkId = await web3.eth.net.getId()
+            const chainId = Number(await web3.eth.getChainId())
+            const networkId = Number(await web3.eth.net.getId())
             const chainParams = {
                 common: EthereumjsCommon.forCustomChain(
                     'mainnet',
@@ -959,7 +960,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         return await WalletHelper.mintNft(this, mintUtxo, payload, quantity)
     }
 
-    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number) {
+    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<number | any> {
         return await WalletHelper.sendEth(this, to, amount, gasPrice, gasLimit)
     }
 
@@ -988,7 +989,7 @@ class LedgerWallet extends AbstractHdWallet implements LuxWalletCore {
         gasPrice: BN,
         gasLimit: number,
         token: Erc20Token
-    ): Promise<string> {
+    ): Promise<string | any> {
         // throw 'Not Implemented'
         return await WalletHelper.sendErc20(this, to, amount, gasPrice, gasLimit, token)
     }

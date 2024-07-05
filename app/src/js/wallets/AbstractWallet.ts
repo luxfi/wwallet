@@ -29,6 +29,7 @@ import { web3 } from '@/evm'
 import { UTXO as PlatformUTXO } from 'luxnet/dist/apis/platformvm/utxos'
 import {
     BlockchainId,
+    CreateEvmTransactionExportRequest,
     CreatePrimaryNetworkTransactionExportRequest,
     PrimaryNetworkOptions,
 } from '@luxfi/cloud'
@@ -114,10 +115,12 @@ abstract class AbstractWallet {
         let bal
         // Can't use cloud if not mainnet/testnet
         if (!isMainnet && !isTestnet) {
-            bal = new BN(await web3.eth.getBalance(this.getEvmAddress()))
+            const balance: any = await web3.eth.getBalance(this.getEvmAddress())
+
+            bal = new BN(balance)
         } else {
             const chainId = isMainnet ? '43114' : '43113'
-            const res = await cloud.evm.getNativeBalance({
+            const res = await cloud.evmBalances.getNativeBalance({
                 chainId: chainId,
                 address: '0x' + this.getEvmAddress(),
             })
@@ -469,20 +472,20 @@ abstract class AbstractWallet {
     async startTxExportJob(startDate: Date, endDate: Date, chains: BlockchainId[]) {
         const addresses = this.getHistoryAddresses()
         const stripped = addresses.map((addr) => addr.split('-')[1] || addr)
-
-        const res = await cloud.operations.postTransactionExportJob({
-            requestBody: {
-                type:
-                    CreatePrimaryNetworkTransactionExportRequest.type
-                        .TRANSACTION_EXPORT_PRIMARY_NETWORK,
-                startDate: startDate.toISOString().split('T')[0],
-                endDate: endDate.toISOString().split('T')[0],
-                options: {
-                    // X/P/C and EVM addresses
-                    addresses: [...stripped, this.getEvmChecksumAddress()],
-                    includeChains: chains,
-                },
+        const body: CreatePrimaryNetworkTransactionExportRequest = {
+            type: 'TRANSACTION_EXPORT_PRIMARY_NETWORK',
+            startDate: startDate.toISOString().split('T')[0],
+            endDate: endDate.toISOString().split('T')[0],
+            firstDate: startDate.toISOString().split('T')[0],
+            lastDate: endDate.toISOString().split('T')[0],
+            options: {
+                // X/P/C and EVM addresses
+                addresses: [...stripped, this.getEvmChecksumAddress()],
+                includeChains: chains,
             },
+        }
+        const res = await cloud.operations.postTransactionExportJob({
+            requestBody: body,
         })
         return res
     }

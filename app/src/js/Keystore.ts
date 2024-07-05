@@ -58,7 +58,7 @@ async function readV2(data: KeyFileV2, pass: string) {
     const version: string = data.version
     cryptoHelpers.keygenIterations = ITERATIONS_V2
 
-    const salt: Buffer = bintools.cb58Decode(data.salt)
+    const salt: Buffer = (bintools.cb58Decode(data.salt) as unknown) as Buffer
     const pass_hash: string = data.pass_hash
 
     const checkHash: Buffer = await cryptoHelpers._pwcleaner(pass, salt)
@@ -74,8 +74,8 @@ async function readV2(data: KeyFileV2, pass: string) {
     for (let i: number = 0; i < keys.length; i++) {
         const key_data: KeyFileKeyV2 = keys[i]
 
-        const key: Buffer = bintools.cb58Decode(key_data.key)
-        const nonce: Buffer = bintools.cb58Decode(key_data.iv)
+        const key: Buffer = (bintools.cb58Decode(key_data.key) as unknown) as Buffer
+        const nonce: Buffer = (bintools.cb58Decode(key_data.iv) as unknown) as Buffer
 
         const key_decrypt: Buffer = await cryptoHelpers.decrypt(pass, key, salt, nonce)
         const key_string = bintools.cb58Encode(AjsBuffer.from(key_decrypt))
@@ -95,7 +95,7 @@ async function readV3(data: KeyFileV3, pass: string) {
     const version: string = data.version
     cryptoHelpers.keygenIterations = ITERATIONS_V3
 
-    const salt: Buffer = bintools.cb58Decode(data.salt)
+    const salt: Buffer = (bintools.cb58Decode(data.salt) as unknown) as Buffer
     const pass_hash: string = data.pass_hash
 
     const checkHash: IHash = await cryptoHelpers.pwhash(pass, salt)
@@ -111,8 +111,8 @@ async function readV3(data: KeyFileV3, pass: string) {
     for (let i: number = 0; i < keys.length; i++) {
         const key_data: KeyFileKeyV3 = keys[i]
 
-        const key: Buffer = bintools.cb58Decode(key_data.key)
-        const nonce: Buffer = bintools.cb58Decode(key_data.iv)
+        const key: Buffer = (bintools.cb58Decode(key_data.key) as unknown) as Buffer
+        const nonce: Buffer = (bintools.cb58Decode(key_data.iv) as unknown) as Buffer
 
         const key_decrypt: Buffer = await cryptoHelpers.decrypt(pass, key, salt, nonce)
         const key_string = bintools.cb58Encode(AjsBuffer.from(key_decrypt))
@@ -132,7 +132,7 @@ async function readV4(data: KeyFileV4, pass: string): Promise<KeyFileDecryptedV5
     const version: string = data.version
     cryptoHelpers.keygenIterations = ITERATIONS_V3
 
-    const salt: Buffer = bintools.cb58Decode(data.salt)
+    const salt: Buffer = (bintools.cb58Decode(data.salt) as unknown) as Buffer
     const pass_hash: string = data.pass_hash
 
     const checkHash: IHash = await cryptoHelpers.pwhash(pass, salt)
@@ -148,8 +148,8 @@ async function readV4(data: KeyFileV4, pass: string): Promise<KeyFileDecryptedV5
     for (let i: number = 0; i < keys.length; i++) {
         const key_data: KeyFileKeyV4 = keys[i]
 
-        const key: Buffer = bintools.cb58Decode(key_data.key)
-        const nonce: Buffer = bintools.cb58Decode(key_data.iv)
+        const key: Buffer = (bintools.cb58Decode(key_data.key) as unknown) as Buffer
+        const nonce: Buffer = (bintools.cb58Decode(key_data.iv) as unknown) as Buffer
 
         const key_decrypt: Buffer = await cryptoHelpers.decrypt(pass, key, salt, nonce)
         const key_string = bintools.cb58Encode(AjsBuffer.from(key_decrypt))
@@ -170,7 +170,7 @@ async function readV5(data: KeyFileV5, pass: string): Promise<KeyFileDecryptedV5
     const version: string = data.version
     cryptoHelpers.keygenIterations = ITERATIONS_V3
 
-    const salt: Buffer = bintools.cb58Decode(data.salt)
+    const salt: Buffer = (bintools.cb58Decode(data.salt) as unknown) as Buffer
     const pass_hash = data.pass_hash
 
     const checkHash: IHash = await cryptoHelpers.pwhash(pass, salt)
@@ -186,8 +186,8 @@ async function readV5(data: KeyFileV5, pass: string): Promise<KeyFileDecryptedV5
     for (let i: number = 0; i < keys.length; i++) {
         const key_data: KeyFileKeyV5 = keys[i]
 
-        const key: Buffer = bintools.cb58Decode(key_data.key)
-        const nonce: Buffer = bintools.cb58Decode(key_data.iv)
+        const key: Buffer = (bintools.cb58Decode(key_data.key) as unknown) as Buffer
+        const nonce: Buffer = (bintools.cb58Decode(key_data.iv) as unknown) as Buffer
 
         const key_decrypt: Buffer = await cryptoHelpers.decrypt(pass, key, salt, nonce)
         const key_string = key_decrypt.toString()
@@ -209,7 +209,7 @@ async function readV6(data: KeyFileV6, pass: string): Promise<KeyFileDecryptedV6
     const activeIndex = data.activeIndex
     cryptoHelpers.keygenIterations = ITERATIONS_V3
 
-    const salt: Buffer = bintools.cb58Decode(data.salt)
+    const salt: Buffer = (bintools.cb58Decode(data.salt) as unknown) as Buffer
 
     const keys: KeyFileKeyV6[] = data.keys
     const keysDecrypt: KeyFileKeyDecryptedV6[] = []
@@ -217,9 +217,9 @@ async function readV6(data: KeyFileV6, pass: string): Promise<KeyFileDecryptedV6
     for (let i: number = 0; i < keys.length; i++) {
         const key_data: KeyFileKeyV6 = keys[i]
 
-        const key: Buffer = bintools.cb58Decode(key_data.key)
+        const key: Buffer = (bintools.cb58Decode(key_data.key) as unknown) as Buffer
         const type: KeystoreFileKeyType = key_data.type
-        const nonce: Buffer = bintools.cb58Decode(key_data.iv)
+        const nonce: Buffer = (bintools.cb58Decode(key_data.iv) as unknown) as Buffer
 
         let key_decrypt: Buffer
         try {

@@ -116,7 +116,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
         return this.ethAddress
     }
 
-    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number) {
+    async sendEth(to: string, amount: BN, gasPrice: BN, gasLimit: number): Promise<number | any> {
         return await WalletHelper.sendEth(this, to, amount, gasPrice, gasLimit)
     }
 
@@ -130,7 +130,7 @@ export default class MnemonicWallet extends AbstractHdWallet implements ILuxHdWa
         gasPrice: BN,
         gasLimit: number,
         token: Erc20Token
-    ): Promise<string> {
+    ): Promise<string | any> {
         return await WalletHelper.sendErc20(this, to, amount, gasPrice, gasLimit, token)
     }
 

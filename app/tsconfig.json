@@ -14,8 +14,8 @@
       "sourceMap": true,
       "resolveJsonModule": true,
       "baseUrl": ".",
-      "typeRoots": ["./node_modules/@types", "./node_modules/vuetify/types", "./types","./node_modules/@luxfi/"],
-      "types": ["webpack-env", "vuetify", "ts-jest", "cypress"],
+      "typeRoots": ["./node_modules/@types", "./node_modules/vuetify/types", "./types","./node_modules/@luxfi/","./node_modules/@ethereumjs"],
+      "types": ["webpack-env", "vuetify", "ts-jest", "cypress","jest","mocha","vue-meta","@ethereumjs/common"],
       "paths": {
         "@/*": ["src/*"]
       },
