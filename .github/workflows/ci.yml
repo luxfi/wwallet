@@ -21,12 +21,12 @@ jobs:
               with:
                   cache: pnpm
                   node-version: ${{ matrix.node-version }}
-            - name: Verify directory
-              run: |
-                  cd /home/runner/work/lux_wallet/lux_wallet/app
-                  echo "Current directory: $(pwd)"
-                  ls -la
+            # - name: Verify directory
+            #   run: |
+            #       cd /home/runner/work/lux_wallet/lux_wallet/app
+            #       echo "Current directory: $(pwd)"
+            #       ls -la
             - run: pnpm install
-              working-directory: /home/runner/work/lux_wallet/lux_wallet/app
+              # working-directory: /home/runner/work/lux_wallet/lux_wallet/app
             - run: pnpm build
-              working-directory: /home/runner/work/lux_wallet/lux_wallet/app
+              # working-directory: /home/runner/work/lux_wallet/lux_wallet/app
