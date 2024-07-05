@@ -27,7 +27,7 @@ jobs:
 
             - run: sudo npm install -g pnpm
 
-            - run: pnpm install --network-timeout 1000000
+            - run: pnpm install --fetch-timeout  1000000
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
 
