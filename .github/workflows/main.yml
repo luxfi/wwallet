@@ -33,16 +33,16 @@ jobs:
 
             - name: Verify directory
               run: |
-                  cd /Users/runner/work/wallet/wallet/app
+                  cd app
                   echo "Current directory: $(pwd)"
                   ls -la
             - name: linting
               run: pnpm run lint
-              working-directory: /Users/runner/work/wallet/wallet/app
+              working-directory: ./app
 
             - name: jest-run
               run: pnpm test
-              working-directory: /Users/runner/work/wallet/wallet/app
+              working-directory: ./app
               
             - name: cypress-run
               uses: cypress-io/github-action@v2
