@@ -58,7 +58,7 @@ jobs:
       #   working-directory: ./app
 
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           working-directory: ./app
           command: pnpm exec cypress run
