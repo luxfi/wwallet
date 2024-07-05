@@ -7,8 +7,9 @@ jobs:
 
         strategy:
             matrix:
-                # The node version, you can put one or many versions in here to test with
+                # The node version, you can put一个或多个版本在此测试
                 node: [18.20.3]
+
         steps:
             - name: Checkout
               uses: actions/checkout@v1
@@ -18,17 +19,25 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # Cache node modules
-            - name: cache modules
+            # 缓存 node 模块
+            - name: Cache pnpm store
+              uses: actions/cache@v2
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
+
+            - name: Cache node_modules
               uses: actions/cache@v2
               with:
                   path: app/node_modules
-                  key: ${{ runner.os }}-modules-${{ hashFiles('app/pnpm-lock.yaml') }}
+                  key: ${{ runner.os }}-node_modules-${{ hashFiles('app/pnpm-lock.yaml') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node_modules-
 
             - run: sudo npm install -g pnpm
 
             - name: Install dependencies
-              run: pnpm install --fetch-timeout  1000000
+              run: pnpm install --fetch-timeout 1000000
               env:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
               working-directory: ./app
@@ -39,27 +48,26 @@ jobs:
                   echo "Current directory: $(pwd)"
                   ls -la
 
-            # - name: Linting
-            #   run: pnpm run lint
-            #   working-directory: ./app
+            - name: Linting
+              run: pnpm run lint
+              working-directory: ./app
 
-            # - name: Jest run
-            #   run: pnpm test
-            #   working-directory: ./app
+            - name: Jest run
+              run: pnpm test
+              working-directory: ./app
 
             - name: Cypress run
               uses: cypress-io/github-action@v2
               with:
-                  working-directory: ./app
-                  start: pnpm serve --mode e2e
+                  start: pnpm serve --mode e2e --prefix ./app
                   wait-on: 'http://localhost:5000/'
                   wait-on-timeout: 180
                   browser: chrome
                   headless: true
               env:
                   USE_HTTP: true
+              working-directory: ./app
 
-            # Extract screenshots to git if tests fail
             - name: Extract screenshots to git
               uses: actions/upload-artifact@v2
               if: failure()
@@ -67,7 +75,6 @@ jobs:
                   name: cypress-screenshots
                   path: app/cypress/screenshots
 
-            # Always extract videos to git
             - name: Extract videos to git
               uses: actions/upload-artifact@v2
               if: always()
