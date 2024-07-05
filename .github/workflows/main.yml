@@ -59,14 +59,15 @@ jobs:
             - name: Cypress run
               uses: cypress-io/github-action@v2
               with:
-                  start: pnpm serve --mode e2e --prefix ./app
+                  working-directory: ./app
+                  start: pnpm serve --mode e2e --prefix 
                   wait-on: 'http://localhost:5000/'
                   wait-on-timeout: 180
                   browser: chrome
                   headless: true
               env:
                   USE_HTTP: true
-              working-directory: ./app
+            
 
             - name: Extract screenshots to git
               uses: actions/upload-artifact@v2
