@@ -7,7 +7,6 @@ jobs:
 
     strategy:
       matrix:
-        # 可以在此测试一个或多个 Node 版本
         node: [18.20.3]
 
     steps:
@@ -57,19 +56,14 @@ jobs:
       #   run: pnpm test
       #   working-directory: ./app
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          working-directory: ./app
-          command: pnpm exec cypress run
-          start: pnpm serve --mode e2e --prefix  
-          wait-on: 'http://localhost:5000/'
-          wait-on-timeout: 180
-          browser: chrome
-          headless: true
+      - name: Start server and run Cypress tests
+        run: |
+          pnpm serve --mode e2e --prefix ./app &
+          npx wait-on 'http://localhost:5000/' --timeout 180000
+          pnpm exec cypress run
         env:
           USE_HTTP: true
-    
+        working-directory: ./app
 
       - name: Extract screenshots to git
         uses: actions/upload-artifact@v2
