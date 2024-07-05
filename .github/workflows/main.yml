@@ -18,6 +18,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      # 重置 npm 缓存所有者以避免权限问题
+      - name: Fix npm cache permissions
+        run: sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+
       # 缓存 pnpm store
       - name: Cache pnpm store
         uses: actions/cache@v2
