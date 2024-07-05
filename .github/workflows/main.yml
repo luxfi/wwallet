@@ -70,7 +70,7 @@ jobs:
                   USE_HTTP: true
 
             - name: Wait for server
-              run: npx wait-on 'http://localhost:5000/' --timeout 180000
+              run: npx wait-on 'http://localhost:5000/' --timeout 580000
 
             - name: Run Cypress tests
               uses: cypress-io/github-action@v6
