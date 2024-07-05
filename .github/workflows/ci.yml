@@ -1,32 +1,33 @@
 name: CI
 
 on:
-    push:
-    pull_request:
+  push:
+  pull_request:
 
 env:
-    CI: true
+  CI: true
 
 jobs:
-    Build:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [18.20.3]
-        steps:
-            - uses: actions/checkout@v2
-            - name: Install pnpm
-              run: npm install -g pnpm
-            - uses: actions/setup-node@v2
-              with:
-                  cache: pnpm
-                  node-version: ${{ matrix.node-version }}
-            # - name: Verify directory
-            #   run: |
-            #       cd  /app
-            #       echo "Current directory: $(pwd)"
-            #       ls -la
-            - run: pnpm install --frozen-lockfile
-              # working-directory: /app
-            - run: pnpm build
-              # working-directory: /app
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.20.3]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - uses: actions/setup-node@v2
+        with:
+          cache: pnpm
+          node-version: ${{ matrix.node-version }}
+  
+      - run: pnpm install --frozen-lockfile
+        working-directory: /home/runner/work/lux_wallet/lux_wallet/app
+      - name: Verify directory
+        run: |
+          cd /home/runner/work/lux_wallet/lux_wallet/app
+          echo "Current directory: $(pwd)"
+          ls -la
+      - run: pnpm build
+        working-directory: /home/runner/work/lux_wallet/lux_wallet/app
