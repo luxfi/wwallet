@@ -39,6 +39,8 @@ try {
 
     app.config.globalProperties.productionTip = false
 
+    console.log(app)
+
     app.mount('#app')
 
     app.mixin({

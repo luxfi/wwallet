@@ -1,16 +1,14 @@
 <template>
     <v-app>
         <v-main>
-            <template>
-                <UrlBanner></UrlBanner>
-                <navbar v-show="isNavbar"></navbar>
-                <div class="main_cols" :wallet_view="!isNavbar">
-                    <UpgradeToAccountModal></UpgradeToAccountModal>
-                    <transition name="fade" mode="out-in">
-                        <router-view id="router_view" />
-                    </transition>
-                </div>
-            </template>
+            <UrlBanner></UrlBanner>
+            <navbar v-show="isNavbar"></navbar>
+            <div class="main_cols" :wallet_view="!isNavbar">
+                <UpgradeToAccountModal></UpgradeToAccountModal>
+                <transition name="fade" mode="out-in">
+                    <router-view id="router_view" />
+                </transition>
+            </div>
         </v-main>
         <LedgerBlock ref="ledger_block"></LedgerBlock>
         <LedgerUpgrade></LedgerUpgrade>

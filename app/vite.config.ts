@@ -31,13 +31,25 @@ export default defineConfig({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', ".vue"],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '',
+      },
+      sass: {
+        additionalData: '',
+        indentedSyntax: true
+      }
+    }
+  },
   optimizeDeps: {
     esbuildOptions: {
       target: 'esnext',
       // plugins:[
       //   esbuildCommonjs([''])
       // ]
-    }
+    },
+    include: ['vuetify']
   },
   esbuild: {
     supported: {
@@ -50,16 +62,17 @@ export default defineConfig({
   build: {
     target: 'esnext',
     sourcemap: false,
+    chunkSizeWarningLimit: 4000,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return 'vendor'
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
           }
-        },
-      },
+        }
+      }
     },
-    commonjsOptions: { transformMixedEsModules: true } // enable require
+    commonjsOptions: { transformMixedEsModules: true } // enable require,
   },
   define: {
     // By default, Vite doesn't include shims for NodeJS/
@@ -71,21 +84,22 @@ export default defineConfig({
     //"process.env.version" : '3.5',
     "process.browser": true,
   },
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://api.lux.network',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, ''),
-  //     },
-  //   },
-  //   // https: true,
-  //   // port: 5000,
-  // },
+  server: {
+    // port: 5000,
+    proxy: {
+      '/api': {
+        target: 'https://api.lux.network/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace('^/api', '')
+      }
+    },
+    // https: true
+  },
   // optimizeDeps: {
   //   exclude: ['buffer', 'ieee754', 'base64-js', 'inherits', 'process'],
   // },
   // define: {
   //   'process.env.VUE_APP_VERSION': JSON.stringify(process.env.npm_package_version),
   // },
+  
 })
