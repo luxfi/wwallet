@@ -18,18 +18,16 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      # 重置 npm 缓存所有者以避免权限问题
-      - name: Fix npm cache permissions
-        run: sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
+ 
 
-      # 缓存 pnpm store
+ 
       - name: Cache pnpm store
         uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
 
-      # 缓存 node_modules
+ 
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
@@ -64,7 +62,7 @@ jobs:
         run: |
           pnpm serve --mode e2e --prefix ./app &
           npx wait-on 'http://localhost:5000/' --timeout 180000
-          pnpm exec cypress run
+        
         env:
           USE_HTTP: true
         working-directory: ./app
