@@ -101,5 +101,4 @@ export default defineConfig({
   // define: {
   //   'process.env.VUE_APP_VERSION': JSON.stringify(process.env.npm_package_version),
   // },
-  
 })

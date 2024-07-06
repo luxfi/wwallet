@@ -23,11 +23,8 @@ window.Buffer = Buffer
 
 try {
     const app = createApp(App)
-
     app.use(posthogPlugin)
-
     app.use(BootstrapVue)
-
     app.use(i18nOptions)
 
     // app.component('datetime', Datetime)
@@ -82,13 +79,11 @@ Big.prototype.toLocaleString = function (toFixed: number = 9) {
     } else {
         let remainderStr = split[1]
 
-        // 删除末尾的 0
         let lastChar = remainderStr.charAt(remainderStr.length - 1)
         while (lastChar === '0') {
             remainderStr = remainderStr.substring(0, remainderStr.length - 1)
             lastChar = remainderStr.charAt(remainderStr.length - 1)
         }
-
         const trimmed = remainderStr.substring(0, toFixed)
         if (!trimmed) return wholeStr
         return `${wholeStr}.${trimmed}`
