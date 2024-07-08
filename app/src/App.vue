@@ -171,7 +171,7 @@ p {
     position: relative;
     z-index: 2;
     background-color: transparent;
-    padding: main.$container_padding_m;
+    padding: main.$container_padding_s;
 }
 
 @include main.mobile-device {

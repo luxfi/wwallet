@@ -322,7 +322,7 @@ h4 {
 }
 .button_secondary {
     background-color: var(--secondary-color) !important;
-    color: #fff !important;
+    color: #000 !important;
     text-decoration: none;
     &:hover {
         opacity: 0.7;
@@ -462,13 +462,13 @@ html[data-theme='day'] {
 }
 
 html[data-theme='night'] {
-    --bg: #242729;
+    --bg: #000;
     --bg-1: 36, 39, 41;
-    --bg-light: #2e3234;
+    --bg-light: #1f1f1f;
     --bg-light-1: 46, 50, 52;
     --primary-color: #e5e5e5;
     --primary-color-light: #6e7479;
-    --secondary-color: #e84970;
+    --secondary-color: #e5e5e5;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #e84970;
@@ -477,7 +477,7 @@ html[data-theme='night'] {
     --info-1: 76, 140, 175;
 
     --bg-wallet: #181b1d;
-    --bg-wallet-light: #242729;
+    --bg-wallet-light: #000;
 
     --warning: #d49534;
 }

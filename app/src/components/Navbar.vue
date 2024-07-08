@@ -3,7 +3,11 @@
         <ConfirmLogout ref="logout"></ConfirmLogout>
         <router-link to="/" class="logo">
             <img v-if="$root.theme === 'day'" src="@/assets/wallet_logo.png" />
-            <img v-else src="@/assets/wallet_logo_dark.png" />
+            <div  v-else class="logo_dark">
+                <img src="@/assets/wallet_logo_dark.svg" ><h1>Wallet</h1></img>
+            </div>
+           
+
             <!--            <span class="slogan">by Lux</span>-->
         </router-link>
         <v-spacer></v-spacer>
@@ -24,14 +28,14 @@
             <network-menu></network-menu>
             <LanguageSelect class="lang_web"></LanguageSelect>
 
-            <button @click="togglePopup">
+            <!-- <button @click="togglePopup">
                 <fa icon="ellipsis-h"></fa>
             </button>
             <div class="popup-wrapper">
                 <div class="popup" v-if="popupOpen">
                     <AnalyticsCheckbox></AnalyticsCheckbox>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="mobile_right">
@@ -159,6 +163,13 @@ button {
     border: 1px solid var(--bg-light);
     background: var(--bg);
     border-radius: 3px;
+}
+
+.logo_dark{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .daynight {

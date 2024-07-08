@@ -24,7 +24,7 @@ export default class TestNetBanner extends Vue {
 $h: 24px;
 .network_warning {
     background-color: var(--secondary-color);
-    color: #fff;
+    color: var(--bg);
     font-size: 13px;
     text-align: center;
     position: fixed;

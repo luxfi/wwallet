@@ -25,7 +25,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
     },
 })
 export default class QRModal extends Vue {
-    colorDark: string = '#242729'
+    colorDark: string = '#000'
     colorLight: string = '#FFF'
 
     @Prop({ default: '-' }) address!: string
@@ -41,9 +41,9 @@ export default class QRModal extends Vue {
     onthemechange(val: string) {
         if (val === 'night') {
             this.colorDark = '#E5E5E5'
-            this.colorLight = '#242729'
+            this.colorLight = '#000'
         } else {
-            this.colorDark = '#242729'
+            this.colorDark = '#000'
             this.colorLight = '#FFF'
         }
         this.updateQR()

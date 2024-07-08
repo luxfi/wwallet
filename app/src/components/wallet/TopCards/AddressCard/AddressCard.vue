@@ -88,7 +88,7 @@ import { getPreferredHRP } from 'luxnet/dist/utils'
 })
 export default class AddressCard extends Vue {
     colorLight: string = '#FFF'
-    colorDark: string = '#242729'
+    colorDark: string = '#000'
     chainNow: ChainIdType = 'X'
     showBech = false // If true C-Chain shows the bech32 Address
     $refs!: {
@@ -106,9 +106,9 @@ export default class AddressCard extends Vue {
     onthemechange(val: string) {
         if (val === 'night') {
             this.colorDark = '#E5E5E5'
-            this.colorLight = '#242729'
+            this.colorLight = '#000'
         } else {
-            this.colorDark = '#242729'
+            this.colorDark = '#000'
             this.colorLight = '#FFF'
         }
         this.updateQR()
