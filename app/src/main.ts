@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// import VueMeta from 'vue-meta'
+import VueMeta from 'vue-meta'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -25,7 +25,7 @@ Vue.use(posthogPlugin)
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 
-// Vue.use(VueMeta)
+Vue.use(VueMeta)
 
 Vue.component('datetime', Datetime)
 
@@ -47,7 +47,7 @@ const app = new Vue({
         }
     },
     data: {
-        theme: 'day',
+        theme: 'night',
     },
 }).$mount('#app')
 
