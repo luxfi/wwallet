@@ -4,6 +4,5 @@
             "src": "sites/app/package.json",
             "use": "@vercel/node"
         }
-    ],
-    "ignoreCommand": "git log --raw -1 | grep -q 'sites/app/src' && exit 1 || exit 0"
+    ]
 }
