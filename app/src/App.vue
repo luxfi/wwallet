@@ -82,18 +82,18 @@ export default {
                 vmid: 'description',
                 name: 'description',
                 content:
-                    'Lux wallet is a simple, highly secure, non-custodial crypto wallet for storing LUX.',
+                    'Lux Wallet is a simple, highly secure, non-custodial crypto wallet for storing LUX.',
             },
             {
                 vmid: 'og:description',
                 name: 'description',
                 content:
-                    'Lux wallet is a simple, highly secure, non-custodial crypto wallet for storing LUX.',
+                    'Lux Wallet is a simple, highly secure, non-custodial crypto wallet for storing LUX.',
             },
             {
                 vmid: 'og:title',
                 name: 'og:title',
-                content: 'Fastest Performing and Secure DeFi Wallet | Lux Wallet',
+                content: 'Lux Wallet: Only quantum safe and private DeFi Wallet',
             },
         ],
         title: 'Fastest Performing and Secure DeFi Wallet',
