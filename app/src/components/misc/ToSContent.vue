@@ -4,7 +4,7 @@
             TERMS OF USE
         </h1>
         <h4 style="padding-top: 16pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            Last updated September 22, 2020
+            Last updated July 8, 2024
         </h4>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: justify">AGREEMENT TO TERMS</h2>
