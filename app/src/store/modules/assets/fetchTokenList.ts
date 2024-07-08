@@ -10,7 +10,7 @@ function mapTokenInfo(token: any) {
 export async function fetchTokenList(): Promise<TokenList> {
     return {
         name: 'Lux (C-Chain)',
-        logoURI: 'https://api.luxcloud.xyz/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
+        logoURI: '/lux-logo.png',
         keywords: [],
         timestamp: '',
         url: '',
@@ -23,7 +23,7 @@ export async function fetchTokenList(): Promise<TokenList> {
         tokens: [],
     }
     const res = await fetch(
-        'https://api.luxcloud.xyz/proxy/chain-assets/main/_lists/core-wallet/token-list.erc20.json'
+        '/token-list.erc20.json'
     )
     const json = await res.json()
 
@@ -32,7 +32,7 @@ export async function fetchTokenList(): Promise<TokenList> {
 
     return {
         name: 'Lux (C-Chain)',
-        logoURI: 'https://api.luxcloud.xyz/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
+        logoURI: '/lux-logo.png',
         keywords: [],
         timestamp: '',
         url: '',
