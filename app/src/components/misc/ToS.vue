@@ -1,6 +1,6 @@
 <template>
     <p>
-        By using this application you agree to the
+        By using this app you agree to the
         <router-link to="/legal">Terms of Use</router-link>
         .
     </p>

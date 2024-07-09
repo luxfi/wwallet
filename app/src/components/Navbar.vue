@@ -170,6 +170,16 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+        margin-right: 5px;
+    }
+    h1 {
+        font-family:inherit;
+    }
 }
 
 .daynight {

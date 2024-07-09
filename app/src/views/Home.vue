@@ -4,7 +4,8 @@
             <b-row>
                 <b-col>
                     <div class="home_wrapper">
-                        <h1>{{ $t('home.desc') }}</h1>
+                        <div v-html="$t('home.desc')" class="responsive-heading"></div>
+
                         <div class="login_wrapper">
                             <div class="login_option">
                                 <header>
@@ -57,7 +58,10 @@
                                 </div>
                             </div>
                         </div>
-                        <ToS class="tos" style="align-self: center; margin: 30px !important"></ToS>
+                        <ToS
+                            class="tos"
+                            style="align-self: center; margin: 30px 0 !important"
+                        ></ToS>
                     </div>
                 </b-col>
             </b-row>
@@ -87,6 +91,14 @@ export default class Home extends Vue {}
     justify-content: center;
     align-items: flex-start;
     position: relative;
+    .responsive-heading {
+        font-size: 24px;
+        text-align: center;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+    }
 
     a {
         margin: 10px;
@@ -111,6 +123,10 @@ export default class Home extends Vue {}
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: main.$container-padding;
+
+            @media (max-width: 768px) {
+                margin-top: 40px;
+            }
 
             .login_option {
                 display: flex;
