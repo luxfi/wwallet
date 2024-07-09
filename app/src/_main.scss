@@ -322,7 +322,7 @@ h4 {
 }
 .button_secondary {
     background-color: var(--secondary-color) !important;
-    color: #000 !important;
+    color: #fff !important;
     text-decoration: none;
     &:hover {
         opacity: 0.7;
@@ -445,9 +445,9 @@ html[data-theme='day'] {
     --bg-light: #f5f6fa;
     --bg-light-1: 245, 246, 250;
 
-    --primary-color: #4c2e56;
-    --primary-color-light: #867e89;
-    --secondary-color: #e84970;
+    --primary-color: #000;
+    --primary-color-light: #6e7479;
+    --secondary-color: #000;
     --selection-color: #6a91d8;
     --link-secondary: #6e7479;
     --error: #f00;
