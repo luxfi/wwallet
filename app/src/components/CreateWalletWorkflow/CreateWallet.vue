@@ -7,12 +7,7 @@
                         <!-- PHASE 1 -->
                         <div v-if="!keyPhrase" class="stage_1">
                             <div class="img_container">
-                                <img
-                                    v-if="$root.theme === 'day'"
-                                    src="@/assets/diamond-secondary.png"
-                                    alt
-                                />
-                                <img v-else src="@/assets/diamond-secondary-night.svg" alt />
+                                <img src="@/assets/diamond-secondary-night.svg" alt />
                             </div>
                             <h1>{{ $t('create.generate') }}</h1>
                             <router-link to="/access" class="link">
