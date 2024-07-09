@@ -1,6 +1,6 @@
 # Lux Wallet
 
-This is the frontend Vue.js application for the Lux Wallet.
+This is the web based Lux Wallet for [Lux Network](https://lux.network).
 
 ## Prerequisites
 
