@@ -1,6 +1,6 @@
 # Lux Wallet
 
-This is the frontend Vue.js application for the Lux Wallet.
+This is the web based Lux Wallet for [Lux Network](https://lux.network).
 
 ## Prerequisites
 
@@ -35,9 +35,7 @@ By default the wallet will connect to the Lux tmainnet. You can change to anothe
 ## Explorer API
 
 A valid explorer API is required to correctly display balances for Mnemonic and Ledger type wallets.
-The wallet uses the Lux Explorer API to display wallet transaction history.
-
-WARNING: This history might be out of order and incomplete.
+The wallet uses the [Lux Explorer API](https://explore.lux.network) to display wallet transaction history.
 
 ## Browser Support
 

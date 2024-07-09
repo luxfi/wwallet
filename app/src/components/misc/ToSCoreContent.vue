@@ -11,7 +11,7 @@
             <span>
                 These Terms of Use (these &ldquo;Terms&rdquo;) constitute a legally binding
                 agreement made between you, whether personally or on behalf of an entity
-                (&ldquo;you&rdquo;) and Lux Labs, Inc. (together with its subsidiaries and
+                (&ldquo;you&rdquo;) and Lux Partners Limited (together with its subsidiaries and
                 affiliates, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
                 &ldquo;our&rdquo;) governing your download, access to and/or use of the Core Browser
                 Extension, the Core Mobile Application, the CoreWeb website, the core.app website

@@ -4,13 +4,13 @@
             TERMS OF USE
         </h1>
         <h4 style="padding-top: 16pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
-            Last updated September 22, 2020
+            Last updated July 8, 2024
         </h4>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
         <h2 style="padding-left: 5pt; text-indent: 0pt; text-align: justify">AGREEMENT TO TERMS</h2>
         <p style="padding-top: 12pt; padding-left: 5pt; text-indent: 0pt; text-align: justify">
             These Terms of Use constitute a legally binding agreement made between you, whether
-            personally or on behalf of an entity (“you”) and Lux (BVI) Inc. (&quot;
+            personally or on behalf of an entity (“you”) and Lux Partners Limited (&quot;
             <b>Company</b>
             &quot;, “
             <b>we</b>
@@ -20,7 +20,7 @@
             <b>our</b>
             ”), concerning your access to and use of the
             <span class="s1">https://wallet.lux.network/</span>
-            website and related features and services, including but not limited to the LUX wallet
+            website and related features and services, including but not limited to the Lux Wallet
             functionality, as well as any other media form, media channel, mobile website or mobile
             application related, linked, or otherwise connected thereto, (collectively, the “Site”).
             You agree that by accessing the Site, you have read, understood, and agreed to be bound
@@ -993,13 +993,13 @@
             regarding use of the Site, please contact us at:
         </p>
         <p style="text-indent: 0pt; text-align: left"><br /></p>
-        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Lux (BVI) Inc.</p>
+        <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">Lux Partners Limited.</p>
         <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">
-            Floor 4, Banco Popular Building
+            27 Hope St
             <br />
-            Road Town, Tortola VG1110
+            Douglas, IM1 1AR
             <br />
-            British Virgin Islands
+            Isle of Man
             <br />
             <a href="mailto:support@lux.network" target="_blank">support@lux.network</a>
         </p>
