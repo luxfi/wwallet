@@ -277,7 +277,7 @@
         "prettier-package-json": "^2.8.0",
         "process": "^0.11.10",
         "sass": "^1.32.13",
-        "sass-loader": "^14.2.1",
+        "sass-loader": "^13.2.1",
         "ts-jest": "^26.1.1",
         "ts-loader": "^9.5.1",
         "typescript": "4.0.8",

@@ -367,11 +367,16 @@ const assets_module: Module<AssetsState, RootState> = {
 
         // What is the LUX coin in the network
         async updateLuxAsset({ state, commit }) {
-            const res = await xvm.getAssetDescription('LUX')
-            const id = bintools.cb58Encode(res.assetID)
-            state.LUX_ASSET_ID = id
-            const asset = new LuxAsset(id, res.name, res.symbol, res.denomination)
-            commit('addAsset', asset)
+            // await xvm.getAssetDescription()
+            try {
+                const res = await ava.XChain().getAssetDescription('AVAX')
+                const id = bintools.cb58Encode(res.assetID)
+                state.LUX_ASSET_ID = id
+                const asset = new LuxAsset(id, res.name, res.symbol, res.denomination)
+                commit('addAsset', asset)
+            } catch (error) {
+                console.log('error=====>', error)
+            }
         },
 
         /**

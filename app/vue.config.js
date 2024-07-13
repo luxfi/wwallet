@@ -98,12 +98,10 @@ module.exports = {
     transpileDependencies: ['vuetify'],
     devServer: {
         proxy: {
-            '/api': {
+            '/ext': {
                 target: 'https://api.lux.network',
                 changeOrigin: true,
-                pathRewrite: {
-                    '^/api': '',
-                },
+                secure: false,
             },
         },
         server: {

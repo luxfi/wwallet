@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-const POSTHOG_DEV_APP_ID = 'phc_6HUmT6KtEAPlKpIw9lKf6mpIog3YU1ClbcylLudAcb0'
+const POSTHOG_DEV_APP_ID = 'phc_VjA2YNcSdMhTmTjNr98b27mkQUlSZMg5UWisnfeu10Z'
 const POSTHOG_DEV_HOST_URL = 'https://proxy-api.lux.network/ph'
 
 export default {
