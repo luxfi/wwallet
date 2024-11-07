@@ -98,9 +98,9 @@ By default, there are two network options to connect to: `Mainnet` and `Testnet`
 ##### Mainnet
 
 -   Lux API: `https://api.lux.network`
--   Explorer API: `https://api.explore.lux.network`
+-   Explorer API: `https://api-explore.lux.network`
 
 ##### Testnet
 
 -   Lux API: `https://api.lux-test.network`
--   Explorer API: `https://api.explore.lux-test.network`
+-   Explorer API: `https://api-explore.lux-test.network`
