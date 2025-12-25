@@ -27,3 +27,10 @@ pnpm-error.log*
 /cypress/screenshots
 *.sedbak
 /components/dist
+
+
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+GROK.md
+QWEN.md
