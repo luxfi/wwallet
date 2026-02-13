@@ -64,7 +64,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     /**
      *
-     * @param xpubXVM of derivation path m/44'/9000'/n' where `n` is the account index
+     * @param xpubXVM of derivation path m/44'/60'/n' where `n` is the account index
      * @param xpubEVM of derivation path m/44'/60'/0'/0/n where `n` is the account index
      * @param accountIndex The given xpubs must match this index
      */
@@ -135,7 +135,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     /**
      * Returns the extended public key used by X and P chains for address derivation.
-     * @remarks Returns the extended public key for path `m/44'/90000'/n'` where `n` is the account index.
+     * @remarks Returns the extended public key for path `m/44'/60'/n'` where `n` is the account index.
      * @param transport
      * @param accountIndex Which account's public key to derive
      */
@@ -400,7 +400,7 @@ export class LedgerWallet extends PublicMnemonicWallet {
 
     /**
      *
-     * @param accountPath `m/44'/9000'/0'` For X/P Chains, `m/44'/60'/0'` for C Chain
+     * @param accountPath `m/44'/60'/0'` For all chains
      * @param bip32Paths an array of paths to sign with `['0/0','0/1'..]`
      * @param hash A buffer of the hash to sign
      * @remarks Never sign untrusted hashes. This can lead to loss of funds.

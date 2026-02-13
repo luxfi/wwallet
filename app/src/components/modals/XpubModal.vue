@@ -4,7 +4,7 @@
             <p>This extended public key is used to derive all your X and P chain addresses.</p>
             <p class="key_raw">
                 Path:
-                <b>m/44'/9000'/0'</b>
+                <b>m/44'/60'/0'</b>
                 <br />
                 <br />
                 {{ xpub }}

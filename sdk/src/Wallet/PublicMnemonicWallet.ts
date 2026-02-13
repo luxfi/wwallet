@@ -13,7 +13,7 @@ import { TypedDataV1, TypedMessage } from '@metamask/eth-sig-util';
 export class PublicMnemonicWallet extends HDWalletAbstract {
     /**
      *
-     * @param xpubXVM of derivation path m/44'/9000'/n' where `n` is the account index
+     * @param xpubXVM of derivation path m/44'/60'/n' where `n` is the account index
      * @param xpubEVM of derivation path m/44'/60'/0'/0/n where `n` is the account index
      */
     constructor(xpubXVM: string, xpubEVM: string) {

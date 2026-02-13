@@ -45,7 +45,7 @@ export interface LedgerProvider {
     /**
      *
      * @param tx
-     * @param accountPath eg. m/44'/9000'/0'
+     * @param accountPath eg. m/44'/60'/0'
      * @param signers eg. [0/0, 1/0]
      * @param changePaths eg. [0/0, 1/0]
      */

@@ -24,7 +24,7 @@ declare module '@luxfi/hw-app-lux' {
 
         /**
          * Signs a hash. This is NOT a secure operation. The device will show warning.
-         * @param accountPath Ex. `m/44'/9000'/0'`
+         * @param accountPath Ex. `m/44'/60'/0'`
          * @param addressPaths Addresses you need signatures from. Ex. `0/0`, `0/1` , `0/2` etc..
          * @param hash
          */

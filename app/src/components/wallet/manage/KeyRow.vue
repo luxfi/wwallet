@@ -250,7 +250,7 @@ export default class KeyRow extends Vue {
     }
 
     /**
-     * Extended public key of m/44'/9000'/0' used for X and P chain addresses
+     * Extended public key of m/44'/60'/0' used for X and P chain addresses
      */
     get xpubXP() {
         if (this.isHDWallet) {
