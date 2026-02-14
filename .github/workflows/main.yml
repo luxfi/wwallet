@@ -84,7 +84,7 @@ jobs:
                   config-file: cypress.config.js
                   wait-on: http://localhost:5000
                   browser: chrome
-                  install: false
+                  install: true
 
             # headless: true
 
