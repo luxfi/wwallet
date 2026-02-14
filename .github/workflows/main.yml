@@ -7,7 +7,6 @@ jobs:
 
         strategy:
             matrix:
-                # 可以在此测试一个或多个 Node 版本
                 node: [18.20.3]
 
         steps:
@@ -19,14 +18,12 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # 缓存 pnpm store
             - name: Cache pnpm store
               uses: actions/cache@v4
               with:
                   path: ~/.pnpm-store
                   key: ${{ runner.os }}-pnpm-store-${{ hashFiles('app/pnpm-lock.yaml') }}
 
-            # 缓存 node_modules
             - name: Cache node_modules
               uses: actions/cache@v4
               with:
@@ -41,37 +38,29 @@ jobs:
                   CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
               working-directory: ./app
 
-            - name: Verify directory
-              run: |
-                  cd app
-                  echo "Current directory: $(pwd)"
-                  ls -la
-
-            # - name: linting
-            #   run: pnpm run lint
-            #   working-directory: ./app
-
-            # - name: jest-run
-            #   run: pnpm test
-            #   working-directory: ./app
-
-            # 如果 .npm 目录存在，则重置其所有者以避免权限问题
             - name: Fix npm cache permissions
               run: |
                   if [ -d "/Users/runner/.npm" ]; then
                     sudo chown -R $USER:$(id -gn $USER) /Users/runner/.npm
                   fi
 
-            - name: Start server
+            - name: Build app
+              run: pnpm build --mode e2e
+              working-directory: ./app
+              env:
+                  USE_HTTP: true
+                  NODE_OPTIONS: --openssl-legacy-provider
+
+            - name: Start static server
               run: |
                   cd app
-                  pnpm serve --mode e2e &
-                  echo "Server PID: $!"
+                  npx serve -s dist -l 5000 &
+                  echo "Static server PID: $!"
               env:
                   USE_HTTP: true
 
             - name: Wait for server
-              run: npx wait-on 'http://localhost:5000/' --timeout 300000
+              run: npx wait-on 'http://localhost:5000/' --timeout 60000
 
             - name: Install Cypress binary
               run: |
@@ -84,7 +73,6 @@ jobs:
               uses: cypress-io/github-action@v6
               env:
                   USE_HTTP: true
-
               with:
                   working-directory: ./app
                   config-file: cypress.config.js
@@ -92,9 +80,6 @@ jobs:
                   browser: chrome
                   install: false
 
-            # headless: true
-
-            # These extract all artifacts out from the container to git so they can be previewed
             - name: Extract screenshots to git
               uses: actions/upload-artifact@v4
               if: failure()
@@ -102,7 +87,6 @@ jobs:
                   name: cypress-screenshots
                   path: app/cypress/screenshots
 
-            # Test run video was always captured, so this action uses "always()" condition
             - name: Extract videos to git
               uses: actions/upload-artifact@v4
               if: always()
