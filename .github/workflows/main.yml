@@ -75,8 +75,11 @@ jobs:
               run: npx wait-on 'http://localhost:5000/' --timeout 180000
 
             - name: Install Cypress binary
-              run: npx cypress install
-              working-directory: ./app
+              run: |
+                  cd app
+                  npx cypress install --force
+              env:
+                  CYPRESS_CACHE_FOLDER: ~/Library/Caches/Cypress
 
             - name: Run Cypress tests
               uses: cypress-io/github-action@v6
