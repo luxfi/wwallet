@@ -1,6 +1,9 @@
 name: Main Commit Checks
 on: [push]
 
+env:
+    CYPRESS_CACHE_FOLDER: ~/Library/Caches/Cypress
+
 jobs:
     build:
         runs-on: macos-latest
@@ -34,8 +37,6 @@ jobs:
 
             - name: Install dependencies
               run: pnpm install --fetch-timeout 1000000
-              env:
-                  CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
               working-directory: ./app
 
             - name: Fix npm cache permissions
@@ -66,8 +67,6 @@ jobs:
               run: |
                   cd app
                   npx cypress install --force
-              env:
-                  CYPRESS_CACHE_FOLDER: ~/Library/Caches/Cypress
 
             - name: Run Cypress tests
               uses: cypress-io/github-action@v6
