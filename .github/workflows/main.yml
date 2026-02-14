@@ -65,13 +65,13 @@ jobs:
             - name: Start server
               run: |
                   cd app
-                  nohup pnpm serve --mode e2e > /dev/null 2>&1 &
-                  echo "Server starting in background..."
+                  pnpm serve --mode e2e &
+                  echo "Server PID: $!"
               env:
                   USE_HTTP: true
 
             - name: Wait for server
-              run: npx wait-on 'http://localhost:5000/' --timeout 180000
+              run: npx wait-on 'http://localhost:5000/' --timeout 300000
 
             - name: Install Cypress binary
               run: |
