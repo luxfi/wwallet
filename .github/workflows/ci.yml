@@ -21,12 +21,7 @@ jobs:
               with:
                   cache: pnpm
                   node-version: ${{ matrix.node-version }}
-            - name: Verify directory
-              run: |
-                  cd /home/runner/work/wallet/wallet/app
-                  echo "Current directory: $(pwd)"
-                  ls -la
             - run: pnpm install --frozen-lockfile
-              working-directory: /home/runner/work/wallet/wallet/app
+              working-directory: ./app
             - run: pnpm build
-              working-directory: /home/runner/work/wallet/wallet/app
+              working-directory: ./app
