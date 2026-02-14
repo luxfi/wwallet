@@ -74,6 +74,10 @@ jobs:
             - name: Wait for server
               run: npx wait-on 'http://localhost:5000/' --timeout 180000
 
+            - name: Install Cypress binary
+              run: npx cypress install
+              working-directory: ./app
+
             - name: Run Cypress tests
               uses: cypress-io/github-action@v6
               env:
@@ -84,7 +88,7 @@ jobs:
                   config-file: cypress.config.js
                   wait-on: http://localhost:5000
                   browser: chrome
-                  install: true
+                  install: false
 
             # headless: true
 
