@@ -1,18 +1,39 @@
-$purple: #4c2e56;
-$purple-light: #867e89;
-$pink: #e84970;
-$pink-light: #ff8080;
-$pink-extra-light: #ffe6e6;
-$gray: #f5f6fa;
-$white: #fff;
-$green: #6bc688;
-$info: #008dc5;
-$green-light: #83f2a6;
-$green-extra-light: #a9efbf;
+// Dark theme colors matching Lux Exchange Tamagui design system
+// Source: ~/work/lux/exchange/packages/ui/src/theme/color/colors.ts
 
-$primary-color: $purple;
-$primary-color-light: $purple-light;
-$secondary-color: $pink;
-$secondary-color-light: $pink-light;
-$secondary-color-extra-light: $pink-extra-light;
-$background-color: $gray;
+$neutral: #FFFFFF;
+$neutral-dim: rgba(255, 255, 255, 0.6);
+
+$surface1: #000000;
+$surface2: #0A0A0A;
+$surface3: #131313;
+$surface4: #1A1A1A;
+$surface5: #242424;
+
+$accent1: #FFFFFF;
+$accent2: #CCCCCC;
+$accent3: #999999;
+
+$success: #21C95E;
+$warning: #FFBF17;
+$critical: #FF593C;
+$info: #4C82FB;
+
+// Legacy variable mappings
+$purple: $surface3;
+$purple-light: $accent3;
+$pink: $info;
+$pink-light: lighten($info, 15%);
+$pink-extra-light: lighten($info, 30%);
+$gray: $surface3;
+$white: $neutral;
+$green: $success;
+$green-light: lighten($success, 15%);
+$green-extra-light: lighten($success, 25%);
+
+$primary-color: $accent1;
+$primary-color-light: $accent2;
+$secondary-color: $info;
+$secondary-color-light: lighten($info, 15%);
+$secondary-color-extra-light: lighten($info, 30%);
+$background-color: $surface1;

@@ -1,0 +1,32 @@
+{
+  "name": "@luxfi/wallet-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "node scripts/patch-sdk.js"
+  },
+  "dependencies": {
+    "@luxfi/wallet-sdk": "0.20.29",
+    "@tamagui/config": "1.136.1",
+    "@tamagui/core": "1.136.1",
+    "@tamagui/next-theme": "1.136.1",
+    "@tanstack/react-query": "5.62.8",
+    "ethers": "5.7.2",
+    "luxnet": "*",
+    "next": "15.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zustand": "5.0.3"
+  },
+  "devDependencies": {
+    "@tamagui/next-plugin": "1.136.1",
+    "@types/node": "22.13.1",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.6",
+    "typescript": "5.8.3"
+  }
+}

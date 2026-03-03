@@ -1,0 +1,11 @@
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1327,7 +1327,7 @@
+ 
+ // HD WALLET
+ // m / purpose' / coin_type' / account' / change / address_index
+-const LUX_TOKEN_INDEX = '9000';
++const LUX_TOKEN_INDEX = '60';
+ const LUX_TOKEN_PATH = `m/44'/${LUX_TOKEN_INDEX}'`;
+ const LUX_ACCOUNT_PATH = `m/44'/${LUX_TOKEN_INDEX}'/0'`; // Change and index left out
+ const ETH_ACCOUNT_PATH = `m/44'/60'/0'`;
