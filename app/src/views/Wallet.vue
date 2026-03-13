@@ -80,7 +80,7 @@ export default class Wallet extends Vue {
         let view = this.$refs.wallet_view as HTMLDivElement
 
         // @ts-ignore
-        this.$posthog.capture('UserLoggedIn')
+        this.$insights.capture('UserLoggedIn')
 
         view.addEventListener('mousemove', this.resetTimer)
         view.addEventListener('mousedown', this.resetTimer)

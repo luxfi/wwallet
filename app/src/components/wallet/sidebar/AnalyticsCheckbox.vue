@@ -29,7 +29,7 @@ export default {
         onAccept() {
             localStorage.setItem('consentsToAnalytics', true)
             // @ts-ignore
-            this.$posthog.opt_in_capturing()
+            this.$insights.opt_in_capturing()
             this.consentsToAnalytics = true
             this.$emit('change', this.value)
 
@@ -38,7 +38,7 @@ export default {
         onReject() {
             localStorage.setItem('consentsToAnalytics', false)
             // @ts-ignore
-            this.$posthog.opt_out_capturing()
+            this.$insights.opt_out_capturing()
             this.analyticsEnabled = false
             this.consentsToAnalytics = false
             this.$emit('change', this.value)

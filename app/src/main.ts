@@ -13,14 +13,14 @@ import vuetify from './plugins/vuetify'
 // @ts-ignore
 import i18n from './plugins/i18n.js'
 // @ts-ignore
-import posthogPlugin from './plugins/posthog.js'
+import insightsPlugin from './plugins/posthog.js'
 import { Buffer } from 'buffer'
 import 'bigint-polyfill'
 
 window.Buffer = Buffer
 
-// Install Posthog
-Vue.use(posthogPlugin)
+// Install Insights
+Vue.use(insightsPlugin)
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
