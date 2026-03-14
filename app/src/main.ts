@@ -13,7 +13,7 @@ import vuetify from './plugins/vuetify'
 // @ts-ignore
 import i18n from './plugins/i18n.js'
 // @ts-ignore
-import insightsPlugin from './plugins/posthog.js'
+import insightsPlugin from './plugins/insights.js'
 import { Buffer } from 'buffer'
 import 'bigint-polyfill'
 
